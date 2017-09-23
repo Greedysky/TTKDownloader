@@ -1,4 +1,93 @@
 <RCC>
     <qresource prefix="/image">
+        <file alias="lb_player_logo">../TTKResource/lb_player_logo.ico</file>
+        <file alias="lb_noneImage">../TTKResource/lb_noneImage.png</file>
+    </qresource>
+    <qresource prefix="/shadow">
+        <file alias="lb_bottom">../TTKResource/borderShadow/lb_bottom.png</file>
+        <file alias="lb_left">../TTKResource/borderShadow/lb_left.png</file>
+        <file alias="lb_right">../TTKResource/borderShadow/lb_right.png</file>
+        <file alias="lb_top">../TTKResource/borderShadow/lb_top.png</file>
+        <file alias="lb_left_top">../TTKResource/borderShadow/lb_left_top.png</file>
+        <file alias="lb_right_top">../TTKResource/borderShadow/lb_right_top.png</file>
+        <file alias="lb_left_bottom">../TTKResource/borderShadow/lb_left_bottom.png</file>
+        <file alias="lb_right_bottom">../TTKResource/borderShadow/lb_right_bottom.png</file>
+    </qresource>
+    <qresource prefix="/control">
+        <file alias="btn_checkBox_checked">../TTKResource/controls/btn_checkBox_checked.png</file>
+        <file alias="btn_checkBox_unchecked">../TTKResource/controls/btn_checkBox_unchecked.png</file>
+        <file alias="btn_checkBox2_checked">../TTKResource/controls/btn_checkBox2_checked.png</file>
+        <file alias="btn_checkBox2_unchecked">../TTKResource/controls/btn_checkBox2_unchecked.png</file>
+        <file alias="btn_radiobutton_checked">../TTKResource/controls/btn_radiobutton_checked.png</file>
+        <file alias="btn_radioButton_unchecked">../TTKResource/controls/btn_radioButton_unchecked.png</file>
+        <file alias="btn_radiobutton2_checked">../TTKResource/controls/btn_radiobutton2_checked.png</file>
+        <file alias="btn_radioButton2_unchecked">../TTKResource/controls/btn_radioButton2_unchecked.png</file>
+        <file alias="lb_volume_back">../TTKResource/controls/lb_volume_back.png</file>
+        <file alias="lb_volume_fore">../TTKResource/controls/lb_volume_fore.png</file>
+        <file alias="lb_volume_handle_normal">../TTKResource/controls/lb_volume_handle_normal.png</file>
+        <file alias="lb_volume_handle_hover">../TTKResource/controls/lb_volume_handle_hover.png</file>
+        <file alias="lb_slider_disable">../TTKResource/controls/lb_slider_disable.png</file>
+        <file alias="lb_slider_handle_hover">../TTKResource/controls/lb_slider_handle_hover.png</file>
+        <file alias="lb_slider_handle_normal">../TTKResource/controls/lb_slider_handle_normal.png</file>
+        <file alias="lb_make_back">../TTKResource/controls/lb_make_back.png</file>
+        <file alias="lb_make_fore">../TTKResource/controls/lb_make_fore.png</file>
+        <file alias="lb_make_slider_disable">../TTKResource/controls/lb_make_slider_disable.png</file>
+        <file alias="lb_make_slider_handle_hover">../TTKResource/controls/lb_make_slider_handle_hover.png</file>
+        <file alias="lb_make_slider_handle_normal">../TTKResource/controls/lb_make_slider_handle_normal.png</file>
+    </qresource>
+    <qresource prefix="/contextMenu">
+        <file alias="lb_new_normal">../TTKResource/contextMenu/lb_new_normal.png</file>
+        <file alias="lb_quit_normal">../TTKResource/contextMenu/lb_quit_normal.png</file>
+        <file alias="lb_start_normal">../TTKResource/contextMenu/lb_start_normal.png</file>
+        <file alias="lb_stop_normal">../TTKResource/contextMenu/lb_stop_normal.png</file>
+    </qresource>
+    <qresource prefix="/appTools">
+        <file alias="item_delete_clicked">../TTKResource/appTools/item_delete_clicked.png</file>
+        <file alias="item_delete_hover">../TTKResource/appTools/item_delete_hover.png</file>
+        <file alias="item_delete_normal">../TTKResource/appTools/item_delete_normal.png</file>
+        <file alias="item_download_clicked">../TTKResource/appTools/item_download_clicked.png</file>
+        <file alias="item_download_hover">../TTKResource/appTools/item_download_hover.png</file>
+        <file alias="item_download_normal">../TTKResource/appTools/item_download_normal.png</file>
+        <file alias="item_finished_clicked">../TTKResource/appTools/item_finished_clicked.png</file>
+        <file alias="item_finished_hover">../TTKResource/appTools/item_finished_hover.png</file>
+        <file alias="item_finished_normal">../TTKResource/appTools/item_finished_normal.png</file>
+    </qresource>
+    <qresource prefix="/tiny">
+        <file alias="btn_close_hover">../TTKResource/tiny/btn_close_hover.png</file>
+        <file alias="btn_close_normal">../TTKResource/tiny/btn_close_normal.png</file>
+        <file alias="btn_max_hover">../TTKResource/tiny/btn_max_hover.png</file>
+        <file alias="btn_max_normal">../TTKResource/tiny/btn_max_normal.png</file>
+        <file alias="btn_min_hover">../TTKResource/tiny/btn_min_hover.png</file>
+        <file alias="btn_min_normal">../TTKResource/tiny/btn_min_normal.png</file>
+        <file alias="btn_setting_hover">../TTKResource/tiny/btn_setting_hover.png</file>
+        <file alias="btn_setting_normal">../TTKResource/tiny/btn_setting_normal.png</file>
+        <file alias="btn_skin_hover">../TTKResource/tiny/btn_skin_hover.png</file>
+        <file alias="btn_skin_normal">../TTKResource/tiny/btn_skin_normal.png</file>
+        <file alias="lb_resize_normal">../TTKResource/tiny/lb_resize_normal.png</file>
+        <file alias="lb_selected">../TTKResource/tiny/lb_selected.png</file>
+    </qresource>
+    <qresource prefix="/functions">
+        <file alias="btn_delete_disable">../TTKResource/functions/btn_delete_disable.png</file>
+        <file alias="btn_delete_hover">../TTKResource/functions/btn_delete_hover.png</file>
+        <file alias="btn_delete_normal">../TTKResource/functions/btn_delete_normal.png</file>
+        <file alias="btn_new_disable">../TTKResource/functions/btn_new_disable.png</file>
+        <file alias="btn_new_hover">../TTKResource/functions/btn_new_hover.png</file>
+        <file alias="btn_new_normal">../TTKResource/functions/btn_new_normal.png</file>
+        <file alias="btn_start_disable">../TTKResource/functions/btn_start_disable.png</file>
+        <file alias="btn_start_hover">../TTKResource/functions/btn_start_hover.png</file>
+        <file alias="btn_start_normal">../TTKResource/functions/btn_start_normal.png</file>
+        <file alias="btn_stop_disable">../TTKResource/functions/btn_stop_disable.png</file>
+        <file alias="btn_stop_normal">../TTKResource/functions/btn_stop_normal.png</file>
+        <file alias="btn_stop_hover">../TTKResource/functions/btn_stop_hover.png</file>
+        <file alias="btn_setting_normal">../TTKResource/functions/btn_setting_normal.png</file>
+        <file alias="btn_setting_hover">../TTKResource/functions/btn_setting_hover.png</file>
+        <file alias="btn_setting_disable">../TTKResource/functions/btn_setting_disable.png</file>
+        <file alias="lb_download">../TTKResource/functions/lb_download.png</file>
+        <file alias="lb_upload">../TTKResource/functions/lb_upload.png</file>
+        <file alias="btn_close_hover">../TTKResource/functions/btn_close_hover.png</file>
+        <file alias="lb_left">../TTKResource/functions/lb_left.png</file>
+        <file alias="lb_right">../TTKResource/functions/lb_right.png</file>
+        <file alias="lb_order">../TTKResource/functions/lb_order.png</file>
+        <file alias="lb_plan">../TTKResource/functions/lb_plan.png</file>
     </qresource>
 </RCC>

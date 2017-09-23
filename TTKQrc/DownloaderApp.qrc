@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/data">
+        <file alias="downloadconfig.xml">../TTKResource/A_extras/downloadconfig.xml</file>
+    </qresource>
+</RCC>

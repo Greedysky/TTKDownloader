@@ -1,0 +1,70 @@
+#include "downloadtoolmenuwidget.h"
+#include "downloaduiobject.h"
+
+#include <QWidgetAction>
+
+DownloadToolMenu::DownloadToolMenu(QWidget *parent)
+    : QMenu(parent)
+{
+
+}
+
+QString DownloadToolMenu::getClassName()
+{
+    return staticMetaObject.className();
+}
+
+void DownloadToolMenu::showEvent(QShowEvent *event)
+{
+    QMenu::showEvent(event);
+    emit windowStateChanged(true);
+}
+
+void DownloadToolMenu::hideEvent(QHideEvent *event)
+{
+    QMenu::hideEvent(event);
+    emit windowStateChanged(false);
+}
+
+
+DownloadToolMenuWidget::DownloadToolMenuWidget(QWidget *parent)
+    : QToolButton(parent)
+{
+    setCursor(Qt::PointingHandCursor);
+
+    m_menu = new DownloadToolMenu(this);
+    QWidgetAction *actionWidget = new QWidgetAction(m_menu);
+    m_containWidget = new QWidget(m_menu);
+
+    actionWidget->setDefaultWidget(m_containWidget);
+    m_menu->addAction(actionWidget);
+
+    connect(this, SIGNAL(clicked()), SLOT(popupMenu()));
+}
+
+DownloadToolMenuWidget::~DownloadToolMenuWidget()
+{
+    delete m_containWidget;
+    delete m_menu;
+}
+
+QString DownloadToolMenuWidget::getClassName()
+{
+    return staticMetaObject.className();
+}
+
+void DownloadToolMenuWidget::setTranslucentBackground()
+{
+    m_menu->setWindowFlags(m_menu->windowFlags() | Qt::FramelessWindowHint);
+    m_menu->setAttribute(Qt::WA_TranslucentBackground);
+    m_menu->setStyleSheet(DownloadUIObject::MMenuStyle03);
+}
+
+void DownloadToolMenuWidget::popupMenu()
+{
+    QPoint pos = mapToGlobal(QPoint(0, 0));
+    pos.setY(pos.y() - m_containWidget->height() - 10);
+    pos.setX(pos.x() - (m_containWidget->width() - width())/2);
+
+    m_menu->exec(pos);
+}

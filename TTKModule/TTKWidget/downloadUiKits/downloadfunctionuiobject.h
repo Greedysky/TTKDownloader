@@ -1,0 +1,46 @@
+#ifndef DOWNLOADFUNCTIONUIOBJECT_H
+#define DOWNLOADFUNCTIONUIOBJECT_H
+
+/* =================================================
+ * This file is part of the TTK Downloader project
+ * Copyright (c) 2016 - 2017 Greedysky Studio
+ * All rights reserved!
+ * Redistribution and use of the source code or any derivative
+ * works are strictly forbiden.
+   =================================================*/
+
+#include <QObject>
+
+/*! @brief The namespace of the function button style.
+ * @author Greedysky <greedysky@163.com>
+ */
+namespace DownloadUIObject
+{
+    const QString MTHDNewDownload = " \
+            QToolButton{ border:none; \
+            background-image: url(:/functions/btn_new_normal);} \
+            QToolButton:hover{ background-image: url(:/functions/btn_new_hover);}";
+
+    const QString MTHDStartDownload = " \
+            QToolButton{ border:none; \
+            background-image: url(:/functions/btn_start_normal);} \
+            QToolButton:hover{ background-image: url(:/functions/btn_start_hover);}";
+
+    const QString MTHDStopDownload = " \
+            QToolButton{ border:none; \
+            background-image: url(:/functions/btn_stop_normal);} \
+            QToolButton:hover{ background-image: url(:/functions/btn_stop_hover);}";
+
+    const QString MTHDDeleteDownload = " \
+            QToolButton{ border:none; \
+            background-image: url(:/functions/btn_delete_normal);} \
+            QToolButton:hover{ background-image: url(:/functions/btn_delete_hover);}";
+
+    const QString MTHDSetting = " \
+            QToolButton{ border:none; \
+            background-image: url(:/functions/btn_setting_normal);} \
+            QToolButton:hover{ background-image: url(:/functions/btn_setting_hover);}";
+
+}
+
+#endif // DOWNLOADFUNCTIONUIOBJECT_H

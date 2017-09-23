@@ -1,16 +1,12 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2016-06-19T11:05:02
-#
 # =================================================
 # * This file is part of the TTK Downloader project
-# * Copyright (c) 2016 - 2016 Greedysky Studio
+# * Copyright (c) 2016 - 2017 Greedysky Studio
 # * All rights reserved!
 # * Redistribution and use of the source code or any derivative
 # * works are strictly forbiden.
 # =================================================
 
-QT       += core gui network
+QT       += core gui network xml
 
 equals(QT_MAJOR_VERSION, 4){
 QT       += script
@@ -32,29 +28,54 @@ QT_VER_MAJOR = $$member(QT_VER_STRING, 0)
 QT_VER_MINOR = $$member(QT_VER_STRING, 1)
 QT_VER_PATCH = $$member(QT_VER_STRING, 2)
 
+include(TTKVersion.pri)
+
 win32{
-    msvc{
-        !contains(QMAKE_TARGET.arch, x86_64){
-             #support on windows XP
-             QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
-             QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
+    equals(QT_MAJOR_VERSION, 5){
+        greaterThan(QT_VER_MINOR, 1):QT  += winextras
+        msvc{
+            LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            CONFIG +=c++11
+            !contains(QMAKE_TARGET.arch, x86_64){
+                 #support on windows XP
+                 QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
+                 QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
+            }
+        }
+
+        gcc{
+            LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            QMAKE_CXXFLAGS += -std=c++11
+            QMAKE_CXXFLAGS += -Wunused-function
+            QMAKE_CXXFLAGS += -Wswitch
         }
     }
 
-    gcc{
-        QMAKE_CXXFLAGS += -std=c++11
-        QMAKE_CXXFLAGS += -Wunused-function
-        QMAKE_CXXFLAGS += -Wswitch
+    equals(QT_MAJOR_VERSION, 4){
+        QT  += multimedia
+        gcc{
+            LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            QMAKE_CXXFLAGS += -std=c++11
+            QMAKE_CXXFLAGS += -Wunused-function
+            QMAKE_CXXFLAGS += -Wswitch
+        }
     }
 }
 
 unix:!mac{
+    LIBS += -L../lib/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
     QMAKE_CXXFLAGS += -std=c++11
     QMAKE_CXXFLAGS += -Wunused-function
     QMAKE_CXXFLAGS += -Wswitch
 }
 
-TTKDownloader = 1.0.0.0
+DEFINES += DOWNLOAD_LIBRARY
 
-DEFINES += DOWNLOADER_LIBRARY
+#########################################
+HEADERS += $$PWD/downloadglobal.h
+INCLUDEPATH += $$PWD
+#########################################
+include(TTKThirdParty/TTKThirdParty.pri)
+#########################################
+include(TTKModule/TTKModule.pri)
 
