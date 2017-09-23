@@ -95,7 +95,7 @@ void DownloadListItemWidget::updateFileInfoChanged(const QString &name, qint64 s
     m_fileNameLabel->setText(name);
     m_fileSizeLabel->setText(DownloadUtils::Number::size2Label(m_totalSize = size));
     QFileIconProvider provider;
-    m_iconLabel->setPixmap(provider.icon(QFileInfo(name)).pixmap(40,40));
+    m_iconLabel->setPixmap(provider.icon(QFileInfo(name)).pixmap(40, 40));
 }
 
 void DownloadListItemWidget::stateChanged(const QString &state)

@@ -7,7 +7,6 @@
 
 Usage
 ----
-Compiler tutorial I have written in the wiki.
  * Qt develop version be tested on Qt4.8.7 for windows-mingw 32bit
  * Qt develop version be tested on Qt4.8.6 for ubuntu-linux-gcc 64bit
  * Qt develop version be tested on Qt5.x for windows-mingw 32bit
@@ -27,6 +26,7 @@ TTKDownloader is free software licensed under the term of [Licence LGPL v2](http
 
 Features
 -------
+TTKDownloader that imitation xunlei downloader.
 
 Screenshots
 ----
