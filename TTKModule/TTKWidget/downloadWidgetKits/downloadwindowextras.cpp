@@ -1,6 +1,7 @@
 #include "downloadwindowextras.h"
 #include "downloadapplication.h"
 
+#include <QStyle>
 #if defined Q_OS_WIN && defined DOWNLOAD_WINEXTRAS
 #   include <QtWinExtras/QtWinExtras>
 #endif

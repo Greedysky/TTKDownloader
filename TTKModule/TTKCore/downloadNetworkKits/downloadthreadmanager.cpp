@@ -1,5 +1,7 @@
 #include "downloadthreadmanager.h"
+#include "downloadobject.h"
 
+#include <QDebug>
 #include <QFileInfo>
 #include <QEventLoop>
 #include <QNetworkReply>
@@ -73,7 +75,13 @@ bool DownloadThreadManager::downloadFile(const QString &url)
         return false;
     }
 
+#ifdef DOWNLOAD_WINEXTRAS
     QString fileName = QUrl(url).fileName();
+#else
+    const QString ourPath = QUrl(url).path();
+    const int slash = ourPath.lastIndexOf(QLatin1Char('/'));
+    QString fileName = (slash == -1) ? ourPath : ourPath.mid(slash + 1);
+#endif
     emit updateFileInfoChanged(fileName, m_totalSize);
 
     m_readySize = 0;
@@ -81,9 +89,9 @@ bool DownloadThreadManager::downloadFile(const QString &url)
     if(!m_file->open(QFile::WriteOnly))
     {
         m_file->close();
+        qDebug() << "Can not open file : " + m_file->errorString();
         delete m_file;
         m_file = nullptr;
-        qDebug() << "Can not open file : " + m_file->errorString();
         return false;
     }
 
@@ -103,9 +111,9 @@ bool DownloadThreadManager::downloadFile(const QString &url)
         m_threads.append(thread);
     }
 
-    m_runningCount = THREADCOUNT;
     m_state = DownloadThread::D_Download;
     emit stateChanged(tr("D_Download"));
+    m_runningCount = THREADCOUNT;
 
     return true;
 }
@@ -122,9 +130,8 @@ void DownloadThreadManager::downloadingFinish()
     qDeleteAll(m_threads);
     m_threads.clear();
 
-    qDebug() << "DownloadingFinish " << fileName;
-    QFile::remove(fileName.left(fileName.length() - 9));
-    QFile::rename(fileName,fileName.left(fileName.length() - 9));
+    int index = fileName.lastIndexOf('.');
+    QFile::rename(fileName, fileName.left(index));
 
     emit stateChanged(tr("D_Finished"));
     emit downloadingFinished();
@@ -167,12 +174,12 @@ void DownloadThreadManager::restart()
 void DownloadThreadManager::finishedSlot(int index)
 {
     m_runningCount--;
+    qDebug() << "Download index of " << index << " finished";
+
     if(m_runningCount == 0 && m_state == DownloadThread::D_Download)
     {
         downloadingFinish();
     }
-
-    qDebug() << "Download index of " << index << " finished";
 }
 
 void DownloadThreadManager::progressChangedSlot()

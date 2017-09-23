@@ -95,7 +95,12 @@ void DownloadListItemWidget::updateFileInfoChanged(const QString &name, qint64 s
     m_fileNameLabel->setText(name);
     m_fileSizeLabel->setText(DownloadUtils::Number::size2Label(m_totalSize = size));
     QFileIconProvider provider;
-    m_iconLabel->setPixmap(provider.icon(QFileInfo(name)).pixmap(40, 40));
+    QPixmap pix(provider.icon(QFileInfo(name)).pixmap(40, 40));
+    if(pix.isNull())
+    {
+        pix.load(":/image/lb_blankImage");
+    }
+    m_iconLabel->setPixmap(pix);
 }
 
 void DownloadListItemWidget::stateChanged(const QString &state)
