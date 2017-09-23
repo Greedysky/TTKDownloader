@@ -23,7 +23,7 @@ QString DownloadThread::getClassName()
 
 void DownloadThread::startDownload(int index, const QString &url, QFile *file,
                                    qint64 startPoint, qint64 endPoint,
-                                   qint64 readySize )
+                                   qint64 readySize)
 {
     if(m_state == D_Download)
     {

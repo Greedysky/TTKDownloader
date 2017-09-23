@@ -52,4 +52,40 @@ protected:
 
 };
 
+/*! @brief The class of the speed label tool button.
+ * @author Greedysky <greedysky@163.com>
+ */
+class DOWNLOAD_WIDGET_EXPORT DownloadSpeedToolLabelButton : public QToolButton
+{
+    Q_OBJECT
+public:
+    /*!
+     * Object contsructor.
+     */
+    explicit DownloadSpeedToolLabelButton(QWidget *parent = 0);
+
+    /*!
+     * Get class object name.
+     */
+    static QString getClassName();
+
+    /*!
+     * Set label text.
+     */
+    void setLabelText(const QString &up, const QString &down);
+
+protected:
+    /*!
+     * Override the widget event.
+     */
+    virtual void enterEvent(QEvent *event) override;
+    virtual void leaveEvent(QEvent *event) override;
+    virtual void paintEvent(QPaintEvent *event) override;
+
+    QString m_textUp, m_textDown;
+    bool m_enterIn;
+
+};
+
+
 #endif // DOWNLOADTOOLLABELBUTTON_H

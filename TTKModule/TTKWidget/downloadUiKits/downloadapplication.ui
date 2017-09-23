@@ -621,7 +621,19 @@
              </spacer>
             </item>
             <item>
-             <widget class="QToolButton" name="toolButton_16">
+             <widget class="DownloadSpeedToolLabelButton" name="downloadSpeedButton">
+              <property name="minimumSize">
+               <size>
+                <width>170</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>170</width>
+                <height>25</height>
+               </size>
+              </property>
               <property name="text">
                <string/>
               </property>
@@ -719,6 +731,11 @@
    <extends>QWidget</extends>
    <header>downloadfunctionlistwidget.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>DownloadSpeedToolLabelButton</class>
+   <extends>QToolButton</extends>
+   <header>downloadtoollabelbutton.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

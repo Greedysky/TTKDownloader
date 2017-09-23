@@ -3,6 +3,7 @@
 #include "downloadapplication.h"
 #include "downloadsystemtraymenu.h"
 #include "downloadwindowextras.h"
+#include "downloadnumberutils.h"
 
 DownloadBottomAreaWidget *DownloadBottomAreaWidget::m_instance = nullptr;
 
@@ -46,6 +47,9 @@ void DownloadBottomAreaWidget::setupUi(Ui::DownloadApplication* ui)
 
     ui->downloadPlanButton->setLabelText(tr("Plan"));
     ui->downloadPlanButton->setLabelIcon(":/functions/lb_plan");
+
+    ui->downloadSpeedButton->setLabelText(DownloadUtils::Number::speed2Label(200000),
+                                          DownloadUtils::Number::speed2Label(200000));
 }
 
 void DownloadBottomAreaWidget::showMessage(const QString &title, const QString &text)
