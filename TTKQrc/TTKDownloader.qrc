@@ -2,6 +2,7 @@
     <qresource prefix="/image">
         <file alias="lb_player_logo">../TTKResource/lb_player_logo.ico</file>
         <file alias="lb_noneImage">../TTKResource/lb_noneImage.png</file>
+        <file alias="lb_blankImage">../TTKResource/lb_blankImage.png</file>
     </qresource>
     <qresource prefix="/shadow">
         <file alias="lb_bottom">../TTKResource/borderShadow/lb_bottom.png</file>

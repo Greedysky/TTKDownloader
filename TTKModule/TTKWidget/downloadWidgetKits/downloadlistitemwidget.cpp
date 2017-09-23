@@ -23,6 +23,7 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     layout->setContentsMargins(9, 9, 22, 9);
     m_iconLabel = new QLabel(this);
     m_iconLabel->setFixedSize(40, 40);
+    m_iconLabel->setPixmap(QPixmap(":/image/lb_blankImage"));
     layout->addWidget(m_iconLabel);
 
     ///////////////////////////////////////////////////////////////////
