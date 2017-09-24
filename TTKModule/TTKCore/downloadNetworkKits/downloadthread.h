@@ -49,9 +49,21 @@ public:
                        qint64 startPoint, qint64 endPoint,
                        qint64 readySize = 0);
     /*!
+     * Get download url.
+     */
+    inline QString getUrl() const { return m_url; }
+    /*!
      * Get ready size.
      */
     inline qint64 getReadySize() const { return m_readySize; }
+    /*!
+     * Get start point(.
+     */
+    inline qint64 getStartPoint() const { return m_startPoint; }
+    /*!
+     * Get end point.
+     */
+    inline qint64 getEndPoint() const { return m_endPoint; }
 
 Q_SIGNALS:
     /*!

@@ -1,5 +1,6 @@
 #include "downloadthreadmanager.h"
 #include "downloadobject.h"
+#include "downloadbreakpointconfigmanager.h"
 
 #include <QDebug>
 #include <QFileInfo>
@@ -84,8 +85,15 @@ bool DownloadThreadManager::downloadFile(const QString &url)
 #endif
     emit updateFileInfoChanged(fileName, m_totalSize);
 
+    DownloadBreakPointConfigManager manager;
+    DownloadBreakPointItems records;
+    if(manager.readConfig(fileName + SET_FILE))
+    {
+        manager.readBreakPointConfig(records);
+    }
+
     m_readySize = 0;
-    m_file = new QFile(fileName + ".download", this);
+    m_file = new QFile(fileName, this);
     if(!m_file->open(QFile::WriteOnly))
     {
         m_file->close();
@@ -103,11 +111,21 @@ bool DownloadThreadManager::downloadFile(const QString &url)
     {
         qint64 startPoint = m_totalSize * i / THREADCOUNT;
         qint64 endPoint = m_totalSize * (i + 1) / THREADCOUNT;
+        qint64 readySize = 0;
+
+        if(!records.isEmpty())
+        {
+            DownloadBreakPointItem item = records[i];
+            startPoint = !item.isEmpty() ? item.m_start : startPoint;
+            endPoint = !item.isEmpty() ? item.m_end : endPoint;
+            readySize = !item.isEmpty() ? item.m_ready : readySize;
+        }
+
         DownloadThread *thread = new DownloadThread(this);
         connect(thread, SIGNAL(finished(int)), SLOT(finishedSlot(int)));
         connect(thread, SIGNAL(downloadChanged()), SLOT(progressChangedSlot()));
         connect(thread, SIGNAL(errorCode(int,QString)), SLOT(errorSlot(int,QString)));
-        thread->startDownload(i, url, m_file, startPoint, endPoint);
+        thread->startDownload(i, url, m_file, startPoint, endPoint, readySize);
         m_threads.append(thread);
     }
 
@@ -127,11 +145,10 @@ void DownloadThreadManager::downloadingFinish()
     m_file = nullptr;
     m_state = DownloadThread::D_Finished;
 
+    QFile::remove(fileName + SET_FILE);
+
     qDeleteAll(m_threads);
     m_threads.clear();
-
-    int index = fileName.lastIndexOf('.');
-    QFile::rename(fileName, fileName.left(index));
 
     emit stateChanged(tr("D_Finished"));
     emit downloadingFinished();
@@ -148,9 +165,23 @@ void DownloadThreadManager::pause()
     m_state = DownloadThread::D_Pause;
     emit stateChanged(tr("D_Pause"));
 
+    DownloadBreakPointItems records;
     foreach(DownloadThread *thread, m_threads)
     {
         thread->stop();
+
+        DownloadBreakPointItem item;
+        item.m_url = thread->getUrl();
+        item.m_start = thread->getStartPoint();
+        item.m_end = thread->getEndPoint();
+        item.m_ready = thread->getReadySize();
+        records << item;
+    }
+
+    DownloadBreakPointConfigManager manager;
+    if(manager.writeConfig(m_file->fileName() + SET_FILE))
+    {
+        manager.writeBreakPointConfig(records);
     }
 }
 

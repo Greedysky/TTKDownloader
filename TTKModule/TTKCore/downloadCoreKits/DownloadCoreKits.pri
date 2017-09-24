@@ -26,7 +26,8 @@ HEADERS  += \
     $$PWD/downloadsingleton.h \
     $$PWD/downloadsysconfigmanager.h \
     $$PWD/downloadruntimemanager.h \
-    $$PWD/downloadtime.h
+    $$PWD/downloadtime.h \
+    $$PWD/downloadbreakpointconfigmanager.h
 
 }
 
@@ -41,6 +42,7 @@ SOURCES += \
     $$PWD/downloadlicensecore.cpp \
     $$PWD/downloadsysconfigmanager.cpp \
     $$PWD/downloadruntimemanager.cpp \
-    $$PWD/downloadtime.cpp
+    $$PWD/downloadtime.cpp \
+    $$PWD/downloadbreakpointconfigmanager.cpp
 
 }

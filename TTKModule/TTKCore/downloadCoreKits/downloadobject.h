@@ -44,6 +44,7 @@
 #define LST_FILE_PREFIX         "lis"
 #define EXE_FILE_PREFIX         "exe"
 #define XML_FILE_PREFIX         "xml"
+#define SET_FILE_PREFIX         "stk"
 
 #define TTS_FILE                STRCAT(DOT, TTS_FILE_PREFIX)
 #define SKN_FILE                STRCAT(DOT, SKN_FILE_PREFIX)
@@ -57,6 +58,7 @@
 #define LST_FILE                STRCAT(DOT, LST_FILE_PREFIX)
 #define EXE_FILE                STRCAT(DOT, EXE_FILE_PREFIX)
 #define XML_FILE                STRCAT(DOT, XML_FILE_PREFIX)
+#define SET_FILE                STRCAT(DOT, SET_FILE_PREFIX)
 
 #define COFIGPATH               "downloadconfig.xml"
 
