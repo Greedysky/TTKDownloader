@@ -37,6 +37,10 @@ public:
 
 public Q_SLOTS:
     /*!
+     * Background image changed.
+     */
+    void backgroundChanged();
+    /*!
      * Download progress changed.
      */
     void progressChanged(qint64 current, qint64 total);
@@ -60,10 +64,6 @@ protected:
      * Update download left time.
      */
     QString timeStandardization(qint64 time);
-    /*!
-     * Override event.
-     */
-    virtual void paintEvent(QPaintEvent *event) override;
 
     qint64 m_previousSize, m_totalSize;
     QTimer m_timer;

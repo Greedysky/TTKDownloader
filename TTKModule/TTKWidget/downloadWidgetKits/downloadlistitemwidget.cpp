@@ -10,6 +10,9 @@
 #include <QProgressBar>
 #include <QFileIconProvider>
 
+#define LABEL_MAX_TIME  "99:99:99"
+#define LABEL_NONE      "--"
+
 DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -31,7 +34,7 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     fileInfoWidget->setMinimumWidth(280);
     QVBoxLayout *fileInfoWidgetLayout = new QVBoxLayout(fileInfoWidget);
     m_fileNameLabel = new QLabel(tr("Unknow File"), fileInfoWidget);
-    m_fileSizeLabel = new QLabel("--", fileInfoWidget);
+    m_fileSizeLabel = new QLabel(LABEL_NONE, fileInfoWidget);
     fileInfoWidgetLayout->addWidget(m_fileNameLabel);
     fileInfoWidgetLayout->addWidget(m_fileSizeLabel);
     fileInfoWidget->setLayout(fileInfoWidgetLayout);
@@ -50,8 +53,8 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     QWidget *speedInfoWidget = new QWidget(speedWidget);
     QHBoxLayout *speedInfoWidgetLayout = new QHBoxLayout(speedInfoWidget);
     speedInfoWidgetLayout->setContentsMargins(0, 9, 0, 9);
-    m_speedTimeLabel = new QLabel("99:99:99", speedInfoWidget);
-    m_speedLabel = new QLabel("--", speedInfoWidget);
+    m_speedTimeLabel = new QLabel(LABEL_MAX_TIME, speedInfoWidget);
+    m_speedLabel = new QLabel(LABEL_NONE, speedInfoWidget);
     speedInfoWidgetLayout->addWidget(m_speedTimeLabel);
     speedInfoWidgetLayout->addStretch(1);
     speedInfoWidgetLayout->addWidget(m_speedLabel);
@@ -66,10 +69,14 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     layout->addWidget(m_stateLabel);
 
     setLayout(layout);
+
+    backgroundChanged();
+    M_BACKGROUND_PTR->addObserver(this);
 }
 
 DownloadListItemWidget::~DownloadListItemWidget()
 {
+    M_BACKGROUND_PTR->removeObserver(this);
     delete m_iconLabel;
     delete m_fileNameLabel;
     delete m_fileSizeLabel;
@@ -82,6 +89,16 @@ DownloadListItemWidget::~DownloadListItemWidget()
 QString DownloadListItemWidget::getClassName()
 {
     return staticMetaObject.className();
+}
+
+void DownloadListItemWidget::backgroundChanged()
+{
+    if(m_progressBar)
+    {
+        m_progressBar->setStyleSheet(DownloadUIObject::MProgressBar01 +
+                                     QString("QProgressBar::chunk{ background:%1; }").arg(
+                                     M_BACKGROUND_PTR->getMBackgroundColor().name()));
+    }
 }
 
 void DownloadListItemWidget::progressChanged(qint64 current, qint64 total)
@@ -107,11 +124,13 @@ void DownloadListItemWidget::stateChanged(const QString &state)
 {
     if(state == tr("D_Download"))
     {
-        m_timer.start(500);
+        m_timer.start(1000);
     }
     else
     {
         m_timer.stop();
+        m_speedTimeLabel->setText(LABEL_MAX_TIME);
+        m_speedLabel->setText(LABEL_NONE);
     }
 
     m_stateLabel->setText(state);
@@ -123,7 +142,7 @@ void DownloadListItemWidget::updateDownloadSpeed()
     m_previousSize = m_progressBar->value();
     m_speedLabel->setText(DownloadUtils::Number::speed2Label(delta));
 
-    m_speedTimeLabel->setText( delta == 0 ? "99:99:99" :
+    m_speedTimeLabel->setText( delta == 0 ? LABEL_MAX_TIME :
                              timeStandardization((m_totalSize - m_previousSize)/delta + 1));
 }
 
@@ -133,15 +152,4 @@ QString DownloadListItemWidget::timeStandardization(qint64 time)
     return QString("%1:%2:%3").arg(QString::number(t.getHour()).rightJustified(2, '0'))
                               .arg(QString::number(t.getMinute()).rightJustified(2, '0'))
                               .arg(QString::number(t.getSecond()).rightJustified(2, '0'));
-}
-
-void DownloadListItemWidget::paintEvent(QPaintEvent *event)
-{
-    QWidget::paintEvent(event);
-    if(m_progressBar)
-    {
-        m_progressBar->setStyleSheet(DownloadUIObject::MProgressBar01 +
-                                     QString("QProgressBar::chunk{ background:%1; }").arg(
-                                     M_BACKGROUND_PTR->getMBackgroundColor().name()));
-    }
 }

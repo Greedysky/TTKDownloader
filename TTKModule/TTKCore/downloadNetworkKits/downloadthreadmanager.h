@@ -11,7 +11,7 @@
 
 #include "downloadthread.h"
 
-#define THREADCOUNT 3
+#define THREADCOUNT 1
 
 /*! @brief The class of download thread manager.
  * @author Greedysky <greedysky@163.com>
