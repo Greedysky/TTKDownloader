@@ -73,7 +73,6 @@ public:
     QStringList getKeys() const;
 
 protected:
-    ~DownloadHotKeyManager();
 
     QList<QxtGlobalShortcut*> m_hotkeys;
 

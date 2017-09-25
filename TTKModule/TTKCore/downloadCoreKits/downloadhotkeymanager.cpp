@@ -10,17 +10,12 @@ QString DownloadHotKeyManager::getClassName()
 
 void DownloadHotKeyManager::connectParentObject(QObject *object, const QString &sn, const char *slot)
 {
-    QxtGlobalShortcut *qxt = new QxtGlobalShortcut(this);
+    QxtGlobalShortcut *qxt = new QxtGlobalShortcut(object);
     connect(qxt, SIGNAL(activated()), object, slot);
 
     m_hotkeys << qxt;
     setHotKey(m_hotkeys.count() - 1, sn);
     setEnabled(m_hotkeys.count() - 1, true);
-}
-
-DownloadHotKeyManager::~DownloadHotKeyManager()
-{
-    qDeleteAll(m_hotkeys);
 }
 
 void DownloadHotKeyManager::setHotKey(int index, const QString &key)

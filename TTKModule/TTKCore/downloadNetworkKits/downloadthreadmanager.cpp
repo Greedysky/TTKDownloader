@@ -54,7 +54,7 @@ qint64 DownloadThreadManager::getFileSize(const QString &url, int tryTimes)
     }
     return size;
 }
-
+#include <QDebug>
 bool DownloadThreadManager::downloadFile(const QString &url)
 {
     emit stateChanged(tr("D_Waiting"));
@@ -85,6 +85,26 @@ bool DownloadThreadManager::downloadFile(const QString &url)
     const int slash = ourPath.lastIndexOf(QLatin1Char('/'));
     QString fileName = (slash == -1) ? ourPath : ourPath.mid(slash + 1);
 #endif
+    ////////////////////////////////////////////////
+    QDir dir(DownloadUtils::Core::downloadPrefix());
+    QString idFileName = fileName;
+    for(int i=1; i<99; ++i)
+    {
+        if(!dir.entryList().contains(idFileName))
+        {
+            break;
+        }
+        const int slash = fileName.lastIndexOf(QLatin1Char('.'));
+        idFileName = (slash == -1) ? fileName : fileName.left(slash);
+        QString sufix = (slash == -1) ? fileName : fileName.mid(slash);
+        if(idFileName == sufix)
+        {
+            sufix.clear();
+        }
+        idFileName = QString("%1(%2)%3").arg(idFileName).arg(i).arg(sufix);
+    }
+    fileName = idFileName;
+    ////////////////////////////////////////////////
     emit updateFileInfoChanged(fileName, m_totalSize);
 
     fileName = DownloadUtils::Core::downloadPrefix() + fileName;
@@ -95,7 +115,7 @@ bool DownloadThreadManager::downloadFile(const QString &url)
     {
         manager.readBreakPointConfig(records);
     }
-qDebug() << fileName;
+
     m_readySize = 0;
     m_file = new QFile(fileName, this);
     if(!m_file->open(QFile::WriteOnly))

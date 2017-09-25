@@ -124,7 +124,7 @@ void DownloadListItemWidget::stateChanged(const QString &state)
 {
     if(state == tr("D_Download"))
     {
-        m_timer.start(1000);
+        m_timer.start(MT_S2MS/2);
     }
     else
     {
