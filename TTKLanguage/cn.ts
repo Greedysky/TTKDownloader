@@ -15,6 +15,46 @@
         <source>TTKDownloader will run in the background</source>
         <translation>天天下载将在后台运行</translation>
     </message>
+    <message>
+        <source>NewDownload(N)</source>
+        <translation>新建下载(N)</translation>
+    </message>
+    <message>
+        <source>File(F)</source>
+        <translation>文件(F)</translation>
+    </message>
+    <message>
+        <source>Edit(E)</source>
+        <translation>编辑(E)</translation>
+    </message>
+    <message>
+        <source>Plan</source>
+        <translation>计划任务管理</translation>
+    </message>
+    <message>
+        <source>ResetWindow</source>
+        <translation>恢复窗口默认状态</translation>
+    </message>
+    <message>
+        <source>Setting(O)</source>
+        <translation>系统设置(O)</translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <source>Update</source>
+        <translation>软件更新</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>版本</translation>
+    </message>
+    <message>
+        <source>appClose(X)</source>
+        <translation>退出(X)</translation>
+    </message>
 </context>
 <context>
     <name>DownloadBackgroundListWidget</name>
@@ -151,6 +191,27 @@
     </message>
 </context>
 <context>
+    <name>DownloadMessageAboutDialog</name>
+    <message>
+        <source>关于天天下载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mail:Greedysky@163.com greedyskyplus@google.com
+Copyright© 2016-2017 Greedysky All Rights Reserved
+本软件仅供学习交流，不可用于商业用途，否则后果自负。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+</context>
+<context>
     <name>DownloadMessageBox</name>
     <message>
         <source>提示框</source>
@@ -224,6 +285,45 @@
     </message>
 </context>
 <context>
+    <name>DownloadSettingWidget</name>
+    <message>
+        <source>选项设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>基本设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>确认</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>取消</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>关闭</translation>
+    </message>
+    <message>
+        <source>Normal</source>
+        <translation>常规设置</translation>
+    </message>
+    <message>
+        <source>Dwonload</source>
+        <translation>下载设置</translation>
+    </message>
+    <message>
+        <source>Outlook</source>
+        <translation>外观设置</translation>
+    </message>
+</context>
+<context>
     <name>DownloadSkinAnimationWidget</name>
     <message>
         <source>Re</source>
@@ -241,14 +341,6 @@
 <context>
     <name>DownloadSystemTrayMenu</name>
     <message>
-        <source>appClose</source>
-        <translation>退出</translation>
-    </message>
-    <message>
-        <source>NewDownload</source>
-        <translation>新建任务</translation>
-    </message>
-    <message>
         <source>Start</source>
         <translation>开始全部任务</translation>
     </message>
@@ -259,6 +351,14 @@
     <message>
         <source>FloatSetting</source>
         <translation>悬浮窗显示设置</translation>
+    </message>
+    <message>
+        <source>NewDownload(N)</source>
+        <translation>新建任务(N)</translation>
+    </message>
+    <message>
+        <source>appClose(X)</source>
+        <translation>退出(X)</translation>
     </message>
 </context>
 <context>
