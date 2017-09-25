@@ -1,6 +1,7 @@
 #include "downloadthreadmanager.h"
 #include "downloadobject.h"
 #include "downloadbreakpointconfigmanager.h"
+#include "downloadcoreutils.h"
 
 #include <QDebug>
 #include <QFileInfo>
@@ -86,13 +87,15 @@ bool DownloadThreadManager::downloadFile(const QString &url)
 #endif
     emit updateFileInfoChanged(fileName, m_totalSize);
 
+    fileName = DownloadUtils::Core::downloadPrefix() + fileName;
+
     DownloadBreakPointConfigManager manager;
     DownloadBreakPointItems records;
     if(manager.readConfig(fileName + SET_FILE))
     {
         manager.readBreakPointConfig(records);
     }
-
+qDebug() << fileName;
     m_readySize = 0;
     m_file = new QFile(fileName, this);
     if(!m_file->open(QFile::WriteOnly))

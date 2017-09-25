@@ -8,23 +8,19 @@ QString DownloadHotKeyManager::getClassName()
     return staticMetaObject.className();
 }
 
-void DownloadHotKeyManager::setDefaultKey()
+void DownloadHotKeyManager::connectParentObject(QObject *object, const QString &sn, const char *slot)
 {
-    QStringList keys(getDefaultKeys());
-    for(int i=0; i<m_hotkeys.count(); ++i)
-    {
-        setHotKey(i, keys[i]);
-        setEnabled(i, false);
-    }
+    QxtGlobalShortcut *qxt = new QxtGlobalShortcut(this);
+    connect(qxt, SIGNAL(activated()), object, slot);
+
+    m_hotkeys << qxt;
+    setHotKey(m_hotkeys.count() - 1, sn);
+    setEnabled(m_hotkeys.count() - 1, true);
 }
 
-void DownloadHotKeyManager::setHotKeys(const QStringList &keys)
+DownloadHotKeyManager::~DownloadHotKeyManager()
 {
-    for(int i=0; i<m_hotkeys.count(); ++i)
-    {
-        setHotKey(i, keys[i]);
-        setEnabled(i, false);
-    }
+    qDeleteAll(m_hotkeys);
 }
 
 void DownloadHotKeyManager::setHotKey(int index, const QString &key)
@@ -106,14 +102,6 @@ QString DownloadHotKeyManager::toString(int key, int modifiers)
 int DownloadHotKeyManager::count() const
 {
     return m_hotkeys.count();
-}
-
-QStringList DownloadHotKeyManager::getDefaultKeys() const
-{
-    QStringList keys;
-    keys << "Ctrl+B" << "Ctrl+Left" << "Ctrl+Right" << "Ctrl+Up"
-         << "Ctrl+Down" << "Ctrl+S" << "Ctrl+I" << "Ctrl+M";
-    return keys;
 }
 
 QStringList DownloadHotKeyManager::getKeys() const

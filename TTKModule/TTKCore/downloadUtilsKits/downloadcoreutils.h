@@ -21,6 +21,11 @@ namespace DownloadUtils
     namespace Core
     {
         /*!
+         * Get download dir path.
+         */
+        DOWNLOAD_UTILS_EXPORT QString downloadPrefix();
+
+        /*!
          * Get given dir size.
          */
         DOWNLOAD_UTILS_EXPORT quint64 dirSize(const QString &dirName);

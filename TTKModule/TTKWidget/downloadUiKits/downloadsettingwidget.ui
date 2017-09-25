@@ -70,7 +70,65 @@
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="first"/>
+   <widget class="QWidget" name="first">
+    <widget class="QLineEdit" name="downloadDirEdit">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>48</y>
+       <width>270</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="baseSetDownloadWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>20</y>
+       <width>60</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:transparent;
+font-size:13px;
+font-weight:bold;</string>
+     </property>
+     <property name="text">
+      <string>基本设置</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="downloadDirButton">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>47</y>
+       <width>60</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>更改目录</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="downloadDirLabel">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>51</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>下载目录</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
   <widget class="QWidget" name="functionArea" native="true">
    <property name="geometry">

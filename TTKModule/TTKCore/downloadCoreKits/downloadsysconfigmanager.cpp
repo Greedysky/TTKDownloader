@@ -29,11 +29,8 @@ void DownloadSysConfigManager::writeXMLConfig()
     int bgTransparentChoiced = M_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
 
     ///////////////////////////////////////////////////////////////////////////
-    int hotkeyEnableChoiced = M_SETTING_PTR->value(DownloadSettingManager::HotkeyEnableChoiced).toInt();
-    QString hotkeyStringChoiced = M_SETTING_PTR->value(DownloadSettingManager::HotkeyStringChoiced).toString();
-
-    ///////////////////////////////////////////////////////////////////////////
     int downloadLimit = M_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt();
+    QString downloadPathDir = M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
     QString downloadDLoadLimit = M_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toString();
     QString downloadULoadLimit = M_SETTING_PTR->value(DownloadSettingManager::DownloadULoadLimitChoiced).toString();
     ///////////////////////////////////////////////////////////////////////////
@@ -49,7 +46,6 @@ void DownloadSysConfigManager::writeXMLConfig()
     //Class A
     QDomElement plusSettingDom = writeDom(playerDom, "plusSetting");
     QDomElement backgroundSettingDom = writeDom(playerDom, "backgroundSetting");
-    QDomElement hotkeySettingDom = writeDom(playerDom, "hotkeySetting");
     QDomElement downloadSettingDom = writeDom(playerDom, "downloadSetting");
     //Class B
 
@@ -65,12 +61,9 @@ void DownloadSysConfigManager::writeXMLConfig()
     writeDomElement(backgroundSettingDom, "bgTheme", DownloadXmlAttribute("value", bgThemeChoiced));
     writeDomElement(backgroundSettingDom, "bgTransparent", DownloadXmlAttribute("value", bgTransparentChoiced));
 
-    ///////////////////////////////////////////////////////////////////////////
-    writeDomElement(hotkeySettingDom, "hotkeyEnable", DownloadXmlAttribute("value", hotkeyEnableChoiced));
-    writeDomElement(hotkeySettingDom, "hotkeyString", DownloadXmlAttribute("value", hotkeyStringChoiced));
-
     ///////////////////////////////////////////////
     writeDomElement(downloadSettingDom, "downloadLimit", DownloadXmlAttribute("value", downloadLimit));
+    writeDomElement(downloadSettingDom, "downloadPathDir", DownloadXmlAttribute("value", downloadPathDir));
     writeDomElement(downloadSettingDom, "downloadDLoadLimit", DownloadXmlAttribute("value", downloadDLoadLimit));
     writeDomElement(downloadSettingDom, "downloadULoadLimit", DownloadXmlAttribute("value", downloadULoadLimit));
 
@@ -119,14 +112,11 @@ void DownloadSysConfigManager::readSysLoadConfig() const
                      readXmlAttributeByTagNameValue("bgTransparent").toInt());
 
 
-    M_SETTING_PTR->setValue(DownloadSettingManager::HotkeyEnableChoiced,
-                     readXmlAttributeByTagNameValue("hotkeyEnable"));
-    M_SETTING_PTR->setValue(DownloadSettingManager::HotkeyStringChoiced,
-                     readXmlAttributeByTagNameValue("hotkeyString"));
-
-
     M_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced,
                      readXmlAttributeByTagNameValue("downloadLimit").toInt());
+    QString path = readXmlAttributeByTagNameValue("downloadPathDir");
+    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced,
+                     (path.isEmpty() || !QFile::exists(path)) ? DownloadUtils::Core::downloadPrefix() : path);
     M_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimitChoiced,
                      readXmlAttributeByTagNameValue("downloadDLoadLimit"));
     M_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimitChoiced,

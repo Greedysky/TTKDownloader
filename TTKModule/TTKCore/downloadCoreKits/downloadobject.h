@@ -27,6 +27,7 @@
 #define THEME_DIR               "MTheme/"
 #define CACHE_DIR               "MCached/"
 #define UPDATE_DIR              "MUpdate/"
+#define TDDOWNLOAD_DIR          "TDDOWNLOAD/"
 #define AVATAR_DIR              "avatar/"
 #define USER_THEME_DIR          "theme/"
 #define LANGUAGE_DIR            "MLanguage/"
@@ -69,6 +70,7 @@
 #define TEMPORARY_DIR_FULL      DOWNLOADS_DIR_FULL + TEMPORARY_DIR
 #define CACHE_DIR_FULL          DOWNLOADS_DIR_FULL + CACHE_DIR
 #define UPDATE_DIR_FULL         DOWNLOADS_DIR_FULL + UPDATE_DIR
+#define TDDOWNLOAD_DIR_FULL     DOWNLOADS_DIR_FULL + TDDOWNLOAD_DIR
 
 #define COFIGPATH_FULL          APPDATA_DIR_FULL + COFIGPATH
 #define AVATAR_DIR_FULL         APPDATA_DIR_FULL + AVATAR_DIR

@@ -3,6 +3,7 @@
 #include "downloadfunctionuiobject.h"
 #include "downloadnewfiledialog.h"
 #include "downloadlistwidgets.h"
+#include "downloadhotkeymanager.h"
 
 DownloadRightAreaWidget *DownloadRightAreaWidget::m_instance = nullptr;
 
@@ -13,6 +14,9 @@ DownloadRightAreaWidget::DownloadRightAreaWidget(QWidget *parent)
 
     m_listWidget = new DownloadListWidgets(this);
     connect(m_listWidget, SIGNAL(downloadStateChanged(bool)), SLOT(downloadStateChanged(bool)));
+
+    M_HOTKEY_PTR->connectParentObject(this, "Ctrl+N", SLOT(showNewFileDialog()));
+
 }
 
 DownloadRightAreaWidget::~DownloadRightAreaWidget()

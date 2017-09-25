@@ -28,9 +28,10 @@ public:
     static QString getClassName();
 
     /*!
-     * Set hotKey by given string list keys.
+     * To connect parent slot object.
      */
-    void setHotKeys(const QStringList &keys);
+    void connectParentObject(QObject *object, const QString &sn, const char *slot);
+
     /*!
      * Set hotKey by given index and string key.
      */
@@ -67,19 +68,12 @@ public:
     int count() const;
 
     /*!
-     * Get default key string.
-     */
-    QStringList getDefaultKeys() const;
-    /*!
      * Get key string.
      */
     QStringList getKeys() const;
 
 protected:
-    /*!
-     * Set default key.
-     */
-    void setDefaultKey();
+    ~DownloadHotKeyManager();
 
     QList<QxtGlobalShortcut*> m_hotkeys;
 

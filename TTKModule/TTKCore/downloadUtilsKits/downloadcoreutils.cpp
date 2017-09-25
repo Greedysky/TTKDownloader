@@ -1,5 +1,6 @@
 #include "downloadcoreutils.h"
 #include "downloadversion.h"
+#include "downloadsettingmanager.h"
 
 #include <QUrl>
 #include <QTextCodec>
@@ -9,6 +10,23 @@
 #include <Windows.h>
 #include <shellapi.h>
 #endif
+
+QString DownloadUtils::Core::downloadPrefix()
+{
+    QString path = M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
+    if(path.isEmpty())
+    {
+        path = TDDOWNLOAD_DIR_FULL;
+    }
+    else
+    {
+        if(!QDir(path).exists())
+        {
+            QDir().mkpath(path);
+        }
+    }
+    return path;
+}
 
 quint64 DownloadUtils::Core::dirSize(const QString &dirName)
 {

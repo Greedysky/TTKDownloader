@@ -1,6 +1,7 @@
 #include "downloadleftareawidget.h"
 #include "ui_downloadapplication.h"
 #include "downloadsettingwidget.h"
+#include "downloadhotkeymanager.h"
 
 DownloadLeftAreaWidget *DownloadLeftAreaWidget::m_instance = nullptr;
 
@@ -8,6 +9,9 @@ DownloadLeftAreaWidget::DownloadLeftAreaWidget(QWidget *parent)
     : QWidget(parent)
 {
     m_instance = this;
+
+    M_HOTKEY_PTR->connectParentObject(this, "Ctrl+O", SLOT(showSettingWidget()));
+
 }
 
 DownloadLeftAreaWidget::~DownloadLeftAreaWidget()
@@ -32,5 +36,7 @@ void DownloadLeftAreaWidget::setupUi(Ui::DownloadApplication* ui)
 
 void DownloadLeftAreaWidget::showSettingWidget()
 {
-    DownloadSettingWidget().exec();
+    DownloadSettingWidget setting;
+    setting.initControllerParameter();
+    setting.exec();
 }

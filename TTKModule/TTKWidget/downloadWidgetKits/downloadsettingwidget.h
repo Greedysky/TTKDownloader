@@ -113,6 +113,11 @@ public Q_SLOTS:
      */
     void clearFunctionTableSelection();
     /*!
+     * Set select download dir.
+     */
+    void downloadDirSelected();
+
+    /*!
      * Save the change results.
      */
     void commitTheResults();

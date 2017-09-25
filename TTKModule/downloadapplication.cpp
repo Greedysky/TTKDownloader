@@ -43,6 +43,8 @@ DownloadApplication::DownloadApplication(QWidget *parent)
 
     m_quitWindowClose = false;
 
+    M_HOTKEY_PTR->connectParentObject(this, "Ctrl+X", SLOT(quitWindowClose()));
+
     /////////// Mouse tracking
     foreach(QObject *obj, foreachWidget(this))
     {
@@ -87,7 +89,7 @@ void DownloadApplication::appCreateRightMenu()
     QMenu rightClickMenu(this);
     rightClickMenu.setStyleSheet(DownloadUIObject::MMenuStyle02);
 
-    rightClickMenu.addAction(tr("NewDownload(N)"));
+    rightClickMenu.addAction(tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
     rightClickMenu.addSeparator();
     rightClickMenu.addAction(tr("File(F)"));
     rightClickMenu.addAction(tr("Edit(E)"));
@@ -161,19 +163,6 @@ void DownloadApplication::readXMLConfigFromText()
         return;
     }
     xml.readSysLoadConfig();
-
-    //////////////////////////////////////////////////////////////
-    //hotkey
-    if(M_SETTING_PTR->value(DownloadSettingManager::HotkeyEnableChoiced).toBool())
-    {
-        QStringList hotkeys = M_SETTING_PTR->value(DownloadSettingManager::HotkeyStringChoiced).toString().split(STRING_SPLITER);
-        if(hotkeys.count() != M_HOTKEY_PTR->count())
-        {
-            hotkeys = M_HOTKEY_PTR->getDefaultKeys();
-        }
-        M_HOTKEY_PTR->setHotKeys(hotkeys);
-        M_HOTKEY_PTR->enabledAll(true);
-    }
 
 #ifdef Q_OS_UNIX
     //Disable  window quit mode on unix

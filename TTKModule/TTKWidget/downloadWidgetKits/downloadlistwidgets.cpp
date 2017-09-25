@@ -34,7 +34,7 @@ void DownloadListWidgets::resizeWindow()
 {
     int w = M_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
     QHeaderView *headerview = horizontalHeader();
-    headerview->resizeSection(0, 645 + w - WINDOW_WIDTH_MIN);
+    headerview->resizeSection(0, 795 + w - WINDOW_WIDTH_MIN);
 }
 
 void DownloadListWidgets::pause()

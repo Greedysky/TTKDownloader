@@ -11,12 +11,9 @@
         <bgTheme value="theme-29"/>
         <bgTransparent value="100"/>
     </backgroundSetting>
-    <hotkeySetting>
-        <hotkeyEnable value="0"/>
-        <hotkeyString value=""/>
-    </hotkeySetting>
     <downloadSetting>
         <downloadLimit value="0"/>
+        <downloadPathDir value=""/>
         <downloadDLoadLimit value=""/>
         <downloadULoadLimit value=""/>
     </downloadSetting>

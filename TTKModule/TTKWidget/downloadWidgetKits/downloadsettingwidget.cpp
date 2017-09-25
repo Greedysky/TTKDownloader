@@ -1,5 +1,8 @@
 #include "downloadsettingwidget.h"
 #include "ui_downloadsettingwidget.h"
+#include "downloadsettingmanager.h"
+
+#include <QFileDialog>
 
 DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
     : DownloadAbstractTableWidget(parent)
@@ -105,7 +108,7 @@ QString DownloadSettingWidget::getClassName()
 
 void DownloadSettingWidget::initControllerParameter()
 {
-
+    m_ui->downloadDirEdit->setText(M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString());
 }
 
 void DownloadSettingWidget::clearFunctionTableSelection()
@@ -113,9 +116,24 @@ void DownloadSettingWidget::clearFunctionTableSelection()
     m_ui->normalFunTableWidget->clearSelection();
 }
 
+void DownloadSettingWidget::downloadDirSelected()
+{
+    QFileDialog dialog;
+    dialog.setFileMode(QFileDialog::Directory);
+    dialog.setViewMode(QFileDialog::Detail);
+    if(dialog.exec())
+    {
+        QString path = dialog.directory().absolutePath();
+        if(!path.isEmpty())
+        {
+            m_ui->downloadDirEdit->setText(path + "/");
+        }
+    }
+}
+
 void DownloadSettingWidget::commitTheResults()
 {
-
+    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, m_ui->downloadDirEdit->text());
 
     emit parameterSettingChanged();
     close();
@@ -140,5 +158,14 @@ void DownloadSettingWidget::selectFunctionTableIndex(int row, int col)
 
 void DownloadSettingWidget::initNormalSettingWidget()
 {
+    m_ui->downloadDirEdit->setStyleSheet(DownloadUIObject::MLineEditStyle01);
+    m_ui->downloadDirButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
+    m_ui->downloadDirButton->setCursor(QCursor(Qt::PointingHandCursor));
+#ifdef Q_OS_UNIX
+    m_ui->downloadDirButton->setFocusPolicy(Qt::NoFocus);
+#endif
 
+    m_ui->downloadDirEdit->setText(TDDOWNLOAD_DIR_FULL);
+
+    connect(m_ui->downloadDirButton, SIGNAL(clicked()), SLOT(downloadDirSelected()));
 }

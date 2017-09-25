@@ -39,11 +39,9 @@ public:
         BgTransparentChoiced,           /*!< Bg Transparent Parameter*/
 
         DownloadLimitChoiced,           /*!< Download Limit Parameter*/
+        DownloadPathDirChoiced,         /*!< Download Path Dir Parameter*/
         DownloadDLoadLimitChoiced,      /*!< Download DLoad Limit Parameter*/
         DownloadULoadLimitChoiced,      /*!< Download ULoad Limit Parameter*/
-
-        HotkeyEnableChoiced,            /*!< Hotkey Enable Parameter*/
-        HotkeyStringChoiced             /*!< Hotkey String Parameter*/
 
     };
 
