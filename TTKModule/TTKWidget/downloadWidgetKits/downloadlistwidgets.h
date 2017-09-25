@@ -86,18 +86,16 @@ protected:
      */
     void start(int row);
     /*!
-     * Find item index of container.
-     */
-    int getIndexFromUrl(const QString &path);
-    /*!
      * Get top url to download.
      */
     void getTopUrlToDownload();
+    /*!
+     * Find url if it exists.
+     */
+    bool findUrl(const QString &path) const;
 
     int m_maxDownloadCount;
     QList<DownloadUnits*> m_itemList;
-    QStringList m_urls;
-    QStringList m_downloadQueue;
 
 };
 

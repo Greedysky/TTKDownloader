@@ -7,7 +7,7 @@
 DownloadThread::DownloadThread(QObject *parent)
     : QObject(parent)
 {
-    m_state = D_Waiting;
+    m_state = D_Stop;
     m_manager = new QNetworkAccessManager(this);
 }
 
@@ -52,7 +52,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     emit downloadChanged();
 }
 
-void DownloadThread::stop()
+void DownloadThread::pause()
 {
     if(m_state != D_Download)
     {
@@ -60,7 +60,7 @@ void DownloadThread::stop()
         return;
     }
 
-    m_state = D_Stop;
+    m_state = D_Pause;
     m_reply->abort();
     m_file->flush();
     m_reply->deleteLater();
@@ -68,7 +68,7 @@ void DownloadThread::stop()
 
 void DownloadThread::restart()
 {
-    if(m_state != D_Stop)
+    if(m_state != D_Pause)
     {
         emit errorCode(m_index, "is not stoped");
         return;

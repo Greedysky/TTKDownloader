@@ -81,9 +81,9 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     /*!
-     * Stop to download.
+     * Pause to download.
      */
-    void stop();
+    void pause();
     /*!
      * Restart to download.
      */

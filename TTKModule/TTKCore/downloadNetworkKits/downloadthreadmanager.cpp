@@ -13,7 +13,7 @@ DownloadThreadManager::DownloadThreadManager(QObject *parent)
     : QObject(parent)
 {
     m_file = nullptr;
-    m_state = DownloadThread::D_Waiting;
+    m_state = DownloadThread::D_Stop;
 }
 
 DownloadThreadManager::~DownloadThreadManager()
@@ -64,6 +64,7 @@ bool DownloadThreadManager::downloadFile(const QString &url)
         return false;
     }
 
+    m_state = DownloadThread::D_Waiting;
     if(THREADCOUNT < 1 || THREADCOUNT > 15)
     {
         qDebug() << "Download thread count error";
@@ -156,7 +157,7 @@ void DownloadThreadManager::downloadingFinish()
 
 void DownloadThreadManager::pause()
 {
-    if(m_state != DownloadThread::D_Download)
+    if(m_state != DownloadThread::D_Download && m_state != DownloadThread::D_Waiting)
     {
         qDebug() << "Current is not downloading";
         return;
@@ -168,7 +169,7 @@ void DownloadThreadManager::pause()
     DownloadBreakPointItems records;
     foreach(DownloadThread *thread, m_threads)
     {
-        thread->stop();
+        thread->pause();
 
         DownloadBreakPointItem item;
         item.m_url = thread->getUrl();
@@ -178,10 +179,13 @@ void DownloadThreadManager::pause()
         records << item;
     }
 
-    DownloadBreakPointConfigManager manager;
-    if(manager.writeConfig(m_file->fileName() + SET_FILE))
+    if(m_file)
     {
-        manager.writeBreakPointConfig(records);
+        DownloadBreakPointConfigManager manager;
+        if(manager.writeConfig(m_file->fileName() + SET_FILE))
+        {
+            manager.writeBreakPointConfig(records);
+        }
     }
 }
 
@@ -231,6 +235,6 @@ void DownloadThreadManager::errorSlot(int index, const QString &errorString)
         return;
     }
 
-    m_threads[index]->stop();
+    m_threads[index]->pause();
     qDebug() << "Download index of " << index << " error: " << errorString;
 }

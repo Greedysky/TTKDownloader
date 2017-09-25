@@ -64,6 +64,14 @@ void DownloadFunctionItemWidget::paintEvent(QPaintEvent *event)
     if(m_selectedOn)
     {
         painter.fillRect(rect(), QColor(0, 0, 0, 100));
+
+        QPolygon py;
+        py.append(QPoint(width(), height()/2 - 7));
+        py.append(QPoint(width() - 7, height()/2));
+        py.append(QPoint(width(), height()/2 + 7));
+        painter.setPen(Qt::white);
+        painter.setBrush(Qt::white);
+        painter.drawPolygon(py);
     }
     else
     {
