@@ -1,6 +1,8 @@
 <RCC>
     <qresource prefix="/data">
         <file alias="downloadconfig.xml">../TTKResource/A_extras/downloadconfig.xml</file>
+        <file alias="download.lis">../TTKResource/A_extras/download.lis</file>
+        <file alias="downloadhistory.ttk">../TTKResource/A_extras/downloadhistory.ttk</file>
         <file alias="TTKLDD.sh">../TTKResource/A_extras/TTKLDD.sh</file>
         <file alias="TTKService.sh">../TTKResource/A_extras/TTKService.sh</file>
     </qresource>

@@ -44,7 +44,7 @@ Q_SIGNALS:
     /*!
      * Download finished.
      */
-    void downloadingFinished();
+    void downloadingFinished(const QString &path);
     /*!
      * Download state changed.
      */

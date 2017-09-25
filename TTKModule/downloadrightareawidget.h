@@ -13,6 +13,7 @@
 #include "downloadglobaldefine.h"
 
 class DownloadListWidgets;
+class DownloadHistoryRecordWidget;
 
 namespace Ui {
     class DownloadApplication;
@@ -70,7 +71,9 @@ public Q_SLOTS:
 
 protected:
     Ui::DownloadApplication *m_ui;
+
     DownloadListWidgets *m_listWidget;
+    DownloadHistoryRecordWidget *m_historyWidget;
 
     static DownloadRightAreaWidget *m_instance;
 };

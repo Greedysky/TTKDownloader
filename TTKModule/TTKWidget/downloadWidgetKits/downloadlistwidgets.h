@@ -28,6 +28,10 @@ public:
     virtual ~DownloadListWidgets();
 
     /*!
+     * Init widget.
+     */
+    void init();
+    /*!
      * Get class object name.
      */
     static QString getClassName();
@@ -41,6 +45,10 @@ Q_SIGNALS:
      * Download state changed.
      */
     void downloadStateChanged(bool);
+    /*!
+     * Download finished.
+     */
+    void downloadingFinished(const QString &path);
 
 public Q_SLOTS:
     /*!

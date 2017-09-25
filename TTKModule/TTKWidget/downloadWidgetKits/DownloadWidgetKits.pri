@@ -22,7 +22,8 @@ HEADERS  += \
     $$PWD/downloadlistwidgets.h \
     $$PWD/downloadfunctionlistwidget.h \
     $$PWD/downloadmessageaboutdialog.h \
-    $$PWD/downloadsettingwidget.h
+    $$PWD/downloadsettingwidget.h \
+    $$PWD/downloadhistoryrecordwidget.h
 
 }
 
@@ -40,6 +41,7 @@ SOURCES += \
     $$PWD/downloadlistwidgets.cpp \
     $$PWD/downloadfunctionlistwidget.cpp \
     $$PWD/downloadmessageaboutdialog.cpp \
-    $$PWD/downloadsettingwidget.cpp
+    $$PWD/downloadsettingwidget.cpp \
+    $$PWD/downloadhistoryrecordwidget.cpp
 
 }

@@ -19,6 +19,8 @@ void DownloadInitObject::init()
     checkTheFileNeededExist();
 
     copyFileOverwrite(":/data/downloadconfig.xml", S_COFIGPATH_FULL);
+    copyFileOverwrite(":/data/download.lis", S_LISTPATH_FULL);
+    copyFileOverwrite(":/data/downloadhistory.ttk", S_HISTORYPATH_FULL);
 }
 
 void DownloadInitObject::dirIsExist(const QString &name)
@@ -48,6 +50,8 @@ void DownloadInitObject::checkTheDirectoryExist()
 void DownloadInitObject::checkTheFileNeededExist()
 {
     copyFile(":/data/downloadconfig.xml", S_COFIGPATH_FULL);
+    copyFile(":/data/download.lis", S_LISTPATH_FULL);
+    copyFile(":/data/downloadhistory.ttk", S_HISTORYPATH_FULL);
 
 #ifdef Q_OS_UNIX
     if(!QFile::exists(S_TTKDD_FULL))

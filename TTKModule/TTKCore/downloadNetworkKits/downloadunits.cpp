@@ -15,7 +15,8 @@ DownloadUnits::DownloadUnits(const QString &url, QObject *parent)
             m_downloadItem, SLOT(updateFileInfoChanged(QString,qint64)));
     connect(m_downloadThread, SIGNAL(stateChanged(QString)),
             m_downloadItem, SLOT(stateChanged(QString)));
-    connect(m_downloadThread, SIGNAL(downloadingFinished()), SLOT(downloadingFinished()));
+    connect(m_downloadThread, SIGNAL(downloadingFinished(QString)),
+                            SLOT(downloadingFinished(QString)));
 
     m_pause = false;
 }
@@ -39,12 +40,14 @@ DownloadListItemWidget* DownloadUnits::getDownloadItemWidget()
 
 void DownloadUnits::pause()
 {
+    m_path.clear();
     m_pause = true;
     m_downloadThread->pause();
 }
 
 void DownloadUnits::start()
 {
+    m_path.clear();
     if(!m_pause)
     {
         m_downloadThread->downloadFile(m_url);
@@ -65,7 +68,8 @@ void DownloadUnits::setStateChanged(const QString &state)
     m_downloadItem->stateChanged(state);
 }
 
-void DownloadUnits::downloadingFinished()
+void DownloadUnits::downloadingFinished(const QString &path)
 {
+    m_path = path;
     emit removeItemWidget(this);
 }

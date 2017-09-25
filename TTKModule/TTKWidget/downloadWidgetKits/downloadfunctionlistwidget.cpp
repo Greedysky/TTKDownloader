@@ -136,9 +136,16 @@ void DownloadFunctionListWidget::selectedChanged(DownloadFunctionItemWidget *ite
         return;
     }
 
+    emit currentIndexChanged(index);
+
     foreach(DownloadFunctionItemWidget *it, m_items)
     {
         it->setSelectedMode(false);
     }
     m_items[index]->setSelectedMode(true);
+}
+
+void DownloadFunctionListWidget::mousePressEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event);
 }

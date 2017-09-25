@@ -6,6 +6,7 @@
 #include "downloadsettingmanager.h"
 #include "downloadabstracttablewidget.h"
 #include "downloadwidgetutils.h"
+#include "downloadlistconfigmanager.h"
 
 #include <QHeaderView>
 
@@ -14,7 +15,6 @@ DownloadListWidgets::DownloadListWidgets(QWidget *parent)
 {
     setColumnCount(1);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
-    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     DownloadUtils::Widget::setTransparent(this, 0);
     m_maxDownloadCount = 0;
@@ -22,7 +22,38 @@ DownloadListWidgets::DownloadListWidgets(QWidget *parent)
 
 DownloadListWidgets::~DownloadListWidgets()
 {
+    DownloadLists lists;
+    foreach(DownloadUnits *item, m_itemList)
+    {
+        DownloadList list;
+        list.m_url = item->getUrl();
+        lists << list;
+    }
+
+    DownloadListConfigManager xml;
+    xml.writeListConfig(lists);
+
     clearItems();
+}
+
+void DownloadListWidgets::init()
+{
+    DownloadListConfigManager xml;
+    if(!xml.readListXMLConfig())
+    {
+        return;
+    }
+
+    DownloadLists lists;
+    xml.readListConfig(lists);
+    QStringList alist;
+
+    foreach(const DownloadList &list, lists)
+    {
+        alist << list.m_url;
+    }
+
+    addItemToList(alist);
 }
 
 QString DownloadListWidgets::getClassName()
@@ -141,6 +172,8 @@ void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
     {
         return;
     }
+
+    emit downloadingFinished(unit->getDownloadedPath());
 
     --m_maxDownloadCount;
     removeCellWidget(row, 0);

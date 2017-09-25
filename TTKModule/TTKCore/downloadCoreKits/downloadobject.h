@@ -61,7 +61,9 @@
 #define XML_FILE                STRCAT(DOT, XML_FILE_PREFIX)
 #define SET_FILE                STRCAT(DOT, SET_FILE_PREFIX)
 
+#define LISTPATH                "download.lis"
 #define COFIGPATH               "downloadconfig.xml"
+#define HISTORYPATH             "downloadhistory.ttk"
 
 ///////////////////////////////////////
 #define APPDATA_DIR_FULL        DownloadObject::getAppDir() + QString("../") + APPDATA_DIR
@@ -72,7 +74,9 @@
 #define UPDATE_DIR_FULL         DOWNLOADS_DIR_FULL + UPDATE_DIR
 #define TDDOWNLOAD_DIR_FULL     DOWNLOADS_DIR_FULL + TDDOWNLOAD_DIR
 
+#define LISTPATH_FULL           APPDATA_DIR_FULL + LISTPATH
 #define COFIGPATH_FULL          APPDATA_DIR_FULL + COFIGPATH
+#define HISTORYPATH_FULL        APPDATA_DIR_FULL + HISTORYPATH
 #define AVATAR_DIR_FULL         APPDATA_DIR_FULL + AVATAR_DIR
 #define USER_THEME_DIR_FULL     APPDATA_DIR_FULL + USER_THEME_DIR
 

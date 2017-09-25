@@ -54,7 +54,7 @@ qint64 DownloadThreadManager::getFileSize(const QString &url, int tryTimes)
     }
     return size;
 }
-#include <QDebug>
+
 bool DownloadThreadManager::downloadFile(const QString &url)
 {
     emit stateChanged(tr("D_Waiting"));
@@ -175,7 +175,7 @@ void DownloadThreadManager::downloadingFinish()
     m_threads.clear();
 
     emit stateChanged(tr("D_Finished"));
-    emit downloadingFinished();
+    emit downloadingFinished(fileName);
 }
 
 void DownloadThreadManager::pause()

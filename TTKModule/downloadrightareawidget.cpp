@@ -2,8 +2,9 @@
 #include "ui_downloadapplication.h"
 #include "downloadfunctionuiobject.h"
 #include "downloadnewfiledialog.h"
-#include "downloadlistwidgets.h"
 #include "downloadhotkeymanager.h"
+#include "downloadlistwidgets.h"
+#include "downloadhistoryrecordwidget.h"
 
 DownloadRightAreaWidget *DownloadRightAreaWidget::m_instance = nullptr;
 
@@ -13,15 +14,17 @@ DownloadRightAreaWidget::DownloadRightAreaWidget(QWidget *parent)
     m_instance = this;
 
     m_listWidget = new DownloadListWidgets(this);
-    connect(m_listWidget, SIGNAL(downloadStateChanged(bool)), SLOT(downloadStateChanged(bool)));
+    m_historyWidget = new DownloadHistoryRecordWidget(this);
 
     M_HOTKEY_PTR->connectParentObject(this, "Ctrl+N", SLOT(showNewFileDialog()));
-
+    connect(m_listWidget, SIGNAL(downloadStateChanged(bool)), SLOT(downloadStateChanged(bool)));
+    connect(m_listWidget, SIGNAL(downloadingFinished(QString)), m_historyWidget, SLOT(createDownloadItem(QString)));
 }
 
 DownloadRightAreaWidget::~DownloadRightAreaWidget()
 {
     delete m_listWidget;
+    delete m_historyWidget;
 }
 
 QString DownloadRightAreaWidget::getClassName()
@@ -37,6 +40,8 @@ DownloadRightAreaWidget *DownloadRightAreaWidget::instance()
 void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication* ui)
 {
     m_ui = ui;
+    m_listWidget->init();
+    m_historyWidget->init();
 
     ui->newDownloadButton->setStyleSheet(DownloadUIObject::MTHDNewDownload);
     ui->newDownloadButton->setCursor(QCursor(Qt::PointingHandCursor));
@@ -63,6 +68,8 @@ void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication* ui)
     ui->settingButton->setToolTip(tr("Setting"));
 
     ui->centerStackedWidget->addWidget(m_listWidget);
+    ui->centerStackedWidget->addWidget(m_historyWidget);
+
     ui->centerStackedWidget->setCurrentIndex(0);
 
     ui->startDownloadButton->setEnabled(false);
@@ -72,6 +79,7 @@ void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication* ui)
 void DownloadRightAreaWidget::resizeWindow()
 {
     m_listWidget->resizeWindow();
+    m_historyWidget->resizeWindow();
 }
 
 void DownloadRightAreaWidget::downloadStateChanged(bool state)

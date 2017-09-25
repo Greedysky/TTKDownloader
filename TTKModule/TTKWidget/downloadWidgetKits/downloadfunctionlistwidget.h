@@ -80,6 +80,12 @@ public:
      */
     static QString getClassName();
 
+Q_SIGNALS:
+    /*!
+     * Current selected index changed.
+     */
+    void currentIndexChanged(int index);
+
 public Q_SLOTS:
     /*!
      * Selected state changed.
@@ -87,6 +93,11 @@ public Q_SLOTS:
     void selectedChanged(DownloadFunctionItemWidget *item);
 
 protected:
+    /*!
+     * Override the widget event.
+     */
+    virtual void mousePressEvent(QMouseEvent *event) override;
+
     QList<DownloadFunctionItemWidget*> m_items;
 
 };

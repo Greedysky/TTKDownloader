@@ -55,6 +55,10 @@ public:
      */
     inline QString getUrl() const { return m_url; }
     /*!
+     * Get download path.
+     */
+    inline QString getDownloadedPath() const { return m_path; }
+    /*!
      * Set download state changed.
      */
     void setStateChanged(const QString &state);
@@ -69,11 +73,11 @@ private Q_SLOTS:
     /*!
      * Download finished.
      */
-    void downloadingFinished();
+    void downloadingFinished(const QString &path);
 
 protected:
-    QString m_url;
     bool m_pause;
+    QString m_url, m_path;
     DownloadListItemWidget* m_downloadItem;
     DownloadThreadManager* m_downloadThread;
 

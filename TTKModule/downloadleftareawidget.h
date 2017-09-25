@@ -44,6 +44,10 @@ public:
 
 public Q_SLOTS:
     /*!
+     * Current selected index changed.
+     */
+    void funcitonIndexChanged(int index);
+    /*!
      * Show setting widget.
      */
     void showSettingWidget();
