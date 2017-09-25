@@ -50,6 +50,10 @@ public Q_SLOTS:
      * Application window close.
      */
     void quitWindowClose();
+    /*!
+     * Create right menu.
+     */
+    void appCreateRightMenu();
 
 private:
     virtual void resizeEvent(QResizeEvent *event) override;

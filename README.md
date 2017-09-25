@@ -3,6 +3,8 @@
 ![License](https://img.shields.io/badge/license-LGPL%20V2-yellowgreen.svg?style=flat-square)
 ![TTKDownloader](https://img.shields.io/badge/Greedysky-TTKDownloader-green.svg?style=flat-square)
 
+![LOGO](https://github.com/Greedysky/TTKDownloader/TTKResource/logo_pic.png?raw=true)
+
 ### **|[About](https://github.com/Greedysky/TTKDownloader#usage)|[License](https://github.com/Greedysky/TTKDownloader#license)|[Features](https://github.com/Greedysky/TTKDownloader#features)|[Screenshots](https://github.com/Greedysky/TTKDownloader#screenshots)|[Copyright](https://github.com/Greedysky/TTKDownloader#copyright)|[Contribute](https://github.com/Greedysky/TTKDownloader#how-to-contribute)|**
 
 Usage

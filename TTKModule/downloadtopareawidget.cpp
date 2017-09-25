@@ -46,6 +46,7 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication* ui)
     ui->windowSettingButton->setStyleSheet(DownloadUIObject::MTHDSetting);
     ui->windowSettingButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowSettingButton->setToolTip(tr("Setting"));
+    connect(ui->windowSettingButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(appCreateRightMenu()));
 
     ui->windowMinButton->setStyleSheet(DownloadUIObject::MTHDMinimum);
     ui->windowMinButton->setCursor(QCursor(Qt::PointingHandCursor));

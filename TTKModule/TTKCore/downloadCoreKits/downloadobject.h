@@ -78,8 +78,8 @@
 #define LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + LANGUAGE_DIR
 
 ///////////////////////////////////////
-#define WINDOW_WIDTH_MIN        850
-#define WINDOW_HEIGHT_MIN       550
+#define WINDOW_WIDTH_MIN        1000
+#define WINDOW_HEIGHT_MIN       690
 ///////////////////////////////////////
 #define DEFAULT_INDEX_LEVEL0    -1
 #define DEFAULT_INDEX_LEVEL1    -999

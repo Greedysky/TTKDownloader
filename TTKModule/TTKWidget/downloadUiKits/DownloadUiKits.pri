@@ -20,4 +20,6 @@ FORMS    += \
     $$PWD/downloadbackgroundskindialog.ui \
     $$PWD/downloadnewfiledialog.ui \
     $$PWD/downloadcolordialog.ui \
-    $$PWD/downloadmessagebox.ui
+    $$PWD/downloadmessagebox.ui \
+    $$PWD/downloadmessageaboutdialog.ui \
+    $$PWD/downloadsettingwidget.ui

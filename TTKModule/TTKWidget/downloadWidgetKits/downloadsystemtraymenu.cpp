@@ -8,11 +8,11 @@ DownloadSystemTrayMenu::DownloadSystemTrayMenu(QWidget *parent)
     setStyleSheet(DownloadUIObject::MMenuStyle02);
 
     DownloadRightAreaWidget *w = DownloadRightAreaWidget::instance();
-    addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload"), w, SLOT(showNewFileDialog()));
+    addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload(N)"), w, SLOT(showNewFileDialog()));
     addAction(QIcon(":/contextMenu/lb_start_normal"), tr("Start"), w, SLOT(startToDownload()));
     addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), w, SLOT(stopToDownload()));
     addAction(tr("FloatSetting"));
-    addAction(QIcon(":/contextMenu/lb_quit_normal"), tr("appClose"), parent, SLOT(quitWindowClose()));
+    addAction(QIcon(":/contextMenu/lb_quit_normal"), tr("appClose(X)"), parent, SLOT(quitWindowClose()));
 }
 
 DownloadSystemTrayMenu::~DownloadSystemTrayMenu()

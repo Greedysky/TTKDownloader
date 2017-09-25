@@ -1,5 +1,6 @@
 #include "downloadleftareawidget.h"
 #include "ui_downloadapplication.h"
+#include "downloadsettingwidget.h"
 
 DownloadLeftAreaWidget *DownloadLeftAreaWidget::m_instance = nullptr;
 
@@ -27,4 +28,9 @@ DownloadLeftAreaWidget *DownloadLeftAreaWidget::instance()
 void DownloadLeftAreaWidget::setupUi(Ui::DownloadApplication* ui)
 {
     m_ui = ui;
+}
+
+void DownloadLeftAreaWidget::showSettingWidget()
+{
+    DownloadSettingWidget().exec();
 }

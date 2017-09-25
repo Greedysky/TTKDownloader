@@ -8,6 +8,8 @@
 #include "downloadsettingmanager.h"
 #include "downloadsysconfigmanager.h"
 #include "downloadhotkeymanager.h"
+#include "downloaduiobject.h"
+#include "downloadversion.h"
 
 #include <QResizeEvent>
 
@@ -77,8 +79,32 @@ void DownloadApplication::quitWindowClose()
     //Write configuration files
     writeXMLConfigToText();
     m_quitWindowClose = true;
-    qApp->quit();
-//    m_applicationObject->windowCloseAnimation();
+    m_applicationObject->windowCloseAnimation();
+}
+
+void DownloadApplication::appCreateRightMenu()
+{
+    QMenu rightClickMenu(this);
+    rightClickMenu.setStyleSheet(DownloadUIObject::MMenuStyle02);
+
+    rightClickMenu.addAction(tr("NewDownload(N)"));
+    rightClickMenu.addSeparator();
+    rightClickMenu.addAction(tr("File(F)"));
+    rightClickMenu.addAction(tr("Edit(E)"));
+    rightClickMenu.addAction(tr("Plan"));
+    rightClickMenu.addSeparator();
+    rightClickMenu.addAction(tr("ResetWindow"), m_applicationObject, SLOT(appResetWindow()));
+    rightClickMenu.addAction(QIcon(":/contextMenu/lb_setting_normal"), tr("Setting(O)"), DownloadLeftAreaWidget::instance(), SLOT(showSettingWidget()));
+    rightClickMenu.addSeparator();
+
+    QMenu aboutInfo(tr("About"), &rightClickMenu);
+    aboutInfo.addAction(tr("Update"), m_applicationObject, SLOT(appVersionUpdate()));
+    aboutInfo.addAction(QIcon(":/image/lb_player_logo"), tr("Version") + QString(DOWNLOAD_VERSION_STR) + QString(DOWNLOAD_VER_TIME_STR),
+                        m_applicationObject, SLOT(appAboutUs()));
+    rightClickMenu.addMenu(&aboutInfo);
+    rightClickMenu.addSeparator();
+    rightClickMenu.addAction(tr("appClose(X)"), this, SLOT(quitWindowClose()));
+    rightClickMenu.exec(QCursor::pos());
 }
 
 void DownloadApplication::resizeEvent(QResizeEvent *event)

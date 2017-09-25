@@ -42,6 +42,12 @@ public:
      */
     void setupUi(Ui::DownloadApplication* ui);
 
+public Q_SLOTS:
+    /*!
+     * Show setting widget.
+     */
+    void showSettingWidget();
+
 protected:
 
     Ui::DownloadApplication *m_ui;

@@ -12,6 +12,8 @@
 #include "downloadobject.h"
 #include "downloadglobaldefine.h"
 
+class QPropertyAnimation;
+
 /*! @brief The class of the app object widget.
  * @author Greedysky <greedysky@163.com>
  */
@@ -36,11 +38,31 @@ public:
      */
     static DownloadApplicationObject *instance();
 
+public Q_SLOTS:
+    /*!
+     * Window close animation.
+     */
+    void windowCloseAnimation();
+    /*!
+     * Show about us widget.
+     */
+    void appAboutUs();
+    /*!
+     * Show version update widget.
+     */
+    void appVersionUpdate();
+    /*!
+     * Reset current window geometry.
+     */
+    void appResetWindow();
+
 private:
     /*!
      * Something temp clean up.
      */
     void cleanUp();
+
+    QPropertyAnimation *m_animation;
 
     static DownloadApplicationObject *m_instance;
 };
