@@ -2,6 +2,7 @@
 #include "downloadobject.h"
 #include "downloadbreakpointconfigmanager.h"
 #include "downloadcoreutils.h"
+#include "downloadurlencoder.h"
 
 #include <QDebug>
 #include <QFileInfo>
@@ -77,16 +78,17 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
         return false;
     }
 
-    if((m_totalSize = getFileSize(url)) == -1)
+    QString durl(DownloadUrlEncoder().decoder(url));
+    if((m_totalSize = getFileSize(durl)) == -1)
     {
         qDebug() << "Download file size error";
         return false;
     }
 
 #ifdef DOWNLOAD_WINEXTRAS
-    QString fileName = QUrl(url).fileName();
+    QString fileName = QUrl(durl).fileName();
 #else
-    const QString ourPath = QUrl(url).path();
+    const QString ourPath = QUrl(durl).path();
     const int slash = ourPath.lastIndexOf(QLatin1Char('/'));
     QString fileName = (slash == -1) ? ourPath : ourPath.mid(slash + 1);
 #endif
@@ -161,7 +163,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
         connect(thread, SIGNAL(finished(int)), SLOT(finishedSlot(int)));
         connect(thread, SIGNAL(downloadChanged()), SLOT(progressChangedSlot()));
         connect(thread, SIGNAL(errorCode(int,QString)), SLOT(errorSlot(int,QString)));
-        thread->startDownload(i, url, m_file, startPoint, endPoint, readySize);
+        thread->startDownload(i, durl, m_file, startPoint, endPoint, readySize);
         m_threads.append(thread);
     }
 

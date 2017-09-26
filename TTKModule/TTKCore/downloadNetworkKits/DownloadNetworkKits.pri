@@ -19,7 +19,8 @@ HEADERS  += \
     $$PWD/downloadthreadabstract.h \
     $$PWD/downloadnetworkabstract.h \
     $$PWD/downloadnetworkthread.h \
-    $$PWD/downloadnetworkspeedtestthread.h
+    $$PWD/downloadnetworkspeedtestthread.h \
+    $$PWD/downloadurlencoder.h
 
 }
 
@@ -34,6 +35,7 @@ SOURCES += \
     $$PWD/downloadthreadabstract.cpp \
     $$PWD/downloadnetworkabstract.cpp \
     $$PWD/downloadnetworkthread.cpp \
-    $$PWD/downloadnetworkspeedtestthread.cpp
+    $$PWD/downloadnetworkspeedtestthread.cpp \
+    $$PWD/downloadurlencoder.cpp
     
 }
