@@ -29,6 +29,8 @@ TTKDownloader is free software licensed under the term of [Licence LGPL v2](http
 Features
 -------
 TTKDownloader that imitation xunlei downloader.
+ * Support resuming of file transfers.
+ * Support thunder¡¢flashget¡¢qq url.
 
 Screenshots
 ----
