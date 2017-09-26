@@ -28,6 +28,12 @@ DownloadRightAreaWidget::~DownloadRightAreaWidget()
     delete m_historyWidget;
 }
 
+void DownloadRightAreaWidget::init()
+{
+    m_listWidget->init();
+    m_historyWidget->init();
+}
+
 QString DownloadRightAreaWidget::getClassName()
 {
     return staticMetaObject.className();
@@ -41,8 +47,6 @@ DownloadRightAreaWidget *DownloadRightAreaWidget::instance()
 void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication* ui)
 {
     m_ui = ui;
-    m_listWidget->init();
-    m_historyWidget->init();
 
     ui->newDownloadButton->setStyleSheet(DownloadUIObject::MTHDNewDownload);
     ui->newDownloadButton->setCursor(QCursor(Qt::PointingHandCursor));

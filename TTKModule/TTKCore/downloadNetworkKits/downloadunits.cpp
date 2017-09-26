@@ -43,11 +43,11 @@ void DownloadUnits::pause()
     m_downloadThread->pause();
 }
 
-void DownloadUnits::start()
+void DownloadUnits::start(const QString &name)
 {
     if(!m_pause)
     {
-        m_downloadThread->downloadFile(m_url);
+        m_downloadThread->downloadFile(m_url, name);
     }
     else
     {

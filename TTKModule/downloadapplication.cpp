@@ -54,6 +54,8 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     }
 
     readXMLConfigFromText();
+
+    m_rightAreaWidget->init();
 }
 
 DownloadApplication::~DownloadApplication()

@@ -62,7 +62,7 @@ public Q_SLOTS:
     /*!
      * Downlaod url changed.
      */
-    void addItemToList(const QString &path);
+    void addItemToList(const QString &path, const QString &name);
     /*!
      * Downlaod url changed.
      */
@@ -120,7 +120,7 @@ protected:
     /*!
      * Start to download.
      */
-    void start(int row);
+    void start(int row, const QString &name = QString());
     /*!
      * Pause to download.
      */

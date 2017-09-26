@@ -34,6 +34,10 @@ public:
     ~DownloadRightAreaWidget();
 
     /*!
+     * Init widget.
+     */
+    void init();
+    /*!
      * Get class object name.
      */
     static QString getClassName();

@@ -32,6 +32,7 @@ DownloadListWidgets::~DownloadListWidgets()
     {
         DownloadList list;
         list.m_url = item->getUrl();
+        list.m_name = QFileInfo(item->getDownloadedPath()).fileName();
         lists << list;
     }
 
@@ -51,14 +52,15 @@ void DownloadListWidgets::init()
 
     DownloadLists lists;
     xml.readListConfig(lists);
-    QStringList alist;
 
     foreach(const DownloadList &list, lists)
     {
-        alist << list.m_url;
+        QString url = list.m_url.trimmed();
+        if( !url.isEmpty() && !findUrl(url) )
+        {
+            addItemToList(url, list.m_name);
+        }
     }
-
-    addItemToList(alist);
 }
 
 QString DownloadListWidgets::getClassName()
@@ -103,7 +105,7 @@ void DownloadListWidgets::start()
     }
 }
 
-void DownloadListWidgets::addItemToList(const QString &path)
+void DownloadListWidgets::addItemToList(const QString &path, const QString &name)
 {
     if(path.isEmpty())
     {
@@ -122,7 +124,7 @@ void DownloadListWidgets::addItemToList(const QString &path)
     setRowHeight(row, widget->height());
     setCellWidget(row, 0, widget);
 
-    start(row);
+    start(row, name);
 }
 
 void DownloadListWidgets::addItemToList(const QStringList &path)
@@ -132,7 +134,7 @@ void DownloadListWidgets::addItemToList(const QStringList &path)
         QString url = pa.trimmed();
         if( !url.isEmpty() && !findUrl(url) )
         {
-            addItemToList(url);
+            addItemToList(url, QString());
         }
     }
 }
@@ -312,7 +314,7 @@ void DownloadListWidgets::stateChanged(int row)
     emit downloadStateChanged(state != 1 && state != 0);
 }
 
-void DownloadListWidgets::start(int row)
+void DownloadListWidgets::start(int row, const QString &name)
 {
     if(row < 0)
     {
@@ -323,7 +325,7 @@ void DownloadListWidgets::start(int row)
     if(m_maxDownloadCount < 3)
     {
         ++m_maxDownloadCount;
-        units->start();
+        units->start(name);
         stateChanged(row);
     }
     else

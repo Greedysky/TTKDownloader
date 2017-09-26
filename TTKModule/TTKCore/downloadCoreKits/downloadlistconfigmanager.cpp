@@ -24,7 +24,8 @@ void DownloadListConfigManager::writeListConfig(const DownloadLists &records)
 
     foreach(const DownloadList &record, records)
     {
-        writeDomElement(download, "value", DownloadXmlAttribute("url", record.m_url));
+        writeDomElementMutil(download, "value", DownloadXmlAttributes() << DownloadXmlAttribute("url", record.m_url)
+                                             << DownloadXmlAttribute("name", record.m_name));
     }
 
     //Write to file
@@ -37,8 +38,10 @@ void DownloadListConfigManager::readListConfig(DownloadLists &records)
     QDomNodeList nodelist = m_ddom->elementsByTagName("value");
     for(int i=0; i<nodelist.count(); ++i)
     {
+        const QDomElement element = nodelist.at(i).toElement();
         DownloadList record;
-        record.m_url = nodelist.at(i).toElement().attribute("url");
+        record.m_url = element.attribute("url");
+        record.m_name = element.attribute("name");
         records << record;
     }
 }

@@ -34,7 +34,7 @@ public:
     /*!
      * Download file by url.
      */
-    bool downloadFile(const QString &url);
+    bool downloadFile(const QString &url, const QString &name = QString());
     /*!
      * Get download path.
      */
