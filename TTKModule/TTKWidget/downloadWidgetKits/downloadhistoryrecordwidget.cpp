@@ -14,11 +14,12 @@ DownloadHistoryRecordWidget::DownloadHistoryRecordWidget(QWidget *parent)
     : DownloadAbstractTableWidget(parent)
 {
     setColumnCount(4);
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
 
     QHeaderView *headerview = horizontalHeader();
-    headerview->resizeSection(0, 40);
-    headerview->resizeSection(1, 505);
-    headerview->resizeSection(2, 200);
+    headerview->resizeSection(0, 50);
+    headerview->resizeSection(1, 495);
+    headerview->resizeSection(2, 192);
     headerview->resizeSection(3, 50);
 }
 
@@ -64,12 +65,13 @@ void DownloadHistoryRecordWidget::resizeWindow()
 {
     int width = M_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
     QHeaderView *headerview = horizontalHeader();
-    headerview->resizeSection(1, 505 + width - WINDOW_WIDTH_MIN);
+    headerview->resizeSection(1, 495 + width - WINDOW_WIDTH_MIN);
 }
 
 void DownloadHistoryRecordWidget::listCellClicked(int row, int column)
 {
-
+    Q_UNUSED(row);
+    Q_UNUSED(column);
 }
 
 void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const QString &url)
@@ -181,7 +183,7 @@ void DownloadHistoryRecordWidget::createItem(int index, const DownloadRecord &re
         pix.load(":/image/lb_blankImage");
     }
     item->setIcon(QIcon(pix.scaled(40, 40)));
-    item->setSizeHint(pix.size());
+    setIconSize(pix.size());
     setItem(index, 0, item);
 
                       item = new QTableWidgetItem;
