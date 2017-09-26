@@ -7,8 +7,13 @@
 #include "downloadabstracttablewidget.h"
 #include "downloadwidgetutils.h"
 #include "downloadlistconfigmanager.h"
+#include "downloadcoreutils.h"
+#include "downloadmessagebox.h"
 
+#include <QMenu>
+#include <QClipboard>
 #include <QHeaderView>
+#include <QApplication>
 
 DownloadListWidgets::DownloadListWidgets(QWidget *parent)
     : DownloadAbstractTableWidget(parent)
@@ -78,10 +83,7 @@ void DownloadListWidgets::pause()
             continue;
         }
 
-        --m_maxDownloadCount;
-        m_maxDownloadCount = qMax(m_maxDownloadCount, 0);
-        m_itemList[row]->pause();
-        stateChanged(row);
+        pause(row);
     }
 
     getTopUrlToDownload();
@@ -137,6 +139,11 @@ void DownloadListWidgets::addItemToList(const QStringList &path)
 
 void DownloadListWidgets::deleteItemFromList()
 {
+    deleteItemFromList(false);
+}
+
+void DownloadListWidgets::deleteItemFromList(bool file)
+{
     foreach(QTableWidgetItem *item, selectedItems())
     {
         int row = item->row();
@@ -146,6 +153,7 @@ void DownloadListWidgets::deleteItemFromList()
         }
 
         int state = m_itemList[row]->getState();
+        QString path = m_itemList[row]->getDownloadedPath();
         if(state == 0 || state == 1)
         {
             --m_maxDownloadCount;
@@ -155,9 +163,19 @@ void DownloadListWidgets::deleteItemFromList()
         removeRow(row);
         delete m_itemList.takeAt(row);
 
+        if(file)
+        {
+            QFile::remove(path);
+            QFile::remove(path + SET_FILE);
+        }
     }
 
     getTopUrlToDownload();
+}
+
+void DownloadListWidgets::deleteItemFromListWithFile()
+{
+    deleteItemFromList(true);
 }
 
 void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
@@ -173,7 +191,7 @@ void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
         return;
     }
 
-    emit downloadingFinished(unit->getDownloadedPath());
+    emit downloadingFinished(unit->getDownloadedPath(), unit->getUrl());
 
     --m_maxDownloadCount;
     removeCellWidget(row, 0);
@@ -192,6 +210,91 @@ void DownloadListWidgets::listCellClicked(int row, int column)
     }
 
     stateChanged(row);
+}
+
+void DownloadListWidgets::openFileDir()
+{
+    if(rowCount() == 0 || currentRow() < 0)
+    {
+        return;
+    }
+
+    QString path = m_itemList[currentRow()]->getDownloadedPath();
+
+    if(!DownloadUtils::Core::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    {
+        DownloadMessageBox message;
+        message.setText(tr("The origin one does not exist!"));
+        message.exec();
+    }
+}
+
+void DownloadListWidgets::startClicked()
+{
+    if(rowCount() == 0 || currentRow() < 0)
+    {
+        return;
+    }
+
+    start( currentRow() );
+}
+
+void DownloadListWidgets::pauseClicked()
+{
+    if(rowCount() == 0 || currentRow() < 0)
+    {
+        return;
+    }
+
+    pause( currentRow() );
+    getTopUrlToDownload();
+}
+
+void DownloadListWidgets::copyUrlClicked()
+{
+    if(rowCount() == 0 || currentRow() < 0)
+    {
+        return;
+    }
+
+    QClipboard *clipBoard = QApplication::clipboard();
+    clipBoard->setText(m_itemList[ currentRow() ]->getUrl());
+}
+
+void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
+{
+    DownloadAbstractTableWidget::contextMenuEvent(event);
+
+    QMenu rightClickMenu(this);
+    rightClickMenu.setStyleSheet(DownloadUIObject::MMenuStyle02);
+
+    int row = currentRow();
+    rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
+    rightClickMenu.addSeparator();
+
+    bool downloadState = false;
+    if(row > -1 && row < m_itemList.count())
+    {
+        int s = m_itemList[row]->getState();
+        downloadState = (s == 0 || s == 1);
+    }
+    if(downloadState)
+    {
+        rightClickMenu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Pause"), this, SLOT(pauseClicked()));
+    }
+    else
+    {
+        rightClickMenu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("NewDownload"), this, SLOT(startClicked()))->setEnabled(row > -1);
+    }
+
+    rightClickMenu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
+    rightClickMenu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
+    rightClickMenu.addAction(tr("Sort"));
+    rightClickMenu.addAction(tr("Selected All"), this, SLOT(selectAll()));
+    rightClickMenu.addSeparator();
+    rightClickMenu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
+
+    rightClickMenu.exec(QCursor::pos());
 }
 
 void DownloadListWidgets::clearItems()
@@ -227,6 +330,19 @@ void DownloadListWidgets::start(int row)
     {
         units->setStateChanged(tr("D_Queue"));
     }
+}
+
+void DownloadListWidgets::pause(int row)
+{
+    if(row < 0)
+    {
+        return;
+    }
+
+    --m_maxDownloadCount;
+    m_maxDownloadCount = qMax(m_maxDownloadCount, 0);
+    m_itemList[row]->pause();
+    stateChanged(row);
 }
 
 void DownloadListWidgets::getTopUrlToDownload()

@@ -1,7 +1,6 @@
 #include "downloadunits.h"
 #include "downloadlistitemwidget.h"
 #include "downloadthreadmanager.h"
-#include <QDebug>
 
 DownloadUnits::DownloadUnits(const QString &url, QObject *parent)
     : QObject(parent), m_url(url)
@@ -40,14 +39,12 @@ DownloadListItemWidget* DownloadUnits::getDownloadItemWidget()
 
 void DownloadUnits::pause()
 {
-    m_path.clear();
     m_pause = true;
     m_downloadThread->pause();
 }
 
 void DownloadUnits::start()
 {
-    m_path.clear();
     if(!m_pause)
     {
         m_downloadThread->downloadFile(m_url);
@@ -56,6 +53,8 @@ void DownloadUnits::start()
     {
         m_downloadThread->restart();
     }
+
+    m_path = m_downloadThread->getDownloadedPath();
 }
 
 int DownloadUnits::getState() const

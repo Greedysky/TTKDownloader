@@ -4,7 +4,8 @@
 #include "downloadsystemtraymenu.h"
 #include "downloadwindowextras.h"
 #include "downloadnumberutils.h"
-
+#include "downloadnetworkspeedtestthread.h"
+#include <QDebug>
 DownloadBottomAreaWidget *DownloadBottomAreaWidget::m_instance = nullptr;
 
 DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
@@ -16,13 +17,18 @@ DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
     createSystemTrayIcon();
 
     m_windowExtras = new DownloadWindowExtras(parent);
+    m_speedThread = new DownloadNetworkSpeedTestThread(this);
+
+    connect(m_speedThread, SIGNAL(networkData(ulong,ulong)), SLOT(updateNetworkData(ulong,ulong)));
 }
 
 DownloadBottomAreaWidget::~DownloadBottomAreaWidget()
 {
+    m_speedThread->stopAndQuitThread();
     delete m_systemTrayMenu;
     delete m_systemTray;
     delete m_windowExtras;
+    delete m_speedThread;
 }
 
 QString DownloadBottomAreaWidget::getClassName()
@@ -38,6 +44,8 @@ DownloadBottomAreaWidget *DownloadBottomAreaWidget::instance()
 void DownloadBottomAreaWidget::setupUi(Ui::DownloadApplication* ui)
 {
     m_ui = ui;
+    m_speedThread->start();
+
     ui->resizeLabelWidget->setPixmap(QPixmap(":/tiny/lb_resize_normal"));
 
     ui->expandButton->setLabelIcon(":/functions/lb_left");
@@ -48,8 +56,7 @@ void DownloadBottomAreaWidget::setupUi(Ui::DownloadApplication* ui)
     ui->downloadPlanButton->setLabelText(tr("Plan"));
     ui->downloadPlanButton->setLabelIcon(":/functions/lb_plan");
 
-    ui->downloadSpeedButton->setLabelText(DownloadUtils::Number::speed2Label(200000),
-                                          DownloadUtils::Number::speed2Label(200000));
+    ui->downloadSpeedButton->setLabelText("--", "--");
 }
 
 void DownloadBottomAreaWidget::showMessage(const QString &title, const QString &text)
@@ -85,6 +92,13 @@ void DownloadBottomAreaWidget::iconActivated(QSystemTrayIcon::ActivationReason r
         default:
             break;
     }
+}
+
+void DownloadBottomAreaWidget::updateNetworkData(ulong upload, ulong download)
+{
+    const QString &up = DownloadUtils::Number::speed2Label(upload);
+    const QString &down = DownloadUtils::Number::speed2Label(download);
+    m_ui->downloadSpeedButton->setLabelText(up, down);
 }
 
 void DownloadBottomAreaWidget::createSystemTrayIcon()

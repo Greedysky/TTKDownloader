@@ -55,6 +55,11 @@ qint64 DownloadThreadManager::getFileSize(const QString &url, int tryTimes)
     return size;
 }
 
+QString DownloadThreadManager::getDownloadedPath() const
+{
+    return m_file ? m_file->fileName() : QString();
+}
+
 bool DownloadThreadManager::downloadFile(const QString &url)
 {
     emit stateChanged(tr("D_Waiting"));

@@ -14,7 +14,7 @@
 /*! @brief The class of the local download list item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_SUPER_EXPORT DownloadList
+typedef struct DOWNLOAD_CORE_EXPORT DownloadList
 {
     QString m_url;
 }DownloadList;

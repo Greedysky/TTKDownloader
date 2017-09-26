@@ -14,11 +14,12 @@
 /*! @brief The class of the local download record item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_SUPER_EXPORT DownloadRecord
+typedef struct DOWNLOAD_CORE_EXPORT DownloadRecord
 {
     QString m_time;
     QString m_path;
     QString m_size;
+    QString m_url;
 }DownloadRecord;
 DOWNLOAD_DECLARE_LISTS(DownloadRecord)
 

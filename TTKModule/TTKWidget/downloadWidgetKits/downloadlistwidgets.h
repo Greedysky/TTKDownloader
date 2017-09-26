@@ -48,7 +48,7 @@ Q_SIGNALS:
     /*!
      * Download finished.
      */
-    void downloadingFinished(const QString &path);
+    void downloadingFinished(const QString &path, const QString &url);
 
 public Q_SLOTS:
     /*!
@@ -72,6 +72,14 @@ public Q_SLOTS:
      */
     void deleteItemFromList();
     /*!
+     * Delete selected item from list.
+     */
+    void deleteItemFromList(bool file);
+    /*!
+     * Delete selected item from list with file.
+     */
+    void deleteItemFromListWithFile();
+    /*!
      * Remove current item widget.
      */
     void removeItemWidget(DownloadUnits *unit);
@@ -79,8 +87,28 @@ public Q_SLOTS:
      * Table widget list cell click.
      */
     virtual void listCellClicked(int row, int column) override;
+    /*!
+     * Open the local path.
+     */
+    void openFileDir();
+    /*!
+     * Start to download context.
+     */
+    void startClicked();
+    /*!
+     * Pause to download context.
+     */
+    void pauseClicked();
+    /*!
+     * Copy url context.
+     */
+    void copyUrlClicked();
 
 protected:
+    /*!
+     * Override the widget event.
+     */
+    virtual void contextMenuEvent(QContextMenuEvent *event) override;
     /*!
      * Clear download item.
      */
@@ -93,6 +121,10 @@ protected:
      * Start to download.
      */
     void start(int row);
+    /*!
+     * Pause to download.
+     */
+    void pause(int row);
     /*!
      * Get top url to download.
      */

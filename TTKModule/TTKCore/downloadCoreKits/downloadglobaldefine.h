@@ -13,7 +13,6 @@
 
 //////////////////////////////////////
 #ifdef DOWNLOAD_LIBRARY
-#  define DOWNLOAD_SUPER
 #  define DOWNLOAD_NETWORK
 #  define DOWNLOAD_CORE
 #  define DOWNLOAD_WIDGET
@@ -26,14 +25,6 @@
 ///
 ///
 #define DOWNLOAD_EXPORT
-
-#ifdef DOWNLOAD_SUPER
-#  ifdef DOWNLOAD_EXPORT
-#    define DOWNLOAD_SUPER_EXPORT Q_DECL_EXPORT
-#  else
-#    define DOWNLOAD_SUPER_IMPORT Q_DECL_IMPORT
-#  endif
-#endif
 
 #ifdef DOWNLOAD_NETWORK
 #  ifdef DOWNLOAD_EXPORT

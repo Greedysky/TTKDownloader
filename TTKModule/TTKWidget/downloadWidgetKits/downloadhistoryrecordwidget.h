@@ -43,17 +43,33 @@ public:
 
 public Q_SLOTS:
     /*!
-     * Delete item from list at current row.
-     */
-    void setDeleteItemAt();
-    /*!
      * Table widget list cell click.
      */
     void listCellClicked(int row, int column);
     /*!
      * Create download item from download path.
      */
-    void createDownloadItem(const QString &path);
+    void createDownloadItem(const QString &path, const QString &url);
+    /*!
+     * Delete selected item from list.
+     */
+    void deleteItemFromList();
+    /*!
+     * Delete selected item from list.
+     */
+    void deleteItemFromList(bool file);
+    /*!
+     * Delete selected item from list with file.
+     */
+    void deleteItemFromListWithFile();
+    /*!
+     * Open the local path.
+     */
+    void openFileDir();
+    /*!
+     * Copy url context.
+     */
+    void copyUrlClicked();
 
 protected:
     /*!

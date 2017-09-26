@@ -2,7 +2,12 @@
 #include "downloaduiobject.h"
 #include "downloadnumberutils.h"
 #include "downloadsettingmanager.h"
+#include "downloadmessagebox.h"
+#include "downloadcoreutils.h"
 
+#include <QMenu>
+#include <QClipboard>
+#include <QApplication>
 #include <QFileIconProvider>
 
 DownloadHistoryRecordWidget::DownloadHistoryRecordWidget(QWidget *parent)
@@ -62,17 +67,12 @@ void DownloadHistoryRecordWidget::resizeWindow()
     headerview->resizeSection(1, 505 + width - WINDOW_WIDTH_MIN);
 }
 
-void DownloadHistoryRecordWidget::setDeleteItemAt()
-{
-
-}
-
 void DownloadHistoryRecordWidget::listCellClicked(int row, int column)
 {
 
 }
 
-void DownloadHistoryRecordWidget::createDownloadItem(const QString &path)
+void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const QString &url)
 {
     int row = rowCount();
     setRowCount(row + 1);
@@ -82,14 +82,90 @@ void DownloadHistoryRecordWidget::createDownloadItem(const QString &path)
     record.m_time = info.lastModified().toString("yyyy-MM-dd HH:mm:ss");
     record.m_path = info.absoluteFilePath();
     record.m_size = DownloadUtils::Number::size2Label(info.size());
+    record.m_url = url;
     m_records << record;
 
     createItem(row, record);
 }
 
+void DownloadHistoryRecordWidget::deleteItemFromList()
+{
+    deleteItemFromList(false);
+}
+
+void DownloadHistoryRecordWidget::deleteItemFromList(bool file)
+{
+    foreach(QTableWidgetItem *item, selectedItems())
+    {
+        int row = item->row();
+        if(m_records.isEmpty() || row < 0)
+        {
+            continue;
+        }
+
+        removeCellWidget(row, 0);
+        removeRow(row);
+        DownloadRecord r = m_records.takeAt(row);
+
+        if(file)
+        {
+            QFile::remove(r.m_path);
+            QFile::remove(r.m_path + SET_FILE);
+        }
+    }
+}
+
+void DownloadHistoryRecordWidget::deleteItemFromListWithFile()
+{
+    deleteItemFromList(true);
+}
+
+void DownloadHistoryRecordWidget::openFileDir()
+{
+    if(rowCount() == 0 || currentRow() < 0)
+    {
+        return;
+    }
+
+    QString path = m_records[ currentRow() ].m_path;
+    if(!DownloadUtils::Core::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    {
+        DownloadMessageBox message;
+        message.setText(tr("The origin one does not exist!"));
+        message.exec();
+    }
+}
+
+void DownloadHistoryRecordWidget::copyUrlClicked()
+{
+    if(rowCount() == 0 || currentRow() < 0)
+    {
+        return;
+    }
+
+    QClipboard *clipBoard = QApplication::clipboard();
+    clipBoard->setText(m_records[ currentRow() ].m_path);
+}
+
 void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
 {
+    DownloadAbstractTableWidget::contextMenuEvent(event);
 
+    QMenu rightClickMenu(this);
+    rightClickMenu.setStyleSheet(DownloadUIObject::MMenuStyle02);
+
+    int row = currentRow();
+    rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
+    rightClickMenu.addSeparator();
+
+    rightClickMenu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
+    rightClickMenu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
+    rightClickMenu.addAction(tr("Sort"));
+    rightClickMenu.addAction(tr("Selected All"), this, SLOT(selectAll()));
+    rightClickMenu.addSeparator();
+    rightClickMenu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
+
+    rightClickMenu.exec(QCursor::pos());
 }
 
 void DownloadHistoryRecordWidget::createItem(int index, const DownloadRecord &record)

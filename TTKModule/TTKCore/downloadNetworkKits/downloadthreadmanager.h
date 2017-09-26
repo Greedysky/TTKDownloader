@@ -36,6 +36,10 @@ public:
      */
     bool downloadFile(const QString &url);
     /*!
+     * Get download path.
+     */
+    QString getDownloadedPath() const;
+    /*!
      * Get download state.
      */
     inline DownloadThread::DownloadState getState() const { return m_state; }

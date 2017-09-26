@@ -21,11 +21,13 @@ QString DownloadToolLabelButton::getClassName()
 void DownloadToolLabelButton::setLabelText(const QString &text)
 {
     m_text = text;
+    update();
 }
 
 void DownloadToolLabelButton::setLabelIcon(const QString &icon)
 {
     m_icon = icon;
+    update();
 }
 
 void DownloadToolLabelButton::enterEvent(QEvent *event)
@@ -83,6 +85,7 @@ void DownloadSpeedToolLabelButton::setLabelText(const QString &up, const QString
 {
     m_textUp = up;
     m_textDown = down;
+    update();
 }
 
 void DownloadSpeedToolLabelButton::enterEvent(QEvent *event)

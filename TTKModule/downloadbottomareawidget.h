@@ -16,6 +16,7 @@
 
 class DownloadSystemTrayMenu;
 class DownloadWindowExtras;
+class DownloadNetworkSpeedTestThread;
 
 namespace Ui {
     class DownloadApplication;
@@ -81,6 +82,10 @@ public Q_SLOTS:
      * System tray icon activate.
      */
     void iconActivated(QSystemTrayIcon::ActivationReason);
+    /*!
+     * Send current upload and download speed data.
+     */
+    void updateNetworkData(ulong upload, ulong download);
 
 protected:
     /*!
@@ -94,6 +99,7 @@ protected:
     QSystemTrayIcon *m_systemTray;
     DownloadSystemTrayMenu *m_systemTrayMenu;
     DownloadWindowExtras *m_windowExtras;
+    DownloadNetworkSpeedTestThread *m_speedThread;
 
     static DownloadBottomAreaWidget *m_instance;
 };
