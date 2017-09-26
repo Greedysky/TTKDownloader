@@ -159,6 +159,37 @@
     </message>
 </context>
 <context>
+    <name>DownloadHistoryRecordWidget</name>
+    <message>
+        <source>The origin one does not exist!</source>
+        <translation>您所指定的文件已被移动或者不存在！</translation>
+    </message>
+    <message>
+        <source>Open File</source>
+        <translation>打开文件夹</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除任务</translation>
+    </message>
+    <message>
+        <source>Delete With File</source>
+        <translation>彻底删除任务</translation>
+    </message>
+    <message>
+        <source>Sort</source>
+        <translation>排序</translation>
+    </message>
+    <message>
+        <source>Selected All</source>
+        <translation>全部选定</translation>
+    </message>
+    <message>
+        <source>Copy Url</source>
+        <translation>复制下载链接</translation>
+    </message>
+</context>
+<context>
     <name>DownloadHlPalette</name>
     <message>
         <source>Adjust Hue And Brightness</source>
@@ -188,6 +219,42 @@
     <message>
         <source>D_Queue</source>
         <translation>排队中</translation>
+    </message>
+    <message>
+        <source>The origin one does not exist!</source>
+        <translation>您所指定的文件已被移动或者不存在！</translation>
+    </message>
+    <message>
+        <source>Open File</source>
+        <translation>打开文件夹</translation>
+    </message>
+    <message>
+        <source>Pause</source>
+        <translation>暂停任务</translation>
+    </message>
+    <message>
+        <source>NewDownload</source>
+        <translation>开始任务</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除任务</translation>
+    </message>
+    <message>
+        <source>Delete With File</source>
+        <translation>彻底删除任务</translation>
+    </message>
+    <message>
+        <source>Sort</source>
+        <translation>排序</translation>
+    </message>
+    <message>
+        <source>Selected All</source>
+        <translation>全部选定</translation>
+    </message>
+    <message>
+        <source>Copy Url</source>
+        <translation>复制下载链接</translation>
     </message>
 </context>
 <context>
@@ -321,6 +388,14 @@ Copyright© 2016-2017 Greedysky All Rights Reserved
     <message>
         <source>Outlook</source>
         <translation>外观设置</translation>
+    </message>
+    <message>
+        <source>更改目录</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>下载目录</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
