@@ -54,6 +54,12 @@ void DownloadInitObject::checkTheFileNeededExist()
     copyFile(":/data/downloadhistory.ttk", S_HISTORYPATH_FULL);
 
 #ifdef Q_OS_UNIX
+    if(!QFile::exists(S_MAKENETS_FULL))
+    {
+        QFile::copy(":/data/avnets.sh", S_MAKENETS_FULL);
+        QFile::setPermissions(S_MAKENETS_FULL, QFile::ReadOwner | QFile::WriteOwner);
+        QProcess::execute("chmod", QStringList() << "+x" << S_MAKENETS_FULL);
+    }
     if(!QFile::exists(S_TTKDD_FULL))
     {
         QFile::copy(":/data/TTKLDD.sh", S_TTKDD_FULL);

@@ -64,7 +64,7 @@ void DownloadNetworkSpeedTestThread::setAvailableNewtworkNames(const QStringList
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(outputRecieved()));
     QStringList arguments;
     arguments << m_names.first() << "1";
-    m_process->start(MAKE_NETS_FULL, arguments);
+    m_process->start(MAKENETS_FULL, arguments);
 #endif
 }
 

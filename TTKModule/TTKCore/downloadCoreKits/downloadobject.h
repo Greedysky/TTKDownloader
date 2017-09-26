@@ -61,6 +61,7 @@
 #define XML_FILE                STRCAT(DOT, XML_FILE_PREFIX)
 #define SET_FILE                STRCAT(DOT, SET_FILE_PREFIX)
 
+#define MAKENETS          "avnets.sh"
 #define LISTPATH                "download.lis"
 #define COFIGPATH               "downloadconfig.xml"
 #define HISTORYPATH             "downloadhistory.ttk"
@@ -74,6 +75,7 @@
 #define UPDATE_DIR_FULL         DOWNLOADS_DIR_FULL + UPDATE_DIR
 #define TDDOWNLOAD_DIR_FULL     DOWNLOADS_DIR_FULL + TDDOWNLOAD_DIR
 
+#define MAKENETS_FULL           APPDATA_DIR_FULL + MAKENETS
 #define LISTPATH_FULL           APPDATA_DIR_FULL + LISTPATH
 #define COFIGPATH_FULL          APPDATA_DIR_FULL + COFIGPATH
 #define HISTORYPATH_FULL        APPDATA_DIR_FULL + HISTORYPATH
