@@ -61,7 +61,7 @@
 #define XML_FILE                STRCAT(DOT, XML_FILE_PREFIX)
 #define SET_FILE                STRCAT(DOT, SET_FILE_PREFIX)
 
-#define MAKENETS          "avnets.sh"
+#define MAKENETS                "avnets.sh"
 #define LISTPATH                "download.lis"
 #define COFIGPATH               "downloadconfig.xml"
 #define HISTORYPATH             "downloadhistory.ttk"

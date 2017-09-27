@@ -5,7 +5,7 @@
 
 ![LOGO](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/logo_pic.png?raw=true)
 
-### **|[About](https://github.com/Greedysky/TTKDownloader#usage)|[License](https://github.com/Greedysky/TTKDownloader#license)|[Features](https://github.com/Greedysky/TTKDownloader#features)|[Screenshots](https://github.com/Greedysky/TTKDownloader#screenshots)|[Copyright](https://github.com/Greedysky/TTKDownloader#copyright)|[Contribute](https://github.com/Greedysky/TTKDownloader#how-to-contribute)|**
+### **|[About](https://github.com/Greedysky/TTKDownloader#usage)|[License](https://github.com/Greedysky/TTKDownloader#license)|[Download](https://github.com/Greedysky/TTKDownloader#download)|[Features](https://github.com/Greedysky/TTKDownloader#features)|[Screenshots](https://github.com/Greedysky/TTKDownloader#screenshots)|[Copyright](https://github.com/Greedysky/TTKDownloader#copyright)|[Contribute](https://github.com/Greedysky/TTKDownloader#how-to-contribute)|**
 
 Usage
 ----
@@ -26,11 +26,17 @@ License
 ---
 TTKDownloader is free software licensed under the term of [Licence LGPL v2](https://github.com/Greedysky/TTKDownloader/blob/master/LICENSE). If you use TTKDownloader or its constituent libraries, you must adhere to the terms of the license in question.
 
+Download
+---
+Github: **<u>https://github.com/Greedysky/TTKDownloader</u>**
+
+Skin Download URL: **<u>http://pan.baidu.com/s/1mh7AeG4</u>**
+
 Features
 -------
 TTKDownloader that imitation xunlei downloader.
  * Support resuming of file transfers.
- * Support thunder¡¢flashget¡¢qq url.
+ * Support thunder, flashget, qq url.
 
 Screenshots
 ----

@@ -65,14 +65,6 @@ Q_SIGNALS:
      * Background image changed.
      */
     void backgroundChanged();
-    /*!
-     * New art has been set emit.
-     */
-    void artHasChanged();
-    /*!
-     * User selected index changed emit.
-     */
-    void userSelectIndexChanged();
 
 protected:
     /*!
