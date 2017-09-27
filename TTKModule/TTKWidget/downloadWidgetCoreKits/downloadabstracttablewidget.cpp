@@ -34,7 +34,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     setSelectionMode(QAbstractItemView::SingleSelection);
     setFocusPolicy(Qt::NoFocus);
 
-    DownloadUtils::Widget::setTransparent(this, 50);
+    DownloadUtils::Widget::setTransparent(this, 0);
 
     m_previousColorRow = -1;
     m_previousClickRow = -1;

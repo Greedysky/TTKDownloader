@@ -4,6 +4,7 @@
 #include "downloadotherdefine.h"
 #include "downloadnumberdefine.h"
 #include "downloadmessageaboutdialog.h"
+#include "downloadwidgetutils.h"
 
 #include <QTimer>
 #include <QApplication>
@@ -43,9 +44,11 @@ DownloadApplicationObject *DownloadApplicationObject::instance()
 
 void DownloadApplicationObject::windowCloseAnimation()
 {
+    float v = M_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
+    v = DownloadUtils::Widget::reRenderValue<float>(1, 0.35, v);
     m_animation->stop();
     m_animation->setDuration(MT_S2MS/2);
-    m_animation->setStartValue(1);
+    m_animation->setStartValue(v);
     m_animation->setEndValue(0);
     m_animation->start();
     QTimer::singleShot(MT_S2MS, qApp, SLOT(quit()));

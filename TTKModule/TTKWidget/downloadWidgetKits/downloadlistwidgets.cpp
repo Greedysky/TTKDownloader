@@ -5,7 +5,6 @@
 #include "downloaduiobject.h"
 #include "downloadsettingmanager.h"
 #include "downloadabstracttablewidget.h"
-#include "downloadwidgetutils.h"
 #include "downloadlistconfigmanager.h"
 #include "downloadcoreutils.h"
 #include "downloadmessagebox.h"
@@ -21,7 +20,6 @@ DownloadListWidgets::DownloadListWidgets(QWidget *parent)
     setColumnCount(1);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-    DownloadUtils::Widget::setTransparent(this, 0);
     m_maxDownloadCount = 0;
 }
 

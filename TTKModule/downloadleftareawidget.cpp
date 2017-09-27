@@ -31,7 +31,9 @@ DownloadLeftAreaWidget *DownloadLeftAreaWidget::instance()
 void DownloadLeftAreaWidget::setupUi(Ui::DownloadApplication* ui)
 {
     m_ui = ui;
+
     connect(ui->fucntionListWidget, SIGNAL(currentIndexChanged(int)), SLOT(funcitonIndexChanged(int)));
+    connect(ui->settingButton, SIGNAL(clicked()), SLOT(showSettingWidget()));
 }
 
 void DownloadLeftAreaWidget::funcitonIndexChanged(int index)
