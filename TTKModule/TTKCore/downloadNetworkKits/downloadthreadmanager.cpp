@@ -36,7 +36,14 @@ qint64 DownloadThreadManager::getFileSize(const QString &url, int tryTimes)
     {
         QNetworkAccessManager manager;
         QEventLoop loop;
-        QNetworkReply *reply = manager.head(QNetworkRequest(url));
+        QNetworkRequest request;
+        request.setUrl(url);
+    #ifndef QT_NO_SSL
+        QSslConfiguration sslConfig = request.sslConfiguration();
+        sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
+        request.setSslConfiguration(sslConfig);
+    #endif
+        QNetworkReply *reply = manager.head(request);
         if(!reply)
         {
             continue;
