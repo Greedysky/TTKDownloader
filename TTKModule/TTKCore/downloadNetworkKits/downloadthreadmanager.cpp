@@ -9,6 +9,7 @@
 #include <QEventLoop>
 #include <QNetworkReply>
 #include <QNetworkRequest>
+#include <QSslConfiguration>
 #include <QNetworkAccessManager>
 
 DownloadThreadManager::DownloadThreadManager(QObject *parent)

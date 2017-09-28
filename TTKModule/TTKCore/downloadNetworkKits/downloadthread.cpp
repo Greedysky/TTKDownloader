@@ -1,6 +1,7 @@
 #include "downloadthread.h"
 
 #include <QFile>
+#include <QSslConfiguration>
 #include <QNetworkRequest>
 #include <QNetworkAccessManager>
 
