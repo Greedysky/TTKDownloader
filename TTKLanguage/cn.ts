@@ -4,10 +4,6 @@
 <context>
     <name>DownloadApplication</name>
     <message>
-        <source>DownloadApplication</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Prompt</source>
         <translation>提示</translation>
     </message>
@@ -54,6 +50,30 @@
     <message>
         <source>appClose(X)</source>
         <translation>退出(X)</translation>
+    </message>
+    <message>
+        <source>天天下载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>开始全部任务</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>暂停全部任务</translation>
+    </message>
+    <message>
+        <source>Clear Bin</source>
+        <translation>清理垃圾桶</translation>
+    </message>
+    <message>
+        <source>Select All</source>
+        <translation>全选</translation>
+    </message>
+    <message>
+        <source>Reverse Select</source>
+        <translation>反选</translation>
     </message>
 </context>
 <context>
@@ -329,6 +349,37 @@ Copyright© 2016-2017 Greedysky All Rights Reserved
     </message>
 </context>
 <context>
+    <name>DownloadRemoteWidget</name>
+    <message>
+        <source>NewDownload(N)</source>
+        <translation>新建任务(N)</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>开始全部任务</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>暂停全部任务</translation>
+    </message>
+    <message>
+        <source>FloatSetting</source>
+        <translation>悬浮窗显示设置</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>显示悬浮框</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>隐藏悬浮框</translation>
+    </message>
+    <message>
+        <source>quit</source>
+        <translation>关闭</translation>
+    </message>
+</context>
+<context>
     <name>DownloadRightAreaWidget</name>
     <message>
         <source>NewDownload</source>
@@ -434,6 +485,14 @@ Copyright© 2016-2017 Greedysky All Rights Reserved
     <message>
         <source>appClose(X)</source>
         <translation>退出(X)</translation>
+    </message>
+    <message>
+        <source>Show</source>
+        <translation>显示悬浮框</translation>
+    </message>
+    <message>
+        <source>Hide</source>
+        <translation>隐藏悬浮框</translation>
     </message>
 </context>
 <context>
