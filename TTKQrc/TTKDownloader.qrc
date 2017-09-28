@@ -15,6 +15,10 @@
         <file alias="lb_left_bottom">../TTKResource/borderShadow/lb_left_bottom.png</file>
         <file alias="lb_right_bottom">../TTKResource/borderShadow/lb_right_bottom.png</file>
     </qresource>
+    <qresource prefix="/remote">
+        <file alias="lb_back">../TTKResource/remote/lb_back.png</file>
+        <file alias="lb_star">../TTKResource/remote/lb_star.png</file>
+    </qresource>
     <qresource prefix="/control">
         <file alias="btn_checkBox_checked">../TTKResource/controls/btn_checkBox_checked.png</file>
         <file alias="btn_checkBox_unchecked">../TTKResource/controls/btn_checkBox_unchecked.png</file>
@@ -43,6 +47,7 @@
         <file alias="lb_start_normal">../TTKResource/contextMenu/lb_start_normal.png</file>
         <file alias="lb_stop_normal">../TTKResource/contextMenu/lb_stop_normal.png</file>
         <file alias="lb_setting_normal">../TTKResource/contextMenu/lb_setting_normal.png</file>
+        <file alias="lb_selected">../TTKResource/contextMenu/lb_selected.png</file>
     </qresource>
     <qresource prefix="/appTools">
         <file alias="item_delete_clicked">../TTKResource/appTools/item_delete_clicked.png</file>

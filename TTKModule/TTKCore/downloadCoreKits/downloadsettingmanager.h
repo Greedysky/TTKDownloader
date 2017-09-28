@@ -34,6 +34,7 @@ public:
         CloseNetWorkChoiced,            /*!< Close NetWork Parameter*/
         FileAssociationChoiced,         /*!< File Association Parameter*/
         WindowQuitModeChoiced,          /*!< Window Quit Mode Parameter*/
+        RemoteWidgetModeChoiced,        /*!< Remote Widget Mode Parameter*/
 
         BgThemeChoiced,                 /*!< Bg Theme Parameter*/
         BgTransparentChoiced,           /*!< Bg Transparent Parameter*/

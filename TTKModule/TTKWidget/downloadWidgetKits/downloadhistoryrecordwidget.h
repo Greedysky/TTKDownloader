@@ -43,6 +43,10 @@ public:
 
 public Q_SLOTS:
     /*!
+     * Reverse select.
+     */
+    void reverseSelect();
+    /*!
      * Table widget list cell click.
      */
     void listCellClicked(int row, int column);

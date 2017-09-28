@@ -9,6 +9,7 @@
  * works are strictly forbiden.
    =================================================*/
 
+#include <QTimer>
 #include "downloadabstracttablewidget.h"
 
 class DownloadUnits;
@@ -51,6 +52,10 @@ Q_SIGNALS:
     void downloadingFinished(const QString &path, const QString &url);
 
 public Q_SLOTS:
+    /*!
+     * Reverse select.
+     */
+    void reverseSelect();
     /*!
      * Pause to download.
      */
@@ -104,6 +109,12 @@ public Q_SLOTS:
      */
     void copyUrlClicked();
 
+private Q_SLOTS:
+    /*!
+     * Update total speed label.
+     */
+    void updateTotalSpeedLabel();
+
 protected:
     /*!
      * Override the widget event.
@@ -134,6 +145,7 @@ protected:
      */
     bool findUrl(const QString &path) const;
 
+    QTimer m_speedTimer;
     int m_maxDownloadCount;
     QList<DownloadUnits*> m_itemList;
 

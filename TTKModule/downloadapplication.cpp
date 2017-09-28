@@ -95,19 +95,31 @@ void DownloadApplication::appCreateRightMenu()
 
     rightClickMenu.addAction(tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
     rightClickMenu.addSeparator();
-    rightClickMenu.addAction(tr("File(F)"));
-    rightClickMenu.addAction(tr("Edit(E)"));
+
+    QMenu fileMenu(tr("File(F)"), &rightClickMenu);
+    fileMenu.addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
+    fileMenu.addSeparator();
+    fileMenu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("Start"), DownloadRightAreaWidget::instance(), SLOT(startToDownload()));
+    fileMenu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), DownloadRightAreaWidget::instance(), SLOT(stopToDownload()));
+    fileMenu.addAction(tr("Clear Bin"));
+    rightClickMenu.addMenu(&fileMenu);
+
+    QMenu editMenu(tr("Edit(E)"), &rightClickMenu);
+    editMenu.addAction(tr("Select All"), DownloadRightAreaWidget::instance(), SLOT(editSelectAll()));
+    editMenu.addAction(tr("Reverse Select"), DownloadRightAreaWidget::instance(), SLOT(editReverseSelect()));
+    rightClickMenu.addMenu(&editMenu);
+
     rightClickMenu.addAction(tr("Plan"));
     rightClickMenu.addSeparator();
     rightClickMenu.addAction(tr("ResetWindow"), m_applicationObject, SLOT(appResetWindow()));
     rightClickMenu.addAction(QIcon(":/contextMenu/lb_setting_normal"), tr("Setting(O)"), DownloadLeftAreaWidget::instance(), SLOT(showSettingWidget()));
     rightClickMenu.addSeparator();
 
-    QMenu aboutInfo(tr("About"), &rightClickMenu);
-    aboutInfo.addAction(tr("Update"), m_applicationObject, SLOT(appVersionUpdate()));
-    aboutInfo.addAction(QIcon(":/image/lb_player_logo"), tr("Version") + QString(DOWNLOAD_VERSION_STR) + QString(DOWNLOAD_VER_TIME_STR),
+    QMenu aboutMenu(tr("About"), &rightClickMenu);
+    aboutMenu.addAction(tr("Update"), m_applicationObject, SLOT(appVersionUpdate()));
+    aboutMenu.addAction(QIcon(":/image/lb_player_logo"), tr("Version") + QString(DOWNLOAD_VERSION_STR) + QString(DOWNLOAD_VER_TIME_STR),
                         m_applicationObject, SLOT(appAboutUs()));
-    rightClickMenu.addMenu(&aboutInfo);
+    rightClickMenu.addMenu(&aboutMenu);
     rightClickMenu.addSeparator();
     rightClickMenu.addAction(tr("appClose(X)"), this, SLOT(quitWindowClose()));
     rightClickMenu.exec(QCursor::pos());
@@ -164,6 +176,8 @@ void DownloadApplication::readXMLConfigFromText()
     //Disable  window quit mode on unix
     M_SETTING_PTR->setValue(DownloadSettingManager::WindowQuitModeChoiced, false);
 #endif
+
+    M_SETTING_PTR->setValue(DownloadSettingManager::RemoteWidgetModeChoiced, false);
 
     //Set the current background color and alpha value
     m_topAreaWidget->setParameters(M_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString(),

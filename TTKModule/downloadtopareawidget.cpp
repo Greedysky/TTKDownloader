@@ -6,6 +6,7 @@
 #include "downloadwidgetutils.h"
 #include "downloadsettingmanager.h"
 #include "downloadbackgroundmanager.h"
+#include "downloadremotewidget.h"
 
 #include <QPainter>
 
@@ -16,11 +17,13 @@ DownloadTopAreaWidget::DownloadTopAreaWidget(QWidget *parent)
 {
     m_instance = this;
 
+    m_remoteWidget = nullptr;
     m_backgroundWidget = nullptr;
 }
 
 DownloadTopAreaWidget::~DownloadTopAreaWidget()
 {
+    delete m_remoteWidget;
     delete m_backgroundWidget;
 }
 
@@ -75,6 +78,33 @@ void DownloadTopAreaWidget::setParameters(const QString &skin, int alpha)
 QPixmap DownloadTopAreaWidget::getRendererPixmap() const
 {
     return m_ui->background->getRendererPixmap();
+}
+
+void DownloadTopAreaWidget::showRemoteSpeedWidget()
+{
+    if(m_remoteWidget)
+    {
+        return;
+    }
+    m_remoteWidget = new DownloadRemoteWidget;
+    m_remoteWidget->show();
+}
+
+void DownloadTopAreaWidget::closeRemoteSpeedWidget()
+{
+    if(m_remoteWidget)
+    {
+        m_remoteWidget->deleteLater();
+        m_remoteWidget = nullptr;
+    }
+}
+
+void DownloadTopAreaWidget::updateRemoteSpeedText(int value)
+{
+    if(m_remoteWidget)
+    {
+        m_remoteWidget->setValue(value);
+    }
 }
 
 void DownloadTopAreaWidget::backgroundSliderStateChanged(bool state)

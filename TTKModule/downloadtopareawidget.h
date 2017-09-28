@@ -13,6 +13,7 @@
 #include <QTimer>
 #include "downloadglobaldefine.h"
 
+class DownloadRemoteWidget;
 class DownloadBackgroundSkinDialog;
 
 namespace Ui {
@@ -65,6 +66,18 @@ public:
 
 public Q_SLOTS:
     /*!
+     * Show remote speed widget.
+     */
+    void showRemoteSpeedWidget();
+    /*!
+     * Close remote speed widget.
+     */
+    void closeRemoteSpeedWidget();
+    /*!
+     * Update remote speed text.
+     */
+    void updateRemoteSpeedText(int value);
+    /*!
      * Current slider state changed.
      */
     void backgroundSliderStateChanged(bool state);
@@ -112,6 +125,8 @@ protected:
     void drawWindowBackgroundRectString(const QString &path);
 
     Ui::DownloadApplication *m_ui;
+
+    DownloadRemoteWidget *m_remoteWidget;
     DownloadBackgroundSkinDialog *m_backgroundWidget;
 
     QImage m_backgroundImage;

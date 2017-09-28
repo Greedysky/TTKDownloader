@@ -34,6 +34,10 @@ public:
      * Get class object name.
      */
     static QString getClassName();
+    /*!
+     * Get progress bar percent.
+     */
+    float getPercent() const;
 
 public Q_SLOTS:
     /*!

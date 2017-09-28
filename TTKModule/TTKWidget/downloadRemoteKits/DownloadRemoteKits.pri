@@ -6,9 +6,15 @@
 # * works are strictly forbiden.
 # =================================================
 
-contains(CONFIG, DOWNLOAD_BUILD_LIB){
-    include($$PWD/downloadUiKits/DownloadUiKits.pri)
+INCLUDEPATH += $$PWD
+
+!contains(CONFIG, DOWNLOAD_NO_MSVC_LINK_NEED){
+HEADERS  += \
+    $$PWD/downloadremotewidget.h
+
 }
-include($$PWD/downloadRemoteKits/DownloadRemoteKits.pri)
-include($$PWD/downloadWidgetKits/DownloadWidgetKits.pri)
-include($$PWD/downloadWidgetCoreKits/DownloadWidgetCoreKits.pri)
+
+contains(CONFIG, DOWNLOAD_BUILD_LIB){
+SOURCES += \
+    $$PWD/downloadremotewidget.cpp
+}

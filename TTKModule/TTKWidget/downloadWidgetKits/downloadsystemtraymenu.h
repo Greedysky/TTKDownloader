@@ -31,6 +31,14 @@ public:
      */
     static QString getClassName();
 
+protected:
+    /*!
+     * Override the widget event.
+     */
+    virtual void showEvent(QShowEvent *event) override;
+
+    QMenu *m_floatMenu;
+
 };
 
 #endif // DOWNLOADSYSTEMTRAYMENU_H

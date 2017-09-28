@@ -59,7 +59,7 @@ public Q_SLOTS:
     /*!
      * Download state changed.
      */
-    void downloadStateChanged(bool);
+    void downloadStateChanged(bool state);
     /*!
      * Shown new file dialog.
      */
@@ -72,6 +72,14 @@ public Q_SLOTS:
      * Stop to download.
      */
     void stopToDownload();
+    /*!
+     * Sselect all mode.
+     */
+    void editSelectAll();
+    /*!
+     * Reverse select mode.
+     */
+    void editReverseSelect();
 
 protected:
     Ui::DownloadApplication *m_ui;

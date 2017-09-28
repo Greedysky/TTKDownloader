@@ -8,6 +8,9 @@
 #include "downloadlistconfigmanager.h"
 #include "downloadcoreutils.h"
 #include "downloadmessagebox.h"
+#include "downloadtopareawidget.h"
+
+#include <qmath.h>
 
 #include <QMenu>
 #include <QClipboard>
@@ -21,10 +24,14 @@ DownloadListWidgets::DownloadListWidgets(QWidget *parent)
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 
     m_maxDownloadCount = 0;
+    m_speedTimer.setInterval(MT_S2MS/4);
+    connect(&m_speedTimer, SIGNAL(timeout()), SLOT(updateTotalSpeedLabel()));
+    m_speedTimer.start();
 }
 
 DownloadListWidgets::~DownloadListWidgets()
 {
+    m_speedTimer.stop();
     DownloadLists lists;
     foreach(DownloadUnits *item, m_itemList)
     {
@@ -71,6 +78,28 @@ void DownloadListWidgets::resizeWindow()
     int w = M_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
     QHeaderView *headerview = horizontalHeader();
     headerview->resizeSection(0, 787 + w - WINDOW_WIDTH_MIN);
+}
+
+void DownloadListWidgets::reverseSelect()
+{
+    DownloadObject::MIntSet rows;
+    foreach(QTableWidgetItem *item, selectedItems())
+    {
+        rows.insert(item->row());
+    }
+
+    setSelectionMode(QAbstractItemView::MultiSelection);
+
+    clearSelection();
+    for(int i=0; i<rowCount(); ++i)
+    {
+        if(!rows.contains(i))
+        {
+            selectRow(i);
+        }
+    }
+
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
 void DownloadListWidgets::pause()
@@ -259,6 +288,16 @@ void DownloadListWidgets::copyUrlClicked()
 
     QClipboard *clipBoard = QApplication::clipboard();
     clipBoard->setText(m_itemList[ currentRow() ]->getUrl());
+}
+
+void DownloadListWidgets::updateTotalSpeedLabel()
+{
+    float total = 0;
+    foreach(DownloadUnits *item, m_itemList)
+    {
+        total += item->getDownloadItemWidget()->getPercent();
+    }
+    DownloadTopAreaWidget::instance()->updateRemoteSpeedText(m_itemList.isEmpty() ? 0 : ceil(total/m_itemList.count()*100));
 }
 
 void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)

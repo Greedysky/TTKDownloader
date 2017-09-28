@@ -48,6 +48,7 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
 
     m_progressBar = new QProgressBar(speedWidget);
     m_progressBar->setFixedHeight(13);
+    m_progressBar->setValue(0);
     speedWidgetLayout->addWidget(m_progressBar);
 
     QWidget *speedInfoWidget = new QWidget(speedWidget);
@@ -89,6 +90,16 @@ DownloadListItemWidget::~DownloadListItemWidget()
 QString DownloadListItemWidget::getClassName()
 {
     return staticMetaObject.className();
+}
+
+float DownloadListItemWidget::getPercent() const
+{
+    if(m_progressBar->maximum() <= 0)
+    {
+        return 0.0f;
+    }
+
+    return m_progressBar->value()*1.0f/m_progressBar->maximum();
 }
 
 void DownloadListItemWidget::backgroundChanged()

@@ -111,3 +111,23 @@ void DownloadRightAreaWidget::stopToDownload()
     m_listWidget->selectAll();
     m_listWidget->pause();
 }
+
+void DownloadRightAreaWidget::editSelectAll()
+{
+    switch(m_ui->centerStackedWidget->currentIndex())
+    {
+        case 0: m_listWidget->selectAll(); break;
+        case 1: m_historyWidget->selectAll(); break;
+        default: break;
+    }
+}
+
+void DownloadRightAreaWidget::editReverseSelect()
+{
+    switch(m_ui->centerStackedWidget->currentIndex())
+    {
+        case 0: m_listWidget->reverseSelect(); break;
+        case 1: m_historyWidget->selectAll(); break;
+        default: break;
+    }
+}

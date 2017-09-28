@@ -68,6 +68,28 @@ void DownloadHistoryRecordWidget::resizeWindow()
     headerview->resizeSection(1, 495 + width - WINDOW_WIDTH_MIN);
 }
 
+void DownloadHistoryRecordWidget::reverseSelect()
+{
+    DownloadObject::MIntSet rows;
+    foreach(QTableWidgetItem *item, selectedItems())
+    {
+        rows.insert(item->row());
+    }
+
+    setSelectionMode(QAbstractItemView::MultiSelection);
+
+    clearSelection();
+    for(int i=0; i<rowCount(); ++i)
+    {
+        if(!rows.contains(i))
+        {
+            selectRow(i);
+        }
+    }
+
+    setSelectionMode(QAbstractItemView::ExtendedSelection);
+}
+
 void DownloadHistoryRecordWidget::listCellClicked(int row, int column)
 {
     Q_UNUSED(row);

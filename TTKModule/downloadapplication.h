@@ -60,6 +60,9 @@ public Q_SLOTS:
     void appCreateRightMenu();
 
 private:
+    /*!
+     * Override the widget event.
+     */
     virtual void resizeEvent(QResizeEvent *event) override;
     virtual void closeEvent(QCloseEvent *event) override;
     virtual void mouseDoubleClickEvent(QMouseEvent *event) override;

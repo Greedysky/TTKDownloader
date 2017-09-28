@@ -5,7 +5,7 @@
 #include "downloadwindowextras.h"
 #include "downloadnumberutils.h"
 #include "downloadnetworkspeedtestthread.h"
-#include <QDebug>
+
 DownloadBottomAreaWidget *DownloadBottomAreaWidget::m_instance = nullptr;
 
 DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)

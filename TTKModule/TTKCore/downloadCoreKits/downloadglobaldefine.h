@@ -18,6 +18,7 @@
 #  define DOWNLOAD_WIDGET
 #  define DOWNLOAD_GUI
 #  define DOWNLOAD_UTILS
+#  define DOWNLOAD_REMOTE
 #endif
 
 //////////////////////////////////////
@@ -66,6 +67,13 @@
 #  endif
 #endif
 
+#ifdef DOWNLOAD_REMOTE
+#  ifdef DOWNLOAD_EXPORT
+#    define DOWNLOAD_REMOTE_EXPORT Q_DECL_EXPORT
+#  else
+#    define DOWNLOAD_REMOTE_IMPORT Q_DECL_IMPORT
+#  endif
+#endif
 
 //////////////////////////////////////
 ///load logger
