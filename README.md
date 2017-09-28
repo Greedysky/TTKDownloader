@@ -13,7 +13,7 @@ Usage
  * Qt develop version be tested on Qt4.8.6 for ubuntu-linux-gcc 64bit
  * Qt develop version be tested on Qt5.x for windows-mingw 32bit
  * Qt develop version be tested on Qt5.x for ubuntu-linux-gcc 64bit
- * 
+
  | Platform | Qt & Compiler       | Status                                                                                      |
 | :---:    | :---:               | :---:                                                                                       |
 | Linux    | 4.8.7 GCC & 5.x GCC    | ![Linux](https://img.shields.io/wercker/ci/wercker/docs.svg)                            |
