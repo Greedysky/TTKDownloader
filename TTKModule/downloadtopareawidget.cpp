@@ -56,7 +56,7 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication* ui)
     ui->windowMaxButton->setStyleSheet(DownloadUIObject::MTHDMaximum);
     ui->windowMaxButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowMaxButton->setToolTip(tr("Maximum"));
-    connect(ui->windowMaxButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(showMaximized()));
+    connect(ui->windowMaxButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(showMaximizedWindow()));
 
     ui->windowCloseButton->setStyleSheet(DownloadUIObject::MTHDClose);
     ui->windowCloseButton->setCursor(QCursor(Qt::PointingHandCursor));

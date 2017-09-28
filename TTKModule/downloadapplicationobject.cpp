@@ -70,9 +70,13 @@ void DownloadApplicationObject::appResetWindow()
     M_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, widget->size());
     M_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, QSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN));
 
-    DownloadApplication::instance()->setGeometry((widget->width() - WINDOW_WIDTH_MIN)/2,
-                                                 (widget->height() - WINDOW_HEIGHT_MIN)/2,
-                                                  WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
+    QWidget *w = DownloadApplication::instance();
+    if(w->isMaximized() || w->isMinimized() || w->isFullScreen())
+    {
+        w->showNormal();
+    }
+    w->setGeometry((widget->width() - WINDOW_WIDTH_MIN)/2, (widget->height() - WINDOW_HEIGHT_MIN)/2,
+                    WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
 }
 
 void DownloadApplicationObject::cleanUp()

@@ -41,8 +41,6 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     m_leftAreaWidget->setupUi(m_ui);
     m_topAreaWidget->backgroundSliderStateChanged(false);
 
-    m_quitWindowClose = false;
-
     M_HOTKEY_PTR->connectParentObject(this, "Ctrl+X", SLOT(quitWindowClose()));
 
     /////////// Mouse tracking
@@ -78,11 +76,15 @@ DownloadApplication *DownloadApplication::instance()
     return m_instance;
 }
 
+void DownloadApplication::showMaximizedWindow()
+{
+    isMaximized() ? showNormal() : showMaximized();
+}
+
 void DownloadApplication::quitWindowClose()
 {
     //Write configuration files
     writeXMLConfigToText();
-    m_quitWindowClose = true;
     m_applicationObject->windowCloseAnimation();
 }
 
@@ -113,20 +115,12 @@ void DownloadApplication::appCreateRightMenu()
 
 void DownloadApplication::resizeEvent(QResizeEvent *event)
 {
-    if(!m_quitWindowClose)
-    {
-        M_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, size());
-        m_topAreaWidget->backgroundThemeChangedByResize();
-        m_rightAreaWidget->resizeWindow();
-        DownloadAbstractMoveResizeWidget::resizeEvent(event);
-    }
-    else
-    {
-        setMinimumSize(0, 0); ///remove fixed size
-        m_ui->background->stop();
-        event->ignore();
-    }
+    M_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, size());
+    m_topAreaWidget->backgroundThemeChangedByResize();
+    m_rightAreaWidget->resizeWindow();
+    DownloadAbstractMoveResizeWidget::resizeEvent(event);
 }
+
 void DownloadApplication::closeEvent(QCloseEvent *event)
 {
     DownloadAbstractMoveResizeWidget::closeEvent(event);

@@ -47,6 +47,10 @@ public:
 
 public Q_SLOTS:
     /*!
+     * Show maximized window.
+     */
+    void showMaximizedWindow();
+    /*!
      * Application window close.
      */
     void quitWindowClose();
@@ -70,7 +74,6 @@ private:
     void writeXMLConfigToText();
 
     Ui::DownloadApplication *m_ui;
-    bool m_quitWindowClose;
 
     DownloadBottomAreaWidget *m_bottomAreaWidget;
     DownloadTopAreaWidget *m_topAreaWidget;

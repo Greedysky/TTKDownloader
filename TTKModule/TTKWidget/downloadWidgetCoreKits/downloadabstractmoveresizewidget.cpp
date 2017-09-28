@@ -39,14 +39,7 @@ void DownloadAbstractMoveResizeWidget::mouseDoubleClickEvent(QMouseEvent *event)
     QWidget::mouseDoubleClickEvent(event);
     if(event->buttons() == Qt::LeftButton)
     {
-        if(isMaximized())
-        {
-            showNormal();
-        }
-        else
-        {
-            showMaximized();
-        }
+        isMaximized() ? showNormal() : showMaximized();
     }
 }
 
