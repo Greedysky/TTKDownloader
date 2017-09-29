@@ -33,16 +33,24 @@ public:
         CloseEventChoiced,              /*!< Close Event Parameter*/
         CloseNetWorkChoiced,            /*!< Close NetWork Parameter*/
         FileAssociationChoiced,         /*!< File Association Parameter*/
-        WindowQuitModeChoiced,          /*!< Window Quit Mode Parameter*/
-        RemoteWidgetModeChoiced,        /*!< Remote Widget Mode Parameter*/
+        StartUpModeChoiced,             /*!< Start Up Mode Parameter*/
+        StartUpRunModeChoiced,          /*!< Start Up Run Mode Parameter*/
+        SlienceRunModeChoiced,          /*!< Slience Run Mode Parameter*/
 
         BgThemeChoiced,                 /*!< Bg Theme Parameter*/
         BgTransparentChoiced,           /*!< Bg Transparent Parameter*/
 
+        DownloadModeChoiced,            /*!< Download Mode Parameter*/
+        DownloadMaxCountChoiced,        /*!< Download Max Count Parameter*/
         DownloadLimitChoiced,           /*!< Download Limit Parameter*/
         DownloadPathDirChoiced,         /*!< Download Path Dir Parameter*/
         DownloadDLoadLimitChoiced,      /*!< Download DLoad Limit Parameter*/
         DownloadULoadLimitChoiced,      /*!< Download ULoad Limit Parameter*/
+
+        SkinEffectLevelChoiced,         /*!< Skin effect Level Parameter*/
+        SkinFontChoiced,                /*!< Skin Font Parameter*/
+        SkinSuspensionChoiced,          /*!< Skin Suspension Show Parameter*/
+        SkinSuspensionPerChoiced        /*!< Skin Suspension Show Percent Parameter*/
 
     };
 

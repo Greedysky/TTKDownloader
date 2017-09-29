@@ -4,6 +4,7 @@
         <file alias="lb_noneImage">../TTKResource/lb_noneImage.png</file>
         <file alias="lb_blankImage">../TTKResource/lb_blankImage.png</file>
         <file alias="lb_logo">../TTKResource/logo_pic.png</file>
+        <file alias="lb_slider">../TTKResource/lb_slider.png</file>
     </qresource>
     <qresource prefix="/shadow">
         <file alias="lb_bottom">../TTKResource/borderShadow/lb_bottom.png</file>
@@ -18,6 +19,11 @@
     <qresource prefix="/remote">
         <file alias="lb_back">../TTKResource/remote/lb_back.png</file>
         <file alias="lb_star">../TTKResource/remote/lb_star.png</file>
+    </qresource>
+    <qresource prefix="/usermanager">
+        <file alias="lb_top_arrow">../TTKResource/usermanager/lb_top_arrow.png</file>
+        <file alias="btn_down_arrow">../TTKResource/usermanager/btn_down_arrow.png</file>
+        <file alias="btn_up_arrow">../TTKResource/usermanager/btn_up_arrow.png</file>
     </qresource>
     <qresource prefix="/control">
         <file alias="btn_checkBox_checked">../TTKResource/controls/btn_checkBox_checked.png</file>
@@ -73,6 +79,8 @@
         <file alias="btn_skin_normal">../TTKResource/tiny/btn_skin_normal.png</file>
         <file alias="lb_resize_normal">../TTKResource/tiny/lb_resize_normal.png</file>
         <file alias="lb_selected">../TTKResource/tiny/lb_selected.png</file>
+        <file alias="lb_arrow_up_normal">../TTKResource/tiny/lb_arrow_up_normal.png</file>
+        <file alias="lb_transparent">../TTKResource/tiny/lb_transparent.png</file>
     </qresource>
     <qresource prefix="/functions">
         <file alias="btn_delete_disable">../TTKResource/functions/btn_delete_disable.png</file>

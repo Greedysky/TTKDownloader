@@ -22,7 +22,9 @@ void DownloadSysConfigManager::writeXMLConfig()
     int closeEventChoiced = M_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toInt();
     int closeNetWorkChoiced = M_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt();
     int fileAssociationChoiced = M_SETTING_PTR->value(DownloadSettingManager::FileAssociationChoiced).toInt();
-    int windowQuitModeChoiced = M_SETTING_PTR->value(DownloadSettingManager::WindowQuitModeChoiced).toInt();
+    int startupModeChoiced = M_SETTING_PTR->value(DownloadSettingManager::StartUpModeChoiced).toInt();
+    int startupRunModeChoiced = M_SETTING_PTR->value(DownloadSettingManager::StartUpRunModeChoiced).toInt();
+    int slienceRunModeChoiced = M_SETTING_PTR->value(DownloadSettingManager::SlienceRunModeChoiced).toInt();
 
     ///////////////////////////////////////////////////////////////////////////
     QString bgThemeChoiced = M_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString();
@@ -30,9 +32,18 @@ void DownloadSysConfigManager::writeXMLConfig()
 
     ///////////////////////////////////////////////////////////////////////////
     int downloadLimit = M_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt();
+    int downloadModeChoiced = M_SETTING_PTR->value(DownloadSettingManager::DownloadModeChoiced).toInt();
+    int downloadMaxCountChoiced = M_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCountChoiced).toInt();
     QString downloadPathDir = M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
     QString downloadDLoadLimit = M_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toString();
     QString downloadULoadLimit = M_SETTING_PTR->value(DownloadSettingManager::DownloadULoadLimitChoiced).toString();
+
+    ///////////////////////////////////////////////////////////////////////////
+    int skinEffectLevelChoiced = M_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt();
+    int skinFontChoiced = M_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
+    int skinSuspensionChoiced = M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toInt();
+    int skinSuspensionPerChoiced = M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toInt();
+
     ///////////////////////////////////////////////////////////////////////////
 
     //Open wirte file
@@ -47,6 +58,7 @@ void DownloadSysConfigManager::writeXMLConfig()
     QDomElement plusSettingDom = writeDom(playerDom, "plusSetting");
     QDomElement backgroundSettingDom = writeDom(playerDom, "backgroundSetting");
     QDomElement downloadSettingDom = writeDom(playerDom, "downloadSetting");
+    QDomElement skinSettingDom = writeDom(playerDom, "skinSetting");
     //Class B
 
     ///////////////////////////////////////////////////////////////////////////
@@ -55,7 +67,9 @@ void DownloadSysConfigManager::writeXMLConfig()
     writeDomElement(plusSettingDom, "closeEvent", DownloadXmlAttribute("value", closeEventChoiced));
     writeDomElement(plusSettingDom, "closeNetwork", DownloadXmlAttribute("value", closeNetWorkChoiced));
     writeDomElement(plusSettingDom, "fileAssociation", DownloadXmlAttribute("value", fileAssociationChoiced));
-    writeDomElement(plusSettingDom, "windowQuitMode", DownloadXmlAttribute("value", windowQuitModeChoiced));
+    writeDomElement(plusSettingDom, "startUpMode", DownloadXmlAttribute("value", startupModeChoiced));
+    writeDomElement(plusSettingDom, "startUpRunMode", DownloadXmlAttribute("value", startupRunModeChoiced));
+    writeDomElement(plusSettingDom, "slienceRunMode", DownloadXmlAttribute("value", slienceRunModeChoiced));
 
     ///////////////////////////////////////////////////////////////////////////
     writeDomElement(backgroundSettingDom, "bgTheme", DownloadXmlAttribute("value", bgThemeChoiced));
@@ -63,9 +77,18 @@ void DownloadSysConfigManager::writeXMLConfig()
 
     ///////////////////////////////////////////////
     writeDomElement(downloadSettingDom, "downloadLimit", DownloadXmlAttribute("value", downloadLimit));
+    writeDomElement(downloadSettingDom, "downloadMode", DownloadXmlAttribute("value", downloadModeChoiced));
+    writeDomElement(downloadSettingDom, "downloadMaxCount", DownloadXmlAttribute("value", downloadMaxCountChoiced));
     writeDomElement(downloadSettingDom, "downloadPathDir", DownloadXmlAttribute("value", downloadPathDir));
     writeDomElement(downloadSettingDom, "downloadDLoadLimit", DownloadXmlAttribute("value", downloadDLoadLimit));
     writeDomElement(downloadSettingDom, "downloadULoadLimit", DownloadXmlAttribute("value", downloadULoadLimit));
+
+    ///////////////////////////////////////////////
+    writeDomElement(skinSettingDom, "skinEffectLevel", DownloadXmlAttribute("value", skinEffectLevelChoiced));
+    writeDomElement(skinSettingDom, "skinFont", DownloadXmlAttribute("value", skinFontChoiced));
+    writeDomElement(skinSettingDom, "skinSuspension", DownloadXmlAttribute("value", skinSuspensionChoiced));
+    writeDomElement(skinSettingDom, "skinSuspensionPer", DownloadXmlAttribute("value", skinSuspensionPerChoiced));
+
 
     //Write to file
     QTextStream out(m_file);
@@ -102,8 +125,12 @@ void DownloadSysConfigManager::readSysLoadConfig() const
                      readXmlAttributeByTagNameValue("closeNetwork").toInt());
     M_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationChoiced,
                      readXmlAttributeByTagNameValue("fileAssociation").toInt());
-    M_SETTING_PTR->setValue(DownloadSettingManager::WindowQuitModeChoiced,
-                     readXmlAttributeByTagNameValue("windowQuitMode").toInt());
+    M_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced,
+                     readXmlAttributeByTagNameValue("startUpMode").toInt());
+    M_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced,
+                     readXmlAttributeByTagNameValue("startUpRunMode").toInt());
+    M_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced,
+                     readXmlAttributeByTagNameValue("slienceRunMode").toInt());
 
 
     M_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced,
@@ -114,6 +141,10 @@ void DownloadSysConfigManager::readSysLoadConfig() const
 
     M_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced,
                      readXmlAttributeByTagNameValue("downloadLimit").toInt());
+    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced,
+                     readXmlAttributeByTagNameValue("downloadMode").toInt());
+    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced,
+                     readXmlAttributeByTagNameValue("downloadMaxCount").toInt());
     QString path = readXmlAttributeByTagNameValue("downloadPathDir");
     M_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced,
                      (path.isEmpty() || !QFile::exists(path)) ? DownloadUtils::Core::downloadPrefix() : path);
@@ -121,4 +152,15 @@ void DownloadSysConfigManager::readSysLoadConfig() const
                      readXmlAttributeByTagNameValue("downloadDLoadLimit"));
     M_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimitChoiced,
                      readXmlAttributeByTagNameValue("downloadULoadLimit"));
+
+
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced,
+                     readXmlAttributeByTagNameValue("skinEffectLevel"));
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinFontChoiced,
+                     readXmlAttributeByTagNameValue("skinFont").toInt());
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced,
+                     readXmlAttributeByTagNameValue("skinSuspension"));
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced,
+                     readXmlAttributeByTagNameValue("skinSuspensionPer").toInt());
+
 }

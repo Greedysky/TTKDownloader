@@ -81,6 +81,15 @@ void DownloadApplication::showMaximizedWindow()
     isMaximized() ? showNormal() : showMaximized();
 }
 
+void DownloadApplication::getParameterSetting()
+{
+    //This attribute is effective immediately.
+    bool config = M_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toBool();
+    m_bottomAreaWidget->setSystemCloseConfig(config);
+    config = M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool();
+    config ? m_topAreaWidget->showRemoteSpeedWidget() : m_topAreaWidget->closeRemoteSpeedWidget();
+}
+
 void DownloadApplication::quitWindowClose()
 {
     //Write configuration files
@@ -177,11 +186,15 @@ void DownloadApplication::readXMLConfigFromText()
     M_SETTING_PTR->setValue(DownloadSettingManager::WindowQuitModeChoiced, false);
 #endif
 
-    M_SETTING_PTR->setValue(DownloadSettingManager::RemoteWidgetModeChoiced, false);
-
     //Set the current background color and alpha value
     m_topAreaWidget->setParameters(M_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString(),
                                    M_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt());
+
+    //Set the current remote widget
+    if(M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool())
+    {
+        m_topAreaWidget->showRemoteSpeedWidget();
+    }
 
     //When the configuration is close to the direct exit
     m_bottomAreaWidget->setSystemCloseConfig(M_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toInt());

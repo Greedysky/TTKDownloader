@@ -116,7 +116,10 @@ public Q_SLOTS:
      * Set select download dir.
      */
     void downloadDirSelected();
-
+    /*!
+     * Set enable or disable download speed limit.
+     */
+    void downloadGroupSpeedLimit(int index);
     /*!
      * Save the change results.
      */
@@ -135,6 +138,14 @@ protected:
      * Init normal setting stack widget.
      */
     void initNormalSettingWidget();
+    /*!
+     * Init download setting stack widget.
+     */
+    void initDownloadSettingWidget();
+    /*!
+     * Init download setting stack widget.
+     */
+    void initSkinSettingWidget();
 
     Ui::DownloadSettingWidget *m_ui;
 

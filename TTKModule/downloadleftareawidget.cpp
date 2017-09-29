@@ -2,6 +2,7 @@
 #include "ui_downloadapplication.h"
 #include "downloadsettingwidget.h"
 #include "downloadhotkeymanager.h"
+#include "downloadapplication.h"
 
 DownloadLeftAreaWidget *DownloadLeftAreaWidget::m_instance = nullptr;
 
@@ -47,6 +48,7 @@ void DownloadLeftAreaWidget::funcitonIndexChanged(int index)
 void DownloadLeftAreaWidget::showSettingWidget()
 {
     DownloadSettingWidget setting;
+    connect(&setting, SIGNAL(parameterSettingChanged()), DownloadApplication::instance(), SLOT(getParameterSetting()));
     setting.initControllerParameter();
     setting.exec();
 }

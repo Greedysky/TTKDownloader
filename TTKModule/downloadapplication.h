@@ -47,6 +47,10 @@ public:
 
 public Q_SLOTS:
     /*!
+     * Get settings parameters.
+     */
+    void getParameterSetting();
+    /*!
      * Show maximized window.
      */
     void showMaximizedWindow();

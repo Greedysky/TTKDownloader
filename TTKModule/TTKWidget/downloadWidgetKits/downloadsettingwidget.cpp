@@ -2,7 +2,9 @@
 #include "ui_downloadsettingwidget.h"
 #include "downloadsettingmanager.h"
 
+#include <QFontDatabase>
 #include <QFileDialog>
+#include <QStyledItemDelegate>
 
 DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
     : DownloadAbstractTableWidget(parent)
@@ -91,6 +93,8 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
 
     ////////////////////////////////////////////////
     initNormalSettingWidget();
+    initDownloadSettingWidget();
+    initSkinSettingWidget();
     ////////////////////////////////////////////////
     selectFunctionTableIndex(0, 0);
 
@@ -109,6 +113,33 @@ QString DownloadSettingWidget::getClassName()
 void DownloadSettingWidget::initControllerParameter()
 {
     m_ui->downloadDirEdit->setText(M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString());
+
+    if(!M_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toBool())
+    {
+        m_ui->minimumRadioBox->setChecked(true);
+    }
+    else
+    {
+        m_ui->quitRadioBox->setChecked(true);
+    }
+
+    m_ui->startupCheckBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::StartUpModeChoiced).toBool());
+    m_ui->startupRunCheckBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::StartUpRunModeChoiced).toBool());
+    m_ui->slienceRunCheckBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::SlienceRunModeChoiced).toBool());
+
+    ///////////////////////////////////////////////////////////////////////////
+    M_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 1 ?
+                         m_ui->downloadFullRadioBox->click() : m_ui->downloadLimitRadioBox->click();
+    m_ui->defaultDownloadModeBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::DownloadModeChoiced).toInt());
+    m_ui->downloadMaxCountBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCountChoiced).toInt());
+
+    ///////////////////////////////////////////////////////////////////////////
+    m_ui->effectLevelBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt());
+    m_ui->fontBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt());
+
+    m_ui->suspensionVisiableBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool());
+    m_ui->suspensionShowPerBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool());
+
 }
 
 void DownloadSettingWidget::clearFunctionTableSelection()
@@ -131,9 +162,31 @@ void DownloadSettingWidget::downloadDirSelected()
     }
 }
 
+void DownloadSettingWidget::downloadGroupSpeedLimit(int index)
+{
+    m_ui->downloadLimitSpeedComboBox->setEnabled(index);
+    m_ui->uploadLimitSpeedComboBox->setEnabled(index);
+}
+
 void DownloadSettingWidget::commitTheResults()
 {
     M_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, m_ui->downloadDirEdit->text());
+    M_SETTING_PTR->setValue(DownloadSettingManager::CloseEventChoiced, m_ui->quitRadioBox->isChecked());
+    M_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced, m_ui->startupCheckBox->isChecked());
+    M_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced, m_ui->startupRunCheckBox->isChecked());
+    M_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced, m_ui->slienceRunCheckBox->isChecked());
+
+    ///////////////////////////////////////////////////////////////////////////
+    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced, m_ui->downloadFullRadioBox->isChecked());
+    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced, m_ui->defaultDownloadModeBox->currentIndex());
+    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced, m_ui->downloadMaxCountBox->currentIndex());
+
+    ///////////////////////////////////////////////////////////////////////////
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced, m_ui->effectLevelBox->currentIndex());
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinFontChoiced, m_ui->fontBox->currentIndex());
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, m_ui->suspensionVisiableBox->isChecked());
+    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, m_ui->suspensionShowPerBox->isChecked());
+
 
     emit parameterSettingChanged();
     close();
@@ -161,11 +214,83 @@ void DownloadSettingWidget::initNormalSettingWidget()
     m_ui->downloadDirEdit->setStyleSheet(DownloadUIObject::MLineEditStyle01);
     m_ui->downloadDirButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
     m_ui->downloadDirButton->setCursor(QCursor(Qt::PointingHandCursor));
-#ifdef Q_OS_UNIX
-    m_ui->downloadDirButton->setFocusPolicy(Qt::NoFocus);
-#endif
-
     m_ui->downloadDirEdit->setText(TDDOWNLOAD_DIR_FULL);
 
+    m_ui->quitRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
+    m_ui->minimumRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
+
+    m_ui->startupCheckBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+    m_ui->startupRunCheckBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+
+    m_ui->slienceRunCheckBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+
+#ifdef Q_OS_UNIX
+    m_ui->downloadDirButton->setFocusPolicy(Qt::NoFocus);
+    m_ui->quitRadioBox->setFocusPolicy(Qt::NoFocus);
+    m_ui->minimumRadioBox->setFocusPolicy(Qt::NoFocus);
+    m_ui->startupCheckBox->setFocusPolicy(Qt::NoFocus);
+    m_ui->startupRunCheckBox->setFocusPolicy(Qt::NoFocus);
+    m_ui->slienceRunCheckBox->setFocusPolicy(Qt::NoFocus);
+#endif
     connect(m_ui->downloadDirButton, SIGNAL(clicked()), SLOT(downloadDirSelected()));
+}
+
+void DownloadSettingWidget::initDownloadSettingWidget()
+{
+    m_ui->downloadFullRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
+    m_ui->downloadLimitRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
+#ifdef Q_OS_UNIX
+    m_ui->downloadFullRadioBox->setFocusPolicy(Qt::NoFocus);
+    m_ui->downloadLimitRadioBox->setFocusPolicy(Qt::NoFocus);
+#endif
+    QButtonGroup *buttonGroup = new QButtonGroup(this);
+    buttonGroup->addButton(m_ui->downloadFullRadioBox, 0);
+    buttonGroup->addButton(m_ui->downloadLimitRadioBox, 1);
+    connect(buttonGroup, SIGNAL(buttonClicked(int)), SLOT(downloadGroupSpeedLimit(int)));
+
+    m_ui->defaultDownloadModeBox->setItemDelegate(new QStyledItemDelegate(m_ui->defaultDownloadModeBox));
+    m_ui->defaultDownloadModeBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
+    m_ui->defaultDownloadModeBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->downloadMaxCountBox->setItemDelegate(new QStyledItemDelegate(m_ui->downloadMaxCountBox));
+    m_ui->downloadMaxCountBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
+    m_ui->downloadMaxCountBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->downloadLimitSpeedComboBox->setItemDelegate(new QStyledItemDelegate(m_ui->downloadLimitSpeedComboBox));
+    m_ui->downloadLimitSpeedComboBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
+    m_ui->downloadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->uploadLimitSpeedComboBox->setItemDelegate(new QStyledItemDelegate(m_ui->uploadLimitSpeedComboBox));
+    m_ui->uploadLimitSpeedComboBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
+    m_ui->uploadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+
+    m_ui->defaultDownloadModeBox->addItems(QStringList() << tr("Auto") << tr("Manual"));
+    for(int i=1; i<=50; ++i)
+    {
+        m_ui->downloadMaxCountBox->addItem(QString::number(i));
+    }
+
+    QStringList downloadSpeed;
+    downloadSpeed << "100" << "200" << "300" << "400" << "500" << "600"
+                  << "700" << "800" << "900" << "1000" << "1100" << "1200";
+    m_ui->downloadLimitSpeedComboBox->addItems(downloadSpeed);
+    m_ui->uploadLimitSpeedComboBox->addItems(downloadSpeed);
+
+}
+
+void DownloadSettingWidget::initSkinSettingWidget()
+{
+    m_ui->suspensionVisiableBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+    m_ui->suspensionShowPerBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+#ifdef Q_OS_UNIX
+    m_ui->suspensionVisiableBox->setFocusPolicy(Qt::NoFocus);
+    m_ui->suspensionShowPerBox->setFocusPolicy(Qt::NoFocus);
+#endif
+
+    m_ui->effectLevelBox->setItemDelegate(new QStyledItemDelegate(m_ui->effectLevelBox));
+    m_ui->effectLevelBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
+    m_ui->effectLevelBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->fontBox->setItemDelegate(new QStyledItemDelegate(m_ui->fontBox));
+    m_ui->fontBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
+    m_ui->fontBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+
+    m_ui->effectLevelBox->addItems(QStringList() << tr("Heigh") << tr("Low") << tr("Close"));
+    m_ui->fontBox->addItems(QFontDatabase().families(QFontDatabase::Any));
 }

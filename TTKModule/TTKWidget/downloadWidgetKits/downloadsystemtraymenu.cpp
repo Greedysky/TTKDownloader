@@ -38,7 +38,7 @@ void DownloadSystemTrayMenu::showEvent(QShowEvent *event)
     QMenu::showEvent(event);
     if(m_floatMenu)
     {
-        bool ishow = M_SETTING_PTR->value(DownloadSettingManager::RemoteWidgetModeChoiced).toBool();
+        bool ishow = M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool();
         QList<QAction*> acts = m_floatMenu->actions();
         if(acts.count() >= 2)
         {

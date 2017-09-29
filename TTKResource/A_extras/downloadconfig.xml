@@ -5,16 +5,26 @@
         <closeEvent value="1"/>
         <closeNetwork value="0"/>
         <fileAssociation value="0"/>
-        <windowQuitMode value="0"/>
+        <startUpMode value="0"/>
+        <startUpRunMode value="0"/>
+        <slienceRunMode value="0"/>
     </plusSetting>
     <backgroundSetting>
         <bgTheme value="theme-29"/>
         <bgTransparent value="100"/>
     </backgroundSetting>
     <downloadSetting>
+        <downloadMode value="1"/>
+        <downloadMaxCount value="0"/>
         <downloadLimit value="0"/>
         <downloadPathDir value=""/>
         <downloadDLoadLimit value=""/>
         <downloadULoadLimit value=""/>
     </downloadSetting>
+    <skinSetting>
+        <skinEffectLevel value="2"/>
+        <skinFont value="0"/>
+        <skinSuspension value="0"/>
+        <skinSuspensionPer value="0"/>
+    </skinSetting>
 </TTKDownloader>

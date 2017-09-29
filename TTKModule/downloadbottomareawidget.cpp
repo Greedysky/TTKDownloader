@@ -83,12 +83,15 @@ void DownloadBottomAreaWidget::iconActivated(QSystemTrayIcon::ActivationReason r
         case QSystemTrayIcon::DoubleClick:
             break;
         case QSystemTrayIcon::Trigger:
-            if(DownloadApplication::instance()->isMinimized())
             {
-                DownloadApplication::instance()->showNormal();
-                DownloadApplication::instance()->activateWindow();
+                DownloadApplication *w = DownloadApplication::instance();
+                if(w->isMinimized() || w->isHidden())
+                {
+                    w->showNormal();
+                    w->activateWindow();
+                }
+                break;
             }
-            break;
         default:
             break;
     }
