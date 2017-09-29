@@ -448,6 +448,122 @@ Copyright© 2016-2017 Greedysky All Rights Reserved
         <source>下载目录</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>启动设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>开机启动</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>最小化到系统托盘，不退出程序</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>直接退出程序</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>关闭主面板时</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>启动后自动开始未完成任务</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>静默下载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>启动静默下载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>默认下载模式</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>任务管理</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>同时下载的最大任务数</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(1-50)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>KB/s</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>下载</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>网速保护模式</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>上传</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>下载优先模式</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>模式设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>外观设定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>特效等级</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>字体</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>注: 改变字体时重启应用方能生效</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>悬浮窗设定</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>悬浮窗显示</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>悬浮窗文字显示进度</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto</source>
+        <translation>立即下载</translation>
+    </message>
+    <message>
+        <source>Manual</source>
+        <translation>手动下载</translation>
+    </message>
+    <message>
+        <source>Heigh</source>
+        <translation>高</translation>
+    </message>
+    <message>
+        <source>Low</source>
+        <translation>低</translation>
+    </message>
 </context>
 <context>
     <name>DownloadSkinAnimationWidget</name>
