@@ -4,8 +4,8 @@
 #include "downloadnetworkthread.h"
 #include "downloadcoreutils.h"
 
-#include <QFont>
 #include <QApplication>
+#include <QFontDatabase>
 
 DownloadRunTimeManager::DownloadRunTimeManager()
 {
@@ -25,26 +25,31 @@ void DownloadRunTimeManager::run() const
     DownloadUtils::Core::setLocalCodec();
 #endif
 
-    ///////////////////////////////////////////////////////
-#ifdef Q_OS_UNIX
-    QFont font;
-    font.setPixelSize(13);
-    qApp->setFont(font);
-#endif
-    ///////////////////////////////////////////////////////
-
-    //detect the current network state
-    M_NETWORK_PTR->start();
-
     M_LOGGER_INFO("Load Translation");
     DownloadSysConfigManager *xml = new DownloadSysConfigManager;
     xml->readXMLConfig();
     xml->readSysLoadConfig();
 
-    M_NETWORK_PTR->setBlockNetWork(
-                M_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt());
-    delete xml;
+    ///////////////////////////////////////////////////////
+    QFont font;
+    QStringList fts(QFontDatabase().families(QFontDatabase::Any));
+    int index = M_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
+    if(index >= 0 && index < fts.count())
+    {
+        font.setFamily(fts[index]);
+    }
+#ifdef Q_OS_UNIX
+    font.setPixelSize(13);
+#endif
+    qApp->setFont(font);
+    ///////////////////////////////////////////////////////
 
+    //detect the current network state
+    M_NETWORK_PTR->start();
+    index = M_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt();
+    M_NETWORK_PTR->setBlockNetWork(index);
+
+    delete xml;
     M_LOGGER_INFO("End load translation");
 }
 
