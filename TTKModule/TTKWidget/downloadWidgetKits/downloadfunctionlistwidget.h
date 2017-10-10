@@ -40,6 +40,10 @@ public:
      * Set selected state.
      */
     void setSelectedMode(bool select);
+    /*!
+     * Resize mode.
+     */
+    void resizeMode(bool mode);
 
 Q_SIGNALS:
     /*!
@@ -57,7 +61,7 @@ protected:
     virtual void paintEvent(QPaintEvent *event) override;
 
     QString m_text, m_iconf, m_iconb;
-    bool m_enterIn, m_selectedOn;
+    bool m_enterIn, m_selectedOn, m_resizeMode;
 };
 
 
@@ -79,6 +83,10 @@ public:
      * Get class object name.
      */
     static QString getClassName();
+    /*!
+     * Resize mode.
+     */
+    void resizeMode(bool mode);
 
 Q_SIGNALS:
     /*!

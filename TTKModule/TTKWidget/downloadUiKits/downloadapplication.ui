@@ -229,6 +229,9 @@
                 <height>16777215</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">background:gray;</string>
+              </property>
               <property name="frameShape">
                <enum>QFrame::VLine</enum>
               </property>
@@ -561,6 +564,21 @@
             </item>
             <item>
              <widget class="QFrame" name="frame_2">
+              <property name="minimumSize">
+               <size>
+                <width>1</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background:gray;</string>
+              </property>
               <property name="frameShape">
                <enum>QFrame::VLine</enum>
               </property>

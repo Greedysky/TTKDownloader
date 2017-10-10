@@ -11,6 +11,7 @@
 #include "downloaduiobject.h"
 #include "downloadversion.h"
 
+#include <QMenu>
 #include <QResizeEvent>
 
 DownloadApplication *DownloadApplication::m_instance = nullptr;
@@ -181,14 +182,11 @@ void DownloadApplication::readXMLConfigFromText()
     }
     xml.readSysLoadConfig();
 
-#ifdef Q_OS_UNIX
-    //Disable  window quit mode on unix
-    M_SETTING_PTR->setValue(DownloadSettingManager::WindowQuitModeChoiced, false);
-#endif
-
     //Set the current background color and alpha value
     m_topAreaWidget->setParameters(M_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString(),
                                    M_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt());
+
+    M_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 0);
 
     //Set the current remote widget
     if(M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool())

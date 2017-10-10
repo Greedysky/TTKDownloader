@@ -9,6 +9,7 @@ DownloadFunctionItemWidget::DownloadFunctionItemWidget(QWidget *parent)
     setFixedSize(205, 35);
     m_enterIn = false;
     m_selectedOn = false;
+    m_resizeMode = false;
 }
 
 QString DownloadFunctionItemWidget::getClassName()
@@ -30,6 +31,13 @@ void DownloadFunctionItemWidget::setLabelIcon(const QString &iconf, const QStrin
 void DownloadFunctionItemWidget::setSelectedMode(bool select)
 {
     m_selectedOn = select;
+    update();
+}
+
+void DownloadFunctionItemWidget::resizeMode(bool mode)
+{
+    m_resizeMode = mode;
+    setFixedWidth(mode ? 75 : 205);
     update();
 }
 
@@ -78,9 +86,17 @@ void DownloadFunctionItemWidget::paintEvent(QPaintEvent *event)
         painter.fillRect(rect(), m_enterIn ? QColor(0, 0, 0, 50) : QColor(0, 0, 0, 0));
     }
 
-    painter.drawPixmap(45, 8, m_enterIn ? QPixmap(m_iconf) : QPixmap(m_iconb));
-    painter.setPen(m_enterIn ? QColor(255, 255, 255) : QColor(222, 222, 222));
-    painter.drawText(QRect(70, 0, 130, height()), Qt::AlignLeft | Qt::AlignVCenter, m_text);
+    if(!m_resizeMode)
+    {
+        painter.drawPixmap(45, 8, QPixmap(m_enterIn ? m_iconf : m_iconb));
+        painter.setPen(m_enterIn ? QColor(255, 255, 255) : QColor(222, 222, 222));
+        painter.drawText(QRect(70, 0, 130, height()), Qt::AlignLeft | Qt::AlignVCenter, m_text);
+    }
+    else
+    {
+        QPixmap pix(m_enterIn ? m_iconf : m_iconb);
+        painter.drawPixmap((width() - pix.width())/2, 8, pix);
+    }
 }
 
 
@@ -126,6 +142,14 @@ DownloadFunctionListWidget::~DownloadFunctionListWidget()
 QString DownloadFunctionListWidget::getClassName()
 {
     return staticMetaObject.className();
+}
+
+void DownloadFunctionListWidget::resizeMode(bool mode)
+{
+    foreach(DownloadFunctionItemWidget *it, m_items)
+    {
+        it->resizeMode(mode);
+    }
 }
 
 void DownloadFunctionListWidget::selectedChanged(DownloadFunctionItemWidget *item)

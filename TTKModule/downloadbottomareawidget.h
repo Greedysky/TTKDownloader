@@ -9,7 +9,7 @@
  * works are strictly forbiden.
    =================================================*/
 
-#include <QMenu>
+#include <QWidget>
 #include <QSystemTrayIcon>
 #include "downloadobject.h"
 #include "downloadglobaldefine.h"
@@ -86,6 +86,18 @@ public Q_SLOTS:
      * Send current upload and download speed data.
      */
     void updateNetworkData(ulong upload, ulong download);
+    /*!
+     * Download setting button clicked.
+     */
+    void downloadSettingButtonClicked();
+    /*!
+     * Download plan button clicked.
+     */
+    void downloadPlanButtonClicked();
+    /*!
+     * Expand button clicked.
+     */
+    void expandButtonClicked();
 
 protected:
     /*!
@@ -95,7 +107,8 @@ protected:
 
     Ui::DownloadApplication *m_ui;
     bool m_systemCloseConfig;
-    QMenu m_toolPopupMenu;
+
+    QMenu *m_toolPopupMenu;
     QSystemTrayIcon *m_systemTray;
     DownloadSystemTrayMenu *m_systemTrayMenu;
     DownloadWindowExtras *m_windowExtras;

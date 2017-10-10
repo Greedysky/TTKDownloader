@@ -8,7 +8,7 @@ DownloadToolLabelButton::DownloadToolLabelButton(QWidget *parent)
     : QToolButton(parent)
 {
     setFixedHeight(25);
-    setStyleSheet(DownloadUIObject::MToolButtonStyle03 + DownloadUIObject:: MToolButtonStyle01);
+    setStyleSheet(DownloadUIObject::MToolButtonStyle03 + DownloadUIObject:: MToolButtonStyle05);
 
     m_enterIn = false;
 }
@@ -28,6 +28,12 @@ void DownloadToolLabelButton::setLabelIcon(const QString &icon)
 {
     m_icon = icon;
     update();
+}
+
+void DownloadToolLabelButton::mousePressEvent(QMouseEvent *event)
+{
+    emit mouseClicked();
+    QToolButton::mousePressEvent(event);
 }
 
 void DownloadToolLabelButton::enterEvent(QEvent *event)

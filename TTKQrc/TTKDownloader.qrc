@@ -54,6 +54,9 @@
         <file alias="lb_stop_normal">../TTKResource/contextMenu/lb_stop_normal.png</file>
         <file alias="lb_setting_normal">../TTKResource/contextMenu/lb_setting_normal.png</file>
         <file alias="lb_selected">../TTKResource/contextMenu/lb_selected.png</file>
+        <file alias="lb_custom">../TTKResource/contextMenu/lb_custom.png</file>
+        <file alias="lb_protection">../TTKResource/contextMenu/lb_protection.png</file>
+        <file alias="lb_setting">../TTKResource/contextMenu/lb_setting.png</file>
     </qresource>
     <qresource prefix="/appTools">
         <file alias="item_delete_clicked">../TTKResource/appTools/item_delete_clicked.png</file>

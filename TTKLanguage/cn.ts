@@ -135,6 +135,50 @@
         <source>Plan</source>
         <translation>计划任务</translation>
     </message>
+    <message>
+        <source>Speed Protection</source>
+        <translation>网速保护</translation>
+    </message>
+    <message>
+        <source>Custom Speed Limit</source>
+        <translation>自定义限速</translation>
+    </message>
+    <message>
+        <source>More Setting...</source>
+        <translation>更多设置...</translation>
+    </message>
+    <message>
+        <source>Spare</source>
+        <translation>空闲下载</translation>
+    </message>
+    <message>
+        <source>Add Plan</source>
+        <translation>添加计划任务</translation>
+    </message>
+    <message>
+        <source>Delete Plan</source>
+        <translation>删除计划任务</translation>
+    </message>
+    <message>
+        <source>Downloaded</source>
+        <translation>下载完成后</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation>关机</translation>
+    </message>
+    <message>
+        <source>Locked</source>
+        <translation>锁定</translation>
+    </message>
+    <message>
+        <source>Sleep</source>
+        <translation>睡眠</translation>
+    </message>
+    <message>
+        <source>Quit</source>
+        <translation>退出</translation>
+    </message>
 </context>
 <context>
     <name>DownloadColorDialog</name>

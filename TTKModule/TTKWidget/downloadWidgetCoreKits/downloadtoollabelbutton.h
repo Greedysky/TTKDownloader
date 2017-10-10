@@ -39,16 +39,23 @@ public:
      */
     void setLabelIcon(const QString &icon);
 
+Q_SIGNALS:
+    /*!
+     * Mouse clicked.
+     */
+    void mouseClicked();
+
 protected:
     /*!
      * Override the widget event.
      */
+    virtual void mousePressEvent(QMouseEvent *event) override;
     virtual void enterEvent(QEvent *event) override;
     virtual void leaveEvent(QEvent *event) override;
     virtual void paintEvent(QPaintEvent *event) override;
 
-    QString m_text, m_icon;
     bool m_enterIn;
+    QString m_text, m_icon;
 
 };
 

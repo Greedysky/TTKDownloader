@@ -36,6 +36,7 @@ public:
         StartUpModeChoiced,             /*!< Start Up Mode Parameter*/
         StartUpRunModeChoiced,          /*!< Start Up Run Mode Parameter*/
         SlienceRunModeChoiced,          /*!< Slience Run Mode Parameter*/
+        ExpandModeChoiced,              /*!< Expand Mode Parameter*/
 
         BgThemeChoiced,                 /*!< Bg Theme Parameter*/
         BgTransparentChoiced,           /*!< Bg Transparent Parameter*/
