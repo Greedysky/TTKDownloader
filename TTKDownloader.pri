@@ -16,8 +16,8 @@ equals(QT_MAJOR_VERSION, 5){
 QT       += widgets
 }
 
-UI_DIR = ./.build/ui/
-MOC_DIR = ./.build/moc/
+UI_DIR = ./.build/ui
+MOC_DIR = ./.build/moc
 OBJECTS_DIR = ./.build/obj
 RCC_DIR = ./.build/rcc
 
@@ -46,6 +46,7 @@ win32{
     equals(QT_MAJOR_VERSION, 5){
         greaterThan(QT_VER_MINOR, 1):QT  += winextras
         msvc{
+            LIBS += -lshell32 -luser32
             LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
             CONFIG +=c++11
             !contains(QMAKE_TARGET.arch, x86_64){

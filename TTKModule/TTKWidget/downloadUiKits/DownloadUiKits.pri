@@ -15,6 +15,7 @@ HEADERS  += \
     $$PWD/downloadtinyuiobject.h
 }
 
+contains(CONFIG, DOWNLOAD_BUILD_LIB){
 FORMS    += \
     $$PWD/downloadapplication.ui \
     $$PWD/downloadbackgroundskindialog.ui \
@@ -23,3 +24,4 @@ FORMS    += \
     $$PWD/downloadmessagebox.ui \
     $$PWD/downloadmessageaboutdialog.ui \
     $$PWD/downloadsettingwidget.ui
+}

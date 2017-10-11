@@ -11,7 +11,7 @@
 
 #include "downloadglobaldefine.h"
 
-class DownloadBackgroundImage;
+struct DownloadBackgroundImage;
 
 /*! @brief The class of the extract data wrap.
  * @author Greedysky <greedysky@163.com>

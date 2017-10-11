@@ -81,6 +81,8 @@
   #else
     #define STRCAT(a, b)    a b
   #endif
+#else
+#define STRCAT(a, b)    a b
 #endif
 
 #define DOWNLOAD_DECLARE_LISTS(Class) \

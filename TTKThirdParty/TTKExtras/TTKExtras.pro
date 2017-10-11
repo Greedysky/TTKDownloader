@@ -15,6 +15,7 @@ unix:VERSION += $$TTKDownloader
 win32{
     TARGET = ../../../bin/$$TTKDownloader/TTKExtras
     msvc{
+        CONFIG += staticlib
         LIBS += -luser32
     }
 }
