@@ -1,6 +1,5 @@
 #include "tst_codelines.h"
 #include "downloadglobal.h"
-#include "downloadalgorithmutils.h"
 
 #include <QDir>
 #include <QMap>
@@ -93,20 +92,6 @@ void CodeLinesTest::codeLines()
     {
         qDebug() << QString(".%1 Type  All count %2").arg(key).arg(categorys[key]);
     }
-}
-
-void CodeLinesTest::stringEncode()
-{
-#ifdef Q_OS_WIN
-    qDebug() << DownloadUtils::Algorithm::mdII("TEST_STRING", false);
-#endif
-}
-
-void CodeLinesTest::stringDecode()
-{
-#ifdef Q_OS_WIN
-    qDebug() << DownloadUtils::Algorithm::mdII("TEST_STRING", true);
-#endif
 }
 
 void CodeLinesTest::cleanupTestCase()

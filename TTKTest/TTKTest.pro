@@ -35,13 +35,7 @@ TEMPLATE = app
 DEFINES += DOWNLOAD_LIBRARY
 
 INCLUDEPATH += $$PWD/../ \
-               $$PWD/../TTKModule/TTKCore/downloadCoreKits \
-               $$PWD/../TTKModule/TTKCore/downloadUtilsKits
-
-win32{
-    LIBS += -L../bin/$$TTKDownloader -lTTKCore
-}
-
+               $$PWD/../TTKModule/TTKCore/downloadCoreKits
 
 HEADERS  += \
     downloadautotest.h \

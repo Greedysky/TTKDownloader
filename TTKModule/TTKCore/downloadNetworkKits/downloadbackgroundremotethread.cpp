@@ -1,7 +1,7 @@
 #include "downloadbackgroundremotethread.h"
 #include "downloadsourcethread.h"
 
-#define D_URL   "eC9KOTYxbVhvVDJNcGEwckhyMVZRdVRhOHhFRHQ2eFVNdWJxaURFSzA1ZWVmZm5HOFlzS1VCY2ZKOFRlYStBL2Y3SjNEK2gzY2QwPQ=="
+#define D_URL   "ZGlhbXFHSDhQemdMb3QyN1dVZlQ4elhzSnZsOWozT2hpSVFORXNDOWhOc2ZtWXZWZ3BYRU5USHg5ZytMQUFRS3FZbnc0Q2ZHMk40PQ=="
 
 DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent)
     : DownloadAbstractXml(parent)

@@ -21,10 +21,10 @@
 
 #include "downloadglobaldefine.h"
 
-#define ALG_DOWNLOAD_KEY    "5024FRSDF40"
-#define ALG_URL_KEY         "GREEDYSKY"
-#define ALG_PLUS_KEY        ";DF;45622e"
-#define ALG_LOW_KEY         "123asd"
+#define ALG_DOWNLOAD_KEY    "16gffdg1f221;df"
+#define ALG_URL_KEY         "16fg;dfg5f"
+#define ALG_PLUS_KEY        "218sdf334;;h"
+#define ALG_LOW_KEY         "9;k3"
 
 /*! @brief The class of the utils algorithm object namespace.
  * @author Greedysky <greedysky@163.com>
