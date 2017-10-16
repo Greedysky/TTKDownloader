@@ -70,7 +70,11 @@ namespace DownloadUIObject
 ///Background
 //////////////////////////////////////////////////////
     const QString MBackgroundStyle01 = " \
-            background-color:transparent;";
+            background-color:transparent;"
+#ifdef Q_OS_UNIX
+            + QString(" border-style:falt;")
+#endif
+            ;
 
     const QString MBackgroundStyle02 = " \
             background-color:black;";
@@ -210,11 +214,15 @@ namespace DownloadUIObject
 ///PushButton
 //////////////////////////////////////////////////////
     const QString MPushButtonStyle01 = " \
-            QPushButton{ background-color:transparent;}";
+            QPushButton{ background-color:transparent;  " +
+#ifdef Q_OS_UNIX
+            QString("border-style:falt;") +
+ #endif
+            QString("}");
 
     const QString MPushButtonStyle02 = MPushButtonStyle01 + " \
             QPushButton{ border-none;}";
-            
+
     const QString MPushButtonStyle03 = " \
             QPushButton{ border-radius:3px; background-color:#80B7F1; color:white;}";
 
@@ -236,12 +244,11 @@ namespace DownloadUIObject
     const QString MPushButtonStyle08 = " \
             QPushButton{ color:#CCCCCC;} \
             QPushButton:hover{ color:#FFFFFF;}";
-           
+
     const QString MPushButtonStyle09 = MPushButtonStyle08 + " \
             QPushButton{ text-align:right;}";
 
-    const QString MPushButtonStyle10 = " \
-            QPushButton{ background:transparent;} \
+    const QString MPushButtonStyle10 = MPushButtonStyle01 + " \
             QPushButton::hover{ border:1px solid #000000;}";
 
     const QString MPushButtonStyle11 = " \
