@@ -30,7 +30,7 @@ QString DownloadThreadManager::getClassName()
     return staticMetaObject.className();
 }
 
-qint64 DownloadThreadManager::getFileSize(const QString &url, int tryTimes)
+qint64 DownloadThreadManager::getFileSize(QString &url, int tryTimes)
 {
     qint64 size = -1;
     while(tryTimes--)
@@ -58,6 +58,12 @@ qint64 DownloadThreadManager::getFileSize(const QString &url, int tryTimes)
         }
 
         size = reply->header(QNetworkRequest::ContentLengthHeader).toLongLong();
+        QVariant redirection = reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
+        if(!redirection.isNull())
+        {
+            url = redirection.toString();
+            size = getFileSize(url);
+        }
         reply->deleteLater();
         break;
     }

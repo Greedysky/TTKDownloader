@@ -104,7 +104,7 @@ private:
     /*!
      * Get download file size.
      */
-    qint64 getFileSize(const QString &url, int tryTimes = 3);
+    qint64 getFileSize(QString &url, int tryTimes = 3);
 
     int m_runningCount;
     QFile *m_file;
