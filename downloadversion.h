@@ -4,7 +4,7 @@
 /**
  * C
  *
- * opyright (c) 2016 - 2017 Greedysky Studio <greedysky@163.com>
+ * opyright (c) 2015 - 2018 Greedysky Studio <greedysky@163.com>
  *
  * TTKDownloader that imitation xunlei downloader, based on Qt for windows. 
  */
@@ -18,7 +18,7 @@
  
 /* =================================================
  * This file is part of the TTK Downloader project
- * Copyright (C) 2015 - 2017 Greedysky Studio
+ * Copyright (C) 2015 - 2018 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
