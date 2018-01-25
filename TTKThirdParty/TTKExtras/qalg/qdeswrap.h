@@ -1,8 +1,8 @@
-#ifndef QAESWRAP_H
-#define QAESWRAP_H
+#ifndef QDESWRAP_H
+#define QDESWRAP_H
 
 /* =================================================
- * This file is part of the TTK Downloader project
+ * This file is part of the TTK Downloader projectproject
  * Copyright (C) 2015 - 2018 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -19,23 +19,39 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
+#include "downloadprivate.h"
 #include "downloadextrasglobaldefine.h"
 
-/*! @brief The namespace of the aes wrapper.
+class QDesWrapPrivate;
+
+/*! @brief The namespace of the des wrapper.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_EXTRAS_EXPORT QAesWrap
+class DOWNLOAD_EXTRAS_EXPORT QDesWrap
 {
 public:
+    enum Mode
+    {
+        ENCRYPT = 0,
+        DECRYPT = 1
+    };
     /*!
-     * Encrypt aes by input.
+     * Object contsructor.
      */
-    static QByteArray encrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
+    QDesWrap();
+
     /*!
-     * Decrypt aes by input.
+     * Encrypt des by input.
      */
-    static QByteArray decrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
+    QByteArray encrypt(const QByteArray &in, const QByteArray &key);
+    /*!
+     * Decrypt des by input.
+     */
+    QByteArray decrypt(const QByteArray &in, const QByteArray &key);
+
+private:
+    DOWNLOAD_DECLARE_PRIVATE(QDesWrap)
 
 };
 
-#endif // QAESWRAP_H
+#endif // QDESWRAP_H

@@ -1,5 +1,5 @@
-#ifndef TTKDUMPER_H
-#define TTKDUMPER_H
+#ifndef QAESWRAP_H
+#define QAESWRAP_H
 
 /* =================================================
  * This file is part of the TTK Downloader projectproject
@@ -21,28 +21,21 @@
 
 #include "downloadextrasglobaldefine.h"
 
-class MiniDumper;
-
-/*! @brief The class of the ttk dumper.
+/*! @brief The namespace of the aes wrapper.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_EXTRAS_EXPORT TTKDumper
+class DOWNLOAD_EXTRAS_EXPORT QAesWrap
 {
 public:
     /*!
-     * Object contsructor.
+     * Encrypt aes by input.
      */
-    TTKDumper();
-    ~TTKDumper();
-
+    static QByteArray encrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
     /*!
-     * Run.
+     * Decrypt aes by input.
      */
-    void run();
-
-protected:
-    MiniDumper *m_winDump;
+    static QByteArray decrypt(const QByteArray &in, const QByteArray &key, const QByteArray &iv);
 
 };
 
-#endif // TTKDUMPER_H
+#endif // QAESWRAP_H

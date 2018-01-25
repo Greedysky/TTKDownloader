@@ -1,5 +1,5 @@
 # =================================================
-# * This file is part of the TTK Downloader project
+# * This file is part of the TTK Downloader projectproject
 # * Copyright (C) 2015 - 2018 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -22,10 +22,14 @@ SOURCES += \
     $$PWD/aes_cbc.cpp \
     $$PWD/aes_core.cpp \
     $$PWD/cbc128.cpp \
-    $$PWD/qaeswrap.cpp
+    $$PWD/base64.cpp \
+    $$PWD/qaeswrap.cpp \
+    $$PWD/qdeswrap.cpp
     
 HEADERS += \
     $$PWD/aes.h \
     $$PWD/aes_locl.h \
     $$PWD/cbc128.h \
-    $$PWD/qaeswrap.h
+    $$PWD/base64.h \
+    $$PWD/qaeswrap.h \
+    $$PWD/qdeswrap.h

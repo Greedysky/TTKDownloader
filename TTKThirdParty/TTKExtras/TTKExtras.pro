@@ -40,7 +40,7 @@ win32:msvc{
 
 include(../TTKExtrasDefine.pri)
 
-include(qaes/QAes.pri)
+include(qalg/QAlg.pri)
 include(qjson/QJson.pri)
 include(qshortcut/QShortCut.pri)
 

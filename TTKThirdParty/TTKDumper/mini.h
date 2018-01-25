@@ -2,7 +2,7 @@
 #define MINI_H
 
 /* =================================================
- * This file is part of the TTK Downloader project
+ * This file is part of the TTK Downloader projectproject
  * Copyright (C) 2015 - 2018 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -90,7 +90,7 @@ static inline bool killProcess(LPCWSTR processName)
 
    //Kill The Process
    HANDLE hProcess = OpenProcess(PROCESS_ALL_ACCESS, FALSE, id);
-   if(hProcess != NULL)
+   if(hProcess != nullptr)
    {
        TerminateProcess(hProcess,0);
        CloseHandle(hProcess);
