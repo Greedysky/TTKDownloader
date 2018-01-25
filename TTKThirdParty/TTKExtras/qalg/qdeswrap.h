@@ -2,7 +2,7 @@
 #define QDESWRAP_H
 
 /* =================================================
- * This file is part of the TTK Downloader projectproject
+ * This file is part of the TTK Downloader project
  * Copyright (C) 2015 - 2018 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
