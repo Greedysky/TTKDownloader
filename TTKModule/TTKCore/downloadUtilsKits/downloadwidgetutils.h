@@ -99,8 +99,8 @@ namespace DownloadUtils
          */
         DOWNLOAD_UTILS_EXPORT void reRenderImage(int delta, const QImage *input, QImage *output);
         /*!
-         * Rerender the image by color burn transform.
-         */
+        * Rerender the image by color burn transform.
+        */
         DOWNLOAD_UTILS_EXPORT void reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output);
         /*!
          * Image color burn transform.

@@ -40,6 +40,11 @@ QString DownloadUtils::Number::size2NumberInt(qint64 size)
 
 QString DownloadUtils::Number::size2Label(qint64 size)
 {
+    if(size < 0)
+    {
+        return "0.00B";
+    }
+
     QString label = size2Number(size);
     if( size < MH_KB2B)
     {

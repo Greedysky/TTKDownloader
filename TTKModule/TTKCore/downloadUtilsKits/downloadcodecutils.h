@@ -1,5 +1,5 @@
-#ifndef DOWNLOADSTRINGUTILS_H
-#define DOWNLOADSTRINGUTILS_H
+#ifndef DOWNLOADCODECUTILS_H
+#define DOWNLOADCODECUTILS_H
 
 /* =================================================
  * This file is part of the TTK Downloader project
@@ -19,39 +19,41 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadnumberdefine.h"
 #include "downloadglobaldefine.h"
 
-/*! @brief The class of the utils string object namespace.
+/*! @brief The class of the utils core object namespace.
  * @author Greedysky <greedysky@163.com>
  */
 namespace DownloadUtils
 {
-    namespace String
+    namespace Codec
     {
         /*!
-         * Remove given key in string, default is space.
+         * Set string to unicode string by format.
          */
-        DOWNLOAD_UTILS_EXPORT QString removeStringBy(const QString &value, const QString &key = " ");
+        DOWNLOAD_UTILS_EXPORT QString toUnicode(const char *chars, const char *format = "GBK");
         /*!
-         * Get split string value.
+         * Set string to unicode string by format.
          */
-        DOWNLOAD_UTILS_EXPORT QStringList splitString(const QString &value, const QString &key = "-");
-
+        DOWNLOAD_UTILS_EXPORT QString toUnicode(const QByteArray &chars, const char *format = "GBK");
         /*!
-         * Transform colors string to color list.
+         * Set string from unicode string by format.
          */
-        DOWNLOAD_UTILS_EXPORT QList<QColor> readColorConfig(const QString &value);
+        DOWNLOAD_UTILS_EXPORT QByteArray fromUnicode(const QString &chars, const char *format = "GBK");
         /*!
-         * Transform color to color string.
+         * Set local codec by format.
          */
-        DOWNLOAD_UTILS_EXPORT QString writeColorConfig(const QColor &color);
+        DOWNLOAD_UTILS_EXPORT void setLocalCodec(const char *format = "utf-8");
         /*!
-         * Transform color list to colors string.
+         * Trasform string to local 8bit char.
          */
-        DOWNLOAD_UTILS_EXPORT QString writeColorConfig(const QList<QColor> &colors);
+        DOWNLOAD_UTILS_EXPORT const char *toLocal8Bit(const QString &str);
+        /*!
+         * Trasform string to utf8 char.
+         */
+        DOWNLOAD_UTILS_EXPORT const char *toUtf8(const QString &str);
 
     }
 }
 
-#endif // DOWNLOADSTRINGUTILS_H
+#endif // DOWNLOADCODECUTILS_H

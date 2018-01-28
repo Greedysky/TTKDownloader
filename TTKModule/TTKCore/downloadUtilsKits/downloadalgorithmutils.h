@@ -21,10 +21,11 @@
 
 #include "downloadglobaldefine.h"
 
-#define ALG_DOWNLOAD_KEY    "16gffdg1f221;df"
-#define ALG_URL_KEY         "16fg;dfg5f"
-#define ALG_PLUS_KEY        "218sdf334;;h"
-#define ALG_LOW_KEY         "9;k3"
+#define ALG_DOWNLOAD_KEY    "5024FRSDF40"
+#define ALG_URL_KEY         "GREEDYSKY"
+#define ALG_PLUS_KEY        ";DF;45622e"
+#define ALG_LOW_KEY         "123asd"
+#define ALG_UA_KEY          "ua11.25.17"
 
 /*! @brief The class of the utils algorithm object namespace.
  * @author Greedysky <greedysky@163.com>
@@ -41,6 +42,10 @@ namespace DownloadUtils
          * Get sha1 algorithm.
          */
         DOWNLOAD_UTILS_EXPORT QByteArray sha1(const QByteArray &data);
+        /*!
+         * Encode the data into sha1.
+         */
+        DOWNLOAD_UTILS_EXPORT QByteArray hmacSha1(const QByteArray &data, const QByteArray &key);
 
         /*!
          * Get mdII(greedysky) algorithm.

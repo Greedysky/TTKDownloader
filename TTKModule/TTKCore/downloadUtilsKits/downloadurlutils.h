@@ -1,5 +1,5 @@
-#ifndef DOWNLOADSTRINGUTILS_H
-#define DOWNLOADSTRINGUTILS_H
+#ifndef DOWNLOADURLUTILS_H
+#define DOWNLOADURLUTILS_H
 
 /* =================================================
  * This file is part of the TTK Downloader project
@@ -19,39 +19,43 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadnumberdefine.h"
 #include "downloadglobaldefine.h"
 
-/*! @brief The class of the utils string object namespace.
+/*! @brief The class of the utils url object namespace.
  * @author Greedysky <greedysky@163.com>
  */
 namespace DownloadUtils
 {
-    namespace String
+    namespace Url
     {
         /*!
-         * Remove given key in string, default is space.
+         * Open file from local by path or net url.
          */
-        DOWNLOAD_UTILS_EXPORT QString removeStringBy(const QString &value, const QString &key = " ");
-        /*!
-         * Get split string value.
-         */
-        DOWNLOAD_UTILS_EXPORT QStringList splitString(const QString &value, const QString &key = "-");
+        DOWNLOAD_UTILS_EXPORT bool openUrl(const QString &exe, const QString &path);
 
         /*!
-         * Transform colors string to color list.
+         * Open file from local by path or net url.
          */
-        DOWNLOAD_UTILS_EXPORT QList<QColor> readColorConfig(const QString &value);
+        DOWNLOAD_UTILS_EXPORT bool openUrl(const QString &path, bool local = true);
+
         /*!
-         * Transform color to color string.
+         * Encode the data into url.
          */
-        DOWNLOAD_UTILS_EXPORT QString writeColorConfig(const QColor &color);
+        DOWNLOAD_UTILS_EXPORT void urlEncode(QString &data);
         /*!
-         * Transform color list to colors string.
+         * Decode the data into url.
          */
-        DOWNLOAD_UTILS_EXPORT QString writeColorConfig(const QList<QColor> &colors);
+        DOWNLOAD_UTILS_EXPORT void urlDecode(QString &data);
+        /*!
+         * Encode the data into url.
+         */
+        DOWNLOAD_UTILS_EXPORT void urlEncode(QByteArray &data);
+        /*!
+         * Decode the data into url.
+         */
+        DOWNLOAD_UTILS_EXPORT void urlDecode(QByteArray &data);
 
     }
 }
 
-#endif // DOWNLOADSTRINGUTILS_H
+#endif // DOWNLOADURLUTILS_H

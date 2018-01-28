@@ -34,6 +34,10 @@ namespace DownloadUtils
          * Get download dir path.
          */
         DOWNLOAD_UTILS_EXPORT QString downloadPrefix();
+        /*!
+         * Get file suffix path.
+         */
+        DOWNLOAD_UTILS_EXPORT QString fileSuffix(const QString &name);
 
         /*!
          * Get given dir size.
@@ -54,43 +58,18 @@ namespace DownloadUtils
         DOWNLOAD_UTILS_EXPORT QString getLanguageName(int index);
 
         /*!
-         * Open file from local by path or net url.
+         * Dir remove recursively.
          */
-        DOWNLOAD_UTILS_EXPORT bool openUrl(const QString &path, bool local = true);
+        DOWNLOAD_UTILS_EXPORT bool removeRecursively(const QString &dir);
 
         /*!
-         * Set string to unicode string by format.
+         * Music version check.
          */
-        DOWNLOAD_UTILS_EXPORT QString toUnicode(const char *chars, const char *format = "GBK");
+        DOWNLOAD_UTILS_EXPORT bool musicVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
         /*!
-         * Set string to unicode string by format.
+         * Music version check.
          */
-        DOWNLOAD_UTILS_EXPORT QString toUnicode(const QByteArray &chars, const char *format = "GBK");
-        /*!
-         * Set string from unicode string by format.
-         */
-        DOWNLOAD_UTILS_EXPORT QByteArray fromUnicode(const QString &chars, const char *format = "GBK");
-        /*!
-         * Set local codec by format.
-         */
-        DOWNLOAD_UTILS_EXPORT void setLocalCodec(const char *format = "utf-8");
-        /*!
-         * Trasform string to local 8bit char.
-         */
-        DOWNLOAD_UTILS_EXPORT const char *toLocal8Bit(const QString &str);
-        /*!
-         * Trasform string to utf8 char.
-         */
-        DOWNLOAD_UTILS_EXPORT const char *toUtf8(const QString &str);
-
-        /*!
-         * Version check.
-         */
-        DOWNLOAD_UTILS_EXPORT bool versionCheck(const QStringList &ol, const QStringList &dl, int depth);
-        /*!
-         * Version check.
-         */
-        DOWNLOAD_UTILS_EXPORT bool versionCheck(const QString &o, const QString &d);
+        DOWNLOAD_UTILS_EXPORT bool musicVersionCheck(const QString &o, const QString &d);
 
     }
 }

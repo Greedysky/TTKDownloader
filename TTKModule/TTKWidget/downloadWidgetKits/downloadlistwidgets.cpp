@@ -6,7 +6,8 @@
 #include "downloadsettingmanager.h"
 #include "downloadabstracttablewidget.h"
 #include "downloadlistconfigmanager.h"
-#include "downloadcoreutils.h"
+#include "downloadurlutils.h"
+#include "downloadnumberdefine.h"
 #include "downloadmessagebox.h"
 #include "downloadtopareawidget.h"
 
@@ -251,7 +252,7 @@ void DownloadListWidgets::openFileDir()
 
     QString path = m_itemList[currentRow()]->getDownloadedPath();
 
-    if(!DownloadUtils::Core::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    if(!DownloadUtils::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
     {
         DownloadMessageBox message;
         message.setText(tr("The origin one does not exist!"));

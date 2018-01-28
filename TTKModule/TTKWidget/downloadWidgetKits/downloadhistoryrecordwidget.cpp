@@ -3,7 +3,7 @@
 #include "downloadnumberutils.h"
 #include "downloadsettingmanager.h"
 #include "downloadmessagebox.h"
-#include "downloadcoreutils.h"
+#include "downloadurlutils.h"
 
 #include <QMenu>
 #include <QClipboard>
@@ -153,7 +153,7 @@ void DownloadHistoryRecordWidget::openFileDir()
     }
 
     QString path = m_records[ currentRow() ].m_path;
-    if(!DownloadUtils::Core::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    if(!DownloadUtils::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
     {
         DownloadMessageBox message;
         message.setText(tr("The origin one does not exist!"));

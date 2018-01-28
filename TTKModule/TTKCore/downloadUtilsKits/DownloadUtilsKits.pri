@@ -24,8 +24,10 @@ HEADERS  += \
     $$PWD/downloadcoreutils.h \
     $$PWD/downloadnumberutils.h \
     $$PWD/downloadstringutils.h \
-    $$PWD/downloadwidgetutils.h
-
+    $$PWD/downloadwidgetutils.h \
+    $$PWD/downloadurlutils.h \
+    $$PWD/downloadcodecutils.h
+    
 }
 
 contains(CONFIG, DOWNLOAD_BUILD_LIB){
@@ -34,6 +36,8 @@ SOURCES += \
     $$PWD/downloadcoreutils.cpp \
     $$PWD/downloadnumberutils.cpp \
     $$PWD/downloadstringutils.cpp \
-    $$PWD/downloadwidgetutils.cpp
-
+    $$PWD/downloadwidgetutils.cpp \
+    $$PWD/downloadurlutils.cpp \
+    $$PWD/downloadcodecutils.cpp
+    
 }

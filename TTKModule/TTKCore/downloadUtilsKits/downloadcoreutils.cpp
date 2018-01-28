@@ -1,31 +1,29 @@
 #include "downloadcoreutils.h"
-#include "downloadversion.h"
 #include "downloadsettingmanager.h"
+#include "downloadversion.h"
 
-#include <QUrl>
-#include <QTextCodec>
-#include <QSettings>
-#include <QDesktopServices>
-#ifdef Q_OS_WIN
-#include <Windows.h>
-#include <shellapi.h>
-#endif
+#include <QDirIterator>
 
 QString DownloadUtils::Core::downloadPrefix()
 {
-    QString path = M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
-    if(path.isEmpty())
-    {
-        path = TDDOWNLOAD_DIR_FULL;
-    }
-    else
-    {
-        if(!QDir(path).exists())
-        {
-            QDir().mkpath(path);
-        }
-    }
-    return path;
+   QString path = M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
+   if(path.isEmpty())
+   {
+       path = TDDOWNLOAD_DIR_FULL;
+   }
+   else
+   {
+       if(!QDir(path).exists())
+       {
+           QDir().mkpath(path);
+       }
+   }
+   return path;
+}
+
+QString DownloadUtils::Core::fileSuffix(const QString &name)
+{
+    return name.right(name.length() - name.lastIndexOf(".") - 1);
 }
 
 quint64 DownloadUtils::Core::dirSize(const QString &dirName)
@@ -97,71 +95,64 @@ QString DownloadUtils::Core::getLanguageName(int index)
     switch(index)
     {
         case 0 : return lan.append("cn.ln");
+        case 1 : return lan.append("cn_c.ln");
+        case 2 : return lan.append("en.ln");
         default: return QString();
     }
 }
 
-bool DownloadUtils::Core::openUrl(const QString &path, bool local)
+bool DownloadUtils::Core::removeRecursively(const QString &dir)
 {
-#ifdef Q_OS_WIN
-    if(path.isEmpty())
+    QDir dr(dir);
+    if(!dr.exists())
     {
-        return false;
+        return true;
     }
 
-    if(local)
+    bool success = true;
+    const QString dirPath = dr.path();
+    // not empty -- we must empty it first
+    QDirIterator di(dirPath, QDir::AllEntries | QDir::Hidden | QDir::System | QDir::NoDotAndDotDot);
+    while(di.hasNext())
     {
-        QString p = path;
-        p.replace('/', "\\");
-        p = "/select," + p;
-        HINSTANCE value = ShellExecuteA(0, "open", "explorer.exe", toLocal8Bit(p), nullptr, SW_SHOWNORMAL);
-        return (int)value >= 32;
+        di.next();
+        const QFileInfo &fi = di.fileInfo();
+        const QString &filePath = di.filePath();
+        bool ok;
+        if(fi.isDir() && !fi.isSymLink())
+        {
+            ok = DownloadUtils::Core::removeRecursively(filePath); // recursive
+        }
+        else
+        {
+            ok = QFile::remove(filePath);
+            if(!ok)
+            {
+                // Read-only files prevent directory deletion on Windows, retry with Write permission.
+                const QFile::Permissions permissions = QFile::permissions(filePath);
+                if(!(permissions & QFile::WriteUser))
+                {
+                    ok = QFile::setPermissions(filePath, permissions | QFile::WriteUser)
+                      && QFile::remove(filePath);
+                }
+            }
+        }
+
+        if(!ok)
+        {
+            success = false;
+        }
     }
-#else
-    Q_UNUSED(local);
-#endif
-    return QDesktopServices::openUrl(QUrl(path, QUrl::TolerantMode));
+
+    if(success)
+    {
+        success = dr.rmdir(dr.absolutePath());
+    }
+
+    return success;
 }
 
-QString DownloadUtils::Core::toUnicode(const char *chars, const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    return codec->toUnicode(chars);
-}
-
-QString DownloadUtils::Core::toUnicode(const QByteArray &chars, const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    return codec->toUnicode(chars);
-}
-
-QByteArray DownloadUtils::Core::fromUnicode(const QString &chars, const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    return codec->fromUnicode(chars);
-}
-
-void DownloadUtils::Core::setLocalCodec(const char *format)
-{
-    QTextCodec *codec = QTextCodec::codecForName(format);
-    QTextCodec::setCodecForLocale(codec);
-#ifndef DOWNLOAD_GREATER_NEW
-    QTextCodec::setCodecForCStrings(codec);
-    QTextCodec::setCodecForTr(codec);
-#endif
-}
-
-const char* DownloadUtils::Core::toLocal8Bit(const QString &str)
-{
-    return str.toLocal8Bit().constData();
-}
-
-const char* DownloadUtils::Core::toUtf8(const QString &str)
-{
-    return str.toUtf8().constData();
-}
-
-bool DownloadUtils::Core::versionCheck(const QStringList &ol, const QStringList &dl, int depth)
+bool DownloadUtils::Core::musicVersionCheck(const QStringList &ol, const QStringList &dl, int depth)
 {
     if(depth >= ol.count())
     {
@@ -172,7 +163,7 @@ bool DownloadUtils::Core::versionCheck(const QStringList &ol, const QStringList 
     {
         if(dl[depth].toInt() == ol[depth].toInt())
         {
-            return versionCheck(ol, dl, depth + 1);
+            return musicVersionCheck(ol, dl, depth + 1);
         }
         else
         {
@@ -185,7 +176,7 @@ bool DownloadUtils::Core::versionCheck(const QStringList &ol, const QStringList 
     }
 }
 
-bool DownloadUtils::Core::versionCheck(const QString &o, const QString &d)
+bool DownloadUtils::Core::musicVersionCheck(const QString &o, const QString &d)
 {
     QStringList ol = o.split(".");
     QStringList dl = d.split(".");
@@ -195,5 +186,5 @@ bool DownloadUtils::Core::versionCheck(const QString &o, const QString &d)
         return false;
     }
 
-    return versionCheck(ol, dl, 0);
+    return musicVersionCheck(ol, dl, 0);
 }

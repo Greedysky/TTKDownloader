@@ -14,7 +14,7 @@ void DownloadUtils::Widget::setLabelFontSize(QWidget *widget, int size)
 }
 
 QString DownloadUtils::Widget::elidedText(const QFont &font, const QString &text,
-                                       Qt::TextElideMode mode, int width)
+                                          Qt::TextElideMode mode, int width)
 {
     QFontMetrics ft(font);
     return ft.elidedText(text, mode, width);
@@ -136,20 +136,20 @@ void DownloadUtils::Widget::reRenderImage(int delta, const QImage *input, QImage
 
 void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output)
 {
-    for(int w=0; w<input->width(); w++)
-    {
-        for(int h=0; h<input->height(); h++)
-        {
-            QRgb rgb = input->pixel(w, h);
-            avg += rgb;
-            uint resultR = colorBurnTransform(qRed(rgb), delta);
-            uint resultG = colorBurnTransform(qGreen(rgb), delta);
-            uint resultB = colorBurnTransform(qBlue(rgb), delta);
-            uint newRgb = ((resultR & 0xFF)<<16 | (resultG & 0xFF)<<8 | (resultB & 0xFF));
-            output->setPixel(w, h, newRgb);
-        }
-    }
-    avg /= (input->width()*input->height());
+   for(int w=0; w<input->width(); w++)
+   {
+       for(int h=0; h<input->height(); h++)
+       {
+           QRgb rgb = input->pixel(w, h);
+           avg += rgb;
+           uint resultR = colorBurnTransform(qRed(rgb), delta);
+           uint resultG = colorBurnTransform(qGreen(rgb), delta);
+           uint resultB = colorBurnTransform(qBlue(rgb), delta);
+           uint newRgb = ((resultR & 0xFF)<<16 | (resultG & 0xFF)<<8 | (resultB & 0xFF));
+           output->setPixel(w, h, newRgb);
+       }
+   }
+   avg /= (input->width()*input->height());
 }
 
 uint DownloadUtils::Widget::colorBurnTransform(int c, int delta)

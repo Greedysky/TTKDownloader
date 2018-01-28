@@ -1,4 +1,5 @@
 #include "downloadstringutils.h"
+#include "downloadsettingmanager.h"
 
 #include <QColor>
 
@@ -21,30 +22,6 @@ QStringList DownloadUtils::String::splitString(const QString &value, const QStri
         strings = value.split(key);
     }
     return strings;
-}
-
-QString DownloadUtils::String::artistName(const QString &value, const QString &key)
-{
-    QStringList s = splitString(value);
-    if(s.count() >= 2)
-    {
-        int index = value.indexOf(key);
-        return value.left(index).trimmed();
-    }
-
-    return value;
-}
-
-QString DownloadUtils::String::songName(const QString &value, const QString &key)
-{
-    QStringList s = splitString(value);
-    if(s.count() >= 2)
-    {
-        int index = value.indexOf(key) + 1;
-        return value.right(value.length() - index).trimmed();
-    }
-
-    return value;
 }
 
 QList<QColor> DownloadUtils::String::readColorConfig(const QString &value)
