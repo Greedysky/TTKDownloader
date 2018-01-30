@@ -3,6 +3,7 @@
 #include "downloadsettingmanager.h"
 #include "downloadnetworkthread.h"
 #include "downloadcoreutils.h"
+#include "downloadcodecutils.h"
 
 #include <QApplication>
 #include <QFontDatabase>
@@ -22,7 +23,7 @@ void DownloadRunTimeManager::run() const
     M_LOGGER_INFO("DownloadApplication Begin");
 
 #ifndef DOWNLOAD_GREATER_NEW
-    DownloadUtils::Core::setLocalCodec();
+    DownloadUtils::Codec::setLocalCodec();
 #endif
 
     M_LOGGER_INFO("Load Translation");
