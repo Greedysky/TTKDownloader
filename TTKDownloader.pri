@@ -44,17 +44,10 @@ unix:!mac{
     exists($$SSL_DEPANDS):LIBS += -L../lib/$$TTKDownloader -lssl
 }
 
-##check Qt version
-QT_VER_STRING = $$[QT_VERSION];
-QT_VER_STRING = $$split(QT_VER_STRING, ".")
-QT_VER_MAJOR = $$member(QT_VER_STRING, 0)
-QT_VER_MINOR = $$member(QT_VER_STRING, 1)
-QT_VER_PATCH = $$member(QT_VER_STRING, 2)
-
 win32{
     LIBS += -lIphlpapi
     equals(QT_MAJOR_VERSION, 5){
-        greaterThan(QT_VER_MINOR, 1):QT  += winextras
+        greaterThan(QT_MINOR_VERSION, 1):QT  += winextras
         msvc{
             LIBS += -lshell32 -luser32
             LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
