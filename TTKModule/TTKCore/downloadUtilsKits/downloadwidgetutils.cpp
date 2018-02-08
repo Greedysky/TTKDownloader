@@ -125,11 +125,9 @@ void DownloadUtils::Widget::reRenderImage(int delta, const QImage *input, QImage
         for(int h=0; h<input->height(); h++)
         {
             QRgb rgb = input->pixel(w, h);
-            uint resultR = colorBurnTransform(qRed(rgb), delta);
-            uint resultG = colorBurnTransform(qGreen(rgb), delta);
-            uint resultB = colorBurnTransform(qBlue(rgb), delta);
-            uint newRgb = ((resultR & 0xFF)<<16 | (resultG & 0xFF)<<8 | (resultB & 0xFF));
-            output->setPixel(w, h, newRgb);
+            output->setPixel(w, h, qRgb(colorBurnTransform(qRed(rgb), delta),
+                                        colorBurnTransform(qGreen(rgb), delta),
+                                        colorBurnTransform(qBlue(rgb), delta)));
         }
     }
 }
@@ -142,11 +140,9 @@ void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *
        {
            QRgb rgb = input->pixel(w, h);
            avg += rgb;
-           uint resultR = colorBurnTransform(qRed(rgb), delta);
-           uint resultG = colorBurnTransform(qGreen(rgb), delta);
-           uint resultB = colorBurnTransform(qBlue(rgb), delta);
-           uint newRgb = ((resultR & 0xFF)<<16 | (resultG & 0xFF)<<8 | (resultB & 0xFF));
-           output->setPixel(w, h, newRgb);
+           output->setPixel(w, h, qRgb(colorBurnTransform(qRed(rgb), delta),
+                                       colorBurnTransform(qGreen(rgb), delta),
+                                       colorBurnTransform(qBlue(rgb), delta)));
        }
    }
    avg /= (input->width()*input->height());
@@ -154,17 +150,17 @@ void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *
 
 uint DownloadUtils::Widget::colorBurnTransform(int c, int delta)
 {
-    Q_ASSERT(0 <= delta && delta < 0xFF);
-    if(0 <= delta || delta >= 0xFF)
+    if(0 > delta || delta > 0xFF)
     {
         return c;
     }
 
-    int result = (c - (uint)(c*delta)/(0xFF - delta));
+    int result = (c - (int)(c*delta)/(0xFF - delta));
     if(result > 0xFF)
     {
         result = 0xFF;
-    }else if(result < 0)
+    }
+    else if(result < 0)
     {
         result = 0;
     }
