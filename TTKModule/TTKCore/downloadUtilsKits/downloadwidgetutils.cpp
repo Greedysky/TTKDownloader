@@ -50,6 +50,11 @@ void DownloadUtils::Widget::widgetToRound(QWidget *w, int ratioX, int ratioY)
 
 void DownloadUtils::Widget::fusionPixmap(QPixmap &bg, const QPixmap &fg, const QPoint &pt)
 {
+    if(fg.isNull())
+    {
+        return;
+    }
+
     QPainter painter(&bg);
     painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
     painter.drawPixmap(pt.x(), pt.y(), fg);
@@ -75,7 +80,7 @@ QPixmap DownloadUtils::Widget::pixmapToRound(const QPixmap &src, const QRect &re
 
 QPixmap DownloadUtils::Widget::pixmapToRound(const QPixmap &src, const QPixmap &mask, const QSize &size)
 {
-    if(src.isNull())
+    if(src.isNull() || mask.isNull())
     {
         return QPixmap();
     }
@@ -103,6 +108,11 @@ QBitmap DownloadUtils::Widget::getBitmapMask(const QRect &rect, int ratioX, int 
 
 QByteArray DownloadUtils::Widget::getPixmapData(const QPixmap &pix)
 {
+    if(pix.isNull())
+    {
+        return QByteArray();
+    }
+
     QByteArray data;
     QBuffer buffer(&data);
     if(buffer.open(QIODevice::WriteOnly))
@@ -134,6 +144,11 @@ void DownloadUtils::Widget::reRenderImage(int delta, const QImage *input, QImage
 
 void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output)
 {
+   if(input->isNull())
+   {
+       return;
+   }
+
    for(int w=0; w<input->width(); w++)
    {
        for(int h=0; h<input->height(); h++)
@@ -148,7 +163,7 @@ void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *
    avg /= (input->width()*input->height());
 }
 
-uint DownloadUtils::Widget::colorBurnTransform(int c, int delta)
+int DownloadUtils::Widget::colorBurnTransform(int c, int delta)
 {
     if(0 > delta || delta > 0xFF)
     {

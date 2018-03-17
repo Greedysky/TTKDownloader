@@ -105,7 +105,7 @@ namespace DownloadUtils
         /*!
          * Image color burn transform.
          */
-        DOWNLOAD_UTILS_EXPORT uint colorBurnTransform(int c, int delta);
+        DOWNLOAD_UTILS_EXPORT int colorBurnTransform(int c, int delta);
 
         /*!
          * Get open file dialog.
