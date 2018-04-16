@@ -1,5 +1,4 @@
-#include <QCoreApplication>
-#include "downloadinitobject.h"
+#include "downloadconsoleobject.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,10 +8,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(APPCOME);
     QCoreApplication::setApplicationName(APPNAME);
 
-    DownloadInitObject object;
-    object.init();
-    qDebug() << "Parameter Init success!";
-
-    Q_UNUSED(app);
-    return 0;
+    DownloadConsoleObject object;
+    return object.init(app);
 }

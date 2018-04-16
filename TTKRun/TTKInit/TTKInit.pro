@@ -23,6 +23,7 @@ win32:TARGET = ../../../bin/TTKInit
 unix:TARGET = ../../lib/TTKInit
 
 TEMPLATE = app
+CONFIG += console
 
 win32:msvc{
     CONFIG +=c++11
