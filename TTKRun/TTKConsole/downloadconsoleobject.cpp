@@ -2,8 +2,10 @@
 #include "downloadthreadmanager.h"
 #include "downloadsettingmanager.h"
 
+#ifdef DOWNLOAD_WINEXTRAS
 #include <QCommandLineOption>
 #include <QCommandLineParser>
+#endif
 
 DownloadConsoleObject::DownloadConsoleObject(QObject *parent)
     : QObject(parent)
@@ -20,6 +22,7 @@ DownloadConsoleObject::~DownloadConsoleObject()
 
 bool DownloadConsoleObject::init(const QCoreApplication &app)
 {
+#ifdef DOWNLOAD_WINEXTRAS
     QCommandLineOption op1("u", "", ".");
     QCommandLineOption op2("s", "", ".");
 
@@ -53,7 +56,9 @@ bool DownloadConsoleObject::init(const QCoreApplication &app)
 
     m_manager->downloadFile(url);
     qDebug() << "download save path :" << m_manager->getDownloadedPath();
-
+#else
+    qDebug() << "Qt version less than 5.2 not support commend line!";
+#endif
     return app.exec();
 }
 
