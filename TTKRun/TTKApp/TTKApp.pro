@@ -41,18 +41,18 @@ INCLUDEPATH += \
 
 SOURCES += \
     ../TTKInit/downloadinitobject.cpp \
-    downloadlocalpeer.cpp \
-    downloadrunapplication.cpp \
-    downloadrunmain.cpp \
-    downloadrunobject.cpp
+    ttkrunmain.cpp \
+    ttklocalpeer.cpp \
+    ttkrunapplication.cpp \
+    ttkrunobject.cpp
 
 
 HEADERS += \
     ../downloadrunglobaldefine.h \
-    downloadrunapplication.h \
     ../TTKInit/downloadinitobject.h \
-    downloadlocalpeer.h \
-    downloadrunobject.h
+    ttkrunobject.h \
+    ttklocalpeer.h \
+    ttkrunapplication.h
 
 
 RESOURCES += \

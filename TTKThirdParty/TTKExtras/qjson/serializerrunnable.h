@@ -21,7 +21,7 @@
 #ifndef SERIALIZERRUNNABLE_H
 #define SERIALIZERRUNNABLE_H
 
-#include "downloadprivate.h"
+#include "ttkprivate.h"
 #include "downloadextrasglobaldefine.h"
 
 #include <QtCore/QObject>
@@ -63,7 +63,7 @@ namespace QJson {
 
     private:
       class SerializerRunnablePrivate;
-      DOWNLOAD_DECLARE_PRIVATE(SerializerRunnable)
+      TTK_DECLARE_PRIVATE(SerializerRunnable)
 
   };
 }

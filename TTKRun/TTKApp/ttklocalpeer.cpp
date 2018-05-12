@@ -1,5 +1,5 @@
-#include "downloadlocalpeer.h"
-#include "downloadlockedfile.h"
+#include "ttklocalpeer.h"
+#include "ttklockedfile.h"
 
 #include <QCoreApplication>
 #include <QDataStream>
@@ -20,35 +20,35 @@ static PProcessIdToSessionId pProcessIdToSessionId = 0;
 #include <unistd.h>
 #endif
 
-namespace DownloadLockedPrivate {
-#include "downloadlockedfile.cpp"
+namespace TTKLockedPrivate {
+#include "ttklockedfile.cpp"
 #if defined(Q_OS_WIN)
-#include "downloadlockedfile_win.cpp"
+#include "ttklockedfile_win.cpp"
 #else
-#include "downloadlockedfile_unix.cpp"
+#include "ttklockedfile_unix.cpp"
 #endif
 }
 
-class DownloadLocalPeerPrivate : public DownloadPrivate<DownloadLocalPeer>
+class TTKLocalPeerPrivate : public TTKPrivate<TTKLocalPeer>
 {
 public:
-    DownloadLocalPeerPrivate();
-    ~DownloadLocalPeerPrivate();
+    TTKLocalPeerPrivate();
+    ~TTKLocalPeerPrivate();
 
     QString m_id;
     QString m_socketName;
     QLocalServer *m_server;
-    DownloadLockedPrivate::DownloadLockedFile m_lockFile;
+    TTKLockedPrivate::TTKLockedFile m_lockFile;
     static const char *m_ack;
 };
-const char *DownloadLocalPeerPrivate::m_ack = "ack";
+const char *TTKLocalPeerPrivate::m_ack = "ack";
 
-DownloadLocalPeerPrivate::DownloadLocalPeerPrivate()
+TTKLocalPeerPrivate::TTKLocalPeerPrivate()
 {
     m_server = nullptr;
 }
 
-DownloadLocalPeerPrivate::~DownloadLocalPeerPrivate()
+TTKLocalPeerPrivate::~TTKLocalPeerPrivate()
 {
     delete m_server;
 }
@@ -58,11 +58,11 @@ DownloadLocalPeerPrivate::~DownloadLocalPeerPrivate()
 ///
 ///
 
-DownloadLocalPeer::DownloadLocalPeer(QObject *parent, const QString &appId)
+TTKLocalPeer::TTKLocalPeer(QObject *parent, const QString &appId)
     : QObject(parent)
 {
-    DOWNLOAD_INIT_PRIVATE;
-    DOWNLOAD_D(DownloadLocalPeer);
+    TTK_INIT_PRIVATE;
+    TTK_D(TTKLocalPeer);
 
     QString prefix = d->m_id = appId;
     if(prefix.isEmpty())
@@ -105,15 +105,15 @@ DownloadLocalPeer::DownloadLocalPeer(QObject *parent, const QString &appId)
     d->m_lockFile.open(QIODevice::ReadWrite);
 }
 
-bool DownloadLocalPeer::isClient()
+bool TTKLocalPeer::isClient()
 {
-    DOWNLOAD_D(DownloadLocalPeer);
+    TTK_D(TTKLocalPeer);
     if(d->m_lockFile.isLocked())
     {
         return false;
     }
 
-    if(!d->m_lockFile.lock(DownloadLockedPrivate::DownloadLockedFile::WriteLock, false))
+    if(!d->m_lockFile.lock(TTKLockedPrivate::TTKLockedFile::WriteLock, false))
     {
         return true;
     }
@@ -136,9 +136,9 @@ bool DownloadLocalPeer::isClient()
     return false;
 }
 
-bool DownloadLocalPeer::sendMessage(const QString &message, int timeout)
+bool TTKLocalPeer::sendMessage(const QString &message, int timeout)
 {
-    DOWNLOAD_D(DownloadLocalPeer);
+    TTK_D(TTKLocalPeer);
     if(!isClient())
     {
         return false;
@@ -160,7 +160,7 @@ bool DownloadLocalPeer::sendMessage(const QString &message, int timeout)
         Sleep(DWORD(ms));
 #else
         struct timespec ts = { ms / 1000, (ms % 1000) * 1000 * 1000 };
-        nanosleep(&ts, NULL);
+        nanosleep(&ts, nullptr);
 #endif
     }
     if(!connOk)
@@ -184,15 +184,15 @@ bool DownloadLocalPeer::sendMessage(const QString &message, int timeout)
     return res;
 }
 
-QString DownloadLocalPeer::applicationId() const
+QString TTKLocalPeer::applicationId() const
 {
-    DOWNLOAD_D(DownloadLocalPeer);
+    TTK_D(TTKLocalPeer);
     return d->m_id;
 }
 
-void DownloadLocalPeer::receiveConnection()
+void TTKLocalPeer::receiveConnection()
 {
-    DOWNLOAD_D(DownloadLocalPeer);
+    TTK_D(TTKLocalPeer);
     QLocalSocket *socket = d->m_server->nextPendingConnection();
     if(!socket)
     {
@@ -231,7 +231,7 @@ void DownloadLocalPeer::receiveConnection()
     }while(remaining && got >= 0 && socket->waitForReadyRead(2000));
     if(got < 0)
     {
-        qWarning("DownloadtLocalPeer: Message reception failed %s", socket->errorString().toLatin1().constData());
+        qWarning("TTKLocalPeer: Message reception failed %s", socket->errorString().toLatin1().constData());
         delete socket;
         return;
     }

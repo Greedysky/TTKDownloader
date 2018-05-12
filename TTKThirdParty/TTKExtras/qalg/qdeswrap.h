@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadprivate.h"
+#include "ttkprivate.h"
 #include "downloadextrasglobaldefine.h"
 
 class QDesWrapPrivate;
@@ -50,7 +50,7 @@ public:
     QByteArray decrypt(const QByteArray &in, const QByteArray &key);
 
 private:
-    DOWNLOAD_DECLARE_PRIVATE(QDesWrap)
+    TTK_DECLARE_PRIVATE(QDesWrap)
 
 };
 

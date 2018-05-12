@@ -1,10 +1,10 @@
-#include "downloadrunapplication.h"
-#include "downloadrunobject.h"
+#include "ttkrunapplication.h"
+#include "ttkrunobject.h"
 #include "downloadobject.h"
 
 int main(int argc, char *argv[])
 {
-    DownloadRunApplication app(argc, argv);
+    TTKRunApplication app(argc, argv);
 
     QCoreApplication::setOrganizationName(APPNAME);
     QCoreApplication::setOrganizationDomain(APPCOME);
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    DownloadRunObject object;
+    TTKRunObject object;
     object.checkValid();
     object.run(argc, argv);
 

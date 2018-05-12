@@ -35,7 +35,7 @@ namespace yy {
 
 namespace QJson {
 
-  class ParserPrivate : public DownloadPrivate<Parser>
+  class ParserPrivate : public TTKPrivate<Parser>
   {
     public:
       ParserPrivate();

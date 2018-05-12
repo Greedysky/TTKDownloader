@@ -20,22 +20,22 @@
  ================================================= */
 
 #include <QDebug>
-#include "downloadprivate.h"
+#include "ttkprivate.h"
 #include "downloadrunglobaldefine.h"
 
-class DownloadRunObjectPrivate;
+class TTKRunObjectPrivate;
 
 /*! @brief The class of the download run object.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_RUN_EXPORT DownloadRunObject : public QObject
+class DOWNLOAD_RUN_EXPORT TTKRunObject : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadRunObject(QObject *parent = 0);
+    explicit TTKRunObject(QObject *parent = 0);
 
     /*!
      * Check current setting file's validation.
@@ -53,7 +53,7 @@ private Q_SLOTS:
     void finished(int code);
 
 private:
-   DOWNLOAD_DECLARE_PRIVATE(DownloadRunObject)
+   TTK_DECLARE_PRIVATE(TTKRunObject)
 
 };
 

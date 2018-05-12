@@ -1,5 +1,5 @@
-#ifndef DOWNLOADRUNAPPLICATION_H
-#define DOWNLOADRUNAPPLICATION_H
+#ifndef TTKRUNAPPLICATION_H
+#define TTKRUNAPPLICATION_H
 
 /* =================================================
  * This file is part of the TTK Downloader project
@@ -20,45 +20,45 @@
  ================================================= */
 
 #include <QApplication>
-#include "downloadprivate.h"
+#include "ttkprivate.h"
 #include "downloadrunglobaldefine.h"
 
-class DownloadRunApplicationPrivate;
+class TTKRunApplicationPrivate;
 
-/*! @brief The class of the download run application.
+/*! @brief The class of the ttk run application.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_RUN_EXPORT DownloadRunApplication : public QApplication
+class DOWNLOAD_RUN_EXPORT TTKRunApplication : public QApplication
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
     */
-    DownloadRunApplication(int &argc, char **argv, bool GUIenabled = true);
+    TTKRunApplication(int &argc, char **argv, bool GUIenabled = true);
     /*!
      * Object contsructor.
     */
-    DownloadRunApplication(const QString &id, int &argc, char **argv);
+    TTKRunApplication(const QString &id, int &argc, char **argv);
 
 #if QT_VERSION < 0x050000
     /*!
      * Object contsructor.
     */
-    DownloadRunApplication(int &argc, char **argv, Type type);
+    TTKRunApplication(int &argc, char **argv, Type type);
 #  if defined(Q_WS_X11)
     /*!
      * Object contsructor.
     */
-    DownloadRunApplication(Display *dpy, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+    TTKRunApplication(Display *dpy, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
     /*!
      * Object contsructor.
     */
-    DownloadRunApplication(Display *dpy, int &argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE cmap= 0);
+    TTKRunApplication(Display *dpy, int &argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE cmap= 0);
     /*!
      * Object contsructor.
     */
-    DownloadRunApplication(Display *dpy, const QString &appId, int argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+    TTKRunApplication(Display *dpy, const QString &appId, int argc, char **argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
 #  endif
 #endif
 
@@ -106,8 +106,8 @@ private:
     */
     void sysInit(const QString &appId = QString());
 
-    DOWNLOAD_DECLARE_PRIVATE(DownloadRunApplication)
+    TTK_DECLARE_PRIVATE(TTKRunApplication)
 
 };
 
-#endif // DOWNLOADRUNAPPLICATION_H
+#endif // TTKRUNAPPLICATION_H

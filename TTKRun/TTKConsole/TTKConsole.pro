@@ -32,13 +32,13 @@ RCC_DIR = ./.build/rcc
 
 ##openssl lib check
 win32:{
-    SSL_DEPANDS = $$OUT_PWD/../bin/$$TTKDownloader/ssleay32.dll
+    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKDownloader/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
-    exists($$SSL_DEPANDS):LIBS += -L../bin/$$TTKDownloader -lssl
+    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKDownloader -lssl
 }
 unix:!mac{
-    SSL_DEPANDS = $$OUT_PWD/../lib/$$TTKDownloader/libssleay32.so
-    exists($$SSL_DEPANDS):LIBS += -L../lib/$$TTKDownloader -lssl
+    SSL_DEPANDS = $$OUT_PWD/../../lib/$$TTKDownloader/libssleay32.so
+    exists($$SSL_DEPANDS):LIBS += -L../../lib/$$TTKDownloader -lssl
 }
 
 DEFINES += DOWNLOAD_LIBRARY

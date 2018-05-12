@@ -23,4 +23,4 @@ INCLUDEPATH += \
 HEADERS  += \
     $$PWD/downloadextrasglobaldefine.h \
     $$PWD/../downloadglobal.h \
-    $$PWD/../downloadprivate.h
+    $$PWD/../ttkprivate.h

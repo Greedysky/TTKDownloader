@@ -1,6 +1,6 @@
-#include "downloadlockedfile.h"
+#include "ttklockedfile.h"
 
-DownloadLockedFile::DownloadLockedFile()
+TTKLockedFile::TTKLockedFile()
     : QFile()
 {
 #ifdef Q_OS_WIN
@@ -10,7 +10,7 @@ DownloadLockedFile::DownloadLockedFile()
     m_lock_mode = NoLock;
 }
 
-DownloadLockedFile::DownloadLockedFile(const QString &name)
+TTKLockedFile::TTKLockedFile(const QString &name)
     : QFile(name)
 {
 #ifdef Q_OS_WIN
@@ -20,21 +20,21 @@ DownloadLockedFile::DownloadLockedFile(const QString &name)
     m_lock_mode = NoLock;
 }
 
-bool DownloadLockedFile::open(OpenMode mode)
+bool TTKLockedFile::open(OpenMode mode)
 {
     if (mode & QIODevice::Truncate) {
-        qWarning("DownloadLockedFile::open(): Truncate mode not allowed.");
+        qWarning("TTKLockedFile::open(): Truncate mode not allowed.");
         return false;
     }
     return QFile::open(mode);
 }
 
-bool DownloadLockedFile::isLocked() const
+bool TTKLockedFile::isLocked() const
 {
     return m_lock_mode != NoLock;
 }
 
-DownloadLockedFile::LockMode DownloadLockedFile::lockMode() const
+TTKLockedFile::LockMode TTKLockedFile::lockMode() const
 {
     return m_lock_mode;
 }

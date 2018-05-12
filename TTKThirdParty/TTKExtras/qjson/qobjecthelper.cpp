@@ -29,13 +29,13 @@
 
 using namespace QJson;
 
-class QObjectHelper::QObjectHelperPrivate : public DownloadPrivate<QObjectHelper>
+class QObjectHelper::QObjectHelperPrivate : public TTKPrivate<QObjectHelper>
 {
 };
 
 QObjectHelper::QObjectHelper()
 {
-  DOWNLOAD_INIT_PRIVATE;
+  TTK_INIT_PRIVATE;
 }
 
 QVariantMap QObjectHelper::qobject2qvariant( const QObject* object,

@@ -21,7 +21,7 @@
 #ifndef PARSERRUNNABLE_H
 #define PARSERRUNNABLE_H
 
-#include "downloadprivate.h"
+#include "ttkprivate.h"
 #include "downloadextrasglobaldefine.h"
 
 #include <QtCore/QObject>
@@ -56,7 +56,7 @@ namespace QJson {
 
     private:
       class ParserRunnablePrivate;
-      DOWNLOAD_DECLARE_PRIVATE(ParserRunnable)
+      TTK_DECLARE_PRIVATE(ParserRunnable)
 
   };
 }

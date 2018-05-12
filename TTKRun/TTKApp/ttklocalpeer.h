@@ -1,5 +1,5 @@
-#ifndef DOWNLOADLOCALPEER_H
-#define DOWNLOADLOCALPEER_H
+#ifndef TTKLOCALPEER_H
+#define TTKLOCALPEER_H
 
 /* =================================================
  * This file is part of the TTK Downloader project
@@ -20,22 +20,22 @@
  ================================================= */
 
 #include <QObject>
-#include "downloadprivate.h"
+#include "ttkprivate.h"
 #include "downloadrunglobaldefine.h"
 
-class DownloadLocalPeerPrivate;
+class TTKLocalPeerPrivate;
 
-/*! @brief The class of the download local peer.
+/*! @brief The class of the ttk local peer.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_RUN_EXPORT DownloadLocalPeer : public QObject
+class DOWNLOAD_RUN_EXPORT TTKLocalPeer : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
     */
-    explicit DownloadLocalPeer(QObject *parent = 0, const QString &appId = QString());
+    explicit TTKLocalPeer(QObject *parent = 0, const QString &appId = QString());
 
     /*!
      * Current client is running or not.
@@ -65,8 +65,8 @@ protected Q_SLOTS:
     void receiveConnection();
 
 private:
-    DOWNLOAD_DECLARE_PRIVATE(DownloadLocalPeer)
+    TTK_DECLARE_PRIVATE(TTKLocalPeer)
 
 };
 
-#endif // DOWNLOADLOCALPEER_H
+#endif // TTKLOCALPEER_H

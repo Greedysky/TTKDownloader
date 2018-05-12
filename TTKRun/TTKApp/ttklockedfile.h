@@ -1,5 +1,5 @@
-#ifndef DOWNLOADLOCKEDFILE_H
-#define DOWNLOADLOCKEDFILE_H
+#ifndef TTKLOCKEDFILE_H
+#define TTKLOCKEDFILE_H
 
 #include <QFile>
 #ifdef Q_OS_WIN
@@ -7,11 +7,11 @@
 #endif
 #include "downloadrunglobaldefine.h"
 
-namespace DownloadLockedPrivate {
-  /*! @brief The class of the download local file.
+namespace TTKLockedPrivate {
+  /*! @brief The class of the music local file.
    * @author Greedysky <greedysky@163.com>
    */
-    class DOWNLOAD_RUN_EXPORT DownloadLockedFile : public QFile
+    class DOWNLOAD_RUN_EXPORT TTKLockedFile : public QFile
     {
     public:
         enum LockMode
@@ -21,15 +21,15 @@ namespace DownloadLockedPrivate {
             WriteLock
         };
 
-        DownloadLockedFile();
+        TTKLockedFile();
        /*!
          * Object contsructor.
         */
-        explicit DownloadLockedFile(const QString &name);
+        explicit TTKLockedFile(const QString &name);
         /*!
          * Object contsructor.
         */
-        ~DownloadLockedFile();
+        ~TTKLockedFile();
 
         bool open(OpenMode mode);
         /*!
@@ -67,4 +67,4 @@ namespace DownloadLockedPrivate {
         LockMode m_lock_mode;
     };
 }
-#endif //DOWNLOADLOCKEDFILE_H
+#endif //TTKLOCKEDFILE_H

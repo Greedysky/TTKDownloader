@@ -1,5 +1,5 @@
-#ifndef DOWNLOADPRIVATE_H
-#define DOWNLOADPRIVATE_H
+#ifndef TTKPRIVATE_H
+#define TTKPRIVATE_H
 
 /* =================================================
  * This file is part of the TTK Downloader project
@@ -20,34 +20,34 @@
  ================================================= */
 
 
-#define DOWNLOAD_DECLARE_PRIVATE(Class) \
+#define TTK_DECLARE_PRIVATE(Class) \
     friend class Class##Private; \
-    DownloadPrivateInterface<Class, Class##Private> Download_d;
+    TTKPrivateInterface<Class, Class##Private> ttk_d;
 
-#define DOWNLOAD_DECLARE_PUBLIC(Class) \
+#define TTK_DECLARE_PUBLIC(Class) \
     friend class Class;
 
-#define DOWNLOAD_INIT_PRIVATE \
-    Download_d.setPublic(this);
+#define TTK_INIT_PRIVATE \
+    ttk_d.setPublic(this);
 
-#define DOWNLOAD_D(Class) Class##Private *const d = Download_d()
-#define DOWNLOAD_Q(Class) Class *const q = Download_q()
+#define TTK_D(Class) Class##Private *const d = ttk_d()
+#define TTK_Q(Class) Class *const q = ttk_q()
 
 template <typename PUB>
-/*! @brief The class of the Download private base.
+/*! @brief The class of the ttk private base.
  * @author Greedysky <greedysky@163.com>
  */
-class DownloadPrivate
+class TTKPrivate
 {
 public:
-    virtual ~DownloadPrivate() { }
-    inline void setPublic(PUB* pub) { Download_q_ptr = pub; }
+    virtual ~TTKPrivate() { }
+    inline void setPublic(PUB* pub) { ttk_q_ptr = pub; }
 
 protected:
-    inline PUB *Download_q() const { return Download_q_ptr; }
+    inline PUB *ttk_q() const { return ttk_q_ptr; }
 
 private:
-    PUB* Download_q_ptr;
+    PUB* ttk_q_ptr;
 
 };
 
@@ -55,22 +55,22 @@ template <typename PUB, typename PVT>
 /*! @brief The class of the ttk private interface.
  * @author Greedysky <greedysky@163.com>
  */
-class DownloadPrivateInterface
+class TTKPrivateInterface
 {
-    friend class DownloadPrivate<PUB>;
+    friend class TTKPrivate<PUB>;
 public:
-    DownloadPrivateInterface() { pvt = new PVT; }
-    ~DownloadPrivateInterface() { delete pvt; }
+    TTKPrivateInterface() { pvt = new PVT; }
+    ~TTKPrivateInterface() { delete pvt; }
 
     inline void setPublic(PUB* pub) { pvt->setPublic(pub); }
     inline PVT *operator()() const { return static_cast<PVT*>(pvt); }
 
 private:
-    DownloadPrivateInterface(const DownloadPrivateInterface&) { }
-    DownloadPrivateInterface& operator=(const DownloadPrivateInterface&) { }
-    DownloadPrivate<PUB>* pvt;
+    TTKPrivateInterface(const TTKPrivateInterface&) { }
+    TTKPrivateInterface& operator=(const TTKPrivateInterface&) { }
+    TTKPrivate<PUB>* pvt;
 
 };
 
 
-#endif // DOWNLOADPRIVATE_H
+#endif // TTKPRIVATE_H

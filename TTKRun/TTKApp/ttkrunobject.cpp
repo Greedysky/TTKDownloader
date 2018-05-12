@@ -1,25 +1,25 @@
-#include "downloadrunobject.h"
+#include "ttkrunobject.h"
 #include "downloadinitobject.h"
 
 #include <QProcess>
 #include <QApplication>
 
-class DownloadRunObjectPrivate : public DownloadPrivate<DownloadRunObject>
+class TTKRunObjectPrivate : public TTKPrivate<TTKRunObject>
 {
 public:
-    DownloadRunObjectPrivate();
-    ~DownloadRunObjectPrivate();
+    TTKRunObjectPrivate();
+    ~TTKRunObjectPrivate();
 
     QProcess *m_process;
 
 };
 
-DownloadRunObjectPrivate::DownloadRunObjectPrivate()
+TTKRunObjectPrivate::TTKRunObjectPrivate()
 {
     m_process = nullptr;
 }
 
-DownloadRunObjectPrivate::~DownloadRunObjectPrivate()
+TTKRunObjectPrivate::~TTKRunObjectPrivate()
 {
     delete m_process;
 }
@@ -28,25 +28,25 @@ DownloadRunObjectPrivate::~DownloadRunObjectPrivate()
 //////////////////////////////////////////////////////
 ///
 ///
-DownloadRunObject::DownloadRunObject(QObject *parent)
+TTKRunObject::TTKRunObject(QObject *parent)
     : QObject(parent)
 {
-    DOWNLOAD_INIT_PRIVATE;
-    DOWNLOAD_D(DownloadRunObject);
+    TTK_INIT_PRIVATE;
+    TTK_D(TTKRunObject);
 
     d->m_process = new QProcess(this);
     connect(d->m_process, SIGNAL(finished(int)), SLOT(finished(int)));
 }
 
-void DownloadRunObject::checkValid()
+void TTKRunObject::checkValid()
 {
     DownloadInitObject object;
     object.checkValid();
 }
 
-void DownloadRunObject::run(int argc, char **argv)
+void TTKRunObject::run(int argc, char **argv)
 {
-    DOWNLOAD_D(DownloadRunObject);
+    TTK_D(TTKRunObject);
     QStringList list(APPNAME);
     if(argc == 3)
     {
@@ -56,7 +56,7 @@ void DownloadRunObject::run(int argc, char **argv)
     d->m_process->start(S_TTKSERVICE_FULL, list);
 }
 
-void DownloadRunObject::finished(int code)
+void TTKRunObject::finished(int code)
 {
      if(code == 0)
      {
