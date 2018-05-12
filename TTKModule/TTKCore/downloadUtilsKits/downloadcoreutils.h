@@ -63,13 +63,13 @@ namespace DownloadUtils
         DOWNLOAD_UTILS_EXPORT bool removeRecursively(const QString &dir);
 
         /*!
-         * Music version check.
+         * App version check.
          */
-        DOWNLOAD_UTILS_EXPORT bool musicVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
+        DOWNLOAD_UTILS_EXPORT bool appVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
         /*!
-         * Music version check.
+         * App version check.
          */
-        DOWNLOAD_UTILS_EXPORT bool musicVersionCheck(const QString &o, const QString &d);
+        DOWNLOAD_UTILS_EXPORT bool appVersionCheck(const QString &o, const QString &d);
 
     }
 }

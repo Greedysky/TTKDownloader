@@ -152,7 +152,7 @@ bool DownloadUtils::Core::removeRecursively(const QString &dir)
     return success;
 }
 
-bool DownloadUtils::Core::musicVersionCheck(const QStringList &ol, const QStringList &dl, int depth)
+bool DownloadUtils::Core::appVersionCheck(const QStringList &ol, const QStringList &dl, int depth)
 {
     if(depth >= ol.count())
     {
@@ -163,7 +163,7 @@ bool DownloadUtils::Core::musicVersionCheck(const QStringList &ol, const QString
     {
         if(dl[depth].toInt() == ol[depth].toInt())
         {
-            return musicVersionCheck(ol, dl, depth + 1);
+            return appVersionCheck(ol, dl, depth + 1);
         }
         else
         {
@@ -176,7 +176,7 @@ bool DownloadUtils::Core::musicVersionCheck(const QStringList &ol, const QString
     }
 }
 
-bool DownloadUtils::Core::musicVersionCheck(const QString &o, const QString &d)
+bool DownloadUtils::Core::appVersionCheck(const QString &o, const QString &d)
 {
     QStringList ol = o.split(".");
     QStringList dl = d.split(".");
@@ -186,5 +186,5 @@ bool DownloadUtils::Core::musicVersionCheck(const QString &o, const QString &d)
         return false;
     }
 
-    return musicVersionCheck(ol, dl, 0);
+    return appVersionCheck(ol, dl, 0);
 }

@@ -8,7 +8,7 @@
 #include "downloadrunglobaldefine.h"
 
 namespace TTKLockedPrivate {
-  /*! @brief The class of the music local file.
+  /*! @brief The class of the ttk local file.
    * @author Greedysky <greedysky@163.com>
    */
     class DOWNLOAD_RUN_EXPORT TTKLockedFile : public QFile
