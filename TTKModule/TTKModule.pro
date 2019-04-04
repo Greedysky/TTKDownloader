@@ -17,7 +17,7 @@
 # =================================================
 
 TEMPLATE = lib
-CONFIG += DOWNLOAD_BUILD_LIB
+CONFIG += TTK_BUILD_LIB
 
 include(../TTKDownloader.pri)
 unix:VERSION += $$TTKDownloader

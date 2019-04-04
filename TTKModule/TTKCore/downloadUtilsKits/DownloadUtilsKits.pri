@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, DOWNLOAD_NO_MSVC_LINK_NEED){
+!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
     $$PWD/downloadalgorithmutils.h \
     $$PWD/downloadcoreutils.h \
@@ -30,7 +30,7 @@ HEADERS  += \
     
 }
 
-contains(CONFIG, DOWNLOAD_BUILD_LIB){
+contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/downloadalgorithmutils.cpp \
     $$PWD/downloadcoreutils.cpp \

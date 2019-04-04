@@ -18,14 +18,14 @@
 
 TEMPLATE = app
 
-contains(CONFIG, DOWNLOAD_BUILD_LIB){
-    CONFIG -= DOWNLOAD_BUILD_LIB
+contains(CONFIG, TTK_BUILD_LIB){
+    CONFIG -= TTK_BUILD_LIB
 }
 
-CONFIG += DOWNLOAD_NO_MSVC_LINK_NEED
+CONFIG += TTK_NO_MSVC_LINK_NEED
 win32{
     msvc{
-        CONFIG -= DOWNLOAD_NO_MSVC_LINK_NEED
+        CONFIG -= TTK_NO_MSVC_LINK_NEED
     }
 }
 include(../TTKDownloader.pri)
@@ -43,7 +43,7 @@ unix{
 
 INCLUDEPATH += ../TTKModule
 
-!contains(CONFIG, DOWNLOAD_NO_MSVC_LINK_NEED){
+!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
     ../TTKModule/downloadapplication.h
 

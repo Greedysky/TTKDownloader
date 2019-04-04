@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, DOWNLOAD_NO_MSVC_LINK_NEED){
+!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
     $$PWD/downloadlogger.h \
     $$PWD/downloadglobaldefine.h \
@@ -43,7 +43,7 @@ HEADERS  += \
 
 }
 
-contains(CONFIG, DOWNLOAD_BUILD_LIB){
+contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/downloadabstractxml.cpp \
     $$PWD/downloadbackgroundconfigmanager.cpp \
