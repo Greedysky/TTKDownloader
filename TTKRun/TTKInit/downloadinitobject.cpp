@@ -54,24 +54,13 @@ void DownloadInitObject::checkTheFileNeededExist()
     copyFile(":/data/downloadhistory.ttk", S_HISTORYPATH_FULL);
 
 #ifdef Q_OS_UNIX
-    if(!QFile::exists(S_MAKENETS_FULL))
-    {
-        QFile::copy(":/data/avnets.sh", S_MAKENETS_FULL);
-        QFile::setPermissions(S_MAKENETS_FULL, QFile::ReadOwner | QFile::WriteOwner);
-        QProcess::execute("chmod", QStringList() << "+x" << S_MAKENETS_FULL);
-    }
-    if(!QFile::exists(S_TTKDD_FULL))
-    {
-        QFile::copy(":/data/TTKLDD.sh", S_TTKDD_FULL);
-        QFile::setPermissions(S_TTKDD_FULL, QFile::ReadOwner | QFile::WriteOwner);
-        QProcess::execute("chmod", QStringList() << "+x" << S_TTKDD_FULL);
-    }
-    if(!QFile::exists(S_TTKSERVICE_FULL))
-    {
-        QFile::copy(":/data/TTKService.sh", S_TTKSERVICE_FULL);
-        QFile::setPermissions(S_TTKSERVICE_FULL, QFile::ReadOwner | QFile::WriteOwner);
-        QProcess::execute("chmod", QStringList() << "+x" << S_TTKSERVICE_FULL);
-    }
+    copyLinuxShellFile(":/data/avnets.sh", S_MAKENETS_FULL);
+    copyLinuxShellFile(":/data/TTKDownloader.sh", S_TTKDOWNLOADER_FULL);
+    copyLinuxShellFile(":/data/TTKService.sh", S_TTKSERVICE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutine.sh", S_TTKROUTINE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutineCopy.sh", S_TTKROUTINECOPY_FULL);
+    copyLinuxShellFile(":/data/TTKConsole.sh", S_TTKCONSOLE_FULL);
+    copyLinuxShellFile(":/data/TTKInit.sh", S_TTKINIT_FULL);
 #endif
 
 }
@@ -93,4 +82,10 @@ void DownloadInitObject::copyFile(const QString &origin, const QString &des)
         QFile::copy(origin, des);
         QFile::setPermissions(des, QFile::ReadOwner | QFile::WriteOwner);
     }
+}
+
+void DownloadInitObject::copyLinuxShellFile(const QString &name, const QString &path)
+{
+    copyFileOverwrite(name, path);
+    QProcess::execute("chmod", QStringList() << "+x" << path);
 }

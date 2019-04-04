@@ -44,8 +44,12 @@
 #ifdef Q_OS_WIN
 #define S_TTKSERVICE_FULL         DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.exe"
 #else
-#define S_TTKDD_FULL              DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKLDD.sh"
+#define S_TTKDOWNLOADER_FULL      DownloadObject::getAppDir() + "TTKDownloader.sh"
+#define S_TTKROUTINE_FULL         DownloadObject::getAppDir() + "TTKRoutine.sh"
+#define S_TTKCONSOLE_FULL         DownloadObject::getAppDir() + "TTKConsole.sh"
+#define S_TTKINIT_FULL            DownloadObject::getAppDir() + "TTKInit.sh"
 #define S_TTKSERVICE_FULL         DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.sh"
+#define S_TTKROUTINECOPY_FULL     DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKRoutineCopy.sh"
 #endif
 
 
@@ -90,6 +94,10 @@ public:
      * Copy file.
      */
     void copyFile(const QString &origin, const QString &des);
+    /*!
+     * Copy linux shell file.
+     */
+    void copyLinuxShellFile(const QString &name, const QString &path);
 
 };
 

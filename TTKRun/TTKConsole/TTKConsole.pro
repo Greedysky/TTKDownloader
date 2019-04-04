@@ -41,7 +41,7 @@ unix:!mac{
     exists($$SSL_DEPANDS):LIBS += -L../../lib/$$TTKDownloader -lssl
 }
 
-DEFINES += DOWNLOAD_LIBRARY
+DEFINES += TTK_LIBRARY
 
 win32:msvc{
     CONFIG +=c++11

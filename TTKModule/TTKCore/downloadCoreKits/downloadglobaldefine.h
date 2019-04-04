@@ -22,7 +22,7 @@
 #include <QtCore/qglobal.h>
 
 //////////////////////////////////////
-#ifdef DOWNLOAD_LIBRARY
+#ifdef TTK_LIBRARY
 #  define DOWNLOAD_NETWORK
 #  define DOWNLOAD_CORE
 #  define DOWNLOAD_WIDGET

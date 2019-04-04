@@ -4,7 +4,11 @@
         <file alias="download.lis">../TTKResource/A_extras/download.lis</file>
         <file alias="downloadhistory.ttk">../TTKResource/A_extras/downloadhistory.ttk</file>
         <file alias="avnets.sh">../TTKResource/A_extras/avnets.sh</file>
-        <file alias="TTKLDD.sh">../TTKResource/A_extras/TTKLDD.sh</file>
+        <file alias="TTKDownloader.sh">../TTKResource/A_extras/TTKDownloader.sh</file>
+        <file alias="TTKRoutine.sh">../TTKResource/A_extras/TTKRoutine.sh</file>
+        <file alias="TTKRoutineCopy.sh">../TTKResource/A_extras/TTKRoutineCopy.sh</file>
         <file alias="TTKService.sh">../TTKResource/A_extras/TTKService.sh</file>
+        <file alias="TTKConsole.sh">../TTKResource/A_extras/TTKConsole.sh</file>
+        <file alias="TTKInit.sh">../TTKResource/A_extras/TTKInit.sh</file>
     </qresource>
 </RCC>

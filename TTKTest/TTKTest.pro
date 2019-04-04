@@ -32,7 +32,7 @@ win32:msvc{
 TARGET = TTKTest
 
 TEMPLATE = app
-DEFINES += DOWNLOAD_LIBRARY
+DEFINES += TTK_LIBRARY
 
 INCLUDEPATH += $$PWD/../ \
                $$PWD/../TTKModule/TTKCore/downloadCoreKits

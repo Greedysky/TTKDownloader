@@ -85,7 +85,7 @@ unix:!mac{
     QMAKE_CXXFLAGS += -Wswitch
 }
 
-DEFINES += DOWNLOAD_LIBRARY
+DEFINES += TTK_LIBRARY
 
 #########################################
 HEADERS += $$PWD/downloadglobal.h
