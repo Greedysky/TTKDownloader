@@ -185,7 +185,7 @@ void DownloadBottomAreaWidget::expandButtonClicked()
 void DownloadBottomAreaWidget::createSystemTrayIcon()
 {
     m_systemTray = new QSystemTrayIcon(DownloadApplication::instance());
-    m_systemTray->setIcon(QIcon(":/image/lb_player_logo"));
+    m_systemTray->setIcon(QIcon(":/image/lb_app_logo"));
     m_systemTray->setToolTip(tr("TTKDownloader"));
 
     m_systemTrayMenu = new DownloadSystemTrayMenu(DownloadApplication::instance());

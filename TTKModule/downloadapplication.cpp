@@ -127,7 +127,7 @@ void DownloadApplication::appCreateRightMenu()
 
     QMenu aboutMenu(tr("About"), &rightClickMenu);
     aboutMenu.addAction(tr("Update"), m_applicationObject, SLOT(appVersionUpdate()));
-    aboutMenu.addAction(QIcon(":/image/lb_player_logo"), tr("Version") + QString(DOWNLOAD_VERSION_STR) + QString(DOWNLOAD_VER_TIME_STR),
+    aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(DOWNLOAD_VERSION_STR) + QString(DOWNLOAD_VER_TIME_STR),
                         m_applicationObject, SLOT(appAboutUs()));
     rightClickMenu.addMenu(&aboutMenu);
     rightClickMenu.addSeparator();
