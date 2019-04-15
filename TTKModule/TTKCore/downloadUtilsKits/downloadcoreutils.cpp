@@ -1,6 +1,6 @@
 #include "downloadcoreutils.h"
 #include "downloadsettingmanager.h"
-#include "downloadversion.h"
+#include "ttkversion.h"
 
 #include <QDirIterator>
 

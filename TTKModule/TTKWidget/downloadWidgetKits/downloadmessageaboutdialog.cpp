@@ -1,7 +1,7 @@
 #include "downloadmessageaboutdialog.h"
 #include "ui_downloadmessageaboutdialog.h"
 #include "downloaduiobject.h"
-#include "downloadversion.h"
+#include "ttkversion.h"
 
 DownloadMessageAboutDialog::DownloadMessageAboutDialog(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),

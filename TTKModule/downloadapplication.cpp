@@ -9,7 +9,7 @@
 #include "downloadsysconfigmanager.h"
 #include "downloadhotkeymanager.h"
 #include "downloaduiobject.h"
-#include "downloadversion.h"
+#include "ttkversion.h"
 
 #include <QMenu>
 #include <QResizeEvent>

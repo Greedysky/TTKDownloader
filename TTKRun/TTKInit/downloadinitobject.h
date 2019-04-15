@@ -21,7 +21,7 @@
 
 #include <QDebug>
 #include "downloadobject.h"
-#include "downloadversion.h"
+#include "ttkversion.h"
 #include "downloadrunglobaldefine.h"
 
 #define S_APPDATA_DIR_FULL        DownloadObject::getAppDir() + APPDATA_DIR
