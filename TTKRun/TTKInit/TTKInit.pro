@@ -17,7 +17,7 @@
 # =================================================
 
 QT       += core
-unix:VERSION += 1.0.0.0
+unix:VERSION += 2.0.0.0
 
 win32:TARGET = ../../../bin/TTKInit
 unix:TARGET = ../../lib/TTKInit

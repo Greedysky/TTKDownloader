@@ -16,5 +16,5 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # =================================================
 
-# update time 2017.09.21
-TTKDownloader = 1.0.0.0
+# update time 2019.04.13
+TTKDownloader = 2.0.0.0
