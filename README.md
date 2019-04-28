@@ -44,9 +44,9 @@ TTKDownloader that imitation xunlei downloader.
 Screenshots
 ----
 ### Demo
-![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/demo.jpg?raw=true)
+![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo.jpg?raw=true)
 
-![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/demo2.jpg?raw=true)
+![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demodemo2.jpg?raw=true)
 
 Copyright
 -------
