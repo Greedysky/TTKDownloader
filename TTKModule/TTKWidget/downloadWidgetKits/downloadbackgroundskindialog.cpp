@@ -278,15 +278,13 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
 
 void DownloadBackgroundSkinDialog::addThemeListWidgetItem()
 {
-    QList<QFileInfo> files(QDir(THEME_DIR_FULL)
-                         .entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+    QList<QFileInfo> files(QDir(THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
     foreach(const QFileInfo &info, files)
     {
         m_backgroundList->createItem(info.baseName(), info.filePath(), false);
     }
 
-    files = QDir(USER_THEME_DIR_FULL)
-                         .entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
+    files = QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
     foreach(const QFileInfo &info, files)
     {
         m_myBackgroundList->createItem(info.baseName(), info.filePath(), true);
@@ -306,9 +304,8 @@ void DownloadBackgroundSkinDialog::cpoyFileFromLocal(const QString &path)
 
 int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
 {
-    QList<QFileInfo> files(QDir(USER_THEME_DIR_FULL)
-                         .entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
-    DownloadObject::MIntList data;
+    QList<QFileInfo> files(QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+    MIntList data;
     foreach(const QFileInfo &info, files)
     {
         QString fileName = info.baseName();

@@ -76,7 +76,7 @@ public:
      */
     void showMessage(const QString &title, const QString &text);
 
-#if defined DOWNLOAD_DEBUG && defined Q_OS_WIN && defined DOWNLOAD_GREATER_NEW
+#if defined TTK_DEBUG && defined Q_OS_WIN && defined TTK_GREATER_NEW
     /*!
      * Set current value.
      */

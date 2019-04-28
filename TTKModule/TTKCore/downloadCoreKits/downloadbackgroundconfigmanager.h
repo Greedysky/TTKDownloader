@@ -42,7 +42,7 @@ typedef struct DOWNLOAD_CORE_EXPORT DownloadSkinConfigItem
     }
 
 }DownloadSkinConfigItem;
-DOWNLOAD_DECLARE_LISTS(DownloadSkinConfigItem)
+TTK_DECLARE_LISTS(DownloadSkinConfigItem)
 
 /*! @brief The class of the skin backgroud image item.
  * @author Greedysky <greedysky@163.com>
@@ -58,7 +58,7 @@ typedef struct DOWNLOAD_CORE_EXPORT DownloadBackgroundImage
     }
 
 }DownloadBackgroundImage;
-DOWNLOAD_DECLARE_LISTS(DownloadBackgroundImage)
+TTK_DECLARE_LISTS(DownloadBackgroundImage)
 
 
 /*! @brief The class of the skin XML Config Manager.

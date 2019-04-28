@@ -21,7 +21,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
       m_ui(new Ui::DownloadApplication)
 {
     m_instance = this;
-//#ifdef DOWNLOAD_GREATER_NEW
+//#ifdef TTK_GREATER_NEW
     setAttribute(Qt::WA_TranslucentBackground, false);
 //#endif
 

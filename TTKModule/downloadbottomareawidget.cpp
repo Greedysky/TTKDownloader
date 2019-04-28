@@ -75,7 +75,7 @@ void DownloadBottomAreaWidget::showMessage(const QString &title, const QString &
     m_systemTray->showMessage(title, text);
 }
 
-#if defined DOWNLOAD_DEBUG && defined Q_OS_WIN && defined DOWNLOAD_WINEXTRAS
+#if defined TTK_DEBUG && defined Q_OS_WIN && defined TTK_WINEXTRAS
 void DownloadBottomAreaWidget::setValue(int value) const
 {
     m_windowExtras->setValue(value);

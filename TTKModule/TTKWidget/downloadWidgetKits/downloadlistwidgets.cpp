@@ -84,7 +84,7 @@ void DownloadListWidgets::resizeWindow()
 
 void DownloadListWidgets::reverseSelect()
 {
-    DownloadObject::MIntSet rows;
+    MIntSet rows;
     foreach(QTableWidgetItem *item, selectedItems())
     {
         rows.insert(item->row());

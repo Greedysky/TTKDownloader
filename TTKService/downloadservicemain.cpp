@@ -7,7 +7,7 @@
 #include <QTranslator>
 #include <QApplication>
 
-#define DOWNLOAD_DEBUG
+#define TTK_DEBUG
 
 void loadDXcbPlugin(int argc, char *argv[])
 {
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 {
     loadDXcbPlugin(argc, argv);
     QApplication a(argc, argv);
-#if !defined DOWNLOAD_DEBUG && !defined Q_OS_UNIX
+#if !defined TTK_DEBUG && !defined Q_OS_UNIX
     if(argc <= 1 || QString(argv[1]) != APPNAME)
     {
         return -1;

@@ -2,7 +2,7 @@
 #include "downloadthreadmanager.h"
 #include "downloadsettingmanager.h"
 
-#ifdef DOWNLOAD_WINEXTRAS
+#ifdef TTK_WINEXTRAS
 #include <QCommandLineOption>
 #include <QCommandLineParser>
 #endif
@@ -22,7 +22,7 @@ DownloadConsoleObject::~DownloadConsoleObject()
 
 bool DownloadConsoleObject::init(const QCoreApplication &app)
 {
-#ifdef DOWNLOAD_WINEXTRAS
+#ifdef TTK_WINEXTRAS
     QCommandLineOption op1("u", "", ".");
     QCommandLineOption op2("s", "", ".");
 

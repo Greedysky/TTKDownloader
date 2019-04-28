@@ -29,7 +29,7 @@ typedef struct DOWNLOAD_CORE_EXPORT DownloadList
     QString m_name;
     QString m_url;
 }DownloadList;
-DOWNLOAD_DECLARE_LISTS(DownloadList)
+TTK_DECLARE_LISTS(DownloadList)
 
 /*! @brief The class of the download list manager.
  * @author Greedysky <greedysky@163.com>

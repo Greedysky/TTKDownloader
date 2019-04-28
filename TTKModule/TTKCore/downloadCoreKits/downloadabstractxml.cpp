@@ -125,15 +125,15 @@ QString DownloadAbstractXml::readXmlTextByTagName(const QString &tagName) const
     return nodelist.at(0).toElement().text();
 }
 
-DownloadObject::MStriantMap DownloadAbstractXml::readXmlAttributesByTagName(const QString &tagName) const
+MVariantMap DownloadAbstractXml::readXmlAttributesByTagName(const QString &tagName) const
 {
     QDomNodeList nodelist = m_ddom->elementsByTagName(tagName);
     if(nodelist.isEmpty())
     {
-        return DownloadObject::MStriantMap();
+        return MVariantMap();
     }
     QDomNamedNodeMap nodes = nodelist.at(0).toElement().attributes();
-    DownloadObject::MStriantMap maps;
+    MVariantMap maps;
     for(int i=0; i<nodes.count(); ++i)
     {
         QDomAttr attr = nodes.item(i).toAttr();

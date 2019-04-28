@@ -22,7 +22,7 @@ void DownloadRunTimeManager::run() const
 {
     M_LOGGER_INFO("DownloadApplication Begin");
 
-#ifndef DOWNLOAD_GREATER_NEW
+#ifndef TTK_GREATER_NEW
     DownloadUtils::Codec::setLocalCodec();
 #endif
 

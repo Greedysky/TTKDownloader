@@ -2,19 +2,19 @@
 #include "downloadapplication.h"
 
 #include <QStyle>
-#if defined Q_OS_WIN && defined DOWNLOAD_WINEXTRAS
+#if defined Q_OS_WIN && defined TTK_WINEXTRAS
 #   include <QtWinExtras/QtWinExtras>
 #endif
 
 DownloadWindowExtras::DownloadWindowExtras(QObject *parent)
     : QObject(parent)
 {
-#if defined Q_OS_WIN && defined DOWNLOAD_WINEXTRAS
+#if defined Q_OS_WIN && defined TTK_WINEXTRAS
     m_taskbarProgress = nullptr;
     m_taskbarButton = nullptr;
     m_superClass = MStatic_cast(DownloadApplication*, parent);
     disableBlurBehindWindow( QtWin::isCompositionEnabled() );
-#  ifdef DOWNLOAD_DEBUG
+#  ifdef TTK_DEBUG
     createJumpList();
     createTaskbar();
 #  endif
@@ -26,7 +26,7 @@ DownloadWindowExtras::DownloadWindowExtras(QObject *parent)
 
 DownloadWindowExtras::~DownloadWindowExtras()
 {
-#if defined Q_OS_WIN && defined DOWNLOAD_WINEXTRAS
+#if defined Q_OS_WIN && defined TTK_WINEXTRAS
     delete m_taskbarProgress;
     delete m_taskbarButton;
 #endif
@@ -40,18 +40,18 @@ QString DownloadWindowExtras::getClassName()
 void DownloadWindowExtras::disableBlurBehindWindow(bool enable)
 {
     m_disableBlurBehindWindow = enable;
-#if defined Q_OS_WIN && defined DOWNLOAD_WINEXTRAS
+#if defined Q_OS_WIN && defined TTK_WINEXTRAS
     QtWin::enableBlurBehindWindow(m_superClass);
     QtWin::disableBlurBehindWindow(m_superClass);
 #endif
 }
 
-#if defined Q_OS_WIN && defined DOWNLOAD_WINEXTRAS
+#if defined Q_OS_WIN && defined TTK_WINEXTRAS
 void DownloadWindowExtras::showPlayStatus(bool status) const
 {
     if(!status)
     {
-#ifdef DOWNLOAD_DEBUG
+#ifdef TTK_DEBUG
         m_taskbarButton->setOverlayIcon(m_superClass->style()->standardIcon(QStyle::SP_MediaPause));
         m_taskbarProgress->show();
         m_taskbarProgress->resume();
@@ -59,7 +59,7 @@ void DownloadWindowExtras::showPlayStatus(bool status) const
     }
     else
     {
-#ifdef DOWNLOAD_DEBUG
+#ifdef TTK_DEBUG
         m_taskbarButton->setOverlayIcon(m_superClass->style()->standardIcon(QStyle::SP_MediaPlay));
         m_taskbarProgress->show();
         m_taskbarProgress->pause();

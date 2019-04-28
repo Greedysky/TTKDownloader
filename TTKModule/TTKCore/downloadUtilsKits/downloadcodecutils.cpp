@@ -25,7 +25,7 @@ void DownloadUtils::Codec::setLocalCodec(const char *format)
 {
     QTextCodec *codec = QTextCodec::codecForName(format);
     QTextCodec::setCodecForLocale(codec);
-#ifndef DOWNLOAD_GREATER_NEW
+#ifndef TTK_GREATER_NEW
     QTextCodec::setCodecForCStrings(codec);
     QTextCodec::setCodecForTr(codec);
 #endif

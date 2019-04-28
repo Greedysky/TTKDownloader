@@ -42,7 +42,7 @@ typedef struct DOWNLOAD_NETWORK_EXPORT DownloadSkinRemoteItem
     }
 
 }DownloadSkinRemoteItem;
-DOWNLOAD_DECLARE_LISTS(DownloadSkinRemoteItem)
+TTK_DECLARE_LISTS(DownloadSkinRemoteItem)
 
 /*! @brief The class of the remote skin item group.
  * @author Greedysky <greedysky@163.com>
@@ -58,7 +58,7 @@ typedef struct DOWNLOAD_NETWORK_EXPORT DownloadSkinRemoteGroup
     }
 
 }DownloadSkinRemoteGroup;
-DOWNLOAD_DECLARE_LISTS(DownloadSkinRemoteGroup)
+TTK_DECLARE_LISTS(DownloadSkinRemoteGroup)
 
 
 /*! @brief The class of the remote skin XML Config Manager.

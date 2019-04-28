@@ -154,7 +154,7 @@ void DownloadQueueCache::errorSlot(QNetworkReply::NetworkError code)
     {
         return;
     }
-#ifndef DOWNLOAD_DEBUG
+#ifndef TTK_DEBUG
     Q_UNUSED(code);
 #endif
     M_LOGGER_ERROR(QString("QNetworkReply::NetworkError : %1 %2").arg(code).arg(m_reply->errorString()));

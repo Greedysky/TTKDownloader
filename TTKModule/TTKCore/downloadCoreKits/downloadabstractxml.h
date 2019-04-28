@@ -40,7 +40,7 @@ typedef struct DOWNLOAD_CORE_EXPORT DownloadXmlAttribute
         m_value = value;
     }
 }DownloadXmlAttribute;
-DOWNLOAD_DECLARE_LISTS(DownloadXmlAttribute)
+TTK_DECLARE_LISTS(DownloadXmlAttribute)
 
 /*! @brief The class of the base class of xml interface.
  * @author Greedysky <greedysky@163.com>
@@ -103,7 +103,7 @@ public:
     /*!
      * Read xml attributes by tagName and default name "value".
      */
-    DownloadObject::MStriantMap readXmlAttributesByTagName(const QString &tagName) const;
+    MVariantMap readXmlAttributesByTagName(const QString &tagName) const;
     /*!
      * Create processing instruction in header.
      */

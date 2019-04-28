@@ -71,7 +71,7 @@ void DownloadHistoryRecordWidget::resizeWindow()
 
 void DownloadHistoryRecordWidget::reverseSelect()
 {
-    DownloadObject::MIntSet rows;
+    MIntSet rows;
     foreach(QTableWidgetItem *item, selectedItems())
     {
         rows.insert(item->row());

@@ -3,7 +3,7 @@
 #include "downloadobject.h"
 
 #include <QHostInfo>
-#ifdef DOWNLOAD_GREATER_NEW
+#ifdef TTK_GREATER_NEW
 #  include <QtConcurrent/QtConcurrent>
 #else
 #  include <QtConcurrentRun>
