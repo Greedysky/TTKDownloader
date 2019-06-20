@@ -148,19 +148,30 @@ void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *
    {
        return;
    }
+   if(input->isNull())
+   {
+       return;
+   }
 
+   QRgb r = 0, g = 0, b = 0;
    for(int w=0; w<input->width(); w++)
    {
        for(int h=0; h<input->height(); h++)
        {
            QRgb rgb = input->pixel(w, h);
-           avg += rgb;
+           r += qRed(rgb);
+           g += qGreen(rgb);
+           b += qBlue(rgb);
            output->setPixel(w, h, qRgb(colorBurnTransform(qRed(rgb), delta),
                                        colorBurnTransform(qGreen(rgb), delta),
                                        colorBurnTransform(qBlue(rgb), delta)));
        }
    }
-   avg /= (input->width()*input->height());
+   const int size = input->width() * input->height();
+   r /= size;
+   g /= size;
+   b /= size;
+   avg = qRgb(r, g, b);
 }
 
 int DownloadUtils::Widget::colorBurnTransform(int c, int delta)
