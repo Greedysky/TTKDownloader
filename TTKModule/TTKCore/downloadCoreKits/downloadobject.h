@@ -52,7 +52,7 @@
 #define KRC_FILE_PREFIX         "krc"
 #define MP3_FILE_PREFIX         "mp3"
 #define CFG_FILE_PREFIX         "ttk"
-#define LST_FILE_PREFIX         "lis"
+#define LST_FILE_PREFIX         "tkpl"
 #define EXE_FILE_PREFIX         "exe"
 #define XML_FILE_PREFIX         "xml"
 #define SET_FILE_PREFIX         "stk"
@@ -72,7 +72,7 @@
 #define SET_FILE                STRCAT(DOT, SET_FILE_PREFIX)
 
 #define MAKENETS                "avnets.sh"
-#define LISTPATH                "download.lis"
+#define LISTPATH                "download.tkpl"
 #define COFIGPATH               "downloadconfig.xml"
 #define HISTORYPATH             "downloadhistory.ttk"
 
