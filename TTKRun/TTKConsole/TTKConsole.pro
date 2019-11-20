@@ -17,7 +17,7 @@
 # =================================================
 
 QT       += core network xml
-unix:VERSION += 2.0.0.0
+unix:VERSION += 2.1.0.0
 
 win32:TARGET = ../../../bin/TTKConsole
 unix:TARGET = ../../lib/TTKConsole
