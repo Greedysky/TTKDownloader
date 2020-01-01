@@ -3,7 +3,7 @@
 
 /* =================================================
  * This file is part of the TTK Downloader project
- * Copyright (C) 2015 - 2019 Greedysky Studio
+ * Copyright (C) 2015 - 2020 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,6 +30,9 @@
 #define TTK_INIT_PRIVATE \
     ttk_d.setPublic(this);
 
+#define TTK_INIT_PUBLIC(Class) \
+    ttk_d.setPrivate(new Class##Private);
+
 #define TTK_D(Class) Class##Private *const d = static_cast<Class##Private *>(ttk_d())
 #define TTK_Q(Class) Class *const q = static_cast<Class *>(ttk_q())
 
@@ -40,6 +43,7 @@ template <typename PUB>
 class TTKPrivate
 {
 public:
+    TTKPrivate() { ttk_q_ptr = nullptr; }
     virtual ~TTKPrivate() { }
     inline void setPublic(PUB* pub) { ttk_q_ptr = pub; }
 
@@ -59,16 +63,17 @@ class TTKPrivateInterface
 {
     friend class TTKPrivate<PUB>;
 public:
-    TTKPrivateInterface() { pvt = new PVT; }
-    ~TTKPrivateInterface() { delete pvt; }
+    TTKPrivateInterface() { pvt_ptr = new PVT; }
+    ~TTKPrivateInterface() { delete pvt_ptr; }
 
-    inline void setPublic(PUB* pub) { pvt->setPublic(pub); }
-    inline PVT *operator()() const { return static_cast<PVT*>(pvt); }
+    inline void setPrivate(PVT* pvt) { delete pvt_ptr; pvt_ptr = pvt; }
+    inline void setPublic(PUB* pub) { pvt_ptr->setPublic(pub); }
+    inline PVT *operator()() const { return static_cast<PVT*>(pvt_ptr); }
 
 private:
     TTKPrivateInterface(const TTKPrivateInterface&) { }
     TTKPrivateInterface& operator=(const TTKPrivateInterface&) { }
-    TTKPrivate<PUB>* pvt;
+    TTKPrivate<PUB>* pvt_ptr;
 
 };
 
