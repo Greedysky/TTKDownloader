@@ -47,7 +47,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     /////////// Mouse tracking
     foreach(QObject *obj, foreachWidget(this))
     {
-        QWidget *w = MStatic_cast(QWidget*, obj);
+        QWidget *w = TTKStatic_cast(QWidget*, obj);
         w->installEventFilter(this);
         w->setMouseTracking(true);
     }

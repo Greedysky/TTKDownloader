@@ -94,7 +94,7 @@ QStringList DownloadNetworkSpeedTestThread::getNewtworkNames() const
     for(UINT i = 0; i < pTable->dwNumEntries; i++)
     {
         MIB_IFROW Row = pTable->table[i];
-        std::string s(MReinterpret_cast(char const*, Row.bDescr));
+        std::string s(TTKReinterpret_cast(char const*, Row.bDescr));
         QString qs = QString::fromStdString(s);
         if((Row.dwType == 71 || Row.dwType == 6) && !names.contains(qs))
         {

@@ -216,11 +216,11 @@ public:
     }
     inline PVT& operator()()
     {
-        return *MStatic_cast(PVT*, pvt);
+        return *TTKStatic_cast(PVT*, pvt);
     }
     inline const PVT& operator()() const
     {
-        return *MStatic_cast(PVT*, pvt);
+        return *TTKStatic_cast(PVT*, pvt);
     }
 private:
     QxtPrivateInterface(const QxtPrivateInterface&) { }

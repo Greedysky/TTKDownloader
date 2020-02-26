@@ -57,19 +57,19 @@
 #define XML_FILE_PREFIX         "xml"
 #define SET_FILE_PREFIX         "stk"
 
-#define TTS_FILE                STRCAT(DOT, TTS_FILE_PREFIX)
-#define SKN_FILE                STRCAT(DOT, SKN_FILE_PREFIX)
-#define JPG_FILE                STRCAT(DOT, JPG_FILE_PREFIX)
-#define BMP_FILE                STRCAT(DOT, BMP_FILE_PREFIX)
-#define PNG_FILE                STRCAT(DOT, PNG_FILE_PREFIX)
-#define LRC_FILE                STRCAT(DOT, LRC_FILE_PREFIX)
-#define KRC_FILE                STRCAT(DOT, KRC_FILE_PREFIX)
-#define MP3_FILE                STRCAT(DOT, MP3_FILE_PREFIX)
-#define CFG_FILE                STRCAT(DOT, CFG_FILE_PREFIX)
-#define LST_FILE                STRCAT(DOT, LST_FILE_PREFIX)
-#define EXE_FILE                STRCAT(DOT, EXE_FILE_PREFIX)
-#define XML_FILE                STRCAT(DOT, XML_FILE_PREFIX)
-#define SET_FILE                STRCAT(DOT, SET_FILE_PREFIX)
+#define TTS_FILE                TTK_STRCAT(DOT, TTS_FILE_PREFIX)
+#define SKN_FILE                TTK_STRCAT(DOT, SKN_FILE_PREFIX)
+#define JPG_FILE                TTK_STRCAT(DOT, JPG_FILE_PREFIX)
+#define BMP_FILE                TTK_STRCAT(DOT, BMP_FILE_PREFIX)
+#define PNG_FILE                TTK_STRCAT(DOT, PNG_FILE_PREFIX)
+#define LRC_FILE                TTK_STRCAT(DOT, LRC_FILE_PREFIX)
+#define KRC_FILE                TTK_STRCAT(DOT, KRC_FILE_PREFIX)
+#define MP3_FILE                TTK_STRCAT(DOT, MP3_FILE_PREFIX)
+#define CFG_FILE                TTK_STRCAT(DOT, CFG_FILE_PREFIX)
+#define LST_FILE                TTK_STRCAT(DOT, LST_FILE_PREFIX)
+#define EXE_FILE                TTK_STRCAT(DOT, EXE_FILE_PREFIX)
+#define XML_FILE                TTK_STRCAT(DOT, XML_FILE_PREFIX)
+#define SET_FILE                TTK_STRCAT(DOT, SET_FILE_PREFIX)
 
 #define MAKENETS                "avnets.sh"
 #define LISTPATH                "download.tkpl"

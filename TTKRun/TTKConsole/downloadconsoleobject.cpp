@@ -64,6 +64,6 @@ bool DownloadConsoleObject::init(const QCoreApplication &app)
 
 void DownloadConsoleObject::progressChanged(qint64 current, qint64 total)
 {
-    qDebug() << "process: " << MStatic_cast(int, (current*100000000.0/total))/1000000.0
+    qDebug() << "process: " << TTKStatic_cast(int, (current*100000000.0/total))/1000000.0
              << "% " << current << "kb " << total << "kb";
 }

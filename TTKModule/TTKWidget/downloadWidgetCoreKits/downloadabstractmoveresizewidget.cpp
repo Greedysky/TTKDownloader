@@ -28,7 +28,7 @@ bool DownloadAbstractMoveResizeWidget::eventFilter(QObject *object, QEvent *even
     QWidget::eventFilter(object, event);
     if(QEvent::MouseMove == event->type())
     {
-        QMouseEvent *mouseEvent = MStatic_cast(QMouseEvent*, event);
+        QMouseEvent *mouseEvent = TTKStatic_cast(QMouseEvent*, event);
         QApplication::sendEvent(this, mouseEvent);
     }
     return false;

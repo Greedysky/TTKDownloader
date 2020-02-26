@@ -305,7 +305,7 @@ void DownloadBackgroundSkinDialog::cpoyFileFromLocal(const QString &path)
 int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
 {
     QList<QFileInfo> files(QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
-    MIntList data;
+    TTKIntList data;
     foreach(const QFileInfo &info, files)
     {
         QString fileName = info.baseName();

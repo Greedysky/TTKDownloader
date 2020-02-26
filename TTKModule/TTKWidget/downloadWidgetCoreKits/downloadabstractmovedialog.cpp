@@ -111,7 +111,7 @@ void DownloadAbstractMoveDialog::setBackgroundPixmap(QLabel *label, const QSize 
 
 void DownloadAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
 {
-    QLabel *label = MStatic_cast(QLabel*, m_background);
+    QLabel *label = TTKStatic_cast(QLabel*, m_background);
     DownloadBackgroundImage image;
     if(DownloadExtractWrap::outputSkin(&image, M_BACKGROUND_PTR->getMBackground()))
     {

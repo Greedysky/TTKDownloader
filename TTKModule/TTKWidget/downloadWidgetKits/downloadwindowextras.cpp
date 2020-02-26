@@ -12,7 +12,7 @@ DownloadWindowExtras::DownloadWindowExtras(QObject *parent)
 #if defined Q_OS_WIN && defined TTK_WINEXTRAS
     m_taskbarProgress = nullptr;
     m_taskbarButton = nullptr;
-    m_superClass = MStatic_cast(DownloadApplication*, parent);
+    m_superClass = TTKStatic_cast(DownloadApplication*, parent);
     disableBlurBehindWindow( QtWin::isCompositionEnabled() );
 #  ifdef TTK_DEBUG
     createJumpList();
