@@ -20,13 +20,13 @@ QString DownloadRunTimeManager::getClassName()
 
 void DownloadRunTimeManager::run() const
 {
-    M_LOGGER_INFO("DownloadApplication Begin");
+    TTK_LOGGER_INFO("DownloadApplication Begin");
 
 #ifndef TTK_GREATER_NEW
     DownloadUtils::Codec::setLocalCodec();
 #endif
 
-    M_LOGGER_INFO("Load Translation");
+    TTK_LOGGER_INFO("Load Translation");
     DownloadSysConfigManager *xml = new DownloadSysConfigManager;
     xml->readXMLConfig();
     xml->readSysLoadConfig();
@@ -51,7 +51,7 @@ void DownloadRunTimeManager::run() const
     M_NETWORK_PTR->setBlockNetWork(index);
 
     delete xml;
-    M_LOGGER_INFO("End load translation");
+    TTK_LOGGER_INFO("End load translation");
 }
 
 QString DownloadRunTimeManager::translator() const

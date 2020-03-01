@@ -67,9 +67,9 @@ SOURCES += \
     downloadconsoleobject.cpp
 
 HEADERS += \
+    ../../TTKModule/TTKCore/downloadCoreKits/ttklogger.h \
     ../../TTKModule/TTKCore/downloadCoreKits/downloadsettingmanager.h \
     ../../TTKModule/TTKCore/downloadCoreKits/downloadabstractxml.h \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadlogger.h \
     ../../TTKModule/TTKCore/downloadCoreKits/downloadobject.h \
     ../../TTKModule/TTKCore/downloadCoreKits/downloadglobaldefine.h \
     ../../TTKModule/TTKCore/downloadCoreKits/downloadbreakpointconfigmanager.h \

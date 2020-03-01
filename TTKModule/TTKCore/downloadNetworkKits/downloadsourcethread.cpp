@@ -25,7 +25,7 @@ void DownloadSourceThread::startToDownload(const QString &url)
 #ifndef QT_NO_SSL
     connect(m_manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
                        SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
-    M_LOGGER_INFO(QString("%1 Support ssl: %2").arg(getClassName()).arg(QSslSocket::supportsSsl()));
+    TTK_LOGGER_INFO(QString("%1 Support ssl: %2").arg(getClassName()).arg(QSslSocket::supportsSsl()));
 
     QSslConfiguration sslConfig = request.sslConfiguration();
     sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
@@ -54,7 +54,7 @@ void DownloadSourceThread::downLoadFinished()
     }
     else
     {
-        M_LOGGER_ERROR("Download source data error");
+        TTK_LOGGER_ERROR("Download source data error");
         emit downLoadByteDataChanged(QByteArray());
         deleteAll();
     }
@@ -62,7 +62,7 @@ void DownloadSourceThread::downLoadFinished()
 
 void DownloadSourceThread::replyError(QNetworkReply::NetworkError)
 {
-    M_LOGGER_ERROR("Abnormal network connection");
+    TTK_LOGGER_ERROR("Abnormal network connection");
     emit downLoadByteDataChanged(QByteArray());
     deleteAll();
 }

@@ -20,7 +20,7 @@ INCLUDEPATH += $$PWD
 
 !contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
-    $$PWD/downloadlogger.h \
+    $$PWD/ttklogger.h \
     $$PWD/downloadglobaldefine.h \
     $$PWD/downloadobject.h \
     $$PWD/downloadnumberdefine.h \

@@ -27,7 +27,7 @@ QString DownloadNetworkThread::getClassName()
 
 void DownloadNetworkThread::start()
 {
-    M_LOGGER_INFO("Load NetworkThread");
+    TTK_LOGGER_INFO("Load NetworkThread");
     m_timer.start(NETWORK_DETECT_INTERVAL);
 }
 

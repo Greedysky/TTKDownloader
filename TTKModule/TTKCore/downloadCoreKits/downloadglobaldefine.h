@@ -87,6 +87,6 @@
 
 //////////////////////////////////////
 ///load logger
-#include "downloadlogger.h"
+#include "ttklogger.h"
 
 #endif // DOWNLOADGLOBALDEFINE_H
