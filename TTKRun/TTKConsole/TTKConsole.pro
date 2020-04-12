@@ -39,6 +39,7 @@ unix:!mac{
 }
 
 LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKCore
+unix:LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
 
 DEFINES += TTK_LIBRARY
 
