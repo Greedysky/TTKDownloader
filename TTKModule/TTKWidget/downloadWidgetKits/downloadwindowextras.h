@@ -41,7 +41,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadWindowExtras(QObject *parent = 0);
+    explicit DownloadWindowExtras(QObject *parent = nullptr);
 
     ~DownloadWindowExtras();
 

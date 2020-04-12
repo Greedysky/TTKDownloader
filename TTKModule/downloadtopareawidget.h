@@ -40,7 +40,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadTopAreaWidget(QWidget *parent = 0);
+    explicit DownloadTopAreaWidget(QWidget *parent = nullptr);
 
     ~DownloadTopAreaWidget();
 

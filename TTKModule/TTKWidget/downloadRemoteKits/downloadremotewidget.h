@@ -31,7 +31,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadRemoteWidget(QWidget *parent = 0);
+    explicit DownloadRemoteWidget(QWidget *parent = nullptr);
 
     virtual ~DownloadRemoteWidget();
 

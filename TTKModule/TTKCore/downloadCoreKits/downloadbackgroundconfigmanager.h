@@ -71,7 +71,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSkinConfigManager(QObject *parent = 0);
+    explicit DownloadSkinConfigManager(QObject *parent = nullptr);
 
     /*!
      * Get class object name.

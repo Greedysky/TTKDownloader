@@ -35,7 +35,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractTableWidget(QWidget *parent = 0);
+    explicit DownloadAbstractTableWidget(QWidget *parent = nullptr);
 
     virtual ~DownloadAbstractTableWidget();
 

@@ -34,7 +34,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadTransitionAnimationLabel(QWidget *parent = 0);
+    explicit DownloadTransitionAnimationLabel(QWidget *parent = nullptr);
 
     ~DownloadTransitionAnimationLabel();
 

@@ -32,7 +32,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadFunctionItemWidget(QWidget *parent = 0);
+    explicit DownloadFunctionItemWidget(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -85,7 +85,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadFunctionListWidget(QWidget *parent = 0);
+    explicit DownloadFunctionListWidget(QWidget *parent = nullptr);
 
     ~DownloadFunctionListWidget();
 

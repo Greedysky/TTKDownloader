@@ -41,7 +41,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadListConfigManager(QObject *parent = 0);
+    explicit DownloadListConfigManager(QObject *parent = nullptr);
 
     /*!
      * Get class object name.

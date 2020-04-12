@@ -52,7 +52,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractXml(QObject *parent = 0);
+    explicit DownloadAbstractXml(QObject *parent = nullptr);
 
     ~DownloadAbstractXml();
 

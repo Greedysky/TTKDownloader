@@ -36,7 +36,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadListItemWidget(QWidget *parent = 0);
+    explicit DownloadListItemWidget(QWidget *parent = nullptr);
 
     ~DownloadListItemWidget();
 

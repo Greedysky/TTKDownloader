@@ -35,7 +35,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBaseAnimationWidget(QWidget *parent = 0);
+    explicit DownloadBaseAnimationWidget(QWidget *parent = nullptr);
 
     ~DownloadBaseAnimationWidget();
 
@@ -92,7 +92,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSkinAnimationWidget(QWidget *parent = 0);
+    explicit DownloadSkinAnimationWidget(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.

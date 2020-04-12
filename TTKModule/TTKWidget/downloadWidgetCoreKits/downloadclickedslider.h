@@ -32,8 +32,8 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadClickedSlider(QWidget *parent = 0);
-    explicit DownloadClickedSlider(Qt::Orientation orientation, QWidget *parent = 0);
+    explicit DownloadClickedSlider(QWidget *parent = nullptr);
+    explicit DownloadClickedSlider(Qt::Orientation orientation, QWidget *parent = nullptr);
 
     /*!
      * Get class object name.

@@ -35,16 +35,16 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadMessageBox(QWidget *parent = 0);
+    explicit DownloadMessageBox(QWidget *parent = nullptr);
     /*!
      * Object contsructor by context text.
      */
-    explicit DownloadMessageBox(const QString &text, QWidget *parent = 0);
+    explicit DownloadMessageBox(const QString &text, QWidget *parent = nullptr);
     /*!
      * Object contsructor by context text and title.
      */
     DownloadMessageBox(const QString &title, const QString &text,
-                    QWidget *parent = 0);
+                    QWidget *parent = nullptr);
 
     virtual ~DownloadMessageBox();
 

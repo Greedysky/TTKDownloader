@@ -43,7 +43,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadRecordConfigManager(QObject *parent = 0);
+    explicit DownloadRecordConfigManager(QObject *parent = nullptr);
 
     /*!
      * Get class object name.

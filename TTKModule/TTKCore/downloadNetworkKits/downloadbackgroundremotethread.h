@@ -71,7 +71,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSkinRemoteConfigManager(QObject *parent = 0);
+    explicit DownloadSkinRemoteConfigManager(QObject *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -96,7 +96,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundRemoteThread(QObject *parent = 0);
+    explicit DownloadBackgroundRemoteThread(QObject *parent = nullptr);
 
     /*!
      * Get class object name.

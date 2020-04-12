@@ -33,7 +33,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundPopWidget(QWidget *parent = 0);
+    explicit DownloadBackgroundPopWidget(QWidget *parent = nullptr);
 
     virtual ~DownloadBackgroundPopWidget();
 

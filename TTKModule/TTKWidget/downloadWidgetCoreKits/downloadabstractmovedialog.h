@@ -33,11 +33,11 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractMoveDialog(QWidget *parent = 0);
+    explicit DownloadAbstractMoveDialog(QWidget *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractMoveDialog(bool transparent, QWidget *parent = 0);
+    explicit DownloadAbstractMoveDialog(bool transparent, QWidget *parent = nullptr);
 
     virtual ~DownloadAbstractMoveDialog();
 

@@ -46,7 +46,7 @@ public:
      * Object contsructor provide download URL\ save local path and download type.
      */
     DownLoadThreadAbstract(const QString &url, const QString &save,
-                           Download_Type type, QObject *parent = 0);
+                           Download_Type type, QObject *parent = nullptr);
 
     virtual ~DownLoadThreadAbstract();
 

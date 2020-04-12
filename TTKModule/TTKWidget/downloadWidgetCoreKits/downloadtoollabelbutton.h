@@ -34,7 +34,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadToolLabelButton(QWidget *parent = 0);
+    explicit DownloadToolLabelButton(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -79,7 +79,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSpeedToolLabelButton(QWidget *parent = 0);
+    explicit DownloadSpeedToolLabelButton(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.

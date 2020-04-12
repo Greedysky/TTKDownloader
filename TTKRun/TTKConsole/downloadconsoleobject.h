@@ -36,7 +36,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadConsoleObject(QObject *parent = 0);
+    explicit DownloadConsoleObject(QObject *parent = nullptr);
 
     ~DownloadConsoleObject();
 

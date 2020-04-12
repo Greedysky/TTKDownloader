@@ -58,7 +58,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractMoveResizeWidget(QWidget *parent = 0);
+    explicit DownloadAbstractMoveResizeWidget(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.

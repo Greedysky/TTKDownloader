@@ -33,11 +33,11 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractMoveWidget(QWidget *parent = 0);
+    explicit DownloadAbstractMoveWidget(QWidget *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractMoveWidget(bool transparent, QWidget *parent = 0);
+    explicit DownloadAbstractMoveWidget(bool transparent, QWidget *parent = nullptr);
 
     virtual ~DownloadAbstractMoveWidget();
 
@@ -95,11 +95,11 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractMoveSingleWidget(QWidget *parent = 0);
+    explicit DownloadAbstractMoveSingleWidget(QWidget *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    explicit DownloadAbstractMoveSingleWidget(bool transparent, QWidget *parent = 0);
+    explicit DownloadAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
 
     virtual ~DownloadAbstractMoveSingleWidget();
 

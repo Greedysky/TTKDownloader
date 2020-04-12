@@ -33,7 +33,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadUrlEncoder(QObject *parent = 0);
+    explicit DownloadUrlEncoder(QObject *parent = nullptr);
 
     /*!
      * Get class object name.

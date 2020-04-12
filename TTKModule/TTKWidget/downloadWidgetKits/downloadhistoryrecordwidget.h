@@ -29,7 +29,7 @@ class DOWNLOAD_WIDGET_EXPORT DownloadHistoryRecordWidget : public DownloadAbstra
 {
     Q_OBJECT
 public:
-    explicit DownloadHistoryRecordWidget(QWidget *parent = 0);
+    explicit DownloadHistoryRecordWidget(QWidget *parent = nullptr);
 
     virtual ~DownloadHistoryRecordWidget();
 

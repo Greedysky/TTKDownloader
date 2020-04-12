@@ -38,7 +38,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundSkinDialog(QWidget *parent = 0);
+    explicit DownloadBackgroundSkinDialog(QWidget *parent = nullptr);
 
     virtual ~DownloadBackgroundSkinDialog();
 

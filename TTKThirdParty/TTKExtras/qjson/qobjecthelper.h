@@ -51,7 +51,7 @@ namespace QJson {
       Q_ENUMS(Gender)
 
      public:
-        Person(QObject* parent = 0);
+        Person(QObject* parent = nullptr);
         ~Person();
 
         QString name() const;

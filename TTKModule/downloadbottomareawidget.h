@@ -42,7 +42,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBottomAreaWidget(QWidget *parent = 0);
+    explicit DownloadBottomAreaWidget(QWidget *parent = nullptr);
 
     ~DownloadBottomAreaWidget();
 

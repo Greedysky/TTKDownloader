@@ -32,7 +32,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSysConfigManager(QObject *parent = 0);
+    explicit DownloadSysConfigManager(QObject *parent = nullptr);
 
     /*!
      * Get class object name.

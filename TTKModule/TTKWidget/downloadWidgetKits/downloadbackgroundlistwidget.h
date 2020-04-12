@@ -36,7 +36,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundListItem(QWidget *parent = 0);
+    explicit DownloadBackgroundListItem(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -138,7 +138,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundListWidget(QWidget *parent = 0);
+    explicit DownloadBackgroundListWidget(QWidget *parent = nullptr);
 
     ~DownloadBackgroundListWidget();
 

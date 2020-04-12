@@ -34,7 +34,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadMessageAboutDialog(QWidget *parent = 0);
+    explicit DownloadMessageAboutDialog(QWidget *parent = nullptr);
 
     virtual ~DownloadMessageAboutDialog();
 

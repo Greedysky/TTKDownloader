@@ -31,7 +31,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSourceThread(QObject *parent = 0);
+    explicit DownloadSourceThread(QObject *parent = nullptr);
 
     ~DownloadSourceThread();
 

@@ -38,6 +38,8 @@ unix:!mac{
     exists($$SSL_DEPANDS):LIBS += -L../../lib/$$TTKDownloader -lssl
 }
 
+LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKCore
+
 DEFINES += TTK_LIBRARY
 
 win32:msvc{
@@ -56,25 +58,10 @@ INCLUDEPATH += \
     $$PWD/../../TTKModule/TTKCore/downloadUtilsKits
 
 SOURCES += \
-    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadabstractxml.cpp \
-    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadbreakpointconfigmanager.cpp \
-    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthreadmanager.cpp \
-    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.cpp \
-    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadurlencoder.cpp \
-    $$PWD/../../TTKModule/TTKCore/downloadUtilsKits/downloadcoreutils.cpp \
     downloadconsolemain.cpp \
     downloadconsoleobject.cpp
 
 HEADERS += \
-    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadsettingmanager.h \
-    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadabstractxml.h \
-    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadobject.h \
-    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadglobaldefine.h \
-    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadbreakpointconfigmanager.h \
-    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthreadmanager.h \
-    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.h \
-    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadurlencoder.h \
-    $$PWD/../../TTKModule/TTKCore/downloadUtilsKits/downloadcoreutils.h \
     $$PWD/../downloadrunglobaldefine.h \
     downloadconsoleobject.h
 

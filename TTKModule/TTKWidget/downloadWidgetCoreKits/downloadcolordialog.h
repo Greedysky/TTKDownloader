@@ -31,7 +31,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadHlPalette(QWidget *parent = 0);
+    explicit DownloadHlPalette(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -89,7 +89,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadHlSaturationPalette(QWidget *parent = 0);
+    explicit DownloadHlSaturationPalette(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -145,7 +145,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadColorDialog(QWidget *parent = 0);
+    explicit DownloadColorDialog(QWidget *parent = nullptr);
 
     virtual ~DownloadColorDialog();
 
@@ -156,7 +156,7 @@ public:
     /*!
      * Get color static function.
      */
-    static QColor getColor(QWidget *parent = 0);
+    static QColor getColor(QWidget *parent = nullptr);
     /*!
      * Get color.
      */

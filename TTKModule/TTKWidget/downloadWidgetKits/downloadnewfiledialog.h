@@ -35,7 +35,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadNewFileDialog(QWidget *parent = 0);
+    explicit DownloadNewFileDialog(QWidget *parent = nullptr);
 
     ~DownloadNewFileDialog();
 

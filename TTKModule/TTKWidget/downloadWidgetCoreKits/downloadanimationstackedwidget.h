@@ -42,7 +42,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadAnimationStackedWidget(QWidget *parent = 0);
+    explicit DownloadAnimationStackedWidget(QWidget *parent = nullptr);
 
     virtual ~DownloadAnimationStackedWidget();
 

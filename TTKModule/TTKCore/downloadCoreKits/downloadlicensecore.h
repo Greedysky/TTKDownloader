@@ -32,7 +32,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadLicenseCore(QObject *parent = 0);
+    explicit DownloadLicenseCore(QObject *parent = nullptr);
 
     /*!
      * Check license string.

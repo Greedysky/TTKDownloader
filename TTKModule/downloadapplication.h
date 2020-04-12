@@ -41,7 +41,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadApplication(QWidget *parent = 0);
+    explicit DownloadApplication(QWidget *parent = nullptr);
 
     virtual ~DownloadApplication();
 

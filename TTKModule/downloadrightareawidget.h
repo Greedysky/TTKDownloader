@@ -39,7 +39,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadRightAreaWidget(QWidget *parent = 0);
+    explicit DownloadRightAreaWidget(QWidget *parent = nullptr);
 
     ~DownloadRightAreaWidget();
 

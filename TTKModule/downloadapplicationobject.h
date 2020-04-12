@@ -34,7 +34,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadApplicationObject(QObject *parent = 0);
+    explicit DownloadApplicationObject(QObject *parent = nullptr);
 
     virtual ~DownloadApplicationObject();
 

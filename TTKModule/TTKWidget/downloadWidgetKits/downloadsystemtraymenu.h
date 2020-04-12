@@ -32,7 +32,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSystemTrayMenu(QWidget *parent = 0);
+    explicit DownloadSystemTrayMenu(QWidget *parent = nullptr);
 
     ~DownloadSystemTrayMenu();
 

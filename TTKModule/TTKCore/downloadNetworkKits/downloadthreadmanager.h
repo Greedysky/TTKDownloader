@@ -33,7 +33,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadThreadManager(QObject *parent = 0);
+    explicit DownloadThreadManager(QObject *parent = nullptr);
 
     ~DownloadThreadManager();
 

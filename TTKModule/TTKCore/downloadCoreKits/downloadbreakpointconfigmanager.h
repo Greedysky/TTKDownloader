@@ -55,7 +55,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBreakPointConfigManager(QObject *parent = 0);
+    explicit DownloadBreakPointConfigManager(QObject *parent = nullptr);
 
     /*!
      * Get class object name.

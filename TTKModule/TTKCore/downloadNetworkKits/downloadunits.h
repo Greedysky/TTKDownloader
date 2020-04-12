@@ -34,7 +34,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadUnits(const QString &url, QObject *parent = 0);
+    explicit DownloadUnits(const QString &url, QObject *parent = nullptr);
 
     ~DownloadUnits();
 

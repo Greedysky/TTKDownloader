@@ -37,7 +37,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundRemoteWidget(QWidget *parent = 0);
+    explicit DownloadBackgroundRemoteWidget(QWidget *parent = nullptr);
 
     ~DownloadBackgroundRemoteWidget();
 

@@ -33,7 +33,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadToolMenu(QWidget *parent = 0);
+    explicit DownloadToolMenu(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -66,7 +66,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadToolMenuWidget(QWidget *parent = 0);
+    explicit DownloadToolMenuWidget(QWidget *parent = nullptr);
 
     ~DownloadToolMenuWidget();
 

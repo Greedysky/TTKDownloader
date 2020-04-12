@@ -54,7 +54,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadFunctionTableWidget(QWidget *parent = 0);
+    explicit DownloadFunctionTableWidget(QWidget *parent = nullptr);
 
     /*!
      * Get class object name.
@@ -97,7 +97,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSettingWidget(QWidget *parent = 0);
+    explicit DownloadSettingWidget(QWidget *parent = nullptr);
 
     virtual ~DownloadSettingWidget();
 

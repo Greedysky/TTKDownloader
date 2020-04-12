@@ -63,7 +63,7 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadInitObject(QObject *parent = 0);
+    explicit DownloadInitObject(QObject *parent = nullptr);
 
     /*!
      * Check current setting file's validation.
