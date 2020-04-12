@@ -28,24 +28,18 @@ win32{
         CONFIG -= TTK_NO_MSVC_LINK_NEED
     }
 }
-include(../TTKDownloader.pri)
+include($$PWD/../TTKDownloader.pri)
 unix:VERSION += $$TTKDownloader
 
-win32{
-    TARGET = ../../bin/$$TTKDownloader/TTKService
-    LIBS += -L../bin/$$TTKDownloader -lTTKCore -lTTKDumper
-}
-unix{
-    TARGET = ../lib/$$TTKDownloader/TTKService
-    LIBS += -L./lib/$$TTKDownloader -lTTKCore -lTTKDumper
-}
+TARGET = TTKService
 
+LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper
 
-INCLUDEPATH += ../TTKModule
+INCLUDEPATH += $$PWD/../TTKModule
 
 !contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
-    ../TTKModule/downloadapplication.h
+    $$PWD/../TTKModule/downloadapplication.h
 
 }
 

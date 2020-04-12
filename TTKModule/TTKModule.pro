@@ -19,11 +19,10 @@
 TEMPLATE = lib
 CONFIG += TTK_BUILD_LIB
 
-include(../TTKDownloader.pri)
+include($$PWD/../TTKDownloader.pri)
 unix:VERSION += $$TTKDownloader
 
-win32:TARGET = ../../bin/$$TTKDownloader/TTKCore
-unix:TARGET = ../lib/$$TTKDownloader/TTKCore
+TARGET = TTKCore
 
 INCLUDEPATH += $$PWD
 

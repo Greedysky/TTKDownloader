@@ -18,10 +18,11 @@
 
 TEMPLATE = lib
 
-include(../../../TTKVersion.pri)
+include($$PWD/../../../TTKVersion.pri)
 
-win32:TARGET = ../../../../bin/$$TTKDownloader/zlib
-unix:TARGET = ../../../lib/$$TTKDownloader/zlib
+win32:DESTDIR = $$OUT_PWD/../../../bin/$$TTKDownloader
+unix:DESTDIR = $$OUT_PWD/../../../lib/$$TTKDownloader
+TARGET = zlib
 
 CONFIG       += warn_off
 unix:VERSION += 1.2.11

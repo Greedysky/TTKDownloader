@@ -26,22 +26,19 @@ equals(QT_MAJOR_VERSION, 5){
 QT       += widgets
 }
 
-UI_DIR = ./.build/ui
-MOC_DIR = ./.build/moc
-OBJECTS_DIR = ./.build/obj
-RCC_DIR = ./.build/rcc
-
-include(TTKVersion.pri)
+include($$PWD/TTKVersion.pri)
+win32:DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
+unix:DESTDIR = $$OUT_PWD/../lib/$$TTKDownloader
 
 ##openssl lib check
 win32:{
-    SSL_DEPANDS = $$OUT_PWD/../bin/$$TTKDownloader/ssleay32.dll
+    SSL_DEPANDS = $$DESTDIR/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
-    exists($$SSL_DEPANDS):LIBS += -L../bin/$$TTKDownloader -lssl
+    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 unix:!mac{
     SSL_DEPANDS = $$OUT_PWD/../lib/$$TTKDownloader/libssleay32.so
-    exists($$SSL_DEPANDS):LIBS += -L../lib/$$TTKDownloader -lssl
+    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 
 win32{
@@ -50,7 +47,7 @@ win32{
         greaterThan(QT_MINOR_VERSION, 1):QT  += winextras
         msvc{
             LIBS += -lshell32 -luser32
-            LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
             CONFIG +=c++11
             !contains(QMAKE_TARGET.arch, x86_64){
                  #support on windows XP
@@ -60,29 +57,23 @@ win32{
         }
 
         gcc{
-            LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            QMAKE_CXXFLAGS += -std=c++11
-            QMAKE_CXXFLAGS += -Wunused-function
-            QMAKE_CXXFLAGS += -Wswitch
+            LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
         }
     }
 
     equals(QT_MAJOR_VERSION, 4){
         QT  += multimedia
         gcc{
-            LIBS += -L../bin/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            QMAKE_CXXFLAGS += -std=c++11
-            QMAKE_CXXFLAGS += -Wunused-function
-            QMAKE_CXXFLAGS += -Wswitch
+            LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+            QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
         }
     }
 }
 
 unix:!mac{
-    LIBS += -L../lib/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
-    QMAKE_CXXFLAGS += -std=c++11
-    QMAKE_CXXFLAGS += -Wunused-function
-    QMAKE_CXXFLAGS += -Wswitch
+    LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
+    QMAKE_CXXFLAGS += -std=c++11 -Wunused-function -Wswitch
 }
 
 DEFINES += TTK_LIBRARY
@@ -91,7 +82,6 @@ DEFINES += TTK_LIBRARY
 HEADERS += $$PWD/downloadglobal.h
 INCLUDEPATH += $$PWD
 #########################################
-include(TTKThirdParty/TTKThirdParty.pri)
+include($$PWD/TTKThirdParty/TTKThirdParty.pri)
 #########################################
-include(TTKModule/TTKModule.pri)
-
+include($$PWD/TTKModule/TTKModule.pri)

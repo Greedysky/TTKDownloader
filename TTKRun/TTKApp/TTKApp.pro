@@ -19,11 +19,12 @@
 QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-include(../../TTKVersion.pri)
+include($$PWD/../../TTKVersion.pri)
 unix:VERSION += $$TTKDownloader
 
-win32:TARGET = ../../../bin/TTKDownloader
-unix:TARGET = ../../lib/TTKDownloader
+win32:DESTDIR = $$OUT_PWD/../../bin
+unix:DESTDIR = $$OUT_PWD/../../lib
+TARGET = TTKDownloader
 
 TEMPLATE = app
 
@@ -34,13 +35,15 @@ win32:msvc{
 }
 
 INCLUDEPATH += \
-    ../ \
-    ../TTKInit \
-    ../../ \
-    ../../TTKModule/TTKCore/downloadCoreKits
+    $$PWD/../ \
+    $$PWD/../TTKInit \
+    $$PWD/../../ \
+    $$PWD/../../TTKThirdParty \
+    $$PWD/../../TTKThirdParty/TTKDumper \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits
 
 SOURCES += \
-    ../TTKInit/downloadinitobject.cpp \
+    $$PWD/../TTKInit/downloadinitobject.cpp \
     ttkrunmain.cpp \
     ttklocalpeer.cpp \
     ttkrunapplication.cpp \
@@ -48,15 +51,15 @@ SOURCES += \
 
 
 HEADERS += \
-    ../downloadrunglobaldefine.h \
-    ../TTKInit/downloadinitobject.h \
+    $$PWD/../downloadrunglobaldefine.h \
+    $$PWD/../TTKInit/downloadinitobject.h \
     ttkrunobject.h \
     ttklocalpeer.h \
     ttkrunapplication.h
 
 
 RESOURCES += \
-    ../../TTKQrc/DownloaderApp.qrc
+    $$PWD/../../TTKQrc/DownloaderApp.qrc
 
 win32{
     RC_FILE = TTKApp.rc

@@ -17,10 +17,12 @@
 # =================================================
 
 QT       += core
-unix:VERSION += 2.1.0.0
+include($$PWD/../../TTKVersion.pri)
+unix:VERSION += 1.0.0.0
 
-win32:TARGET = ../../../bin/TTKInit
-unix:TARGET = ../../lib/TTKInit
+win32:DESTDIR = $$OUT_PWD/../../bin
+unix:DESTDIR = $$OUT_PWD/../../lib
+TARGET = TTKInit
 
 TEMPLATE = app
 CONFIG += console
@@ -32,20 +34,22 @@ win32:msvc{
 }
 
 INCLUDEPATH += \
-    ../ \
-    ../../ \
-    ../../TTKModule/TTKCore/downloadCoreKits
+    $$PWD/../ \
+    $$PWD/../../ \
+    $$PWD/../../TTKThirdParty \
+    $$PWD/../../TTKThirdParty/TTKDumper \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits
 
 SOURCES += \
     downloadinitmain.cpp \
     downloadinitobject.cpp
 
 HEADERS += \
-    ../downloadrunglobaldefine.h \
+    $$PWD/../downloadrunglobaldefine.h \
     downloadinitobject.h
 
 RESOURCES += \
-    ../../TTKQrc/DownloaderApp.qrc
+    $$PWD/../../TTKQrc/DownloaderApp.qrc
 
 win32{
     RC_FILE = TTKInit.rc

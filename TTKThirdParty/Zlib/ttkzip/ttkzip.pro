@@ -18,10 +18,11 @@
 
 TEMPLATE = lib
 
-include(../../../TTKVersion.pri)
+include($$PWD/../../../TTKVersion.pri)
 
-win32:TARGET = ../../../../bin/$$TTKDownloader/TTKZip
-unix:TARGET = ../../../lib/$$TTKDownloader/TTKZip
+win32:DESTDIR = $$OUT_PWD/../../../bin/$$TTKDownloader
+unix:DESTDIR = $$OUT_PWD/../../../lib/$$TTKDownloader
+TARGET = TTKZip
 
 CONFIG       += warn_off
 unix:VERSION += 1.0.0
@@ -33,13 +34,10 @@ DEFINES += \
 INCLUDEPATH += $$PWD/../
 
 win32{
-    LIBS += -L../../../bin/$$TTKDownloader -lzlib
     HEADERS  += $$PWD/iowin32.h
     SOURCES += $$PWD/iowin32.c
 }
-unix:!mac{
-    LIBS += -L../../../lib/$$TTKDownloader -lzlib
-}
+LIBS += -L$$DESTDIR -lzlib
 
 HEADERS  += \
     $$PWD/zip.h \

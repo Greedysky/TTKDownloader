@@ -18,7 +18,8 @@
 
 INCLUDEPATH += \
     $$PWD/ \
-    $$PWD/../
+    $$PWD/../ \
+    $$PWD/TTKDumper
 
 HEADERS  += \
     $$PWD/downloadextrasglobaldefine.h \

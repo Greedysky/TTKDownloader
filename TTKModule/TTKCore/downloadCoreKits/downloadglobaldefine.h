@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include <QtCore/qglobal.h>
+#include "downloadglobal.h"
 
 //////////////////////////////////////
 #ifdef TTK_LIBRARY
@@ -84,9 +84,5 @@
 #    define DOWNLOAD_REMOTE_IMPORT Q_DECL_IMPORT
 #  endif
 #endif
-
-//////////////////////////////////////
-///load logger
-#include "ttklogger.h"
 
 #endif // DOWNLOADGLOBALDEFINE_H

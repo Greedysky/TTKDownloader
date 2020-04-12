@@ -4,7 +4,6 @@
 #include "downloadcoreutils.h"
 #include "downloadurlencoder.h"
 
-#include <QDebug>
 #include <QFileInfo>
 #include <QEventLoop>
 #include <QNetworkReply>
@@ -81,21 +80,21 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
 
     if(m_state == DownloadThread::D_Download)
     {
-        qDebug() << "Current is downloading a file";
+        TTK_LOGGER_INFO("Current is downloading a file");
         return false;
     }
 
     m_state = DownloadThread::D_Waiting;
     if(THREADCOUNT < 1 || THREADCOUNT > 15)
     {
-        qDebug() << "Download thread count error";
+        TTK_LOGGER_INFO("Download thread count error");
         return false;
     }
 
     QString durl(DownloadUrlEncoder().decoder(url));
     if((m_totalSize = getFileSize(durl)) == -1)
     {
-        qDebug() << "Download file size error";
+        TTK_LOGGER_ERROR("Download file size error");
         return false;
     }
 
@@ -149,7 +148,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     if(!m_file->open(QFile::WriteOnly))
     {
         m_file->close();
-        qDebug() << "Can not open file : " + m_file->errorString();
+        TTK_LOGGER_ERROR("Can not open file : " + m_file->errorString());
         delete m_file;
         m_file = nullptr;
         return false;
@@ -210,7 +209,7 @@ void DownloadThreadManager::pause()
 {
     if(m_state != DownloadThread::D_Download && m_state != DownloadThread::D_Waiting)
     {
-        qDebug() << "Current is not downloading";
+        TTK_LOGGER_ERROR("Current is not downloading");
         return;
     }
 
@@ -244,7 +243,7 @@ void DownloadThreadManager::restart()
 {
     if(m_state != DownloadThread::D_Pause)
     {
-        qDebug() << "Current is not paused";
+        TTK_LOGGER_ERROR("Current is not paused");
         return;
     }
 
@@ -260,7 +259,7 @@ void DownloadThreadManager::restart()
 void DownloadThreadManager::finishedSlot(int index)
 {
     m_runningCount--;
-    qDebug() << "Download index of " << index << " finished";
+    TTK_LOGGER_INFO("Download index of " << index << " finished");
 
     if(m_runningCount == 0 && m_state == DownloadThread::D_Download)
     {
@@ -287,5 +286,5 @@ void DownloadThreadManager::errorSlot(int index, const QString &errorString)
     }
 
     m_threads[index]->pause();
-    qDebug() << "Download index of " << index << " error: " << errorString;
+    TTK_LOGGER_INFO("Download index of " << index << " error: " << errorString);
 }

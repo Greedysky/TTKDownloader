@@ -21,11 +21,12 @@ msvc{
     CONFIG += staticlib
 }
 
-include(../TTKVersion.pri)
+include($$PWD/../TTKVersion.pri)
 unix:VERSION += $$TTKDownloader
 
-win32:TARGET = ../../bin/$$TTKDownloader/TTKUi
-unix:TARGET = ../lib/$$TTKDownloader/TTKUi
+win32:DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
+unix:DESTDIR = $$OUT_PWD/../lib/$$TTKDownloader
+TARGET = TTKUi
 
 RESOURCES += \
     TTKDownloader.qrc

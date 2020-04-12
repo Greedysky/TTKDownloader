@@ -16,7 +16,7 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # =================================================
 
-include(../TTKVersion.pri)
+include($$PWD/../TTKVersion.pri)
 
 QT       += core gui testlib
 equals(QT_MAJOR_VERSION, 5){
@@ -34,8 +34,11 @@ TARGET = TTKTest
 TEMPLATE = app
 DEFINES += TTK_LIBRARY
 
-INCLUDEPATH += $$PWD/../ \
-               $$PWD/../TTKModule/TTKCore/downloadCoreKits
+INCLUDEPATH += \
+    $$PWD/../ \
+    $$PWD/../TTKThirdParty \
+    $$PWD/../TTKThirdParty/TTKDumper \
+    $$PWD/../TTKModule/TTKCore/downloadCoreKits
 
 HEADERS  += \
     downloadautotest.h \

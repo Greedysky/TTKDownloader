@@ -19,8 +19,6 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include <QObject>
-#include "ttkprivate.h"
 #include "downloadrunglobaldefine.h"
 
 class TTKLocalPeerPrivate;

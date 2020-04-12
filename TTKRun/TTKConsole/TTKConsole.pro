@@ -17,18 +17,15 @@
 # =================================================
 
 QT       += core network xml
-unix:VERSION += 2.1.0.0
+include($$PWD/../../TTKVersion.pri)
+unix:VERSION += 1.0.0.0
 
-win32:TARGET = ../../../bin/TTKConsole
-unix:TARGET = ../../lib/TTKConsole
+win32:DESTDIR = $$OUT_PWD/../../bin/$$TTKDownloader
+unix:DESTDIR = $$OUT_PWD/../../lib/$$TTKDownloader
+TARGET = TTKConsole
 
 TEMPLATE = app
 CONFIG += console
-
-UI_DIR = ./.build/ui
-MOC_DIR = ./.build/moc
-OBJECTS_DIR = ./.build/obj
-RCC_DIR = ./.build/rcc
 
 ##openssl lib check
 win32:{
@@ -50,34 +47,35 @@ win32:msvc{
 }
 
 INCLUDEPATH += \
-    ../ \
-    ../../ \
-    ../../TTKModule/TTKCore/downloadCoreKits \
-    ../../TTKModule/TTKCore/downloadNetworkKits \
-    ../../TTKModule/TTKCore/downloadUtilsKits
+    $$PWD/../ \
+    $$PWD/../../ \
+    $$PWD/../../TTKThirdParty \
+    $$PWD/../../TTKThirdParty/TTKDumper \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits \
+    $$PWD/../../TTKModule/TTKCore/downloadUtilsKits
 
 SOURCES += \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadabstractxml.cpp \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadbreakpointconfigmanager.cpp \
-    ../../TTKModule/TTKCore/downloadNetworkKits/downloadthreadmanager.cpp \
-    ../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.cpp \
-    ../../TTKModule/TTKCore/downloadNetworkKits/downloadurlencoder.cpp \
-    ../../TTKModule/TTKCore/downloadUtilsKits/downloadcoreutils.cpp \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadabstractxml.cpp \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadbreakpointconfigmanager.cpp \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthreadmanager.cpp \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.cpp \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadurlencoder.cpp \
+    $$PWD/../../TTKModule/TTKCore/downloadUtilsKits/downloadcoreutils.cpp \
     downloadconsolemain.cpp \
     downloadconsoleobject.cpp
 
 HEADERS += \
-    ../../TTKModule/TTKCore/downloadCoreKits/ttklogger.h \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadsettingmanager.h \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadabstractxml.h \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadobject.h \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadglobaldefine.h \
-    ../../TTKModule/TTKCore/downloadCoreKits/downloadbreakpointconfigmanager.h \
-    ../../TTKModule/TTKCore/downloadNetworkKits/downloadthreadmanager.h \
-    ../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.h \
-    ../../TTKModule/TTKCore/downloadNetworkKits/downloadurlencoder.h \
-    ../../TTKModule/TTKCore/downloadUtilsKits/downloadcoreutils.h \
-    ../downloadrunglobaldefine.h \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadsettingmanager.h \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadabstractxml.h \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadobject.h \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadglobaldefine.h \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadbreakpointconfigmanager.h \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthreadmanager.h \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.h \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadurlencoder.h \
+    $$PWD/../../TTKModule/TTKCore/downloadUtilsKits/downloadcoreutils.h \
+    $$PWD/../downloadrunglobaldefine.h \
     downloadconsoleobject.h
 
 win32{
