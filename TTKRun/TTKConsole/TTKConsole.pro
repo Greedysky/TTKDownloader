@@ -20,8 +20,8 @@ QT       += core network xml
 include($$PWD/../../TTKVersion.pri)
 unix:VERSION += 1.0.0.0
 
-win32:DESTDIR = $$OUT_PWD/../../bin/$$TTKDownloader
-unix:DESTDIR = $$OUT_PWD/../../lib/$$TTKDownloader
+win32:DESTDIR = $$OUT_PWD/../../bin
+unix:DESTDIR = $$OUT_PWD/../../lib
 TARGET = TTKConsole
 
 TEMPLATE = app
