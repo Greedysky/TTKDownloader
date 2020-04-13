@@ -26,13 +26,13 @@ bool DownloadAbstractXml::readConfig(const QString &name)
 {
     delete m_file;
     delete m_ddom;
-    m_file = new QFile( name );
+    m_file = new QFile(name);
     m_ddom = new QDomDocument;
-    if( !m_file->open(QIODevice::ReadOnly | QIODevice::Text) )
+    if(!m_file->open(QIODevice::ReadOnly | QIODevice::Text))
     {
         return false;
     }
-    if( !m_ddom->setContent(m_file) )
+    if(!m_ddom->setContent(m_file))
     {
         m_file->close();
         delete m_file;
@@ -46,9 +46,9 @@ bool DownloadAbstractXml::writeConfig(const QString &name)
 {
     delete m_file;
     delete m_ddom;
-    m_file = new QFile( name );
+    m_file = new QFile(name);
     m_ddom = new QDomDocument;
-    if( !m_file->open(QFile::WriteOnly | QFile::Text) )
+    if(!m_file->open(QFile::WriteOnly | QFile::Text))
     {
         return false;
     }
@@ -61,7 +61,7 @@ bool DownloadAbstractXml::fromString(const QString &data)
     delete m_ddom;
     m_file = nullptr;
     m_ddom = new QDomDocument;
-    if( !m_ddom->setContent(data) )
+    if(!m_ddom->setContent(data))
     {
         return false;
     }
@@ -74,7 +74,7 @@ bool DownloadAbstractXml::fromByteArray(const QByteArray &data)
     delete m_ddom;
     m_file = nullptr;
     m_ddom = new QDomDocument;
-    if( !m_ddom->setContent(data) )
+    if(!m_ddom->setContent(data))
     {
         return false;
     }
@@ -145,39 +145,39 @@ TTKVariantMap DownloadAbstractXml::readXmlAttributesByTagName(const QString &tag
 void DownloadAbstractXml::createProcessingInstruction()
 {
     QDomNode node = m_ddom->createProcessingInstruction("xml", "version='1.0' encoding='UTF-8'");
-    m_ddom->appendChild( node );
+    m_ddom->appendChild(node);
 }
 
 QDomElement DownloadAbstractXml::createRoot(const QString &node)
 {
-    QDomElement domElement = m_ddom->createElement( node );
-    m_ddom->appendChild( domElement );
+    QDomElement domElement = m_ddom->createElement(node);
+    m_ddom->appendChild(domElement);
     return domElement;
 }
 
 QDomElement DownloadAbstractXml::createRoot(const QString &node, const DownloadXmlAttribute &attr)
 {
-    QDomElement domElement = m_ddom->createElement( node );
+    QDomElement domElement = m_ddom->createElement(node);
     writeAttribute(domElement, attr);
-    m_ddom->appendChild( domElement );
+    m_ddom->appendChild(domElement);
     return domElement;
 }
 
 QDomElement DownloadAbstractXml::createRoot(const QString &node, const DownloadXmlAttributes &attrs)
 {
-    QDomElement domElement = m_ddom->createElement( node );
+    QDomElement domElement = m_ddom->createElement(node);
     foreach(const DownloadXmlAttribute &attr, attrs)
     {
         writeAttribute(domElement, attr);
     }
-    m_ddom->appendChild( domElement );
+    m_ddom->appendChild(domElement);
     return domElement;
 }
 
 QDomElement DownloadAbstractXml::writeDom(QDomElement &element, const QString &node)
 {
-    QDomElement domElement = m_ddom->createElement( node );
-    element.appendChild( domElement );
+    QDomElement domElement = m_ddom->createElement(node);
+    element.appendChild(domElement);
     return domElement;
 }
 
@@ -228,8 +228,8 @@ QDomElement DownloadAbstractXml::writeDomElementText(QDomElement &element, const
                                                   const DownloadXmlAttribute &attr, const QString &text)
 {
     QDomElement domElement = writeDomElement(element, node, attr);
-    QDomText domText = m_ddom->createTextNode( text );
-    domElement.appendChild( domText );
+    QDomText domText = m_ddom->createTextNode(text);
+    domElement.appendChild(domText);
     return domElement;
 }
 
@@ -242,8 +242,8 @@ QDomElement DownloadAbstractXml::writeDomElementMutilText(QDomElement &element, 
     }
 
     QDomElement domElement = writeDomElementMutil(element, node, attrs);
-    QDomText domText = m_ddom->createTextNode( text );
-    domElement.appendChild( domText );
+    QDomText domText = m_ddom->createTextNode(text);
+    domElement.appendChild(domText);
     return domElement;
 }
 
@@ -251,7 +251,7 @@ QDomElement DownloadAbstractXml::writeDomText(QDomElement &element, const QStrin
                                            const QString &text)
 {
     QDomElement domElement = writeDom(element, node);
-    QDomText domText = m_ddom->createTextNode( text );
-    domElement.appendChild( domText );
+    QDomText domText = m_ddom->createTextNode(text);
+    domElement.appendChild(domText);
     return domElement;
 }

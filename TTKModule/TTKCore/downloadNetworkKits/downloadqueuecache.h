@@ -41,18 +41,16 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadQueueCache(Download_Type type, QObject *parent = nullptr);
+    explicit DownloadQueueCache(QObject *parent = nullptr);
 
     /*!
      * Object contsructor.
      */
-    DownloadQueueCache(const DownloadQueueData &data,
-                            Download_Type type, QObject *parent = nullptr);
+    DownloadQueueCache(const DownloadQueueData &data, QObject *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    DownloadQueueCache(const DownloadQueueDatas &datas,
-                            Download_Type type, QObject *parent = nullptr);
+    DownloadQueueCache(const DownloadQueueDatas &datas, QObject *parent = nullptr);
 
     ~DownloadQueueCache();
 

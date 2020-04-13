@@ -179,7 +179,7 @@ void DownloadBottomAreaWidget::expandButtonClicked()
 
     DownloadRightAreaWidget::instance()->resizeWindow();
 
-    m_windowExtras->disableBlurBehindWindow( !con );
+    m_windowExtras->disableBlurBehindWindow(!con);
 }
 
 void DownloadBottomAreaWidget::createSystemTrayIcon()

@@ -13,7 +13,7 @@ QString DownloadListConfigManager::getClassName()
 
 void DownloadListConfigManager::writeListConfig(const DownloadLists &records)
 {
-    if( !writeConfig(LISTPATH_FULL) )
+    if(!writeConfig(LISTPATH_FULL))
     {
         return;
     }

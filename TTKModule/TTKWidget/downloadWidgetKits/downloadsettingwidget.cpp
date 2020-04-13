@@ -47,7 +47,7 @@ void DownloadFunctionTableWidget::listCellClicked(int row, int column)
 {
     Q_UNUSED(column);
     emit currentIndexChanged(row + m_listIndex);
-    selectRow( currentRow() );
+    selectRow(currentRow());
 }
 
 void DownloadFunctionTableWidget::leaveEvent(QEvent *event)

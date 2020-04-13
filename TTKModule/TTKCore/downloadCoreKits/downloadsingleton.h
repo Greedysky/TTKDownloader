@@ -92,8 +92,8 @@ QString DownloadSingleton<T>::getClassName()
 
 ////Class that will implement the singleton mode,
 ////must use the macro in it's delare file
-#define DECLARE_SINGLETON_CLASS( Class )             \
-    friend class DownloadSingleton<Class>;              \
+#define DECLARE_SINGLETON_CLASS(Class)             \
+    friend class DownloadSingleton<Class>;         \
     friend struct QScopedPointerDeleter<Class>;
 
 #endif // DOWNLOADSINGLETON

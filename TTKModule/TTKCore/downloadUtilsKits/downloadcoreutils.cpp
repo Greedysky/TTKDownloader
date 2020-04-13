@@ -53,8 +53,8 @@ void DownloadUtils::Core::checkCacheSize(quint64 cacheSize, bool disabled, const
 {
     if(disabled)
     {
-        quint64 size = dirSize( path );
-        if( size > cacheSize)
+        quint64 size = dirSize(path);
+        if(size > cacheSize)
         {
             QFileInfoList fileList = QDir(path).entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
             foreach(const QFileInfo &fileInfo, fileList)
@@ -84,7 +84,7 @@ QFileInfoList DownloadUtils::Core::findFile(const QString &path, const QStringLi
 
     foreach(const QFileInfo &folder, folderList)
     {
-        fileList.append( findFile(folder.absoluteFilePath(), filter) );
+        fileList.append(findFile(folder.absoluteFilePath(), filter));
     }
     return fileList;
 }

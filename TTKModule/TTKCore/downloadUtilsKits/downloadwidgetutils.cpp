@@ -45,7 +45,7 @@ void DownloadUtils::Widget::setComboboxText(QComboBox *object, const QString &te
 
 void DownloadUtils::Widget::widgetToRound(QWidget *w, int ratioX, int ratioY)
 {
-    w->setMask( getBitmapMask(w->rect(), ratioX, ratioY) );
+    w->setMask(getBitmapMask(w->rect(), ratioX, ratioY));
 }
 
 void DownloadUtils::Widget::fusionPixmap(QPixmap &bg, const QPixmap &fg, const QPoint &pt)
@@ -74,7 +74,7 @@ QPixmap DownloadUtils::Widget::pixmapToRound(const QPixmap &src, const QRect &re
     }
 
     QPixmap image = src.scaled(rect.size());
-    image.setMask( getBitmapMask(rect, ratioX, ratioY) );
+    image.setMask(getBitmapMask(rect, ratioX, ratioY));
     return image;
 }
 

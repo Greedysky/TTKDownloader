@@ -84,7 +84,7 @@ void DownloadTransitionAnimationLabel::paintEvent(QPaintEvent *event)
         QPainter painter(this);
         painter.drawPixmap(rect(), m_previousPixmap);
 
-        QPixmap pixed( size() );
+        QPixmap pixed(size());
         pixed.fill(Qt::transparent);
         QPainter paint(&pixed);
         paint.fillRect(rect(), QColor(0xFF, 0xFF, 0xFF, 2.55*m_currentValue));

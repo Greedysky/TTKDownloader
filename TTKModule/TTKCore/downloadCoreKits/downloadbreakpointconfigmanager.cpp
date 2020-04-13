@@ -28,7 +28,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
         writeDomElementMutil(download, "value", DownloadXmlAttributes() <<
                                                 DownloadXmlAttribute("start", record.m_start) <<
                                                 DownloadXmlAttribute("end", record.m_end) <<
-                                                DownloadXmlAttribute("ready", record.m_ready) );
+                                                DownloadXmlAttribute("ready", record.m_ready));
     }
 
     //Write to file

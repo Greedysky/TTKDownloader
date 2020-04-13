@@ -13,7 +13,7 @@ QString DownloadRecordConfigManager::getClassName()
 
 void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecords &records)
 {
-    if( !writeConfig(HISTORYPATH_FULL) )
+    if(!writeConfig(HISTORYPATH_FULL))
     {
         return;
     }

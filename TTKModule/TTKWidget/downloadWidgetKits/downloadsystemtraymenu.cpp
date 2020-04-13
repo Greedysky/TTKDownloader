@@ -42,7 +42,7 @@ void DownloadSystemTrayMenu::showEvent(QShowEvent *event)
         QList<QAction*> acts = m_floatMenu->actions();
         if(acts.count() >= 2)
         {
-            acts[0]->setIcon(QIcon( ishow ? ":/contextMenu/lb_selected" : QString()));
+            acts[0]->setIcon(QIcon(ishow ? ":/contextMenu/lb_selected" : QString()));
             acts[1]->setIcon(QIcon(!ishow ? ":/contextMenu/lb_selected" : QString()));
         }
     }

@@ -62,7 +62,7 @@ void DownloadListWidgets::init()
     foreach(const DownloadList &list, lists)
     {
         QString url = list.m_url.trimmed();
-        if( !url.isEmpty() && !findUrl(url) )
+        if(!url.isEmpty() && !findUrl(url))
         {
             addItemToList(url, list.m_name);
         }
@@ -161,7 +161,7 @@ void DownloadListWidgets::addItemToList(const QStringList &path)
     foreach(const QString &pa, path)
     {
         QString url = pa.trimmed();
-        if( !url.isEmpty() && !findUrl(url) )
+        if(!url.isEmpty() && !findUrl(url))
         {
             addItemToList(url, QString());
         }
@@ -267,7 +267,7 @@ void DownloadListWidgets::startClicked()
         return;
     }
 
-    start( currentRow() );
+    start(currentRow());
 }
 
 void DownloadListWidgets::pauseClicked()
@@ -277,7 +277,7 @@ void DownloadListWidgets::pauseClicked()
         return;
     }
 
-    pause( currentRow() );
+    pause(currentRow());
     getTopUrlToDownload();
 }
 
@@ -389,7 +389,7 @@ void DownloadListWidgets::pause(int row)
 void DownloadListWidgets::getTopUrlToDownload()
 {
     int index = -1;
-    if( !m_itemList.isEmpty() && m_maxDownloadCount < 3 )
+    if(!m_itemList.isEmpty() && m_maxDownloadCount < 3)
     {
         foreach(DownloadUnits *item, m_itemList)
         {

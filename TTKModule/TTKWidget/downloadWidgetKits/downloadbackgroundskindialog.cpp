@@ -168,7 +168,7 @@ void DownloadBackgroundSkinDialog::showPaletteDialog()
 
 void DownloadBackgroundSkinDialog::showPaletteDialog(const QString &path)
 {
-    cpoyFileFromLocal( path );
+    cpoyFileFromLocal(path);
     m_myBackgroundList->updateLastedItem();
 }
 
@@ -179,7 +179,7 @@ void DownloadBackgroundSkinDialog::showCustomSkinDialog()
     {
         return;
     }
-    cpoyFileFromLocal( customSkinPath );
+    cpoyFileFromLocal(customSkinPath);
     m_myBackgroundList->updateLastedItem();
 }
 

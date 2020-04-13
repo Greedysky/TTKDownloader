@@ -148,7 +148,7 @@ void DownloadApplication::closeEvent(QCloseEvent *event)
     DownloadAbstractMoveResizeWidget::closeEvent(event);
     event->ignore();
     if(!m_bottomAreaWidget->getSystemCloseConfig() &&
-        m_bottomAreaWidget->systemTrayIsVisible() )
+        m_bottomAreaWidget->systemTrayIsVisible())
     {
         hide();
         m_bottomAreaWidget->showMessage(tr("Prompt"),
@@ -198,7 +198,7 @@ void DownloadApplication::readXMLConfigFromText()
     m_bottomAreaWidget->setSystemCloseConfig(M_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toInt());
 
     //Reset geometry
-    setGeometry( xml.readWindowGeometry() );
+    setGeometry(xml.readWindowGeometry());
 
 }
 

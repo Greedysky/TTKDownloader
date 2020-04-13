@@ -99,7 +99,7 @@ qint64 DownloadTime::timeStamp(bool ms)
 
 void DownloadTime::timeSRand()
 {
-    qsrand( timeStamp() );
+    qsrand(timeStamp());
 }
 
 QString DownloadTime::msecTime2LabelJustified()

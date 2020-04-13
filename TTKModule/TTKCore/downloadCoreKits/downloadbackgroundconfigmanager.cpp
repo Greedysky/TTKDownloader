@@ -14,7 +14,7 @@ QString DownloadSkinConfigManager::getClassName()
 void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem &item, const QString &path)
 {
     //Open wirte file
-    if( !writeConfig( path ) )
+    if(!writeConfig(path))
     {
         return;
     }

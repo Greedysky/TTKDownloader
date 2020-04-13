@@ -3,14 +3,14 @@
 
 #include <QStringList>
 
-DownloadQueueCache::DownloadQueueCache(Download_Type type, QObject *parent)
-    : DownloadQueueCache(DownloadQueueData(), type, parent)
+DownloadQueueCache::DownloadQueueCache(QObject *parent)
+    : DownloadQueueCache(DownloadQueueData(), parent)
 {
 
 }
 
-DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, Download_Type type, QObject *parent)
-    : DownLoadThreadAbstract(data.m_url, data.m_savePath, type, parent)
+DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, QObject *parent)
+    : DownLoadThreadAbstract(data.m_url, data.m_savePath, parent)
 {
     m_request = nullptr;
     m_isDownload = false;
@@ -29,8 +29,8 @@ DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, Download_T
 #endif
 }
 
-DownloadQueueCache::DownloadQueueCache(const DownloadQueueDatas &datas, Download_Type type, QObject *parent)
-    : DownloadQueueCache(DownloadQueueData(), type, parent)
+DownloadQueueCache::DownloadQueueCache(const DownloadQueueDatas &datas, QObject *parent)
+    : DownloadQueueCache(DownloadQueueData(), parent)
 {
     addImageQueue(datas);
 }
@@ -97,7 +97,7 @@ void DownloadQueueCache::startDownload(const QString &url)
 {
     m_isDownload = true;
     delete m_file;
-    m_file = new QFile( m_imageQueue.first().m_savePath, this);
+    m_file = new QFile(m_imageQueue.first().m_savePath, this);
     if(!m_file->open(QFile::WriteOnly))
     {
         m_file->close();

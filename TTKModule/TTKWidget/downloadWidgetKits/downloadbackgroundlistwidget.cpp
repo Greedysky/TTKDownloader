@@ -317,7 +317,7 @@ void DownloadBackgroundListWidget::itemCloseClicked(DownloadBackgroundListItem *
         m_currentItem = nullptr;
         if(!m_items.isEmpty())
         {
-            itemHasClicked( m_items[index == 0 ? 0 : index - 1] );
+            itemHasClicked(m_items[index == 0 ? 0 : index - 1]);
         }
     }
 

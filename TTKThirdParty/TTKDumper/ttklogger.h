@@ -24,8 +24,8 @@
 #include <QDateTime>
 #include <QTextStream>
 
-#define CURRENT_TIME QTime::currentTime().toString(MUSIC_ZTIME_FORMAT)
-#define CURRENT_DATE QDate::currentDate().toString(MUSIC_YEAR_FORMAT)
+#define CURRENT_TIME QTime::currentTime().toString("hh:mm:ss:zzz")
+#define CURRENT_DATE QDate::currentDate().toString("yyyy-MM-dd")
 #define LOG_END      QString("log::npos")
 
 #define TTK_LOGGER    (*TTKLogger::createInstance())
@@ -87,7 +87,7 @@ public:
     inline TTKLogger &operator <<(bool t)
     {
 #ifdef TTK_DEBUG
-        m_streamString.append( QString("%1 ").arg(t ? "true" : "false") );
+        m_streamString.append(QString("%1 ").arg(t ? "true" : "false"));
 #else
         Q_UNUSED(t);
 #endif
@@ -155,7 +155,7 @@ private:
     TTKLogger &debugData(const T &data)
     {
 #ifdef TTK_DEBUG
-        m_streamString.append( QString("%1 %2 ").arg(m_levelType).arg(data) );
+        m_streamString.append(QString("%1 %2 ").arg(m_levelType).arg(data));
 #else
         Q_UNUSED(data);
 #endif

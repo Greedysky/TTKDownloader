@@ -9,13 +9,11 @@
 #endif
 #include <QSslError>
 
-DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString &save,
-                                                         Download_Type type, QObject *parent)
+DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString &save, QObject *parent)
     : DownloadNetworkAbstract(parent)
 {
     m_url = url;
     m_savePathName = save;
-    m_downloadType = type;
     m_hasReceived = 0;
     m_currentReceived = 0;
 
@@ -85,25 +83,11 @@ void DownLoadThreadAbstract::updateDownloadSpeed()
 #if defined Q_OS_WIN && defined TTK_GREATER_NEW
             QThread::msleep(MT_S2MS - limitValue*MH_KB*MT_S2MS/delta);
 #else
-            usleep( (MT_S2MS - limitValue*MH_KB*MT_S2MS/delta)*MT_S2MS );
+            usleep((MT_S2MS - limitValue*MH_KB*MT_S2MS/delta)*MT_S2MS);
 #endif
             delta = limitValue*MH_KB;
         }
     }
     //////////////////////////////////////
     m_hasReceived = m_currentReceived;
-}
-
-QString DownLoadThreadAbstract::transferData() const
-{
-    switch(m_downloadType)
-    {
-        case Download_Music: return "Download_Music";
-        case Download_Lrc:   return "Download_Lrc";
-        case Download_SmlBG: return "Download_SmlBG";
-        case Download_BigBG: return "Download_BigBG";
-        case Download_Video: return "Download_Video";
-        case Download_Other: return "Download_Other";
-        default: return QString();
-    }
 }

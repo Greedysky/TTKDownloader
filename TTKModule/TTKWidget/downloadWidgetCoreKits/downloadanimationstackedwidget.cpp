@@ -47,7 +47,7 @@ void DownloadAnimationStackedWidget::paintEvent(QPaintEvent * event)
 void DownloadAnimationStackedWidget::renderPreviousWidget(QPainter &painter)
 {
     QWidget *w = widget(m_previousIndex);
-    QPixmap pixmap( w->size() );
+    QPixmap pixmap(w->size());
     pixmap.fill(Qt::transparent);
     w->setAttribute(Qt::WA_TranslucentBackground, true);
     w->render(&pixmap);
@@ -82,7 +82,7 @@ void DownloadAnimationStackedWidget::renderPreviousWidget(QPainter &painter)
 void DownloadAnimationStackedWidget::renderCurrentWidget(QPainter &painter)
 {
     QWidget *w = widget(m_currentIndex);
-    QPixmap pixmap( w->size() );
+    QPixmap pixmap(w->size());
     pixmap.fill(Qt::transparent);
     w->setAttribute(Qt::WA_TranslucentBackground, true);
     w->render(&pixmap);
@@ -199,6 +199,6 @@ void DownloadAnimationStackedWidget::animationFinished()
     w->show();
     w->raise();
 
-    setCurrentWidget( w );
+    setCurrentWidget(w);
     update();
 }

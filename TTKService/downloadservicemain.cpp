@@ -11,8 +11,8 @@
 
 void loadDXcbPlugin(int argc, char *argv[])
 {
-#if QT_VERSION >= QT_VERSION_CHECK(5, 4, 0)
-    #if QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
+#if TTK_QT_VERSION_CHECK(5,4,0)
+    #if TTK_QT_VERSION_CHECK(5,6,0)
       Q_UNUSED(argc);
       Q_UNUSED(argv);
       QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);

@@ -41,7 +41,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
 
     QNetworkRequest request;
     request.setUrl(m_url);
-    QString range = QString("bytes=%0-%1").arg(m_startPoint + m_readySize).arg( m_endPoint );
+    QString range = QString("bytes=%0-%1").arg(m_startPoint + m_readySize).arg(m_endPoint);
     request.setRawHeader("Range", range.toUtf8());
 #ifndef QT_NO_SSL
     QSslConfiguration sslConfig = request.sslConfiguration();
@@ -100,8 +100,8 @@ void DownloadThread::finishedSlot()
 void DownloadThread::readyReadSlot()
 {
     QByteArray buffer = m_reply->readAll();
-    m_file->seek( m_startPoint + m_readySize );
-    m_file->write( buffer );
+    m_file->seek(m_startPoint + m_readySize);
+    m_file->write(buffer);
     m_readySize += buffer.size();
 
     emit downloadChanged();
