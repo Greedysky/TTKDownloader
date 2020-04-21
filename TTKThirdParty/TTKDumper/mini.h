@@ -21,7 +21,6 @@
 
 #include "downloadobject.h"
 #include "downloadextrasglobaldefine.h"
-#include <QDebug>
 
 #ifdef Q_OS_WIN
 #include "psapi.h"

@@ -3,7 +3,6 @@
 
 #include <QDir>
 #include <QMap>
-#include <QDebug>
 #include <QFileInfo>
 #include <functional>
 #ifdef TTK_GREATER_NEW
