@@ -45,6 +45,12 @@ DEFINES += TTK_LIBRARY
 
 win32:msvc{
     CONFIG +=c++11
+
+HEADERS += \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.h \
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthreadmanager.h \
+    $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadsettingmanager.h
+
 }else{
     QMAKE_CXXFLAGS += -std=c++11
 }
@@ -55,8 +61,7 @@ INCLUDEPATH += \
     $$PWD/../../TTKThirdParty \
     $$PWD/../../TTKThirdParty/TTKDumper \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits \
-    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits \
-    $$PWD/../../TTKModule/TTKCore/downloadUtilsKits
+    $$PWD/../../TTKModule/TTKCore/downloadNetworkKits
 
 SOURCES += \
     downloadconsolemain.cpp \

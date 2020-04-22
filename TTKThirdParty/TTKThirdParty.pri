@@ -21,3 +21,9 @@ INCLUDEPATH += \
         $$PWD/Zlib \
         $$PWD/TTKDumper \
         $$PWD/TTKExtras
+
+!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
+HEADERS += \
+    $$PWD/TTKExtras/QShortCut/qglobalshortcut.h
+
+}
