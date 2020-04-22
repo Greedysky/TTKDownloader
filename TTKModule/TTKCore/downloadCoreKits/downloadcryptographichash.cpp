@@ -13,11 +13,6 @@ DownloadCryptographicHash::DownloadCryptographicHash()
 
 }
 
-QString DownloadCryptographicHash::getClassName()
-{
-    return "DownloadCryptographicHash";
-}
-
 QString DownloadCryptographicHash::encrypt(const QString &data, const QString &key, Priority p)
 {
     QString d = data;

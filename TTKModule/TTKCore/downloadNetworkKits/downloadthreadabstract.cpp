@@ -32,11 +32,6 @@ DownLoadThreadAbstract::~DownLoadThreadAbstract()
 
 }
 
-QString DownLoadThreadAbstract::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownLoadThreadAbstract::deleteAll()
 {
     DownloadNetworkAbstract::deleteAll();

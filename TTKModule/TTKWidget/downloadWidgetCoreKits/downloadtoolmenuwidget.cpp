@@ -9,11 +9,6 @@ DownloadToolMenu::DownloadToolMenu(QWidget *parent)
 
 }
 
-QString DownloadToolMenu::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadToolMenu::showEvent(QShowEvent *event)
 {
     QMenu::showEvent(event);
@@ -46,11 +41,6 @@ DownloadToolMenuWidget::~DownloadToolMenuWidget()
 {
     delete m_containWidget;
     delete m_menu;
-}
-
-QString DownloadToolMenuWidget::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 void DownloadToolMenuWidget::setTranslucentBackground()

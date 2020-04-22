@@ -32,6 +32,7 @@ namespace Ui {
 class DOWNLOAD_GUI_EXPORT DownloadLeftAreaWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadLeftAreaWidget)
 public:
     /*!
      * Object contsructor.
@@ -39,10 +40,7 @@ public:
     explicit DownloadLeftAreaWidget(QWidget *parent = nullptr);
 
     ~DownloadLeftAreaWidget();
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
+
     /*!
      * Get class object instance.
      */

@@ -28,16 +28,13 @@
 class DOWNLOAD_CORE_EXPORT DownloadSysConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadSysConfigManager)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadSysConfigManager(QObject *parent = nullptr);
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Read config datas from xml file by given name.
      */

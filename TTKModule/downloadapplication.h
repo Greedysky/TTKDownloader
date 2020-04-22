@@ -37,6 +37,7 @@ class DownloadApplication;
 class DOWNLOAD_GUI_EXPORT DownloadApplication : public DownloadAbstractMoveResizeWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadApplication)
 public:
     /*!
      * Object contsructor.
@@ -44,11 +45,6 @@ public:
     explicit DownloadApplication(QWidget *parent = nullptr);
 
     virtual ~DownloadApplication();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Get class object instance.

@@ -11,11 +11,6 @@ DownloadSourceThread::~DownloadSourceThread()
     deleteAll();
 }
 
-QString DownloadSourceThread::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadSourceThread::startToDownload(const QString &url)
 {
     m_manager = new QNetworkAccessManager(this);

@@ -67,11 +67,6 @@ DownloadApplication::~DownloadApplication()
     delete m_ui;
 }
 
-QString DownloadApplication::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 DownloadApplication *DownloadApplication::instance()
 {
     return m_instance;

@@ -31,6 +31,7 @@ class QProcess;
 class DOWNLOAD_NETWORK_EXPORT DownloadNetworkSpeedTestThread : public QThread
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadNetworkSpeedTestThread)
 public:
     /*!
      * Object contsructor.
@@ -38,11 +39,6 @@ public:
     explicit DownloadNetworkSpeedTestThread(QObject *parent = nullptr);
 
     ~DownloadNetworkSpeedTestThread();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Stop and quit current thread.

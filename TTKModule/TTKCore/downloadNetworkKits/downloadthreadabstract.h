@@ -31,6 +31,7 @@
 class DOWNLOAD_NETWORK_EXPORT DownLoadThreadAbstract : public DownloadNetworkAbstract
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownLoadThreadAbstract)
 public:
     /*!
      * Object contsructor provide download URL\ save local path and download type.
@@ -39,10 +40,6 @@ public:
 
     virtual ~DownLoadThreadAbstract();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Release the network object.
      */

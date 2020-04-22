@@ -30,6 +30,7 @@ namespace Ui {
 class DOWNLOAD_WIDGET_EXPORT DownloadMessageAboutDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadMessageAboutDialog)
 public:
     /*!
      * Object contsructor.
@@ -37,11 +38,6 @@ public:
     explicit DownloadMessageAboutDialog(QWidget *parent = nullptr);
 
     virtual ~DownloadMessageAboutDialog();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 public Q_SLOTS:
     /*!

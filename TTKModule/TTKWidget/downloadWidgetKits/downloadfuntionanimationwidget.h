@@ -31,6 +31,7 @@ class QPropertyAnimation;
 class DOWNLOAD_WIDGET_EXPORT DownloadBaseAnimationWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadBaseAnimationWidget)
 public:
     /*!
      * Object contsructor.
@@ -38,11 +39,6 @@ public:
     explicit DownloadBaseAnimationWidget(QWidget *parent = nullptr);
 
     ~DownloadBaseAnimationWidget();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 Q_SIGNALS:
     /*!
@@ -88,16 +84,12 @@ protected:
 class DOWNLOAD_WIDGET_EXPORT DownloadSkinAnimationWidget : public DownloadBaseAnimationWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadSkinAnimationWidget)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadSkinAnimationWidget(QWidget *parent = nullptr);
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 public Q_SLOTS:
     /*!

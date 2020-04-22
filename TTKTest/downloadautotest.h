@@ -81,10 +81,7 @@ public:
         m_child->setObjectName(name);
         DownloadAutoTest::addTest(m_child.data());
     }
-    static QString getClassName()
-    {
-        return "DownloadTest";
-    }
+
 };
 
 #define DECLARE_TEST(className) static DownloadTest<className> t(#className);

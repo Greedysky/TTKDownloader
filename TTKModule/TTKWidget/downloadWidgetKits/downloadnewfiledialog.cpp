@@ -33,11 +33,6 @@ DownloadNewFileDialog::~DownloadNewFileDialog()
     delete m_ui;
 }
 
-QString DownloadNewFileDialog::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadNewFileDialog::confirmButtonPressed()
 {
     QStringList urls = m_ui->urlTextEdit->toPlainText().split(';');

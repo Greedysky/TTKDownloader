@@ -27,11 +27,6 @@ DownloadUnits::~DownloadUnits()
     delete m_downloadThread;
 }
 
-QString DownloadUnits::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 DownloadListItemWidget* DownloadUnits::getDownloadItemWidget()
 {
     return m_downloadItem;

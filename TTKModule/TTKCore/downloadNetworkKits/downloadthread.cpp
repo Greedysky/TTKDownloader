@@ -17,11 +17,6 @@ DownloadThread::~DownloadThread()
     delete m_manager;
 }
 
-QString DownloadThread::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadThread::startDownload(int index, const QString &url, QFile *file,
                                    qint64 startPoint, qint64 endPoint,
                                    qint64 readySize)

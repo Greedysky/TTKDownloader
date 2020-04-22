@@ -31,12 +31,8 @@ class QGlobalShortcut;
 class DOWNLOAD_CORE_EXPORT DownloadHotKeyManager : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadHotKeyManager)
 public:
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
-
     /*!
      * To connect parent slot object.
      */

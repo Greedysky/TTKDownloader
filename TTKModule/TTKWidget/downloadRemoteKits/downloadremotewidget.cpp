@@ -27,11 +27,6 @@ DownloadRemoteWidget::~DownloadRemoteWidget()
     M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, false);
 }
 
-QString DownloadRemoteWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadRemoteWidget::setValue(int value)
 {
     if(value > 100) value = 100;

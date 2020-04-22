@@ -69,11 +69,6 @@ void DownloadListWidgets::init()
     }
 }
 
-QString DownloadListWidgets::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadListWidgets::resizeWindow()
 {
     int w = M_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();

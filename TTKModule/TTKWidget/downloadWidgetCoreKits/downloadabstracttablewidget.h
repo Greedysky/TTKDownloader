@@ -31,6 +31,7 @@
 class DOWNLOAD_WIDGET_EXPORT DownloadAbstractTableWidget : public QTableWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadAbstractTableWidget)
 public:
     /*!
      * Object contsructor.
@@ -39,10 +40,6 @@ public:
 
     virtual ~DownloadAbstractTableWidget();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Clear current items.
      */

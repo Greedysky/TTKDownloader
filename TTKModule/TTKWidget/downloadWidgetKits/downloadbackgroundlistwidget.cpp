@@ -20,11 +20,6 @@ DownloadBackgroundListItem::DownloadBackgroundListItem(QWidget *parent)
     m_selectedMask = true;
 }
 
-QString DownloadBackgroundListItem::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadBackgroundListItem::updatePixImage()
 {
     if(!m_path.isEmpty())
@@ -150,11 +145,6 @@ DownloadBackgroundListWidget::DownloadBackgroundListWidget(QWidget *parent)
 DownloadBackgroundListWidget::~DownloadBackgroundListWidget()
 {
     clearAllItems();
-}
-
-QString DownloadBackgroundListWidget::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 void DownloadBackgroundListWidget::setCurrentItemName(const QString &name)

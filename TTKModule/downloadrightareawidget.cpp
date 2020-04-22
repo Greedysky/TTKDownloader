@@ -34,11 +34,6 @@ void DownloadRightAreaWidget::init()
     m_historyWidget->init();
 }
 
-QString DownloadRightAreaWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 DownloadRightAreaWidget *DownloadRightAreaWidget::instance()
 {
     return m_instance;

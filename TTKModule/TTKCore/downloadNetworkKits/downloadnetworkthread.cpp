@@ -20,11 +20,6 @@ DownloadNetworkThread::~DownloadNetworkThread()
     m_timer.stop();
 }
 
-QString DownloadNetworkThread::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadNetworkThread::start()
 {
     TTK_LOGGER_INFO("Load NetworkThread");

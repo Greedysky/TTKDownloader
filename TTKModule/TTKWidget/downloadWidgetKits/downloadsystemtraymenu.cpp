@@ -28,11 +28,6 @@ DownloadSystemTrayMenu::~DownloadSystemTrayMenu()
     delete m_floatMenu;
 }
 
-QString DownloadSystemTrayMenu::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadSystemTrayMenu::showEvent(QShowEvent *event)
 {
     QMenu::showEvent(event);

@@ -6,11 +6,6 @@ DownloadRecordConfigManager::DownloadRecordConfigManager(QObject *parent)
 
 }
 
-QString DownloadRecordConfigManager::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecords &records)
 {
     if(!writeConfig(HISTORYPATH_FULL))

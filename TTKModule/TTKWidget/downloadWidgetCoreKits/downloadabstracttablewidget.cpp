@@ -49,11 +49,6 @@ DownloadAbstractTableWidget::~DownloadAbstractTableWidget()
 
 }
 
-QString DownloadAbstractTableWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadAbstractTableWidget::clear()
 {
     clearContents();

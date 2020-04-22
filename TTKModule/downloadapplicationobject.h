@@ -30,6 +30,7 @@ class QPropertyAnimation;
 class DOWNLOAD_GUI_EXPORT DownloadApplicationObject : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadApplicationObject)
 public:
     /*!
      * Object contsructor.
@@ -37,11 +38,6 @@ public:
     explicit DownloadApplicationObject(QObject *parent = nullptr);
 
     virtual ~DownloadApplicationObject();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Get class object instance.

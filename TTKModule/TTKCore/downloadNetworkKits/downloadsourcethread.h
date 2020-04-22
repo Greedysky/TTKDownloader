@@ -27,6 +27,7 @@
 class DOWNLOAD_NETWORK_EXPORT DownloadSourceThread : public DownloadNetworkAbstract
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadSourceThread)
 public:
     /*!
      * Object contsructor.
@@ -35,10 +36,6 @@ public:
 
     ~DownloadSourceThread();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Start to download data.
      */

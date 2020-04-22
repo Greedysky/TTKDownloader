@@ -17,11 +17,6 @@ DownloadAbstractXml::~DownloadAbstractXml()
     delete m_ddom;
 }
 
-QString DownloadAbstractXml::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 bool DownloadAbstractXml::readConfig(const QString &name)
 {
     delete m_file;

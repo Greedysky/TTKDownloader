@@ -12,11 +12,6 @@ DownloadFunctionItemWidget::DownloadFunctionItemWidget(QWidget *parent)
     m_resizeMode = false;
 }
 
-QString DownloadFunctionItemWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadFunctionItemWidget::setLabelText(const QString &text)
 {
     m_text = text;
@@ -137,11 +132,6 @@ DownloadFunctionListWidget::DownloadFunctionListWidget(QWidget *parent)
 DownloadFunctionListWidget::~DownloadFunctionListWidget()
 {
     qDeleteAll(m_items);
-}
-
-QString DownloadFunctionListWidget::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 void DownloadFunctionListWidget::resizeMode(bool mode)

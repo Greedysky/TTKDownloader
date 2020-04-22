@@ -29,16 +29,12 @@
 class DOWNLOAD_WIDGET_EXPORT DownloadToolMenu : public QMenu
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadToolMenu)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadToolMenu(QWidget *parent = nullptr);
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 Q_SIGNALS:
     /*!
@@ -62,6 +58,7 @@ protected:
 class DOWNLOAD_WIDGET_EXPORT DownloadToolMenuWidget : public QToolButton
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadToolMenuWidget)
 public:
     /*!
      * Object contsructor.
@@ -69,11 +66,6 @@ public:
     explicit DownloadToolMenuWidget(QWidget *parent = nullptr);
 
     ~DownloadToolMenuWidget();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Set background translucent.

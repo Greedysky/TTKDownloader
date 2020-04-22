@@ -18,11 +18,6 @@ DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
     m_listIndex = 0;
 }
 
-QString DownloadFunctionTableWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunctionItems &items)
 {
     m_listIndex = index;
@@ -103,11 +98,6 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
 DownloadSettingWidget::~DownloadSettingWidget()
 {
     delete m_ui;
-}
-
-QString DownloadSettingWidget::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 void DownloadSettingWidget::initControllerParameter()

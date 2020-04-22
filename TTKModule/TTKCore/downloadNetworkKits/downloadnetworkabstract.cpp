@@ -14,11 +14,6 @@ DownloadNetworkAbstract::~DownloadNetworkAbstract()
     deleteAll();
 }
 
-QString DownloadNetworkAbstract::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadNetworkAbstract::deleteAll()
 {
     if(m_manager)

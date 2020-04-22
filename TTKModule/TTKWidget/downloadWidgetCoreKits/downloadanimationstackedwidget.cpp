@@ -25,11 +25,6 @@ DownloadAnimationStackedWidget::~DownloadAnimationStackedWidget()
     delete m_animation;
 }
 
-QString DownloadAnimationStackedWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadAnimationStackedWidget::paintEvent(QPaintEvent * event)
 {
     if(m_isAnimating)

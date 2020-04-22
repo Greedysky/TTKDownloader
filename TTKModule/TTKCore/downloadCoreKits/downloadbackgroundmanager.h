@@ -32,12 +32,8 @@
 class DOWNLOAD_CORE_EXPORT DownloadBackgroundManager : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadBackgroundManager)
 public:
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
-
     /*!
      * Add observer.
      */

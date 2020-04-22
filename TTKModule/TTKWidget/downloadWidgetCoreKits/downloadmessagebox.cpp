@@ -59,11 +59,6 @@ DownloadMessageBox::~DownloadMessageBox()
     delete m_ui;
 }
 
-QString DownloadMessageBox::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadMessageBox::setTitle(const QString &text) const
 {
     m_ui->topTitleName->setText(text);

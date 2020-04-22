@@ -30,15 +30,12 @@ template <typename T>
  */
 class DOWNLOAD_CORE_EXPORT DownloadSingleton
 {
+    TTK_DECLARE_MODULE(DownloadSingleton)
 public:
     /*!
      * Get object instance ptr.
      */
     static T* createInstance();
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
 private:
     /*!
@@ -76,12 +73,6 @@ T* DownloadSingleton<T>::createInstance()
         m_mutex.unlock();
     }
     return m_instance.data();
-}
-
-template<typename T>
-QString DownloadSingleton<T>::getClassName()
-{
-    return "DownloadSingleton";
 }
 
     ////////////////////////////////////////////////////////////////

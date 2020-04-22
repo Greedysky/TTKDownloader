@@ -44,11 +44,6 @@ DownloadBaseAnimationWidget::~DownloadBaseAnimationWidget()
     delete m_group;
 }
 
-QString DownloadBaseAnimationWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadBaseAnimationWidget::paintEvent(QPaintEvent *event)
 {
     QWidget::paintEvent(event);
@@ -119,11 +114,6 @@ DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
     ly->addStretch(1);
 
     switchToSelectedItemStyle(0);
-}
-
-QString DownloadSkinAnimationWidget::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 void DownloadSkinAnimationWidget::paintEvent(QPaintEvent *event)

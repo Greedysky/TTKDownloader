@@ -6,11 +6,6 @@ DownloadBreakPointConfigManager::DownloadBreakPointConfigManager(QObject *parent
 
 }
 
-QString DownloadBreakPointConfigManager::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakPointItems &records)
 {
     ///////////////////////////////////////////////////////

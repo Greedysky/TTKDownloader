@@ -37,6 +37,7 @@ class QWinThumbnailToolButton;
 class DOWNLOAD_WIDGET_EXPORT DownloadWindowExtras : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadWindowExtras)
 public:
     /*!
      * Object contsructor.
@@ -45,10 +46,6 @@ public:
 
     ~DownloadWindowExtras();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Set current play state button.
      */

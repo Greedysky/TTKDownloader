@@ -87,11 +87,6 @@ DownloadListItemWidget::~DownloadListItemWidget()
     delete m_stateLabel;
 }
 
-QString DownloadListItemWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 float DownloadListItemWidget::getPercent() const
 {
     if(m_progressBar->maximum() <= 0)

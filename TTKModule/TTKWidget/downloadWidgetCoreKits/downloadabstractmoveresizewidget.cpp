@@ -18,11 +18,6 @@ DownloadAbstractMoveResizeWidget::DownloadAbstractMoveResizeWidget(QWidget *pare
     setMouseTracking(true);
 }
 
-QString DownloadAbstractMoveResizeWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 bool DownloadAbstractMoveResizeWidget::eventFilter(QObject *object, QEvent *event)
 {
     QWidget::eventFilter(object, event);

@@ -16,11 +16,6 @@ DownloadBackgroundPopWidget::~DownloadBackgroundPopWidget()
     delete m_slider;
 }
 
-QString DownloadBackgroundPopWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadBackgroundPopWidget::setValue(int value)
 {
     m_slider->setValue(value);

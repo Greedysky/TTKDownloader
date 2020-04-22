@@ -28,15 +28,11 @@
 class DOWNLOAD_WIDGET_EXPORT DownloadHistoryRecordWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadHistoryRecordWidget)
 public:
     explicit DownloadHistoryRecordWidget(QWidget *parent = nullptr);
 
     virtual ~DownloadHistoryRecordWidget();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Init widget.

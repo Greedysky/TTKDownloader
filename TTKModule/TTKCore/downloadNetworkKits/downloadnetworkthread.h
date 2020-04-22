@@ -32,12 +32,8 @@
 class DOWNLOAD_NETWORK_EXPORT DownloadNetworkThread : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadNetworkThread)
 public:
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
-
     /*!
      * Strat thread now.
      */

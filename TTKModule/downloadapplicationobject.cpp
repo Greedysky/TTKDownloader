@@ -32,11 +32,6 @@ DownloadApplicationObject::~DownloadApplicationObject()
     delete m_animation;
 }
 
-QString DownloadApplicationObject::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 DownloadApplicationObject *DownloadApplicationObject::instance()
 {
     return m_instance;

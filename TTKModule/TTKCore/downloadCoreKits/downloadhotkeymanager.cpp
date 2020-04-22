@@ -3,11 +3,6 @@
 
 #include <QStringList>
 
-QString DownloadHotKeyManager::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadHotKeyManager::connectParentObject(QObject *object, const QString &sn, const char *slot)
 {
     QGlobalShortcut *hotkey = new QGlobalShortcut(object);

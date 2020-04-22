@@ -30,6 +30,7 @@ class QPropertyAnimation;
 class DOWNLOAD_WIDGET_EXPORT DownloadTransitionAnimationLabel : public QLabel
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadTransitionAnimationLabel)
 public:
     /*!
      * Object contsructor.
@@ -37,11 +38,6 @@ public:
     explicit DownloadTransitionAnimationLabel(QWidget *parent = nullptr);
 
     ~DownloadTransitionAnimationLabel();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Set no animation to start.

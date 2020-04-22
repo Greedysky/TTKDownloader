@@ -35,11 +35,6 @@ DownloadAbstractMoveDialog::~DownloadAbstractMoveDialog()
     M_BACKGROUND_PTR->removeObserver(this);
 }
 
-QString DownloadAbstractMoveDialog::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadAbstractMoveDialog::backgroundChanged()
 {
     if(m_background)

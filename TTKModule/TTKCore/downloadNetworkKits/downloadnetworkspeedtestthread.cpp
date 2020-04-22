@@ -34,11 +34,6 @@ DownloadNetworkSpeedTestThread::~DownloadNetworkSpeedTestThread()
     stopAndQuitThread();
 }
 
-QString DownloadNetworkSpeedTestThread::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadNetworkSpeedTestThread::stopAndQuitThread()
 {
     if(isRunning())

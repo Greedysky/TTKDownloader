@@ -16,11 +16,6 @@ DownloadClickedSlider::DownloadClickedSlider(Qt::Orientation orientation, QWidge
     m_value = 0;
 }
 
-QString DownloadClickedSlider::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 bool DownloadClickedSlider::event(QEvent *event)
 {
     if(m_mousePress)

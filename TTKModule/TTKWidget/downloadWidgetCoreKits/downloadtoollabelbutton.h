@@ -30,16 +30,13 @@ class QLabel;
 class DOWNLOAD_WIDGET_EXPORT DownloadToolLabelButton : public QToolButton
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadToolLabelButton)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadToolLabelButton(QWidget *parent = nullptr);
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Set label text.
      */
@@ -75,16 +72,12 @@ protected:
 class DOWNLOAD_WIDGET_EXPORT DownloadSpeedToolLabelButton : public QToolButton
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadSpeedToolLabelButton)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadSpeedToolLabelButton(QWidget *parent = nullptr);
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Set label text.

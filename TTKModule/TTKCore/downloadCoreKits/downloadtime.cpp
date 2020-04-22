@@ -28,11 +28,6 @@ DownloadTime::DownloadTime(int day, int hour, int min, int sec, int msec)
     setHMSM(day, hour, min, sec, msec);
 }
 
-QString DownloadTime::getClassName()
-{
-    return "DownloadTime";
-}
-
 void DownloadTime::setHMSM(int day, int hour, int min, int sec, int msec)
 {
     init();

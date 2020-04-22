@@ -43,6 +43,7 @@ typedef uint32_t xxtea_uint;
  */
 class DOWNLOAD_CORE_EXPORT DownloadCryptographicHash
 {
+    TTK_DECLARE_MODULE(DownloadCryptographicHash)
 public:
     enum Priority
     {
@@ -58,10 +59,6 @@ public:
      */
     DownloadCryptographicHash();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * encrypt by QString data.
      */

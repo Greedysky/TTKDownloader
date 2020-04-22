@@ -30,6 +30,7 @@ class DownloadUnits;
 class DOWNLOAD_WIDGET_EXPORT DownloadListWidgets : public DownloadAbstractTableWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadListWidgets)
 public:
     /*!
      * Object contsructor.
@@ -42,10 +43,7 @@ public:
      * Init widget.
      */
     void init();
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
+
     /*!
      * Resize window bound by widgte resize called.
      */

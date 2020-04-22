@@ -32,11 +32,6 @@ DownloadWindowExtras::~DownloadWindowExtras()
 #endif
 }
 
-QString DownloadWindowExtras::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadWindowExtras::disableBlurBehindWindow(bool enable)
 {
     m_disableBlurBehindWindow = enable;

@@ -31,6 +31,7 @@ class QNetworkAccessManager;
 class DOWNLOAD_NETWORK_EXPORT DownloadThread : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadThread)
 public:
     enum DownloadState
     {
@@ -48,10 +49,6 @@ public:
 
     ~DownloadThread();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Start to download.
      */

@@ -10,11 +10,6 @@ DownloadUrlEncoder::DownloadUrlEncoder(QObject *parent)
 
 }
 
-QString DownloadUrlEncoder::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 QString DownloadUrlEncoder::decoder(const QString &url)
 {
     QString turl = url;

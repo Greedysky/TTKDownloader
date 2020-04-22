@@ -67,16 +67,12 @@ TTK_DECLARE_LISTS(DownloadSkinRemoteGroup)
 class DOWNLOAD_NETWORK_EXPORT DownloadSkinRemoteConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadSkinRemoteConfigManager)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadSkinRemoteConfigManager(QObject *parent = nullptr);
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Read datas into xml file.
@@ -92,16 +88,12 @@ public:
 class DOWNLOAD_NETWORK_EXPORT DownloadBackgroundRemoteThread : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadBackgroundRemoteThread)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadBackgroundRemoteThread(QObject *parent = nullptr);
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Start to download data from net.

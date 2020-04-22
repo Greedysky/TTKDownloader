@@ -24,11 +24,6 @@ DownloadTransitionAnimationLabel::~DownloadTransitionAnimationLabel()
     delete m_animation;
 }
 
-QString DownloadTransitionAnimationLabel::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 QPixmap DownloadTransitionAnimationLabel::getRendererPixmap() const
 {
     return m_rendererPixmap;

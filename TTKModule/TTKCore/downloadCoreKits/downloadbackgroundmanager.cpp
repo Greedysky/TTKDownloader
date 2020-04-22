@@ -5,11 +5,6 @@ DownloadBackgroundManager::DownloadBackgroundManager()
     m_skinColor = QColor(Qt::white);
 }
 
-QString DownloadBackgroundManager::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadBackgroundManager::addObserver(QObject *object)
 {
     m_observer << object;

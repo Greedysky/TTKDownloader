@@ -30,6 +30,7 @@ class DownloadListItemWidget;
 class DOWNLOAD_NETWORK_EXPORT DownloadUnits : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadUnits)
 public:
     /*!
      * Object contsructor.
@@ -38,10 +39,6 @@ public:
 
     ~DownloadUnits();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Get download list item widget.
      */

@@ -35,11 +35,6 @@ DownloadAbstractMoveWidget::~DownloadAbstractMoveWidget()
     M_BACKGROUND_PTR->removeObserver(this);
 }
 
-QString DownloadAbstractMoveWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadAbstractMoveWidget::backgroundChanged()
 {
     if(m_background)
@@ -144,9 +139,4 @@ DownloadAbstractMoveSingleWidget::DownloadAbstractMoveSingleWidget(bool transpar
 DownloadAbstractMoveSingleWidget::~DownloadAbstractMoveSingleWidget()
 {
     delete m_container;
-}
-
-QString DownloadAbstractMoveSingleWidget::getClassName()
-{
-    return staticMetaObject.className();
 }

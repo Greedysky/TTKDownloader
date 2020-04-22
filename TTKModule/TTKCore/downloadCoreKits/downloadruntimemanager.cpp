@@ -13,11 +13,6 @@ DownloadRunTimeManager::DownloadRunTimeManager()
 
 }
 
-QString DownloadRunTimeManager::getClassName()
-{
-    return "DownloadRunTimeManager";
-}
-
 void DownloadRunTimeManager::run() const
 {
     TTK_LOGGER_INFO("DownloadApplication Begin");

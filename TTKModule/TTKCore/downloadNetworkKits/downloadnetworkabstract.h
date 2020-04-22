@@ -29,6 +29,7 @@
 class DOWNLOAD_NETWORK_EXPORT DownloadNetworkAbstract : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadNetworkAbstract)
 public:
     typedef enum StateCode
     {
@@ -45,10 +46,6 @@ public:
 
     virtual ~DownloadNetworkAbstract();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Release the network object.
      */

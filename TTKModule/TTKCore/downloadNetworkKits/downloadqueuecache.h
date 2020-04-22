@@ -37,6 +37,7 @@ TTK_DECLARE_LISTS(DownloadQueueData)
 class DOWNLOAD_NETWORK_EXPORT DownloadQueueCache : public DownLoadThreadAbstract
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadQueueCache)
 public:
     /*!
      * Object contsructor.
@@ -53,11 +54,6 @@ public:
     DownloadQueueCache(const DownloadQueueDatas &datas, QObject *parent = nullptr);
 
     ~DownloadQueueCache();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Add image download url and save path to download queue.

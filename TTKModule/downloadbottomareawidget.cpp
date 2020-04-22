@@ -38,11 +38,6 @@ DownloadBottomAreaWidget::~DownloadBottomAreaWidget()
     delete m_speedThread;
 }
 
-QString DownloadBottomAreaWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 DownloadBottomAreaWidget *DownloadBottomAreaWidget::instance()
 {
     return m_instance;

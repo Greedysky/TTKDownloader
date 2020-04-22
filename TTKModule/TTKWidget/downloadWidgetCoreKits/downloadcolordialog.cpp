@@ -15,11 +15,6 @@ DownloadHlPalette::DownloadHlPalette(QWidget *parent)
     m_dblSaturation = 1.0;
 }
 
-QString DownloadHlPalette::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 QColor DownloadHlPalette::color() const
 {
     return m_color;
@@ -138,11 +133,6 @@ DownloadHlSaturationPalette::DownloadHlSaturationPalette(QWidget *parent)
     m_dblVernierX = 0;
     m_dblVernierPercentX = 0;
     m_dblSaturation = 0;
-}
-
-QString DownloadHlSaturationPalette::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 double DownloadHlSaturationPalette::saturation() const
@@ -279,11 +269,6 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
 DownloadColorDialog::~DownloadColorDialog()
 {
     delete m_ui;
-}
-
-QString DownloadColorDialog::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 QColor DownloadColorDialog::getColor(QWidget *parent)

@@ -32,6 +32,7 @@ class DOWNLOAD_CORE_EXPORT DownloadSettingManager : public QObject
 {
     Q_OBJECT
     Q_ENUMS(ConfigType)
+    TTK_DECLARE_MODULE(DownloadSettingManager)
 public:
     enum ConfigType
     {
@@ -64,14 +65,6 @@ public:
         SkinSuspensionPerChoiced        /*!< Skin Suspension Show Percent Parameter*/
 
     };
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName()
-    {
-        return staticMetaObject.className();
-    }
 
     /*!
      * Set current value by Config Type.

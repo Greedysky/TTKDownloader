@@ -13,11 +13,6 @@ DownloadToolLabelButton::DownloadToolLabelButton(QWidget *parent)
     m_enterIn = false;
 }
 
-QString DownloadToolLabelButton::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadToolLabelButton::setLabelText(const QString &text)
 {
     m_text = text;
@@ -80,11 +75,6 @@ DownloadSpeedToolLabelButton::DownloadSpeedToolLabelButton(QWidget *parent)
     setStyleSheet(DownloadUIObject::MToolButtonStyle03 + DownloadUIObject:: MToolButtonStyle01);
 
     m_enterIn = false;
-}
-
-QString DownloadSpeedToolLabelButton::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 void DownloadSpeedToolLabelButton::setLabelText(const QString &up, const QString &down)

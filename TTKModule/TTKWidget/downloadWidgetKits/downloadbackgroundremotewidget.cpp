@@ -36,11 +36,6 @@ DownloadBackgroundRemoteWidget::~DownloadBackgroundRemoteWidget()
     delete m_queryThread;
 }
 
-QString DownloadBackgroundRemoteWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadBackgroundRemoteWidget::init()
 {
     if(!m_queryThread)

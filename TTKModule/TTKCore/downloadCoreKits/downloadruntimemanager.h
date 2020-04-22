@@ -26,16 +26,12 @@
  */
 class DOWNLOAD_CORE_EXPORT DownloadRunTimeManager
 {
+    TTK_DECLARE_MODULE(DownloadRunTimeManager)
 public:
     /*!
      * Object contsructor.
      */
     DownloadRunTimeManager();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Run.

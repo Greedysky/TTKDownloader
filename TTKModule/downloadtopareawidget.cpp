@@ -27,11 +27,6 @@ DownloadTopAreaWidget::~DownloadTopAreaWidget()
     delete m_backgroundWidget;
 }
 
-QString DownloadTopAreaWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 DownloadTopAreaWidget *DownloadTopAreaWidget::instance()
 {
     return m_instance;

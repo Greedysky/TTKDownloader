@@ -28,12 +28,8 @@ struct DownloadBackgroundImage;
  */
 class DOWNLOAD_CORE_EXPORT DownloadExtractWrap
 {
+    TTK_DECLARE_MODULE(DownloadExtractWrap)
 public:
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
-
     /*!
      * Transfer file to image data.
      */

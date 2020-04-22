@@ -34,6 +34,7 @@ class DownloadBackgroundRemoteWidget;
 class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundSkinDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadBackgroundSkinDialog)
 public:
     /*!
      * Object contsructor.
@@ -41,11 +42,6 @@ public:
     explicit DownloadBackgroundSkinDialog(QWidget *parent = nullptr);
 
     virtual ~DownloadBackgroundSkinDialog();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Set artist background picture by name.

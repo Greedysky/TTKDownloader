@@ -9,11 +9,6 @@ DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent
 
 }
 
-QString DownloadSkinRemoteConfigManager::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadSkinRemoteConfigManager::readSkinRemoteXMLConfig(DownloadSkinRemoteGroups &items)
 {
     QDomNodeList nodelist = m_ddom->elementsByTagName("group");
@@ -66,11 +61,6 @@ DownloadBackgroundRemoteThread::DownloadBackgroundRemoteThread(QObject *parent)
     : QObject(parent)
 {
 
-}
-
-QString DownloadBackgroundRemoteThread::getClassName()
-{
-    return staticMetaObject.className();
 }
 
 void DownloadBackgroundRemoteThread::startToDownload()

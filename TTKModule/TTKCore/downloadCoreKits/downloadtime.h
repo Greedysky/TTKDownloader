@@ -28,6 +28,7 @@
  */
 class DOWNLOAD_CORE_EXPORT DownloadTime
 {
+    TTK_DECLARE_MODULE(DownloadTime)
 public:
     enum Type
     {
@@ -52,10 +53,6 @@ public:
      */
     DownloadTime(int day, int hour, int min, int sec, int msec);
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Set current day and hour and min and sec and msec.
      */

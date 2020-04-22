@@ -33,6 +33,7 @@ class DownloadQueueCache;
 class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundRemoteWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadBackgroundRemoteWidget)
 public:
     /*!
      * Object contsructor.
@@ -40,11 +41,6 @@ public:
     explicit DownloadBackgroundRemoteWidget(QWidget *parent = nullptr);
 
     ~DownloadBackgroundRemoteWidget();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Init the current download object.

@@ -27,16 +27,13 @@
 class DOWNLOAD_WIDGET_EXPORT DownloadHlPalette : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadHlPalette)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadHlPalette(QWidget *parent = nullptr);
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Get color.
      */
@@ -85,16 +82,13 @@ protected:
 class DOWNLOAD_WIDGET_EXPORT DownloadHlSaturationPalette : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadHlSaturationPalette)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadHlSaturationPalette(QWidget *parent = nullptr);
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Get saturation.
      */
@@ -141,6 +135,7 @@ class DownloadColorDialog;
 class DOWNLOAD_WIDGET_EXPORT DownloadColorDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadColorDialog)
 public:
     /*!
      * Object contsructor.
@@ -149,10 +144,6 @@ public:
 
     virtual ~DownloadColorDialog();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Get color static function.
      */

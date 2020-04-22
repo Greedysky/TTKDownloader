@@ -24,11 +24,6 @@ DownloadThreadManager::~DownloadThreadManager()
     qDeleteAll(m_threads);
 }
 
-QString DownloadThreadManager::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 qint64 DownloadThreadManager::getFileSize(QString &url, int tryTimes)
 {
     qint64 size = -1;

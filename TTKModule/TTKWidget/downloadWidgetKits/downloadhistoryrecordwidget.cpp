@@ -31,11 +31,6 @@ DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
     xml.writeDownloadConfig(m_records);
 }
 
-QString DownloadHistoryRecordWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadHistoryRecordWidget::init()
 {
     DownloadRecordConfigManager xml;

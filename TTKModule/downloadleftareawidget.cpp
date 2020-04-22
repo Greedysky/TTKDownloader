@@ -19,11 +19,6 @@ DownloadLeftAreaWidget::~DownloadLeftAreaWidget()
 
 }
 
-QString DownloadLeftAreaWidget::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 DownloadLeftAreaWidget *DownloadLeftAreaWidget::instance()
 {
     return m_instance;

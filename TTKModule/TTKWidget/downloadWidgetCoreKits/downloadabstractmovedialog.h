@@ -29,6 +29,7 @@
 class DOWNLOAD_WIDGET_EXPORT DownloadAbstractMoveDialog : public QDialog
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadAbstractMoveDialog)
 public:
     /*!
      * Object contsructor.
@@ -41,10 +42,6 @@ public:
 
     virtual ~DownloadAbstractMoveDialog();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Set or not draw window bound shadow.
      */

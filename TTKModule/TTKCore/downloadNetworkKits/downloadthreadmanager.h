@@ -29,6 +29,7 @@
 class DOWNLOAD_NETWORK_EXPORT DownloadThreadManager : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadThreadManager)
 public:
     /*!
      * Object contsructor.
@@ -37,10 +38,6 @@ public:
 
     ~DownloadThreadManager();
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Download file by url.
      */

@@ -45,11 +45,6 @@ DownloadQueueCache::~DownloadQueueCache()
     deleteAll();
 }
 
-QString DownloadQueueCache::getClassName()
-{
-    return staticMetaObject.className();
-}
-
 void DownloadQueueCache::startToDownload()
 {
     if(!m_imageQueue.isEmpty())

@@ -32,16 +32,12 @@
 class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundListItem : public QLabel
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadBackgroundListItem)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadBackgroundListItem(QWidget *parent = nullptr);
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Set item file name.
@@ -134,6 +130,7 @@ protected:
 class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundListWidget : public QWidget
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadBackgroundListWidget)
 public:
     /*!
      * Object contsructor.
@@ -141,11 +138,6 @@ public:
     explicit DownloadBackgroundListWidget(QWidget *parent = nullptr);
 
     ~DownloadBackgroundListWidget();
-
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
 
     /*!
      * Select current item by name when the widget show.

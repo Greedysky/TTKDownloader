@@ -29,16 +29,13 @@ class QProcess;
 class DOWNLOAD_NETWORK_EXPORT DownloadUrlEncoder : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadUrlEncoder)
 public:
     /*!
      * Object contsructor.
      */
     explicit DownloadUrlEncoder(QObject *parent = nullptr);
 
-    /*!
-     * Get class object name.
-     */
-    static QString getClassName();
     /*!
      * Decode url.
      */
