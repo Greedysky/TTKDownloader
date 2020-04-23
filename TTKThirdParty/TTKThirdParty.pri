@@ -24,6 +24,6 @@ INCLUDEPATH += \
 
 !contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS += \
-    $$PWD/TTKExtras/QShortCut/qglobalshortcut.h
+    $$PWD/TTKExtras/qshortcut/qglobalshortcut.h
 
 }
