@@ -52,8 +52,6 @@ void MiniDumper::SetDumpFilePath(LPCWSTR szFilePath)
 
 LONG MiniDumper::TopLevelFilter(struct _EXCEPTION_POINTERS *pExceptionInfo)
 {
-    checkExtraProcessQuit();
-
     LONG retval = EXCEPTION_CONTINUE_SEARCH;
 
     // firstly see if dbghelp.dll is around and has the function we need
