@@ -2,6 +2,7 @@
 #include "ui_downloadsettingwidget.h"
 #include "downloadsettingmanager.h"
 
+#include <QButtonGroup>
 #include <QFontDatabase>
 #include <QFileDialog>
 #include <QStyledItemDelegate>

@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QToolTip>
 #include <QMouseEvent>
+#include <QButtonGroup>
 
 DownloadHlPalette::DownloadHlPalette(QWidget *parent)
     : QWidget(parent)
