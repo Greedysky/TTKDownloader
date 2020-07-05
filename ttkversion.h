@@ -34,17 +34,17 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-//update time 2019.11.20
-#define DOWNLOAD_VERSION_STR    "2.1.0.0"
-#define DOWNLOAD_VERSION_WSTR   L"2.1.0.0"
-#define DOWNLOAD_VER_TIME_STR   "(2019/11/20)"
+//update time 2020.07.05
+#define DOWNLOAD_VERSION_STR    "2.2.0.0"
+#define DOWNLOAD_VERSION_WSTR   L"2.2.0.0"
+#define DOWNLOAD_VER_TIME_STR   "(2020/07/05)"
 
 #define DOWNLOAD_MAJOR_VERSION 2
-#define DOWNLOAD_MIDLE_VERSION 1
+#define DOWNLOAD_MIDLE_VERSION 2
 #define DOWNLOAD_MINOR_VERSION 0
 #define DOWNLOAD_PATCH_VERSION 0
 
-#define DOWNLOAD_VERSION 0x02100
+#define DOWNLOAD_VERSION 0x02200
 
 #define DOWNLOAD_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 
