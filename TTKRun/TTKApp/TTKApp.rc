@@ -29,7 +29,7 @@ BEGIN
                 VALUE "FileDescription", "天天下载"
                 VALUE "FileVersion", "1.0.0.0"
                 VALUE "InternalName", "天天下载.exe"
-                VALUE "LegalCopyright", "Copyright By Greedysky studio(C)2020"
+                VALUE "LegalCopyright", "Copyright By Greedysky studio(C)2021"
                 VALUE "OriginalFilename", "天天下载.exe"
                 VALUE "ProductName", "天天下载"
                 VALUE "ProductVersion", "1.0.0.0"
