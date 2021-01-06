@@ -27,8 +27,7 @@ QT       += widgets
 }
 
 include($$PWD/TTKVersion.pri)
-win32:DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
-unix:DESTDIR = $$OUT_PWD/../lib/$$TTKDownloader
+DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
 
 ##openssl lib check
 win32:{

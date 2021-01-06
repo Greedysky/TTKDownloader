@@ -20,7 +20,7 @@ TEMPLATE = lib
 CONFIG += TTK_BUILD_LIB
 
 include($$PWD/../TTKDownloader.pri)
-unix:VERSION += $$TTKDownloader
+CONFIG += plugin lib
 
 TARGET = TTKCore
 

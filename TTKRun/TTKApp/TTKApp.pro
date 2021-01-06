@@ -20,10 +20,8 @@ QT       += core gui network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 include($$PWD/../../TTKVersion.pri)
-unix:VERSION += $$TTKDownloader
 
-win32:DESTDIR = $$OUT_PWD/../../bin
-unix:DESTDIR = $$OUT_PWD/../../lib
+DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKDownloader
 
 TEMPLATE = app

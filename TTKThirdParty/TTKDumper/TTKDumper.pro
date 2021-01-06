@@ -22,12 +22,10 @@ TEMPLATE = lib
 
 include($$PWD/../../TTKVersion.pri)
 
-win32:DESTDIR = $$OUT_PWD/../../bin/$$TTKDownloader
-unix:DESTDIR = $$OUT_PWD/../../lib/$$TTKDownloader
+DESTDIR = $$OUT_PWD/../../bin/$$TTKDownloader
 TARGET = TTKDumper
 
-CONFIG       += warn_off
-unix:VERSION += 1.0.0
+CONFIG += plugin lib
 
 INCLUDEPATH += $$PWD/../../TTKModule/TTKCore/downloadCoreKits
 

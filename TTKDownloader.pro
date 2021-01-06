@@ -44,7 +44,7 @@ else{
 }
 
 unix:{
-    output = $$OUT_PWD/lib/$$TTKDownloader/MLanguage
+    output = $$OUT_PWD/bin/$$TTKDownloader/MLanguage
     !exists($$output):system(mkdir $$output)
 
     system(find TTKLanguage -name *.ts | xargs $$LRELEASE_EXECUTABLE)

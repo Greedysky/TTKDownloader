@@ -28,7 +28,6 @@ win32:msvc{
 }
 
 include($$PWD/../TTKDownloader.pri)
-unix:VERSION += $$TTKDownloader
 
 TARGET = TTKService
 

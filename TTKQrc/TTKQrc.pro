@@ -22,10 +22,9 @@ msvc{
 }
 
 include($$PWD/../TTKVersion.pri)
-unix:VERSION += $$TTKDownloader
+CONFIG += plugin lib
 
-win32:DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
-unix:DESTDIR = $$OUT_PWD/../lib/$$TTKDownloader
+DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
 TARGET = TTKUi
 
 RESOURCES += \
