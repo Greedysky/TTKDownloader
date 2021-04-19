@@ -37,7 +37,7 @@ ParserRunnable::ParserRunnable(QObject* parent)
     : QObject(parent),
       QRunnable()
 {
-  TTK_INIT_PRIVATE;
+  TTK_INIT_PRIVATE(ParserRunnable);
   qRegisterMetaType<QVariant>("QVariant");
 }
 
