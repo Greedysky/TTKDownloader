@@ -36,7 +36,7 @@ win32:msvc{
 
 include($$PWD/../TTKExtrasDefine.pri)
 
-include($$PWD/qalg/QAlg.pri)
+include($$PWD/qalgorithm/QAlgorithm.pri)
 include($$PWD/qjson/QJson.pri)
 include($$PWD/qshortcut/QShortCut.pri)
 
