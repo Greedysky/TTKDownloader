@@ -27,6 +27,9 @@
 
 using namespace QJson;
 
+/**
+* @brief Convenience class for converting JSON data to QVariant objects using a dedicated thread private
+*/
 class QJson::ParserRunnable::ParserRunnablePrivate : public TTKPrivate<ParserRunnable>
 {
   public:

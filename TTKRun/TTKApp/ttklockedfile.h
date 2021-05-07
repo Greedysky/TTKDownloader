@@ -7,10 +7,13 @@
 #endif
 #include "downloadrunglobaldefine.h"
 
+/*! @brief The namespace of locked private.
+ * @author Greedysky <greedysky@163.com>
+ */
 namespace TTKLockedPrivate {
-  /*! @brief The class of the ttk local file.
-   * @author Greedysky <greedysky@163.com>
-   */
+    /*! @brief The class of the ttk local file.
+     * @author Greedysky <greedysky@163.com>
+     */
     class DOWNLOAD_RUN_EXPORT TTKLockedFile : public QFile
     {
     public:
