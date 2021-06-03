@@ -25,7 +25,6 @@
 #include "downloadglobaldefine.h"
 
 class DownloadSystemTrayMenu;
-class DownloadWindowExtras;
 class DownloadNetworkSpeedTestThread;
 
 namespace Ui {
@@ -73,17 +72,6 @@ public:
      */
     void showMessage(const QString &title, const QString &text);
 
-#if defined TTK_DEBUG && defined Q_OS_WIN && defined TTK_GREATER_NEW
-    /*!
-     * Set current value.
-     */
-    void setValue(int value) const;
-    /*!
-     * Set current range from start to end.
-     */
-    void setRange(int min, int max) const;
-#endif
-
 public Q_SLOTS:
     /*!
      * System tray icon activate.
@@ -114,11 +102,11 @@ protected:
 
     Ui::DownloadApplication *m_ui;
     bool m_systemCloseConfig;
+    bool m_expandMode;
 
     QMenu *m_toolPopupMenu;
     QSystemTrayIcon *m_systemTray;
     DownloadSystemTrayMenu *m_systemTrayMenu;
-    DownloadWindowExtras *m_windowExtras;
     DownloadNetworkSpeedTestThread *m_speedThread;
 
     static DownloadBottomAreaWidget *m_instance;

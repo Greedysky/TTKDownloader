@@ -21,7 +21,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
       m_ui(new Ui::DownloadApplication)
 {
     m_instance = this;
-//#ifdef TTK_GREATER_NEW
+//#if TTK_QT_VERSION_CHECK(5,0,0)
     setAttribute(Qt::WA_TranslucentBackground, false);
 //#endif
 
@@ -142,12 +142,10 @@ void DownloadApplication::closeEvent(QCloseEvent *event)
 {
     DownloadAbstractMoveResizeWidget::closeEvent(event);
     event->ignore();
-    if(!m_bottomAreaWidget->getSystemCloseConfig() &&
-        m_bottomAreaWidget->systemTrayIsVisible())
+    if(!m_bottomAreaWidget->getSystemCloseConfig() && m_bottomAreaWidget->systemTrayIsVisible())
     {
         hide();
-        m_bottomAreaWidget->showMessage(tr("Prompt"),
-                                        tr("TTKDownloader will run in the background"));
+        m_bottomAreaWidget->showMessage(tr("Prompt"), tr("TTKDownloader will run in the background"));
     }
     else
     {

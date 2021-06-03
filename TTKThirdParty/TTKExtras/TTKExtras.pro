@@ -29,17 +29,14 @@ TEMPLATE = lib
 
 win32:msvc{
     LIBS += -luser32
-    CONFIG +=c++11
+    CONFIG += c++11
 }else{
     QMAKE_CXXFLAGS += -std=c++11
 }
 
 include($$PWD/../TTKExtrasDefine.pri)
 
-include($$PWD/qalgorithm/QAlgorithm.pri)
 include($$PWD/qjson/QJson.pri)
 include($$PWD/qshortcut/QShortCut.pri)
 
-win32{
-    RC_FILE = TTKExtras.rc
-}
+win32:RC_FILE = TTKExtras.rc

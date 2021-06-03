@@ -1,5 +1,7 @@
 #include "downloadbackgroundmanager.h"
 
+#define MAX_INDEX 5
+
 DownloadBackgroundManager::DownloadBackgroundManager()
 {
     m_skinColor = QColor(Qt::white);

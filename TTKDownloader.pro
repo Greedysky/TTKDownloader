@@ -19,6 +19,7 @@
 include($$PWD/TTKVersion.pri)
 
 TEMPLATE = subdirs
+CONFIG += ordered
 SUBDIRS = TTKQrc TTKThirdParty TTKModule TTKService TTKRun TTKTest
 
 TRANSLATIONS += TTKLanguage/cn.ts
@@ -43,7 +44,7 @@ else{
     message(Found lrelease executable: $$LRELEASE_EXECUTABLE)
 }
 
-unix:{
+unix{
     output = $$OUT_PWD/bin/$$TTKDownloader/MLanguage
     !exists($$output):system(mkdir -p $$output)
 
@@ -51,7 +52,7 @@ unix:{
     system(find $$PWD/TTKLanguage -name *.qm | xargs rename -v -f 's/.qm/.ln/' *)
     system(for F in $$PWD/TTKLanguage/*.ln ; do mv $F $$output ;done)
 }
-win32:{
+win32{
     output = $$OUT_PWD/bin/$$TTKDownloader/MLanguage
     output = $$replace(output, /, \\)
     !exists($$output):system(md $$output)

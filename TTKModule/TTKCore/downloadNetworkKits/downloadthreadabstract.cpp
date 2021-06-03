@@ -75,7 +75,7 @@ void DownLoadThreadAbstract::updateDownloadSpeed()
         int limitValue = M_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toInt();
         if(limitValue != 0 && delta > limitValue*MH_KB)
         {
-#if defined Q_OS_WIN && defined TTK_GREATER_NEW
+#if defined Q_OS_WIN && TTK_QT_VERSION_CHECK(5,0,0)
             QThread::msleep(MT_S2MS - limitValue*MH_KB*MT_S2MS/delta);
 #else
             usleep((MT_S2MS - limitValue*MH_KB*MT_S2MS/delta)*MT_S2MS);

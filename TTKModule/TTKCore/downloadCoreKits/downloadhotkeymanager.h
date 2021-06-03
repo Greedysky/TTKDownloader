@@ -19,9 +19,10 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadsingleton.h"
+#include "ttksingleton.h"
+#include "downloadglobaldefine.h"
 
-#define M_HOTKEY_PTR (DownloadSingleton<DownloadHotKeyManager>::createInstance())
+#define M_HOTKEY_PTR (TTKSingleton<DownloadHotKeyManager>::createInstance())
 
 class QGlobalShortcut;
 

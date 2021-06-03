@@ -17,7 +17,7 @@ void DownloadRunTimeManager::run() const
 {
     TTK_LOGGER_INFO("DownloadApplication Begin");
 
-#ifndef TTK_GREATER_NEW
+#if !TTK_QT_VERSION_CHECK(5,0,0)
     DownloadUtils::Codec::setLocalCodec();
 #endif
 

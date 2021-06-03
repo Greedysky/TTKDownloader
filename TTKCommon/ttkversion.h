@@ -1,6 +1,21 @@
-#ifndef QDESWRAP_H
-#define QDESWRAP_H
+#ifndef TTKVERSION_H
+#define TTKVERSION_H
 
+/**
+ * C
+ *
+ * opyright (c) 2015 - 2021 Greedysky Studio <greedysky@163.com>
+ *
+ * TTKDownloader that imitation xunlei downloader, based on Qt for windows. 
+ */
+
+/** \mainpage
+ *
+ * \section encoding Attention
+ * 
+ *
+ */
+ 
 /* =================================================
  * This file is part of the TTK Downloader project
  * Copyright (C) 2015 - 2021 Greedysky Studio
@@ -19,38 +34,19 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadextrasglobaldefine.h"
+//update time 2020.07.05
+#define DOWNLOAD_VERSION_STR    "2.2.0.0"
+#define DOWNLOAD_VERSION_WSTR   L"2.2.0.0"
+#define DOWNLOAD_VER_TIME_STR   "(2020/07/05)"
 
-class QDesWrapPrivate;
+#define DOWNLOAD_MAJOR_VERSION 2
+#define DOWNLOAD_MIDLE_VERSION 2
+#define DOWNLOAD_MINOR_VERSION 0
+#define DOWNLOAD_PATCH_VERSION 0
 
-/*! @brief The namespace of the des wrapper.
- * @author Greedysky <greedysky@163.com>
- */
-class DOWNLOAD_EXTRAS_EXPORT QDesWrap
-{
-public:
-    enum Mode
-    {
-        ENCRYPT = 0,
-        DECRYPT = 1
-    };
-    /*!
-     * Object contsructor.
-     */
-    QDesWrap();
+#define DOWNLOAD_VERSION 0x02200
 
-    /*!
-     * Encrypt des by input.
-     */
-    QByteArray encrypt(const QByteArray &in, const QByteArray &key);
-    /*!
-     * Decrypt des by input.
-     */
-    QByteArray decrypt(const QByteArray &in, const QByteArray &key);
+#define TTK_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 
-private:
-    TTK_DECLARE_PRIVATE(QDesWrap)
+#endif // TTKVERSION_H
 
-};
-
-#endif // QDESWRAP_H

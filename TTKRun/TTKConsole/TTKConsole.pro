@@ -27,7 +27,7 @@ TEMPLATE = app
 CONFIG += console
 
 ##openssl lib check
-win32:{
+win32{
     SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKDownloader/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
     exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKDownloader -lssl
@@ -43,7 +43,7 @@ unix:LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
 DEFINES += TTK_LIBRARY
 
 win32:msvc{
-    CONFIG +=c++11
+    CONFIG += c++11
 
 HEADERS += \
     $$PWD/../../TTKModule/TTKCore/downloadNetworkKits/downloadthread.h \
@@ -56,7 +56,7 @@ HEADERS += \
 
 INCLUDEPATH += \
     $$PWD/../ \
-    $$PWD/../../ \
+    $$PWD/../../TTKCommon \
     $$PWD/../../TTKThirdParty \
     $$PWD/../../TTKThirdParty/TTKDumper \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits \
@@ -70,6 +70,4 @@ HEADERS += \
     $$PWD/../downloadrunglobaldefine.h \
     downloadconsoleobject.h
 
-win32{
-    RC_FILE = TTKConsole.rc
-}
+win32:RC_FILE = TTKConsole.rc

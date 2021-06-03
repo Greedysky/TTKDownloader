@@ -18,7 +18,6 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
     $$PWD/downloadbackgroundskindialog.h \
     $$PWD/downloadfuntionanimationwidget.h \
@@ -26,7 +25,6 @@ HEADERS  += \
     $$PWD/downloadbackgroundpopwidget.h \
     $$PWD/downloadbackgroundremotewidget.h \
     $$PWD/downloadsystemtraymenu.h \
-    $$PWD/downloadwindowextras.h \
     $$PWD/downloadnewfiledialog.h\
     $$PWD/downloadlistitemwidget.h \
     $$PWD/downloadlistwidgets.h \
@@ -35,9 +33,6 @@ HEADERS  += \
     $$PWD/downloadsettingwidget.h \
     $$PWD/downloadhistoryrecordwidget.h
 
-}
-
-contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/downloadbackgroundskindialog.cpp \
     $$PWD/downloadfuntionanimationwidget.cpp \
@@ -45,7 +40,6 @@ SOURCES += \
     $$PWD/downloadbackgroundlistwidget.cpp \
     $$PWD/downloadsystemtraymenu.cpp \
     $$PWD/downloadbackgroundremotewidget.cpp \
-    $$PWD/downloadwindowextras.cpp \
     $$PWD/downloadnewfiledialog.cpp\
     $$PWD/downloadlistitemwidget.cpp \
     $$PWD/downloadlistwidgets.cpp \
@@ -53,5 +47,3 @@ SOURCES += \
     $$PWD/downloadmessageaboutdialog.cpp \
     $$PWD/downloadsettingwidget.cpp \
     $$PWD/downloadhistoryrecordwidget.cpp
-
-}

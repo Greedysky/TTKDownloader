@@ -18,14 +18,11 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
     $$PWD/downloaduiobject.h \
     $$PWD/downloadfunctionuiobject.h \
     $$PWD/downloadtinyuiobject.h
-}
 
-contains(CONFIG, TTK_BUILD_LIB){
 FORMS    += \
     $$PWD/downloadapplication.ui \
     $$PWD/downloadbackgroundskindialog.ui \
@@ -34,4 +31,3 @@ FORMS    += \
     $$PWD/downloadmessagebox.ui \
     $$PWD/downloadmessageaboutdialog.ui \
     $$PWD/downloadsettingwidget.ui
-}

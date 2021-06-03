@@ -18,7 +18,6 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
     $$PWD/downloadabstractmovedialog.h \
     $$PWD/downloadabstractmovewidget.h \
@@ -32,9 +31,6 @@ HEADERS  += \
     $$PWD/downloadtoolmenuwidget.h \
     $$PWD/downloadtoollabelbutton.h
 
-}
-
-contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/downloadabstractmovedialog.cpp \
     $$PWD/downloadabstractmovewidget.cpp \
@@ -47,5 +43,3 @@ SOURCES += \
     $$PWD/downloadcolordialog.cpp \
     $$PWD/downloadtoolmenuwidget.cpp \
     $$PWD/downloadtoollabelbutton.cpp
-
-}

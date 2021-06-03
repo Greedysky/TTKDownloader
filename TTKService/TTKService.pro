@@ -18,32 +18,23 @@
 
 TEMPLATE = app
 
-contains(CONFIG, TTK_BUILD_LIB){
-    CONFIG -= TTK_BUILD_LIB
-}
-
-CONFIG += TTK_NO_MSVC_LINK_NEED
-win32:msvc{
-    CONFIG -= TTK_NO_MSVC_LINK_NEED
-}
-
 include($$PWD/../TTKDownloader.pri)
 
 TARGET = TTKService
 
 LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper
 
-INCLUDEPATH += $$PWD/../TTKModule
+INCLUDEPATH +=  \
+    $$PWD/../TTKModule \
+    $$PWD/../TTKModule/TTKCore/downloadCoreKits \
+    $$PWD/../TTKModule/TTKWidget/downloadWidgetCoreKits
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
+win32:msvc{
 HEADERS  += \
     $$PWD/../TTKModule/downloadapplication.h
-
 }
 
 SOURCES += \
     downloadservicemain.cpp
 
-win32{
-    RC_FILE = TTKService.rc
-}
+win32:RC_FILE = TTKService.rc

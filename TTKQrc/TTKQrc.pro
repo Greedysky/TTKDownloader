@@ -30,6 +30,4 @@ TARGET = TTKUi
 RESOURCES += \
     TTKDownloader.qrc
     
-win32{
-    RC_FILE = TTKQrc.rc
-}
+win32:RC_FILE = TTKQrc.rc

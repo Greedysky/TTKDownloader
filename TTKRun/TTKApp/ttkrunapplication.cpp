@@ -46,7 +46,7 @@ TTKRunApplication::TTKRunApplication(const QString &appId, int &argc, char **arg
     sysInit(appId);
 }
 
-#ifndef TTK_GREATER_NEW
+#if !TTK_QT_VERSION_CHECK(5,0,0)
 TTKRunApplication::TTKRunApplication(int &argc, char **argv, Type type)
     : QApplication(argc, argv, type)
 {
@@ -54,7 +54,7 @@ TTKRunApplication::TTKRunApplication(int &argc, char **argv, Type type)
     sysInit();
 }
 
-#  if defined(Q_WS_X11)
+#if defined(Q_WS_X11)
 TTKRunApplication::TTKRunApplication(Display* dpy, Qt::HANDLE visual, Qt::HANDLE cmap)
     : QApplication(dpy, visual, cmap)
 {
@@ -75,7 +75,7 @@ TTKRunApplication::TTKRunApplication(Display* dpy, const QString &appId, int arg
     TTK_INIT_PRIVATE(TTKRunApplication);
     sysInit(appId);
 }
-#  endif
+#endif
 #endif
 
 void TTKRunApplication::initialize(bool dummy)

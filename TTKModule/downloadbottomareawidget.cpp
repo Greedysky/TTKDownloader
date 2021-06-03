@@ -2,7 +2,6 @@
 #include "ui_downloadapplication.h"
 #include "downloadapplication.h"
 #include "downloadsystemtraymenu.h"
-#include "downloadwindowextras.h"
 #include "downloadnumberutils.h"
 #include "downloadnetworkspeedtestthread.h"
 #include "downloaduiobject.h"
@@ -18,11 +17,11 @@ DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
 {
     m_instance = this;
     m_systemCloseConfig = false;
+    m_expandMode = false;
     m_toolPopupMenu = nullptr;
 
     createSystemTrayIcon();
 
-    m_windowExtras = new DownloadWindowExtras(parent);
     m_speedThread = new DownloadNetworkSpeedTestThread(this);
 
     connect(m_speedThread, SIGNAL(networkData(ulong,ulong)), SLOT(updateNetworkData(ulong,ulong)));
@@ -34,7 +33,6 @@ DownloadBottomAreaWidget::~DownloadBottomAreaWidget()
     delete m_toolPopupMenu;
     delete m_systemTrayMenu;
     delete m_systemTray;
-    delete m_windowExtras;
     delete m_speedThread;
 }
 
@@ -69,18 +67,6 @@ void DownloadBottomAreaWidget::showMessage(const QString &title, const QString &
 {
     m_systemTray->showMessage(title, text);
 }
-
-#if defined TTK_DEBUG && defined Q_OS_WIN && defined TTK_WINEXTRAS
-void DownloadBottomAreaWidget::setValue(int value) const
-{
-    m_windowExtras->setValue(value);
-}
-
-void DownloadBottomAreaWidget::setRange(int min, int max) const
-{
-    m_windowExtras->setRange(min, max);
-}
-#endif
 
 void DownloadBottomAreaWidget::iconActivated(QSystemTrayIcon::ActivationReason reason)
 {
@@ -153,9 +139,16 @@ void DownloadBottomAreaWidget::downloadPlanButtonClicked()
 
 void DownloadBottomAreaWidget::expandButtonClicked()
 {
-    bool con = m_windowExtras->isDisableBlurBehindWindow();
+    if(m_expandMode)
+    {
+        M_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 0);
+        m_ui->leftWidget->setMinimumWidth(205);
+        m_ui->leftWidget->setMaximumWidth(205);
+        m_ui->expandButton->setLabelIcon(":/functions/lb_left");
+        m_ui->fucntionListWidget->resizeMode(false);
 
-    if(con)
+    }
+    else
     {
         M_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 135);
         m_ui->leftWidget->setMinimumWidth(70);
@@ -163,18 +156,9 @@ void DownloadBottomAreaWidget::expandButtonClicked()
         m_ui->expandButton->setLabelIcon(":/functions/lb_right");
         m_ui->fucntionListWidget->resizeMode(true);
     }
-    else
-    {
-        M_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 0);
-        m_ui->leftWidget->setMinimumWidth(205);
-        m_ui->leftWidget->setMaximumWidth(205);
-        m_ui->expandButton->setLabelIcon(":/functions/lb_left");
-        m_ui->fucntionListWidget->resizeMode(false);
-    }
 
+    m_expandMode = !m_expandMode;
     DownloadRightAreaWidget::instance()->resizeWindow();
-
-    m_windowExtras->disableBlurBehindWindow(!con);
 }
 
 void DownloadBottomAreaWidget::createSystemTrayIcon()
@@ -187,6 +171,5 @@ void DownloadBottomAreaWidget::createSystemTrayIcon()
 
     m_systemTray->setContextMenu(m_systemTrayMenu);
     m_systemTray->show();
-    connect(m_systemTray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
-                          SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
+    connect(m_systemTray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 }

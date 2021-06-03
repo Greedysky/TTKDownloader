@@ -47,7 +47,7 @@ void DownloadFunctionItemWidget::mousePressEvent(QMouseEvent *event)
 void DownloadFunctionItemWidget::enterEvent(QEvent *event)
 {
     QWidget::enterEvent(event);
-    m_enterIn = (m_selectedOn ? false : true);
+    m_enterIn = !m_selectedOn;
     update();
 }
 

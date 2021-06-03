@@ -27,7 +27,7 @@ TARGET = TTKDownloader
 TEMPLATE = app
 
 win32:msvc{
-    CONFIG +=c++11
+    CONFIG += c++11
 }else{
     QMAKE_CXXFLAGS += -std=c++11
 }
@@ -35,7 +35,7 @@ win32:msvc{
 INCLUDEPATH += \
     $$PWD/../ \
     $$PWD/../TTKInit \
-    $$PWD/../../ \
+    $$PWD/../../TTKCommon \
     $$PWD/../../TTKThirdParty \
     $$PWD/../../TTKThirdParty/TTKDumper \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits
@@ -59,6 +59,4 @@ HEADERS += \
 RESOURCES += \
     $$PWD/../../TTKQrc/DownloaderApp.qrc
 
-win32{
-    RC_FILE = TTKApp.rc
-}
+win32:RC_FILE = TTKApp.rc

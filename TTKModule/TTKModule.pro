@@ -17,8 +17,8 @@
 # =================================================
 
 TEMPLATE = lib
-CONFIG += TTK_BUILD_LIB
 
+include($$PWD/TTKModule.pri)
 include($$PWD/../TTKDownloader.pri)
 CONFIG += plugin lib
 
@@ -43,7 +43,4 @@ HEADERS  += \
     downloadrightareawidget.h \
     downloadtopareawidget.h
     
-    
-win32{
-    RC_FILE = TTKCore.rc
-}
+win32:RC_FILE = TTKCore.rc

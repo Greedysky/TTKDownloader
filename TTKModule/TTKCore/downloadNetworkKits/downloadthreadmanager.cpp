@@ -93,7 +93,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
         return false;
     }
 
-#ifdef TTK_WINEXTRAS
+#if TTK_QT_VERSION_CHECK(5,2,0)
     QString fileName = QUrl(durl).fileName();
 #else
     const QString ourPath = QUrl(durl).path();

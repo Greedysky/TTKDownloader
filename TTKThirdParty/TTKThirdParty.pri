@@ -22,8 +22,7 @@ INCLUDEPATH += \
         $$PWD/TTKDumper \
         $$PWD/TTKExtras
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
+win32:msvc{
 HEADERS += \
     $$PWD/TTKExtras/qshortcut/qglobalshortcut.h
-
 }

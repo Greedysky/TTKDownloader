@@ -18,7 +18,6 @@
 
 INCLUDEPATH += $$PWD
 
-!contains(CONFIG, TTK_NO_MSVC_LINK_NEED){
 HEADERS  += \
     $$PWD/downloadglobaldefine.h \
     $$PWD/downloadobject.h \
@@ -32,7 +31,6 @@ HEADERS  += \
     $$PWD/downloadlicensecore.h \
     $$PWD/downloadotherdefine.h \
     $$PWD/downloadsettingmanager.h \
-    $$PWD/downloadsingleton.h \
     $$PWD/downloadsysconfigmanager.h \
     $$PWD/downloadruntimemanager.h \
     $$PWD/downloadtime.h \
@@ -40,9 +38,6 @@ HEADERS  += \
     $$PWD/downloadrecordconfigmanager.h \
     $$PWD/downloadlistconfigmanager.h
 
-}
-
-contains(CONFIG, TTK_BUILD_LIB){
 SOURCES += \
     $$PWD/downloadabstractxml.cpp \
     $$PWD/downloadbackgroundconfigmanager.cpp \
@@ -57,5 +52,3 @@ SOURCES += \
     $$PWD/downloadbreakpointconfigmanager.cpp \
     $$PWD/downloadrecordconfigmanager.cpp \
     $$PWD/downloadlistconfigmanager.cpp
-
-}

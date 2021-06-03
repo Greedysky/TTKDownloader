@@ -20,11 +20,10 @@
  ================================================= */
 
 #include <QColor>
-#include "downloadsingleton.h"
+#include "ttksingleton.h"
+#include "downloadglobaldefine.h"
 
-#define M_BACKGROUND_PTR (DownloadSingleton<DownloadBackgroundManager>::createInstance())
-
-#define MAX_INDEX 5
+#define M_BACKGROUND_PTR (TTKSingleton<DownloadBackgroundManager>::createInstance())
 
 /*! @brief The class of the manager of dealing with artist pictures.
  * @author Greedysky <greedysky@163.com>

@@ -21,9 +21,10 @@
 
 #include <QMetaEnum>
 #include "downloadobject.h"
-#include "downloadsingleton.h"
+#include "ttksingleton.h"
+#include "downloadglobaldefine.h"
 
-#define M_SETTING_PTR (DownloadSingleton<DownloadSettingManager>::createInstance())
+#define M_SETTING_PTR (TTKSingleton<DownloadSettingManager>::createInstance())
 
 /*! @brief The class of the paramater setting manager.
  * @author Greedysky <greedysky@163.com>

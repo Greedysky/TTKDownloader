@@ -30,7 +30,7 @@ include($$PWD/TTKVersion.pri)
 DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
 
 ##openssl lib check
-win32:{
+win32{
     SSL_DEPANDS = $$DESTDIR/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
@@ -43,11 +43,10 @@ unix:!mac{
 win32{
     LIBS += -lIphlpapi
     equals(QT_MAJOR_VERSION, 5){
-        greaterThan(QT_MINOR_VERSION, 1):QT  += winextras
         msvc{
             LIBS += -lshell32 -luser32
             LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
-            CONFIG +=c++11
+            CONFIG += c++11
             !contains(QMAKE_TARGET.arch, x86_64){
                  #support on windows XP
                  QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
@@ -78,9 +77,6 @@ unix:!mac{
 DEFINES += TTK_LIBRARY
 
 #########################################
-HEADERS += $$PWD/downloadglobal.h
-INCLUDEPATH += $$PWD
-#########################################
+include($$PWD/TTKCommon/TTKCommon.pri)
 include($$PWD/TTKThirdParty/TTKThirdParty.pri)
 #########################################
-include($$PWD/TTKModule/TTKModule.pri)
