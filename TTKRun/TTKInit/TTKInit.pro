@@ -48,6 +48,6 @@ HEADERS += \
     downloadinitobject.h
 
 RESOURCES += \
-    $$PWD/../../TTKQrc/DownloaderApp.qrc
+    $$PWD/../../TTKUi/DownloaderApp.qrc
 
 win32:RC_FILE = TTKInit.rc

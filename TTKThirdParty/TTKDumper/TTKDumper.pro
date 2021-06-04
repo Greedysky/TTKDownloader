@@ -29,9 +29,9 @@ CONFIG += plugin lib
 
 INCLUDEPATH += $$PWD/../../TTKModule/TTKCore/downloadCoreKits
 
-win32{
-    LIBS += -lpsapi
-    msvc:CONFIG += c++11
+win32:LIBS += -lpsapi
+win32:msvc{
+    CONFIG += c++11
 }else{
     QMAKE_CXXFLAGS += -std=c++11
 }

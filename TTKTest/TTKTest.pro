@@ -41,10 +41,9 @@ INCLUDEPATH += \
     $$PWD/../TTKModule/TTKCore/downloadCoreKits
 
 HEADERS  += \
-    downloadautotest.h \
-    tst_codelines.h
+    $$PWD/downloadautotest.h \
+    $$PWD/tst_codelines.h
 
 SOURCES  += \
-    downloadapplicationmain.cpp \
-    tst_codelines.cpp
-
+    $$PWD/downloadapplicationmain.cpp \
+    $$PWD/tst_codelines.cpp

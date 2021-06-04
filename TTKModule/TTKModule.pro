@@ -34,7 +34,6 @@ SOURCES += \
     downloadrightareawidget.cpp \
     downloadtopareawidget.cpp
 
-
 HEADERS  += \
     downloadapplication.h \
     downloadapplicationobject.h \

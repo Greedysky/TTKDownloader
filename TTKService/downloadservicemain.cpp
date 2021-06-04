@@ -7,8 +7,6 @@
 #include <QTranslator>
 #include <QApplication>
 
-#define TTK_DEBUG
-
 void loadDXcbPlugin(int argc, char *argv[])
 {
 #if TTK_QT_VERSION_CHECK(5,4,0)

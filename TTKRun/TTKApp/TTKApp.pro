@@ -57,6 +57,6 @@ HEADERS += \
 
 
 RESOURCES += \
-    $$PWD/../../TTKQrc/DownloaderApp.qrc
+    $$PWD/../../TTKUi/DownloaderApp.qrc
 
 win32:RC_FILE = TTKApp.rc

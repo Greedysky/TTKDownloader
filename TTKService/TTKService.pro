@@ -31,10 +31,11 @@ INCLUDEPATH +=  \
 
 win32:msvc{
 HEADERS  += \
-    $$PWD/../TTKModule/downloadapplication.h
+    $$PWD/../TTKModule/downloadapplication.h \
+    $$PWD/../TTKModule/TTKWidget/downloadWidgetCoreKits/downloadabstractmoveresizewidget.h
 }
 
 SOURCES += \
-    downloadservicemain.cpp
+    $$PWD/downloadservicemain.cpp
 
 win32:RC_FILE = TTKService.rc
