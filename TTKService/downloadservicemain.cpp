@@ -7,7 +7,9 @@
 #include <QTranslator>
 #include <QApplication>
 
-void loadDXcbPlugin(int argc, char *argv[])
+#define TTK_DEBUG
+
+void loadAppScaledFactor(int argc, char *argv[])
 {
 #if TTK_QT_VERSION_CHECK(5,4,0)
     #if TTK_QT_VERSION_CHECK(5,6,0)
@@ -30,7 +32,8 @@ void loadDXcbPlugin(int argc, char *argv[])
 
 int main(int argc, char *argv[])
 {
-    loadDXcbPlugin(argc, argv);
+    loadAppScaledFactor(argc, argv);
+    //
     QApplication a(argc, argv);
 #if !defined TTK_DEBUG && !defined Q_OS_UNIX
     if(argc <= 1 || QString(argv[1]) != APPNAME)
