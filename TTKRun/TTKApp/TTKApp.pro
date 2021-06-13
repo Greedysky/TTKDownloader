@@ -49,7 +49,6 @@ SOURCES += \
 
 
 HEADERS += \
-    $$PWD/../downloadrunglobaldefine.h \
     $$PWD/../TTKInit/downloadinitobject.h \
     ttkrunobject.h \
     ttklocalpeer.h \

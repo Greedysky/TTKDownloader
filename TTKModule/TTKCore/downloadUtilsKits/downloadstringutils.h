@@ -20,7 +20,7 @@
  ================================================= */
 
 #include "downloadnumberdefine.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils string object namespace.
  * @author Greedysky <greedysky@163.com>
@@ -32,24 +32,24 @@ namespace DownloadUtils
         /*!
          * Remove given key in string, default is space.
          */
-        DOWNLOAD_UTILS_EXPORT QString removeStringBy(const QString &value, const QString &key = " ");
+        TTK_MODULE_EXPORT QString removeStringBy(const QString &value, const QString &key = " ");
         /*!
          * Get split string value.
          */
-        DOWNLOAD_UTILS_EXPORT QStringList splitString(const QString &value, const QString &key = "-");
+        TTK_MODULE_EXPORT QStringList splitString(const QString &value, const QString &key = "-");
 
         /*!
          * Transform colors string to color list.
          */
-        DOWNLOAD_UTILS_EXPORT QList<QColor> readColorConfig(const QString &value);
+        TTK_MODULE_EXPORT QList<QColor> readColorConfig(const QString &value);
         /*!
          * Transform color to color string.
          */
-        DOWNLOAD_UTILS_EXPORT QString writeColorConfig(const QColor &color);
+        TTK_MODULE_EXPORT QString writeColorConfig(const QColor &color);
         /*!
          * Transform color list to colors string.
          */
-        DOWNLOAD_UTILS_EXPORT QString writeColorConfig(const QList<QColor> &colors);
+        TTK_MODULE_EXPORT QString writeColorConfig(const QList<QColor> &colors);
 
     }
 }

@@ -21,12 +21,12 @@
 
 #include <QWidget>
 #include "downloadobject.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the moving resize struct.
  * @author Greedysky <greedysky@163.com>
  */
-struct DOWNLOAD_WIDGET_EXPORT MoveResizeStruct
+struct TTK_MODULE_EXPORT MoveResizeStruct
 {
     bool m_mouseLeftPress;
     bool m_isPressBorder;
@@ -39,7 +39,7 @@ struct DOWNLOAD_WIDGET_EXPORT MoveResizeStruct
  * @author Greedysky <greedysky@163.com>
  *         Lverson   <what951006@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadAbstractMoveResizeWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadAbstractMoveResizeWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractMoveResizeWidget)

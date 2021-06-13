@@ -1,20 +1,5 @@
 #ifndef TTKVERSION_H
 #define TTKVERSION_H
-
-/**
- * C
- *
- * opyright (c) 2015 - 2021 Greedysky Studio <greedysky@163.com>
- *
- * TTKDownloader that imitation xunlei downloader, based on Qt for windows. 
- */
-
-/** \mainpage
- *
- * \section encoding Attention
- * 
- *
- */
  
 /* =================================================
  * This file is part of the TTK Downloader project

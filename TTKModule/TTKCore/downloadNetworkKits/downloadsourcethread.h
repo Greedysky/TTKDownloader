@@ -24,7 +24,7 @@
 /*! @brief The class of source data download thread.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadSourceThread : public DownloadNetworkAbstract
+class TTK_MODULE_EXPORT DownloadSourceThread : public DownloadNetworkAbstract
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSourceThread)

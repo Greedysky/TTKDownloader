@@ -21,7 +21,7 @@
 
 #include <QWidget>
 #include <QTimer>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class DownloadRemoteWidget;
 class DownloadBackgroundSkinDialog;
@@ -33,7 +33,7 @@ namespace Ui {
 /*! @brief The class of the app top area widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_GUI_EXPORT DownloadTopAreaWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadTopAreaWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadTopAreaWidget)

@@ -24,7 +24,7 @@
 /*! @brief The class of the local download list item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_CORE_EXPORT DownloadList
+typedef struct TTK_MODULE_EXPORT DownloadList
 {
     QString m_name;
     QString m_url;
@@ -34,7 +34,7 @@ TTK_DECLARE_LISTS(DownloadList)
 /*! @brief The class of the download list manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadListConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadListConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadListConfigManager)

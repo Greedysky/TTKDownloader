@@ -31,7 +31,7 @@ class DownloadBackgroundRemoteWidget;
 /*! @brief The class of the local background widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundSkinDialog : public DownloadAbstractMoveDialog
+class TTK_MODULE_EXPORT DownloadBackgroundSkinDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundSkinDialog)

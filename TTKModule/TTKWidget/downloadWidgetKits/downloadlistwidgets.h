@@ -27,7 +27,7 @@ class DownloadUnits;
 /*! @brief The class of the download list widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadListWidgets : public DownloadAbstractTableWidget
+class TTK_MODULE_EXPORT DownloadListWidgets : public DownloadAbstractTableWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadListWidgets)

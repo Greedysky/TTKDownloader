@@ -22,14 +22,14 @@
 #include <QMetaEnum>
 #include "downloadobject.h"
 #include "ttksingleton.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define M_SETTING_PTR (TTKSingleton<DownloadSettingManager>::createInstance())
 
 /*! @brief The class of the paramater setting manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadSettingManager : public QObject
+class TTK_MODULE_EXPORT DownloadSettingManager : public QObject
 {
     Q_OBJECT
     Q_ENUMS(ConfigType)

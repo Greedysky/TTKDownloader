@@ -24,7 +24,7 @@
 /*! @brief The class of the local download record item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_CORE_EXPORT DownloadRecord
+typedef struct TTK_MODULE_EXPORT DownloadRecord
 {
     QString m_time;
     QString m_path;
@@ -36,7 +36,7 @@ TTK_DECLARE_LISTS(DownloadRecord)
 /*! @brief The class of the download record manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadRecordConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadRecordConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadRecordConfigManager)

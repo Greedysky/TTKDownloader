@@ -24,7 +24,7 @@
 /*! @brief The class of the break point item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_CORE_EXPORT DownloadBreakPointItem
+typedef struct TTK_MODULE_EXPORT DownloadBreakPointItem
 {
     QString m_url;
     qint64 m_start;
@@ -48,7 +48,7 @@ TTK_DECLARE_LISTS(DownloadBreakPointItem)
 /*! @brief The class of the break point config manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadBreakPointConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBreakPointConfigManager)

@@ -21,14 +21,14 @@
 
 #include <QCoreApplication>
 #include "downloadobject.h"
-#include "downloadrunglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class DownloadThreadManager;
 
 /*! @brief The class of the download console object.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_RUN_EXPORT DownloadConsoleObject : public QObject
+class TTK_MODULE_EXPORT DownloadConsoleObject : public QObject
 {
     Q_OBJECT
 public:

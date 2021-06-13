@@ -21,7 +21,7 @@
 
 #include "downloadobject.h"
 #include "ttkversion.h"
-#include "downloadrunglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define S_APPDATA_DIR_FULL        DownloadObject::getAppDir() + APPDATA_DIR
 #define S_DOWNLOADS_DIR_FULL      DownloadObject::getAppDir() + DOWNLOADS_DIR
@@ -55,7 +55,7 @@
 /*! @brief The class of the download init object.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_RUN_EXPORT DownloadInitObject : public QObject
+class TTK_MODULE_EXPORT DownloadInitObject : public QObject
 {
     Q_OBJECT
 public:

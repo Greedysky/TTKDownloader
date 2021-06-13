@@ -1,7 +1,7 @@
 #include "downloadabstractmovedialog.h"
 #include "downloadbackgroundmanager.h"
 #include "downloadbackgroundconfigmanager.h"
-#include "downloadextractwrap.h"
+#include "downloadextractwrapper.h"
 
 #include <QMouseEvent>
 #include <QPainter>
@@ -108,7 +108,7 @@ void DownloadAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
 {
     QLabel *label = TTKStatic_cast(QLabel*, m_background);
     DownloadBackgroundImage image;
-    if(DownloadExtractWrap::outputSkin(&image, M_BACKGROUND_PTR->getMBackground()))
+    if(DownloadExtractWrapper::outputSkin(&image, M_BACKGROUND_PTR->getMBackground()))
     {
         label->setPixmap(image.m_pix.scaled(size));
     }

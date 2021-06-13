@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QNetworkReply>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QFile;
 class QNetworkAccessManager;
@@ -28,7 +28,7 @@ class QNetworkAccessManager;
 /*! @brief The class of download thread.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadThread : public QObject
+class TTK_MODULE_EXPORT DownloadThread : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadThread)

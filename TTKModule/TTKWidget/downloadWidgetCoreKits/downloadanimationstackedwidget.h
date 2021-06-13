@@ -22,12 +22,12 @@
 #include <QPainter>
 #include <QStackedWidget>
 #include <QPropertyAnimation>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the statckwidget switch animation.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadAnimationStackedWidget : public QStackedWidget
+class TTK_MODULE_EXPORT DownloadAnimationStackedWidget : public QStackedWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAnimationStackedWidget)

@@ -21,14 +21,14 @@
 
 #include <QTimer>
 #include "ttksingleton.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define M_NETWORK_PTR (TTKSingleton<DownloadNetworkThread>::createInstance())
 
 /*! @brief The class of thread to check current network.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadNetworkThread : public QObject
+class TTK_MODULE_EXPORT DownloadNetworkThread : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadNetworkThread)

@@ -1,4 +1,4 @@
-#include "downloadextractwrap.h"
+#include "downloadextractwrapper.h"
 #include "downloadbackgroundconfigmanager.h"
 #include "downloadnumberdefine.h"
 #include "downloadotherdefine.h"
@@ -14,7 +14,7 @@
 #  pragma GCC diagnostic ignored "-Wsign-compare"
 #endif
 
-bool DownloadExtractWrap::outputThunderSkin(QPixmap &image, const QString &path)
+bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &path)
 {
     unzFile zFile = unzOpen64(path.toLocal8Bit().constData());
     if(nullptr == zFile)
@@ -75,7 +75,7 @@ bool DownloadExtractWrap::outputThunderSkin(QPixmap &image, const QString &path)
     return true;
 }
 
-bool DownloadExtractWrap::outputSkin(DownloadBackgroundImage *image, const QString &path)
+bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QString &path)
 {
     unzFile zFile = unzOpen64(path.toLocal8Bit().constData());
     if(nullptr == zFile)
@@ -159,7 +159,7 @@ bool DownloadExtractWrap::outputSkin(DownloadBackgroundImage *image, const QStri
     return true;
 }
 
-bool DownloadExtractWrap::inputSkin(DownloadBackgroundImage *image, const QString &path)
+bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QString &path)
 {
     zipFile zFile = zipOpen64(path.toLocal8Bit().constData(), 0);
     if(nullptr == zFile)
@@ -192,7 +192,7 @@ bool DownloadExtractWrap::inputSkin(DownloadBackgroundImage *image, const QStrin
     return true;
 }
 
-bool DownloadExtractWrap::outputText(QByteArray &data, const QString &path)
+bool DownloadExtractWrapper::outputText(QByteArray &data, const QString &path)
 {
     unzFile zFile = unzOpen64(path.toLocal8Bit().constData());
     if(nullptr == zFile)
@@ -248,7 +248,7 @@ bool DownloadExtractWrap::outputText(QByteArray &data, const QString &path)
     return true;
 }
 
-bool DownloadExtractWrap::inputText(const QByteArray &data, const QString &path)
+bool DownloadExtractWrapper::inputText(const QByteArray &data, const QString &path)
 {
     zipFile zFile = zipOpen64(path.toLocal8Bit().constData(), 0);
     if(nullptr == zFile)

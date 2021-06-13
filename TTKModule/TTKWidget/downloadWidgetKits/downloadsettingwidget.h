@@ -30,7 +30,7 @@ class DownloadSettingWidget;
 /*! @brief The class of the function tool item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_WIDGET_EXPORT DownloadFunctionItem
+typedef struct TTK_MODULE_EXPORT DownloadFunctionItem
 {
     DownloadFunctionItem() { }
     DownloadFunctionItem(const QString &icon, const QString &name)
@@ -47,7 +47,7 @@ TTK_DECLARE_LISTS(DownloadFunctionItem)
 /*! @brief The class of the list table widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadFunctionTableWidget : public DownloadAbstractTableWidget
+class TTK_MODULE_EXPORT DownloadFunctionTableWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadFunctionTableWidget)
@@ -87,7 +87,7 @@ protected:
 /*! @brief The class of the setting parameters widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadSettingWidget : public DownloadAbstractMoveDialog
+class TTK_MODULE_EXPORT DownloadSettingWidget : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSettingWidget)

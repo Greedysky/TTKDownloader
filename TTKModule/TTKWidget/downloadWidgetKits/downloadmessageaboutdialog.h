@@ -27,7 +27,7 @@ namespace Ui {
 /*! @brief The class of the about application info dialog.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadMessageAboutDialog : public DownloadAbstractMoveDialog
+class TTK_MODULE_EXPORT DownloadMessageAboutDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadMessageAboutDialog)

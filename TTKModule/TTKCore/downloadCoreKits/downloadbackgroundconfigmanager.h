@@ -25,7 +25,7 @@
 /*! @brief The class of the skin config item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_CORE_EXPORT DownloadSkinConfigItem
+typedef struct TTK_MODULE_EXPORT DownloadSkinConfigItem
 {
     QString m_name;
     int m_useCount;
@@ -47,7 +47,7 @@ TTK_DECLARE_LISTS(DownloadSkinConfigItem)
 /*! @brief The class of the skin backgroud image item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_CORE_EXPORT DownloadBackgroundImage
+typedef struct TTK_MODULE_EXPORT DownloadBackgroundImage
 {
     QPixmap m_pix;
     DownloadSkinConfigItem m_item;
@@ -64,7 +64,7 @@ TTK_DECLARE_LISTS(DownloadBackgroundImage)
 /*! @brief The class of the skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadSkinConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadSkinConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinConfigManager)

@@ -24,7 +24,7 @@
 /*! @brief The class of the download queue data.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_NETWORK_EXPORT DownloadQueueData
+typedef struct TTK_MODULE_EXPORT DownloadQueueData
 {
     QString m_url;        ///*download url*/
     QString m_savePath;   ///*save local path*/
@@ -34,7 +34,7 @@ TTK_DECLARE_LISTS(DownloadQueueData)
 /*! @brief The class to download data from cache queue.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadQueueCache : public DownLoadThreadAbstract
+class TTK_MODULE_EXPORT DownloadQueueCache : public DownLoadThreadAbstract
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadQueueCache)

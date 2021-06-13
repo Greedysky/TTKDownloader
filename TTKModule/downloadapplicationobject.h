@@ -20,14 +20,14 @@
  ================================================= */
 
 #include "downloadobject.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QPropertyAnimation;
 
 /*! @brief The class of the app object widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_GUI_EXPORT DownloadApplicationObject : public QObject
+class TTK_MODULE_EXPORT DownloadApplicationObject : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadApplicationObject)

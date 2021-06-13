@@ -21,12 +21,12 @@
 
 #include <QMenu>
 #include <QToolButton>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the tool menu.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadToolMenu : public QMenu
+class TTK_MODULE_EXPORT DownloadToolMenu : public QMenu
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadToolMenu)
@@ -55,7 +55,7 @@ protected:
 /*! @brief The class of the tool menu base widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadToolMenuWidget : public QToolButton
+class TTK_MODULE_EXPORT DownloadToolMenuWidget : public QToolButton
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadToolMenuWidget)

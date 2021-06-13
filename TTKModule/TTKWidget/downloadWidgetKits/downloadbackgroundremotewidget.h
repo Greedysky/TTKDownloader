@@ -30,7 +30,7 @@ class DownloadQueueCache;
 /*! @brief The class of the remote background widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundRemoteWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadBackgroundRemoteWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundRemoteWidget)

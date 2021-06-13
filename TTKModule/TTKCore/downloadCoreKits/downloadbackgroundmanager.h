@@ -21,14 +21,14 @@
 
 #include <QColor>
 #include "ttksingleton.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define M_BACKGROUND_PTR (TTKSingleton<DownloadBackgroundManager>::createInstance())
 
 /*! @brief The class of the manager of dealing with artist pictures.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadBackgroundManager : public QObject
+class TTK_MODULE_EXPORT DownloadBackgroundManager : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundManager)

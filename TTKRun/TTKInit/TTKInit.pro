@@ -44,7 +44,6 @@ SOURCES += \
     downloadinitobject.cpp
 
 HEADERS += \
-    $$PWD/../downloadrunglobaldefine.h \
     downloadinitobject.h
 
 RESOURCES += \

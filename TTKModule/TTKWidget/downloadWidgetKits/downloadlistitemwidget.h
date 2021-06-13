@@ -21,7 +21,7 @@
 
 #include <QTimer>
 #include <QWidget>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QLabel;
 class QProgressBar;
@@ -29,7 +29,7 @@ class QProgressBar;
 /*! @brief The class of the download list item widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadListItemWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadListItemWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadListItemWidget)

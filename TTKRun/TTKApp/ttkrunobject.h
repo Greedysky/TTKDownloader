@@ -19,14 +19,14 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadrunglobaldefine.h"
+#include "ttkprivate.h"
 
 class TTKRunObjectPrivate;
 
 /*! @brief The class of the download run object.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_RUN_EXPORT TTKRunObject : public QObject
+class TTK_MODULE_EXPORT TTKRunObject : public QObject
 {
     Q_OBJECT
 public:

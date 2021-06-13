@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define ALG_DOWNLOAD_KEY    "5024FRSDF40"
 #define ALG_URL_KEY         "GREEDYSKY"
@@ -37,24 +37,24 @@ namespace DownloadUtils
         /*!
          * Get md5 algorithm.
          */
-        DOWNLOAD_UTILS_EXPORT QByteArray md5(const QByteArray &data);
+        TTK_MODULE_EXPORT QByteArray md5(const QByteArray &data);
         /*!
          * Get sha1 algorithm.
          */
-        DOWNLOAD_UTILS_EXPORT QByteArray sha1(const QByteArray &data);
+        TTK_MODULE_EXPORT QByteArray sha1(const QByteArray &data);
         /*!
          * Encode the data into sha1.
          */
-        DOWNLOAD_UTILS_EXPORT QByteArray hmacSha1(const QByteArray &data, const QByteArray &key);
+        TTK_MODULE_EXPORT QByteArray hmacSha1(const QByteArray &data, const QByteArray &key);
 
         /*!
          * Get mdII(greedysky) algorithm.
          */
-        DOWNLOAD_UTILS_EXPORT QString mdII(const QString &data, bool encode);
+        TTK_MODULE_EXPORT QString mdII(const QString &data, bool encode);
         /*!
          * Get mdII(greedysky) algorithm.
          */
-        DOWNLOAD_UTILS_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
+        TTK_MODULE_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
 
     }
 }

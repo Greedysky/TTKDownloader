@@ -21,7 +21,7 @@
 
 #include <QDir>
 #include <QCoreApplication>
-#include "downloadglobal.h"
+#include "ttkglobal.h"
 
 #define DOT                     "."
 

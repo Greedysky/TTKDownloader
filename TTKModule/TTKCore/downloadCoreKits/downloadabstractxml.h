@@ -23,13 +23,13 @@
 #include <QTextStream>
 #include <QFile>
 
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 #include "downloadobject.h"
 
 /*! @brief The class of the xml attribute.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_CORE_EXPORT DownloadXmlAttribute
+typedef struct TTK_MODULE_EXPORT DownloadXmlAttribute
 {
     QString m_key;
     QVariant m_value;
@@ -45,7 +45,7 @@ TTK_DECLARE_LISTS(DownloadXmlAttribute)
 /*! @brief The class of the base class of xml interface.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadAbstractXml : public QObject
+class TTK_MODULE_EXPORT DownloadAbstractXml : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractXml)

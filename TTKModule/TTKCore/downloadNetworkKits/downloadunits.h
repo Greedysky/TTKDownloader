@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class DownloadThreadManager;
 class DownloadListItemWidget;
@@ -27,7 +27,7 @@ class DownloadListItemWidget;
 /*! @brief The class of download thread manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadUnits : public QObject
+class TTK_MODULE_EXPORT DownloadUnits : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadUnits)

@@ -20,13 +20,13 @@
  ================================================= */
 
 #include <QDataStream>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 #include "downloadnumberdefine.h"
 
 /*! @brief The class of the time object.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadTime
+class TTK_MODULE_EXPORT DownloadTime
 {
     TTK_DECLARE_MODULE(DownloadTime)
 public:

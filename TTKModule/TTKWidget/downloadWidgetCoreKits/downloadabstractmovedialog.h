@@ -21,12 +21,12 @@
 
 #include <QLabel>
 #include <QDialog>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the moving dialog base.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadAbstractMoveDialog : public QDialog
+class TTK_MODULE_EXPORT DownloadAbstractMoveDialog : public QDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractMoveDialog)

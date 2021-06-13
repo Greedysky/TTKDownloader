@@ -7,7 +7,7 @@
 #include "downloadtopareawidget.h"
 #include "downloadotherdefine.h"
 #include "downloadwidgetutils.h"
-#include "downloadextractwrap.h"
+#include "downloadextractwrapper.h"
 #include "downloaduiobject.h"
 #include "downloadotherdefine.h"
 
@@ -96,7 +96,7 @@ QPixmap DownloadBackgroundSkinDialog::setMBackground(QString &name)
     M_BACKGROUND_PTR->setMBackground(path);
 
     DownloadBackgroundImage image;
-    return DownloadExtractWrap::outputSkin(&image, path) ? image.m_pix : QPixmap();
+    return DownloadExtractWrapper::outputSkin(&image, path) ? image.m_pix : QPixmap();
 }
 
 bool DownloadBackgroundSkinDialog::themeValidCheck(QString &name, QString &path)
@@ -236,7 +236,7 @@ void DownloadBackgroundSkinDialog::remoteBackgroundListWidgetItemClicked(const Q
         int index = cpoyFileToLocalIndex();
         QString theme = QString("theme-%1").arg(index + 1);
         QString des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TTS_FILE);
-        DownloadExtractWrap::inputSkin(&image, des);
+        DownloadExtractWrapper::inputSkin(&image, des);
 
         m_myBackgroundList->createItem(theme, des, true);
         listWidgetItemClicked(m_myBackgroundList, theme);
@@ -329,5 +329,5 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocal(const QString &path)
     QString des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(index + 1).arg(TTS_FILE);
     DownloadBackgroundImage image;
     image.m_pix = QPixmap(path);
-    return DownloadExtractWrap::inputSkin(&image, des) ? index : -1;
+    return DownloadExtractWrapper::inputSkin(&image, des) ? index : -1;
 }

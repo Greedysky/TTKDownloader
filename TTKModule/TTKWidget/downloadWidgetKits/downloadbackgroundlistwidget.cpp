@@ -1,5 +1,5 @@
 #include "downloadbackgroundlistwidget.h"
-#include "downloadextractwrap.h"
+#include "downloadextractwrapper.h"
 #include "downloadmessagebox.h"
 
 #include <QPainter>
@@ -25,7 +25,7 @@ void DownloadBackgroundListItem::updatePixImage()
     if(!m_path.isEmpty())
     {
         DownloadBackgroundImage image;
-        if(DownloadExtractWrap::outputSkin(&image, m_path))
+        if(DownloadExtractWrapper::outputSkin(&image, m_path))
         {
             updatePixImage(image);
         }

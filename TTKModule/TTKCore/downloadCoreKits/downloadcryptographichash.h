@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QString>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #ifdef Q_CC_GNU
     #pragma GCC diagnostic ignored "-Wparentheses"
@@ -41,7 +41,7 @@ typedef uint32_t xxtea_uint;
 /*! @brief The class of the string cryptographic hash.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadCryptographicHash
+class TTK_MODULE_EXPORT DownloadCryptographicHash
 {
     TTK_DECLARE_MODULE(DownloadCryptographicHash)
 public:

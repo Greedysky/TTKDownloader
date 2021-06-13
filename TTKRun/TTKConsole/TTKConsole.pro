@@ -67,7 +67,6 @@ SOURCES += \
     downloadconsoleobject.cpp
 
 HEADERS += \
-    $$PWD/../downloadrunglobaldefine.h \
     downloadconsoleobject.h
 
 win32:RC_FILE = TTKConsole.rc

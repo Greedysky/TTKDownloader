@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils core object namespace.
  * @author Greedysky <greedysky@163.com>
@@ -31,27 +31,27 @@ namespace DownloadUtils
         /*!
          * Set string to unicode string by format.
          */
-        DOWNLOAD_UTILS_EXPORT QString toUnicode(const char *chars, const char *format = "GBK");
+        TTK_MODULE_EXPORT QString toUnicode(const char *chars, const char *format = "GBK");
         /*!
          * Set string to unicode string by format.
          */
-        DOWNLOAD_UTILS_EXPORT QString toUnicode(const QByteArray &chars, const char *format = "GBK");
+        TTK_MODULE_EXPORT QString toUnicode(const QByteArray &chars, const char *format = "GBK");
         /*!
          * Set string from unicode string by format.
          */
-        DOWNLOAD_UTILS_EXPORT QByteArray fromUnicode(const QString &chars, const char *format = "GBK");
+        TTK_MODULE_EXPORT QByteArray fromUnicode(const QString &chars, const char *format = "GBK");
         /*!
          * Set local codec by format.
          */
-        DOWNLOAD_UTILS_EXPORT void setLocalCodec(const char *format = "utf-8");
+        TTK_MODULE_EXPORT void setLocalCodec(const char *format = "utf-8");
         /*!
          * Trasform string to local 8bit char.
          */
-        DOWNLOAD_UTILS_EXPORT const char *toLocal8Bit(const QString &str);
+        TTK_MODULE_EXPORT const char *toLocal8Bit(const QString &str);
         /*!
          * Trasform string to utf8 char.
          */
-        DOWNLOAD_UTILS_EXPORT const char *toUtf8(const QString &str);
+        TTK_MODULE_EXPORT const char *toUtf8(const QString &str);
 
     }
 }

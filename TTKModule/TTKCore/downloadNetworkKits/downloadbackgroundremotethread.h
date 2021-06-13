@@ -24,7 +24,7 @@
 /*! @brief The class of the remote skin item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_NETWORK_EXPORT DownloadSkinRemoteItem
+typedef struct TTK_MODULE_EXPORT DownloadSkinRemoteItem
 {
     QString m_name;
     QString m_url;
@@ -47,7 +47,7 @@ TTK_DECLARE_LISTS(DownloadSkinRemoteItem)
 /*! @brief The class of the remote skin item group.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct DOWNLOAD_NETWORK_EXPORT DownloadSkinRemoteGroup
+typedef struct TTK_MODULE_EXPORT DownloadSkinRemoteGroup
 {
     QString m_group;
     DownloadSkinRemoteItems m_items;
@@ -64,7 +64,7 @@ TTK_DECLARE_LISTS(DownloadSkinRemoteGroup)
 /*! @brief The class of the remote skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadSkinRemoteConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadSkinRemoteConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinRemoteConfigManager)
@@ -85,7 +85,7 @@ public:
 /*! @brief The class of download skin remote background.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadBackgroundRemoteThread : public QObject
+class TTK_MODULE_EXPORT DownloadBackgroundRemoteThread : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundRemoteThread)

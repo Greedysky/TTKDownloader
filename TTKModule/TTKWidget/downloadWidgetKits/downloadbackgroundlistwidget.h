@@ -29,7 +29,7 @@
 /*! @brief The class of the background list item.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundListItem : public QLabel
+class TTK_MODULE_EXPORT DownloadBackgroundListItem : public QLabel
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundListItem)
@@ -127,7 +127,7 @@ protected:
 /*! @brief The class of the background list widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundListWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadBackgroundListWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundListWidget)

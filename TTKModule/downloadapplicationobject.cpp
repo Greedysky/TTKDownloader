@@ -5,10 +5,9 @@
 #include "downloadnumberdefine.h"
 #include "downloadmessageaboutdialog.h"
 #include "downloadwidgetutils.h"
+#include "ttkdesktopwrapper.h"
 
 #include <QTimer>
-#include <QApplication>
-#include <QDesktopWidget>
 #include <QPropertyAnimation>
 
 DownloadApplicationObject *DownloadApplicationObject::m_instance = nullptr;
@@ -61,8 +60,8 @@ void DownloadApplicationObject::appVersionUpdate()
 
 void DownloadApplicationObject::appResetWindow()
 {
-    QWidget *widget = QApplication::desktop();
-    M_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, widget->size());
+    const QRect &geometry = TTKDesktopWrapper::geometry();
+    M_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, geometry.size());
     M_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, QSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN));
 
     QWidget *w = DownloadApplication::instance();
@@ -70,8 +69,7 @@ void DownloadApplicationObject::appResetWindow()
     {
         w->showNormal();
     }
-    w->setGeometry((widget->width() - WINDOW_WIDTH_MIN)/2, (widget->height() - WINDOW_HEIGHT_MIN)/2,
-                    WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
+    w->setGeometry((geometry.width() - WINDOW_WIDTH_MIN)/2, (geometry.height() - WINDOW_HEIGHT_MIN)/2, WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
 }
 
 void DownloadApplicationObject::cleanUp()

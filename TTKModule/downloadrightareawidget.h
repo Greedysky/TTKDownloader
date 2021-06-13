@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QWidget>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class DownloadListWidgets;
 class DownloadHistoryRecordWidget;
@@ -32,7 +32,7 @@ namespace Ui {
 /*! @brief The class of the app right area widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_GUI_EXPORT DownloadRightAreaWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadRightAreaWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadRightAreaWidget)

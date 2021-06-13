@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QWidget>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QButtonGroup;
 class QPropertyAnimation;
@@ -28,7 +28,7 @@ class QPropertyAnimation;
 /*! @brief The class of the animation base widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadBaseAnimationWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadBaseAnimationWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBaseAnimationWidget)
@@ -81,7 +81,7 @@ protected:
 /*! @brief The class of the function skin animation widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadSkinAnimationWidget : public DownloadBaseAnimationWidget
+class TTK_MODULE_EXPORT DownloadSkinAnimationWidget : public DownloadBaseAnimationWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinAnimationWidget)

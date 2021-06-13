@@ -24,7 +24,7 @@
 /*! @brief The class of the desktop remote widget base.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_REMOTE_EXPORT DownloadRemoteWidget : public DownloadAbstractMoveWidget
+class TTK_MODULE_EXPORT DownloadRemoteWidget : public DownloadAbstractMoveWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadRemoteWidget)

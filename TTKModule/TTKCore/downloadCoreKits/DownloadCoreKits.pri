@@ -19,14 +19,13 @@
 INCLUDEPATH += $$PWD
 
 HEADERS  += \
-    $$PWD/downloadglobaldefine.h \
     $$PWD/downloadobject.h \
     $$PWD/downloadnumberdefine.h \
     $$PWD/downloadabstractxml.h \
     $$PWD/downloadbackgroundconfigmanager.h \
     $$PWD/downloadbackgroundmanager.h \
     $$PWD/downloadcryptographichash.h \
-    $$PWD/downloadextractwrap.h \
+    $$PWD/downloadextractwrapper.h \
     $$PWD/downloadhotkeymanager.h \
     $$PWD/downloadlicensecore.h \
     $$PWD/downloadotherdefine.h \
@@ -43,7 +42,7 @@ SOURCES += \
     $$PWD/downloadbackgroundconfigmanager.cpp \
     $$PWD/downloadbackgroundmanager.cpp \
     $$PWD/downloadcryptographichash.cpp \
-    $$PWD/downloadextractwrap.cpp \
+    $$PWD/downloadextractwrapper.cpp \
     $$PWD/downloadhotkeymanager.cpp \
     $$PWD/downloadlicensecore.cpp \
     $$PWD/downloadsysconfigmanager.cpp \

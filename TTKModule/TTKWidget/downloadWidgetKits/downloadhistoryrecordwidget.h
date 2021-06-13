@@ -25,7 +25,7 @@
 /*! @brief The class of the download record widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadHistoryRecordWidget : public DownloadAbstractTableWidget
+class TTK_MODULE_EXPORT DownloadHistoryRecordWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadHistoryRecordWidget)

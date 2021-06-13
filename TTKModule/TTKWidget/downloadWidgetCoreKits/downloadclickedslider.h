@@ -20,12 +20,12 @@
  ================================================= */
 
 #include <QSlider>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the slider that can clicked any position.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadClickedSlider : public QSlider
+class TTK_MODULE_EXPORT DownloadClickedSlider : public QSlider
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadClickedSlider)

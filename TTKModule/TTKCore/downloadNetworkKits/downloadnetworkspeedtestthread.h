@@ -21,14 +21,14 @@
 
 #include <QThread>
 #include <QStringList>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QProcess;
 
 /*! @brief The class of the network speed test thread.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadNetworkSpeedTestThread : public QThread
+class TTK_MODULE_EXPORT DownloadNetworkSpeedTestThread : public QThread
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadNetworkSpeedTestThread)

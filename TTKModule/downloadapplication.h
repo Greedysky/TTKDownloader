@@ -34,7 +34,7 @@ class DownloadApplication;
 /*! @brief The class of the app main widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_GUI_EXPORT DownloadApplication : public DownloadAbstractMoveResizeWidget
+class TTK_MODULE_EXPORT DownloadApplication : public DownloadAbstractMoveResizeWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadApplication)

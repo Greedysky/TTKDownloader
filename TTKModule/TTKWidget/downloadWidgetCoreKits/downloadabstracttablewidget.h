@@ -23,12 +23,12 @@
 #include <QHeaderView>
 
 #include "downloaduiobject.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the table widget base.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadAbstractTableWidget : public QTableWidget
+class TTK_MODULE_EXPORT DownloadAbstractTableWidget : public QTableWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractTableWidget)

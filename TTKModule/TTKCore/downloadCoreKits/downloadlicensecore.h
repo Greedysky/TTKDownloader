@@ -20,12 +20,12 @@
  ================================================= */
 
 #include <QObject>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the license core module.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadLicenseCore : public QObject
+class TTK_MODULE_EXPORT DownloadLicenseCore : public QObject
 {
     Q_OBJECT
 public:

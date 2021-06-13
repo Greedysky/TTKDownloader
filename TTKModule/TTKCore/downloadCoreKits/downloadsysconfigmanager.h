@@ -25,7 +25,7 @@
 /*! @brief The class of the sys xml config manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadSysConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadSysConfigManager : public DownloadAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSysConfigManager)

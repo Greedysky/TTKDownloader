@@ -28,7 +28,7 @@
 /*! @brief The class of abstract downloading data.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownLoadThreadAbstract : public DownloadNetworkAbstract
+class TTK_MODULE_EXPORT DownLoadThreadAbstract : public DownloadNetworkAbstract
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownLoadThreadAbstract)

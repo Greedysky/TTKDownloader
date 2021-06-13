@@ -21,14 +21,14 @@
 
 #include <QObject>
 #include <QKeySequence>
-#include "downloadextrasglobaldefine.h"
+#include "ttkprivate.h"
 
 class QGlobalShortcutPrivate;
 
 /*! @brief The namespace of the qglobal shortcut.
  * @author libqxt <foundation@libqxt.org>
  */
-class DOWNLOAD_EXTRAS_EXPORT QGlobalShortcut : public QObject
+class TTK_MODULE_EXPORT QGlobalShortcut : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)

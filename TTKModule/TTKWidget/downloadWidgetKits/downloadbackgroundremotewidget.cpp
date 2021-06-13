@@ -1,6 +1,6 @@
 #include "downloadbackgroundremotewidget.h"
 #include "downloadqueuecache.h"
-#include "downloadextractwrap.h"
+#include "downloadextractwrapper.h"
 
 #include <QDir>
 #include <QPushButton>
@@ -125,7 +125,7 @@ void DownloadBackgroundRemoteWidget::outputRemoteSkin(DownloadBackgroundImage &i
         DownloadSkinRemoteItem *item = &(*items)[index];
         image.m_item.m_name = item->m_name;
         image.m_item.m_useCount = item->m_useCount;
-        DownloadExtractWrap::outputThunderSkin(image.m_pix, data);
+        DownloadExtractWrapper::outputThunderSkin(image.m_pix, data);
     }
 }
 

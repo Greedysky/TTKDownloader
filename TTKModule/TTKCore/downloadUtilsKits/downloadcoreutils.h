@@ -21,7 +21,7 @@
 
 #include "downloadobject.h"
 #include "downloadnumberdefine.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils core object namespace.
  * @author Greedysky <greedysky@163.com>
@@ -33,43 +33,43 @@ namespace DownloadUtils
         /*!
          * Get download dir path.
          */
-        DOWNLOAD_UTILS_EXPORT QString downloadPrefix();
+        TTK_MODULE_EXPORT QString downloadPrefix();
         /*!
          * Get file suffix path.
          */
-        DOWNLOAD_UTILS_EXPORT QString fileSuffix(const QString &name);
+        TTK_MODULE_EXPORT QString fileSuffix(const QString &name);
 
         /*!
          * Get given dir size.
          */
-        DOWNLOAD_UTILS_EXPORT quint64 dirSize(const QString &dirName);
+        TTK_MODULE_EXPORT quint64 dirSize(const QString &dirName);
         /*!
          * Check given dir size is bigger than given size.
          */
-        DOWNLOAD_UTILS_EXPORT void checkCacheSize(quint64 cacheSize, bool disabled, const QString &path);
+        TTK_MODULE_EXPORT void checkCacheSize(quint64 cacheSize, bool disabled, const QString &path);
         /*!
          * To find file by dir path.
          */
-        DOWNLOAD_UTILS_EXPORT QFileInfoList findFile(const QString &path, const QStringList &filter);
+        TTK_MODULE_EXPORT QFileInfoList findFile(const QString &path, const QStringList &filter);
 
         /*!
          * Get Language Name by given index.
          */
-        DOWNLOAD_UTILS_EXPORT QString getLanguageName(int index);
+        TTK_MODULE_EXPORT QString getLanguageName(int index);
 
         /*!
          * Dir remove recursively.
          */
-        DOWNLOAD_UTILS_EXPORT bool removeRecursively(const QString &dir);
+        TTK_MODULE_EXPORT bool removeRecursively(const QString &dir);
 
         /*!
          * App version check.
          */
-        DOWNLOAD_UTILS_EXPORT bool appVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
+        TTK_MODULE_EXPORT bool appVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
         /*!
          * App version check.
          */
-        DOWNLOAD_UTILS_EXPORT bool appVersionCheck(const QString &o, const QString &d);
+        TTK_MODULE_EXPORT bool appVersionCheck(const QString &o, const QString &d);
 
     }
 }

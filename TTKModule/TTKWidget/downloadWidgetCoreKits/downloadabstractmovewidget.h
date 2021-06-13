@@ -21,12 +21,12 @@
 
 #include <QLabel>
 #include <QMouseEvent>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the moving widget base.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadAbstractMoveWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadAbstractMoveWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractMoveWidget)
@@ -85,7 +85,7 @@ protected:
 /*! @brief The class of the moving widget single without ui widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadAbstractMoveSingleWidget : public DownloadAbstractMoveWidget
+class TTK_MODULE_EXPORT DownloadAbstractMoveSingleWidget : public DownloadAbstractMoveWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractMoveSingleWidget)

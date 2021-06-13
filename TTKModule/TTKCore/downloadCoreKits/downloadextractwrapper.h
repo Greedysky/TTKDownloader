@@ -1,5 +1,5 @@
-#ifndef DOWNLOADEXTRACTWRAP_H
-#define DOWNLOADEXTRACTWRAP_H
+#ifndef DOWNLOADEXTRACTWRAPPER_H
+#define DOWNLOADEXTRACTWRAPPER_H
 
 /* =================================================
  * This file is part of the TTK Downloader project
@@ -19,16 +19,16 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 struct DownloadBackgroundImage;
 
-/*! @brief The class of the extract data wrap.
+/*! @brief The class of the extract data wrapper.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadExtractWrap
+class TTK_MODULE_EXPORT DownloadExtractWrapper
 {
-    TTK_DECLARE_MODULE(DownloadExtractWrap)
+    TTK_DECLARE_MODULE(DownloadExtractWrapper)
 public:
     /*!
      * Transfer file to image data.
@@ -55,4 +55,4 @@ public:
 
 };
 
-#endif // DOWNLOADEXTRACTWRAP_H
+#endif // DOWNLOADEXTRACTWRAPPER_H

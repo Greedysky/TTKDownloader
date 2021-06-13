@@ -19,14 +19,14 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadrunglobaldefine.h"
+#include "ttkprivate.h"
 
 class TTKLocalPeerPrivate;
 
 /*! @brief The class of the ttk local peer.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_RUN_EXPORT TTKLocalPeer : public QObject
+class TTK_MODULE_EXPORT TTKLocalPeer : public QObject
 {
     Q_OBJECT
 public:

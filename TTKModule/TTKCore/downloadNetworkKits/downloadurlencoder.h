@@ -19,14 +19,14 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QProcess;
 
 /*! @brief The class of the network url encoder and decoder.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadUrlEncoder : public QObject
+class TTK_MODULE_EXPORT DownloadUrlEncoder : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadUrlEncoder)

@@ -28,7 +28,7 @@ class DownloadNewFileDialog;
 /*! @brief The class of the download new filed dialog.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadNewFileDialog : public DownloadAbstractMoveDialog
+class TTK_MODULE_EXPORT DownloadNewFileDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadNewFileDialog)

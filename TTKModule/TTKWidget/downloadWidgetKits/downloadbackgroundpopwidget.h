@@ -26,7 +26,7 @@ class DownloadClickedSlider;
 /*! @brief The class of the background popup widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadBackgroundPopWidget : public DownloadToolMenuWidget
+class TTK_MODULE_EXPORT DownloadBackgroundPopWidget : public DownloadToolMenuWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundPopWidget)

@@ -20,7 +20,7 @@
  ================================================= */
 
 #include "ttksingleton.h"
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 #define M_HOTKEY_PTR (TTKSingleton<DownloadHotKeyManager>::createInstance())
 
@@ -29,7 +29,7 @@ class QGlobalShortcut;
 /*! @brief The class of the global hotkey setting manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadHotKeyManager : public QObject
+class TTK_MODULE_EXPORT DownloadHotKeyManager : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadHotKeyManager)

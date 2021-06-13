@@ -1,5 +1,5 @@
-#ifndef DOWNLOADRUNGLOBALDEFINE_H
-#define DOWNLOADRUNGLOBALDEFINE_H
+#ifndef TTKGLOBALDEFINE_H
+#define TTKGLOBALDEFINE_H
 
 /* =================================================
  * This file is part of the TTK Downloader project
@@ -19,19 +19,12 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "ttkprivate.h"
-#include "downloadglobal.h"
+#include "ttkglobal.h"
 
-//////////////////////////////////////
-///exoprt
-///
-///
-#define DOWNLOAD_EXPORT
-
-#ifdef DOWNLOAD_EXPORT
-#  define DOWNLOAD_RUN_EXPORT Q_DECL_EXPORT
+#ifdef TTK_LIBRARY
+#  define TTK_MODULE_EXPORT Q_DECL_EXPORT
 #else
-#  define DOWNLOAD_RUN_EXPORT Q_DECL_IMPORT
+#  define TTK_MODULE_EXPORT Q_DECL_IMPORT
 #endif
 
-#endif // DOWNLOADRUNGLOBALDEFINE_H
+#endif // TTKGLOBALDEFINE_H

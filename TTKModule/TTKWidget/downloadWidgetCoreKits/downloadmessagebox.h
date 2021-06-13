@@ -28,7 +28,7 @@ class DownloadMessageBox;
 /*! @brief The class of the messagebox widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadMessageBox : public DownloadAbstractMoveDialog
+class TTK_MODULE_EXPORT DownloadMessageBox : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadMessageBox)

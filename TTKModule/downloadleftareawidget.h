@@ -20,7 +20,7 @@
  ================================================= */
 
 #include <QWidget>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 namespace Ui {
     class DownloadApplication;
@@ -29,7 +29,7 @@ namespace Ui {
 /*! @brief The class of the app left area widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_GUI_EXPORT DownloadLeftAreaWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadLeftAreaWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadLeftAreaWidget)

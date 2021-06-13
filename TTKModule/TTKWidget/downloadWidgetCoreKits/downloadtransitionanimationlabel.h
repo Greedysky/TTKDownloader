@@ -20,14 +20,14 @@
  ================================================= */
 
 #include <QLabel>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 class QPropertyAnimation;
 
 /*! @brief The class of the label transition animation.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadTransitionAnimationLabel : public QLabel
+class TTK_MODULE_EXPORT DownloadTransitionAnimationLabel : public QLabel
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadTransitionAnimationLabel)

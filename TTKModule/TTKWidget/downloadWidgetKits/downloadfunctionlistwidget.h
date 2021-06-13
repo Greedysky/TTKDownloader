@@ -20,12 +20,12 @@
  ================================================= */
 
 #include <QWidget>
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the function list widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadFunctionItemWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadFunctionItemWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadFunctionItemWidget)
@@ -75,7 +75,7 @@ protected:
 /*! @brief The class of the function list widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadFunctionListWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadFunctionListWidget : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadFunctionListWidget)

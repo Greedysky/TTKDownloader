@@ -26,7 +26,7 @@
 /*! @brief The class of download thread manager.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_NETWORK_EXPORT DownloadThreadManager : public QObject
+class TTK_MODULE_EXPORT DownloadThreadManager : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadThreadManager)

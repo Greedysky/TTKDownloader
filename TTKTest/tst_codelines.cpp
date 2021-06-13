@@ -1,5 +1,4 @@
 #include "tst_codelines.h"
-#include "downloadglobal.h"
 
 #include <QDir>
 #include <QMap>

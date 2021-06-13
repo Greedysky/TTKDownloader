@@ -19,12 +19,12 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadglobaldefine.h"
+#include "ttkglobaldefine.h"
 
 /*! @brief The class of the app run time needed.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_CORE_EXPORT DownloadRunTimeManager
+class TTK_MODULE_EXPORT DownloadRunTimeManager
 {
     TTK_DECLARE_MODULE(DownloadRunTimeManager)
 public:

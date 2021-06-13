@@ -24,7 +24,7 @@
 /*! @brief The class of the color hl palette.
  * @author ToDo <278488569@qq.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadHlPalette : public QWidget
+class TTK_MODULE_EXPORT DownloadHlPalette : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadHlPalette)
@@ -79,7 +79,7 @@ protected:
 /*! @brief The class of the color hl saturation palette.
  * @author ToDo <278488569@qq.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadHlSaturationPalette : public QWidget
+class TTK_MODULE_EXPORT DownloadHlSaturationPalette : public QWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadHlSaturationPalette)
@@ -132,7 +132,7 @@ class DownloadColorDialog;
 /*! @brief The class of the get color table widget.
  * @author Greedysky <greedysky@163.com>
  */
-class DOWNLOAD_WIDGET_EXPORT DownloadColorDialog : public DownloadAbstractMoveDialog
+class TTK_MODULE_EXPORT DownloadColorDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadColorDialog)
