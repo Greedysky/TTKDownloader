@@ -25,6 +25,7 @@ DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKDownloader
 
 TEMPLATE = app
+DEFINES += TTK_LIBRARY
 
 win32:msvc{
     CONFIG += c++11

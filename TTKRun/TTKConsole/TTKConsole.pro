@@ -24,6 +24,8 @@ DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKConsole
 
 TEMPLATE = app
+DEFINES += TTK_LIBRARY
+
 CONFIG += console
 
 ##openssl lib check
@@ -39,8 +41,6 @@ unix:!mac{
 
 LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKCore
 unix:LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
-
-DEFINES += TTK_LIBRARY
 
 win32:msvc{
     CONFIG += c++11

@@ -24,6 +24,8 @@ DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKInit
 
 TEMPLATE = app
+DEFINES += TTK_LIBRARY
+
 CONFIG += console
 
 win32:msvc{
