@@ -21,5 +21,5 @@ MOC_DIR = ./.build/moc
 OBJECTS_DIR = ./.build/obj
 RCC_DIR = ./.build/rcc
 
-# update time 2020.07.05
-TTKDownloader = 2.2.0.0
+# update time 2021.06.26
+TTKDownloader = 2.3.0.0
