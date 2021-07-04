@@ -42,7 +42,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadTopAreaWidget(QWidget *parent = nullptr);
-
     ~DownloadTopAreaWidget();
 
     /*!

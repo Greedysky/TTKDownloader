@@ -37,7 +37,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadNewFileDialog(QWidget *parent = nullptr);
-
     ~DownloadNewFileDialog();
 
 Q_SIGNALS:

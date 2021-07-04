@@ -36,8 +36,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadListWidgets(QWidget *parent = nullptr);
-
-    virtual ~DownloadListWidgets();
+    ~DownloadListWidgets();
 
     /*!
      * Init widget.

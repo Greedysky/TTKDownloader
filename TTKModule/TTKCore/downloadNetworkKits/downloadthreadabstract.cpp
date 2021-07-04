@@ -27,11 +27,6 @@ DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString
     connect(&m_timer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));
 }
 
-DownLoadThreadAbstract::~DownLoadThreadAbstract()
-{
-
-}
-
 void DownLoadThreadAbstract::deleteAll()
 {
     DownloadNetworkAbstract::deleteAll();

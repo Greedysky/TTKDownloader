@@ -141,8 +141,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadColorDialog(QWidget *parent = nullptr);
-
-    virtual ~DownloadColorDialog();
+    ~DownloadColorDialog();
 
     /*!
      * Get color static function.

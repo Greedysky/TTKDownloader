@@ -38,7 +38,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadListItemWidget(QWidget *parent = nullptr);
-
     ~DownloadListItemWidget();
 
     /*!

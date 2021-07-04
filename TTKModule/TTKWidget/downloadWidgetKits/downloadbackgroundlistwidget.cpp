@@ -150,7 +150,7 @@ DownloadBackgroundListWidget::~DownloadBackgroundListWidget()
 void DownloadBackgroundListWidget::setCurrentItemName(const QString &name)
 {
     //Set the current theme index
-    foreach(DownloadBackgroundListItem *item, m_items)
+    for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         if(item->getFileName() == name)
         {
@@ -163,7 +163,7 @@ void DownloadBackgroundListWidget::setCurrentItemName(const QString &name)
 
 void DownloadBackgroundListWidget::clearSelectState()
 {
-    foreach(DownloadBackgroundListItem *item, m_items)
+    for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         item->setSelect(false);
     }
@@ -201,7 +201,7 @@ void DownloadBackgroundListWidget::createItem(const QString &icon, bool state)
 
 void DownloadBackgroundListWidget::updateItem(const DownloadBackgroundImage &image, const QString &path)
 {
-    foreach(DownloadBackgroundListItem *item, m_items)
+    for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         if(item->getFileName().isEmpty())
         {
@@ -215,7 +215,7 @@ void DownloadBackgroundListWidget::updateItem(const DownloadBackgroundImage &ima
 
 bool DownloadBackgroundListWidget::contains(const QString &name) const
 {
-    foreach(DownloadBackgroundListItem *item, m_items)
+    for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         if(item->getFileName() == name)
         {
@@ -228,7 +228,7 @@ bool DownloadBackgroundListWidget::contains(const QString &name) const
 
 bool DownloadBackgroundListWidget::contains(const DownloadBackgroundImage &image) const
 {
-    foreach(DownloadBackgroundListItem *item, m_items)
+    for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         if(item->contains(image.m_item))
         {
@@ -254,7 +254,7 @@ int DownloadBackgroundListWidget::find(DownloadBackgroundListItem *item) const
 
 DownloadBackgroundListItem* DownloadBackgroundListWidget::find(const QString &name) const
 {
-    foreach(DownloadBackgroundListItem *item, m_items)
+    for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         if(item->getFileName() == name)
         {
@@ -267,7 +267,7 @@ DownloadBackgroundListItem* DownloadBackgroundListWidget::find(const QString &na
 
 DownloadBackgroundListItem* DownloadBackgroundListWidget::find(const DownloadBackgroundImage &image) const
 {
-    foreach(DownloadBackgroundListItem *item, m_items)
+    for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         if(item->contains(image.m_item))
         {

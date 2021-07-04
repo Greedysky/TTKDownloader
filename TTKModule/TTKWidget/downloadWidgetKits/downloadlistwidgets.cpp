@@ -34,7 +34,7 @@ DownloadListWidgets::~DownloadListWidgets()
 {
     m_speedTimer.stop();
     DownloadLists lists;
-    foreach(DownloadUnits *item, m_itemList)
+    for(DownloadUnits *item : qAsConst(m_itemList))
     {
         DownloadList list;
         list.m_url = item->getUrl();
@@ -59,7 +59,7 @@ void DownloadListWidgets::init()
     DownloadLists lists;
     xml.readListConfig(lists);
 
-    foreach(const DownloadList &list, lists)
+    for(const DownloadList &list : qAsConst(lists))
     {
         QString url = list.m_url.trimmed();
         if(!url.isEmpty() && !findUrl(url))
@@ -80,7 +80,7 @@ void DownloadListWidgets::resizeWindow()
 void DownloadListWidgets::reverseSelect()
 {
     TTKIntSet rows;
-    foreach(QTableWidgetItem *item, selectedItems())
+    for(QTableWidgetItem *item : selectedItems())
     {
         rows.insert(item->row());
     }
@@ -101,7 +101,7 @@ void DownloadListWidgets::reverseSelect()
 
 void DownloadListWidgets::pause()
 {
-    foreach(QTableWidgetItem *item, selectedItems())
+    for(QTableWidgetItem *item : selectedItems())
     {
         int row = item->row();
         if(m_itemList.isEmpty() || row < 0)
@@ -117,7 +117,7 @@ void DownloadListWidgets::pause()
 
 void DownloadListWidgets::start()
 {
-    foreach(QTableWidgetItem *item, selectedItems())
+    for(QTableWidgetItem *item : selectedItems())
     {
         int row = item->row();
         if(m_itemList.isEmpty() || row < 0)
@@ -153,7 +153,7 @@ void DownloadListWidgets::addItemToList(const QString &path, const QString &name
 
 void DownloadListWidgets::addItemToList(const QStringList &path)
 {
-    foreach(const QString &pa, path)
+    for(const QString &pa : qAsConst(path))
     {
         QString url = pa.trimmed();
         if(!url.isEmpty() && !findUrl(url))
@@ -170,7 +170,7 @@ void DownloadListWidgets::deleteItemFromList()
 
 void DownloadListWidgets::deleteItemFromList(bool file)
 {
-    foreach(QTableWidgetItem *item, selectedItems())
+    for(QTableWidgetItem *item : selectedItems())
     {
         int row = item->row();
         if(m_itemList.isEmpty() || row < 0)
@@ -290,7 +290,7 @@ void DownloadListWidgets::copyUrlClicked()
 void DownloadListWidgets::updateTotalSpeedLabel()
 {
     float total = 0;
-    foreach(DownloadUnits *item, m_itemList)
+    for(DownloadUnits *item : qAsConst(m_itemList))
     {
         total += item->getDownloadItemWidget()->getPercent();
     }
@@ -386,7 +386,7 @@ void DownloadListWidgets::getTopUrlToDownload()
     int index = -1;
     if(!m_itemList.isEmpty() && m_maxDownloadCount < 3)
     {
-        foreach(DownloadUnits *item, m_itemList)
+        for(DownloadUnits *item : qAsConst(m_itemList))
         {
             ++index;
             if(item->getState() == 3)
@@ -401,7 +401,7 @@ void DownloadListWidgets::getTopUrlToDownload()
 bool DownloadListWidgets::findUrl(const QString &path) const
 {
     bool state = false;
-    foreach(DownloadUnits *item, m_itemList)
+    for(DownloadUnits *item : qAsConst(m_itemList))
     {
         if(item->getUrl() == path)
         {

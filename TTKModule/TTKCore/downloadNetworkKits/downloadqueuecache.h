@@ -52,7 +52,6 @@ public:
      * Object contsructor.
      */
     DownloadQueueCache(const DownloadQueueDatas &datas, QObject *parent = nullptr);
-
     ~DownloadQueueCache();
 
     /*!

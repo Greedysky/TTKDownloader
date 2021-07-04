@@ -40,8 +40,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadBackgroundSkinDialog(QWidget *parent = nullptr);
-
-    virtual ~DownloadBackgroundSkinDialog();
+    ~DownloadBackgroundSkinDialog();
 
     /*!
      * Set artist background picture by name.

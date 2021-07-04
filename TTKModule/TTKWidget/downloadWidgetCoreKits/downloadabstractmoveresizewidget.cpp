@@ -259,7 +259,7 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
 QObjectList DownloadAbstractMoveResizeWidget::foreachWidget(QObject *object)
 {
     QObjectList result;
-    foreach(QObject *obj, object->children())
+    for(QObject *obj : object->children())
     {
         if("QWidget" == QString(obj->metaObject()->className()))
         {

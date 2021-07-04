@@ -86,7 +86,7 @@ void CodeLinesTest::codeLines()
 
     qDebug() << "All File Count " << fileCount;
     qDebug() << "All Meet The Requirements Line Count " << lineCount;
-    foreach(const QString &key, categorys.keys())
+    for(const QString &key : categorys.keys())
     {
         qDebug() << QString(".%1 Type  All count %2").arg(key).arg(categorys[key]);
     }

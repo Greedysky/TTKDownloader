@@ -47,8 +47,7 @@ DownloadMessageBox::DownloadMessageBox(const QString &text, QWidget *parent)
     setText(text);
 }
 
-DownloadMessageBox::DownloadMessageBox(const QString &title, const QString &text,
-                                 QWidget *parent)
+DownloadMessageBox::DownloadMessageBox(const QString &title, const QString &text, QWidget *parent)
     : DownloadMessageBox(text, parent)
 {
     setTitle(title);

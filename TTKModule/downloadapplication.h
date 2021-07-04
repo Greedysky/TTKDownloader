@@ -43,8 +43,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadApplication(QWidget *parent = nullptr);
-
-    virtual ~DownloadApplication();
+    ~DownloadApplication();
 
     /*!
      * Get class object instance.

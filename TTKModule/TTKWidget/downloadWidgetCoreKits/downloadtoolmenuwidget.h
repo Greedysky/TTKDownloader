@@ -64,7 +64,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadToolMenuWidget(QWidget *parent = nullptr);
-
     ~DownloadToolMenuWidget();
 
     /*!

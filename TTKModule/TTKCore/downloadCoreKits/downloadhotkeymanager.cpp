@@ -60,7 +60,7 @@ bool DownloadHotKeyManager::enabled(int index)
 
 void DownloadHotKeyManager::enabledAll(bool enabled)
 {
-    foreach(QGlobalShortcut *key, m_hotkeys)
+    for(QGlobalShortcut *key : qAsConst(m_hotkeys))
     {
         key->setEnabled(enabled);
     }
@@ -97,7 +97,7 @@ int DownloadHotKeyManager::count() const
 QStringList DownloadHotKeyManager::getKeys() const
 {
     QStringList keys;
-    foreach(QGlobalShortcut *key, m_hotkeys)
+    for(QGlobalShortcut *key : qAsConst(m_hotkeys))
     {
         keys << key->shortcut().toString();
     }

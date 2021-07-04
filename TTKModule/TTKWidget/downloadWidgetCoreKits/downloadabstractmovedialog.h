@@ -39,7 +39,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadAbstractMoveDialog(bool transparent, QWidget *parent = nullptr);
-
     virtual ~DownloadAbstractMoveDialog();
 
     /*!

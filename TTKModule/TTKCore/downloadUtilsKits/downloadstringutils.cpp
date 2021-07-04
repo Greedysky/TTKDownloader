@@ -27,10 +27,10 @@ QStringList DownloadUtils::String::splitString(const QString &value, const QStri
 QList<QColor> DownloadUtils::String::readColorConfig(const QString &value)
 {
     QList<QColor> colors;
-    QStringList rgbs = value.split(';', QString::SkipEmptyParts);
-    foreach(const QString &rgb, rgbs)
+    const QStringList &rgbs = value.split(';', QString::SkipEmptyParts);
+    for(const QString &rgb : qAsConst(rgbs))
     {
-        QStringList var = rgb.split(',');
+        const QStringList &var = rgb.split(',');
         if(var.count() != 3)
         {
             continue;
@@ -50,7 +50,7 @@ QString DownloadUtils::String::writeColorConfig(const QColor &color)
 QString DownloadUtils::String::writeColorConfig(const QList<QColor> &colors)
 {
     QString value;
-    foreach(const QColor &rgb, colors)
+    for(const QColor &rgb : qAsConst(colors))
     {
         value.append(writeColorConfig(rgb) + ";");
     }

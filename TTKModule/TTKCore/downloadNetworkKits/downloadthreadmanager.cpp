@@ -212,7 +212,7 @@ void DownloadThreadManager::pause()
     emit stateChanged(tr("D_Pause"));
 
     DownloadBreakPointItems records;
-    foreach(DownloadThread *thread, m_threads)
+    for(DownloadThread *thread : qAsConst(m_threads))
     {
         thread->pause();
 
@@ -245,7 +245,7 @@ void DownloadThreadManager::restart()
     m_state = DownloadThread::D_Download;
     emit stateChanged(tr("D_Download"));
 
-    foreach(DownloadThread *thread, m_threads)
+    for(DownloadThread *thread : qAsConst(m_threads))
     {
         thread->restart();
     }
@@ -265,7 +265,7 @@ void DownloadThreadManager::finishedSlot(int index)
 void DownloadThreadManager::progressChangedSlot()
 {
     m_readySize = 0;
-    foreach(DownloadThread *thread, m_threads)
+    for(DownloadThread *thread : qAsConst(m_threads))
     {
         m_readySize += thread->getReadySize();
     }

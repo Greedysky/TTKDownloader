@@ -43,7 +43,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadNetworkAbstract(QObject *parent = nullptr);
-
     virtual ~DownloadNetworkAbstract();
 
     /*!

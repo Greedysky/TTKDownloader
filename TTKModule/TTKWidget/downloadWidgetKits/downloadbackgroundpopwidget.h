@@ -35,8 +35,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadBackgroundPopWidget(QWidget *parent = nullptr);
-
-    virtual ~DownloadBackgroundPopWidget();
+    ~DownloadBackgroundPopWidget();
 
     /*!
      * Set slider value.

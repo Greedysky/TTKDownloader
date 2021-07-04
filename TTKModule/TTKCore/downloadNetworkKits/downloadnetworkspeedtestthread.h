@@ -37,7 +37,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadNetworkSpeedTestThread(QObject *parent = nullptr);
-
     ~DownloadNetworkSpeedTestThread();
 
     /*!

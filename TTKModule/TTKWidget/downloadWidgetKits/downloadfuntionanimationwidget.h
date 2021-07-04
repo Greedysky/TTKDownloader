@@ -37,7 +37,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadBaseAnimationWidget(QWidget *parent = nullptr);
-
     ~DownloadBaseAnimationWidget();
 
 Q_SIGNALS:

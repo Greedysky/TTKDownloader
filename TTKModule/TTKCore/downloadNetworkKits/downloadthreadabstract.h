@@ -38,8 +38,6 @@ public:
      */
     DownLoadThreadAbstract(const QString &url, const QString &save, QObject *parent = nullptr);
 
-    virtual ~DownLoadThreadAbstract();
-
     /*!
      * Release the network object.
      */

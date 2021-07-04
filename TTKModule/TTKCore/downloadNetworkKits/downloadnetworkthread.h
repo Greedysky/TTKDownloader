@@ -68,7 +68,6 @@ private:
      * Object contsructor.
      */
     DownloadNetworkThread();
-
     ~DownloadNetworkThread();
 
     QTimer m_timer;

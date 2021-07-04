@@ -136,7 +136,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadBackgroundListWidget(QWidget *parent = nullptr);
-
     ~DownloadBackgroundListWidget();
 
     /*!

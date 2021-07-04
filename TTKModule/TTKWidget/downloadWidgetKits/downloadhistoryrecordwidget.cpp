@@ -67,7 +67,7 @@ void DownloadHistoryRecordWidget::resizeWindow()
 void DownloadHistoryRecordWidget::reverseSelect()
 {
     TTKIntSet rows;
-    foreach(QTableWidgetItem *item, selectedItems())
+    for(QTableWidgetItem *item : selectedItems())
     {
         rows.insert(item->row());
     }
@@ -115,7 +115,7 @@ void DownloadHistoryRecordWidget::deleteItemFromList()
 
 void DownloadHistoryRecordWidget::deleteItemFromList(bool file)
 {
-    foreach(QTableWidgetItem *item, selectedItems())
+    for(QTableWidgetItem *item : selectedItems())
     {
         int row = item->row();
         if(m_records.isEmpty() || row < 0)

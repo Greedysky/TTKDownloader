@@ -36,8 +36,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadApplicationObject(QObject *parent = nullptr);
-
-    virtual ~DownloadApplicationObject();
+    ~DownloadApplicationObject();
 
     /*!
      * Get class object instance.

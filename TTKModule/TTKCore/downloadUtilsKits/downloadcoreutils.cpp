@@ -34,7 +34,7 @@ quint64 DownloadUtils::Core::dirSize(const QString &dirName)
         QDir dir(dirName);
         QFileInfoList list = dir.entryInfoList(QDir::Files | QDir::Dirs |  QDir::Hidden |
                                                QDir::NoSymLinks | QDir::NoDotAndDotDot);
-        foreach(const QFileInfo &fileInfo, list)
+        for(const QFileInfo &fileInfo : qAsConst(list))
         {
             if(fileInfo.isDir())
             {
@@ -57,7 +57,7 @@ void DownloadUtils::Core::checkCacheSize(quint64 cacheSize, bool disabled, const
         if(size > cacheSize)
         {
             QFileInfoList fileList = QDir(path).entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
-            foreach(const QFileInfo &fileInfo, fileList)
+            for(const QFileInfo &fileInfo : qAsConst(fileList))
             {
                 size -= fileInfo.size();
                 QFile::remove(fileInfo.absoluteFilePath());
@@ -80,9 +80,9 @@ QFileInfoList DownloadUtils::Core::findFile(const QString &path, const QStringLi
     }
 
     QFileInfoList fileList = dir.entryInfoList(filter, QDir::Files | QDir::Hidden | QDir::NoSymLinks);
-    QFileInfoList folderList = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
+    const QFileInfoList &folderList = dir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot);
 
-    foreach(const QFileInfo &folder, folderList)
+    for(const QFileInfo &folder : qAsConst(folderList))
     {
         fileList.append(findFile(folder.absoluteFilePath(), filter));
     }

@@ -161,7 +161,7 @@ QDomElement DownloadAbstractXml::createRoot(const QString &node, const DownloadX
 QDomElement DownloadAbstractXml::createRoot(const QString &node, const DownloadXmlAttributes &attrs)
 {
     QDomElement domElement = m_ddom->createElement(node);
-    foreach(const DownloadXmlAttribute &attr, attrs)
+    for(const DownloadXmlAttribute &attr : qAsConst(attrs))
     {
         writeAttribute(domElement, attr);
     }

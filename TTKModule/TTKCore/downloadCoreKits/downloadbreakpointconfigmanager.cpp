@@ -18,7 +18,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
         writeDomText(download, "url", records.first().m_url);
     }
 
-    foreach(const DownloadBreakPointItem &record, records)
+    for(const DownloadBreakPointItem &record : qAsConst(records))
     {
         writeDomElementMutil(download, "value", DownloadXmlAttributes() <<
                                                 DownloadXmlAttribute("start", record.m_start) <<

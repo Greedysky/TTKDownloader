@@ -45,7 +45,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     M_HOTKEY_PTR->connectParentObject(this, "Ctrl+X", SLOT(quitWindowClose()));
 
     /////////// Mouse tracking
-    foreach(QObject *obj, foreachWidget(this))
+    for(QObject *obj : foreachWidget(this))
     {
         QWidget *w = TTKStatic_cast(QWidget*, obj);
         w->installEventFilter(this);

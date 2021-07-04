@@ -46,7 +46,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadThread(QObject *parent = nullptr);
-
     ~DownloadThread();
 
     /*!

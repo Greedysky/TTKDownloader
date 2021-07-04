@@ -54,7 +54,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadAbstractXml(QObject *parent = nullptr);
-
     ~DownloadAbstractXml();
 
     /*!

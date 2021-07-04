@@ -17,7 +17,7 @@ void DownloadListConfigManager::writeListConfig(const DownloadLists &records)
     QDomElement player = createRoot(APPNAME);
     QDomElement download = writeDom(player, "list");
 
-    foreach(const DownloadList &record, records)
+    for(const DownloadList &record : qAsConst(records))
     {
         writeDomElementMutil(download, "value", DownloadXmlAttributes() << DownloadXmlAttribute("url", record.m_url)
                                              << DownloadXmlAttribute("name", record.m_name));

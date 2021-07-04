@@ -84,7 +84,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadFunctionListWidget(QWidget *parent = nullptr);
-
     ~DownloadFunctionListWidget();
 
     /*!

@@ -96,8 +96,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadSettingWidget(QWidget *parent = nullptr);
-
-    virtual ~DownloadSettingWidget();
+    ~DownloadSettingWidget();
 
     /*!
      * Init controller parameter to widget.

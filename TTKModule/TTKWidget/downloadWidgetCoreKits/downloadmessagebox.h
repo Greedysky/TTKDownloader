@@ -44,10 +44,8 @@ public:
     /*!
      * Object contsructor by context text and title.
      */
-    DownloadMessageBox(const QString &title, const QString &text,
-                    QWidget *parent = nullptr);
-
-    virtual ~DownloadMessageBox();
+    DownloadMessageBox(const QString &title, const QString &text, QWidget *parent = nullptr);
+    ~DownloadMessageBox();
 
     /*!
      * Set box title.

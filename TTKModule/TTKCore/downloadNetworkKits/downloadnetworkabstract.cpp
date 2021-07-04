@@ -46,7 +46,7 @@ void DownloadNetworkAbstract::sslErrors(QNetworkReply* reply, const QList<QSslEr
 void DownloadNetworkAbstract::sslErrorsString(QNetworkReply *reply, const QList<QSslError> &errors)
 {
     QString errorString;
-    foreach(const QSslError &error, errors)
+    for(const QSslError &error : qAsConst(errors))
     {
         if(!errorString.isEmpty())
         {

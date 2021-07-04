@@ -36,8 +36,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadMessageAboutDialog(QWidget *parent = nullptr);
-
-    virtual ~DownloadMessageAboutDialog();
+    ~DownloadMessageAboutDialog();
 
 public Q_SLOTS:
     /*!

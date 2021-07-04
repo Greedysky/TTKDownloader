@@ -136,7 +136,7 @@ DownloadFunctionListWidget::~DownloadFunctionListWidget()
 
 void DownloadFunctionListWidget::resizeMode(bool mode)
 {
-    foreach(DownloadFunctionItemWidget *it, m_items)
+    for(DownloadFunctionItemWidget *it : qAsConst(m_items))
     {
         it->resizeMode(mode);
     }
@@ -152,7 +152,7 @@ void DownloadFunctionListWidget::selectedChanged(DownloadFunctionItemWidget *ite
 
     emit currentIndexChanged(index);
 
-    foreach(DownloadFunctionItemWidget *it, m_items)
+    for(DownloadFunctionItemWidget *it : qAsConst(m_items))
     {
         it->setSelectedMode(false);
     }

@@ -34,7 +34,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadSystemTrayMenu(QWidget *parent = nullptr);
-
     ~DownloadSystemTrayMenu();
 
 protected:

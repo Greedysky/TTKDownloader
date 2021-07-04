@@ -39,7 +39,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadAbstractMoveWidget(bool transparent, QWidget *parent = nullptr);
-
     virtual ~DownloadAbstractMoveWidget();
 
     /*!
@@ -98,7 +97,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
-
     virtual ~DownloadAbstractMoveSingleWidget();
 
 protected:

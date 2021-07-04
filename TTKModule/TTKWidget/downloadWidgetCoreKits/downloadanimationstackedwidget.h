@@ -44,8 +44,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadAnimationStackedWidget(QWidget *parent = nullptr);
-
-    virtual ~DownloadAnimationStackedWidget();
+    ~DownloadAnimationStackedWidget();
 
     /*!
      * Start to anmiation by index.

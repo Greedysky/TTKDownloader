@@ -33,8 +33,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadRemoteWidget(QWidget *parent = nullptr);
-
-    virtual ~DownloadRemoteWidget();
+    ~DownloadRemoteWidget();
 
 public Q_SLOTS:
     /*!

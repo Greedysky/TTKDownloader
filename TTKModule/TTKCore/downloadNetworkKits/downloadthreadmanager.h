@@ -35,7 +35,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadThreadManager(QObject *parent = nullptr);
-
     ~DownloadThreadManager();
 
     /*!
