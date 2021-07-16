@@ -11,6 +11,9 @@
 #include "downloaduiobject.h"
 #include "downloadotherdefine.h"
 
+#ifdef Q_CC_MSVC
+#include <functional>
+#endif
 #include <QScrollBar>
 
 DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
