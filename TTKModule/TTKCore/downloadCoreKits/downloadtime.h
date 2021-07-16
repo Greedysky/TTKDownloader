@@ -161,10 +161,6 @@ public:
      * Transform ms time from utc since epoch.
      */
     static qint64 timeStamp(bool ms = true);
-    /*!
-     * Init random time seed.
-     */
-    static void timeSRand();
     //////////////////////////////////////////////
     /*!
      * Transform msec time to string format(mm:ss).

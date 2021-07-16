@@ -6,6 +6,7 @@
 
 #include <QMenu>
 #include <QPainter>
+#include <QPainterPath>
 
 DownloadRemoteWidget::DownloadRemoteWidget(QWidget *parent)
     : DownloadAbstractMoveWidget(parent)

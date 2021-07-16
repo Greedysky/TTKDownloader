@@ -92,11 +92,6 @@ qint64 DownloadTime::timeStamp(bool ms)
     return ms ? t : t/1000;
 }
 
-void DownloadTime::timeSRand()
-{
-    qsrand(timeStamp());
-}
-
 QString DownloadTime::msecTime2LabelJustified()
 {
     if(!m_greedyMode)

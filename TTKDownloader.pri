@@ -19,11 +19,13 @@
 QT       += core gui network xml
 
 equals(QT_MAJOR_VERSION, 4){
-QT       += script
 CONFIG   += gcc
 }
-equals(QT_MAJOR_VERSION, 5){
-QT       += widgets
+greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
+    QT   += widgets
+    equals(QT_MAJOR_VERSION, 6){ #Qt6
+        QT   += core5compat
+    }
 }
 
 include($$PWD/TTKVersion.pri)
@@ -42,7 +44,7 @@ unix:!mac{
 
 win32{
     LIBS += -lIphlpapi
-    equals(QT_MAJOR_VERSION, 5){
+    greaterThan(QT_MAJOR_VERSION, 4){
         msvc{
             LIBS += -lshell32 -luser32
             LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip

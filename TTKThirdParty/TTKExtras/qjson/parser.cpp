@@ -6,7 +6,7 @@
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
  * License version 2.1, as published by the Free Software Foundation.
- * 
+ *
  *
  * This library is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -27,7 +27,6 @@
 #include <QtCore/QBuffer>
 #include <QtCore/QStringList>
 #include <QtCore/QTextStream>
-#include <QtCore/QDebug>
 
 using namespace QJson;
 
@@ -111,7 +110,7 @@ QVariant Parser::parse (QIODevice* io, bool* ok)
   return d->m_result;
 }
 
-QVariant Parser::parse(const QByteArray& jsonString, bool* ok) {
+QVariant Parser::parse(const QByteArray &jsonString, bool* ok) {
   QBuffer buffer;
   buffer.open(QBuffer::ReadWrite | QBuffer::Text);
   buffer.write(jsonString);

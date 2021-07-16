@@ -31,7 +31,11 @@ void DownloadToolLabelButton::mousePressEvent(QMouseEvent *event)
     QToolButton::mousePressEvent(event);
 }
 
+#if TTK_QT_VERSION_CHECK(6,0,0)
+void DownloadToolLabelButton::enterEvent(QEnterEvent *event)
+#else
 void DownloadToolLabelButton::enterEvent(QEvent *event)
+#endif
 {
     QToolButton::enterEvent(event);
     m_enterIn = true;
@@ -84,7 +88,11 @@ void DownloadSpeedToolLabelButton::setLabelText(const QString &up, const QString
     update();
 }
 
+#if TTK_QT_VERSION_CHECK(6,0,0)
+void DownloadSpeedToolLabelButton::enterEvent(QEnterEvent *event)
+#else
 void DownloadSpeedToolLabelButton::enterEvent(QEvent *event)
+#endif
 {
     QToolButton::enterEvent(event);
     m_enterIn = true;

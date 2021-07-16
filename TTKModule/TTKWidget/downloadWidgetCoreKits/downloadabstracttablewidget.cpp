@@ -79,7 +79,11 @@ void DownloadAbstractTableWidget::setRowColor(int row, const QColor &color) cons
         QTableWidgetItem *it = item(row, col);
         if(it != nullptr)
         {
+#if TTK_QT_VERSION_CHECK(5,13,0)
+            it->setBackground(color);
+#else
             it->setBackgroundColor(color);
+#endif
         }
     }
 }

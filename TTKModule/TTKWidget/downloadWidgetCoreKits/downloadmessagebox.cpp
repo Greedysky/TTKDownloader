@@ -37,8 +37,11 @@ DownloadMessageBox::DownloadMessageBox(QWidget *parent)
     groupButton->addButton(m_ui->topTitleCloseButton, 0);
     groupButton->addButton(m_ui->confirmButton, 1);
     groupButton->addButton(m_ui->cancelButton, 2);
+#if TTK_QT_VERSION_CHECK(5,15,0)
+    connect(groupButton, SIGNAL(idClicked(int)), SLOT(buttonClicked(int)));
+#else
     connect(groupButton, SIGNAL(buttonClicked(int)), SLOT(buttonClicked(int)));
-
+#endif
 }
 
 DownloadMessageBox::DownloadMessageBox(const QString &text, QWidget *parent)

@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QToolTip>
 #include <QMouseEvent>
+#include <QPainterPath>
 #include <QButtonGroup>
 
 DownloadHlPalette::DownloadHlPalette(QWidget *parent)
@@ -157,7 +158,11 @@ void DownloadHlSaturationPalette::paintEvent(QPaintEvent *event)
     int ntRight = rect().right();
     int ntBottm = rect().bottom();
 
-    double dblVH, dblVS, dblVL = -100.0;
+#if TTK_QT_VERSION_CHECK(6,0,0)
+    float dblVH, dblVS, dblVL = -100.0f;
+#else
+    qreal dblVH, dblVS, dblVL = -100.0f;
+#endif
     m_color.getHslF(&dblVH, &dblVS, &dblVL);
     QColor colorCenter; colorCenter.setHslF(dblVH, 0.5, dblVL);
     QColor colorStart;  colorStart.setHslF(dblVH, 1, dblVL);
@@ -264,7 +269,11 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     groupButton->addButton(m_ui->topTitleCloseButton, 0);
     groupButton->addButton(m_ui->confirmButton, 1);
     groupButton->addButton(m_ui->cancelButton, 2);
+#if TTK_QT_VERSION_CHECK(5,15,0)
+    connect(groupButton, SIGNAL(idClicked(int)), SLOT(buttonClicked(int)));
+#else
     connect(groupButton, SIGNAL(buttonClicked(int)), SLOT(buttonClicked(int)));
+#endif
 }
 
 DownloadColorDialog::~DownloadColorDialog()

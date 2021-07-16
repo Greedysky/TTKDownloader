@@ -144,12 +144,12 @@ namespace yy {
      that double-quoting is unnecessary unless the string contains an
      apostrophe, a comma, or backslash (other than backslash-backslash).
      YYSTR is taken from yytname.  */
-  std::string
+  TTKString
   json_parser::yytnamerr_ (const char *yystr)
   {
     if (*yystr == '"')
       {
-        std::string yyr;
+        TTKString yyr;
         char const *yyp = yystr;
 
         for (;;)
@@ -495,7 +495,7 @@ namespace yy {
     {
           QVariantMap* pair = new QVariantMap();
           pair->insert((yysemantic_stack_[(3) - (1)]).toString(), (yysemantic_stack_[(3) - (3)]));
-          (yyval).setValue<QVariantMap* >(pair);
+          (yyval).setValue<QVariantMap*>(std::move(pair));
         }
     break;
 
@@ -748,10 +748,10 @@ namespace yy {
   }
 
   // Generate an error message.
-  std::string
+  TTKString
   json_parser::yysyntax_error_ (int yystate, int yytoken)
   {
-    std::string yyres;
+    TTKString yyres;
     // Number of reported tokens (one for the "unexpected", one per
     // "expected").
     size_t yycount = 0;
@@ -1088,7 +1088,7 @@ int yy::yylex(YYSTYPE *yylval, yy::location *yylloc, QJson::ParserPrivate* drive
   return ret;
 }
 
-void yy::json_parser::error (const yy::location& yyloc, const std::string& error)
+void yy::json_parser::error (const yy::location& yyloc, const TTKString& error)
 {
   /*qjsonDebug() << yyloc.begin.line;
   qjsonDebug() << yyloc.begin.column;

@@ -46,7 +46,7 @@ SerializerRunnable::SerializerRunnable(QObject* parent)
   qRegisterMetaType<QVariant>("QVariant");
 }
 
-void SerializerRunnable::setJsonObject( const QVariant& json )
+void SerializerRunnable::setJsonObject( const QVariant &json )
 {
   TTK_D(SerializerRunnable);
   d->json = json;
@@ -58,5 +58,5 @@ void SerializerRunnable::run()
   Serializer serializer;
   bool ok;
   const QByteArray serialized = serializer.serialize( d->json, &ok);
-  emit parsingFinished( serialized, ok, serializer.errorMessage() );
+  Q_EMIT parsingFinished( serialized, ok, serializer.errorMessage() );
 }

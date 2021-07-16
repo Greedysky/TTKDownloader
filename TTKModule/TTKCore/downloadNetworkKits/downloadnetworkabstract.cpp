@@ -21,6 +21,7 @@ void DownloadNetworkAbstract::deleteAll()
         m_manager->deleteLater();
         m_manager = nullptr;
     }
+
     if(m_reply)
     {
         m_reply->deleteLater();

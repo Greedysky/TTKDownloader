@@ -307,7 +307,7 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
         fileName = fileName.split("-").last();
         data << fileName.trimmed().toInt();
     }
-    qSort(data.begin(), data.end(), qGreater<int>());
+    std::sort(data.begin(), data.end(), std::greater<int>());
 
     int index = CURRENT_ITEMS_COUNT;
     if(!data.isEmpty())

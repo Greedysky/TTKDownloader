@@ -20,7 +20,7 @@ include($$PWD/TTKVersion.pri)
 
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = TTKUi TTKThirdParty TTKModule TTKService TTKRun TTKTest
+SUBDIRS = TTKUi TTKThirdParty TTKModule TTKService TTKRun
 
 TRANSLATIONS += TTKLanguage/cn.ts
 

@@ -34,7 +34,11 @@ DownloadBaseAnimationWidget::DownloadBaseAnimationWidget(QWidget *parent)
     setLayout(layout);
 
     m_group = new QButtonGroup(this);
+#if TTK_QT_VERSION_CHECK(5,15,0)
+    connect(m_group, SIGNAL(idClicked(int)), SLOT(switchToSelectedItemStyle(int)));
+#else
     connect(m_group, SIGNAL(buttonClicked(int)), SLOT(switchToSelectedItemStyle(int)));
+#endif
 }
 
 DownloadBaseAnimationWidget::~DownloadBaseAnimationWidget()

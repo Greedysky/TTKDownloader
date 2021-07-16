@@ -60,17 +60,21 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
         m_functionsWidget->hide();
         QHBoxLayout *hbox = new QHBoxLayout(m_functionsWidget);
         hbox->setContentsMargins(9, 0, 0, 9);
-        QButtonGroup *button = new QButtonGroup(m_functionsWidget);
-        connect(button, SIGNAL(buttonClicked(int)), SLOT(buttonClicked(int)));
-
+        QButtonGroup *groupButton = new QButtonGroup(m_functionsWidget);
+#if TTK_QT_VERSION_CHECK(5,15,0)
+        connect(groupButton, SIGNAL(idClicked(int)), SLOT(buttonClicked(int)));
+#else
+        connect(groupButton, SIGNAL(buttonClicked(int)), SLOT(buttonClicked(int)));
+#endif
         QStringList names;
         for(int i=1; i<=9; ++i)
         {
             names << QString::number(i);
         }
+
         for(int i=0; i<names.count(); ++i)
         {
-            button->addButton(createButton(names[i]), i);
+            groupButton->addButton(createButton(names[i]), i);
         }
 
         hbox->addStretch(1);

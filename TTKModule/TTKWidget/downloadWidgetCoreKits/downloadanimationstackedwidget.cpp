@@ -16,6 +16,7 @@ DownloadAnimationStackedWidget::DownloadAnimationStackedWidget(QWidget *parent)
     m_animation->setEasingCurve(QEasingCurve::Linear);
     m_animation->setStartValue(0);
     m_animation->setEndValue(0);
+
     connect(m_animation, SIGNAL(valueChanged(QVariant)), SLOT(valueChanged(QVariant)));
     connect(m_animation, SIGNAL(finished()), SLOT(animationFinished()));
 }

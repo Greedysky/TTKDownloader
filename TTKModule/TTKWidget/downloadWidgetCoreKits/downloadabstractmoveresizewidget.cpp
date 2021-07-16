@@ -52,7 +52,12 @@ void DownloadAbstractMoveResizeWidget::mousePressEvent(QMouseEvent *event)
         if(QRect(DISTANCE + 1, DISTANCE + 1, width() - (DISTANCE + 1)*2,
                  height() - (DISTANCE + 1)*2).contains(event->pos()))
         {
+#if TTK_QT_VERSION_CHECK(6,0,0)
+            m_struct.m_mousePos = event->globalPosition().toPoint();
+#else
             m_struct.m_mousePos = event->globalPos();
+#endif
+
             m_struct.m_mouseLeftPress = true;
         }
         else
@@ -69,7 +74,12 @@ void DownloadAbstractMoveResizeWidget::mouseMoveEvent(QMouseEvent *event)
     !m_struct.m_isPressBorder ? sizeDirection() : moveDirection();
     if(m_struct.m_mouseLeftPress)
     {
-        move(m_struct.m_windowPos + (event->globalPos() - m_struct.m_mousePos));
+#if TTK_QT_VERSION_CHECK(6,0,0)
+        const QPoint &pt = event->globalPosition().toPoint();
+#else
+        const QPoint &pt = event->globalPos();
+#endif
+        move(m_struct.m_windowPos + (pt - m_struct.m_mousePos));
     }
 }
 

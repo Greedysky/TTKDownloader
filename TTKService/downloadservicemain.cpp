@@ -15,7 +15,9 @@ void loadAppScaledFactor(int argc, char *argv[])
     #if TTK_QT_VERSION_CHECK(5,6,0)
       Q_UNUSED(argc);
       Q_UNUSED(argv);
+    #if !TTK_QT_VERSION_CHECK(6,0,0)
       QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    #endif
     #else
       QApplication a(argc, argv);
       qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
@@ -53,7 +55,10 @@ int main(int argc, char *argv[])
     manager.run();
 
     QTranslator translator;
-    translator.load(manager.translator());
+    if(!translator.load(manager.translator()))
+    {
+        TTK_LOGGER_ERROR("Load translation error");
+    }
     a.installTranslator(&translator);
 
     DownloadApplication w;

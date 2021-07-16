@@ -27,7 +27,11 @@ QStringList DownloadUtils::String::splitString(const QString &value, const QStri
 QList<QColor> DownloadUtils::String::readColorConfig(const QString &value)
 {
     QList<QColor> colors;
-    const QStringList &rgbs = value.split(';', QString::SkipEmptyParts);
+#if TTK_QT_VERSION_CHECK(5,15,0)
+    const QStringList &rgbs = value.split(";", Qt::SkipEmptyParts);
+#else
+    const QStringList &rgbs = value.split(";", QString::SkipEmptyParts);
+#endif
     for(const QString &rgb : qAsConst(rgbs))
     {
         const QStringList &var = rgb.split(',');
