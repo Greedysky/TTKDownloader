@@ -72,7 +72,7 @@ protected:
 
     QPropertyAnimation *m_animation;
     QList<QWidget*> m_container;
-    QButtonGroup *m_group;
+    QButtonGroup *m_buttonGroup;
 
 };
 

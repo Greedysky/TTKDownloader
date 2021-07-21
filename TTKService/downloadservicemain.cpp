@@ -12,24 +12,23 @@
 void loadAppScaledFactor(int argc, char *argv[])
 {
 #if TTK_QT_VERSION_CHECK(5,4,0)
-    #if TTK_QT_VERSION_CHECK(5,6,0)
-      Q_UNUSED(argc);
-      Q_UNUSED(argv);
-    #if !TTK_QT_VERSION_CHECK(6,0,0)
+   #if TTK_QT_VERSION_CHECK(6,0,0)
+      // do nothing
+   #elif TTK_QT_VERSION_CHECK(5,12,0)
       QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    #endif
-    #else
+   #elif TTK_QT_VERSION_CHECK(5,6,0)
       QApplication a(argc, argv);
       qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
       QScreen *screen = QApplication::primaryScreen();
-      qreal dpi = screen->logicalDotsPerInch()/96;
+      qreal dpi = screen->logicalDotsPerInch() / 96;
       qputenv("QT_SCALE_FACTOR", QByteArray::number(dpi));
       Q_UNUSED(a);
-    #endif
-#else
+   #else
+      qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
+   #endif
+#endif
     Q_UNUSED(argc);
     Q_UNUSED(argv);
-#endif
 }
 
 int main(int argc, char *argv[])

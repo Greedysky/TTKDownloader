@@ -33,11 +33,11 @@ DownloadBaseAnimationWidget::DownloadBaseAnimationWidget(QWidget *parent)
     layout->setSpacing(0);
     setLayout(layout);
 
-    m_group = new QButtonGroup(this);
+    m_buttonGroup = new QButtonGroup(this);
 #if TTK_QT_VERSION_CHECK(5,15,0)
-    connect(m_group, SIGNAL(idClicked(int)), SLOT(switchToSelectedItemStyle(int)));
+    connect(m_buttonGroup, SIGNAL(idClicked(int)), SLOT(switchToSelectedItemStyle(int)));
 #else
-    connect(m_group, SIGNAL(buttonClicked(int)), SLOT(switchToSelectedItemStyle(int)));
+    connect(m_buttonGroup, SIGNAL(buttonClicked(int)), SLOT(switchToSelectedItemStyle(int)));
 #endif
 }
 
@@ -45,7 +45,7 @@ DownloadBaseAnimationWidget::~DownloadBaseAnimationWidget()
 {
     qDeleteAll(m_container);
     delete m_animation;
-    delete m_group;
+    delete m_buttonGroup;
 }
 
 void DownloadBaseAnimationWidget::paintEvent(QPaintEvent *event)
@@ -112,7 +112,7 @@ DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
         btn->setText(names[i]);
         btn->setFixedSize(80, 30);
         ly->addWidget(btn);
-        m_group->addButton(btn, i);
+        m_buttonGroup->addButton(btn, i);
         m_container << btn;
     }
     ly->addStretch(1);

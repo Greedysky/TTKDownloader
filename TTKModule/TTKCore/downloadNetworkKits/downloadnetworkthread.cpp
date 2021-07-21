@@ -36,7 +36,7 @@ void DownloadNetworkThread::setBlockNetWork(int block)
 
 void DownloadNetworkThread::networkStateChanged()
 {
-    const auto status = QtConcurrent::run([&]
+    const auto status = QtConcurrent::run([&]()
     {
         bool block = M_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toBool();
         QHostInfo info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);

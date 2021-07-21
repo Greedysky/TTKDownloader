@@ -144,12 +144,11 @@ void DownloadListItemWidget::stateChanged(const QString &state)
 
 void DownloadListItemWidget::updateDownloadSpeed()
 {
-    int delta = (m_progressBar->value() - m_previousSize)*2;
+    const int delta = (m_progressBar->value() - m_previousSize) * 2;
     m_previousSize = m_progressBar->value();
     m_speedLabel->setText(DownloadUtils::Number::speed2Label(delta));
 
-    m_speedTimeLabel->setText(delta == 0 ? LABEL_MAX_TIME :
-                             timeStandardization((m_totalSize - m_previousSize)/delta + 1));
+    m_speedTimeLabel->setText(delta == 0 ? LABEL_MAX_TIME : timeStandardization((m_totalSize - m_previousSize)/delta + 1));
 }
 
 QString DownloadListItemWidget::timeStandardization(qint64 time)

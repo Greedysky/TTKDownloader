@@ -68,7 +68,6 @@ void DownloadBackgroundListItem::setCloseEnable(bool s)
 void DownloadBackgroundListItem::mousePressEvent(QMouseEvent *event)
 {
     QLabel::mousePressEvent(event);
-
     if(m_closeSet && QRect(width() - 18 - 4, 4, 18, 18).contains(event->pos()))
     {
         emit closeClicked(this);
