@@ -178,7 +178,7 @@ void DownloadHlSaturationPalette::paintEvent(QPaintEvent *event)
     QBrush brush(linearGradient);
     painter.fillRect(rect(), brush);
 
-    QPointF ptfCenter(m_dblVernierX, ntBottm/2.0);
+    QPointF ptfCenter(m_dblVernierX, ntBottm / 2.0);
     painter.setPen(QPen(Qt::black, 2));
     painter.drawEllipse(ptfCenter, 5, 5);
 
@@ -216,7 +216,7 @@ void DownloadHlSaturationPalette::mouseMoveEvent(QMouseEvent *event)
     }
     else
     {
-        QPointF ptfCenter(m_dblVernierX, rect().bottom()/2.0);
+        QPointF ptfCenter(m_dblVernierX, rect().bottom() / 2.0);
         QPainterPath path;
         path.addEllipse(ptfCenter, 7, 7);
         if(path.contains(event->pos()))

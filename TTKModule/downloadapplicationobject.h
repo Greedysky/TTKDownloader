@@ -53,10 +53,6 @@ public Q_SLOTS:
      */
     void appAboutUs();
     /*!
-     * Show version update widget.
-     */
-    void appVersionUpdate();
-    /*!
      * Reset current window geometry.
      */
     void appResetWindow();

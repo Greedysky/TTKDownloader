@@ -21,7 +21,6 @@ DownloadApplicationObject::DownloadApplicationObject(QObject *parent)
     appResetWindow();
 
     m_animation = new QPropertyAnimation(DownloadApplication::instance(), "windowOpacity", this);
-
 }
 
 DownloadApplicationObject::~DownloadApplicationObject()
@@ -41,7 +40,7 @@ void DownloadApplicationObject::windowCloseAnimation()
     float v = M_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
     v = DownloadUtils::Widget::reRenderValue<float>(1.0f, 0.35f, v);
     m_animation->stop();
-    m_animation->setDuration(MT_S2MS/2);
+    m_animation->setDuration(MT_S2MS / 2);
     m_animation->setStartValue(v);
     m_animation->setEndValue(0);
     m_animation->start();
@@ -51,11 +50,6 @@ void DownloadApplicationObject::windowCloseAnimation()
 void DownloadApplicationObject::appAboutUs()
 {
     DownloadMessageAboutDialog().exec();
-}
-
-void DownloadApplicationObject::appVersionUpdate()
-{
-
 }
 
 void DownloadApplicationObject::appResetWindow()
@@ -69,7 +63,7 @@ void DownloadApplicationObject::appResetWindow()
     {
         w->showNormal();
     }
-    w->setGeometry((geometry.width() - WINDOW_WIDTH_MIN)/2, (geometry.height() - WINDOW_HEIGHT_MIN)/2, WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
+    w->setGeometry((geometry.width() - WINDOW_WIDTH_MIN) / 2, (geometry.height() - WINDOW_HEIGHT_MIN) / 2, WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
 }
 
 void DownloadApplicationObject::cleanUp()

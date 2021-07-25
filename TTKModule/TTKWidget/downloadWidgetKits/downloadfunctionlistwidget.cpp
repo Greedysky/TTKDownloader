@@ -73,9 +73,9 @@ void DownloadFunctionItemWidget::paintEvent(QPaintEvent *event)
         painter.fillRect(rect(), QColor(0, 0, 0, 100));
 
         QPolygon py;
-        py.append(QPoint(width(), height()/2 - 7));
-        py.append(QPoint(width() - 7, height()/2));
-        py.append(QPoint(width(), height()/2 + 7));
+        py.append(QPoint(width(), height() / 2 - 7));
+        py.append(QPoint(width() - 7, height() / 2));
+        py.append(QPoint(width(), height() / 2 + 7));
         painter.setPen(Qt::white);
         painter.setBrush(Qt::white);
         painter.drawPolygon(py);
@@ -94,7 +94,7 @@ void DownloadFunctionItemWidget::paintEvent(QPaintEvent *event)
     else
     {
         QPixmap pix(m_enterIn ? m_iconf : m_iconb);
-        painter.drawPixmap((width() - pix.width())/2, 8, pix);
+        painter.drawPixmap((width() - pix.width()) / 2, 8, pix);
     }
 }
 

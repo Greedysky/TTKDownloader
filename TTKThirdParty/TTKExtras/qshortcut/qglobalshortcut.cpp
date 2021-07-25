@@ -40,8 +40,8 @@ bool QGlobalShortcutPrivate::setShortcut(const QKeySequence &shortcut)
 {
     Qt::KeyboardModifiers allMods = Qt::ShiftModifier | Qt::ControlModifier | Qt::AltModifier | Qt::MetaModifier;
 #if TTK_QT_VERSION_CHECK(6,0,0)
-    m_key = shortcut.isEmpty() ? Qt::Key(0) : QKeyCombination((shortcut[0].key() ^ allMods) & shortcut[0]);
-    m_mods = shortcut.isEmpty() ? Qt::KeyboardModifiers(0) : Qt::KeyboardModifiers(shortcut[0].key() & allMods);
+    m_key = shortcut.isEmpty() ? Qt::Key(0) : Qt::Key((shortcut[0].toCombined() ^ allMods) & shortcut[0].toCombined());
+    m_mods = shortcut.isEmpty() ? Qt::KeyboardModifiers(0) : Qt::KeyboardModifiers(shortcut[0].toCombined() & allMods);
 #else
     m_key = shortcut.isEmpty() ? Qt::Key(0) : Qt::Key((shortcut[0] ^ allMods) & shortcut[0]);
     m_mods = shortcut.isEmpty() ? Qt::KeyboardModifiers(0) : Qt::KeyboardModifiers(shortcut[0] & allMods);
