@@ -43,8 +43,11 @@ void DownloadTransitionAnimationLabel::setPixmap(const QPixmap &pix)
 //    {
 //        return;
 //    }
-
+#if TTK_QT_VERSION_CHECK(5,15,0)
+    if(m_noAnimationSet || pixmap(Qt::ReturnByValue).isNull())
+#else
     if(m_noAnimationSet || !pixmap())
+#endif
     {
         m_rendererPixmap = pix;
         QLabel::setPixmap(pix);
