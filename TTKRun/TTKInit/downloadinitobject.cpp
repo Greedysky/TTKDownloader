@@ -23,7 +23,7 @@ void DownloadInitObject::init()
     copyFileOverwrite(":/data/downloadhistory.ttk", S_HISTORYPATH_FULL);
 }
 
-void DownloadInitObject::dirIsExist(const QString &name)
+void DownloadInitObject::directoryExist(const QString &name)
 {
     QDir dir;
     if(!dir.exists(name))
@@ -34,17 +34,17 @@ void DownloadInitObject::dirIsExist(const QString &name)
 
 void DownloadInitObject::checkTheDirectoryExist()
 {
-    dirIsExist(S_APPDATA_DIR_FULL);
-    dirIsExist(S_DOWNLOADS_DIR_FULL);
+    directoryExist(S_APPDATA_DIR_FULL);
+    directoryExist(S_DOWNLOADS_DIR_FULL);
 
-    dirIsExist(S_CACHE_DIR_FULL);
-    dirIsExist(S_UPDATE_DIR_FULL);
+    directoryExist(S_CACHE_DIR_FULL);
+    directoryExist(S_UPDATE_DIR_FULL);
 
-    dirIsExist(S_AVATAR_DIR_FULL);
-    dirIsExist(S_USER_THEME_DIR_FULL);
+    directoryExist(S_AVATAR_DIR_FULL);
+    directoryExist(S_USER_THEME_DIR_FULL);
 
-    dirIsExist(S_THEME_DIR_FULL);
-    dirIsExist(S_LANGUAGE_DIR_FULL);
+    directoryExist(S_THEME_DIR_FULL);
+    directoryExist(S_LANGUAGE_DIR_FULL);
 }
 
 void DownloadInitObject::checkTheFileNeededExist()
