@@ -73,7 +73,6 @@ void DownloadBackgroundRemoteThread::startToDownload()
 void DownloadBackgroundRemoteThread::downLoadDataFinished(const QByteArray &bytes)
 {
     DownloadSkinRemoteGroups items;
-
     DownloadSkinRemoteConfigManager manager;
     if(manager.fromByteArray(bytes))
     {
