@@ -39,7 +39,7 @@ namespace DownloadUtils
         /*!
          * Get pximap data.
          */
-        TTK_MODULE_EXPORT QByteArray getPixmapData(const QPixmap &pix);
+        TTK_MODULE_EXPORT QByteArray GeneratePixmapData(const QPixmap &pix);
 
         /*!
          * Rerender the custum value.
@@ -62,10 +62,6 @@ namespace DownloadUtils
         * Rerender the image by color burn transform.
         */
         TTK_MODULE_EXPORT void reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output);
-        /*!
-         * Image color burn transform.
-         */
-        TTK_MODULE_EXPORT int colorBurnTransform(int c, int delta);
 
         /*!
          * Get open file dialog.

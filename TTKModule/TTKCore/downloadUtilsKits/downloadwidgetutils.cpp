@@ -25,7 +25,7 @@ void DownloadUtils::Widget::fusionPixmap(QPixmap &bg, const QPixmap &fg, const Q
     painter.end();
 }
 
-QByteArray DownloadUtils::Widget::getPixmapData(const QPixmap &pix)
+QByteArray DownloadUtils::Widget::GeneratePixmapData(const QPixmap &pix)
 {
     if(pix.isNull())
     {
@@ -40,6 +40,25 @@ QByteArray DownloadUtils::Widget::getPixmapData(const QPixmap &pix)
     }
     buffer.close();
     return data;
+}
+
+static int colorBurnTransform(int c, int delta)
+{
+    if(0 > delta || delta > 0xFF)
+    {
+        return c;
+    }
+
+    const int result = (c - (c * delta)/(0xFF - delta));
+    if(result > 0xFF)
+    {
+        return 0xFF;
+    }
+    else if(result < 0)
+    {
+        return 0;
+    }
+    return result;
 }
 
 void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output)
@@ -69,25 +88,6 @@ void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *
    g /= size;
    b /= size;
    avg = qRgb(r, g, b);
-}
-
-int DownloadUtils::Widget::colorBurnTransform(int c, int delta)
-{
-    if(0 > delta || delta > 0xFF)
-    {
-        return c;
-    }
-
-    int result = (c - (int)(c*delta)/(0xFF - delta));
-    if(result > 0xFF)
-    {
-        result = 0xFF;
-    }
-    else if(result < 0)
-    {
-        result = 0;
-    }
-    return result;
 }
 
 QString DownloadUtils::Widget::getOpenFileDialog(QWidget *obj)

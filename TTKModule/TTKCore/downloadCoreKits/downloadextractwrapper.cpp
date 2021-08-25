@@ -174,7 +174,7 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
     memset(&fileInfo, 0, sizeof(fileInfo));
 
     zipOpenNewFileInZip(zFile, (nPrefix + SKN_FILE).toLocal8Bit().constData(), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
-    QByteArray data = DownloadUtils::Widget::getPixmapData(image->m_pix);
+    QByteArray data = DownloadUtils::Widget::GeneratePixmapData(image->m_pix);
     zipWriteInFileInZip(zFile, data.constData(), data.size());
     zipCloseFileInZip(zFile);
 
