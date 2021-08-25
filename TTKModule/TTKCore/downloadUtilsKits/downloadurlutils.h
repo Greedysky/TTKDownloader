@@ -38,23 +38,6 @@ namespace DownloadUtils
          */
         TTK_MODULE_EXPORT bool openUrl(const QString &path, bool local = true);
 
-        /*!
-         * Encode the data into url.
-         */
-        TTK_MODULE_EXPORT void urlEncode(QString &data);
-        /*!
-         * Decode the data into url.
-         */
-        TTK_MODULE_EXPORT void urlDecode(QString &data);
-        /*!
-         * Encode the data into url.
-         */
-        TTK_MODULE_EXPORT void urlEncode(QByteArray &data);
-        /*!
-         * Decode the data into url.
-         */
-        TTK_MODULE_EXPORT void urlDecode(QByteArray &data);
-
     }
 }
 

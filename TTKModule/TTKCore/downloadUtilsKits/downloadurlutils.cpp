@@ -40,31 +40,3 @@ bool DownloadUtils::Url::openUrl(const QString &path, bool local)
 #endif
     return QDesktopServices::openUrl(QUrl(path, QUrl::TolerantMode));
 }
-
-void DownloadUtils::Url::urlEncode(QString &data)
-{
-    data.replace('+', "%2B");
-    data.replace('/', "%2F");
-    data.replace('=', "%3D");
-}
-
-void DownloadUtils::Url::urlDecode(QString &data)
-{
-    data.replace("%2B", "+");
-    data.replace("%2F", "/");
-    data.replace("%3D", "=");
-}
-
-void DownloadUtils::Url::urlEncode(QByteArray &data)
-{
-    data.replace('+', "%2B");
-    data.replace('/', "%2F");
-    data.replace('=', "%3D");
-}
-
-void DownloadUtils::Url::urlDecode(QByteArray &data)
-{
-    data.replace("%2B", "+");
-    data.replace("%2F", "/");
-    data.replace("%3D", "=");
-}

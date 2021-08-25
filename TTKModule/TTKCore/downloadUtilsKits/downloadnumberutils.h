@@ -19,7 +19,6 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadnumberdefine.h"
 #include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils number object namespace.
@@ -32,41 +31,11 @@ namespace DownloadUtils
         /*!
          * Transform value to cp float value.
          */
-        TTK_MODULE_EXPORT QString size2Number(qint64 size);
-        /*!
-         * Transform value to cp int value.
-         */
-        TTK_MODULE_EXPORT QString size2NumberInt(qint64 size);
-        /*!
-         * Transform value to cp value.
-         */
-        TTK_MODULE_EXPORT QString size2Label(qint64 size);
+        TTK_MODULE_EXPORT QString sizeByte2Label(qint64 size);
         /*!
          * Transform value to speed float value.
          */
-        TTK_MODULE_EXPORT QString speed2Label(qint64 size);
-        /*!
-         * Transform value to speed int value.
-         */
-        TTK_MODULE_EXPORT QString speed2LabelInt(qint64 size);
-
-        /*!
-         * Transform value to kb entity.
-         */
-        TTK_MODULE_EXPORT qreal sizeByte2KByte(qint64 size);
-        /*!
-         * Transform value to mb entity.
-         */
-        TTK_MODULE_EXPORT qreal sizeByte2MByte(qint64 size);
-        /*!
-         * Transform value to tb entity.
-         */
-        TTK_MODULE_EXPORT qreal sizeByte2TByte(qint64 size);
-
-        /*!
-         * Transform value to speed value base.
-         */
-        TTK_MODULE_EXPORT QString speed2LabelFromLabel(qint64 size, const QString &label);
+        TTK_MODULE_EXPORT QString speedByte2Label(qint64 size);
 
     }
 }

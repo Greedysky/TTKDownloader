@@ -116,7 +116,7 @@ void DownloadListItemWidget::progressChanged(qint64 current, qint64 total)
 void DownloadListItemWidget::updateFileInfoChanged(const QString &name, qint64 size)
 {
     m_fileNameLabel->setText(name);
-    m_fileSizeLabel->setText(DownloadUtils::Number::size2Label(m_totalSize = size));
+    m_fileSizeLabel->setText(DownloadUtils::Number::sizeByte2Label(m_totalSize = size));
     QFileIconProvider provider;
     QPixmap pix(provider.icon(QFileInfo(name)).pixmap(40, 40));
     if(pix.isNull())
@@ -146,7 +146,7 @@ void DownloadListItemWidget::updateDownloadSpeed()
 {
     const int delta = (m_progressBar->value() - m_previousSize) * 2;
     m_previousSize = m_progressBar->value();
-    m_speedLabel->setText(DownloadUtils::Number::speed2Label(delta));
+    m_speedLabel->setText(DownloadUtils::Number::speedByte2Label(delta));
 
     m_speedTimeLabel->setText(delta == 0 ? LABEL_MAX_TIME : timeStandardization((m_totalSize - m_previousSize)/delta + 1));
 }

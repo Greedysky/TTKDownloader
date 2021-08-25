@@ -19,8 +19,6 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-#include "downloadobject.h"
-#include "downloadnumberdefine.h"
 #include "ttkglobaldefine.h"
 
 /*! @brief The class of the utils core object namespace.
@@ -35,41 +33,13 @@ namespace DownloadUtils
          */
         TTK_MODULE_EXPORT QString downloadPrefix();
         /*!
-         * Get file suffix path.
-         */
-        TTK_MODULE_EXPORT QString fileSuffix(const QString &name);
-
-        /*!
-         * Get given dir size.
-         */
-        TTK_MODULE_EXPORT quint64 dirSize(const QString &dirName);
-        /*!
-         * Check given dir size is bigger than given size.
-         */
-        TTK_MODULE_EXPORT void checkCacheSize(quint64 cacheSize, bool disabled, const QString &path);
-        /*!
-         * To find file by dir path.
-         */
-        TTK_MODULE_EXPORT QFileInfoList findFile(const QString &path, const QStringList &filter);
-
-        /*!
          * Get Language Name by given index.
          */
         TTK_MODULE_EXPORT QString getLanguageName(int index);
-
         /*!
          * Dir remove recursively.
          */
         TTK_MODULE_EXPORT bool removeRecursively(const QString &dir);
-
-        /*!
-         * App version check.
-         */
-        TTK_MODULE_EXPORT bool appVersionCheck(const QStringList &ol, const QStringList &dl, int depth);
-        /*!
-         * App version check.
-         */
-        TTK_MODULE_EXPORT bool appVersionCheck(const QString &o, const QString &d);
 
     }
 }

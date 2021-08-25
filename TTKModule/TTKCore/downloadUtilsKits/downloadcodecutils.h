@@ -29,29 +29,9 @@ namespace DownloadUtils
     namespace Codec
     {
         /*!
-         * Set string to unicode string by format.
-         */
-        TTK_MODULE_EXPORT QString toUnicode(const char *chars, const char *format = "GBK");
-        /*!
-         * Set string to unicode string by format.
-         */
-        TTK_MODULE_EXPORT QString toUnicode(const QByteArray &chars, const char *format = "GBK");
-        /*!
-         * Set string from unicode string by format.
-         */
-        TTK_MODULE_EXPORT QByteArray fromUnicode(const QString &chars, const char *format = "GBK");
-        /*!
          * Set local codec by format.
          */
         TTK_MODULE_EXPORT void setLocalCodec(const char *format = "utf-8");
-        /*!
-         * Trasform string to local 8bit char.
-         */
-        TTK_MODULE_EXPORT const char *toLocal8Bit(const QString &str);
-        /*!
-         * Trasform string to utf8 char.
-         */
-        TTK_MODULE_EXPORT const char *toUtf8(const QString &str);
 
     }
 }
