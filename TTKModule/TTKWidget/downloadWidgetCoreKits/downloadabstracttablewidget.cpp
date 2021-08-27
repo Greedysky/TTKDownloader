@@ -5,7 +5,11 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     : QTableWidget(parent)
 {
     setAttribute(Qt::WA_TranslucentBackground);
+#if TTK_QT_VERSION_CHECK(6,2,0)
+    setFont(QFont(QStringList() << "Helvetica"));
+#else
     setFont(QFont("Helvetica"));
+#endif
     setColumnCount(3);
     setRowCount(0);
     setShowGrid(false);//Does not display the grid
