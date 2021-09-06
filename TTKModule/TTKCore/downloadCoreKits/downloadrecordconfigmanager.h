@@ -31,7 +31,7 @@ typedef struct TTK_MODULE_EXPORT DownloadRecord
     QString m_size;
     QString m_url;
 }DownloadRecord;
-TTK_DECLARE_LISTS(DownloadRecord)
+TTK_DECLARE_LIST(DownloadRecord)
 
 /*! @brief The class of the download record manager.
  * @author Greedysky <greedysky@163.com>

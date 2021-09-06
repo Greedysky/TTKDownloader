@@ -40,7 +40,7 @@ typedef struct TTK_MODULE_EXPORT DownloadXmlAttribute
         m_value = value;
     }
 }DownloadXmlAttribute;
-TTK_DECLARE_LISTS(DownloadXmlAttribute)
+TTK_DECLARE_LIST(DownloadXmlAttribute)
 
 /*! @brief The class of the base class of xml interface.
  * @author Greedysky <greedysky@163.com>

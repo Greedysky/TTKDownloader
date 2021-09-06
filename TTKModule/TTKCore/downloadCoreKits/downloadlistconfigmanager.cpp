@@ -6,7 +6,7 @@ DownloadListConfigManager::DownloadListConfigManager(QObject *parent)
 
 }
 
-void DownloadListConfigManager::writeListConfig(const DownloadLists &records)
+void DownloadListConfigManager::writeListConfig(const DownloadItems &records)
 {
     if(!writeConfig(LISTPATH_FULL))
     {
@@ -17,7 +17,7 @@ void DownloadListConfigManager::writeListConfig(const DownloadLists &records)
     QDomElement player = createRoot(APPNAME);
     QDomElement download = writeDom(player, "list");
 
-    for(const DownloadList &record : qAsConst(records))
+    for(const DownloadItem &record : qAsConst(records))
     {
         writeDomElementMutil(download, "value", DownloadXmlAttributes() << DownloadXmlAttribute("url", record.m_url)
                                              << DownloadXmlAttribute("name", record.m_name));
@@ -28,13 +28,13 @@ void DownloadListConfigManager::writeListConfig(const DownloadLists &records)
     m_ddom->save(out, 4);
 }
 
-void DownloadListConfigManager::readListConfig(DownloadLists &records)
+void DownloadListConfigManager::readListConfig(DownloadItems &records)
 {
     QDomNodeList nodelist = m_ddom->elementsByTagName("value");
     for(int i=0; i<nodelist.count(); ++i)
     {
         const QDomElement element = nodelist.at(i).toElement();
-        DownloadList record;
+        DownloadItem record;
         record.m_url = element.attribute("url");
         record.m_name = element.attribute("name");
         records << record;

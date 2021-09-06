@@ -43,7 +43,7 @@ typedef struct TTK_MODULE_EXPORT DownloadBreakPointItem
         return m_start == 0 && m_end == 0 && m_ready == 0;
     }
 }DownloadBreakPointItem;
-TTK_DECLARE_LISTS(DownloadBreakPointItem)
+TTK_DECLARE_LIST(DownloadBreakPointItem)
 
 /*! @brief The class of the break point config manager.
  * @author Greedysky <greedysky@163.com>

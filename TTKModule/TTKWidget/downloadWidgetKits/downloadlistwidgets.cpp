@@ -33,17 +33,17 @@ DownloadListWidgets::DownloadListWidgets(QWidget *parent)
 DownloadListWidgets::~DownloadListWidgets()
 {
     m_speedTimer.stop();
-    DownloadLists lists;
+    DownloadItems list;
     for(DownloadUnits *item : qAsConst(m_itemList))
     {
-        DownloadList list;
-        list.m_url = item->getUrl();
-        list.m_name = QFileInfo(item->getDownloadedPath()).fileName();
-        lists << list;
+        DownloadItem it;
+        it.m_url = item->getUrl();
+        it.m_name = QFileInfo(item->getDownloadedPath()).fileName();
+        list << it;
     }
 
     DownloadListConfigManager xml;
-    xml.writeListConfig(lists);
+    xml.writeListConfig(list);
 
     clearItems();
 }
@@ -56,15 +56,15 @@ void DownloadListWidgets::init()
         return;
     }
 
-    DownloadLists lists;
-    xml.readListConfig(lists);
+    DownloadItems list;
+    xml.readListConfig(list);
 
-    for(const DownloadList &list : qAsConst(lists))
+    for(const DownloadItem &it : qAsConst(list))
     {
-        QString url = list.m_url.trimmed();
+        QString url = it.m_url.trimmed();
         if(!url.isEmpty() && !findUrl(url))
         {
-            addItemToList(url, list.m_name);
+            addItemToList(url, it.m_name);
         }
     }
 }

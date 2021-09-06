@@ -42,7 +42,7 @@ typedef struct TTK_MODULE_EXPORT DownloadSkinConfigItem
     }
 
 }DownloadSkinConfigItem;
-TTK_DECLARE_LISTS(DownloadSkinConfigItem)
+TTK_DECLARE_LIST(DownloadSkinConfigItem)
 
 /*! @brief The class of the skin backgroud image item.
  * @author Greedysky <greedysky@163.com>
@@ -58,7 +58,7 @@ typedef struct TTK_MODULE_EXPORT DownloadBackgroundImage
     }
 
 }DownloadBackgroundImage;
-TTK_DECLARE_LISTS(DownloadBackgroundImage)
+TTK_DECLARE_LIST(DownloadBackgroundImage)
 
 
 /*! @brief The class of the skin XML Config Manager.

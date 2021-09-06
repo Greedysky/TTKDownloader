@@ -42,7 +42,7 @@ typedef struct TTK_MODULE_EXPORT DownloadFunctionItem
     QString m_icon;
     QString m_name;
 }DownloadFunctionItem;
-TTK_DECLARE_LISTS(DownloadFunctionItem)
+TTK_DECLARE_LIST(DownloadFunctionItem)
 
 /*! @brief The class of the list table widget.
  * @author Greedysky <greedysky@163.com>

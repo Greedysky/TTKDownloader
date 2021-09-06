@@ -29,7 +29,7 @@ typedef struct TTK_MODULE_EXPORT DownloadQueueData
     QString m_url;        ///*download url*/
     QString m_savePath;   ///*save local path*/
 }DownloadQueueData;
-TTK_DECLARE_LISTS(DownloadQueueData)
+TTK_DECLARE_LIST(DownloadQueueData)
 
 /*! @brief The class to download data from cache queue.
  * @author Greedysky <greedysky@163.com>

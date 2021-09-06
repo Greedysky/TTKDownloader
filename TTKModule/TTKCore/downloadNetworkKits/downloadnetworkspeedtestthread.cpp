@@ -122,13 +122,13 @@ void DownloadNetworkSpeedTestThread::outputRecieved()
     while(m_process->canReadLine())
     {
         QByteArray datas = m_process->readLine();
-        QStringList lists = QString(datas).split("|");
+        QStringList list = QString(datas).split("|");
         ulong upload = 0, download = 0;
 
-        if(lists.count() == 3)
+        if(list.count() == 3)
         {
-            download= lists[1].trimmed().toULong();
-            upload  = lists[2].trimmed().toULong();
+            download= list[1].trimmed().toULong();
+            upload  = list[2].trimmed().toULong();
         }
         emit networkData(upload, download);
     }
