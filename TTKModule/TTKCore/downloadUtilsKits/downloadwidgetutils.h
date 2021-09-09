@@ -44,7 +44,7 @@ namespace DownloadUtils
         /*!
          * Rerender the custum value.
          */
-        template<class T>
+        template <typename T>
         TTK_MODULE_EXPORT T reRenderValue(const T &key, const T &alpha, const T &value)
         {
             if(alpha < 0)
