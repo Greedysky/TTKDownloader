@@ -19,17 +19,17 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ================================================= */
 
-//update time 2021.06.26
-#define DOWNLOAD_VERSION_STR    "2.3.0.0"
-#define DOWNLOAD_VERSION_WSTR   L"2.3.0.0"
-#define DOWNLOAD_VER_TIME_STR   "(2021/06/26)"
+//update time 2021.10.27
+#define DOWNLOAD_VERSION_STR    "2.3.1.0"
+#define DOWNLOAD_VERSION_WSTR   L"2.3.1.0"
+#define DOWNLOAD_VER_TIME_STR   "(2021/10/27)"
 
 #define DOWNLOAD_MAJOR_VERSION 2
 #define DOWNLOAD_MIDLE_VERSION 3
-#define DOWNLOAD_MINOR_VERSION 0
+#define DOWNLOAD_MINOR_VERSION 1
 #define DOWNLOAD_PATCH_VERSION 0
 
-#define DOWNLOAD_VERSION 0x02300
+#define DOWNLOAD_VERSION 0x02310
 
 #define TTK_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 
