@@ -36,7 +36,7 @@
 #define TTK_LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/" + LANGUAGE_DIR
 
 #ifdef Q_OS_WIN
-#define TTK_TTKSERVICE_FULL         DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.exe"
+#define TTK_SERVICE_FULL            DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.exe"
 #else
 #define TTK_DOWNLOADER_FULL         DownloadObject::getAppDir() + "TTKDownloader.sh"
 #define TTK_ROUTINE_FULL            DownloadObject::getAppDir() + "TTKRoutine.sh"
