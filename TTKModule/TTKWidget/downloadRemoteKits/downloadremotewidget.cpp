@@ -30,9 +30,16 @@ DownloadRemoteWidget::~DownloadRemoteWidget()
 
 void DownloadRemoteWidget::setValue(int value)
 {
-    if(value > 100) value = 100;
-    else if(value < 0) value = 0;
-    m_value = height()*1.0f/100*value;
+    if(value > 100)
+    {
+        value = 100;
+    }
+    else if(value < 0)
+    {
+        value = 0;
+    }
+
+    m_value = height() * 1.0f / 100 * value;
     update();
 }
 
@@ -90,6 +97,6 @@ void DownloadRemoteWidget::paintEvent(QPaintEvent *event)
     if(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool())
     {
         painter.setPen(Qt::white);
-        painter.drawText(rect(), Qt::AlignCenter, QString("%1%").arg(m_value*100/height()));
+        painter.drawText(rect(), Qt::AlignCenter, QString("%1%").arg(ceil(m_value * 100.0 / height())));
     }
 }

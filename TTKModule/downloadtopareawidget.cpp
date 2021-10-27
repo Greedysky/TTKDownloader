@@ -81,6 +81,7 @@ void DownloadTopAreaWidget::showRemoteSpeedWidget()
     {
         return;
     }
+
     m_remoteWidget = new DownloadRemoteWidget;
     m_remoteWidget->show();
 }

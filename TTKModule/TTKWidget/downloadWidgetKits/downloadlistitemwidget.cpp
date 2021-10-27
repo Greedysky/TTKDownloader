@@ -19,6 +19,7 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     setFixedHeight(70);
 
     connect(&m_timer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));
+    m_currentSize = 0;
     m_previousSize = 0;
     m_totalSize = 0;
 
@@ -48,7 +49,7 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
 
     m_progressBar = new QProgressBar(speedWidget);
     m_progressBar->setFixedHeight(13);
-    m_progressBar->setValue(0);
+    m_progressBar->setMaximum(100);
     speedWidgetLayout->addWidget(m_progressBar);
 
     QWidget *speedInfoWidget = new QWidget(speedWidget);
@@ -89,12 +90,7 @@ DownloadListItemWidget::~DownloadListItemWidget()
 
 float DownloadListItemWidget::getPercent() const
 {
-    if(m_progressBar->maximum() <= 0)
-    {
-        return 0.0f;
-    }
-
-    return m_progressBar->value()*1.0f/m_progressBar->maximum();
+    return m_progressBar->value();
 }
 
 void DownloadListItemWidget::backgroundChanged()
@@ -109,8 +105,8 @@ void DownloadListItemWidget::backgroundChanged()
 
 void DownloadListItemWidget::progressChanged(qint64 current, qint64 total)
 {
-    m_progressBar->setRange(0, total);
-    m_progressBar->setValue(current);
+    m_currentSize = current;
+    m_progressBar->setValue(current * 100.0f / total);
 }
 
 void DownloadListItemWidget::updateFileInfoChanged(const QString &name, qint64 size)
@@ -144,8 +140,8 @@ void DownloadListItemWidget::stateChanged(const QString &state)
 
 void DownloadListItemWidget::updateDownloadSpeed()
 {
-    const int delta = (m_progressBar->value() - m_previousSize) * 2;
-    m_previousSize = m_progressBar->value();
+    const int delta = (m_currentSize - m_previousSize) * 2;
+    m_previousSize = m_currentSize;
     m_speedLabel->setText(DownloadUtils::Number::speedByte2Label(delta));
 
     m_speedTimeLabel->setText(delta == 0 ? LABEL_MAX_TIME : timeStandardization((m_totalSize - m_previousSize)/delta + 1));

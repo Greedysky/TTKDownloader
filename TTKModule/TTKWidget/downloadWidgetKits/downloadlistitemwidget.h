@@ -75,7 +75,7 @@ protected:
      */
     QString timeStandardization(qint64 time);
 
-    qint64 m_previousSize, m_totalSize;
+    qint64 m_currentSize, m_previousSize, m_totalSize;
     QTimer m_timer;
 
     QLabel *m_iconLabel, *m_fileNameLabel, *m_fileSizeLabel;

@@ -294,7 +294,7 @@ void DownloadListWidgets::updateTotalSpeedLabel()
     {
         total += item->getDownloadItemWidget()->getPercent();
     }
-    DownloadTopAreaWidget::instance()->updateRemoteSpeedText(m_itemList.isEmpty() ? 0 : ceil(total/m_itemList.count()*100));
+    DownloadTopAreaWidget::instance()->updateRemoteSpeedText(m_itemList.isEmpty() ? 0 : ceil(total / m_itemList.count()));
 }
 
 void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
