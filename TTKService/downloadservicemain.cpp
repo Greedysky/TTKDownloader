@@ -43,9 +43,9 @@ int main(int argc, char *argv[])
     }
 #endif
     ///////////////////////////////////////////////////////
-    QCoreApplication::setOrganizationName(APPNAME);
-    QCoreApplication::setOrganizationDomain(APPCOME);
-    QCoreApplication::setApplicationName(APPNAME);
+    QCoreApplication::setOrganizationName(APP_NAME);
+    QCoreApplication::setOrganizationDomain(APP_COME_NAME);
+    QCoreApplication::setApplicationName(APP_NAME);
 
     TTKDumper dumper;
     dumper.run();

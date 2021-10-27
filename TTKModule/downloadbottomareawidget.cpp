@@ -103,14 +103,14 @@ void DownloadBottomAreaWidget::downloadSettingButtonClicked()
     m_toolPopupMenu->setStyleSheet(DownloadUIObject::MMenuStyle02);
 
     QPixmap pix(17, 17);
-    pix.fill(M_BACKGROUND_PTR->getMBackgroundColor());
+    pix.fill(G_BACKGROUND_PTR->getMBackgroundColor());
     DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_protection"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Speed Protection"));
-    pix.fill(M_BACKGROUND_PTR->getMBackgroundColor());
+    pix.fill(G_BACKGROUND_PTR->getMBackgroundColor());
     DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_custom"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Custom Speed Limit"));
     m_toolPopupMenu->addSeparator();
-    pix.fill(M_BACKGROUND_PTR->getMBackgroundColor());
+    pix.fill(G_BACKGROUND_PTR->getMBackgroundColor());
     DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_setting"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("More Setting..."));
 
@@ -141,7 +141,7 @@ void DownloadBottomAreaWidget::expandButtonClicked()
 {
     if(m_expandMode)
     {
-        M_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 0);
+        G_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 0);
         m_ui->leftWidget->setMinimumWidth(205);
         m_ui->leftWidget->setMaximumWidth(205);
         m_ui->expandButton->setLabelIcon(":/functions/lb_left");
@@ -150,7 +150,7 @@ void DownloadBottomAreaWidget::expandButtonClicked()
     }
     else
     {
-        M_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 135);
+        G_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 135);
         m_ui->leftWidget->setMinimumWidth(70);
         m_ui->leftWidget->setMaximumWidth(70);
         m_ui->expandButton->setLabelIcon(":/functions/lb_right");

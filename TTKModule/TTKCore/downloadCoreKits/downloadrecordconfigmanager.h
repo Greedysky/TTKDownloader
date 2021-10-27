@@ -49,7 +49,7 @@ public:
     /*!
      * Read history download datas from xml file by given name.
      */
-    inline bool readDownloadXMLConfig() { return readConfig(HISTORYPATH_FULL); }
+    inline bool readDownloadXMLConfig() { return readConfig(HISTORY_PATH_FULL); }
 
     /*!
      * Write history download datas into xml file.

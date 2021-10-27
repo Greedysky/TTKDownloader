@@ -29,7 +29,7 @@ void DownloadRunTimeManager::run() const
     ///////////////////////////////////////////////////////
     QFont font;
     QStringList fts(QFontDatabase().families(QFontDatabase::Any));
-    int index = M_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
+    int index = G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
     if(index >= 0 && index < fts.count())
     {
         font.setFamily(fts[index]);
@@ -41,9 +41,9 @@ void DownloadRunTimeManager::run() const
     ///////////////////////////////////////////////////////
 
     //detect the current network state
-    M_NETWORK_PTR->start();
-    index = M_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt();
-    M_NETWORK_PTR->setBlockNetWork(index);
+    G_NETWORK_PTR->start();
+    index = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt();
+    G_NETWORK_PTR->setBlockNetWork(index);
 
     delete xml;
     TTK_LOGGER_INFO("End load translation");

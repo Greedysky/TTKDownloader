@@ -22,7 +22,7 @@
 #include "ttksingleton.h"
 #include "ttkglobaldefine.h"
 
-#define M_HOTKEY_PTR (TTKSingleton<DownloadHotKeyManager>::createInstance())
+#define G_HOTKEY_PTR (TTKSingleton<DownloadHotKeyManager>::createInstance())
 
 class QGlobalShortcut;
 

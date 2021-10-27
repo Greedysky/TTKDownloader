@@ -24,7 +24,7 @@
 #include "ttksingleton.h"
 #include "ttkglobaldefine.h"
 
-#define M_SETTING_PTR (TTKSingleton<DownloadSettingManager>::createInstance())
+#define G_SETTING_PTR (TTKSingleton<DownloadSettingManager>::createInstance())
 
 /*! @brief The class of the paramater setting manager.
  * @author Greedysky <greedysky@163.com>

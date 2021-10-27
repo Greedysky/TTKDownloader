@@ -47,7 +47,7 @@ public:
     /*!
      * Read list download datas from xml file by given name.
      */
-    inline bool readListXMLConfig() { return readConfig(LISTPATH_FULL); }
+    inline bool readListXMLConfig() { return readConfig(LIST_PATH_FULL); }
 
     /*!
      * Write list download datas into xml file.

@@ -96,7 +96,7 @@ QPixmap DownloadBackgroundSkinDialog::setMBackground(QString &name)
 {
     QString path = USER_THEME_DIR_FULL + name + TTS_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(name, path);
-    M_BACKGROUND_PTR->setMBackground(path);
+    G_BACKGROUND_PTR->setMBackground(path);
 
     DownloadBackgroundImage image;
     return DownloadExtractWrapper::outputSkin(&image, path) ? image.m_pix : QPixmap();
@@ -270,8 +270,8 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
     QString s(name);
     QString path = USER_THEME_DIR_FULL + s + TTS_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(s, path);
-    M_BACKGROUND_PTR->setMBackground(path);
-    emit M_BACKGROUND_PTR->backgroundHasChanged();
+    G_BACKGROUND_PTR->setMBackground(path);
+    emit G_BACKGROUND_PTR->backgroundHasChanged();
 }
 
 void DownloadBackgroundSkinDialog::addThemeListWidgetItem()

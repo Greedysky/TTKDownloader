@@ -38,7 +38,7 @@ public:
     /*!
      * Read config datas from xml file by given name.
      */
-    inline bool readXMLConfig() { return readConfig(COFIGPATH_FULL); }
+    inline bool readXMLConfig() { return readConfig(COFIG_PATH_FULL); }
 
     /*!
      * Write datas into xml file.

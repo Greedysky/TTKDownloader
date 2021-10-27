@@ -50,13 +50,13 @@ void TTKRunObject::checkValid()
 void TTKRunObject::run(int argc, char **argv)
 {
     TTK_D(TTKRunObject);
-    QStringList list(APPNAME);
+    QStringList list(APP_NAME);
     if(argc == 3)
     {
         list << argv[1] << argv[2];
     }
 
-    d->m_process->start(S_TTKSERVICE_FULL, list);
+    d->m_process->start(TTK_SERVICE_FULL, list);
 }
 
 void TTKRunObject::finished(int code)

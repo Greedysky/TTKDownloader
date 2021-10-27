@@ -65,9 +65,9 @@ void DownLoadThreadAbstract::updateDownloadSpeed()
     int delta = m_currentReceived - m_hasReceived;
     //////////////////////////////////////
     ///limit speed
-    if(M_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 0)
+    if(G_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 0)
     {
-        int limitValue = M_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toInt();
+        int limitValue = G_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toInt();
         if(limitValue != 0 && delta > limitValue*MH_KB)
         {
 #if defined Q_OS_WIN && TTK_QT_VERSION_CHECK(5,0,0)

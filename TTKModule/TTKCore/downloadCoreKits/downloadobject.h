@@ -24,90 +24,78 @@
 #include "ttkglobal.h"
 
 #define DOT                     "."
-
-///////////////////////////////////////
-#define APPNAME                 "TTKDownloader"
-#define APPDOT                  "TTKDownloader."
-#define APPCOME                 "TTKDownloader.com"
-///////////////////////////////////////
-
-#define APPDATA_DIR             "AppData/"
-#define DOWNLOADS_DIR           "Downloads/"
-
-#define THEME_DIR               "MTheme/"
-#define CACHE_DIR               "MCached/"
-#define UPDATE_DIR              "MUpdate/"
-#define TDDOWNLOAD_DIR          "TDDOWNLOAD/"
-#define AVATAR_DIR              "avatar/"
-#define USER_THEME_DIR          "theme/"
-#define LANGUAGE_DIR            "MLanguage/"
-#define TEMPORARY_DIR           "temporary"
-
+//
 #define TTS_FILE_PREFIX         "ttks"
 #define SKN_FILE_PREFIX         "skn"
 #define JPG_FILE_PREFIX         "jpg"
-#define BMP_FILE_PREFIX         "bmp"
-#define PNG_FILE_PREFIX         "png"
-#define LRC_FILE_PREFIX         "lrc"
-#define KRC_FILE_PREFIX         "krc"
-#define MP3_FILE_PREFIX         "mp3"
 #define CFG_FILE_PREFIX         "ttk"
 #define LST_FILE_PREFIX         "tkpl"
 #define EXE_FILE_PREFIX         "exe"
 #define XML_FILE_PREFIX         "xml"
 #define SET_FILE_PREFIX         "stk"
+#define COM_FILE_PREFIX         "com"
 
 #define TTS_FILE                TTK_STRCAT(DOT, TTS_FILE_PREFIX)
 #define SKN_FILE                TTK_STRCAT(DOT, SKN_FILE_PREFIX)
 #define JPG_FILE                TTK_STRCAT(DOT, JPG_FILE_PREFIX)
-#define BMP_FILE                TTK_STRCAT(DOT, BMP_FILE_PREFIX)
-#define PNG_FILE                TTK_STRCAT(DOT, PNG_FILE_PREFIX)
-#define LRC_FILE                TTK_STRCAT(DOT, LRC_FILE_PREFIX)
-#define KRC_FILE                TTK_STRCAT(DOT, KRC_FILE_PREFIX)
-#define MP3_FILE                TTK_STRCAT(DOT, MP3_FILE_PREFIX)
-#define CFG_FILE                TTK_STRCAT(DOT, CFG_FILE_PREFIX)
-#define LST_FILE                TTK_STRCAT(DOT, LST_FILE_PREFIX)
 #define EXE_FILE                TTK_STRCAT(DOT, EXE_FILE_PREFIX)
 #define XML_FILE                TTK_STRCAT(DOT, XML_FILE_PREFIX)
 #define SET_FILE                TTK_STRCAT(DOT, SET_FILE_PREFIX)
+#define COM_FILE                TTK_STRCAT(DOT, COM_FILE_PREFIX)
 
-#define MAKENETS                "avnets.sh"
-#define LISTPATH                "download.tkpl"
-#define COFIGPATH               "downloadconfig.xml"
-#define HISTORYPATH             "downloadhistory.ttk"
 
-///////////////////////////////////////
-#define APPDATA_DIR_FULL        DownloadObject::getAppDir() + QString("../") + APPDATA_DIR
-#define DOWNLOADS_DIR_FULL      DownloadObject::getAppDir() + QString("../") + DOWNLOADS_DIR
+#define APP_NAME                "TTKDownloader"
+#define APP_DOT_NAME            TTK_STRCAT(APP_NAME, DOT)
+#define APP_COME_NAME           TTK_STRCAT(APP_NAME, COM_FILE)
+#define APP_EXE_NAME            TTK_STRCAT(APP_NAME, EXE_FILE)
 
-#define TEMPORARY_DIR_FULL      DOWNLOADS_DIR_FULL + TEMPORARY_DIR
-#define CACHE_DIR_FULL          DOWNLOADS_DIR_FULL + CACHE_DIR
-#define UPDATE_DIR_FULL         DOWNLOADS_DIR_FULL + UPDATE_DIR
-#define TDDOWNLOAD_DIR_FULL     DOWNLOADS_DIR_FULL + TDDOWNLOAD_DIR
 
-#define MAKENETS_FULL           APPDATA_DIR_FULL + MAKENETS
-#define LISTPATH_FULL           APPDATA_DIR_FULL + LISTPATH
-#define COFIGPATH_FULL          APPDATA_DIR_FULL + COFIGPATH
-#define HISTORYPATH_FULL        APPDATA_DIR_FULL + HISTORYPATH
-#define AVATAR_DIR_FULL         APPDATA_DIR_FULL + AVATAR_DIR
+#define APPDATA_DIR             "AppData/"
+#define APPCACHE_DIR            "AppCache/"
+
+#define THEME_DIR               "MTheme/"
+#define LANGUAGE_DIR            "MLanguage/"
+
+#define TDDOWNLOAD_DIR          "TDDOWNLOAD/"
+
+#define USER_THEME_DIR          "theme/"
+
+
+#define MAKE_NETS               "avnets.sh"
+#define LIST_PATH               "list.tkpl"
+#define COFIG_PATH              "config.xml"
+#define HISTORY_PATH            "history.ttk"
+
+
+#define MAIN_DIR_FULL           DownloadObject::getAppDir() + "../"
+#define APPDATA_DIR_FULL        DownloadObject::getConfigDir() + APPDATA_DIR
+#define APPCACHE_DIR_FULL       DownloadObject::getConfigDir() + APPCACHE_DIR
+#define TDDOWNLOAD_DIR_FULL     MAIN_DIR_FULL + TDDOWNLOAD_DIR
+
+
+#define MAKE_NETS_FULL          APPDATA_DIR_FULL + MAKE_NETS
+#define LIST_PATH_FULL          APPDATA_DIR_FULL + LIST_PATH
+#define COFIG_PATH_FULL         APPDATA_DIR_FULL + COFIG_PATH
+#define HISTORY_PATH_FULL       APPDATA_DIR_FULL + HISTORY_PATH
 #define USER_THEME_DIR_FULL     APPDATA_DIR_FULL + USER_THEME_DIR
 
 #define THEME_DIR_FULL          DownloadObject::getAppDir() + THEME_DIR
 #define LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + LANGUAGE_DIR
 
-///////////////////////////////////////
+
 #define WINDOW_WIDTH_MIN        1000
 #define WINDOW_HEIGHT_MIN       690
-///////////////////////////////////////
+//
 #define DEFAULT_INDEX_LEVEL0    -1
 #define DEFAULT_INDEX_LEVEL1    -999
 #define DEFAULT_INDEX_LEVEL2    -888
 #define DEFAULT_INDEX_LEVEL3    -777
 #define DEFAULT_INDEX_LEVEL4    -666
 #define DEFAULT_INDEX_LEVEL5    -555
-///////////////////////////////////////
-#define STRING_SPLITER          "*|||*"
-///////////////////////////////////////
+//
+#define STRING_NULL             "-"
+#define URL_NULL                "null"
+
 
 /*! @brief The namespace of the application object.
  * @author Greedysky <greedysky@163.com>
@@ -122,6 +110,17 @@ namespace DownloadObject
         return QCoreApplication::applicationDirPath() + "/";
     }
 
+    /*!
+     * Get config dir.
+     */
+    static QString getConfigDir()
+    {
+#ifdef Q_OS_WIN
+        return QString::fromLocal8Bit(getenv("APPDATA")) + "/ttkdl/";
+#else
+        return QDir::homePath() + "/.config/ttkdl/";
+#endif
+    }
 }
 
 #endif // DOWNLOADOBJECT_H

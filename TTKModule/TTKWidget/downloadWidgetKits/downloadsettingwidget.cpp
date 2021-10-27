@@ -107,9 +107,9 @@ DownloadSettingWidget::~DownloadSettingWidget()
 
 void DownloadSettingWidget::initControllerParameter()
 {
-    m_ui->downloadDirEdit->setText(M_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString());
+    m_ui->downloadDirEdit->setText(G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString());
 
-    if(!M_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toBool())
+    if(!G_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toBool())
     {
         m_ui->minimumRadioBox->setChecked(true);
     }
@@ -118,22 +118,22 @@ void DownloadSettingWidget::initControllerParameter()
         m_ui->quitRadioBox->setChecked(true);
     }
 
-    m_ui->startupCheckBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::StartUpModeChoiced).toBool());
-    m_ui->startupRunCheckBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::StartUpRunModeChoiced).toBool());
-    m_ui->slienceRunCheckBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::SlienceRunModeChoiced).toBool());
+    m_ui->startupCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpModeChoiced).toBool());
+    m_ui->startupRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpRunModeChoiced).toBool());
+    m_ui->slienceRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SlienceRunModeChoiced).toBool());
 
     ///////////////////////////////////////////////////////////////////////////
-    M_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 1 ?
+    G_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 1 ?
                          m_ui->downloadFullRadioBox->click() : m_ui->downloadLimitRadioBox->click();
-    m_ui->defaultDownloadModeBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::DownloadModeChoiced).toInt());
-    m_ui->downloadMaxCountBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCountChoiced).toInt());
+    m_ui->defaultDownloadModeBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadModeChoiced).toInt());
+    m_ui->downloadMaxCountBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCountChoiced).toInt());
 
     ///////////////////////////////////////////////////////////////////////////
-    m_ui->effectLevelBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt());
-    m_ui->fontBox->setCurrentIndex(M_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt());
+    m_ui->effectLevelBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt());
+    m_ui->fontBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt());
 
-    m_ui->suspensionVisiableBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool());
-    m_ui->suspensionShowPerBox->setChecked(M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool());
+    m_ui->suspensionVisiableBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool());
+    m_ui->suspensionShowPerBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool());
 
 }
 
@@ -165,22 +165,22 @@ void DownloadSettingWidget::downloadGroupSpeedLimit(int index)
 
 void DownloadSettingWidget::commitTheResults()
 {
-    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, m_ui->downloadDirEdit->text());
-    M_SETTING_PTR->setValue(DownloadSettingManager::CloseEventChoiced, m_ui->quitRadioBox->isChecked());
-    M_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced, m_ui->startupCheckBox->isChecked());
-    M_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced, m_ui->startupRunCheckBox->isChecked());
-    M_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced, m_ui->slienceRunCheckBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, m_ui->downloadDirEdit->text());
+    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventChoiced, m_ui->quitRadioBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced, m_ui->startupCheckBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced, m_ui->startupRunCheckBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced, m_ui->slienceRunCheckBox->isChecked());
 
     ///////////////////////////////////////////////////////////////////////////
-    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced, m_ui->downloadFullRadioBox->isChecked());
-    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced, m_ui->defaultDownloadModeBox->currentIndex());
-    M_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced, m_ui->downloadMaxCountBox->currentIndex());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced, m_ui->downloadFullRadioBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced, m_ui->defaultDownloadModeBox->currentIndex());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced, m_ui->downloadMaxCountBox->currentIndex());
 
     ///////////////////////////////////////////////////////////////////////////
-    M_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced, m_ui->effectLevelBox->currentIndex());
-    M_SETTING_PTR->setValue(DownloadSettingManager::SkinFontChoiced, m_ui->fontBox->currentIndex());
-    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, m_ui->suspensionVisiableBox->isChecked());
-    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, m_ui->suspensionShowPerBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced, m_ui->effectLevelBox->currentIndex());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinFontChoiced, m_ui->fontBox->currentIndex());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, m_ui->suspensionVisiableBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, m_ui->suspensionShowPerBox->isChecked());
 
 
     emit parameterSettingChanged();

@@ -27,12 +27,12 @@ DownloadAbstractMoveWidget::DownloadAbstractMoveWidget(bool transparent, QWidget
     m_showShadow = true;
     m_background = nullptr;
 
-    M_BACKGROUND_PTR->addObserver(this);
+    G_BACKGROUND_PTR->addObserver(this);
 }
 
 DownloadAbstractMoveWidget::~DownloadAbstractMoveWidget()
 {
-    M_BACKGROUND_PTR->removeObserver(this);
+    G_BACKGROUND_PTR->removeObserver(this);
 }
 
 void DownloadAbstractMoveWidget::backgroundChanged()
@@ -118,13 +118,13 @@ void DownloadAbstractMoveWidget::setBackgroundPixmap(const QSize &size)
 {
     QLabel *label = TTKStatic_cast(QLabel*, m_background);
     DownloadBackgroundImage image;
-    if(DownloadExtractWrapper::outputSkin(&image, M_BACKGROUND_PTR->getMBackground()))
+    if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->getMBackground()))
     {
         label->setPixmap(image.m_pix.scaled(size));
     }
     else
     {
-        label->setPixmap(QPixmap(M_BACKGROUND_PTR->getMBackground()).scaled(size));
+        label->setPixmap(QPixmap(G_BACKGROUND_PTR->getMBackground()).scaled(size));
     }
 }
 

@@ -8,13 +8,13 @@ DownloadListConfigManager::DownloadListConfigManager(QObject *parent)
 
 void DownloadListConfigManager::writeListConfig(const DownloadItems &records)
 {
-    if(!writeConfig(LISTPATH_FULL))
+    if(!writeConfig(LIST_PATH_FULL))
     {
         return;
     }
     ///////////////////////////////////////////////////////
     createProcessingInstruction();
-    QDomElement player = createRoot(APPNAME);
+    QDomElement player = createRoot(APP_NAME);
     QDomElement download = writeDom(player, "list");
 
     for(const DownloadItem &record : qAsConst(records))

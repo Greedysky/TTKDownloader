@@ -23,32 +23,27 @@
 #include "ttkversion.h"
 #include "ttkglobaldefine.h"
 
-#define S_APPDATA_DIR_FULL        DownloadObject::getAppDir() + APPDATA_DIR
-#define S_DOWNLOADS_DIR_FULL      DownloadObject::getAppDir() + DOWNLOADS_DIR
+#define TTK_APPDATA_DIR_FULL        DownloadObject::getConfigDir() + APPDATA_DIR
+#define TTK_APPCACHE_DIR_FULL       DownloadObject::getConfigDir() + APPCACHE_DIR
 
-#define S_TEMPORARY_DIR_FULL      S_DOWNLOADS_DIR_FULL + TEMPORARY_DIR
-#define S_CACHE_DIR_FULL          S_DOWNLOADS_DIR_FULL + CACHE_DIR
-#define S_UPDATE_DIR_FULL         S_DOWNLOADS_DIR_FULL + UPDATE_DIR
+#define TTK_MAKE_NETS_FULL          TTK_APPDATA_DIR_FULL + MAKE_NETS
+#define TTK_LIST_PATH_FULL          TTK_APPDATA_DIR_FULL + LIST_PATH
+#define TTK_COFIG_PATH_FULL         TTK_APPDATA_DIR_FULL + COFIG_PATH
+#define TTK_HISTORY_PATH_FULL       TTK_APPDATA_DIR_FULL + HISTORY_PATH
+#define TTK_USER_THEME_DIR_FULL     TTK_APPDATA_DIR_FULL + USER_THEME_DIR
 
-#define S_COFIGPATH_FULL          S_APPDATA_DIR_FULL + COFIGPATH
-#define S_LISTPATH_FULL           S_APPDATA_DIR_FULL + LISTPATH
-#define S_HISTORYPATH_FULL        S_APPDATA_DIR_FULL + HISTORYPATH
-#define S_AVATAR_DIR_FULL         S_APPDATA_DIR_FULL + AVATAR_DIR
-#define S_USER_THEME_DIR_FULL     S_APPDATA_DIR_FULL + USER_THEME_DIR
-#define S_MAKENETS_FULL           S_APPDATA_DIR_FULL + MAKENETS
-
-#define S_THEME_DIR_FULL          DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/" + THEME_DIR
-#define S_LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/" + LANGUAGE_DIR
+#define TTK_THEME_DIR_FULL          DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/" + THEME_DIR
+#define TTK_LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/" + LANGUAGE_DIR
 
 #ifdef Q_OS_WIN
-#define S_TTKSERVICE_FULL         DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.exe"
+#define TTK_TTKSERVICE_FULL         DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.exe"
 #else
-#define S_TTKDOWNLOADER_FULL      DownloadObject::getAppDir() + "TTKDownloader.sh"
-#define S_TTKROUTINE_FULL         DownloadObject::getAppDir() + "TTKRoutine.sh"
-#define S_TTKCONSOLE_FULL         DownloadObject::getAppDir() + "TTKConsole.sh"
-#define S_TTKINIT_FULL            DownloadObject::getAppDir() + "TTKInit.sh"
-#define S_TTKSERVICE_FULL         DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.sh"
-#define S_TTKROUTINECOPY_FULL     DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKRoutineCopy.sh"
+#define TTK_DOWNLOADER_FULL         DownloadObject::getAppDir() + "TTKDownloader.sh"
+#define TTK_ROUTINE_FULL            DownloadObject::getAppDir() + "TTKRoutine.sh"
+#define TTK_CONSOLE_FULL            DownloadObject::getAppDir() + "TTKConsole.sh"
+#define TTK_INIT_FULL               DownloadObject::getAppDir() + "TTKInit.sh"
+#define TTK_SERVICE_FULL            DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.sh"
+#define TTK_ROUTINECOPY_FULL        DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKRoutineCopy.sh"
 #endif
 
 

@@ -25,7 +25,7 @@ DownloadRemoteWidget::DownloadRemoteWidget(QWidget *parent)
 
 DownloadRemoteWidget::~DownloadRemoteWidget()
 {
-    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, false);
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, false);
 }
 
 void DownloadRemoteWidget::setValue(int value)
@@ -39,12 +39,12 @@ void DownloadRemoteWidget::setValue(int value)
 void DownloadRemoteWidget::show()
 {
     DownloadAbstractMoveWidget::show();
-    M_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, true);
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, true);
 }
 
 void DownloadRemoteWidget::adjustPostion(QWidget *w)
 {
-    QSize windowSize = M_SETTING_PTR->value(DownloadSettingManager::ScreenSize).toSize();
+    QSize windowSize = G_SETTING_PTR->value(DownloadSettingManager::ScreenSize).toSize();
     w->move(windowSize.width() - w->width() - 150, w->height() + 70);
 }
 
@@ -60,7 +60,7 @@ void DownloadRemoteWidget::contextMenuEvent(QContextMenuEvent *event)
     menu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("Start"), rw, SLOT(startToDownload()));
     menu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), rw, SLOT(stopToDownload()));
 
-    bool ishow = M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool();
+    bool ishow = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool();
     DownloadTopAreaWidget *tw = DownloadTopAreaWidget::instance();
     QMenu floatMenu(tr("FloatSetting"), &menu);
     floatMenu.addAction(QIcon(ishow ? ":/contextMenu/lb_selected" : QString()), tr("Show"), tw, SLOT(showRemoteSpeedWidget()));
@@ -87,7 +87,7 @@ void DownloadRemoteWidget::paintEvent(QPaintEvent *event)
     rectr.addEllipse(rect());
     painter.fillPath(rectr.intersected(rectp), QColor(0xff, 0xff, 0, 0x32));
 
-    if(M_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool())
+    if(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool())
     {
         painter.setPen(Qt::white);
         painter.drawText(rect(), Qt::AlignCenter, QString("%1%").arg(m_value*100/height()));

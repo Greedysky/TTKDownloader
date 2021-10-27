@@ -11,7 +11,7 @@ DownloadLeftAreaWidget::DownloadLeftAreaWidget(QWidget *parent)
 {
     m_instance = this;
 
-    M_HOTKEY_PTR->connectParentObject(this, "Ctrl+O", SLOT(showSettingWidget()));
+    G_HOTKEY_PTR->connectParentObject(this, "Ctrl+O", SLOT(showSettingWidget()));
 }
 
 DownloadLeftAreaWidget::~DownloadLeftAreaWidget()

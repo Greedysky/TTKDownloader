@@ -146,6 +146,7 @@ DownloadBackgroundListWidget::DownloadBackgroundListWidget(QWidget *parent)
     : QWidget(parent)
 {
     m_layout = new QGridLayout(this);
+    m_layout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     m_layout->setContentsMargins(7, 7, 7, 7);
     m_layout->setSpacing(5);
     setLayout(m_layout);

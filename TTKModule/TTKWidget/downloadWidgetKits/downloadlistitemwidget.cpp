@@ -72,12 +72,12 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     setLayout(layout);
 
     backgroundChanged();
-    M_BACKGROUND_PTR->addObserver(this);
+    G_BACKGROUND_PTR->addObserver(this);
 }
 
 DownloadListItemWidget::~DownloadListItemWidget()
 {
-    M_BACKGROUND_PTR->removeObserver(this);
+    G_BACKGROUND_PTR->removeObserver(this);
     delete m_iconLabel;
     delete m_fileNameLabel;
     delete m_fileSizeLabel;
@@ -103,7 +103,7 @@ void DownloadListItemWidget::backgroundChanged()
     {
         m_progressBar->setStyleSheet(DownloadUIObject::MProgressBar01 +
                                      QString("QProgressBar::chunk{ background:%1; }").arg(
-                                     M_BACKGROUND_PTR->getMBackgroundColor().name()));
+                                     G_BACKGROUND_PTR->getMBackgroundColor().name()));
     }
 }
 

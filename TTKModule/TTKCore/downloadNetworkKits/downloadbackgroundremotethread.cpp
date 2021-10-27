@@ -1,7 +1,7 @@
 #include "downloadbackgroundremotethread.h"
 #include "downloadsourcethread.h"
 
-#define D_URL   "ZGlhbXFHSDhQemdMb3QyN1dVZlQ4elhzSnZsOWozT2hpSVFORXNDOWhOc2ZtWXZWZ3BYRU5USHg5ZytMQUFRS3FZbnc0Q2ZHMk40PQ=="
+#define QUERY_URL   "eC9KOTYxbVhvVDJNcGEwckhyMVZRdVRhOHhFRHQ2eFVNdWJxaURFSzA1ZWVmZm5HOFlzS1VCY2ZKOFRlYStBL2Y3SjNEK2gzY2QwPQ=="
 
 DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent)
     : DownloadAbstractXml(parent)
@@ -67,7 +67,7 @@ void DownloadBackgroundRemoteThread::startToDownload()
 {
     DownloadSourceThread *download = new DownloadSourceThread(this);
     connect(download, SIGNAL(downLoadByteDataChanged(QByteArray)), SLOT(downLoadDataFinished(QByteArray)));
-    download->startToDownload(DownloadUtils::Algorithm::mdII(D_URL, false));
+    download->startToDownload(DownloadUtils::Algorithm::mdII(QUERY_URL, false));
 }
 
 void DownloadBackgroundRemoteThread::downLoadDataFinished(const QByteArray &bytes)

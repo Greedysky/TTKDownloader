@@ -23,7 +23,7 @@
 #include "ttksingleton.h"
 #include "ttkglobaldefine.h"
 
-#define M_NETWORK_PTR (TTKSingleton<DownloadNetworkThread>::createInstance())
+#define G_NETWORK_PTR (TTKSingleton<DownloadNetworkThread>::createInstance())
 
 /*! @brief The class of thread to check current network.
  * @author Greedysky <greedysky@163.com>

@@ -8,13 +8,13 @@ DownloadRecordConfigManager::DownloadRecordConfigManager(QObject *parent)
 
 void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecords &records)
 {
-    if(!writeConfig(HISTORYPATH_FULL))
+    if(!writeConfig(HISTORY_PATH_FULL))
     {
         return;
     }
     ///////////////////////////////////////////////////////
     createProcessingInstruction();
-    QDomElement player = createRoot(APPNAME);
+    QDomElement player = createRoot(APP_NAME);
     QDomElement download = writeDom(player, "history");
 
     for(const DownloadRecord &record : qAsConst(records))

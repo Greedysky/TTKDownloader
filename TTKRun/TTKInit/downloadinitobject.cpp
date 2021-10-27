@@ -18,9 +18,9 @@ void DownloadInitObject::init()
 {
     checkTheFileNeededExist();
 
-    copyFileOverwrite(":/data/downloadconfig.xml", S_COFIGPATH_FULL);
-    copyFileOverwrite(":/data/download.tkpl", S_LISTPATH_FULL);
-    copyFileOverwrite(":/data/downloadhistory.ttk", S_HISTORYPATH_FULL);
+    copyFileOverwrite(":/data/config.xml", TTK_COFIG_PATH_FULL);
+    copyFileOverwrite(":/data/list.tkpl", TTK_LIST_PATH_FULL);
+    copyFileOverwrite(":/data/history.ttk", TTK_HISTORY_PATH_FULL);
 }
 
 void DownloadInitObject::directoryExist(const QString &name)
@@ -34,33 +34,29 @@ void DownloadInitObject::directoryExist(const QString &name)
 
 void DownloadInitObject::checkTheDirectoryExist()
 {
-    directoryExist(S_APPDATA_DIR_FULL);
-    directoryExist(S_DOWNLOADS_DIR_FULL);
+    directoryExist(TTK_APPDATA_DIR_FULL);
+    directoryExist(TTK_APPCACHE_DIR_FULL);
 
-    directoryExist(S_CACHE_DIR_FULL);
-    directoryExist(S_UPDATE_DIR_FULL);
+    directoryExist(TTK_USER_THEME_DIR_FULL);
 
-    directoryExist(S_AVATAR_DIR_FULL);
-    directoryExist(S_USER_THEME_DIR_FULL);
-
-    directoryExist(S_THEME_DIR_FULL);
-    directoryExist(S_LANGUAGE_DIR_FULL);
+    directoryExist(TTK_THEME_DIR_FULL);
+    directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 
 void DownloadInitObject::checkTheFileNeededExist()
 {
-    copyFile(":/data/downloadconfig.xml", S_COFIGPATH_FULL);
-    copyFile(":/data/download.tkpl", S_LISTPATH_FULL);
-    copyFile(":/data/downloadhistory.ttk", S_HISTORYPATH_FULL);
+    copyFile(":/data/config.xml", TTK_COFIG_PATH_FULL);
+    copyFile(":/data/list.tkpl", TTK_LIST_PATH_FULL);
+    copyFile(":/data/history.ttk", TTK_HISTORY_PATH_FULL);
 
 #ifdef Q_OS_UNIX
-    copyLinuxShellFile(":/data/avnets.sh", S_MAKENETS_FULL);
-    copyLinuxShellFile(":/data/TTKDownloader.sh", S_TTKDOWNLOADER_FULL);
-    copyLinuxShellFile(":/data/TTKService.sh", S_TTKSERVICE_FULL);
-    copyLinuxShellFile(":/data/TTKRoutine.sh", S_TTKROUTINE_FULL);
-    copyLinuxShellFile(":/data/TTKRoutineCopy.sh", S_TTKROUTINECOPY_FULL);
-    copyLinuxShellFile(":/data/TTKConsole.sh", S_TTKCONSOLE_FULL);
-    copyLinuxShellFile(":/data/TTKInit.sh", S_TTKINIT_FULL);
+    copyLinuxShellFile(":/data/avnets.sh", TTK_MAKE_NETS_FULL);
+    copyLinuxShellFile(":/data/TTKDownloader.sh", TTK_DOWNLOADER_FULL);
+    copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
+    copyLinuxShellFile(":/data/TTKRoutineCopy.sh", TTK_ROUTINECOPY_FULL);
+    copyLinuxShellFile(":/data/TTKConsole.sh", TTK_CONSOLE_FULL);
+    copyLinuxShellFile(":/data/TTKInit.sh", TTK_INIT_FULL);
 #endif
 
 }

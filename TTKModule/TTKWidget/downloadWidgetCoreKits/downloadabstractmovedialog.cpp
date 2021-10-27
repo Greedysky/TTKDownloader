@@ -27,12 +27,12 @@ DownloadAbstractMoveDialog::DownloadAbstractMoveDialog(bool transparent, QWidget
     m_showShadow = true;
     m_background = nullptr;
 
-    M_BACKGROUND_PTR->addObserver(this);
+    G_BACKGROUND_PTR->addObserver(this);
 }
 
 DownloadAbstractMoveDialog::~DownloadAbstractMoveDialog()
 {
-    M_BACKGROUND_PTR->removeObserver(this);
+    G_BACKGROUND_PTR->removeObserver(this);
 }
 
 void DownloadAbstractMoveDialog::backgroundChanged()
@@ -118,12 +118,12 @@ void DownloadAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
 {
     QLabel *label = TTKStatic_cast(QLabel*, m_background);
     DownloadBackgroundImage image;
-    if(DownloadExtractWrapper::outputSkin(&image, M_BACKGROUND_PTR->getMBackground()))
+    if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->getMBackground()))
     {
         label->setPixmap(image.m_pix.scaled(size));
     }
     else
     {
-        label->setPixmap(QPixmap(M_BACKGROUND_PTR->getMBackground()).scaled(size));
+        label->setPixmap(QPixmap(G_BACKGROUND_PTR->getMBackground()).scaled(size));
     }
 }

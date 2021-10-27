@@ -10,7 +10,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 {
     ///////////////////////////////////////////////////////
     createProcessingInstruction();
-    QDomElement player = createRoot(APPNAME);
+    QDomElement player = createRoot(APP_NAME);
     QDomElement download = writeDom(player, "breakPoint");
 
     if(!records.isEmpty())

@@ -151,7 +151,7 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
     buttonStyleChanged();
 
     QDir dir(".");
-    dir.mkpath(QString("%1%2").arg(CACHE_DIR_FULL).arg(index));
+    dir.mkpath(QString("%1%2").arg(APPCACHE_DIR_FULL).arg(index));
 
     m_listWidget->clearAllItems();
     DownloadQueueDatas datas;
@@ -161,7 +161,7 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
         m_listWidget->createItem(":/image/lb_noneImage", false);
         DownloadQueueData data;
         data.m_url = (*items)[i].m_url;
-        data.m_savePath = QString("%1%2/%3%4").arg(CACHE_DIR_FULL).arg(index).arg(i).arg(TTS_FILE);
+        data.m_savePath = QString("%1%2/%3%4").arg(APPCACHE_DIR_FULL).arg(index).arg(i).arg(TTS_FILE);
         datas << data;
     }
 

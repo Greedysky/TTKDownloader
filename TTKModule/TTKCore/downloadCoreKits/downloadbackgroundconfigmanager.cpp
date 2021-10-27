@@ -18,7 +18,7 @@ void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem 
     ///////////////////////////////////////////////////////
     QDomElement playerDom = createRoot("TTKSkin");
     //Class A
-    writeDomElement(playerDom, "creator", DownloadXmlAttribute("value", APPNAME));
+    writeDomElement(playerDom, "creator", DownloadXmlAttribute("value", APP_NAME));
     writeDomElement(playerDom, "name", DownloadXmlAttribute("value", item.m_name));
     writeDomElement(playerDom, "useCount", DownloadXmlAttribute("value", item.m_useCount));
 

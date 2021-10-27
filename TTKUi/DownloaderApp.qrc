@@ -1,8 +1,8 @@
 <RCC>
     <qresource prefix="/data">
-        <file alias="downloadconfig.xml">../TTKResource/A_extras/downloadconfig.xml</file>
-        <file alias="download.tkpl">../TTKResource/A_extras/download.tkpl</file>
-        <file alias="downloadhistory.ttk">../TTKResource/A_extras/downloadhistory.ttk</file>
+        <file alias="config.xml">../TTKResource/A_extras/config.xml</file>
+        <file alias="list.tkpl">../TTKResource/A_extras/list.tkpl</file>
+        <file alias="history.ttk">../TTKResource/A_extras/history.ttk</file>
         <file alias="avnets.sh">../TTKResource/A_extras/avnets.sh</file>
         <file alias="TTKDownloader.sh">../TTKResource/A_extras/TTKDownloader.sh</file>
         <file alias="TTKRoutine.sh">../TTKResource/A_extras/TTKRoutine.sh</file>

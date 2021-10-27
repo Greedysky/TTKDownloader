@@ -23,7 +23,7 @@
 #include "ttksingleton.h"
 #include "ttkglobaldefine.h"
 
-#define M_BACKGROUND_PTR (TTKSingleton<DownloadBackgroundManager>::createInstance())
+#define G_BACKGROUND_PTR (TTKSingleton<DownloadBackgroundManager>::createInstance())
 
 /*! @brief The class of the manager of dealing with artist pictures.
  * @author Greedysky <greedysky@163.com>
