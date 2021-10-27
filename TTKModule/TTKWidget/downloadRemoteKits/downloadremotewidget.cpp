@@ -4,6 +4,7 @@
 #include "downloadtopareawidget.h"
 #include "downloaduiobject.h"
 
+#include <qmath.h>
 #include <QMenu>
 #include <QPainter>
 #include <QPainterPath>
