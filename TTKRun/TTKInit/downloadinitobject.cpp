@@ -58,7 +58,6 @@ void DownloadInitObject::checkTheFileNeededExist()
     copyLinuxShellFile(":/data/TTKConsole.sh", TTK_CONSOLE_FULL);
     copyLinuxShellFile(":/data/TTKInit.sh", TTK_INIT_FULL);
 #endif
-
 }
 
 void DownloadInitObject::copyFileOverwrite(const QString &origin, const QString &des)

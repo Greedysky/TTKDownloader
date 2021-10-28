@@ -27,7 +27,6 @@ HEADERS  += \
     $$PWD/downloadcryptographichash.h \
     $$PWD/downloadextractwrapper.h \
     $$PWD/downloadhotkeymanager.h \
-    $$PWD/downloadlicensecore.h \
     $$PWD/downloadotherdefine.h \
     $$PWD/downloadsettingmanager.h \
     $$PWD/downloadsysconfigmanager.h \
@@ -44,7 +43,6 @@ SOURCES += \
     $$PWD/downloadcryptographichash.cpp \
     $$PWD/downloadextractwrapper.cpp \
     $$PWD/downloadhotkeymanager.cpp \
-    $$PWD/downloadlicensecore.cpp \
     $$PWD/downloadsysconfigmanager.cpp \
     $$PWD/downloadruntimemanager.cpp \
     $$PWD/downloadtime.cpp \
