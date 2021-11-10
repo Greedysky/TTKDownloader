@@ -41,10 +41,6 @@ public:
     TTKRunApplication(const QString &id, int &argc, char **argv);
 
     /*!
-     * Initialize the current server.
-    */
-    void initialize(bool dummy = true);
-    /*!
      * Check the current server is running or not.
     */
     bool isRunning() const;
@@ -56,7 +52,7 @@ public:
     /*!
      * Set current active window.
     */
-    void setActivationWindow(QWidget *aw, bool activateOnMessage = true);
+    void setActivationWindow(QWidget *aw, bool activateOnMessage = true) const;
     /*!
      * Get current active window.
     */

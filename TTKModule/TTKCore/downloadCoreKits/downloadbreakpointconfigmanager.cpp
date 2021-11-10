@@ -20,10 +20,8 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 
     for(const DownloadBreakPointItem &record : qAsConst(records))
     {
-        writeDomElementMutil(download, "value", DownloadXmlAttributes() <<
-                                                DownloadXmlAttribute("start", record.m_start) <<
-                                                DownloadXmlAttribute("end", record.m_end) <<
-                                                DownloadXmlAttribute("ready", record.m_ready));
+        writeDomElementMutil(download, "value", {DownloadXmlAttribute("start", record.m_start), DownloadXmlAttribute("end", record.m_end),
+                                                 DownloadXmlAttribute("ready", record.m_ready)});
     }
 
     //Write to file

@@ -8,22 +8,22 @@ DownloadInitObject::DownloadInitObject(QObject *parent)
 
 }
 
-void DownloadInitObject::checkValid()
+void DownloadInitObject::valid() const
 {
-    checkTheDirectoryExist();
-    checkTheFileNeededExist();
+    checkDirectoryExist();
+    checkFileNeededExist();
 }
 
-void DownloadInitObject::init()
+void DownloadInitObject::init() const
 {
-    checkTheFileNeededExist();
+    checkFileNeededExist();
 
     copyFileOverwrite(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFileOverwrite(":/data/list.tkpl", TTK_LIST_PATH_FULL);
     copyFileOverwrite(":/data/history.ttk", TTK_HISTORY_PATH_FULL);
 }
 
-void DownloadInitObject::directoryExist(const QString &name)
+void DownloadInitObject::directoryExist(const QString &name) const
 {
     QDir dir;
     if(!dir.exists(name))
@@ -32,7 +32,7 @@ void DownloadInitObject::directoryExist(const QString &name)
     }
 }
 
-void DownloadInitObject::checkTheDirectoryExist()
+void DownloadInitObject::checkDirectoryExist() const
 {
     directoryExist(TTK_APPDATA_DIR_FULL);
     directoryExist(TTK_APPCACHE_DIR_FULL);
@@ -43,7 +43,7 @@ void DownloadInitObject::checkTheDirectoryExist()
     directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 
-void DownloadInitObject::checkTheFileNeededExist()
+void DownloadInitObject::checkFileNeededExist() const
 {
     copyFile(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFile(":/data/list.tkpl", TTK_LIST_PATH_FULL);
@@ -60,17 +60,18 @@ void DownloadInitObject::checkTheFileNeededExist()
 #endif
 }
 
-void DownloadInitObject::copyFileOverwrite(const QString &origin, const QString &des)
+void DownloadInitObject::copyFileOverwrite(const QString &origin, const QString &des) const
 {
     if(QFile::exists(des))
     {
         QFile::remove(des);
     }
+
     QFile::copy(origin, des);
     QFile::setPermissions(des, QFile::ReadOwner | QFile::WriteOwner);
 }
 
-void DownloadInitObject::copyFile(const QString &origin, const QString &des)
+void DownloadInitObject::copyFile(const QString &origin, const QString &des) const
 {
     if(!QFile::exists(des))
     {
@@ -79,8 +80,8 @@ void DownloadInitObject::copyFile(const QString &origin, const QString &des)
     }
 }
 
-void DownloadInitObject::copyLinuxShellFile(const QString &name, const QString &path)
+void DownloadInitObject::copyLinuxShellFile(const QString &name, const QString &path) const
 {
     copyFileOverwrite(name, path);
-    QProcess::execute("chmod", QStringList() << "+x" << path);
+    QProcess::execute("chmod", {"+x", path});
 }

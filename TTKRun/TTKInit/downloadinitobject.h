@@ -62,36 +62,36 @@ public:
     /*!
      * Check current setting file's validation.
      */
-    void checkValid();
+    void valid() const;
 
     /*!
      * Init all parameter.
      */
-    void init();
+    void init() const;
     /*!
      * Check current dir is exist, no, just create it.
      */
-    void directoryExist(const QString &name);
+    void directoryExist(const QString &name) const;
     /*!
-     * Check the related dir is exist.
+     * Check related dir is exist.
      */
-    void checkTheDirectoryExist();
+    void checkDirectoryExist() const;
     /*!
-     * Check the related file is exist.
+     * Check related file is exist.
      */
-    void checkTheFileNeededExist();
+    void checkFileNeededExist() const;
     /*!
      * Copy file by overwrite.
      */
-    void copyFileOverwrite(const QString &origin, const QString &des);
+    void copyFileOverwrite(const QString &origin, const QString &des) const;
     /*!
      * Copy file.
      */
-    void copyFile(const QString &origin, const QString &des);
+    void copyFile(const QString &origin, const QString &des) const;
     /*!
      * Copy linux shell file.
      */
-    void copyLinuxShellFile(const QString &name, const QString &path);
+    void copyLinuxShellFile(const QString &name, const QString &path) const;
 
 };
 

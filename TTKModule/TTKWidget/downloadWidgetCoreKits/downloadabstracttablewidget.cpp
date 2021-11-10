@@ -6,7 +6,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
 {
     setAttribute(Qt::WA_TranslucentBackground);
 #if TTK_QT_VERSION_CHECK(6,2,0)
-    setFont(QFont(QStringList() << "Helvetica"));
+    setFont(QFont({"Helvetica"}));
 #else
     setFont(QFont("Helvetica"));
 #endif

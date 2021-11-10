@@ -19,8 +19,7 @@ void DownloadListConfigManager::writeListConfig(const DownloadItems &records)
 
     for(const DownloadItem &record : qAsConst(records))
     {
-        writeDomElementMutil(download, "value", DownloadXmlAttributes() << DownloadXmlAttribute("url", record.m_url)
-                                             << DownloadXmlAttribute("name", record.m_name));
+        writeDomElementMutil(download, "value", {DownloadXmlAttribute("url", record.m_url), DownloadXmlAttribute("name", record.m_name)});
     }
 
     //Write to file

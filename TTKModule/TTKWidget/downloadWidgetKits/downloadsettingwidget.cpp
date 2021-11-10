@@ -260,7 +260,7 @@ void DownloadSettingWidget::initDownloadSettingWidget()
     m_ui->uploadLimitSpeedComboBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
     m_ui->uploadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
 
-    m_ui->defaultDownloadModeBox->addItems(QStringList() << tr("Auto") << tr("Manual"));
+    m_ui->defaultDownloadModeBox->addItems({tr("Auto"), tr("Manual")});
     for(int i=1; i<=50; ++i)
     {
         m_ui->downloadMaxCountBox->addItem(QString::number(i));
@@ -290,6 +290,6 @@ void DownloadSettingWidget::initSkinSettingWidget()
     m_ui->fontBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
     m_ui->fontBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
 
-    m_ui->effectLevelBox->addItems(QStringList() << tr("Heigh") << tr("Low") << tr("Close"));
+    m_ui->effectLevelBox->addItems({tr("Heigh"), tr("Low"), tr("Close")});
     m_ui->fontBox->addItems(QFontDatabase().families(QFontDatabase::Any));
 }

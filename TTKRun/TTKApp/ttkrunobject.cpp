@@ -41,13 +41,13 @@ TTKRunObject::TTKRunObject(QObject *parent)
     connect(d->m_process, SIGNAL(finished(int)), SLOT(finished(int)));
 }
 
-void TTKRunObject::checkValid()
+void TTKRunObject::valid() const
 {
     DownloadInitObject object;
-    object.checkValid();
+    object.valid();
 }
 
-void TTKRunObject::run(int argc, char **argv)
+void TTKRunObject::run(int argc, char **argv) const
 {
     TTK_D(TTKRunObject);
     QStringList list(APP_NAME);

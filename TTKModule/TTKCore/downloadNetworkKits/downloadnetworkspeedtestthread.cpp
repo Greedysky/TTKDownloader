@@ -57,9 +57,7 @@ void DownloadNetworkSpeedTestThread::setAvailableNewtworkNames(const QStringList
     m_process = new QProcess(this);
     m_process->setProcessChannelMode(QProcess::MergedChannels);
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(outputRecieved()));
-    QStringList arguments;
-    arguments << m_names.first() << "1";
-    m_process->start(MAKE_NETS_FULL, arguments);
+    m_process->start(MAKE_NETS_FULL, {m_names.first(), "1"});
 #endif
 }
 

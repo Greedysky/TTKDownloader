@@ -46,12 +46,6 @@ TTKRunApplication::TTKRunApplication(const QString &appId, int &argc, char **arg
     sysInit(appId);
 }
 
-void TTKRunApplication::initialize(bool dummy)
-{
-    Q_UNUSED(dummy);
-    isRunning();
-}
-
 bool TTKRunApplication::isRunning() const
 {
     TTK_D(TTKRunApplication);
@@ -64,7 +58,7 @@ QString TTKRunApplication::id() const
     return d->m_peer->applicationId();
 }
 
-void TTKRunApplication::setActivationWindow(QWidget* aw, bool activateOnMessage)
+void TTKRunApplication::setActivationWindow(QWidget* aw, bool activateOnMessage) const
 {
     TTK_D(TTKRunApplication);
     d->m_activeWindow = aw;
