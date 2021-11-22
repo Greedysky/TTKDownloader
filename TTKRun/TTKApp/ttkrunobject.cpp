@@ -50,6 +50,7 @@ void TTKRunObject::valid() const
 void TTKRunObject::run(int argc, char **argv) const
 {
     TTK_D(TTKRunObject);
+
     QStringList list(APP_NAME);
     if(argc == 3)
     {
