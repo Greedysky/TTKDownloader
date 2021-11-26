@@ -45,7 +45,7 @@ else{
 }
 
 unix{
-    output = $$OUT_PWD/bin/$$TTKDownloader/MLanguage
+    output = $$OUT_PWD/bin/$$TTKDownloader/GLanguage
     !exists($$output):system(mkdir -p $$output)
 
     system(find $$PWD/TTKLanguage -name *.ts | xargs $$LRELEASE_EXECUTABLE)
@@ -53,7 +53,7 @@ unix{
     system(for F in $$PWD/TTKLanguage/*.ln ; do mv $F $$output ;done)
 }
 win32{
-    output = $$OUT_PWD/bin/$$TTKDownloader/MLanguage
+    output = $$OUT_PWD/bin/$$TTKDownloader/GLanguage
     output = $$replace(output, /, \\)
     !exists($$output):system(md $$output)
 

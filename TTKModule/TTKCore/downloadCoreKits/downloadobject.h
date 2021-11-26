@@ -53,8 +53,8 @@
 #define APPDATA_DIR             "AppData/"
 #define APPCACHE_DIR            "AppCache/"
 
-#define THEME_DIR               "MTheme/"
-#define LANGUAGE_DIR            "MLanguage/"
+#define THEME_DIR               "GTheme/"
+#define LANGUAGE_DIR            "GLanguage/"
 
 #define TDDOWNLOAD_DIR          "TDDOWNLOAD/"
 
