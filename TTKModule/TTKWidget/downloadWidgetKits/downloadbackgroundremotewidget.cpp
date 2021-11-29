@@ -150,7 +150,7 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
     m_currentIndex = index;
     buttonStyleChanged();
 
-    QDir dir(".");
+    QDir dir(TTK_DOT);
     dir.mkpath(QString("%1%2").arg(APPCACHE_DIR_FULL).arg(index));
 
     m_listWidget->clearAllItems();

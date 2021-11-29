@@ -21,9 +21,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
       m_ui(new Ui::DownloadApplication)
 {
     m_instance = this;
-//#if TTK_QT_VERSION_CHECK(5,0,0)
     setAttribute(Qt::WA_TranslucentBackground, false);
-//#endif
 
     m_applicationObject = new DownloadApplicationObject(this);
     m_topAreaWidget = new DownloadTopAreaWidget(this);

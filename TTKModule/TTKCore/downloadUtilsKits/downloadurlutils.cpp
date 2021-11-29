@@ -4,8 +4,8 @@
 #include <QProcess>
 #include <QDesktopServices>
 #ifdef Q_OS_WIN
-#include <Windows.h>
-#include <shellapi.h>
+#  include <Windows.h>
+#  include <shellapi.h>
 #endif
 
 bool DownloadUtils::Url::openUrl(const QString &exe, const QString &path)

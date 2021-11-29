@@ -3,15 +3,15 @@
 
 #include <QProcess>
 #ifdef Q_OS_WIN
-# ifdef Q_CC_MINGW
-#   include <winsock2.h>
-# endif
-# include <qt_windows.h>
-# include <cstdio>
-# include <iphlpapi.h>
+#  ifdef Q_CC_MINGW
+#    include <winsock2.h>
+#  endif
+#  include <qt_windows.h>
+#  include <cstdio>
+#  include <iphlpapi.h>
 #elif defined Q_OS_UNIX
-# include <ifaddrs.h>
-# include <arpa/inet.h>
+#  include <ifaddrs.h>
+#  include <arpa/inet.h>
 #endif
 
 DownloadNetworkSpeedTestThread::DownloadNetworkSpeedTestThread(QObject *parent)

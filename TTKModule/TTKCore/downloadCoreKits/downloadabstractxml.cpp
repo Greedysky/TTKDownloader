@@ -1,7 +1,7 @@
 #include "downloadabstractxml.h"
 
 #ifdef Q_CC_GNU
-#   pragma GCC diagnostic ignored "-Wswitch"
+#  pragma GCC diagnostic ignored "-Wswitch"
 #endif
 
 DownloadAbstractXml::DownloadAbstractXml(QObject *parent)

@@ -12,7 +12,7 @@
 #include "downloadotherdefine.h"
 
 #ifdef Q_CC_MSVC
-#include <functional>
+#  include <functional>
 #endif
 #include <QScrollBar>
 
@@ -307,7 +307,7 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
     for(const QFileInfo &info : qAsConst(files))
     {
         QString fileName = info.baseName();
-        fileName = fileName.split("-").last();
+        fileName = fileName.split(TTK_DEFAULT_STR).last();
         data << fileName.trimmed().toInt();
     }
     std::sort(data.begin(), data.end(), std::greater<int>());

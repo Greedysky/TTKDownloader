@@ -32,18 +32,18 @@
 #define TTK_HISTORY_PATH_FULL       TTK_APPDATA_DIR_FULL + HISTORY_PATH
 #define TTK_USER_THEME_DIR_FULL     TTK_APPDATA_DIR_FULL + USER_THEME_DIR
 
-#define TTK_THEME_DIR_FULL          DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/" + THEME_DIR
-#define TTK_LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/" + LANGUAGE_DIR
+#define TTK_THEME_DIR_FULL          DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + TTK_SEPARATOR + THEME_DIR
+#define TTK_LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + TTK_SEPARATOR + LANGUAGE_DIR
 
 #ifdef Q_OS_WIN
-#define TTK_SERVICE_FULL            DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.exe"
+#  define TTK_SERVICE_FULL            DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + TTK_SEPARATOR + "TTKService.exe"
 #else
-#define TTK_DOWNLOADER_FULL         DownloadObject::getAppDir() + "TTKDownloader.sh"
-#define TTK_ROUTINE_FULL            DownloadObject::getAppDir() + "TTKRoutine.sh"
-#define TTK_CONSOLE_FULL            DownloadObject::getAppDir() + "TTKConsole.sh"
-#define TTK_INIT_FULL               DownloadObject::getAppDir() + "TTKInit.sh"
-#define TTK_SERVICE_FULL            DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKService.sh"
-#define TTK_ROUTINECOPY_FULL        DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + "/TTKRoutineCopy.sh"
+#  define TTK_DOWNLOADER_FULL         DownloadObject::getAppDir() + "TTKDownloader.sh"
+#  define TTK_ROUTINE_FULL            DownloadObject::getAppDir() + "TTKRoutine.sh"
+#  define TTK_CONSOLE_FULL            DownloadObject::getAppDir() + "TTKConsole.sh"
+#  define TTK_INIT_FULL               DownloadObject::getAppDir() + "TTKInit.sh"
+#  define TTK_SERVICE_FULL            DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + TTK_SEPARATOR + "TTKService.sh"
+#  define TTK_ROUTINECOPY_FULL        DownloadObject::getAppDir() + DOWNLOAD_VERSION_STR + TTK_SEPARATOR + "TTKRoutineCopy.sh"
 #endif
 
 

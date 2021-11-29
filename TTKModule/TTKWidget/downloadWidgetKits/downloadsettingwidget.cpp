@@ -152,7 +152,7 @@ void DownloadSettingWidget::downloadDirSelected()
         QString path = dialog.directory().absolutePath();
         if(!path.isEmpty())
         {
-            m_ui->downloadDirEdit->setText(path + "/");
+            m_ui->downloadDirEdit->setText(path + TTK_SEPARATOR);
         }
     }
 }

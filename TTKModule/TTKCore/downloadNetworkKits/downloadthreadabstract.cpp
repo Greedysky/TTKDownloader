@@ -5,7 +5,7 @@
 #include <QNetworkRequest>
 #include <QThread>
 #if defined Q_OS_UNIX || defined Q_CC_MINGW
-# include <unistd.h>
+#  include <unistd.h>
 #endif
 #include <QSslError>
 

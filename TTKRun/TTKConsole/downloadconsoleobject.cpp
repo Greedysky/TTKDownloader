@@ -3,8 +3,8 @@
 #include "downloadsettingmanager.h"
 
 #if TTK_QT_VERSION_CHECK(5,2,0)
-#include <QCommandLineOption>
-#include <QCommandLineParser>
+#  include <QCommandLineOption>
+#  include <QCommandLineParser>
 #endif
 
 DownloadConsoleObject::DownloadConsoleObject(QObject *parent)
@@ -23,8 +23,8 @@ DownloadConsoleObject::~DownloadConsoleObject()
 bool DownloadConsoleObject::init(const QCoreApplication &app) const
 {
 #if TTK_QT_VERSION_CHECK(5,2,0)
-    QCommandLineOption op1("u", "", ".");
-    QCommandLineOption op2("s", "", ".");
+    QCommandLineOption op1("u", "", TTK_DOT);
+    QCommandLineOption op2("s", "", TTK_DOT);
 
     QCommandLineParser parser;
     parser.addOption(op1);
