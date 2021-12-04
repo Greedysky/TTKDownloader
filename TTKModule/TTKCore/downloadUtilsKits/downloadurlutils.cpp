@@ -11,8 +11,8 @@
 bool DownloadUtils::Url::openUrl(const QString &exe, const QString &path)
 {
 #ifdef Q_OS_WIN
-    HINSTANCE value = ShellExecuteA(0, exe.toLocal8Bit(), path.toLocal8Bit(), nullptr, nullptr, SW_SHOWNORMAL);
-    return value->unused >= 32;
+    ShellExecuteW(0, exe.toStdWString().c_str(), path.toStdWString().c_str(), nullptr, nullptr, SW_SHOWNORMAL);
+    return true;
 #else
     Q_UNUSED(exe);
     return QProcess::startDetached(path, QStringList());
@@ -32,8 +32,8 @@ bool DownloadUtils::Url::openUrl(const QString &path, bool local)
         QString p = path;
         p.replace('/', "\\");
         p = "/select," + p;
-        HINSTANCE value = ShellExecuteA(0, "open", "explorer.exe", p.toLocal8Bit(), nullptr, SW_SHOWNORMAL);
-        return value->unused >= 32;
+        ShellExecuteW(0, L"open", L"explorer.exe", p.toStdWString().c_str(), nullptr, SW_SHOWNORMAL);
+        return true;
     }
 #else
     Q_UNUSED(local);
