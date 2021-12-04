@@ -21,7 +21,7 @@ DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, QObject *p
 #ifndef QT_NO_SSL
     connect(m_manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
                        SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
-    TTK_LOGGER_INFO(QString("%1 Support ssl: %2").arg(getClassName()).arg(QSslSocket::supportsSsl()));
+    TTK_LOGGER_INFO(QString("%1 Support ssl: %2").arg(className()).arg(QSslSocket::supportsSsl()));
 
     QSslConfiguration sslConfig = m_request->sslConfiguration();
     sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);

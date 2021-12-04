@@ -19,22 +19,22 @@ void DownloadBackgroundManager::removeObserver(QObject *object)
     disconnect(this, SIGNAL(backgroundChanged()), object, SLOT(backgroundChanged()));
 }
 
-void DownloadBackgroundManager::setMBackground(const QString &path)
+void DownloadBackgroundManager::setBackground(const QString &path)
 {
     m_background = path;
 }
 
-QString DownloadBackgroundManager::getMBackground() const
+QString DownloadBackgroundManager::background() const
 {
     return m_background;
 }
 
-void DownloadBackgroundManager::setMBackgroundColor(const QColor &color)
+void DownloadBackgroundManager::setBackgroundColor(const QColor &color)
 {
     m_skinColor = color;
 }
 
-QColor DownloadBackgroundManager::getMBackgroundColor() const
+QColor DownloadBackgroundManager::backgroundColor() const
 {
     return m_skinColor;
 }

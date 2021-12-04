@@ -88,7 +88,7 @@ DownloadListItemWidget::~DownloadListItemWidget()
     delete m_stateLabel;
 }
 
-float DownloadListItemWidget::getPercent() const
+float DownloadListItemWidget::percent() const
 {
     return m_progressBar->value();
 }
@@ -99,7 +99,7 @@ void DownloadListItemWidget::backgroundChanged()
     {
         m_progressBar->setStyleSheet(DownloadUIObject::MProgressBar01 +
                                      QString("QProgressBar::chunk{ background:%1; }").arg(
-                                     G_BACKGROUND_PTR->getMBackgroundColor().name()));
+                                     G_BACKGROUND_PTR->backgroundColor().name()));
     }
 }
 
@@ -150,7 +150,7 @@ void DownloadListItemWidget::updateDownloadSpeed()
 QString DownloadListItemWidget::timeStandardization(qint64 time)
 {
     DownloadTime t(time, DownloadTime::All_Sec);
-    return QString("%1:%2:%3").arg(QString::number(t.getHour()).rightJustified(2, '0'))
-                              .arg(QString::number(t.getMinute()).rightJustified(2, '0'))
-                              .arg(QString::number(t.getSecond()).rightJustified(2, '0'));
+    return QString("%1:%2:%3").arg(QString::number(t.hour()).rightJustified(2, '0'))
+                              .arg(QString::number(t.minute()).rightJustified(2, '0'))
+                              .arg(QString::number(t.second()).rightJustified(2, '0'));
 }

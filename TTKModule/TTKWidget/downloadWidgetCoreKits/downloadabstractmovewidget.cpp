@@ -118,13 +118,13 @@ void DownloadAbstractMoveWidget::setBackgroundPixmap(const QSize &size)
 {
     QLabel *label = TTKStatic_cast(QLabel*, m_background);
     DownloadBackgroundImage image;
-    if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->getMBackground()))
+    if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->background()))
     {
         label->setPixmap(image.m_pix.scaled(size));
     }
     else
     {
-        label->setPixmap(QPixmap(G_BACKGROUND_PTR->getMBackground()).scaled(size));
+        label->setPixmap(QPixmap(G_BACKGROUND_PTR->background()).scaled(size));
     }
 }
 

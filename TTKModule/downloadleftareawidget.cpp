@@ -43,7 +43,7 @@ void DownloadLeftAreaWidget::funcitonIndexChanged(int index)
 void DownloadLeftAreaWidget::showSettingWidget()
 {
     DownloadSettingWidget setting;
-    connect(&setting, SIGNAL(parameterSettingChanged()), DownloadApplication::instance(), SLOT(getParameterSetting()));
+    connect(&setting, SIGNAL(parameterSettingChanged()), DownloadApplication::instance(), SLOT(parameterSetting()));
     setting.initControllerParameter();
     setting.exec();
 }

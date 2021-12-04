@@ -61,12 +61,12 @@ void DownloadNetworkSpeedTestThread::setAvailableNewtworkNames(const QStringList
 #endif
 }
 
-QStringList DownloadNetworkSpeedTestThread::getAvailableNewtworkNames() const
+QStringList DownloadNetworkSpeedTestThread::availableNewtworkNames() const
 {
     return m_names;
 }
 
-QStringList DownloadNetworkSpeedTestThread::getNewtworkNames() const
+QStringList DownloadNetworkSpeedTestThread::newtworkNames() const
 {
     QStringList names;
 #ifdef Q_OS_WIN

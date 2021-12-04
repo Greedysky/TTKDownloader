@@ -25,7 +25,7 @@ void DownloadUtils::Widget::fusionPixmap(QPixmap &bg, const QPixmap &fg, const Q
     painter.end();
 }
 
-QByteArray DownloadUtils::Widget::GeneratePixmapData(const QPixmap &pix)
+QByteArray DownloadUtils::Widget::generatePixmapData(const QPixmap &pix)
 {
     if(pix.isNull())
     {
@@ -90,7 +90,7 @@ void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *
    avg = qRgb(r, g, b);
 }
 
-QString DownloadUtils::Widget::getOpenFileDialog(QWidget *obj)
+QString DownloadUtils::Widget::openFileDialog(QWidget *obj)
 {
     return QFileDialog::getOpenFileName(obj, QObject::tr("choose a filename to open under"), QDir::currentPath(), "Images (*.png *.bmp *.jpg)");
 }

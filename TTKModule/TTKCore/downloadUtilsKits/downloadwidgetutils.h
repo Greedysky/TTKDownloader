@@ -39,7 +39,7 @@ namespace DownloadUtils
         /*!
          * Get pximap data.
          */
-        TTK_MODULE_EXPORT QByteArray GeneratePixmapData(const QPixmap &pix);
+        TTK_MODULE_EXPORT QByteArray generatePixmapData(const QPixmap &pix);
 
         /*!
          * Rerender the custum value.
@@ -66,7 +66,7 @@ namespace DownloadUtils
         /*!
          * Get open file dialog.
          */
-        TTK_MODULE_EXPORT QString getOpenFileDialog(QWidget *obj);
+        TTK_MODULE_EXPORT QString openFileDialog(QWidget *obj);
 
     }
 }

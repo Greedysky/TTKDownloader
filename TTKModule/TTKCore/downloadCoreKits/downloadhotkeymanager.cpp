@@ -94,7 +94,7 @@ int DownloadHotKeyManager::count() const
     return m_hotkeys.count();
 }
 
-QStringList DownloadHotKeyManager::getKeys() const
+QStringList DownloadHotKeyManager::keys() const
 {
     QStringList keys;
     for(QGlobalShortcut *key : qAsConst(m_hotkeys))

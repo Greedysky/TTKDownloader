@@ -57,19 +57,19 @@ public:
     /*!
      * Get download url.
      */
-    inline QString getUrl() const { return m_url; }
+    inline QString url() const { return m_url; }
     /*!
      * Get ready size.
      */
-    inline qint64 getReadySize() const { return m_readySize; }
+    inline qint64 readySize() const { return m_readySize; }
     /*!
      * Get start point(.
      */
-    inline qint64 getStartPoint() const { return m_startPoint; }
+    inline qint64 startPoint() const { return m_startPoint; }
     /*!
      * Get end point.
      */
-    inline qint64 getEndPoint() const { return m_endPoint; }
+    inline qint64 endPoint() const { return m_endPoint; }
 
 Q_SIGNALS:
     /*!

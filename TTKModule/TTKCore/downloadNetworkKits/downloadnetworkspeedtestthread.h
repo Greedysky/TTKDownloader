@@ -50,11 +50,11 @@ public:
     /*!
      * Get available newtwork names.
      */
-    QStringList getAvailableNewtworkNames() const;
+    QStringList availableNewtworkNames() const;
     /*!
      * Get newtwork names.
      */
-    QStringList getNewtworkNames() const;
+    QStringList newtworkNames() const;
 
 Q_SIGNALS:
     /*!

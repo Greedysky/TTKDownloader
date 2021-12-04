@@ -164,7 +164,7 @@ void DownloadBackgroundListWidget::setCurrentItemName(const QString &name)
     //Set the current theme index
     for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
-        if(item->getFileName() == name)
+        if(item->fileName() == name)
         {
             item->setSelect(true);
             m_currentItem = item;
@@ -215,7 +215,7 @@ void DownloadBackgroundListWidget::updateItem(const DownloadBackgroundImage &ima
 {
     for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
-        if(item->getFileName().isEmpty())
+        if(item->fileName().isEmpty())
         {
             item->setSelectEnable(false);
             item->setFileName(path);
@@ -229,7 +229,7 @@ bool DownloadBackgroundListWidget::contains(const QString &name) const
 {
     for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
-        if(item->getFileName() == name)
+        if(item->fileName() == name)
         {
             return true;
         }
@@ -268,7 +268,7 @@ DownloadBackgroundListItem* DownloadBackgroundListWidget::find(const QString &na
 {
     for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
-        if(item->getFileName() == name)
+        if(item->fileName() == name)
         {
             return item;
         }
@@ -311,7 +311,7 @@ void DownloadBackgroundListWidget::itemCloseClicked(DownloadBackgroundListItem *
     m_layout->removeWidget(item);
     int index = find(item);
     int cIndex = find(m_currentItem);
-    QFile::remove(item->getFilePath());
+    QFile::remove(item->filePath());
     m_items.takeAt(index)->deleteLater();
 
     if(index == cIndex)
@@ -338,5 +338,5 @@ void DownloadBackgroundListWidget::itemHasClicked(DownloadBackgroundListItem *it
 
     m_currentItem = item;
     m_currentItem->setSelect(true);
-    emit itemClicked(item->getFileName());
+    emit itemClicked(item->fileName());
 }

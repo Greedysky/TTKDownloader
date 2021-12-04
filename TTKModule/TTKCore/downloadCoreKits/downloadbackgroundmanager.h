@@ -45,20 +45,20 @@ public:
     /*!
      * Set background picture by path.
      */
-    void setMBackground(const QString &path);
+    void setBackground(const QString &path);
     /*!
      * Get background picture path.
      */
-    QString getMBackground() const;
+    QString background() const;
 
     /*!
      * Set background picture color.
      */
-    void setMBackgroundColor(const QColor &color);
+    void setBackgroundColor(const QColor &color);
     /*!
      * Get background picture color.
      */
-    QColor getMBackgroundColor() const;
+    QColor backgroundColor() const;
 
     /*!
      * Get artist background picture path.

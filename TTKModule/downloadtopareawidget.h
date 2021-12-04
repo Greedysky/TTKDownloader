@@ -60,15 +60,15 @@ public:
     /*!
      * Get background skin name.
      */
-    inline QString getBackgroundPath() const { return m_backgroundImagePath; }
+    inline QString backgroundPath() const { return m_backgroundImagePath; }
     /*!
      * Get background skin alpha.
      */
-    inline int getBackgroundAlpha() const { return m_backgroundAlpha; }
+    inline int backgroundAlpha() const { return m_backgroundAlpha; }
     /*!
      * Get background skin pixmap.
      */
-    QPixmap getRendererPixmap() const;
+    QPixmap rendererPixmap() const;
 
 public Q_SLOTS:
     /*!

@@ -75,7 +75,7 @@ void DownloadApplication::showMaximizedWindow()
     isMaximized() ? showNormal() : showMaximized();
 }
 
-void DownloadApplication::getParameterSetting()
+void DownloadApplication::parameterSetting()
 {
     //This attribute is effective immediately.
     bool config = G_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toBool();
@@ -139,7 +139,7 @@ void DownloadApplication::closeEvent(QCloseEvent *event)
 {
     DownloadAbstractMoveResizeWidget::closeEvent(event);
     event->ignore();
-    if(!m_bottomAreaWidget->getSystemCloseConfig() && m_bottomAreaWidget->systemTrayIsVisible())
+    if(!m_bottomAreaWidget->systemCloseConfig() && m_bottomAreaWidget->systemTrayIsVisible())
     {
         hide();
         m_bottomAreaWidget->showMessage(tr("Prompt"), tr("TTKDownloader will run in the background"));
@@ -197,7 +197,7 @@ void DownloadApplication::writeXMLConfigToText()
     DownloadSysConfigManager xml;
 
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetPosition, pos());
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced, m_topAreaWidget->getBackgroundPath());
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgTransparentChoiced, m_topAreaWidget->getBackgroundAlpha());
+    G_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced, m_topAreaWidget->backgroundPath());
+    G_SETTING_PTR->setValue(DownloadSettingManager::BgTransparentChoiced, m_topAreaWidget->backgroundAlpha());
     xml.writeXMLConfig();
 }

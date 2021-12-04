@@ -160,12 +160,12 @@ void DownloadAnimationStackedWidget::setLength(int length, AnimationType type)
     }
 }
 
-int DownloadAnimationStackedWidget::getPreviousIndex() const
+int DownloadAnimationStackedWidget::previousIndex() const
 {
     return m_previousIndex;
 }
 
-int DownloadAnimationStackedWidget::getCurrentIndex() const
+int DownloadAnimationStackedWidget::currentIndex() const
 {
     return m_currentIndex;
 }
@@ -175,7 +175,7 @@ void DownloadAnimationStackedWidget::setDuration(int duration)
     m_animation->setDuration(duration);
 }
 
-int DownloadAnimationStackedWidget::getDuration() const
+int DownloadAnimationStackedWidget::duration() const
 {
     return m_animation->duration();
 }

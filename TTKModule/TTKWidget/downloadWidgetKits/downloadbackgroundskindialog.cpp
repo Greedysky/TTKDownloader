@@ -96,7 +96,7 @@ QPixmap DownloadBackgroundSkinDialog::setMBackground(QString &name)
 {
     QString path = USER_THEME_DIR_FULL + name + TTS_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(name, path);
-    G_BACKGROUND_PTR->setMBackground(path);
+    G_BACKGROUND_PTR->setBackground(path);
 
     DownloadBackgroundImage image;
     return DownloadExtractWrapper::outputSkin(&image, path) ? image.m_pix : QPixmap();
@@ -151,7 +151,7 @@ void DownloadBackgroundSkinDialog::setSkinTransToolText(int value)
 
 void DownloadBackgroundSkinDialog::showPaletteDialog()
 {
-    QColor color = DownloadColorDialog::getColor();
+    const QColor &color = DownloadColorDialog::popup();
     if(color.isValid())
     {
         QPixmap pix(1, 1);
@@ -172,7 +172,7 @@ void DownloadBackgroundSkinDialog::showPaletteDialog(const QString &path)
 
 void DownloadBackgroundSkinDialog::showCustomSkinDialog()
 {
-    QString customSkinPath = DownloadUtils::Widget::getOpenFileDialog(this);
+    QString customSkinPath = DownloadUtils::Widget::openFileDialog(this);
     if(customSkinPath.isEmpty())
     {
         return;
@@ -191,7 +191,7 @@ void DownloadBackgroundSkinDialog::backgroundListWidgetChanged(int index)
         m_ui->stackedWidget->setGeometry(QRect(rect.x(), rect.y() + toolWidget->height(), rect.width(), rect.height() - toolWidget->height()));
     }
 
-    if(m_ui->stackedWidget->getCurrentIndex() == index)
+    if(m_ui->stackedWidget->currentIndex() == index)
     {
         return;
     }
@@ -249,7 +249,7 @@ void DownloadBackgroundSkinDialog::remoteBackgroundListWidgetItemClicked(const Q
         DownloadBackgroundListItem *it = m_myBackgroundList->find(image);
         if(it)
         {
-            listWidgetItemClicked(m_myBackgroundList, it->getFileName());
+            listWidgetItemClicked(m_myBackgroundList, it->fileName());
         }
     }
 }
@@ -270,7 +270,7 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
     QString s(name);
     QString path = USER_THEME_DIR_FULL + s + TTS_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(s, path);
-    G_BACKGROUND_PTR->setMBackground(path);
+    G_BACKGROUND_PTR->setBackground(path);
     emit G_BACKGROUND_PTR->backgroundHasChanged();
 }
 

@@ -49,13 +49,13 @@ bool DownloadConsoleObject::init(const QCoreApplication &app) const
     QString path = parser.value(op2);
     if(path.isEmpty())
     {
-        path = DownloadObject::getAppDir();
+        path = DownloadObject::applicationPath();
         qDebug() << "download save path is empty, just use default '.' path!";
     }
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, path);
 
     m_manager->downloadFile(url);
-    qDebug() << "download save path :" << m_manager->getDownloadedPath();
+    qDebug() << "download save path :" << m_manager->downloadedPath();
 #else
     qDebug() << "Qt version less than 5.2 not support commend line!";
 #endif

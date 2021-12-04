@@ -103,14 +103,14 @@ void DownloadBottomAreaWidget::downloadSettingButtonClicked()
     m_toolPopupMenu->setStyleSheet(DownloadUIObject::MMenuStyle02);
 
     QPixmap pix(17, 17);
-    pix.fill(G_BACKGROUND_PTR->getMBackgroundColor());
+    pix.fill(G_BACKGROUND_PTR->backgroundColor());
     DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_protection"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Speed Protection"));
-    pix.fill(G_BACKGROUND_PTR->getMBackgroundColor());
+    pix.fill(G_BACKGROUND_PTR->backgroundColor());
     DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_custom"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Custom Speed Limit"));
     m_toolPopupMenu->addSeparator();
-    pix.fill(G_BACKGROUND_PTR->getMBackgroundColor());
+    pix.fill(G_BACKGROUND_PTR->backgroundColor());
     DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_setting"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("More Setting..."));
 

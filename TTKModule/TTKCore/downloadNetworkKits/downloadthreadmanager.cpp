@@ -24,7 +24,7 @@ DownloadThreadManager::~DownloadThreadManager()
     qDeleteAll(m_threads);
 }
 
-qint64 DownloadThreadManager::getFileSize(QString &url, int tryTimes)
+qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
 {
     qint64 size = -1;
     while(tryTimes--)
@@ -56,7 +56,7 @@ qint64 DownloadThreadManager::getFileSize(QString &url, int tryTimes)
         if(!redirection.isNull())
         {
             url = redirection.toString();
-            size = getFileSize(url);
+            size = fileSize(url);
         }
         reply->deleteLater();
         break;
@@ -64,7 +64,7 @@ qint64 DownloadThreadManager::getFileSize(QString &url, int tryTimes)
     return size;
 }
 
-QString DownloadThreadManager::getDownloadedPath() const
+QString DownloadThreadManager::downloadedPath() const
 {
     return m_file ? m_file->fileName() : QString();
 }
@@ -87,7 +87,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     }
 
     QString durl(DownloadUrlEncoder().decoder(url));
-    if((m_totalSize = getFileSize(durl)) == -1)
+    if((m_totalSize = fileSize(durl)) == -1)
     {
         TTK_LOGGER_ERROR("Download file size error");
         return false;
@@ -217,10 +217,10 @@ void DownloadThreadManager::pause()
         thread->pause();
 
         DownloadBreakPointItem item;
-        item.m_url = thread->getUrl();
-        item.m_start = thread->getStartPoint();
-        item.m_end = thread->getEndPoint();
-        item.m_ready = thread->getReadySize();
+        item.m_url = thread->url();
+        item.m_start = thread->startPoint();
+        item.m_end = thread->endPoint();
+        item.m_ready = thread->readySize();
         records << item;
     }
 
@@ -267,7 +267,7 @@ void DownloadThreadManager::progressChangedSlot()
     m_readySize = 0;
     for(DownloadThread *thread : qAsConst(m_threads))
     {
-        m_readySize += thread->getReadySize();
+        m_readySize += thread->readySize();
     }
 
     emit progressChanged(m_readySize, m_totalSize);

@@ -27,7 +27,7 @@ DownloadUnits::~DownloadUnits()
     delete m_downloadThread;
 }
 
-DownloadListItemWidget* DownloadUnits::getDownloadItemWidget()
+DownloadListItemWidget* DownloadUnits::downloadItemWidget()
 {
     return m_downloadItem;
 }
@@ -49,12 +49,12 @@ void DownloadUnits::start(const QString &name)
         m_downloadThread->restart();
     }
 
-    m_path = m_downloadThread->getDownloadedPath();
+    m_path = m_downloadThread->downloadedPath();
 }
 
-int DownloadUnits::getState() const
+int DownloadUnits::state() const
 {
-    return m_downloadThread->getState();
+    return m_downloadThread->state();
 }
 
 void DownloadUnits::setStateChanged(const QString &state)

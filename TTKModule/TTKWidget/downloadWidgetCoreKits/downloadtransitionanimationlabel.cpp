@@ -24,7 +24,7 @@ DownloadTransitionAnimationLabel::~DownloadTransitionAnimationLabel()
     delete m_animation;
 }
 
-QPixmap DownloadTransitionAnimationLabel::getRendererPixmap() const
+QPixmap DownloadTransitionAnimationLabel::rendererPixmap() const
 {
     return m_rendererPixmap;
 }

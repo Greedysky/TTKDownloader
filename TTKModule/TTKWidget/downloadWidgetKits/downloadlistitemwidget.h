@@ -43,7 +43,7 @@ public:
     /*!
      * Get progress bar percent.
      */
-    float getPercent() const;
+    float percent() const;
 
 public Q_SLOTS:
     /*!

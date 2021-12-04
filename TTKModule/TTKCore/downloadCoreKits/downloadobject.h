@@ -66,9 +66,9 @@
 #define HISTORY_PATH            "history.ttk"
 
 
-#define MAIN_DIR_FULL           DownloadObject::getAppDir() + TTK_PDIR
-#define APPDATA_DIR_FULL        DownloadObject::getConfigDir() + APPDATA_DIR
-#define APPCACHE_DIR_FULL       DownloadObject::getConfigDir() + APPCACHE_DIR
+#define MAIN_DIR_FULL           DownloadObject::applicationPath() + TTK_PDIR
+#define APPDATA_DIR_FULL        DownloadObject::configPath() + APPDATA_DIR
+#define APPCACHE_DIR_FULL       DownloadObject::configPath() + APPCACHE_DIR
 #define TDDOWNLOAD_DIR_FULL     MAIN_DIR_FULL + TDDOWNLOAD_DIR
 
 
@@ -78,8 +78,8 @@
 #define HISTORY_PATH_FULL       APPDATA_DIR_FULL + HISTORY_PATH
 #define USER_THEME_DIR_FULL     APPDATA_DIR_FULL + USER_THEME_DIR
 
-#define THEME_DIR_FULL          DownloadObject::getAppDir() + THEME_DIR
-#define LANGUAGE_DIR_FULL       DownloadObject::getAppDir() + LANGUAGE_DIR
+#define THEME_DIR_FULL          DownloadObject::applicationPath() + THEME_DIR
+#define LANGUAGE_DIR_FULL       DownloadObject::applicationPath() + LANGUAGE_DIR
 
 
 #define WINDOW_WIDTH_MIN        1000
@@ -101,7 +101,7 @@ namespace DownloadObject
     /*!
      * Get application work dir.
      */
-    static QString getAppDir()
+    static QString applicationPath()
     {
         return QCoreApplication::applicationDirPath() + TTK_SEPARATOR;
     }
@@ -109,7 +109,7 @@ namespace DownloadObject
     /*!
      * Get application config dir.
      */
-    static QString getConfigDir()
+    static QString configPath()
     {
 #ifdef Q_OS_WIN
         return QString::fromLocal8Bit(getenv("APPDATA")) + "/ttkdl/";

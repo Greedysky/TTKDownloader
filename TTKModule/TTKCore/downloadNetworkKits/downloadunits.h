@@ -41,7 +41,7 @@ public:
     /*!
      * Get download list item widget.
      */
-    DownloadListItemWidget* getDownloadItemWidget();
+    DownloadListItemWidget* downloadItemWidget();
 
     /*!
      * Pause to download.
@@ -55,15 +55,15 @@ public:
     /*!
      * Get download state.
      */
-    int getState() const;
+    int state() const;
     /*!
      * Get download url.
      */
-    inline QString getUrl() const { return m_url; }
+    inline QString url() const { return m_url; }
     /*!
      * Get download path.
      */
-    inline QString getDownloadedPath() const { return m_path; }
+    inline QString downloadedPath() const { return m_path; }
     /*!
      * Set download state changed.
      */

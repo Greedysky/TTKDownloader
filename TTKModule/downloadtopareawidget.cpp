@@ -70,9 +70,9 @@ void DownloadTopAreaWidget::setParameters(const QString &skin, int alpha)
     drawWindowBackgroundRect();
 }
 
-QPixmap DownloadTopAreaWidget::getRendererPixmap() const
+QPixmap DownloadTopAreaWidget::rendererPixmap() const
 {
-    return m_ui->background->getRendererPixmap();
+    return m_ui->background->rendererPixmap();
 }
 
 void DownloadTopAreaWidget::showRemoteSpeedWidget()
@@ -169,7 +169,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
 
     qint64 average = 0;
     DownloadUtils::Widget::reRenderImage(average, 35, &origin, &origin);
-    G_BACKGROUND_PTR->setMBackgroundColor(average);
+    G_BACKGROUND_PTR->setBackgroundColor(average);
 
     m_backgroundImage = origin;
     drawWindowBackgroundRectString();

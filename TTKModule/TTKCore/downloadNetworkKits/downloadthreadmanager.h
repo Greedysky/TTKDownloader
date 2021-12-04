@@ -44,11 +44,11 @@ public:
     /*!
      * Get download path.
      */
-    QString getDownloadedPath() const;
+    QString downloadedPath() const;
     /*!
      * Get download state.
      */
-    inline DownloadThread::DownloadState getState() const { return m_state; }
+    inline DownloadThread::DownloadState state() const { return m_state; }
 
 Q_SIGNALS:
     /*!
@@ -100,7 +100,7 @@ private:
     /*!
      * Get download file size.
      */
-    qint64 getFileSize(QString &url, int tryTimes = 3);
+    qint64 fileSize(QString &url, int tryTimes = 3);
 
     int m_runningCount;
     QFile *m_file;

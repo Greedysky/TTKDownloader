@@ -20,7 +20,7 @@ QString DownloadUtils::Core::downloadPrefix()
    return path;
 }
 
-QString DownloadUtils::Core::getLanguageName(int index)
+QString DownloadUtils::Core::languageName(int index)
 {
     QString lan(LANGUAGE_DIR_FULL);
     switch(index)

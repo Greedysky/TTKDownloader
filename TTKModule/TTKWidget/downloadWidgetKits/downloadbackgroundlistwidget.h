@@ -46,7 +46,7 @@ public:
     /*!
      * Get item file name.
      */
-    inline QString getFileName() const { return m_name; }
+    inline QString fileName() const { return m_name; }
     /*!
      * Set item file name.
      */
@@ -54,7 +54,7 @@ public:
     /*!
      * Get item file name.
      */
-    inline QString getFilePath() const { return m_path; }
+    inline QString filePath() const { return m_path; }
 
     /*!
      * Update pix image.

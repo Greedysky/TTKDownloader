@@ -146,7 +146,7 @@ protected:
     /*!
      * Get top url to download.
      */
-    void getTopUrlToDownload();
+    void topUrlToDownload();
     /*!
      * Find url if it exists.
      */

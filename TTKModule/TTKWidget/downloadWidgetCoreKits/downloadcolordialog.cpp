@@ -282,7 +282,7 @@ DownloadColorDialog::~DownloadColorDialog()
     delete m_ui;
 }
 
-QColor DownloadColorDialog::getColor(QWidget *parent)
+QColor DownloadColorDialog::popup(QWidget *parent)
 {
     DownloadColorDialog dialog(parent);
     return dialog.exec() ? dialog.color() : QColor();

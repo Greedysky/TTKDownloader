@@ -77,7 +77,7 @@ public:
     /*!
      * Get key string.
      */
-    QStringList getKeys() const;
+    QStringList keys() const;
 
 protected:
 

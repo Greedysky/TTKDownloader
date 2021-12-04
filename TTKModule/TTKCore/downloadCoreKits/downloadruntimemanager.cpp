@@ -51,5 +51,5 @@ void DownloadRunTimeManager::run() const
 
 QString DownloadRunTimeManager::translator() const
 {
-    return DownloadUtils::Core::getLanguageName(0);
+    return DownloadUtils::Core::languageName(0);
 }

@@ -61,7 +61,7 @@ void DownloadToolLabelButton::paintEvent(QPaintEvent *event)
     }
 
     QRect rt(5, 5, 15, 15);
-    painter.fillRect(rt, G_BACKGROUND_PTR->getMBackgroundColor());
+    painter.fillRect(rt, G_BACKGROUND_PTR->backgroundColor());
     painter.drawPixmap(rt, QPixmap(m_icon));
 
     if(!m_text.isEmpty())
@@ -126,8 +126,8 @@ void DownloadSpeedToolLabelButton::paintEvent(QPaintEvent *event)
     pyup.append(QPoint(15, 13));
     pyup.append(QPoint(18, 13));
 
-    painter.setPen(G_BACKGROUND_PTR->getMBackgroundColor());
-    painter.setBrush(G_BACKGROUND_PTR->getMBackgroundColor());
+    painter.setPen(G_BACKGROUND_PTR->backgroundColor());
+    painter.setBrush(G_BACKGROUND_PTR->backgroundColor());
     painter.drawPolygon(pyup);
 
     painter.setPen(Qt::black);
@@ -146,8 +146,8 @@ void DownloadSpeedToolLabelButton::paintEvent(QPaintEvent *event)
     pydown.append(QPoint(100, 13));
     pydown.append(QPoint(104, 13));
 
-    painter.setPen(G_BACKGROUND_PTR->getMBackgroundColor());
-    painter.setBrush(G_BACKGROUND_PTR->getMBackgroundColor());
+    painter.setPen(G_BACKGROUND_PTR->backgroundColor());
+    painter.setBrush(G_BACKGROUND_PTR->backgroundColor());
     painter.drawPolygon(pydown);
 
     painter.setPen(Qt::black);
