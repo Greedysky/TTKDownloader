@@ -39,7 +39,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadAbstractMoveWidget(bool transparent, QWidget *parent = nullptr);
-    virtual ~DownloadAbstractMoveWidget();
+    ~DownloadAbstractMoveWidget();
 
     /*!
      * Set or not draw window bound shadow.
@@ -61,9 +61,9 @@ protected:
      * Override the widget event.
      */
     virtual void paintEvent(QPaintEvent *event) override;
-    virtual void mousePressEvent(QMouseEvent *event) override;
-    virtual void mouseMoveEvent(QMouseEvent *event) override;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override;
+    virtual void mousePressEvent(QMouseEvent *event) override final;
+    virtual void mouseMoveEvent(QMouseEvent *event) override final;
+    virtual void mouseReleaseEvent(QMouseEvent *event) override final;
     /*!
      * Set background pixmap.
      */
@@ -97,7 +97,7 @@ public:
      * Object contsructor.
      */
     explicit DownloadAbstractMoveSingleWidget(bool transparent, QWidget *parent = nullptr);
-    virtual ~DownloadAbstractMoveSingleWidget();
+    ~DownloadAbstractMoveSingleWidget();
 
 protected:
     QWidget *m_container;

@@ -98,7 +98,7 @@ public Q_SLOTS:
     /*!
      * Table widget list cell click.
      */
-    virtual void listCellClicked(int row, int column) override;
+    virtual void listCellClicked(int row, int column) override final;
     /*!
      * Open the local path.
      */
@@ -126,7 +126,7 @@ protected:
     /*!
      * Override the widget event.
      */
-    virtual void contextMenuEvent(QContextMenuEvent *event) override;
+    virtual void contextMenuEvent(QContextMenuEvent *event) override final;
     /*!
      * Clear download item.
      */

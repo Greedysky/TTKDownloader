@@ -61,7 +61,7 @@ public:
     /*!
      * Start to download data.
      */
-    virtual void startToDownload() override;
+    virtual void startToDownload() override final;
     /*!
      * Abort current download thread.
      */
@@ -71,7 +71,7 @@ public Q_SLOTS:
     /*!
      * Download data from net finished.
      */
-    virtual void downLoadFinished() override;
+    virtual void downLoadFinished() override final;
     /*!
      * Download received data ready.
      */

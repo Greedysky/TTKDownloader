@@ -40,7 +40,7 @@ protected:
     /*!
      * Override the widget event.
      */
-    virtual void showEvent(QShowEvent *event) override;
+    virtual void showEvent(QShowEvent *event) override final;
 
     QMenu *m_floatMenu;
 

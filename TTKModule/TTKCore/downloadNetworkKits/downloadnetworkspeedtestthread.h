@@ -70,7 +70,7 @@ public Q_SLOTS:
     /*!
      * Thread run now.
      */
-    virtual void run() override;
+    virtual void run() override final;
 
 private Q_SLOTS:
     /*!

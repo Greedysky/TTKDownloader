@@ -53,8 +53,8 @@ protected:
     /*!
      * Override the widget event.
      */
-    virtual void contextMenuEvent(QContextMenuEvent *event) override;
-    virtual void paintEvent(QPaintEvent *event) override;
+    virtual void contextMenuEvent(QContextMenuEvent *event) override final;
+    virtual void paintEvent(QPaintEvent *event) override final;
 
     int m_value;
 
