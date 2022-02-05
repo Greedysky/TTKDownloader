@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
+HEADERS += \
     $$PWD/downloadthread.h \
     $$PWD/downloadunits.h \
     $$PWD/downloadthreadmanager.h\

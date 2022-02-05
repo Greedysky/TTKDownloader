@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
+HEADERS += \
     $$PWD/downloadalgorithmutils.h \
     $$PWD/downloadcoreutils.h \
     $$PWD/downloadnumberutils.h \

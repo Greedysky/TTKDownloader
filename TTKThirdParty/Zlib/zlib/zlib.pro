@@ -29,7 +29,7 @@ DEFINES += \
     ZLIB_DLL \
     ZLIB_INTERNAL
 
-HEADERS  += \
+HEADERS += \
     $$PWD/zconf.h \
     $$PWD/zlib.h \
     $$PWD/crc32.h \
@@ -59,4 +59,4 @@ SOURCES += \
     $$PWD/uncompr.c \
     $$PWD/zutil.c
     
-win32:RC_FILE = zlib.rc
+win32:RC_FILE = $$PWD/zlib.rc

@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
+HEADERS += \
     $$PWD/downloadobject.h \
     $$PWD/downloadnumberdefine.h \
     $$PWD/downloadabstractxml.h \

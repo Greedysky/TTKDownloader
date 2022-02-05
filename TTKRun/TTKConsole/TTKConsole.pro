@@ -16,7 +16,7 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-QT       += core network xml
+QT += core network xml
 
 include($$PWD/../../TTKVersion.pri)
 
@@ -51,7 +51,11 @@ HEADERS += \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits/downloadsettingmanager.h
 
 }else{
-    QMAKE_CXXFLAGS += -std=c++11
+    equals(QT_MAJOR_VERSION, 6){ #Qt6
+        QMAKE_CXXFLAGS += -std=c++17
+    }else{
+        QMAKE_CXXFLAGS += -std=c++11
+    }
 }
 
 INCLUDEPATH += \
@@ -62,11 +66,10 @@ INCLUDEPATH += \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits \
     $$PWD/../../TTKModule/TTKCore/downloadNetworkKits
 
+HEADERS += $$PWD/downloadconsoleobject.h
+
 SOURCES += \
-    downloadconsolemain.cpp \
-    downloadconsoleobject.cpp
+    $$PWD/downloadconsolemain.cpp \
+    $$PWD/downloadconsoleobject.cpp
 
-HEADERS += \
-    downloadconsoleobject.h
-
-win32:RC_FILE = TTKConsole.rc
+win32:RC_FILE = $$PWD/TTKConsole.rc

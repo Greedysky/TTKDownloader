@@ -20,16 +20,15 @@
  ***************************************************************************/
 
 //update time 2022.01.29
-#define DOWNLOAD_VERSION_STR    "2.4.0.0"
-#define DOWNLOAD_VERSION_WSTR   L"2.4.0.0"
-#define DOWNLOAD_VER_TIME_STR   "(2022/01/29)"
+#define TTK_VERSION_STR    "2.4.0.0"
+#define TTK_VER_TIME_STR   "(2022/01/29)"
 
-#define DOWNLOAD_MAJOR_VERSION 2
-#define DOWNLOAD_MIDLE_VERSION 4
-#define DOWNLOAD_MINOR_VERSION 0
-#define DOWNLOAD_PATCH_VERSION 0
+#define TTK_MAJOR_VERSION 2
+#define TTK_MIDLE_VERSION 4
+#define TTK_MINOR_VERSION 0
+#define TTK_PATCH_VERSION 0
 
-#define DOWNLOAD_VERSION 0x02400
+#define TTK_VERSION 0x02400
 
 #define TTK_VERSION_CHECK(major, middle, minor, patch) ((major<<12)|(middle<<8)|(minor<<4)|(patch))
 

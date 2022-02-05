@@ -17,12 +17,11 @@
 # ***************************************************************************
 
 INCLUDEPATH += \
-        $$PWD \
-        $$PWD/Zlib \
-        $$PWD/TTKDumper \
-        $$PWD/TTKExtras
+    $$PWD \
+    $$PWD/Zlib \
+    $$PWD/TTKDumper \
+    $$PWD/TTKExtras
 
 win32:msvc{
-HEADERS += \
-    $$PWD/TTKExtras/qshortcut/qglobalshortcut.h
+HEADERS += $$PWD/TTKExtras/qshortcut/qglobalshortcut.h
 }

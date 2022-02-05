@@ -119,7 +119,7 @@ void DownloadApplication::appCreateRightMenu()
     rightClickMenu.addSeparator();
 
     QMenu aboutMenu(tr("About"), &rightClickMenu);
-    aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(DOWNLOAD_VERSION_STR) + QString(DOWNLOAD_VER_TIME_STR),
+    aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(TTK_VERSION_STR) + QString(TTK_VER_TIME_STR),
                         m_applicationObject, SLOT(appAboutUs()));
     rightClickMenu.addMenu(&aboutMenu);
     rightClickMenu.addSeparator();

@@ -18,8 +18,6 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
-    $$PWD/downloadremotewidget.h
+HEADERS += $$PWD/downloadremotewidget.h
 
-SOURCES += \
-    $$PWD/downloadremotewidget.cpp
+SOURCES += $$PWD/downloadremotewidget.cpp

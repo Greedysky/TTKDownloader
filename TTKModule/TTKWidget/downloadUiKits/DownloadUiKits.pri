@@ -18,12 +18,12 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
+HEADERS += \
     $$PWD/downloaduiobject.h \
     $$PWD/downloadfunctionuiobject.h \
     $$PWD/downloadtinyuiobject.h
 
-FORMS    += \
+FORMS += \
     $$PWD/downloadapplication.ui \
     $$PWD/downloadbackgroundskindialog.ui \
     $$PWD/downloadnewfiledialog.ui \

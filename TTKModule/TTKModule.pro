@@ -20,26 +20,27 @@ TEMPLATE = lib
 
 include($$PWD/TTKModule.pri)
 include($$PWD/../TTKDownloader.pri)
+
 CONFIG += plugin lib
 
 TARGET = TTKCore
 
 INCLUDEPATH += $$PWD
 
-SOURCES += \
-    downloadapplication.cpp \
-    downloadapplicationobject.cpp \
-    downloadbottomareawidget.cpp \
-    downloadleftareawidget.cpp \
-    downloadrightareawidget.cpp \
-    downloadtopareawidget.cpp
+HEADERS += \
+    $$PWD/downloadapplication.h \
+    $$PWD/downloadapplicationobject.h \
+    $$PWD/downloadbottomareawidget.h \
+    $$PWD/downloadleftareawidget.h \
+    $$PWD/downloadrightareawidget.h \
+    $$PWD/downloadtopareawidget.h
 
-HEADERS  += \
-    downloadapplication.h \
-    downloadapplicationobject.h \
-    downloadbottomareawidget.h \
-    downloadleftareawidget.h \
-    downloadrightareawidget.h \
-    downloadtopareawidget.h
+SOURCES += \
+    $$PWD/downloadapplication.cpp \
+    $$PWD/downloadapplicationobject.cpp \
+    $$PWD/downloadbottomareawidget.cpp \
+    $$PWD/downloadleftareawidget.cpp \
+    $$PWD/downloadrightareawidget.cpp \
+    $$PWD/downloadtopareawidget.cpp
     
-win32:RC_FILE = TTKCore.rc
+win32:RC_FILE = $$PWD/TTKCore.rc

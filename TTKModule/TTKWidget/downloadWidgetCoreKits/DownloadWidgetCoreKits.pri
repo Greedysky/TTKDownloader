@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
+HEADERS += \
     $$PWD/downloadabstractmovedialog.h \
     $$PWD/downloadabstractmovewidget.h \
     $$PWD/downloadabstracttablewidget.h \

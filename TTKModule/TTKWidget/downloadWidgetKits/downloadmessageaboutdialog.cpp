@@ -26,7 +26,7 @@ DownloadMessageAboutDialog::~DownloadMessageAboutDialog()
 int DownloadMessageAboutDialog::exec()
 {
     m_ui->iconLabel->setPixmap(QPixmap(":/image/lb_logo"));
-    m_ui->textLabel->setText(QString("TTKDownloader Version: %1\n").arg(DOWNLOAD_VERSION_STR) +
+    m_ui->textLabel->setText(QString("TTKDownloader Version: %1\n").arg(TTK_VERSION_STR) +
                              m_ui->textLabel->text());
     setBackgroundPixmap(m_ui->background, size());
     return DownloadAbstractMoveDialog::exec();

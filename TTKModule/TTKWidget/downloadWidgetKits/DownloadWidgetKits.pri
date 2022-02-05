@@ -18,7 +18,7 @@
 
 INCLUDEPATH += $$PWD
 
-HEADERS  += \
+HEADERS += \
     $$PWD/downloadbackgroundskindialog.h \
     $$PWD/downloadfuntionanimationwidget.h \
     $$PWD/downloadbackgroundlistwidget.h \

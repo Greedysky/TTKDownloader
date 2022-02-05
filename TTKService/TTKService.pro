@@ -30,12 +30,11 @@ INCLUDEPATH +=  \
     $$PWD/../TTKModule/TTKWidget/downloadWidgetCoreKits
 
 win32:msvc{
-HEADERS  += \
+HEADERS += \
     $$PWD/../TTKModule/downloadapplication.h \
     $$PWD/../TTKModule/TTKWidget/downloadWidgetCoreKits/downloadabstractmoveresizewidget.h
 }
 
-SOURCES += \
-    $$PWD/downloadservicemain.cpp
+SOURCES += $$PWD/downloadservicemain.cpp
 
-win32:RC_FILE = TTKService.rc
+win32:RC_FILE = $$PWD/TTKService.rc

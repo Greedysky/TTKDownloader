@@ -22,7 +22,7 @@ TEMPLATE = subdirs
 CONFIG += ordered
 SUBDIRS = TTKUi TTKThirdParty TTKModule TTKService TTKRun
 
-TRANSLATIONS += TTKLanguage/cn.ts
+TRANSLATIONS += $$PWD/TTKLanguage/cn.ts
 
 ##update translation
 unix:exists($$[QT_INSTALL_BINS]/lrelease){
@@ -39,8 +39,7 @@ win32:exists($$[QT_INSTALL_BINS]/lrelease.exe){
 
 isEmpty(LRELEASE_EXECUTABLE){
     error(Could not find lrelease executable)
-}
-else{
+}else{
     message(Found lrelease executable: $$LRELEASE_EXECUTABLE)
 }
 
@@ -52,6 +51,7 @@ unix{
     system(find $$PWD/TTKLanguage -name *.qm | xargs rename -v -f 's/.qm/.ln/' *)
     system(for F in $$PWD/TTKLanguage/*.ln ; do mv $F $$output ;done)
 }
+
 win32{
     output = $$OUT_PWD/bin/$$TTKDownloader/GLanguage
     output = $$replace(output, /, \\)
