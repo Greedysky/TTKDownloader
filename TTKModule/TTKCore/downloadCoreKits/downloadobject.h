@@ -24,17 +24,21 @@
 #include "ttkglobal.h"
 
 //
-#define TTS_FILE_PREFIX         "ttks"
+#define TKF_FILE_PREFIX         "tkf"
+#define TKX_FILE_PREFIX         "tkx"
+#define TKM_FILE_PREFIX         "tkm"
+//
 #define SKN_FILE_PREFIX         "skn"
 #define JPG_FILE_PREFIX         "jpg"
-#define CFG_FILE_PREFIX         "ttk"
-#define LST_FILE_PREFIX         "tkpl"
 #define EXE_FILE_PREFIX         "exe"
 #define XML_FILE_PREFIX         "xml"
 #define SET_FILE_PREFIX         "stk"
 #define COM_FILE_PREFIX         "com"
+// playlist ext
+#define LST_FILE_PREFIX         "tkpl"
 
-#define TTS_FILE                TTK_STRCAT(TTK_DOT, TTS_FILE_PREFIX)
+
+#define TKM_FILE                TTK_STRCAT(TTK_DOT, TKM_FILE_PREFIX)
 #define SKN_FILE                TTK_STRCAT(TTK_DOT, SKN_FILE_PREFIX)
 #define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_PREFIX)
 #define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_PREFIX)
@@ -56,14 +60,13 @@
 #define LANGUAGE_DIR            TTK_STRCAT("GLanguage", TTK_SEPARATOR)
 
 #define TDDOWNLOAD_DIR          TTK_STRCAT("TDDOWNLOAD", TTK_SEPARATOR)
-
 #define USER_THEME_DIR          TTK_STRCAT("theme", TTK_SEPARATOR)
 
 
 #define MAKE_NETS               "avnets.sh"
 #define LIST_PATH               "list.tkpl"
 #define COFIG_PATH              "config.xml"
-#define HISTORY_PATH            "history.ttk"
+#define HISTORY_PATH            "history.tkf"
 
 
 #define MAIN_DIR_FULL           DownloadObject::applicationPath() + TTK_PDIR

@@ -20,7 +20,7 @@ void DownloadInitObject::init() const
 
     copyFileOverwrite(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFileOverwrite(":/data/list.tkpl", TTK_LIST_PATH_FULL);
-    copyFileOverwrite(":/data/history.ttk", TTK_HISTORY_PATH_FULL);
+    copyFileOverwrite(":/data/history.tkf", TTK_HISTORY_PATH_FULL);
 }
 
 void DownloadInitObject::directoryExist(const QString &name) const
@@ -47,7 +47,7 @@ void DownloadInitObject::checkFileNeededExist() const
 {
     copyFile(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFile(":/data/list.tkpl", TTK_LIST_PATH_FULL);
-    copyFile(":/data/history.ttk", TTK_HISTORY_PATH_FULL);
+    copyFile(":/data/history.tkf", TTK_HISTORY_PATH_FULL);
 
 #ifdef Q_OS_UNIX
     copyLinuxShellFile(":/data/avnets.sh", TTK_MAKE_NETS_FULL);

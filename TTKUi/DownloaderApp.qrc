@@ -1,14 +1,14 @@
 <RCC>
     <qresource prefix="/data">
-        <file alias="config.xml">../TTKResource/A_extras/config.xml</file>
-        <file alias="list.tkpl">../TTKResource/A_extras/list.tkpl</file>
-        <file alias="history.ttk">../TTKResource/A_extras/history.ttk</file>
-        <file alias="avnets.sh">../TTKResource/A_extras/avnets.sh</file>
-        <file alias="TTKDownloader.sh">../TTKResource/A_extras/TTKDownloader.sh</file>
-        <file alias="TTKRoutine.sh">../TTKResource/A_extras/TTKRoutine.sh</file>
-        <file alias="TTKRoutineCopy.sh">../TTKResource/A_extras/TTKRoutineCopy.sh</file>
-        <file alias="TTKService.sh">../TTKResource/A_extras/TTKService.sh</file>
-        <file alias="TTKConsole.sh">../TTKResource/A_extras/TTKConsole.sh</file>
-        <file alias="TTKInit.sh">../TTKResource/A_extras/TTKInit.sh</file>
+        <file alias="config.xml">../TTKResource/_extras/config.xml</file>
+        <file alias="list.tkpl">../TTKResource/_extras/list.tkpl</file>
+        <file alias="history.tkf">../TTKResource/_extras/history.tkf</file>
+        <file alias="avnets.sh">../TTKResource/_extras/avnets.sh</file>
+        <file alias="TTKDownloader.sh">../TTKResource/_extras/TTKDownloader.sh</file>
+        <file alias="TTKRoutine.sh">../TTKResource/_extras/TTKRoutine.sh</file>
+        <file alias="TTKRoutineCopy.sh">../TTKResource/_extras/TTKRoutineCopy.sh</file>
+        <file alias="TTKService.sh">../TTKResource/_extras/TTKService.sh</file>
+        <file alias="TTKConsole.sh">../TTKResource/_extras/TTKConsole.sh</file>
+        <file alias="TTKInit.sh">../TTKResource/_extras/TTKInit.sh</file>
     </qresource>
 </RCC>

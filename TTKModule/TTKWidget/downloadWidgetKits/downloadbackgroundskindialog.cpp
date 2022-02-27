@@ -94,7 +94,7 @@ DownloadBackgroundSkinDialog::~DownloadBackgroundSkinDialog()
 
 QPixmap DownloadBackgroundSkinDialog::setMBackground(QString &name)
 {
-    QString path = USER_THEME_DIR_FULL + name + TTS_FILE;
+    QString path = USER_THEME_DIR_FULL + name + TKM_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(name, path);
     G_BACKGROUND_PTR->setBackground(path);
 
@@ -106,16 +106,16 @@ bool DownloadBackgroundSkinDialog::themeValidCheck(QString &name, QString &path)
 {
     if(!QFile::exists(path))
     {
-        QString orPath = QString("%1%2%3").arg(THEME_DIR_FULL).arg(name).arg(TTS_FILE);
+        QString orPath = QString("%1%2%3").arg(THEME_DIR_FULL).arg(name).arg(TKM_FILE);
         if(QFile::exists(orPath))
         {
-            QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TTS_FILE));
+            QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TKM_FILE));
         }
         else
         {
             name = "theme-1";
-            orPath = QString("%1%2%3").arg(THEME_DIR_FULL).arg(name).arg(TTS_FILE);
-            QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TTS_FILE));
+            orPath = QString("%1%2%3").arg(THEME_DIR_FULL).arg(name).arg(TKM_FILE);
+            QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TKM_FILE));
         }
         return false;
     }
@@ -130,7 +130,7 @@ QString DownloadBackgroundSkinDialog::cpoyArtFileToLocal(const QString &path)
 
 void DownloadBackgroundSkinDialog::updateArtFileTheme(const QString &theme)
 {
-    QString des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TTS_FILE);
+    QString des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TKM_FILE);
     m_myBackgroundList->createItem(theme, des, true);
     m_myBackgroundList->updateLastedItem();
 }
@@ -213,8 +213,8 @@ void DownloadBackgroundSkinDialog::backgroundListWidgetItemClicked(const QString
 {
     if(!m_myBackgroundList->contains(name))
     {
-        QString path = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TTS_FILE);
-        QFile::copy(QString("%1%2%3").arg(THEME_DIR_FULL).arg(name).arg(TTS_FILE), path);
+        QString path = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TKM_FILE);
+        QFile::copy(QString("%1%2%3").arg(THEME_DIR_FULL).arg(name).arg(TKM_FILE), path);
         m_myBackgroundList->createItem(name, path, true);
     }
     listWidgetItemClicked(m_myBackgroundList, name);
@@ -238,7 +238,7 @@ void DownloadBackgroundSkinDialog::remoteBackgroundListWidgetItemClicked(const Q
     {
         int index = cpoyFileToLocalIndex();
         QString theme = QString("theme-%1").arg(index + 1);
-        QString des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TTS_FILE);
+        QString des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TKM_FILE);
         DownloadExtractWrapper::inputSkin(&image, des);
 
         m_myBackgroundList->createItem(theme, des, true);
@@ -268,7 +268,7 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
     item->setCurrentItemName(name);
 
     QString s(name);
-    QString path = USER_THEME_DIR_FULL + s + TTS_FILE;
+    QString path = USER_THEME_DIR_FULL + s + TKM_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(s, path);
     G_BACKGROUND_PTR->setBackground(path);
     emit G_BACKGROUND_PTR->backgroundHasChanged();
@@ -295,7 +295,7 @@ void DownloadBackgroundSkinDialog::cpoyFileFromLocal(const QString &path)
     if(index != -1)
     {
         m_myThemeIndex = index;
-        QString des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(m_myThemeIndex + 1).arg(TTS_FILE);
+        QString des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(m_myThemeIndex + 1).arg(TKM_FILE);
         m_myBackgroundList->createItem(QString("theme-%1").arg(m_myThemeIndex + 1), des, true);
     }
 }
@@ -329,7 +329,7 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocal(const QString &path)
 {
     int index = cpoyFileToLocalIndex();
 
-    QString des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(index + 1).arg(TTS_FILE);
+    QString des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(index + 1).arg(TKM_FILE);
     DownloadBackgroundImage image;
     image.m_pix = QPixmap(path);
     return DownloadExtractWrapper::inputSkin(&image, des) ? index : -1;
