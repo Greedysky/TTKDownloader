@@ -50,7 +50,7 @@ void DownloadInitObject::checkFileNeededExist() const
     copyFile(":/data/history.tkf", TTK_HISTORY_PATH_FULL);
 
 #ifdef Q_OS_UNIX
-    copyLinuxShellFile(":/data/avnets.sh", TTK_MAKE_NETS_FULL);
+    copyLinuxShellFile(":/data/avnets.sh", TTK_MAKE_NET_PATH_FULL);
     copyLinuxShellFile(":/data/TTKDownloader.sh", TTK_DOWNLOADER_FULL);
     copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
     copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);

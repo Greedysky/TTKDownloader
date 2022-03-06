@@ -19,4 +19,4 @@
 include($$PWD/downloadUiKits/DownloadUiKits.pri)
 include($$PWD/downloadRemoteKits/DownloadRemoteKits.pri)
 include($$PWD/downloadWidgetKits/DownloadWidgetKits.pri)
-include($$PWD/downloadWidgetCoreKits/DownloadWidgetCoreKits.pri)
+include($$PWD/downloadCoreKits/DownloadCoreKits.pri)

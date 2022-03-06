@@ -19,9 +19,9 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QtXml/QDomDocument>
-#include <QTextStream>
 #include <QFile>
+#include <QTextStream>
+#include <QtXml/QDomDocument>
 
 #include "ttkglobaldefine.h"
 #include "downloadobject.h"
@@ -64,6 +64,7 @@ public:
      * Write datas into xml file by given name.
      */
     bool writeConfig(const QString &name);
+
     /*!
      * Xml stream data from string.
      */
@@ -89,8 +90,7 @@ public:
     /*!
      * Read xml attribute by tagName and attribute name.
      */
-    QString readXmlAttributeByTagName(const QString &tagName,
-                                      const QString &attrName) const;
+    QString readXmlAttributeByTagName(const QString &tagName, const QString &attrName) const;
     /*!
      * Read xml attribute's text by tagName.
      */
@@ -118,27 +118,23 @@ public:
     /*!
      * Append xml element nodes by node name.
      */
-    QDomElement writeDom(QDomElement &element, const QString &node);
+    QDomElement writeDomNode(QDomElement &element, const QString &node);
     /*!
      * Append xml element nodes by node name\ key name and value.
      */
-    QDomElement writeDomElement(QDomElement &element, const QString &node,
-                                const DownloadXmlAttribute &attr);
+    QDomElement writeDomElement(QDomElement &element, const QString &node, const DownloadXmlAttribute &attr);
     /*!
      * Append xml elements nodes by node name\ keys name and values.
      */
-    QDomElement writeDomElementMutil(QDomElement &element, const QString &node,
-                                     const DownloadXmlAttributes &attrs);
+    QDomElement writeDomElementMutil(QDomElement &element, const QString &node, const DownloadXmlAttributes &attrs);
     /*!
      * Append xml element nodes by node name\ key name \ value and attribute's text.
      */
-    QDomElement writeDomElementText(QDomElement &element, const QString &node,
-                                    const DownloadXmlAttribute &attr, const QString &text);
+    QDomElement writeDomElementText(QDomElement &element, const QString &node, const DownloadXmlAttribute &attr, const QString &text);
     /*!
      * Append xml elements nodes by node name\ keys name \ values and attribute's text.
      */
-    QDomElement writeDomElementMutilText(QDomElement &element, const QString &node,
-                                         const DownloadXmlAttributes &attrs, const QString &text);
+    QDomElement writeDomElementMutilText(QDomElement &element, const QString &node, const DownloadXmlAttributes &attrs, const QString &text);
     /*!
      * Append xml element nodes by node name and attribute's text.
      */
@@ -150,7 +146,7 @@ public:
 
 protected:
     QFile *m_file;
-    QDomDocument *m_ddom;
+    QDomDocument *m_document;
 
 };
 

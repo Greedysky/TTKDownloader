@@ -50,10 +50,10 @@ void DownloadSysConfigManager::writeXMLConfig()
     createProcessingInstruction();
     QDomElement playerDom = createRoot(APP_NAME);
     //Class A
-    QDomElement plusSettingDom = writeDom(playerDom, "plusSetting");
-    QDomElement backgroundSettingDom = writeDom(playerDom, "backgroundSetting");
-    QDomElement downloadSettingDom = writeDom(playerDom, "downloadSetting");
-    QDomElement skinSettingDom = writeDom(playerDom, "skinSetting");
+    QDomElement plusSettingDom = writeDomNode(playerDom, "plusSetting");
+    QDomElement backgroundSettingDom = writeDomNode(playerDom, "backgroundSetting");
+    QDomElement downloadSettingDom = writeDomNode(playerDom, "downloadSetting");
+    QDomElement skinSettingDom = writeDomNode(playerDom, "skinSetting");
     //Class B
 
     ///////////////////////////////////////////////////////////////////////////
@@ -84,22 +84,21 @@ void DownloadSysConfigManager::writeXMLConfig()
     writeDomElement(skinSettingDom, "skinSuspension", DownloadXmlAttribute("value", skinSuspensionChoiced));
     writeDomElement(skinSettingDom, "skinSuspensionPer", DownloadXmlAttribute("value", skinSuspensionPerChoiced));
 
-
     //Write to file
     QTextStream out(m_file);
-    m_ddom->save(out, 4);
+    m_document->save(out, 4);
 }
 
 QRect DownloadSysConfigManager::readWindowGeometry() const
 {
-    QDomNodeList nodelist = m_ddom->elementsByTagName("geometry");
+    const QDomNodeList &nodelist = m_document->elementsByTagName("geometry");
     if(nodelist.isEmpty())
     {
         return QRect(0, 0, WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
     }
 
-    QDomElement element = nodelist.at(0).toElement();
-    QStringList list = element.attribute("value").split(",");
+    const QDomElement &element = nodelist.at(0).toElement();
+    const QStringList &list = element.attribute("value").split(",");
     if(list.count() == 4)
     {
         return QRect(list[0].toInt() < 0 ? 0 : list[0].toInt(),
@@ -140,7 +139,7 @@ void DownloadSysConfigManager::readSysLoadConfig() const
                      readXmlAttributeByTagNameValue("downloadMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced,
                      readXmlAttributeByTagNameValue("downloadMaxCount").toInt());
-    QString path = readXmlAttributeByTagNameValue("downloadPathDir");
+    const QString &path = readXmlAttributeByTagNameValue("downloadPathDir");
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced,
                      (path.isEmpty() || !QFile::exists(path)) ? DownloadUtils::Core::downloadPrefix() : path);
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimitChoiced,

@@ -35,9 +35,10 @@
 #define SET_FILE_PREFIX         "stk"
 #define COM_FILE_PREFIX         "com"
 // playlist ext
-#define LST_FILE_PREFIX         "tkpl"
+#define TPL_FILE_PREFIX         "tkpl"
 
 
+#define TKF_FILE                TTK_STRCAT(TTK_DOT, TKF_FILE_PREFIX)
 #define TKM_FILE                TTK_STRCAT(TTK_DOT, TKM_FILE_PREFIX)
 #define SKN_FILE                TTK_STRCAT(TTK_DOT, SKN_FILE_PREFIX)
 #define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_PREFIX)
@@ -45,6 +46,7 @@
 #define XML_FILE                TTK_STRCAT(TTK_DOT, XML_FILE_PREFIX)
 #define SET_FILE                TTK_STRCAT(TTK_DOT, SET_FILE_PREFIX)
 #define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_PREFIX)
+#define TPL_FILE                TTK_STRCAT(TTK_DOT, TPL_FILE_PREFIX)
 
 
 #define APP_NAME                "TTKDownloader"
@@ -63,10 +65,10 @@
 #define USER_THEME_DIR          TTK_STRCAT("theme", TTK_SEPARATOR)
 
 
-#define MAKE_NETS               "avnets.sh"
-#define LIST_PATH               "list.tkpl"
-#define COFIG_PATH              "config.xml"
-#define HISTORY_PATH            "history.tkf"
+#define MAKE_NET_PATH           "avnets.sh"
+#define LIST_PATH               TTK_STRCAT("list", TPL_FILE)
+#define COFIG_PATH              TTK_STRCAT("config", XML_FILE)
+#define HISTORY_PATH            TTK_STRCAT("history", TKF_FILE)
 
 
 #define MAIN_DIR_FULL           DownloadObject::applicationPath() + TTK_PDIR
@@ -75,7 +77,7 @@
 #define TDDOWNLOAD_DIR_FULL     MAIN_DIR_FULL + TDDOWNLOAD_DIR
 
 
-#define MAKE_NETS_FULL          APPDATA_DIR_FULL + MAKE_NETS
+#define MAKE_NET_PATH_FULL      APPDATA_DIR_FULL + MAKE_NET_PATH
 #define LIST_PATH_FULL          APPDATA_DIR_FULL + LIST_PATH
 #define COFIG_PATH_FULL         APPDATA_DIR_FULL + COFIG_PATH
 #define HISTORY_PATH_FULL       APPDATA_DIR_FULL + HISTORY_PATH

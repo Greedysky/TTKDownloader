@@ -57,7 +57,7 @@ void DownloadNetworkSpeedTestThread::setAvailableNewtworkNames(const QStringList
     m_process = new QProcess(this);
     m_process->setProcessChannelMode(QProcess::MergedChannels);
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(outputRecieved()));
-    m_process->start(MAKE_NETS_FULL, {m_names.first(), "1"});
+    m_process->start(MAKE_NET_PATH_FULL, {m_names.first(), "1"});
 #endif
 }
 
@@ -87,7 +87,7 @@ QStringList DownloadNetworkSpeedTestThread::newtworkNames() const
     for(UINT i = 0; i < pTable->dwNumEntries; i++)
     {
         MIB_IFROW Row = pTable->table[i];
-        std::string s(TTKReinterpret_cast(char const*, Row.bDescr));
+        TTKString s(TTKReinterpret_cast(char const*, Row.bDescr));
         QString qs = QString::fromStdString(s);
         if((Row.dwType == 71 || Row.dwType == 6) && !names.contains(qs))
         {
@@ -119,8 +119,8 @@ void DownloadNetworkSpeedTestThread::outputRecieved()
 #ifdef Q_OS_UNIX
     while(m_process->canReadLine())
     {
-        QByteArray datas = m_process->readLine();
-        QStringList list = QString(datas).split("|");
+        const QByteArray &datas = m_process->readLine();
+        const QStringList &list = QString(datas).split("|");
         ulong upload = 0, download = 0;
 
         if(list.count() == 3)

@@ -11,7 +11,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
     ///////////////////////////////////////////////////////
     createProcessingInstruction();
     QDomElement player = createRoot(APP_NAME);
-    QDomElement download = writeDom(player, "breakPoint");
+    QDomElement download = writeDomNode(player, "breakPoint");
 
     if(!records.isEmpty())
     {
@@ -28,28 +28,28 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 
     //Write to file
     QTextStream out(m_file);
-    m_ddom->save(out, 4);
+    m_document->save(out, 4);
 }
 
 void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointItems &records)
 {
-    QDomNodeList nodelist = m_ddom->elementsByTagName("value");
+    QDomNodeList nodelist = m_document->elementsByTagName("value");
     for(int i=0; i<nodelist.count(); ++i)
     {
         DownloadBreakPointItem record;
-        QDomElement element = nodelist.at(i).toElement();
+        const QDomElement &element = nodelist.at(i).toElement();
         record.m_ready = element.attribute("ready").toLongLong();
         record.m_end = element.attribute("end").toLongLong();
         record.m_start = element.attribute("start").toLongLong();
         records << record;
     }
 
-    nodelist = m_ddom->elementsByTagName("url");
+    nodelist = m_document->elementsByTagName("url");
     for(int i=0; i<nodelist.count(); ++i)
     {
         for(int j=0; j<records.count(); ++j)
         {
-            QDomElement element = nodelist.at(i).toElement();
+            const QDomElement &element = nodelist.at(i).toElement();
             records[j].m_url = element.text();
         }
     }

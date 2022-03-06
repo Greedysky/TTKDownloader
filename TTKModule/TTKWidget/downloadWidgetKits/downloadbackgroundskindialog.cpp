@@ -124,13 +124,13 @@ bool DownloadBackgroundSkinDialog::themeValidCheck(QString &name, QString &path)
 
 QString DownloadBackgroundSkinDialog::cpoyArtFileToLocal(const QString &path)
 {
-    int index = cpoyFileToLocal(path);
+    const int index = cpoyFileToLocal(path);
     return (index != -1) ? QString("theme-%1").arg(index + 1) : QString();
 }
 
 void DownloadBackgroundSkinDialog::updateArtFileTheme(const QString &theme)
 {
-    QString des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TKM_FILE);
+    const QString &des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TKM_FILE);
     m_myBackgroundList->createItem(theme, des, true);
     m_myBackgroundList->updateLastedItem();
 }
@@ -172,11 +172,12 @@ void DownloadBackgroundSkinDialog::showPaletteDialog(const QString &path)
 
 void DownloadBackgroundSkinDialog::showCustomSkinDialog()
 {
-    QString customSkinPath = DownloadUtils::Widget::openFileDialog(this);
+    const QString &customSkinPath = DownloadUtils::Widget::openFileDialog(this);
     if(customSkinPath.isEmpty())
     {
         return;
     }
+
     cpoyFileFromLocal(customSkinPath);
     m_myBackgroundList->updateLastedItem();
 }
@@ -213,7 +214,7 @@ void DownloadBackgroundSkinDialog::backgroundListWidgetItemClicked(const QString
 {
     if(!m_myBackgroundList->contains(name))
     {
-        QString path = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TKM_FILE);
+        const QString &path = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(name).arg(TKM_FILE);
         QFile::copy(QString("%1%2%3").arg(THEME_DIR_FULL).arg(name).arg(TKM_FILE), path);
         m_myBackgroundList->createItem(name, path, true);
     }
@@ -236,9 +237,9 @@ void DownloadBackgroundSkinDialog::remoteBackgroundListWidgetItemClicked(const Q
 
     if(!m_myBackgroundList->contains(image))
     {
-        int index = cpoyFileToLocalIndex();
-        QString theme = QString("theme-%1").arg(index + 1);
-        QString des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TKM_FILE);
+        const int index = cpoyFileToLocalIndex();
+        const QString &theme = QString("theme-%1").arg(index + 1);
+        const QString &des = QString("%1%2%3").arg(USER_THEME_DIR_FULL).arg(theme).arg(TKM_FILE);
         DownloadExtractWrapper::inputSkin(&image, des);
 
         m_myBackgroundList->createItem(theme, des, true);
@@ -304,10 +305,21 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
 {
     QList<QFileInfo> files(QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
     TTKIntList data;
-    for(const QFileInfo &info : qAsConst(files))
+    for(const QFileInfo &path : qAsConst(files))
     {
-        QString fileName = info.baseName();
-        fileName = fileName.split(TTK_DEFAULT_STR).last();
+        QFileInfo fin(path);
+        if(fin.suffix().toLower() != TKM_FILE_PREFIX)
+        {
+            continue;
+        }
+
+        const QStringList &list = fin.baseName().split(TTK_DEFAULT_STR);
+        if(list.count() < 2)
+        {
+            continue;
+        }
+
+        const QString &fileName = list.last();
         data << fileName.trimmed().toInt();
     }
     std::sort(data.begin(), data.end(), std::greater<int>());

@@ -45,15 +45,6 @@ class TTK_MODULE_EXPORT DownloadCryptographicHash
 {
     TTK_DECLARE_MODULE(DownloadCryptographicHash)
 public:
-    enum Priority
-    {
-        Lower = 1,  /*!< Priority Lower*/
-        Low,        /*!< Priority Low*/
-        Normal,     /*!< Priority Normal*/
-        High,       /*!< Priority High*/
-        Higher      /*!< Priority Higher*/
-    };
-
     /*!
      * Object contsructor.
      */
@@ -62,43 +53,39 @@ public:
     /*!
      * encrypt by QString data.
      */
-    QString encrypt(const QString &data, const QString &key, Priority p = Lower);
+    QString encrypt(const QString &data, const QString &key);
     /*!
      * decrypt by QString data.
      */
-    QString decrypt(const QString &data, const QString &key, Priority p = Lower);
+    QString decrypt(const QString &data, const QString &key);
 
+protected:
     /*!
-     * XXTEA encrypt by std::string data.
+     * XXTEA encrypt by TTKString data.
      */
-    std::string xxteaEncrypt(std::string data,  std::string key);
+    TTKString xxteaEncrypt(const TTKString &data, const TTKString &key);
     /*!
      * XXTEA encrypt by QString data.
      */
     QString xxteaEncrypt(const QString &data, const QString &key);
 
     /*!
-     * XXTEA decrypt by std::string data.
+     * XXTEA decrypt by TTKString data.
      */
-    std::string xxteaDecrypt(std::string data,  std::string key);
+    TTKString xxteaDecrypt(const TTKString &data, const TTKString &key);
     /*!
      * XXTEA decrypt by QString data.
      */
     QString xxteaDecrypt(const QString &data, const QString &key);
 
-protected:
-    /*!
-     * Check current char is base64.
-     */
-    bool isBase64(unsigned char c);
     /*!
      * Do XXTEA encrypt.
      */
-    unsigned char *doXxteaEncrypt(unsigned char *data, xxtea_uint len, unsigned char *key, xxtea_uint *ret_len);
+    uchar *doXxteaEncrypt(uchar *data, xxtea_uint len, uchar *key, xxtea_uint *retLength);
     /*!
      * Do XXTEA decrypt.
      */
-    unsigned char *doXxteaDecrypt(unsigned char *data, xxtea_uint len, unsigned char *key, xxtea_uint *ret_len);
+    uchar *doXxteaDecrypt(uchar *data, xxtea_uint len, uchar *key, xxtea_uint *retLength);
     /*!
      * XXTEA uint encrypt.
      */
@@ -110,36 +97,24 @@ protected:
     /*!
      * Fix key length.
      */
-    unsigned char *fixKeyLength(unsigned char *key, xxtea_uint key_len);
+    uchar *fixKeyLength(uchar *key, xxtea_uint keyLength);
     /*!
      * XXTEA to uint array.
      */
-    xxtea_uint *xxteaToUintArray(unsigned char *data, xxtea_uint len, int include_length, xxtea_uint *ret_len);
+    xxtea_uint *xxteaToUintArray(uchar *data, xxtea_uint len, int includeLength, xxtea_uint *retLength);
     /*!
      * XXTEA to byte array.
      */
-    unsigned char *xxteaToByteArray(xxtea_uint *data, xxtea_uint len, int include_length, xxtea_uint *ret_len);
+    uchar *xxteaToByteArray(xxtea_uint *data, xxtea_uint len, int includeLength, xxtea_uint *retLength);
 
-    //////////////////////////////////////////////////////////////////////////
     /*!
-     * Base64 encode.
+     * XXTEA encrypt by uchar * data.
      */
-    std::string base64Encode(unsigned char const* , unsigned int len);
+    uchar *xxteaEncrypt(uchar *data, xxtea_uint dataLength, uchar *key, xxtea_uint keyLength, xxtea_uint *retLengthgth);
     /*!
-     * Base64 dncode.
+     * XXTEA decrypt by uchar * data.
      */
-    std::string base64Decode(std::string const& s);
-
-    //////////////////////////////////////////////////////////////////////////
-    /*!
-     * XXTEA encrypt by unsigned char * data.
-     */
-    unsigned char *xxteaEncrypt(unsigned char *data, xxtea_uint data_len, unsigned char *key, xxtea_uint key_len, xxtea_uint *ret_length);
-    /*!
-     * XXTEA decrypt by unsigned char * data.
-     */
-    unsigned char *xxteaDecrypt(unsigned char *data, xxtea_uint data_len, unsigned char *key, xxtea_uint key_len, xxtea_uint *ret_length);
-    //////////////////////////////////////////////////////////////////////////
+    uchar *xxteaDecrypt(uchar *data, xxtea_uint dataLength, uchar *key, xxtea_uint keyLength, xxtea_uint *retLengthgth);
 
 };
 

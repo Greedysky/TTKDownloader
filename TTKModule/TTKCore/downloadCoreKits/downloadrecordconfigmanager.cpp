@@ -15,7 +15,7 @@ void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecords &rec
     ///////////////////////////////////////////////////////
     createProcessingInstruction();
     QDomElement player = createRoot(APP_NAME);
-    QDomElement download = writeDom(player, "history");
+    QDomElement download = writeDomNode(player, "history");
 
     for(const DownloadRecord &record : qAsConst(records))
     {
@@ -28,15 +28,15 @@ void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecords &rec
 
     //Write to file
     QTextStream out(m_file);
-    m_ddom->save(out, 4);
+    m_document->save(out, 4);
 }
 
 void DownloadRecordConfigManager::readDownloadConfig(DownloadRecords &records)
 {
-    QDomNodeList nodelist = m_ddom->elementsByTagName("value");
+    const QDomNodeList &nodelist = m_document->elementsByTagName("value");
     for(int i=0; i<nodelist.count(); ++i)
     {
-        const QDomElement element = nodelist.at(i).toElement();
+        const QDomElement &element = nodelist.at(i).toElement();
         DownloadRecord record;
         record.m_path = element.attribute("name");
         record.m_time = element.attribute("time");

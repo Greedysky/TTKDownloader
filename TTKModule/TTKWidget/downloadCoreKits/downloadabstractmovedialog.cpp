@@ -18,7 +18,6 @@ DownloadAbstractMoveDialog::DownloadAbstractMoveDialog(QWidget *parent)
 DownloadAbstractMoveDialog::DownloadAbstractMoveDialog(bool transparent, QWidget *parent)
     : QDialog(parent)
 {
-    ///Remove the title bar
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, transparent);
 
@@ -66,7 +65,7 @@ void DownloadAbstractMoveDialog::paintEvent(QPaintEvent *event)
 void DownloadAbstractMoveDialog::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
-    if(event->button() == Qt::LeftButton && !m_moveOption)///Press the left key
+    if(event->button() == Qt::LeftButton && !m_moveOption)
     {
         m_leftButtonPress = true;
     }
@@ -80,7 +79,7 @@ void DownloadAbstractMoveDialog::mousePressEvent(QMouseEvent *event)
 void DownloadAbstractMoveDialog::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
-    if(!m_leftButtonPress)///Not press the left key
+    if(!m_leftButtonPress)
     {
         event->ignore();
         return;

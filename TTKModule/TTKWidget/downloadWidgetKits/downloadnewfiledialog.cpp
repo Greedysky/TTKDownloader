@@ -35,9 +35,7 @@ DownloadNewFileDialog::~DownloadNewFileDialog()
 
 void DownloadNewFileDialog::confirmButtonPressed()
 {
-    QStringList urls = m_ui->urlTextEdit->toPlainText().split(';');
-
-    emit setDownloadPath(urls);
+    emit setDownloadPath(m_ui->urlTextEdit->toPlainText().split(';'));
     close();
 }
 

@@ -3,104 +3,30 @@
 #define XXTEA_MX (z >> 5 ^ y << 2) + (y >> 3 ^ z << 4) ^ (sum ^ y) + (k[p & 3 ^ e] ^ z)
 #define XXTEA_DELTA 0x9E3779B9
 
-const std::string base64_chars =
-                    "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    "abcdefghijklmnopqrstuvwxyz"
-                    "0123456789+/";
-
-DownloadCryptographicHash::DownloadCryptographicHash()
+namespace QAlgorithm
 {
+static const TTKString base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-}
-
-QString DownloadCryptographicHash::encrypt(const QString &data, const QString &key, Priority p)
-{
-    QString d = data;
-    for(int i=0; i<p; ++i)
-    {
-        d = xxteaEncrypt(d, key).toUtf8().toBase64();
-    }
-    return d;
-}
-
-QString DownloadCryptographicHash::decrypt(const QString &data, const QString &key, Priority p)
-{
-    QString d = data;
-    for(int i=0; i<p; ++i)
-    {
-        d = xxteaDecrypt(QByteArray::fromBase64(d.toUtf8()), key);
-    }
-    return d;
-}
-
-std::string DownloadCryptographicHash::xxteaEncrypt(std::string data, std::string key)
-{
-    data = QString(QString(data.c_str()).toUtf8()).toStdString();
-    unsigned char date_uchar[1024];
-    strcpy((char*)date_uchar,(const char *)data.c_str());
-    unsigned char key_uchar[1024];
-    strcpy((char*)key_uchar,(const char *)key.c_str());
-    xxtea_uint s[1];
-    unsigned char * encrypt = xxteaEncrypt(date_uchar,strlen((const char *)date_uchar),key_uchar,strlen((const char *)key_uchar),s);
-    std::string encoded = base64Encode(encrypt,s[0]);
-    free(encrypt);
-    return encoded;
-}
-
-std::string DownloadCryptographicHash::xxteaDecrypt(std::string data,  std::string key)
-{
-    std::string decoded = base64Decode(data);
-    if(decoded.empty())
-    {
-        return std::string("");
-    }
-    unsigned char date_uchar[1024];
-    memcpy(date_uchar, decoded.c_str(),decoded.length());
-    date_uchar[decoded.length()] = '\0';
-    unsigned char key_uchar[1024];
-    strcpy((char*)key_uchar,(const char *)key.c_str());
-    xxtea_uint s[1];
-    unsigned char * encrypt = xxteaDecrypt(date_uchar,decoded.length(),key_uchar,strlen((const char *)key_uchar),s);
-    if(!encrypt)
-    {
-        return std::string("false_false");
-    }
-    std::string result = (char *)encrypt;
-    result = QString::fromUtf8(result.c_str()).toStdString();
-    free(encrypt);
-    return result;
-}
-
-QString DownloadCryptographicHash::xxteaEncrypt(const QString &data, const QString &key)
-{
-    return xxteaEncrypt(data.toStdString(), key.toStdString()).c_str();
-}
-
-QString DownloadCryptographicHash::xxteaDecrypt(const QString &data, const QString &key)
-{
-    return xxteaDecrypt(data.toStdString(), key.toStdString()).c_str();
-}
-
-bool DownloadCryptographicHash::isBase64(unsigned char c)
+static bool isBase64(unsigned char c)
 {
     return (isalnum(c) || (c == '+') || (c == '/'));
 }
 
-std::string DownloadCryptographicHash::base64Encode(unsigned char const* bytes_to_encode, unsigned int in_len)
+TTKString base64Encode(const unsigned char *bytes, unsigned int length)
 {
-    std::string ret;
+    TTKString ret;
     int i = 0, j = 0;
     unsigned char char_array_3[3], char_array_4[4];
 
-    while (in_len--)
+    while(length--)
     {
-        char_array_3[i++] = *(bytes_to_encode++);
-        if (i == 3)
+        char_array_3[i++] = *(bytes++);
+        if(i == 3)
         {
-            char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-            char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-            char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-            char_array_4[3] = char_array_3[2] & 0x3f;
+            char_array_4[0] = (char_array_3[0] & 0xFC) >> 2;
+            char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xF0) >> 4);
+            char_array_4[2] = ((char_array_3[1] & 0x0F) << 2) + ((char_array_3[2] & 0xC0) >> 6);
+            char_array_4[3] = char_array_3[2] & 0x3F;
 
             for(i = 0; (i <4) ; i++)
             {
@@ -110,19 +36,19 @@ std::string DownloadCryptographicHash::base64Encode(unsigned char const* bytes_t
         }
     }
 
-    if (i)
+    if(i)
     {
         for(j = i; j < 3; j++)
         {
             char_array_3[j] = '\0';
         }
 
-        char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
-        char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
-        char_array_4[2] = ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
-        char_array_4[3] = char_array_3[2] & 0x3f;
+        char_array_4[0] = (char_array_3[0] & 0xFC) >> 2;
+        char_array_4[1] = ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xF0) >> 4);
+        char_array_4[2] = ((char_array_3[1] & 0x0F) << 2) + ((char_array_3[2] & 0xC0) >> 6);
+        char_array_4[3] = char_array_3[2] & 0x3F;
 
-        for (j = 0; (j < i + 1); j++)
+        for(j = 0; (j < i + 1); j++)
         {
             ret += base64_chars[char_array_4[j]];
         }
@@ -136,28 +62,28 @@ std::string DownloadCryptographicHash::base64Encode(unsigned char const* bytes_t
     return ret;
 }
 
-std::string DownloadCryptographicHash::base64Decode(std::string const& encoded_string)
+TTKString base64Decode(const TTKString &bytes)
 {
-    int in_len = encoded_string.size();
-    int i = 0, j = 0, in_ = 0;
+    int length = bytes.size();
+    int i = 0, j = 0, in = 0;
     unsigned char char_array_4[4], char_array_3[3];
-    std::string ret;
+    TTKString ret;
 
-    while (in_len-- && (encoded_string[in_] != '=') && isBase64(encoded_string[in_]))
+    while(length-- && (bytes[in] != '=') && isBase64(bytes[in]))
     {
-        char_array_4[i++] = encoded_string[in_]; in_++;
-        if (i ==4)
+        char_array_4[i++] = bytes[in]; in++;
+        if(i ==4)
         {
-            for (i = 0; i <4; i++)
+            for(i = 0; i <4; i++)
             {
                 char_array_4[i] = base64_chars.find(char_array_4[i]);
             }
 
             char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
-            char_array_3[1] = ((char_array_4[1] & 0xf) << 4) + ((char_array_4[2] & 0x3c) >> 2);
+            char_array_3[1] = ((char_array_4[1] & 0xF) << 4) + ((char_array_4[2] & 0x3C) >> 2);
             char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
 
-            for (i = 0; (i < 3); i++)
+            for(i = 0; (i < 3); i++)
             {
                 ret += char_array_3[i];
             }
@@ -165,23 +91,23 @@ std::string DownloadCryptographicHash::base64Decode(std::string const& encoded_s
         }
     }
 
-    if (i)
+    if(i)
     {
-        for (j = i; j <4; j++)
+        for(j = i; j <4; j++)
         {
             char_array_4[j] = 0;
         }
 
-        for (j = 0; j <4; j++)
+        for(j = 0; j <4; j++)
         {
             char_array_4[j] = base64_chars.find(char_array_4[j]);
         }
 
         char_array_3[0] = (char_array_4[0] << 2) + ((char_array_4[1] & 0x30) >> 4);
-        char_array_3[1] = ((char_array_4[1] & 0xf) << 4) + ((char_array_4[2] & 0x3c) >> 2);
+        char_array_3[1] = ((char_array_4[1] & 0xF) << 4) + ((char_array_4[2] & 0x3C) >> 2);
         char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
 
-        for (j = 0; (j < i - 1); j++)
+        for(j = 0; (j < i - 1); j++)
         {
             ret += char_array_3[j];
         }
@@ -189,18 +115,97 @@ std::string DownloadCryptographicHash::base64Decode(std::string const& encoded_s
 
     return ret;
 }
+}
+
+
+DownloadCryptographicHash::DownloadCryptographicHash()
+{
+
+}
+
+QString DownloadCryptographicHash::encrypt(const QString &data, const QString &key)
+{
+    return xxteaEncrypt(data, key).toUtf8().toBase64();
+}
+
+QString DownloadCryptographicHash::decrypt(const QString &data, const QString &key)
+{
+    return xxteaDecrypt(QByteArray::fromBase64(data.toUtf8()), key);
+}
+
+TTKString DownloadCryptographicHash::xxteaEncrypt(const TTKString &data, const TTKString &key)
+{
+    const TTKString &raw = QString(QString(data.c_str()).toUtf8()).toStdString();
+
+    uchar dataCopy[1024];
+    strcpy((char*)dataCopy, (const char *)raw.c_str());
+
+    uchar keyCopy[1024];
+    strcpy((char*)keyCopy, (const char *)key.c_str());
+
+    xxtea_uint s[1];
+    uchar *encrypt = xxteaEncrypt(dataCopy, strlen((const char *)dataCopy), keyCopy, strlen((const char *)keyCopy), s);
+    const TTKString &encode = QAlgorithm::base64Encode(encrypt, s[0]);
+    free(encrypt);
+
+    return encode;
+}
+
+TTKString DownloadCryptographicHash::xxteaDecrypt(const TTKString &data, const TTKString &key)
+{
+    const TTKString &decode = QAlgorithm::base64Decode(data);
+    if(decode.empty())
+    {
+        return TTKString("");
+    }
+
+    uchar dataCopy[1024];
+    memcpy(dataCopy, decode.c_str(), decode.length());
+
+    dataCopy[decode.length()] = '\0';
+    uchar keyCopy[1024];
+    strcpy((char*)keyCopy, (const char *)key.c_str());
+
+    xxtea_uint s[1];
+    uchar *encrypt = xxteaDecrypt(dataCopy, decode.length(), keyCopy, strlen((const char *)keyCopy), s);
+    if(!encrypt)
+    {
+        return TTKString("false_false");
+    }
+
+    TTKString raw = (char*)encrypt;
+    raw = QString::fromUtf8(raw.c_str()).toStdString();
+    free(encrypt);
+
+    return raw;
+}
+
+QString DownloadCryptographicHash::xxteaEncrypt(const QString &data, const QString &key)
+{
+    return xxteaEncrypt(data.toStdString(), key.toStdString()).c_str();
+}
+
+QString DownloadCryptographicHash::xxteaDecrypt(const QString &data, const QString &key)
+{
+    return xxteaDecrypt(data.toStdString(), key.toStdString()).c_str();
+}
 
 void DownloadCryptographicHash::xxteaUintEncrypt(xxtea_uint *v, xxtea_uint len, xxtea_uint *k)
 {
     xxtea_uint n = len - 1;
     xxtea_uint z = v[n], y = v[0], p, q = 6 + 52 / (n + 1), sum = 0, e;
-    if (n < 1) {
+
+    if(n < 1)
+    {
         return;
     }
-    while (0 < q--) {
+
+    while(0 < q--)
+    {
         sum += XXTEA_DELTA;
         e = sum >> 2 & 3;
-        for (p = 0; p < n; p++) {
+        for(p = 0; p < n; p++)
+        {
             y = v[p + 1];
             z = v[p] += XXTEA_MX;
         }
@@ -213,12 +218,17 @@ void DownloadCryptographicHash::xxteaUintDecrypt(xxtea_uint *v, xxtea_uint len, 
 {
     xxtea_uint n = len - 1;
     xxtea_uint z = v[n], y = v[0], p, q = 6 + 52 / (n + 1), sum = q * XXTEA_DELTA, e;
-    if (n < 1) {
+
+    if(n < 1)
+    {
         return;
     }
-    while (sum != 0) {
+
+    while(sum != 0)
+    {
         e = sum >> 2 & 3;
-        for (p = n; p > 0; p--) {
+        for(p = n; p > 0; p--)
+        {
             z = v[p - 1];
             y = v[p] -= XXTEA_MX;
         }
@@ -228,120 +238,136 @@ void DownloadCryptographicHash::xxteaUintDecrypt(xxtea_uint *v, xxtea_uint len, 
     }
 }
 
-unsigned char *DownloadCryptographicHash::fixKeyLength(unsigned char *key, xxtea_uint key_len)
+uchar *DownloadCryptographicHash::fixKeyLength(uchar *key, xxtea_uint keyLength)
 {
-    unsigned char *tmp = (unsigned char *)malloc(16);
-    memcpy(tmp, key, key_len);
-    memset(tmp + key_len, '\0', 16 - key_len);
+    uchar *tmp = (uchar *)malloc(16);
+    memcpy(tmp, key, keyLength);
+    memset(tmp + keyLength, '\0', 16 - keyLength);
     return tmp;
 }
 
-xxtea_uint *DownloadCryptographicHash::xxteaToUintArray(unsigned char *data, xxtea_uint len, int include_length, xxtea_uint *ret_len)
+xxtea_uint *DownloadCryptographicHash::xxteaToUintArray(uchar *data, xxtea_uint len, int includeLength, xxtea_uint *retLength)
 {
     xxtea_uint i, n, *result;
 
     n = len >> 2;
     n = (((len & 3) == 0) ? n : n + 1);
-    if (include_length) {
+
+    if(includeLength)
+    {
         result = (xxtea_uint *)malloc((n + 1) << 2);
         result[n] = len;
-        *ret_len = n + 1;
-    } else {
+        *retLength = n + 1;
+    } else
+    {
         result = (xxtea_uint *)malloc(n << 2);
-        *ret_len = n;
+        *retLength = n;
     }
+
     memset(result, 0, n << 2);
-    for (i = 0; i < len; i++) {
+    for(i = 0; i < len; i++)
+    {
         result[i >> 2] |= (xxtea_uint)data[i] << ((i & 3) << 3);
     }
 
     return result;
 }
 
-unsigned char *DownloadCryptographicHash::xxteaToByteArray(xxtea_uint *data, xxtea_uint len, int include_length, xxtea_uint *ret_len)
+uchar *DownloadCryptographicHash::xxteaToByteArray(xxtea_uint *data, xxtea_uint len, int includeLength, xxtea_uint *retLength)
 {
     xxtea_uint i, n, m;
-    unsigned char *result;
+    uchar *result;
 
     n = len << 2;
-    if (include_length) {
+    if(includeLength)
+    {
         m = data[len - 1];
-        if ((m < n - 7) || (m > n - 4)) return nullptr;
+        if((m < n - 7) || (m > n - 4))
+        {
+            return nullptr;
+        }
         n = m;
     }
-    result = (unsigned char *)malloc(n + 1);
-    for (i = 0; i < n; i++) {
-        result[i] = (unsigned char)((data[i >> 2] >> ((i & 3) << 3)) & 0xff);
+
+    result = (uchar *)malloc(n + 1);
+    for(i = 0; i < n; i++)
+    {
+        result[i] = (uchar)((data[i >> 2] >> ((i & 3) << 3)) & 0xFF);
     }
+
     result[n] = '\0';
-    *ret_len = n;
+    *retLength = n;
 
     return result;
 }
 
-unsigned char *DownloadCryptographicHash::doXxteaEncrypt(unsigned char *data, xxtea_uint len, unsigned char *key, xxtea_uint *ret_len)
+uchar *DownloadCryptographicHash::doXxteaEncrypt(uchar *data, xxtea_uint len, uchar *key, xxtea_uint *retLength)
 {
-    unsigned char *result;
-    xxtea_uint *v, *k, v_len, k_len;
+    uchar *result;
+    xxtea_uint *v, *k, vlen, klen;
 
-    v = xxteaToUintArray(data, len, 1, &v_len);
-    k = xxteaToUintArray(key, 16, 0, &k_len);
-    xxteaUintEncrypt(v, v_len, k);
-    result = xxteaToByteArray(v, v_len, 0, ret_len);
+    v = xxteaToUintArray(data, len, 1, &vlen);
+    k = xxteaToUintArray(key, 16, 0, &klen);
+
+    xxteaUintEncrypt(v, vlen, k);
+    result = xxteaToByteArray(v, vlen, 0, retLength);
+
     free(v);
     free(k);
 
     return result;
 }
 
-unsigned char *DownloadCryptographicHash::doXxteaDecrypt(unsigned char *data, xxtea_uint len, unsigned char *key, xxtea_uint *ret_len)
+uchar *DownloadCryptographicHash::doXxteaDecrypt(uchar *data, xxtea_uint len, uchar *key, xxtea_uint *retLength)
 {
-    unsigned char *result;
-    xxtea_uint *v, *k, v_len, k_len;
+    uchar *result;
+    xxtea_uint *v, *k, vlen, klen;
 
-    v = xxteaToUintArray(data, len, 0, &v_len);
-    k = xxteaToUintArray(key, 16, 0, &k_len);
-    xxteaUintDecrypt(v, v_len, k);
-    result = xxteaToByteArray(v, v_len, 1, ret_len);
+    v = xxteaToUintArray(data, len, 0, &vlen);
+    k = xxteaToUintArray(key, 16, 0, &klen);
+
+    xxteaUintDecrypt(v, vlen, k);
+    result = xxteaToByteArray(v, vlen, 1, retLength);
+
     free(v);
     free(k);
 
     return result;
 }
 
-unsigned char *DownloadCryptographicHash::xxteaEncrypt(unsigned char *data, xxtea_uint data_len, unsigned char *key, xxtea_uint key_len, xxtea_uint *ret_length)
+uchar *DownloadCryptographicHash::xxteaEncrypt(uchar *data, xxtea_uint dataLength, uchar *key, xxtea_uint keyLength, xxtea_uint *retLength)
 {
-    unsigned char *result;
+    uchar *result;
+    *retLength = 0;
 
-    *ret_length = 0;
-
-    if (key_len < 16) {
-        unsigned char *key2 = fixKeyLength(key, key_len);
-        result = doXxteaEncrypt(data, data_len, key2, ret_length);
+    if(keyLength < 16)
+    {
+        uchar *key2 = fixKeyLength(key, keyLength);
+        result = doXxteaEncrypt(data, dataLength, key2, retLength);
         free(key2);
     }
     else
     {
-        result = doXxteaEncrypt(data, data_len, key, ret_length);
+        result = doXxteaEncrypt(data, dataLength, key, retLength);
     }
 
     return result;
 }
 
-unsigned char *DownloadCryptographicHash::xxteaDecrypt(unsigned char *data, xxtea_uint data_len, unsigned char *key, xxtea_uint key_len, xxtea_uint *ret_length)
+uchar *DownloadCryptographicHash::xxteaDecrypt(uchar *data, xxtea_uint dataLength, uchar *key, xxtea_uint keyLength, xxtea_uint *retLength)
 {
-    unsigned char *result;
+    uchar *result;
+    *retLength = 0;
 
-    *ret_length = 0;
-
-    if (key_len < 16) {
-        unsigned char *key2 = fixKeyLength(key, key_len);
-        result = doXxteaDecrypt(data, data_len, key2, ret_length);
+    if(keyLength < 16)
+    {
+        uchar *key2 = fixKeyLength(key, keyLength);
+        result = doXxteaDecrypt(data, dataLength, key2, retLength);
         free(key2);
     }
     else
     {
-        result = doXxteaDecrypt(data, data_len, key, ret_length);
+        result = doXxteaDecrypt(data, dataLength, key, retLength);
     }
 
     return result;

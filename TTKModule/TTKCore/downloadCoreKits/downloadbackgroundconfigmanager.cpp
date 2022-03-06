@@ -24,7 +24,7 @@ void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem 
 
     //Write to file
     QTextStream out(m_file);
-    m_ddom->save(out, 4);
+    m_document->save(out, 4);
 }
 
 void DownloadSkinConfigManager::readSkinXMLConfig(DownloadSkinConfigItem &item)

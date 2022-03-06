@@ -10,6 +10,7 @@ DownloadAbstractMoveResizeWidget::DownloadAbstractMoveResizeWidget(QWidget *pare
     : QWidget(parent)
 {
     m_struct.m_mouseLeftPress = false;
+    m_struct.m_isPressBorder = false;
     m_direction = Direction_No;
 
     setWindowFlags(Qt::FramelessWindowHint);
@@ -32,6 +33,7 @@ bool DownloadAbstractMoveResizeWidget::eventFilter(QObject *object, QEvent *even
 void DownloadAbstractMoveResizeWidget::mouseDoubleClickEvent(QMouseEvent *event)
 {
     QWidget::mouseDoubleClickEvent(event);
+
     if(event->buttons() == Qt::LeftButton)
     {
         isMaximized() ? showNormal() : showMaximized();
@@ -56,7 +58,6 @@ void DownloadAbstractMoveResizeWidget::mousePressEvent(QMouseEvent *event)
 #else
             m_struct.m_mousePos = event->globalPos();
 #endif
-
             m_struct.m_mouseLeftPress = true;
         }
         else
@@ -70,14 +71,14 @@ void DownloadAbstractMoveResizeWidget::mouseMoveEvent(QMouseEvent *event)
 {
     QWidget::mouseMoveEvent(event);
     !m_struct.m_isPressBorder ? sizeDirection() : moveDirection();
+
     if(m_struct.m_mouseLeftPress)
     {
 #if TTK_QT_VERSION_CHECK(6,0,0)
-        const QPoint &pt = event->globalPosition().toPoint();
+        move(m_struct.m_windowPos + (event->globalPosition().toPoint() - m_struct.m_mousePos));
 #else
-        const QPoint &pt = event->globalPos();
+        move(m_struct.m_windowPos + (event->globalPos() - m_struct.m_mousePos));
 #endif
-        move(m_struct.m_windowPos + (pt - m_struct.m_mousePos));
     }
 }
 
@@ -87,11 +88,12 @@ void DownloadAbstractMoveResizeWidget::mouseReleaseEvent(QMouseEvent *event)
     m_struct.m_isPressBorder = false;
     m_struct.m_mouseLeftPress = false;
     setCursor(QCursor(Qt::ArrowCursor));
+    m_direction = Direction_No;
 }
 
 void DownloadAbstractMoveResizeWidget::sizeDirection()
 {
-    QPoint point = mapFromGlobal(QCursor::pos());
+    const QPoint &point = mapFromGlobal(QCursor::pos());
     if(point.x() > width() - DISTANCE && point.y() < height() - DISTANCE && point.y() > DISTANCE)
     {
         setCursor(Qt::SizeHorCursor);
@@ -145,7 +147,7 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
     {
         case Direction_Right:
         {
-            int wValue = QCursor::pos().x() - x();
+            const int wValue = QCursor::pos().x() - x();
             if(minimumWidth() <= wValue && wValue <= maximumWidth())
             {
                 setGeometry(x(), y(), wValue, height());
@@ -154,7 +156,7 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_Left:
         {
-            int wValue = x() + width() - QCursor::pos().x();
+            const int wValue = x() + width() - QCursor::pos().x();
             if(minimumWidth() <= wValue && wValue <= maximumWidth())
             {
                 setGeometry(QCursor::pos().x(), y(), wValue, height());
@@ -163,7 +165,7 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_Bottom:
         {
-            int hValue = QCursor::pos().y() - y();
+            const int hValue = QCursor::pos().y() - y();
             if(minimumHeight() <= hValue && hValue <= maximumHeight())
             {
                 setGeometry(x(), y(), width(), hValue);
@@ -172,7 +174,7 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_Top:
         {
-            int hValue = y() - QCursor::pos().y() + height();
+            const int hValue = y() - QCursor::pos().y() + height();
             if(minimumHeight() <= hValue && hValue <= maximumHeight())
             {
                 setGeometry(x(), QCursor::pos().y(), width(), hValue);
@@ -182,13 +184,14 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
         case Direction_RightTop:
         {
             int hValue = y() + height() - QCursor::pos().y();
-            int wValue = QCursor::pos().x() - x();
+            const int wValue = QCursor::pos().x() - x();
             int yValue = QCursor::pos().y();
             if(hValue >= maximumHeight())
             {
                 yValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height() - height();
                 hValue = maximumHeight();
             }
+
             if(hValue <= minimumHeight())
             {
                 yValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height() - height();
@@ -204,14 +207,16 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
 
             int wValue = pos().x() + width()- xValue;
             int hValue = pos().y() + height() - yValue;
-            int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
-            int thValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height();
+
+            const int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
+            const int thValue = m_struct.m_windowPos.y() + m_struct.m_pressedSize.height();
 
             if(twValue - xValue >= maximumWidth())
             {
                 xValue = twValue - maximumWidth();
                 wValue = maximumWidth();
             }
+
             if(twValue - xValue <= minimumWidth())
             {
                 xValue = twValue - minimumWidth();
@@ -222,6 +227,7 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
                 yValue = thValue - maximumHeight();
                 hValue = maximumHeight();
             }
+
             if(thValue - yValue <= minimumHeight())
             {
                 yValue = thValue - minimumHeight();
@@ -232,22 +238,24 @@ void DownloadAbstractMoveResizeWidget::moveDirection()
         }
         case Direction_RightBottom:
         {
-            int wValue = QCursor::pos().x() - x();
-            int hValue = QCursor::pos().y() - y();
+            const int wValue = QCursor::pos().x() - x();
+            const int hValue = QCursor::pos().y() - y();
             setGeometry(m_struct.m_windowPos.x(), m_struct.m_windowPos.y(), wValue, hValue);
             break;
         }
         case Direction_LeftBottom:
         {
             int wValue = x() + width() - QCursor::pos().x();
-            int hValue = QCursor::pos().y() - m_struct.m_windowPos.y();
+            const int hValue = QCursor::pos().y() - m_struct.m_windowPos.y();
             int xValue = QCursor::pos().x();
-            int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
+            const int twValue = m_struct.m_windowPos.x() + m_struct.m_pressedSize.width();
+
             if(twValue - xValue >= maximumWidth())
             {
                 xValue = twValue - maximumWidth();
                 wValue = maximumWidth();
             }
+
             if(twValue - xValue <= minimumWidth())
             {
                 xValue = twValue - minimumWidth();

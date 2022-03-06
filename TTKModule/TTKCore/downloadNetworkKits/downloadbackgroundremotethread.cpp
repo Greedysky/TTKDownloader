@@ -11,23 +11,23 @@ DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent
 
 void DownloadSkinRemoteConfigManager::readSkinRemoteXMLConfig(DownloadSkinRemoteGroups &items)
 {
-    QDomNodeList nodelist = m_ddom->elementsByTagName("group");
+    const QDomNodeList &nodelist = m_document->elementsByTagName("group");
     for(int i=0; i<nodelist.count(); ++i)
     {
         DownloadSkinRemoteGroup group;
         QDomNode node = nodelist.at(i);
         group.m_group = node.toElement().attribute("name");
 
-        QDomNodeList grouplist = node.childNodes();
+        const QDomNodeList &grouplist = node.childNodes();
         for(int j=0; j<grouplist.count(); ++j)
         {
             node = grouplist.at(j);
 
             DownloadSkinRemoteItem item;
-            QDomNodeList packagelist = node.childNodes();
+            const QDomNodeList &packagelist = node.childNodes();
             for(int k=0; k<packagelist.count(); ++k)
             {
-                QDomElement ele = packagelist.at(k).toElement();
+                const QDomElement &ele = packagelist.at(k).toElement();
                 if(ele.nodeName() == "name")
                 {
                     item.m_name = ele.text();
