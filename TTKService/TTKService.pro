@@ -27,12 +27,12 @@ LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper
 INCLUDEPATH +=  \
     $$PWD/../TTKModule \
     $$PWD/../TTKModule/TTKCore/downloadCoreKits \
-    $$PWD/../TTKModule/TTKWidget/downloadWidgetCoreKits
+    $$PWD/../TTKModule/TTKWidget/downloadCoreKits
 
 win32:msvc{
 HEADERS += \
     $$PWD/../TTKModule/downloadapplication.h \
-    $$PWD/../TTKModule/TTKWidget/downloadWidgetCoreKits/downloadabstractmoveresizewidget.h
+    $$PWD/../TTKModule/TTKWidget/downloadCoreKits/downloadabstractmoveresizewidget.h
 }
 
 SOURCES += $$PWD/downloadservicemain.cpp
