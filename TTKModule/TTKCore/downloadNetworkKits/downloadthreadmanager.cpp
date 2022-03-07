@@ -132,7 +132,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     fileName = DownloadUtils::Core::downloadPrefix() + fileName;
 
     DownloadBreakPointConfigManager manager;
-    DownloadBreakPointItems records;
+    DownloadBreakPointItemList records;
     if(manager.readConfig(fileName + SET_FILE))
     {
         manager.readBreakPointConfig(records);
@@ -211,7 +211,7 @@ void DownloadThreadManager::pause()
     m_state = DownloadThread::D_Pause;
     emit stateChanged(tr("D_Pause"));
 
-    DownloadBreakPointItems records;
+    DownloadBreakPointItemList records;
     for(DownloadThread *thread : qAsConst(m_threads))
     {
         thread->pause();

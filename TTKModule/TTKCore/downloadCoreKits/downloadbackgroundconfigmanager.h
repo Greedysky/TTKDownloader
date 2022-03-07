@@ -25,7 +25,7 @@
 /*! @brief The class of the skin config item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadSkinConfigItem
+struct TTK_MODULE_EXPORT DownloadSkinConfigItem
 {
     QString m_name;
     int m_useCount;
@@ -40,14 +40,12 @@ typedef struct TTK_MODULE_EXPORT DownloadSkinConfigItem
     {
         return !(m_name.isEmpty() && m_useCount == 0);
     }
-
-}DownloadSkinConfigItem;
-TTK_DECLARE_LIST(DownloadSkinConfigItem)
+};
 
 /*! @brief The class of the skin backgroud image item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadBackgroundImage
+struct TTK_MODULE_EXPORT DownloadBackgroundImage
 {
     QPixmap m_pix;
     DownloadSkinConfigItem m_item;
@@ -56,9 +54,7 @@ typedef struct TTK_MODULE_EXPORT DownloadBackgroundImage
     {
         return !m_pix.isNull() && m_item.isValid();
     }
-
-}DownloadBackgroundImage;
-TTK_DECLARE_LIST(DownloadBackgroundImage)
+};
 
 
 /*! @brief The class of the skin XML Config Manager.

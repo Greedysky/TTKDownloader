@@ -41,7 +41,7 @@ void DownloadBackgroundRemoteWidget::init()
     if(!m_queryThread)
     {
         m_queryThread = new DownloadBackgroundRemoteThread(this);
-        connect(m_queryThread, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroups)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroups)));
+        connect(m_queryThread, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroupList)));
         m_queryThread->startToDownload();
     }
 }
@@ -125,7 +125,7 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
 void DownloadBackgroundRemoteWidget::outputRemoteSkin(DownloadBackgroundImage &image, const QString &data)
 {
     int index = QFileInfo(data).baseName().toInt();
-    DownloadSkinRemoteItems *items = &m_groups[m_currentIndex].m_items;
+    DownloadSkinRemoteItemList *items = &m_groups[m_currentIndex].m_items;
     if(index >= 0 || index < items->count())
     {
         DownloadSkinRemoteItem *item = &(*items)[index];
@@ -154,8 +154,8 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
     dir.mkpath(QString("%1%2").arg(APPCACHE_DIR_FULL).arg(index));
 
     m_listWidget->clearAllItems();
-    DownloadQueueDatas datas;
-    DownloadSkinRemoteItems *items = &m_groups[index].m_items;
+    DownloadQueueDataList datas;
+    DownloadSkinRemoteItemList *items = &m_groups[index].m_items;
     for(int i=0; i<items->count(); i++)
     {
         m_listWidget->createItem(":/image/lb_noneImage", false);
@@ -179,7 +179,7 @@ void DownloadBackgroundRemoteWidget::downLoadDataChanged(const QString &data)
     }
 }
 
-void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemoteGroups &data)
+void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemoteGroupList &data)
 {
     m_groups = data;
     for(int i=0; i<m_groups.count(); ++i)

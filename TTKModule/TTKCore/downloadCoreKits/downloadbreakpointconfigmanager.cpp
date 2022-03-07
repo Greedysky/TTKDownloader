@@ -6,7 +6,7 @@ DownloadBreakPointConfigManager::DownloadBreakPointConfigManager(QObject *parent
 
 }
 
-void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakPointItems &records)
+void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakPointItemList &records)
 {
     ///////////////////////////////////////////////////////
     createProcessingInstruction();
@@ -20,7 +20,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 
     for(const DownloadBreakPointItem &record : qAsConst(records))
     {
-        writeDomElementMutil(download, "value", DownloadXmlAttributes() <<
+        writeDomElementMutil(download, "value", DownloadXmlAttributeList() <<
                                                 DownloadXmlAttribute("start", record.m_start) <<
                                                 DownloadXmlAttribute("end", record.m_end) <<
                                                 DownloadXmlAttribute("ready", record.m_ready));
@@ -31,7 +31,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
     m_document->save(out, 4);
 }
 
-void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointItems &records)
+void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointItemList &records)
 {
     QDomNodeList nodelist = m_document->elementsByTagName("value");
     for(int i=0; i<nodelist.count(); ++i)

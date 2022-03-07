@@ -29,7 +29,7 @@ DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, QObject *p
 #endif
 }
 
-DownloadQueueCache::DownloadQueueCache(const DownloadQueueDatas &datas, QObject *parent)
+DownloadQueueCache::DownloadQueueCache(const DownloadQueueDataList &datas, QObject *parent)
     : DownloadQueueCache(DownloadQueueData(), parent)
 {
     addImageQueue(datas);
@@ -67,7 +67,7 @@ void DownloadQueueCache::abort()
     }
 }
 
-void DownloadQueueCache::addImageQueue(const DownloadQueueDatas &datas)
+void DownloadQueueCache::addImageQueue(const DownloadQueueDataList &datas)
 {
     m_imageQueue = datas;
 }

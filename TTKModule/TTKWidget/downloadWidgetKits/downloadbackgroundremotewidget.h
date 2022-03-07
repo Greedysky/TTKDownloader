@@ -77,7 +77,7 @@ public Q_SLOTS:
     /*!
      * Send download data from net.
      */
-    void downLoadDataChanged(const DownloadSkinRemoteGroups &data);
+    void downLoadDataChanged(const DownloadSkinRemoteGroupList &data);
 
 protected:
     /*!
@@ -92,7 +92,7 @@ protected:
     int m_currentIndex;
     QWidget *m_functionsWidget;
     QList<QPushButton*> m_functionsItems;
-    DownloadSkinRemoteGroups m_groups;
+    DownloadSkinRemoteGroupList m_groups;
     DownloadBackgroundListWidget *m_listWidget;
     DownloadQueueCache *m_downloadQueue;
     DownloadBackgroundRemoteThread *m_queryThread;

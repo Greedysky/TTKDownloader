@@ -24,7 +24,7 @@
 /*! @brief The class of the remote skin item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadSkinRemoteItem
+struct TTK_MODULE_EXPORT DownloadSkinRemoteItem
 {
     QString m_name;
     QString m_url;
@@ -40,25 +40,23 @@ typedef struct TTK_MODULE_EXPORT DownloadSkinRemoteItem
     {
         return !(m_name.isEmpty() && m_useCount == 0);
     }
-
-}DownloadSkinRemoteItem;
-TTK_DECLARE_LIST(DownloadSkinRemoteItem)
+};
+TTK_DECLARE_LIST(DownloadSkinRemoteItem);
 
 /*! @brief The class of the remote skin item group.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadSkinRemoteGroup
+struct TTK_MODULE_EXPORT DownloadSkinRemoteGroup
 {
     QString m_group;
-    DownloadSkinRemoteItems m_items;
+    DownloadSkinRemoteItemList m_items;
 
     bool isValid() const
     {
         return !(m_group.isEmpty() && m_items.isEmpty());
     }
-
-}DownloadSkinRemoteGroup;
-TTK_DECLARE_LIST(DownloadSkinRemoteGroup)
+};
+TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
 
 
 /*! @brief The class of the remote skin XML Config Manager.
@@ -77,7 +75,7 @@ public:
     /*!
      * Read datas into xml file.
      */
-    void readSkinRemoteXMLConfig(DownloadSkinRemoteGroups &items);
+    void readSkinRemoteXMLConfig(DownloadSkinRemoteGroupList &items);
 
 };
 
@@ -104,7 +102,7 @@ Q_SIGNALS:
     /*!
      * Send download data from net.
      */
-    void downLoadDataChanged(const DownloadSkinRemoteGroups &data);
+    void downLoadDataChanged(const DownloadSkinRemoteGroupList &data);
 
 public Q_SLOTS:
     /*!

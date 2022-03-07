@@ -30,7 +30,7 @@ class DownloadSettingWidget;
 /*! @brief The class of the function tool item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadFunctionItem
+struct TTK_MODULE_EXPORT DownloadFunctionItem
 {
     DownloadFunctionItem() { }
     DownloadFunctionItem(const QString &icon, const QString &name)
@@ -41,8 +41,8 @@ typedef struct TTK_MODULE_EXPORT DownloadFunctionItem
 
     QString m_icon;
     QString m_name;
-}DownloadFunctionItem;
-TTK_DECLARE_LIST(DownloadFunctionItem)
+};
+TTK_DECLARE_LIST(DownloadFunctionItem);
 
 /*! @brief The class of the list table widget.
  * @author Greedysky <greedysky@163.com>
@@ -60,7 +60,7 @@ public:
     /*!
      * Add table list items by index and icons and paths.
      */
-    void addFunctionItems(int index, const DownloadFunctionItems &items);
+    void addFunctionItems(int index, const DownloadFunctionItemList &items);
 
 Q_SIGNALS:
     /*!

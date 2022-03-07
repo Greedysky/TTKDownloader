@@ -24,14 +24,14 @@
 /*! @brief The class of the local download record item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadRecord
+struct TTK_MODULE_EXPORT DownloadRecord
 {
     QString m_time;
     QString m_path;
     QString m_size;
     QString m_url;
-}DownloadRecord;
-TTK_DECLARE_LIST(DownloadRecord)
+};
+TTK_DECLARE_LIST(DownloadRecord);
 
 /*! @brief The class of the download record manager.
  * @author Greedysky <greedysky@163.com>
@@ -54,11 +54,11 @@ public:
     /*!
      * Write history download datas into xml file.
      */
-    void writeDownloadConfig(const DownloadRecords &records);
+    void writeDownloadConfig(const DownloadRecordList &records);
     /*!
      * Read history download datas into xml file.
      */
-    void readDownloadConfig(DownloadRecords &records);
+    void readDownloadConfig(DownloadRecordList &records);
 
 };
 

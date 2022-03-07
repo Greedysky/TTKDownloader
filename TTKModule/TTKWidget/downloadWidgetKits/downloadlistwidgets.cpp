@@ -33,7 +33,7 @@ DownloadListWidgets::DownloadListWidgets(QWidget *parent)
 DownloadListWidgets::~DownloadListWidgets()
 {
     m_speedTimer.stop();
-    DownloadItems list;
+    DownloadItemList list;
     for(DownloadUnits *item : qAsConst(m_itemList))
     {
         DownloadItem it;
@@ -56,7 +56,7 @@ void DownloadListWidgets::init()
         return;
     }
 
-    DownloadItems list;
+    DownloadItemList list;
     xml.readListConfig(list);
 
     for(const DownloadItem &it : qAsConst(list))

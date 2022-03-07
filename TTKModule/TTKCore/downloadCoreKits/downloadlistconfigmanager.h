@@ -24,12 +24,12 @@
 /*! @brief The class of the local download list item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadItem
+struct TTK_MODULE_EXPORT DownloadItem
 {
     QString m_name;
     QString m_url;
-}DownloadItem;
-TTK_DECLARE_LIST(DownloadItem)
+};
+TTK_DECLARE_LIST(DownloadItem);
 
 /*! @brief The class of the download list manager.
  * @author Greedysky <greedysky@163.com>
@@ -52,11 +52,11 @@ public:
     /*!
      * Write list download datas into xml file.
      */
-    void writeListConfig(const DownloadItems &records);
+    void writeListConfig(const DownloadItemList &records);
     /*!
      * Read list download datas into xml file.
      */
-    void readListConfig(DownloadItems &records);
+    void readListConfig(DownloadItemList &records);
 
 };
 

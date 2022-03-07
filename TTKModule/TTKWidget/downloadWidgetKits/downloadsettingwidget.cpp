@@ -19,7 +19,7 @@ DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
     m_listIndex = 0;
 }
 
-void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunctionItems &items)
+void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunctionItemList &items)
 {
     m_listIndex = index;
     for(int i=0; i<items.count(); ++i)
@@ -71,7 +71,7 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
 
     ////////////////////////////////////////////////
-    DownloadFunctionItems items;
+    DownloadFunctionItemList items;
     items << DownloadFunctionItem(QString(), tr("Normal"))
           << DownloadFunctionItem(QString(), tr("Dwonload"))
           << DownloadFunctionItem(QString(), tr("Outlook"));

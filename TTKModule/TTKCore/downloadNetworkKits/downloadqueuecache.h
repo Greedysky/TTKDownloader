@@ -24,12 +24,12 @@
 /*! @brief The class of the download queue data.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadQueueData
+struct TTK_MODULE_EXPORT DownloadQueueData
 {
     QString m_url;        ///*download url*/
     QString m_savePath;   ///*save local path*/
-}DownloadQueueData;
-TTK_DECLARE_LIST(DownloadQueueData)
+};
+TTK_DECLARE_LIST(DownloadQueueData);
 
 /*! @brief The class to download data from cache queue.
  * @author Greedysky <greedysky@163.com>
@@ -51,13 +51,13 @@ public:
     /*!
      * Object contsructor.
      */
-    DownloadQueueCache(const DownloadQueueDatas &datas, QObject *parent = nullptr);
+    DownloadQueueCache(const DownloadQueueDataList &datas, QObject *parent = nullptr);
     ~DownloadQueueCache();
 
     /*!
      * Add image download url and save path to download queue.
      */
-    void addImageQueue(const DownloadQueueDatas &datas);
+    void addImageQueue(const DownloadQueueDataList &datas);
     /*!
      * Start to download data.
      */

@@ -90,7 +90,7 @@ protected:
      */
     void createItem(int index, const DownloadRecord &record);
 
-    DownloadRecords m_records;
+    DownloadRecordList m_records;
     int m_loadRecordCount;
 
 };

@@ -29,7 +29,7 @@
 /*! @brief The class of the xml attribute.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadXmlAttribute
+struct TTK_MODULE_EXPORT DownloadXmlAttribute
 {
     QString m_key;
     QVariant m_value;
@@ -39,8 +39,8 @@ typedef struct TTK_MODULE_EXPORT DownloadXmlAttribute
         m_key = key;
         m_value = value;
     }
-}DownloadXmlAttribute;
-TTK_DECLARE_LIST(DownloadXmlAttribute)
+};
+TTK_DECLARE_LIST(DownloadXmlAttribute);
 
 /*! @brief The class of the base class of xml interface.
  * @author Greedysky <greedysky@163.com>
@@ -114,7 +114,7 @@ public:
     /*!
      * Create xml node nodes by node atrrs.
      */
-    QDomElement createRoot(const QString &node, const DownloadXmlAttributes &attrs);
+    QDomElement createRoot(const QString &node, const DownloadXmlAttributeList &attrs);
     /*!
      * Append xml element nodes by node name.
      */
@@ -126,7 +126,7 @@ public:
     /*!
      * Append xml elements nodes by node name\ keys name and values.
      */
-    QDomElement writeDomElementMutil(QDomElement &element, const QString &node, const DownloadXmlAttributes &attrs);
+    QDomElement writeDomElementMutil(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs);
     /*!
      * Append xml element nodes by node name\ key name \ value and attribute's text.
      */
@@ -134,7 +134,7 @@ public:
     /*!
      * Append xml elements nodes by node name\ keys name \ values and attribute's text.
      */
-    QDomElement writeDomElementMutilText(QDomElement &element, const QString &node, const DownloadXmlAttributes &attrs, const QString &text);
+    QDomElement writeDomElementMutilText(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs, const QString &text);
     /*!
      * Append xml element nodes by node name and attribute's text.
      */

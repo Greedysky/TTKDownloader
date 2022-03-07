@@ -140,7 +140,7 @@ QDomElement DownloadAbstractXml::createRoot(const QString &node, const DownloadX
     return domElement;
 }
 
-QDomElement DownloadAbstractXml::createRoot(const QString &node, const DownloadXmlAttributes &attrs)
+QDomElement DownloadAbstractXml::createRoot(const QString &node, const DownloadXmlAttributeList &attrs)
 {
     QDomElement domElement = m_document->createElement(node);
     for(const DownloadXmlAttribute &attr : qAsConst(attrs))
@@ -165,7 +165,7 @@ QDomElement DownloadAbstractXml::writeDomElement(QDomElement &element, const QSt
     return domElement;
 }
 
-QDomElement DownloadAbstractXml::writeDomElementMutil(QDomElement &element, const QString &node, const DownloadXmlAttributes &attrs)
+QDomElement DownloadAbstractXml::writeDomElementMutil(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs)
 {
     if(attrs.isEmpty())
     {
@@ -202,7 +202,7 @@ QDomElement DownloadAbstractXml::writeDomElementText(QDomElement &element, const
     return domElement;
 }
 
-QDomElement DownloadAbstractXml::writeDomElementMutilText(QDomElement &element, const QString &node, const DownloadXmlAttributes &attrs, const QString &text)
+QDomElement DownloadAbstractXml::writeDomElementMutilText(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs, const QString &text)
 {
     if(attrs.isEmpty())
     {

@@ -6,7 +6,7 @@ DownloadListConfigManager::DownloadListConfigManager(QObject *parent)
 
 }
 
-void DownloadListConfigManager::writeListConfig(const DownloadItems &records)
+void DownloadListConfigManager::writeListConfig(const DownloadItemList &records)
 {
     if(!writeConfig(LIST_PATH_FULL))
     {
@@ -19,7 +19,7 @@ void DownloadListConfigManager::writeListConfig(const DownloadItems &records)
 
     for(const DownloadItem &record : qAsConst(records))
     {
-        writeDomElementMutil(download, "value", DownloadXmlAttributes() <<
+        writeDomElementMutil(download, "value", DownloadXmlAttributeList() <<
                                                 DownloadXmlAttribute("url", record.m_url) <<
                                                 DownloadXmlAttribute("name", record.m_name));
     }
@@ -29,7 +29,7 @@ void DownloadListConfigManager::writeListConfig(const DownloadItems &records)
     m_document->save(out, 4);
 }
 
-void DownloadListConfigManager::readListConfig(DownloadItems &records)
+void DownloadListConfigManager::readListConfig(DownloadItemList &records)
 {
     const QDomNodeList &nodelist = m_document->elementsByTagName("value");
     for(int i=0; i<nodelist.count(); ++i)

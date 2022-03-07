@@ -24,7 +24,7 @@
 /*! @brief The class of the break point item.
  * @author Greedysky <greedysky@163.com>
  */
-typedef struct TTK_MODULE_EXPORT DownloadBreakPointItem
+struct TTK_MODULE_EXPORT DownloadBreakPointItem
 {
     QString m_url;
     qint64 m_start;
@@ -42,8 +42,8 @@ typedef struct TTK_MODULE_EXPORT DownloadBreakPointItem
     {
         return m_start == 0 && m_end == 0 && m_ready == 0;
     }
-}DownloadBreakPointItem;
-TTK_DECLARE_LIST(DownloadBreakPointItem)
+};
+TTK_DECLARE_LIST(DownloadBreakPointItem);
 
 /*! @brief The class of the break point config manager.
  * @author Greedysky <greedysky@163.com>
@@ -61,11 +61,11 @@ public:
     /*!
      * Write datas into xml file.
      */
-    void writeBreakPointConfig(const DownloadBreakPointItems &records);
+    void writeBreakPointConfig(const DownloadBreakPointItemList &records);
     /*!
      * Read datas into xml file.
      */
-    void readBreakPointConfig(DownloadBreakPointItems &records);
+    void readBreakPointConfig(DownloadBreakPointItemList &records);
 
 };
 
