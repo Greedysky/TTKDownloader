@@ -15,7 +15,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 
     if(!records.isEmpty())
     {
-        writeDomText(download, "url", records.first().m_url);
+        writeDomText(download, "url", records.front().m_url);
     }
 
     for(const DownloadBreakPointItem &record : qAsConst(records))

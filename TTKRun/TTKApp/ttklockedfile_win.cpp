@@ -9,8 +9,8 @@
 Qt::HANDLE TTKLockedFile::getMutexHandle(int idx, bool doCreate)
 {
     if (m_mutexname.isEmpty()) {
-        QFileInfo fi(*this);
-        m_mutexname = QString::fromLatin1(MUTEX_PREFIX) + fi.absoluteFilePath().toLower();
+        const QFileInfo fin(*this);
+        m_mutexname = QString::fromLatin1(MUTEX_PREFIX) + fin.absoluteFilePath().toLower();
     }
     QString mname(m_mutexname);
     if (idx >= 0)
@@ -108,8 +108,8 @@ bool TTKLockedFile::lock(LockMode mode, bool block)
             if (mutex)
                 m_rmutexes.append(mutex);
         }
-        if (m_rmutexes.size()) {
-            DWORD res = WaitForMultipleObjects(m_rmutexes.size(), m_rmutexes.constData(), TRUE, block ? INFINITE : 0);
+        if (!m_rmutexes.isEmpty()) {
+            DWORD res = WaitForMultipleObjects(m_rmutexes.count(), m_rmutexes.constData(), TRUE, block ? INFINITE : 0);
             if (res != WAIT_OBJECT_0 && res != WAIT_ABANDONED) {
                 if (res != WAIT_TIMEOUT)
                     qErrnoWarning("TTKLockedFile::lock(): WaitForMultipleObjects failed");

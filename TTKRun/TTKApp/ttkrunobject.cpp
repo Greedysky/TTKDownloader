@@ -27,10 +27,8 @@ TTKRunObjectPrivate::~TTKRunObjectPrivate()
     delete m_process;
 }
 
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-///
-///
+
+
 TTKRunObject::TTKRunObject(QObject *parent)
     : QObject(parent)
 {
@@ -64,11 +62,11 @@ void TTKRunObject::finished(int code)
 {
     if(code == 0)
     {
-        TTK_LOGGER_INFO("Application exit success!");
+        TTK_LOGGER_INFO("Application exit success");
     }
     else
     {
-        TTK_LOGGER_INFO("Application run error, please run TTKService instead!");
+        TTK_LOGGER_INFO("Application run error, please run TTKService instead");
     }
 
     qApp->quit();

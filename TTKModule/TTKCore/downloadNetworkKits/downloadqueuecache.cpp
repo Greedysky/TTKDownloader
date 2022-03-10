@@ -76,14 +76,14 @@ void DownloadQueueCache::startOrderImageQueue()
 {
     if(!m_imageQueue.isEmpty() && G_NETWORK_PTR->isOnline())
     {
-        if(QFile::exists(m_imageQueue.first().m_savePath))
+        if(QFile::exists(m_imageQueue.front().m_savePath))
         {
             emit downLoadDataChanged(m_imageQueue.takeFirst().m_savePath);
             startOrderImageQueue();
         }
         else
         {
-            startDownload(m_imageQueue.first().m_url);
+            startDownload(m_imageQueue.front().m_url);
         }
     }
 }
@@ -92,7 +92,7 @@ void DownloadQueueCache::startDownload(const QString &url)
 {
     m_isDownload = true;
     delete m_file;
-    m_file = new QFile(m_imageQueue.first().m_savePath, this);
+    m_file = new QFile(m_imageQueue.front().m_savePath, this);
     if(!m_file->open(QFile::WriteOnly))
     {
         m_file->close();

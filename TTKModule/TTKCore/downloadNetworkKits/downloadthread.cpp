@@ -101,7 +101,7 @@ void DownloadThread::readyReadSlot()
     const QByteArray &buffer = m_reply->readAll();
     m_file->seek(m_startPoint + m_readySize);
     m_file->write(buffer);
-    m_readySize += buffer.size();
+    m_readySize += buffer.length();
 
     emit downloadChanged();
 }

@@ -1,5 +1,5 @@
-#ifndef DOWNLOADRUNOBJECT_H
-#define DOWNLOADRUNOBJECT_H
+#ifndef TTKRUNOBJECT_H
+#define TTKRUNOBJECT_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -23,7 +23,7 @@
 
 class TTKRunObjectPrivate;
 
-/*! @brief The class of the download run object.
+/*! @brief The class of the ttk run object.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT TTKRunObject : public QObject
@@ -51,8 +51,8 @@ private Q_SLOTS:
     void finished(int code);
 
 private:
-   TTK_DECLARE_PRIVATE(TTKRunObject)
+    TTK_DECLARE_PRIVATE(TTKRunObject)
 
 };
 
-#endif // DOWNLOADRUNOBJECT_H
+#endif // TTKRUNOBJECT_H

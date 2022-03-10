@@ -175,7 +175,7 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
 
     zipOpenNewFileInZip(zFile, (nPrefix + SKN_FILE).toLocal8Bit().constData(), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
     QByteArray data = DownloadUtils::Widget::generatePixmapData(image->m_pix);
-    zipWriteInFileInZip(zFile, data.constData(), data.size());
+    zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
 
     DownloadSkinConfigManager manager;
@@ -183,7 +183,7 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
     data = manager.toByteArray();
 
     zipOpenNewFileInZip(zFile, (nPrefix + XML_FILE).toLocal8Bit().constData(), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
-    zipWriteInFileInZip(zFile, data.constData(), data.size());
+    zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
     QFile::remove(DOWNLOAD_IMAGE_FILE);
 
@@ -263,7 +263,7 @@ bool DownloadExtractWrapper::inputText(const QByteArray &data, const QString &pa
     memset(&fileInfo, 0, sizeof(fileInfo));
 
     zipOpenNewFileInZip(zFile, nPrefix.toLocal8Bit().constData(), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
-    zipWriteInFileInZip(zFile, data.constData(), data.size());
+    zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
 
     zipClose(zFile, 0);

@@ -27,23 +27,20 @@ TTKRunApplicationPrivate::~TTKRunApplicationPrivate()
     delete m_peer;
 }
 
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-///
-///
+
 
 TTKRunApplication::TTKRunApplication(int &argc, char **argv, bool GUIenabled)
     : QApplication(argc, argv, GUIenabled)
 {
     TTK_INIT_PRIVATE(TTKRunApplication);
-    sysInit();
+    initialize();
 }
 
 TTKRunApplication::TTKRunApplication(const QString &appId, int &argc, char **argv)
     : QApplication(argc, argv)
 {
     TTK_INIT_PRIVATE(TTKRunApplication);
-    sysInit(appId);
+    initialize(appId);
 }
 
 bool TTKRunApplication::isRunning() const
@@ -96,7 +93,7 @@ void TTKRunApplication::activateWindow()
     }
 }
 
-void TTKRunApplication::sysInit(const QString &appId)
+void TTKRunApplication::initialize(const QString &appId)
 {
     TTK_D(TTKRunApplication);
     d->m_peer = new TTKLocalPeer(this, appId);

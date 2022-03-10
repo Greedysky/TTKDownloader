@@ -60,10 +60,7 @@ TTKLocalPeerPrivate::~TTKLocalPeerPrivate()
     delete m_server;
 }
 
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-///
-///
+
 
 TTKLocalPeer::TTKLocalPeer(QObject *parent, const QString &appId)
     : QObject(parent)
@@ -87,15 +84,13 @@ TTKLocalPeer::TTKLocalPeer(QObject *parent, const QString &appId)
 #endif
     prefix.truncate(6);
 
-    QByteArray idc = d->m_id.toUtf8();
-
+    const QByteArray &idc = d->m_id.toUtf8();
 #if TTK_QT_VERSION_CHECK(6,0,0)
-    quint16 idNum = qChecksum(QByteArrayView(idc.constData(), idc.size()));
+    quint16 idNum = qChecksum(QByteArrayView(idc.constData(), idc.length()));
 #else
-    quint16 idNum = qChecksum(idc.constData(), idc.size());
+    quint16 idNum = qChecksum(idc.constData(), idc.length());
 #endif
-    d->m_socketName = QLatin1String("qtsingleapp-") + prefix +
-                      QLatin1Char('-') + QString::number(idNum, 16);
+    d->m_socketName = QLatin1String("qtsingleapp-") + prefix + QLatin1Char('-') + QString::number(idNum, 16);
 
 #if defined(Q_OS_WIN)
     if(!pProcessIdToSessionId)
@@ -114,9 +109,7 @@ TTKLocalPeer::TTKLocalPeer(QObject *parent, const QString &appId)
 #endif
 
     d->m_server = new QLocalServer(this);
-    QString lockName = QDir(QDir::tempPath()).absolutePath()
-                       + QLatin1Char('/') + d->m_socketName
-                       + QLatin1String("-lockfile");
+    const QString &lockName = QDir(QDir::tempPath()).absolutePath() + QLatin1Char('/') + d->m_socketName + QLatin1String("-lockfile");
     d->m_lockFile.setFileName(lockName);
     d->m_lockFile.open(QIODevice::ReadWrite);
 }
@@ -145,7 +138,7 @@ bool TTKLocalPeer::isClient() const
 #endif
     if(!res)
     {
-        qWarning("Application: listen on local socket failed, %s", qPrintable(d->m_server->errorString()));
+        TTK_LOGGER_WARN("Application: listen on local socket failed, " << qPrintable(d->m_server->errorString()));
     }
 
     connect(d->m_server, SIGNAL(newConnection()), SLOT(receiveConnection()));
@@ -171,7 +164,7 @@ bool TTKLocalPeer::sendMessage(const QString &message, int timeout) const
         {
             break;
         }
-        int ms = 250;
+        const int ms = 250;
 #if defined(Q_OS_WIN)
         Sleep(DWORD(ms));
 #else
@@ -184,9 +177,9 @@ bool TTKLocalPeer::sendMessage(const QString &message, int timeout) const
         return false;
     }
 
-    QByteArray uMsg(message.toUtf8());
+    const QByteArray uMsg(message.toUtf8());
     QDataStream ds(&socket);
-    ds.writeBytes(uMsg.constData(), uMsg.size());
+    ds.writeBytes(uMsg.constData(), uMsg.length());
 
     bool res = socket.waitForBytesWritten(timeout);
     if(res)
@@ -219,7 +212,7 @@ void TTKLocalPeer::receiveConnection()
     {
         if(socket->state() == QLocalSocket::UnconnectedState)
         {
-            qWarning("QtLocalPeer: Peer disconnected");
+            TTK_LOGGER_WARN("QtLocalPeer: Peer disconnected");
             delete socket;
             return;
         }
@@ -244,19 +237,20 @@ void TTKLocalPeer::receiveConnection()
         got = ds.readRawData(uMsgBuf, remaining);
         remaining -= got;
         uMsgBuf += got;
-    }while(remaining && got >= 0 && socket->waitForReadyRead(2000));
+    } while(remaining && got >= 0 && socket->waitForReadyRead(2000));
+
     if(got < 0)
     {
-        qWarning("TTKLocalPeer: Message reception failed %s", socket->errorString().toLatin1().constData());
+        TTK_LOGGER_WARN("TTKLocalPeer: Message reception failed " << socket->errorString().toLatin1().constData());
         delete socket;
         return;
     }
 
-    QString message(QString::fromUtf8(uMsg));
+    const QString message(QString::fromUtf8(uMsg));
     socket->write(d->m_ack, qstrlen(d->m_ack));
     socket->waitForBytesWritten(1000);
     socket->waitForDisconnected(1000); // make sure client reads ack
     delete socket;
 
-    emit messageReceived(message); //### (might take a long time to return)
+    Q_EMIT messageReceived(message); //### (might take a long time to return)
 }

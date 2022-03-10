@@ -47,10 +47,10 @@ bool DownloadUtils::Core::removeRecursively(const QString &dir)
     while(di.hasNext())
     {
         di.next();
-        const QFileInfo &fi = di.fileInfo();
+        const QFileInfo &fin = di.fileInfo();
         const QString &filePath = di.filePath();
         bool ok;
-        if(fi.isDir() && !fi.isSymLink())
+        if(fin.isDir() && !fin.isSymLink())
         {
             ok = DownloadUtils::Core::removeRecursively(filePath); // recursive
         }

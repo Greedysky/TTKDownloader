@@ -97,11 +97,11 @@ void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const 
     int row = rowCount();
     setRowCount(row + 1);
 
-    QFileInfo info(path);
+    const QFileInfo fin(path);
     DownloadRecord record;
-    record.m_time = info.lastModified().toString("yyyy-MM-dd HH:mm:ss");
-    record.m_path = info.absoluteFilePath();
-    record.m_size = DownloadUtils::Number::sizeByte2Label(info.size());
+    record.m_time = fin.lastModified().toString("yyyy-MM-dd HH:mm:ss");
+    record.m_path = fin.absoluteFilePath();
+    record.m_size = DownloadUtils::Number::sizeByte2Label(fin.size());
     record.m_url = url;
     m_records << record;
 
@@ -191,11 +191,11 @@ void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
 void DownloadHistoryRecordWidget::createItem(int index, const DownloadRecord &record)
 {
     setRowHeight(index, 50);
-    QFileInfo info(record.m_path);
+    const QFileInfo fin(record.m_path);
 
     QTableWidgetItem *item = new QTableWidgetItem;
     QFileIconProvider provider;
-    QPixmap pix(provider.icon(QFileInfo(info.fileName())).pixmap(40, 40));
+    QPixmap pix(provider.icon(QFileInfo(fin.fileName())).pixmap(40, 40));
     if(pix.isNull())
     {
         pix.load(":/image/lb_blankImage");
@@ -205,14 +205,14 @@ void DownloadHistoryRecordWidget::createItem(int index, const DownloadRecord &re
     setItem(index, 0, item);
 
                       item = new QTableWidgetItem;
-    item->setText(info.fileName());
+    item->setText(fin.fileName());
 #if TTK_QT_VERSION_CHECK(5,13,0)
     item->setForeground(QColor(DownloadUIObject::MColorStyle12_S));
 #else
     item->setTextColor(QColor(DownloadUIObject::MColorStyle12_S));
 #endif
     item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
-    item->setToolTip(info.fileName());
+    item->setToolTip(fin.fileName());
     setItem(index, 1, item);
 
                       item = new QTableWidgetItem;

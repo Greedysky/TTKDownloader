@@ -278,15 +278,15 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
 void DownloadBackgroundSkinDialog::addThemeListWidgetItem()
 {
     QList<QFileInfo> files(QDir(THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
-    for(const QFileInfo &info : qAsConst(files))
+    for(const QFileInfo &fin : qAsConst(files))
     {
-        m_backgroundList->createItem(info.baseName(), info.filePath(), false);
+        m_backgroundList->createItem(fin.baseName(), fin.filePath(), false);
     }
 
     files = QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
-    for(const QFileInfo &info : qAsConst(files))
+    for(const QFileInfo &fin : qAsConst(files))
     {
-        m_myBackgroundList->createItem(info.baseName(), info.filePath(), true);
+        m_myBackgroundList->createItem(fin.baseName(), fin.filePath(), true);
     }
 }
 
@@ -305,9 +305,8 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
 {
     QList<QFileInfo> files(QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
     TTKIntList data;
-    for(const QFileInfo &path : qAsConst(files))
+    for(const QFileInfo &fin : qAsConst(files))
     {
-        QFileInfo fin(path);
         if(fin.suffix().toLower() != TKM_FILE_PREFIX)
         {
             continue;
@@ -319,7 +318,7 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
             continue;
         }
 
-        const QString &fileName = list.last();
+        const QString &fileName = list.back();
         data << fileName.trimmed().toInt();
     }
     std::sort(data.begin(), data.end(), std::greater<int>());
@@ -327,7 +326,7 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
     int index = CURRENT_ITEMS_COUNT;
     if(!data.isEmpty())
     {
-        index = data.first();
+        index = data.front();
         if(index < CURRENT_ITEMS_COUNT)
         {
             index = CURRENT_ITEMS_COUNT;
