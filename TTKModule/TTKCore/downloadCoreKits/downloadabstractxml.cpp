@@ -107,7 +107,7 @@ TTKVariantMap DownloadAbstractXml::readXmlAttributesByTagName(const QString &tag
 
     const QDomNamedNodeMap &nodes = nodeList.at(0).toElement().attributes();
     TTKVariantMap maps;
-    for(int i=0; i<nodes.count(); ++i)
+    for(int i = 0; i < nodes.count(); ++i)
     {
         const QDomAttr &attr = nodes.item(i).toAttr();
         maps[attr.name()] = attr.value();
@@ -169,7 +169,7 @@ QDomElement DownloadAbstractXml::writeDomElementMutil(QDomElement &element, cons
     }
 
     QDomElement domElement = writeDomElement(element, node, attrs.front());
-    for(int i=1; i<attrs.count(); ++i)
+    for(int i = 1; i < attrs.count(); ++i)
     {
         writeAttribute(domElement, attrs[i]);
     }

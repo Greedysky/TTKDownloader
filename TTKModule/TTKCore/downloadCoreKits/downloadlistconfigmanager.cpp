@@ -32,7 +32,7 @@ void DownloadListConfigManager::writeListConfig(const DownloadItemList &records)
 void DownloadListConfigManager::readListConfig(DownloadItemList &records)
 {
     const QDomNodeList &nodelist = m_document->elementsByTagName("value");
-    for(int i=0; i<nodelist.count(); ++i)
+    for(int i = 0; i < nodelist.count(); ++i)
     {
         const QDomElement &element = nodelist.at(i).toElement();
         DownloadItem record;

@@ -72,7 +72,7 @@ QString DownloadHotKeyManager::toString(int key, int modifiers)
     quint32 modList[] = { Qt::ControlModifier, Qt::ShiftModifier, Qt::AltModifier};
 
     QString keyStr;
-    for(int j=0; j<3; j++)
+    for(int j = 0; j < 3; ++j)
     {
         if(modifiers & modList[j])
         {

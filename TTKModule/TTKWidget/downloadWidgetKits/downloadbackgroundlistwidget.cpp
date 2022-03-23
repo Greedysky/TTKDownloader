@@ -253,7 +253,7 @@ bool DownloadBackgroundListWidget::contains(const DownloadBackgroundImage &image
 
 int DownloadBackgroundListWidget::find(DownloadBackgroundListItem *item) const
 {
-    for(int i=0; i<m_items.count(); ++i)
+    for(int i = 0; i < m_items.count(); ++i)
     {
         if(m_items[i] == item)
         {
@@ -323,7 +323,7 @@ void DownloadBackgroundListWidget::itemCloseClicked(DownloadBackgroundListItem *
         }
     }
 
-    for(int i=index; i<m_items.count(); ++i)
+    for(int i = index; i < m_items.count(); ++i)
     {
         m_layout->addWidget(m_items[i], i/ITEM_COUNT, i%ITEM_COUNT, Qt::AlignLeft | Qt::AlignTop);
     }

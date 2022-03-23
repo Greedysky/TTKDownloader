@@ -84,7 +84,7 @@ QStringList DownloadNetworkSpeedTestThread::newtworkNames() const
     }
 
     GetIfTable(pTable, &dwAdapters, TRUE);
-    for(UINT i = 0; i < pTable->dwNumEntries; i++)
+    for(UINT i = 0; i < pTable->dwNumEntries; ++i)
     {
         MIB_IFROW Row = pTable->table[i];
         TTKString s(TTKReinterpret_cast(char const*, Row.bDescr));
@@ -164,7 +164,7 @@ void DownloadNetworkSpeedTestThread::run()
         GetIfTable(pTable, &dwAdapters, TRUE);
         DWORD dwInOctets = 0, dwOutOctets = 0;
 
-        for(UINT i = 0; i < pTable->dwNumEntries; i++)
+        for(UINT i = 0; i < pTable->dwNumEntries; ++i)
         {
             MIB_IFROW Row = pTable->table[i];
             if(Row.dwType <= 23)

@@ -105,7 +105,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     {
         QDir dir(DownloadUtils::Core::downloadPrefix());
         QString idFileName = fileName;
-        for(int i=1; i<99; ++i)
+        for(int i = 1; i < 99; ++i)
         {
             if(!dir.entryList().contains(idFileName))
             {
@@ -153,7 +153,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     qDeleteAll(m_threads);
     m_threads.clear();
 
-    for(int i=0; i<THREADCOUNT; ++i)
+    for(int i = 0; i < THREADCOUNT; ++i)
     {
         qint64 startPoint = m_totalSize * i / THREADCOUNT;
         qint64 endPoint = m_totalSize * (i + 1) / THREADCOUNT;

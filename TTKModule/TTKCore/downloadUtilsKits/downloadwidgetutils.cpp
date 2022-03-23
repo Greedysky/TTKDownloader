@@ -69,9 +69,9 @@ void DownloadUtils::Widget::reRenderImage(qint64 &avg, int delta, const QImage *
    }
 
    QRgb r = 0, g = 0, b = 0;
-   for(int w=0; w<input->width(); w++)
+   for(int w = 0; w < input->width(); ++w)
    {
-       for(int h=0; h<input->height(); h++)
+       for(int h = 0; h < input->height(); ++h)
        {
            QRgb rgb = input->pixel(w, h);
            r += qRed(rgb);

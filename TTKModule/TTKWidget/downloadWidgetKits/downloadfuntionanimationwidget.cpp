@@ -106,7 +106,7 @@ DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
 
     QStringList names;
     names << tr("Re") << tr("My") << tr("Online");
-    for(int i=0; i<names.count(); ++i)
+    for(int i = 0; i < names.count(); ++i)
     {
         QToolButton *btn = new QToolButton(this);
         btn->setText(names[i]);

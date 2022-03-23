@@ -88,7 +88,7 @@ void DownloadListWidgets::reverseSelect()
     setSelectionMode(QAbstractItemView::MultiSelection);
 
     clearSelection();
-    for(int i=0; i<rowCount(); ++i)
+    for(int i = 0; i < rowCount(); ++i)
     {
         if(!rows.contains(i))
         {

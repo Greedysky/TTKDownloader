@@ -28,7 +28,7 @@ TTKString base64Encode(const unsigned char *bytes, unsigned int length)
             char_array_4[2] = ((char_array_3[1] & 0x0F) << 2) + ((char_array_3[2] & 0xC0) >> 6);
             char_array_4[3] = char_array_3[2] & 0x3F;
 
-            for(i = 0; (i <4) ; i++)
+            for(i = 0; i < 4; ++i)
             {
                 ret += base64_chars[char_array_4[i]];
             }
@@ -38,7 +38,7 @@ TTKString base64Encode(const unsigned char *bytes, unsigned int length)
 
     if(i)
     {
-        for(j = i; j < 3; j++)
+        for(j = i; j < 3; ++j)
         {
             char_array_3[j] = '\0';
         }
@@ -48,7 +48,7 @@ TTKString base64Encode(const unsigned char *bytes, unsigned int length)
         char_array_4[2] = ((char_array_3[1] & 0x0F) << 2) + ((char_array_3[2] & 0xC0) >> 6);
         char_array_4[3] = char_array_3[2] & 0x3F;
 
-        for(j = 0; (j < i + 1); j++)
+        for(j = 0; j < i + 1; ++j)
         {
             ret += base64_chars[char_array_4[j]];
         }
@@ -74,7 +74,7 @@ TTKString base64Decode(const TTKString &bytes)
         char_array_4[i++] = bytes[in]; in++;
         if(i ==4)
         {
-            for(i = 0; i <4; i++)
+            for(i = 0; i < 4; ++i)
             {
                 char_array_4[i] = base64_chars.find(char_array_4[i]);
             }
@@ -83,7 +83,7 @@ TTKString base64Decode(const TTKString &bytes)
             char_array_3[1] = ((char_array_4[1] & 0xF) << 4) + ((char_array_4[2] & 0x3C) >> 2);
             char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
 
-            for(i = 0; (i < 3); i++)
+            for(i = 0; i < 3; ++i)
             {
                 ret += char_array_3[i];
             }
@@ -93,12 +93,12 @@ TTKString base64Decode(const TTKString &bytes)
 
     if(i)
     {
-        for(j = i; j <4; j++)
+        for(j = i; j < 4; ++j)
         {
             char_array_4[j] = 0;
         }
 
-        for(j = 0; j <4; j++)
+        for(j = 0; j < 4; ++j)
         {
             char_array_4[j] = base64_chars.find(char_array_4[j]);
         }
@@ -107,7 +107,7 @@ TTKString base64Decode(const TTKString &bytes)
         char_array_3[1] = ((char_array_4[1] & 0xF) << 4) + ((char_array_4[2] & 0x3C) >> 2);
         char_array_3[2] = ((char_array_4[2] & 0x3) << 6) + char_array_4[3];
 
-        for(j = 0; (j < i - 1); j++)
+        for(j = 0; j < i - 1; ++j)
         {
             ret += char_array_3[j];
         }
@@ -204,7 +204,7 @@ void DownloadCryptographicHash::xxteaUintEncrypt(xxtea_uint *v, xxtea_uint len, 
     {
         sum += XXTEA_DELTA;
         e = sum >> 2 & 3;
-        for(p = 0; p < n; p++)
+        for(p = 0; p < n; ++p)
         {
             y = v[p + 1];
             z = v[p] += XXTEA_MX;
@@ -227,7 +227,7 @@ void DownloadCryptographicHash::xxteaUintDecrypt(xxtea_uint *v, xxtea_uint len, 
     while(sum != 0)
     {
         e = sum >> 2 & 3;
-        for(p = n; p > 0; p--)
+        for(p = n; p > 0; --p)
         {
             z = v[p - 1];
             y = v[p] -= XXTEA_MX;
@@ -265,7 +265,7 @@ xxtea_uint *DownloadCryptographicHash::xxteaToUintArray(uchar *data, xxtea_uint 
     }
 
     memset(result, 0, n << 2);
-    for(i = 0; i < len; i++)
+    for(i = 0; i < len; ++i)
     {
         result[i >> 2] |= (xxtea_uint)data[i] << ((i & 3) << 3);
     }
@@ -290,7 +290,7 @@ uchar *DownloadCryptographicHash::xxteaToByteArray(xxtea_uint *data, xxtea_uint 
     }
 
     result = (uchar *)malloc(n + 1);
-    for(i = 0; i < n; i++)
+    for(i = 0; i < n; ++i)
     {
         result[i] = (uchar)((data[i >> 2] >> ((i & 3) << 3)) & 0xFF);
     }

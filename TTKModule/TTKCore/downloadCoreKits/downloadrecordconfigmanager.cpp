@@ -34,7 +34,7 @@ void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecordList &
 void DownloadRecordConfigManager::readDownloadConfig(DownloadRecordList &records)
 {
     const QDomNodeList &nodelist = m_document->elementsByTagName("value");
-    for(int i=0; i<nodelist.count(); ++i)
+    for(int i = 0; i < nodelist.count(); ++i)
     {
         const QDomElement &element = nodelist.at(i).toElement();
         DownloadRecord record;

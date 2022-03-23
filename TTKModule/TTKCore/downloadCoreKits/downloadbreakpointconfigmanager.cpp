@@ -34,7 +34,7 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointItemList &records)
 {
     QDomNodeList nodelist = m_document->elementsByTagName("value");
-    for(int i=0; i<nodelist.count(); ++i)
+    for(int i = 0; i < nodelist.count(); ++i)
     {
         DownloadBreakPointItem record;
         const QDomElement &element = nodelist.at(i).toElement();
@@ -45,9 +45,9 @@ void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointIte
     }
 
     nodelist = m_document->elementsByTagName("url");
-    for(int i=0; i<nodelist.count(); ++i)
+    for(int i = 0; i < nodelist.count(); ++i)
     {
-        for(int j=0; j<records.count(); ++j)
+        for(int j = 0; j < records.count(); ++j)
         {
             const QDomElement &element = nodelist.at(i).toElement();
             records[j].m_url = element.text();

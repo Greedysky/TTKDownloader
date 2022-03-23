@@ -69,12 +69,12 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
         connect(buttonGroup, SIGNAL(buttonClicked(int)), SLOT(buttonClicked(int)));
 #endif
         QStringList names;
-        for(int i=1; i<=9; ++i)
+        for(int i = 1; i <= 9; ++i)
         {
             names << QString::number(i);
         }
 
-        for(int i=0; i<names.count(); ++i)
+        for(int i = 0; i < names.count(); ++i)
         {
             buttonGroup->addButton(createButton(names[i]), i);
         }
@@ -111,7 +111,7 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
         }
         m_functionsItems[m_functionsItems.count() - 1]->hide();
 
-        for(int i=0; i<m_functionsItems.count() - 1; ++i)
+        for(int i = 0; i < m_functionsItems.count() - 1; ++i)
         {
             m_functionsItems[i]->show();
             ly->addWidget(m_functionsItems[i]);
@@ -156,7 +156,7 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
     m_listWidget->clearAllItems();
     DownloadQueueDataList datas;
     DownloadSkinRemoteItemList *items = &m_groups[index].m_items;
-    for(int i=0; i<items->count(); i++)
+    for(int i = 0; i < items->count(); ++i)
     {
         m_listWidget->createItem(":/image/lb_noneImage", false);
         DownloadQueueData data;
@@ -182,14 +182,14 @@ void DownloadBackgroundRemoteWidget::downLoadDataChanged(const QString &data)
 void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemoteGroupList &data)
 {
     m_groups = data;
-    for(int i=0; i<m_groups.count(); ++i)
+    for(int i = 0; i < m_groups.count(); ++i)
     {
         DownloadSkinRemoteGroup *item = &m_groups[i];
         m_functionsItems[i]->setText(item->m_group);
     }
 
     //Hide left items if the number just not enough
-    for(int i=m_groups.count(); i<m_functionsItems.count(); ++i)
+    for(int i = m_groups.count(); i < m_functionsItems.count(); ++i)
     {
         m_functionsItems[i]->hide();
     }
@@ -212,7 +212,7 @@ QPushButton* DownloadBackgroundRemoteWidget::createButton(const QString &name)
 
 void DownloadBackgroundRemoteWidget::buttonStyleChanged()
 {
-    for(int i=0; i<m_functionsItems.count() - 1; ++i)
+    for(int i = 0; i < m_functionsItems.count() - 1; ++i)
     {
         m_functionsItems[i]->setStyleSheet(DownloadUIObject::MPushButtonStyle02);
     }

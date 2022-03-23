@@ -43,7 +43,7 @@ void DownloadHistoryRecordWidget::init()
 
     setRowCount(m_loadRecordCount = m_records.count()); //reset row count
 
-    for(int i=0; i<m_records.count(); i++)
+    for(int i = 0; i < m_records.count(); ++i)
     {
         createItem(i, m_records[i]);
     }
@@ -75,7 +75,7 @@ void DownloadHistoryRecordWidget::reverseSelect()
     setSelectionMode(QAbstractItemView::MultiSelection);
 
     clearSelection();
-    for(int i=0; i<rowCount(); ++i)
+    for(int i = 0; i < rowCount(); ++i)
     {
         if(!rows.contains(i))
         {

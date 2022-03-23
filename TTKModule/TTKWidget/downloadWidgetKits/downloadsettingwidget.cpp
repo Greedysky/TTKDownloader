@@ -22,7 +22,7 @@ DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
 void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunctionItemList &items)
 {
     m_listIndex = index;
-    for(int i=0; i<items.count(); ++i)
+    for(int i = 0; i < items.count(); ++i)
     {
         const DownloadFunctionItem &&fItem = std::move(items[i]);
         QTableWidgetItem *item = nullptr;
@@ -261,7 +261,7 @@ void DownloadSettingWidget::initDownloadSettingWidget()
     m_ui->uploadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
 
     m_ui->defaultDownloadModeBox->addItems(QStringList() << tr("Auto") << tr("Manual"));
-    for(int i=1; i<=50; ++i)
+    for(int i = 1; i <= 50; ++i)
     {
         m_ui->downloadMaxCountBox->addItem(QString::number(i));
     }
