@@ -40,10 +40,6 @@
         <translation>关于</translation>
     </message>
     <message>
-        <source>Update</source>
-        <translation>软件更新</translation>
-    </message>
-    <message>
         <source>Version</source>
         <translation>版本</translation>
     </message>
@@ -658,19 +654,19 @@ Copyright© 2015-2022 Greedysky All Rights Reserved
 <context>
     <name>DownloadThreadManager</name>
     <message>
-        <source>D_Waiting</source>
+        <source>Waiting</source>
         <translation>连接资源</translation>
     </message>
     <message>
-        <source>D_Download</source>
+        <source>Download</source>
         <translation>正在下载</translation>
     </message>
     <message>
-        <source>D_Finished</source>
+        <source>Finished</source>
         <translation>完成</translation>
     </message>
     <message>
-        <source>D_Pause</source>
+        <source>Pause</source>
         <translation>暂停</translation>
     </message>
 </context>
@@ -725,10 +721,6 @@ Copyright© 2015-2022 Greedysky All Rights Reserved
     <message>
         <source>choose a filename to open under</source>
         <translation>打开文件</translation>
-    </message>
-    <message>
-        <source>choose a filename to save under</source>
-        <translation>保存文件</translation>
     </message>
 </context>
 </TS>
