@@ -35,11 +35,11 @@ class TTK_MODULE_EXPORT DownloadThread : public QObject
 public:
     enum DownloadState
     {
-        D_Waiting = 0,   /*!< Download waiting state */
-        D_Download,      /*!< Download download state */
-        D_Pause,         /*!< Download pause state */
-        D_Stop,          /*!< Download stop state */
-        D_Finished       /*!< Download finished state */
+        Waiting = 0,   /*!< Download waiting state */
+        Download,      /*!< Download download state */
+        Pause,         /*!< Download pause state */
+        Stop,          /*!< Download stop state */
+        Finished       /*!< Download finished state */
     };
 
     /*!

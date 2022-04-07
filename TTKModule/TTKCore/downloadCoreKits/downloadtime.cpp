@@ -4,7 +4,7 @@
 
 DownloadTime::DownloadTime()
 {
-    m_defaultType = All_Msec;
+    m_defaultType = AllMsec;
     m_greedyMode = false;
     initialize();
 }
@@ -18,13 +18,13 @@ DownloadTime::DownloadTime(qint64 value, Type type)
     : DownloadTime()
 {
     m_defaultType = type;
-    fromTimeStamp(value, type == All_Sec ? MT_S : MT_S2MS);
+    fromTimeStamp(value, type == AllSec ? MT_S : MT_S2MS);
 }
 
 DownloadTime::DownloadTime(int day, int hour, int min, int sec, int msec)
     : DownloadTime()
 {
-    m_defaultType = All_Msec;
+    m_defaultType = AllMsec;
     setHMSM(day, hour, min, sec, msec);
 }
 
@@ -81,9 +81,9 @@ QString DownloadTime::toString(const QString &format) const
 
 qint64 DownloadTime::timeStamp(Type type) const
 {
-    qint64 delta = (type == All_Sec) ? MT_S : MT_S2MS;
+    qint64 delta = (type == AllSec) ? MT_S : MT_S2MS;
            delta = (m_day*MT_D2S + m_hour*MT_H2S + m_min*MT_M2S + m_sec)*delta;
-    return (type == All_Sec) ? delta : (delta + m_msec);
+    return (type == AllSec) ? delta : (delta + m_msec);
 }
 
 qint64 DownloadTime::timeStamp(bool ms)
@@ -108,7 +108,7 @@ QString DownloadTime::msecTime2LabelJustified() const
 
 QString DownloadTime::msecTime2LabelJustified(qint64 time, bool greedy)
 {
-    const DownloadTime t(time, DownloadTime::All_Msec);
+    const DownloadTime t(time, DownloadTime::AllMsec);
     if(!greedy || time < MT_H2S * MT_S2MS)
     {
         return t.toString("mm:ss");
@@ -173,90 +173,90 @@ DownloadTime& DownloadTime::operator= (const DownloadTime &other)
 
 DownloadTime& DownloadTime::operator+= (const DownloadTime &other)
 {
-    qint64 t = timeStamp(All_Msec) + other.timeStamp(All_Msec);
-    fromTimeStamp(t, m_defaultType == All_Sec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(AllMsec) + other.timeStamp(AllMsec);
+    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator+= (const int other)
 {
-    qint64 t = timeStamp(All_Msec) + other;
-    fromTimeStamp(t, m_defaultType == All_Sec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(AllMsec) + other;
+    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator-= (const DownloadTime &other)
 {
-    qint64 t = timeStamp(All_Msec) - other.timeStamp(All_Msec);
-    fromTimeStamp(t, m_defaultType == All_Sec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(AllMsec) - other.timeStamp(AllMsec);
+    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator-= (const int other)
 {
-    qint64 t = timeStamp(All_Msec) - other;
-    fromTimeStamp(t, m_defaultType == All_Sec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(AllMsec) - other;
+    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator*= (const int other)
 {
-    qint64 t = timeStamp(All_Msec) * other;
-    fromTimeStamp(t, m_defaultType == All_Sec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(AllMsec) * other;
+    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator/= (const int other)
 {
-    qint64 t = timeStamp(All_Msec) / other;
-    fromTimeStamp(t, m_defaultType == All_Sec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(AllMsec) / other;
+    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime DownloadTime::operator+ (const DownloadTime &other)
 {
-    qint64 t = timeStamp(All_Msec) + other.timeStamp(All_Msec);
+    qint64 t = timeStamp(AllMsec) + other.timeStamp(AllMsec);
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator+ (const int other)
 {
-    qint64 t = timeStamp(All_Msec) + other;
+    qint64 t = timeStamp(AllMsec) + other;
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator- (const DownloadTime &other)
 {
-    qint64 t = timeStamp(All_Msec) - other.timeStamp(All_Msec);
+    qint64 t = timeStamp(AllMsec) - other.timeStamp(AllMsec);
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator- (const int other)
 {
-    qint64 t = timeStamp(All_Msec) - other;
+    qint64 t = timeStamp(AllMsec) - other;
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator* (const int other)
 {
-    qint64 t = timeStamp(All_Msec) * other;
+    qint64 t = timeStamp(AllMsec) * other;
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator/ (const int other)
 {
-    qint64 t = timeStamp(All_Msec) / other;
+    qint64 t = timeStamp(AllMsec) / other;
     return DownloadTime(t, m_defaultType);
 }
 
 bool DownloadTime::operator== (const DownloadTime &other) const
 {
-    return timeStamp(All_Msec) == other.timeStamp(All_Msec);
+    return timeStamp(AllMsec) == other.timeStamp(AllMsec);
 }
 
 bool DownloadTime::operator!= (const DownloadTime &other) const
 {
-    return timeStamp(All_Msec) != other.timeStamp(All_Msec);
+    return timeStamp(AllMsec) != other.timeStamp(AllMsec);
 }
 
 void DownloadTime::initialize()

@@ -31,13 +31,13 @@ class TTK_MODULE_EXPORT DownloadNetworkAbstract : public QObject
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadNetworkAbstract)
 public:
-    typedef enum StateCode
+    enum StateCode
     {
         Init = 0xFFFFF00,   /*!< Network state init*/
         Success = 0,        /*!< Network state success*/
         Error = -1,         /*!< Network state error*/
         UnKnow = 2,         /*!< Network state unknow*/
-    }StateCode;
+    };
 
     /*!
      * Object contsructor.

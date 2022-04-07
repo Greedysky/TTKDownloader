@@ -8,7 +8,7 @@
 DownloadThread::DownloadThread(QObject *parent)
     : QObject(parent)
 {
-    m_state = D_Stop;
+    m_state = Stop;
     m_manager = new QNetworkAccessManager(this);
 }
 
@@ -21,7 +21,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
                                    qint64 startPoint, qint64 endPoint,
                                    qint64 readySize)
 {
-    if(m_state == D_Download)
+    if(m_state == Download)
     {
         emit errorCode(m_index, "is downloading a file");
         return;
@@ -53,19 +53,19 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     connect(m_reply, SIGNAL(error(QNetworkReply::NetworkError)), SLOT(errorSlot(QNetworkReply::NetworkError)));
 #endif
 
-    m_state = D_Download;
+    m_state = Download;
     emit downloadChanged();
 }
 
 void DownloadThread::pause()
 {
-    if(m_state != D_Download)
+    if(m_state != Download)
     {
         emit errorCode(m_index, "is not downloading");
         return;
     }
 
-    m_state = D_Pause;
+    m_state = Pause;
     m_reply->abort();
     m_file->flush();
     m_reply->deleteLater();
@@ -73,7 +73,7 @@ void DownloadThread::pause()
 
 void DownloadThread::restart()
 {
-    if(m_state != D_Pause)
+    if(m_state != Pause)
     {
         emit errorCode(m_index, "is not stoped");
         return;
@@ -84,14 +84,14 @@ void DownloadThread::restart()
 
 void DownloadThread::finishedSlot()
 {
-    if(m_state != D_Download)
+    if(m_state != Download)
     {
         return;
     }
 
     m_file->flush();
     m_reply->deleteLater();
-    m_state = D_Finished;
+    m_state = Finished;
 
     emit finished(m_index);
 }
@@ -108,14 +108,14 @@ void DownloadThread::readyReadSlot()
 
 void DownloadThread::errorSlot(QNetworkReply::NetworkError code)
 {
-    if(m_state != D_Download)
+    if(m_state != Download)
     {
         return;
     }
     emit errorCode(m_index, "QNetworkReply::NetworkError : " +
                             QString::number((int)code) + " \n" +
                             m_reply->errorString());
-    m_state = D_Stop;
+    m_state = Stop;
     m_reply->abort();
     m_file->flush();
     m_reply->deleteLater();
