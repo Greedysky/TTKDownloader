@@ -48,7 +48,7 @@ DownloadListWidgets::~DownloadListWidgets()
     clearItems();
 }
 
-void DownloadListWidgets::init()
+void DownloadListWidgets::initialize()
 {
     DownloadListConfigManager xml;
     if(!xml.readListXMLConfig())

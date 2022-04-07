@@ -20,7 +20,7 @@ DownloadConsoleObject::~DownloadConsoleObject()
     delete m_manager;
 }
 
-bool DownloadConsoleObject::init(const QCoreApplication &app) const
+bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
 {
 #if TTK_QT_VERSION_CHECK(5,2,0)
     QCommandLineOption op1("u", "", TTK_DOT);

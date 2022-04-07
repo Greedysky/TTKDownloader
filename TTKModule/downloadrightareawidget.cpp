@@ -28,10 +28,10 @@ DownloadRightAreaWidget::~DownloadRightAreaWidget()
     delete m_historyWidget;
 }
 
-void DownloadRightAreaWidget::init()
+void DownloadRightAreaWidget::initialize()
 {
-    m_listWidget->init();
-    m_historyWidget->init();
+    m_listWidget->initialize();
+    m_historyWidget->initialize();
 }
 
 DownloadRightAreaWidget *DownloadRightAreaWidget::instance()

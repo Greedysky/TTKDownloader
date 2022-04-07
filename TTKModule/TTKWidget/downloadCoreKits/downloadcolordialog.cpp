@@ -22,7 +22,7 @@ QColor DownloadHlPalette::color() const
     return m_color;
 }
 
-void DownloadHlPalette::init()
+void DownloadHlPalette::initialize()
 {
     m_ptVernierPos = rect().center();
     calculateColor();
@@ -264,7 +264,7 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     connect(m_ui->wgtSaturationIndicator, SIGNAL(saturationChanged(double)), m_ui->wgtPalette, SLOT(setSaturation(double)));
 
     m_status = 0;
-    m_ui->wgtPalette->init();
+    m_ui->wgtPalette->initialize();
 
     QButtonGroup *buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(m_ui->topTitleCloseButton, 0);

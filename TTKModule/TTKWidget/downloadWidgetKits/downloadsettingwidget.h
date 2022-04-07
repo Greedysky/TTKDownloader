@@ -101,7 +101,7 @@ public:
     /*!
      * Init controller parameter to widget.
      */
-    void initControllerParameter();
+    void initialize();
 
 Q_SIGNALS:
     /*!

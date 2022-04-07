@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(APP_NAME);
 
     DownloadInitObject object;
-    object.init();
+    object.initialize();
     qDebug() << "Parameter Init success!";
 
     Q_UNUSED(app);

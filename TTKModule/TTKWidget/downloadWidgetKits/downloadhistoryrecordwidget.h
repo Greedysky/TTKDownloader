@@ -36,7 +36,7 @@ public:
     /*!
      * Init widget.
      */
-    void init();
+    void initialize();
     /*!
      * Clear All Items.
      */

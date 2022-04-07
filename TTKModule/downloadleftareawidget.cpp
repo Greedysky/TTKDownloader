@@ -44,6 +44,6 @@ void DownloadLeftAreaWidget::showSettingWidget()
 {
     DownloadSettingWidget setting;
     connect(&setting, SIGNAL(parameterSettingChanged()), DownloadApplication::instance(), SLOT(parameterSetting()));
-    setting.initControllerParameter();
+    setting.initialize();
     setting.exec();
 }

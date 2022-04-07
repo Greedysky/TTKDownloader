@@ -217,7 +217,7 @@ protected:
     /*!
      * Init parameters;
      */
-    void init();
+    void initialize();
     /*!
      * Copy other time data to this obejct;
      */

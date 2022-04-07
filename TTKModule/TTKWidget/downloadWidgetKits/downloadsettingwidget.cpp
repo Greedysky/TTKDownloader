@@ -105,7 +105,7 @@ DownloadSettingWidget::~DownloadSettingWidget()
     delete m_ui;
 }
 
-void DownloadSettingWidget::initControllerParameter()
+void DownloadSettingWidget::initialize()
 {
     m_ui->downloadDirEdit->setText(G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString());
 

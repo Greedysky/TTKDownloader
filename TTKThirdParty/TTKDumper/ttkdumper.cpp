@@ -31,7 +31,7 @@ public:
     static void errorHandler(int id);
 #endif
 
-    void init();
+    void initialize();
 
     static QString m_name;
     static QString m_version;
@@ -46,7 +46,7 @@ TTKDumperPrivate::TTKDumperPrivate()
 }
 
 #ifdef Q_OS_WIN
-void TTKDumperPrivate::init()
+void TTKDumperPrivate::initialize()
 {
     ::SetUnhandledExceptionFilter(errorHandler);
 }
@@ -178,7 +178,7 @@ void TTKDumperPrivate::errorHandler(int id)
     exit(0);
 }
 
-void TTKDumperPrivate::init()
+void TTKDumperPrivate::initialize()
 {
     signal(SIGPIPE, errorHandler);
     signal(SIGSEGV, errorHandler);
@@ -205,5 +205,5 @@ TTKDumper::TTKDumper()
 void TTKDumper::run()
 {
     TTK_D(TTKDumper);
-    d->init();
+    d->initialize();
 }

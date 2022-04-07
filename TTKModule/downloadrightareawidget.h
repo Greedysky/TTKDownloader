@@ -46,7 +46,7 @@ public:
     /*!
      * Init widget.
      */
-    void init();
+    void initialize();
 
     /*!
      * Get class object instance.

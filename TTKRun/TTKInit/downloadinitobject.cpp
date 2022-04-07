@@ -14,7 +14,7 @@ void DownloadInitObject::valid() const
     checkFileNeededExist();
 }
 
-void DownloadInitObject::init() const
+void DownloadInitObject::initialize() const
 {
     checkFileNeededExist();
 

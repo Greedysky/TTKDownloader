@@ -8,7 +8,7 @@
 DownloadBackgroundPopWidget::DownloadBackgroundPopWidget(QWidget *parent)
     : DownloadToolMenuWidget(parent)
 {
-    initWidget();
+    initialize();
 }
 
 DownloadBackgroundPopWidget::~DownloadBackgroundPopWidget()
@@ -36,7 +36,7 @@ void DownloadBackgroundPopWidget::sliderReleased()
     emit sliderStateChanged(false);
 }
 
-void DownloadBackgroundPopWidget::initWidget()
+void DownloadBackgroundPopWidget::initialize()
 {
     m_menu->setStyleSheet(DownloadUIObject::MMenuStyle02);
 

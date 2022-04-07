@@ -6,7 +6,7 @@ DownloadTime::DownloadTime()
 {
     m_defaultType = All_Msec;
     m_greedyMode = false;
-    init();
+    initialize();
 }
 
 DownloadTime::DownloadTime(const DownloadTime &other)
@@ -30,7 +30,7 @@ DownloadTime::DownloadTime(int day, int hour, int min, int sec, int msec)
 
 void DownloadTime::setHMSM(int day, int hour, int min, int sec, int msec)
 {
-    init();
+    initialize();
 
     int delta = 0;
     delta = msec >= MT_S2MS ? msec / MT_S2MS : 0;
@@ -259,7 +259,7 @@ bool DownloadTime::operator!= (const DownloadTime &other) const
     return timeStamp(All_Msec) != other.timeStamp(All_Msec);
 }
 
-void DownloadTime::init()
+void DownloadTime::initialize()
 {
     m_day = 0;
     m_hour = 0;
@@ -283,7 +283,7 @@ void DownloadTime::fromTimeStamp(qint64 value, int delta)
 {
     if(value < 0)
     {
-        init();
+        initialize();
         return;
     }
 

@@ -15,7 +15,6 @@ DownloadApplicationObject *DownloadApplicationObject::m_instance = nullptr;
 DownloadApplicationObject::DownloadApplicationObject(QObject *parent)
     : QObject(parent)
 {
-    Q_INIT_RESOURCE(TTKDownloader);
     m_instance = this;
 
     appResetWindow();

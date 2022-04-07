@@ -200,7 +200,7 @@ void DownloadBackgroundSkinDialog::backgroundListWidgetChanged(int index)
     m_remoteBackgroundList->abort();
     if(index == 2)
     {
-        m_remoteBackgroundList->init();
+        m_remoteBackgroundList->initialize();
     }
 
     m_ui->localSkinButton->setVisible(index == 0);

@@ -36,7 +36,7 @@ DownloadBackgroundRemoteWidget::~DownloadBackgroundRemoteWidget()
     delete m_queryThread;
 }
 
-void DownloadBackgroundRemoteWidget::init()
+void DownloadBackgroundRemoteWidget::initialize()
 {
     if(!m_queryThread)
     {

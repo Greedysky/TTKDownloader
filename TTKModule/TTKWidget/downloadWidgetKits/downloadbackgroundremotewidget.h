@@ -44,7 +44,7 @@ public:
     /*!
      * Init the current download object.
      */
-    void init();
+    void initialize();
     /*!
      * Abort the current download thread.
      */

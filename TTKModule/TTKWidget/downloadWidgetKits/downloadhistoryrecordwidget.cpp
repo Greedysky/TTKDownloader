@@ -31,7 +31,7 @@ DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
     xml.writeDownloadConfig(m_records);
 }
 
-void DownloadHistoryRecordWidget::init()
+void DownloadHistoryRecordWidget::initialize()
 {
     DownloadRecordConfigManager xml;
     if(!xml.readDownloadXMLConfig())
