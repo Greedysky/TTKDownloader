@@ -12,19 +12,18 @@ void DownloadListConfigManager::writeListConfig(const DownloadItemList &records)
     {
         return;
     }
-    ///////////////////////////////////////////////////////
+
     createProcessingInstruction();
-    QDomElement player = createRoot(APP_NAME);
-    QDomElement download = writeDomNode(player, "list");
+    QDomElement rootDom = createRoot(APP_NAME);
+    QDomElement recordDom = writeDomNode(rootDom, "list");
 
     for(const DownloadItem &record : qAsConst(records))
     {
-        writeDomElementMutil(download, "value", DownloadXmlAttributeList() <<
-                                                DownloadXmlAttribute("url", record.m_url) <<
-                                                DownloadXmlAttribute("name", record.m_name));
+        writeDomMutilElement(recordDom, "value", DownloadXmlAttributeList() <<
+                                                 DownloadXmlAttribute("url", record.m_url) <<
+                                                 DownloadXmlAttribute("name", record.m_name));
     }
 
-    //Write to file
     QTextStream out(m_file);
     m_document->save(out, 4);
 }

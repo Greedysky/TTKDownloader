@@ -8,21 +8,18 @@ DownloadSkinConfigManager::DownloadSkinConfigManager(QObject *parent)
 
 void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem &item, const QString &path)
 {
-    //Open wirte file
     if(!writeConfig(path))
     {
         return;
     }
-    ///////////////////////////////////////////////////////
-    createProcessingInstruction();
-    ///////////////////////////////////////////////////////
-    QDomElement playerDom = createRoot("TTKSkin");
-    //Class A
-    writeDomElement(playerDom, "creator", DownloadXmlAttribute("value", APP_NAME));
-    writeDomElement(playerDom, "name", DownloadXmlAttribute("value", item.m_name));
-    writeDomElement(playerDom, "useCount", DownloadXmlAttribute("value", item.m_useCount));
 
-    //Write to file
+    createProcessingInstruction();
+    QDomElement rootDom = createRoot("TTKSkin");
+
+    writeDomElement(rootDom, "creator", DownloadXmlAttribute("value", APP_NAME));
+    writeDomElement(rootDom, "name", DownloadXmlAttribute("value", item.m_name));
+    writeDomElement(rootDom, "useCount", DownloadXmlAttribute("value", item.m_useCount));
+
     QTextStream out(m_file);
     m_document->save(out, 4);
 }

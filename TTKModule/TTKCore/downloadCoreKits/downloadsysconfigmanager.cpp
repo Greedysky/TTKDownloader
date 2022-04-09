@@ -21,11 +21,9 @@ void DownloadSysConfigManager::writeXMLConfig()
     int startupRunModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::StartUpRunModeChoiced).toInt();
     int slienceRunModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::SlienceRunModeChoiced).toInt();
 
-    ///////////////////////////////////////////////////////////////////////////
     QString bgThemeChoiced = G_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString();
     int bgTransparentChoiced = G_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
 
-    ///////////////////////////////////////////////////////////////////////////
     int downloadLimit = G_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt();
     int downloadModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::DownloadModeChoiced).toInt();
     int downloadMaxCountChoiced = G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCountChoiced).toInt();
@@ -33,30 +31,23 @@ void DownloadSysConfigManager::writeXMLConfig()
     QString downloadDLoadLimit = G_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toString();
     QString downloadULoadLimit = G_SETTING_PTR->value(DownloadSettingManager::DownloadULoadLimitChoiced).toString();
 
-    ///////////////////////////////////////////////////////////////////////////
     int skinEffectLevelChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt();
     int skinFontChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
     int skinSuspensionChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toInt();
     int skinSuspensionPerChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toInt();
 
-    ///////////////////////////////////////////////////////////////////////////
-
-    //Open wirte file
     if(!writeConfig(COFIG_PATH_FULL))
     {
         return;
     }
-    ///////////////////////////////////////////////////////
-    createProcessingInstruction();
-    QDomElement playerDom = createRoot(APP_NAME);
-    //Class A
-    QDomElement plusSettingDom = writeDomNode(playerDom, "plusSetting");
-    QDomElement backgroundSettingDom = writeDomNode(playerDom, "backgroundSetting");
-    QDomElement downloadSettingDom = writeDomNode(playerDom, "downloadSetting");
-    QDomElement skinSettingDom = writeDomNode(playerDom, "skinSetting");
-    //Class B
 
-    ///////////////////////////////////////////////////////////////////////////
+    createProcessingInstruction();
+    QDomElement rootDom = createRoot(APP_NAME);
+    QDomElement plusSettingDom = writeDomNode(rootDom, "plusSetting");
+    QDomElement backgroundSettingDom = writeDomNode(rootDom, "backgroundSetting");
+    QDomElement downloadSettingDom = writeDomNode(rootDom, "downloadSetting");
+    QDomElement skinSettingDom = writeDomNode(rootDom, "skinSetting");
+
     writeDomElement(plusSettingDom, "geometry", DownloadXmlAttribute("value", QString("%1,%2,%3,%4").arg(widgetPositionChoiced.x())
                     .arg(widgetPositionChoiced.y()).arg(widgetSizeChoiced.width()).arg(widgetSizeChoiced.height())));
     writeDomElement(plusSettingDom, "closeEvent", DownloadXmlAttribute("value", closeEventChoiced));
@@ -66,11 +57,9 @@ void DownloadSysConfigManager::writeXMLConfig()
     writeDomElement(plusSettingDom, "startUpRunMode", DownloadXmlAttribute("value", startupRunModeChoiced));
     writeDomElement(plusSettingDom, "slienceRunMode", DownloadXmlAttribute("value", slienceRunModeChoiced));
 
-    ///////////////////////////////////////////////////////////////////////////
     writeDomElement(backgroundSettingDom, "bgTheme", DownloadXmlAttribute("value", bgThemeChoiced));
     writeDomElement(backgroundSettingDom, "bgTransparent", DownloadXmlAttribute("value", bgTransparentChoiced));
 
-    ///////////////////////////////////////////////
     writeDomElement(downloadSettingDom, "downloadLimit", DownloadXmlAttribute("value", downloadLimit));
     writeDomElement(downloadSettingDom, "downloadMode", DownloadXmlAttribute("value", downloadModeChoiced));
     writeDomElement(downloadSettingDom, "downloadMaxCount", DownloadXmlAttribute("value", downloadMaxCountChoiced));
@@ -78,13 +67,11 @@ void DownloadSysConfigManager::writeXMLConfig()
     writeDomElement(downloadSettingDom, "downloadDLoadLimit", DownloadXmlAttribute("value", downloadDLoadLimit));
     writeDomElement(downloadSettingDom, "downloadULoadLimit", DownloadXmlAttribute("value", downloadULoadLimit));
 
-    ///////////////////////////////////////////////
     writeDomElement(skinSettingDom, "skinEffectLevel", DownloadXmlAttribute("value", skinEffectLevelChoiced));
     writeDomElement(skinSettingDom, "skinFont", DownloadXmlAttribute("value", skinFontChoiced));
     writeDomElement(skinSettingDom, "skinSuspension", DownloadXmlAttribute("value", skinSuspensionChoiced));
     writeDomElement(skinSettingDom, "skinSuspensionPer", DownloadXmlAttribute("value", skinSuspensionPerChoiced));
 
-    //Write to file
     QTextStream out(m_file);
     m_document->save(out, 4);
 }

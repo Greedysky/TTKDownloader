@@ -161,7 +161,7 @@ QDomElement DownloadAbstractXml::writeDomElement(QDomElement &element, const QSt
     return domElement;
 }
 
-QDomElement DownloadAbstractXml::writeDomElementMutil(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs)
+QDomElement DownloadAbstractXml::writeDomMutilElement(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs)
 {
     if(attrs.isEmpty())
     {
@@ -202,14 +202,14 @@ QDomElement DownloadAbstractXml::writeDomElementText(QDomElement &element, const
     return domElement;
 }
 
-QDomElement DownloadAbstractXml::writeDomElementMutilText(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs, const QString &text)
+QDomElement DownloadAbstractXml::writeDomMutilElementText(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs, const QString &text)
 {
     if(attrs.isEmpty())
     {
         QDomElement();
     }
 
-    QDomElement domElement = writeDomElementMutil(element, node, attrs);
+    QDomElement domElement = writeDomMutilElement(element, node, attrs);
     const QDomText &domText = m_document->createTextNode(text);
     domElement.appendChild(domText);
     return domElement;

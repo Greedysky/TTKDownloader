@@ -34,7 +34,7 @@ void loadAppScaledFactor(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
     loadAppScaledFactor(argc, argv);
-    //
+
     QApplication a(argc, argv);
 #if !defined TTK_DEBUG && !defined Q_OS_UNIX
     if(argc <= 1 || QString(argv[1]) != APPNAME)

@@ -126,7 +126,7 @@ public:
     /*!
      * Append xml elements nodes by node name\ keys name and values.
      */
-    QDomElement writeDomElementMutil(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs);
+    QDomElement writeDomMutilElement(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs);
     /*!
      * Append xml element nodes by node name\ key name \ value and attribute's text.
      */
@@ -134,7 +134,7 @@ public:
     /*!
      * Append xml elements nodes by node name\ keys name \ values and attribute's text.
      */
-    QDomElement writeDomElementMutilText(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs, const QString &text);
+    QDomElement writeDomMutilElementText(QDomElement &element, const QString &node, const DownloadXmlAttributeList &attrs, const QString &text);
     /*!
      * Append xml element nodes by node name and attribute's text.
      */
