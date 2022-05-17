@@ -88,7 +88,7 @@ public Q_SLOTS:
      */
     void backgroundSliderStateChanged(bool state);
     /*!
-     * Show change background skin dailog.
+     * Show change background skin dialog.
      */
     void showSkinChangedWindow();
     /*!
