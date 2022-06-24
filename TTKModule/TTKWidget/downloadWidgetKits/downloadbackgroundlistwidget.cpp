@@ -86,11 +86,7 @@ void DownloadBackgroundListItem::leaveEvent(QEvent *event)
     update();
 }
 
-#if TTK_QT_VERSION_CHECK(6,0,0)
-void DownloadBackgroundListItem::enterEvent(QEnterEvent *event)
-#else
-void DownloadBackgroundListItem::enterEvent(QEvent *event)
-#endif
+void DownloadBackgroundListItem::enterEvent(QtEnterEvent *event)
 {
     QLabel::enterEvent(event);
     m_printMask = true;
@@ -121,17 +117,10 @@ void DownloadBackgroundListItem::paintEvent(QPaintEvent *event)
 
         painter.setPen(Qt::white);
         QString v = QString::number(m_imageInfo.m_useCount);
-#if TTK_QT_VERSION_CHECK(5,11,0)
-        painter.drawText((width() - metric.horizontalAdvance(v)) / 2, 30, v);
-#else
-        painter.drawText((width() - metric.width(v)) / 2, 30, v);
-#endif
+        painter.drawText((width() - QtFontWidth(metric, v)) / 2, 30, v);
+
         v = m_imageInfo.m_name;
-#if TTK_QT_VERSION_CHECK(5,11,0)
-        painter.drawText((width() - metric.horizontalAdvance(v)) / 2, 48, v);
-#else
-        painter.drawText((width() - metric.width(v)) / 2, 48, v);
-#endif
+        painter.drawText((width() - QtFontWidth(metric, v)) / 2, 48, v);
     }
 
     if(m_closeSet && m_closeMask)

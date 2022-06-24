@@ -25,7 +25,7 @@
 
 class QGlobalShortcutPrivate;
 
-/*! @brief The namespace of the qglobal shortcut.
+/*! @brief The class of the qglobal shortcut.
  * @author libqxt <foundation@libqxt.org>
  */
 class TTK_MODULE_EXPORT QGlobalShortcut : public QObject
@@ -49,7 +49,7 @@ Q_SIGNALS:
 public Q_SLOTS:
     void setEnabled(bool enabled = true);
     void setDisabled(bool disabled = true);
-    
+
 private:
     TTK_DECLARE_PRIVATE(QGlobalShortcut)
 

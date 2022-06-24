@@ -44,11 +44,7 @@ void DownloadFunctionItemWidget::mousePressEvent(QMouseEvent *event)
     update();
 }
 
-#if TTK_QT_VERSION_CHECK(6,0,0)
-void DownloadFunctionItemWidget::enterEvent(QEnterEvent *event)
-#else
-void DownloadFunctionItemWidget::enterEvent(QEvent *event)
-#endif
+void DownloadFunctionItemWidget::enterEvent(QtEnterEvent *event)
 {
     QWidget::enterEvent(event);
     m_enterIn = !m_selectedOn;

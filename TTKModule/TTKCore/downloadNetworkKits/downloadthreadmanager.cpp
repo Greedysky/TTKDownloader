@@ -111,9 +111,11 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
             {
                 break;
             }
+
             const int slash = fileName.lastIndexOf(QLatin1Char('.'));
             idFileName = (slash == -1) ? fileName : fileName.left(slash);
             QString sufix = (slash == -1) ? fileName : fileName.mid(slash);
+
             if(idFileName == sufix)
             {
                 sufix.clear();

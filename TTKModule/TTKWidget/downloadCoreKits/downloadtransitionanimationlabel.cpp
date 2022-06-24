@@ -39,22 +39,15 @@ void DownloadTransitionAnimationLabel::stop()
 
 void DownloadTransitionAnimationLabel::setPixmap(const QPixmap &pix)
 {
-#if TTK_QT_VERSION_CHECK(5,15,0)
-    if(m_noAnimationSet || pixmap(Qt::ReturnByValue).isNull())
-#else
-    if(m_noAnimationSet || !pixmap())
-#endif
+    const QPixmap &pixmap = QtLablePixmap(this);
+    if(m_noAnimationSet || pixmap.isNull())
     {
         m_rendererPixmap = pix;
         QLabel::setPixmap(pix);
         return;
     }
 
-#if TTK_QT_VERSION_CHECK(5,15,0)
-    m_previousPixmap = pixmap(Qt::ReturnByValue);
-#else
-    m_previousPixmap = *pixmap();
-#endif
+    m_previousPixmap = pixmap;
     m_currentPixmap = pix;
     m_isAnimating = true;
     m_animation->start();

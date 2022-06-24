@@ -5,11 +5,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     : QTableWidget(parent)
 {
     setAttribute(Qt::WA_TranslucentBackground);
-#if TTK_QT_VERSION_CHECK(6,2,0)
-    setFont(QFont(QStringList() << "Helvetica"));
-#else
-    setFont(QFont("Helvetica"));
-#endif
+    setFont(QtFontInit("Helvetica"));
     setColumnCount(3);
     setRowCount(0);
     setShowGrid(false);//Does not display the grid
@@ -83,11 +79,7 @@ void DownloadAbstractTableWidget::setRowColor(int row, const QColor &color) cons
         QTableWidgetItem *it = item(row, col);
         if(it != nullptr)
         {
-#if TTK_QT_VERSION_CHECK(5,13,0)
-            it->setBackground(color);
-#else
-            it->setBackgroundColor(color);
-#endif
+            QtItemSetBackgroundColor(it, color);
         }
     }
 }

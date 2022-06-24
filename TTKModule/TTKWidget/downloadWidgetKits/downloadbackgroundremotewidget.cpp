@@ -63,11 +63,8 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
         hbox->setContentsMargins(9, 0, 0, 9);
 
         QButtonGroup *buttonGroup = new QButtonGroup(m_functionsWidget);
-#if TTK_QT_VERSION_CHECK(5,15,0)
-        connect(buttonGroup, SIGNAL(idClicked(int)), SLOT(buttonClicked(int)));
-#else
-        connect(buttonGroup, SIGNAL(buttonClicked(int)), SLOT(buttonClicked(int)));
-#endif
+        QtButtonGroupConnect(buttonGroup, this, buttonClicked);
+
         QStringList names;
         for(int i = 1; i <= 9; ++i)
         {

@@ -31,7 +31,7 @@ QString DownloadUrlEncoder::decoder(const QString &url)
     }
     else if(url.left(QQDL.length()).contains(QQDL, Qt::CaseInsensitive))
     {
-        return QByteArray::fromBase64(turl.mid(QQDL.length()).toUtf8());;
+        return QByteArray::fromBase64(turl.mid(QQDL.length()).toUtf8());
     }
     else
     {

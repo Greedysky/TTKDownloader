@@ -26,7 +26,7 @@
 #  include <QAbstractNativeEventFilter>
 #endif
 
-/*! @brief The namespace of the qglobal shortcut private.
+/*! @brief The class of the qglobal shortcut private.
  * @author libqxt <foundation@libqxt.org>
  */
 class TTK_MODULE_EXPORT QGlobalShortcutPrivate : public TTKPrivate<QGlobalShortcut>

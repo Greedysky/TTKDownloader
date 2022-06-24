@@ -206,33 +206,21 @@ void DownloadHistoryRecordWidget::createItem(int index, const DownloadRecord &re
 
                       item = new QTableWidgetItem;
     item->setText(fin.fileName());
-#if TTK_QT_VERSION_CHECK(5,13,0)
-    item->setForeground(QColor(DownloadUIObject::MColorStyle12_S));
-#else
-    item->setTextColor(QColor(DownloadUIObject::MColorStyle12_S));
-#endif
+    QtItemSetForegroundColor(item, DownloadUIObject::MColorStyle12_S);
     item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     item->setToolTip(fin.fileName());
     setItem(index, 1, item);
 
                       item = new QTableWidgetItem;
     item->setText(record.m_time);
-#if TTK_QT_VERSION_CHECK(5,13,0)
-    item->setForeground(QColor(DownloadUIObject::MColorStyle12_S));
-#else
-    item->setTextColor(QColor(DownloadUIObject::MColorStyle12_S));
-#endif
+    QtItemSetForegroundColor(item, DownloadUIObject::MColorStyle12_S);
     item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     item->setToolTip(record.m_time);
     setItem(index, 2, item);
 
                       item = new QTableWidgetItem;
     item->setText(record.m_size);
-#if TTK_QT_VERSION_CHECK(5,13,0)
-    item->setForeground(QColor(DownloadUIObject::MColorStyle12_S));
-#else
-    item->setTextColor(QColor(DownloadUIObject::MColorStyle12_S));
-#endif
+    QtItemSetForegroundColor(item, DownloadUIObject::MColorStyle12_S);
     item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
     item->setToolTip(record.m_size);
     setItem(index, 3, item);

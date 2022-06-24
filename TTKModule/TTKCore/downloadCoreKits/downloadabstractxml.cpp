@@ -178,11 +178,7 @@ QDomElement DownloadAbstractXml::writeDomMutilElement(QDomElement &element, cons
 
 void DownloadAbstractXml::writeAttribute(QDomElement &element, const DownloadXmlAttribute &attr)
 {
-#if TTK_QT_VERSION_CHECK(6,0,0)
-    switch(attr.m_value.typeId())
-#else
-    switch(attr.m_value.type())
-#endif
+    switch(QtVariantType(attr.m_value))
     {
         case QVariant::Int: element.setAttribute(attr.m_key, attr.m_value.toInt()); break;
         case QVariant::String: element.setAttribute(attr.m_key, attr.m_value.toString()); break;

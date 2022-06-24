@@ -33,11 +33,7 @@ void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunc
         setItem(i, 1, item);
 
                       item = new QTableWidgetItem(fItem.m_name);
-#if TTK_QT_VERSION_CHECK(5,13,0)
-        item->setForeground(QColor(80, 80, 80));
-#else
-        item->setTextColor(QColor(80, 80, 80));
-#endif
+        QtItemSetForegroundColor(item, QColor(80, 80, 80));
         item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
         setItem(i, 2, item);
     }
@@ -241,11 +237,7 @@ void DownloadSettingWidget::initDownloadSettingWidget()
     QButtonGroup *buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(m_ui->downloadFullRadioBox, 0);
     buttonGroup->addButton(m_ui->downloadLimitRadioBox, 1);
-#if TTK_QT_VERSION_CHECK(5,15,0)
-    connect(buttonGroup, SIGNAL(idClicked(int)), SLOT(downloadGroupSpeedLimit(int)));
-#else
-    connect(buttonGroup, SIGNAL(buttonClicked(int)), SLOT(downloadGroupSpeedLimit(int)));
-#endif
+    QtButtonGroupConnect(buttonGroup, this, downloadGroupSpeedLimit);
 
     m_ui->defaultDownloadModeBox->setItemDelegate(new QStyledItemDelegate(m_ui->defaultDownloadModeBox));
     m_ui->defaultDownloadModeBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
