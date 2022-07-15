@@ -29,12 +29,12 @@ void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunc
         setItem(i, 0, item = new QTableWidgetItem());
 
                       item = new QTableWidgetItem(QIcon(fItem.m_icon), QString());
-        item->setTextAlignment(Qt::AlignCenter);
+        QtItemSetTextAlignment(item, Qt::AlignCenter);
         setItem(i, 1, item);
 
                       item = new QTableWidgetItem(fItem.m_name);
         QtItemSetForegroundColor(item, QColor(80, 80, 80));
-        item->setTextAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+        QtItemSetTextAlignment(item, Qt::AlignLeft | Qt::AlignVCenter);
         setItem(i, 2, item);
     }
 }
