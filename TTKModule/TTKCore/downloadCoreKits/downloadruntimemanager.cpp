@@ -29,7 +29,7 @@ void DownloadRunTimeManager::run() const
     ///////////////////////////////////////////////////////
     QFont font;
     QStringList fts(QFontDatabase().families(QFontDatabase::Any));
-    int index = G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
+    int index = G_SETTING_PTR->value(DownloadSettingManager::Config::SkinFontChoiced).toInt();
     if(index >= 0 && index < fts.count())
     {
         font.setFamily(fts[index]);
@@ -42,7 +42,7 @@ void DownloadRunTimeManager::run() const
 
     //detect the current network state
     G_NETWORK_PTR->start();
-    index = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt();
+    index = G_SETTING_PTR->value(DownloadSettingManager::Config::CloseNetWorkChoiced).toInt();
     G_NETWORK_PTR->setBlockNetWork(index);
 
     delete xml;

@@ -54,7 +54,7 @@ void DownloadUnits::start(const QString &name)
 
 int DownloadUnits::state() const
 {
-    return m_downloadThread->state();
+    return TTKStatic_cast(int, m_downloadThread->state());
 }
 
 void DownloadUnits::setStateChanged(const QString &state)

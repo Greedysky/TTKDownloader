@@ -32,10 +32,10 @@
 class TTK_MODULE_EXPORT DownloadSettingManager : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(ConfigType)
+    Q_ENUMS(Config)
     TTK_DECLARE_MODULE(DownloadSettingManager)
 public:
-    enum ConfigType
+    enum class Config
     {
         Null = -1,                      /*!< No Parameter*/
         ScreenSize,                     /*!< Screen Size Parameter*/
@@ -70,7 +70,7 @@ public:
     /*!
      * Set current value by Config Type.
      */
-    inline void setValue(ConfigType type, const QVariant &var)
+    inline void setValue(Config type, const QVariant &var)
     {
         m_para[type] = var;
     }
@@ -86,7 +86,7 @@ public:
     /*!
      * Get current value by Config Type.
      */
-    inline QVariant value(ConfigType type) const
+    inline QVariant value(Config type) const
     {
         return m_para[type];
     }
@@ -118,7 +118,7 @@ public:
     /*!
      * Current parameter contains type.
      */
-    inline bool contains(ConfigType type) const
+    inline bool contains(Config type) const
     {
         return m_para.contains(type);
     }
@@ -127,16 +127,16 @@ protected:
     /*!
      * Convert String type to Config Type.
      */
-    ConfigType typeStringToEnum(const QString &stype) const
+    Config typeStringToEnum(const QString &stype) const
     {
-        int index = staticMetaObject.indexOfEnumerator("ConfigType");
+        int index = staticMetaObject.indexOfEnumerator("Config");
         QMetaEnum metaEnum = staticMetaObject.enumerator(index);
         int key = metaEnum.keyToValue(stype.toStdString().c_str());
-        return TTKStatic_cast(ConfigType, key);
+        return TTKStatic_cast(Config, key);
     }
 
     QVariant m_variant;
-    QMap<ConfigType, QVariant> m_para;
+    QMap<Config, QVariant> m_para;
 
     DECLARE_SINGLETON_CLASS(DownloadSettingManager)
 };

@@ -5,7 +5,7 @@
 
 QString DownloadUtils::Core::downloadPrefix()
 {
-   QString path = G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
+   QString path = G_SETTING_PTR->value(DownloadSettingManager::Config::DownloadPathDirChoiced).toString();
    if(path.isEmpty())
    {
        path = TDDOWNLOAD_DIR_FULL;

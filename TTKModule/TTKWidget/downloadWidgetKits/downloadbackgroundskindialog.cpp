@@ -30,7 +30,7 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     m_ui->paletteButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
     m_ui->localSkinButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
     m_ui->localPicButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
-    m_ui->stackedWidget->setLength(m_ui->stackedWidget->width(), DownloadAnimationStackedWidget::RightToLeft);
+    m_ui->stackedWidget->setLength(m_ui->stackedWidget->width(), DownloadAnimationStackedWidget::Module::RightToLeft);
 #ifdef Q_OS_UNIX
     m_ui->paletteButton->setFocusPolicy(Qt::NoFocus);
     m_ui->localSkinButton->setFocusPolicy(Qt::NoFocus);

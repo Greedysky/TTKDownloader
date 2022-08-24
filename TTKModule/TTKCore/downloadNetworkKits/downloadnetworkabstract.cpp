@@ -3,14 +3,14 @@
 DownloadNetworkAbstract::DownloadNetworkAbstract(QObject *parent)
     : QObject(parent)
 {
-    m_stateCode = Init;
+    m_stateCode = StateCode::Init;
     m_reply = nullptr;
     m_manager = nullptr;
 }
 
 DownloadNetworkAbstract::~DownloadNetworkAbstract()
 {
-    m_stateCode = Success;
+    m_stateCode = StateCode::Success;
     deleteAll();
 }
 

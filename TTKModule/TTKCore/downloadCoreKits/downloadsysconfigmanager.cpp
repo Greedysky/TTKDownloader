@@ -12,29 +12,29 @@ DownloadSysConfigManager::DownloadSysConfigManager(QObject *parent)
 
 void DownloadSysConfigManager::writeXMLConfig()
 {
-    QPoint widgetPositionChoiced = G_SETTING_PTR->value(DownloadSettingManager::WidgetPosition).toPoint();
-    QSize widgetSizeChoiced = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize();
-    int closeEventChoiced = G_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toInt();
-    int closeNetWorkChoiced = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt();
-    int fileAssociationChoiced = G_SETTING_PTR->value(DownloadSettingManager::FileAssociationChoiced).toInt();
-    int startupModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::StartUpModeChoiced).toInt();
-    int startupRunModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::StartUpRunModeChoiced).toInt();
-    int slienceRunModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::SlienceRunModeChoiced).toInt();
+    QPoint widgetPositionChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::WidgetPosition).toPoint();
+    QSize widgetSizeChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::WidgetSize).toSize();
+    int closeEventChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::CloseEventChoiced).toInt();
+    int closeNetWorkChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::CloseNetWorkChoiced).toInt();
+    int fileAssociationChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::FileAssociationChoiced).toInt();
+    int startupModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::StartUpModeChoiced).toInt();
+    int startupRunModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::StartUpRunModeChoiced).toInt();
+    int slienceRunModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::SlienceRunModeChoiced).toInt();
 
-    QString bgThemeChoiced = G_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString();
-    int bgTransparentChoiced = G_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
+    QString bgThemeChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::BgThemeChoiced).toString();
+    int bgTransparentChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::BgTransparentChoiced).toInt();
 
-    int downloadLimit = G_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt();
-    int downloadModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::DownloadModeChoiced).toInt();
-    int downloadMaxCountChoiced = G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCountChoiced).toInt();
-    QString downloadPathDir = G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
-    QString downloadDLoadLimit = G_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toString();
-    QString downloadULoadLimit = G_SETTING_PTR->value(DownloadSettingManager::DownloadULoadLimitChoiced).toString();
+    int downloadLimit = G_SETTING_PTR->value(DownloadSettingManager::Config::DownloadLimitChoiced).toInt();
+    int downloadModeChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::DownloadModeChoiced).toInt();
+    int downloadMaxCountChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::DownloadMaxCountChoiced).toInt();
+    QString downloadPathDir = G_SETTING_PTR->value(DownloadSettingManager::Config::DownloadPathDirChoiced).toString();
+    QString downloadDLoadLimit = G_SETTING_PTR->value(DownloadSettingManager::Config::DownloadDLoadLimitChoiced).toString();
+    QString downloadULoadLimit = G_SETTING_PTR->value(DownloadSettingManager::Config::DownloadULoadLimitChoiced).toString();
 
-    int skinEffectLevelChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt();
-    int skinFontChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
-    int skinSuspensionChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toInt();
-    int skinSuspensionPerChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toInt();
+    int skinEffectLevelChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::SkinEffectLevelChoiced).toInt();
+    int skinFontChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::SkinFontChoiced).toInt();
+    int skinSuspensionChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::SkinSuspensionChoiced).toInt();
+    int skinSuspensionPerChoiced = G_SETTING_PTR->value(DownloadSettingManager::Config::SkinSuspensionPerChoiced).toInt();
 
     if(!writeConfig(COFIG_PATH_FULL))
     {
@@ -100,48 +100,48 @@ QRect DownloadSysConfigManager::readWindowGeometry() const
 
 void DownloadSysConfigManager::readSysLoadConfig() const
 {
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::CloseEventChoiced,
                      readXmlAttributeByTagNameValue("closeEvent").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::CloseNetWorkChoiced,
                      readXmlAttributeByTagNameValue("closeNetwork").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::FileAssociationChoiced,
                      readXmlAttributeByTagNameValue("fileAssociation").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::StartUpModeChoiced,
                      readXmlAttributeByTagNameValue("startUpMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::StartUpRunModeChoiced,
                      readXmlAttributeByTagNameValue("startUpRunMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::SlienceRunModeChoiced,
                      readXmlAttributeByTagNameValue("slienceRunMode").toInt());
 
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::BgThemeChoiced,
                      readXmlAttributeByTagNameValue("bgTheme"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgTransparentChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::BgTransparentChoiced,
                      readXmlAttributeByTagNameValue("bgTransparent").toInt());
 
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::DownloadLimitChoiced,
                      readXmlAttributeByTagNameValue("downloadLimit").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::DownloadModeChoiced,
                      readXmlAttributeByTagNameValue("downloadMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::DownloadMaxCountChoiced,
                      readXmlAttributeByTagNameValue("downloadMaxCount").toInt());
     const QString &path = readXmlAttributeByTagNameValue("downloadPathDir");
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::DownloadPathDirChoiced,
                      (path.isEmpty() || !QFile::exists(path)) ? DownloadUtils::Core::downloadPrefix() : path);
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimitChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::DownloadDLoadLimitChoiced,
                      readXmlAttributeByTagNameValue("downloadDLoadLimit"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimitChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::DownloadULoadLimitChoiced,
                      readXmlAttributeByTagNameValue("downloadULoadLimit"));
 
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::SkinEffectLevelChoiced,
                      readXmlAttributeByTagNameValue("skinEffectLevel"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinFontChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::SkinFontChoiced,
                      readXmlAttributeByTagNameValue("skinFont").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::SkinSuspensionChoiced,
                      readXmlAttributeByTagNameValue("skinSuspension"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced,
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::SkinSuspensionPerChoiced,
                      readXmlAttributeByTagNameValue("skinSuspensionPer").toInt());
 
 }

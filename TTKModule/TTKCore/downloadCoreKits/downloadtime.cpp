@@ -4,7 +4,7 @@
 
 DownloadTime::DownloadTime()
 {
-    m_defaultType = AllMsec;
+    m_defaultType = Entity::Millisecond;
     m_greedyMode = false;
     initialize();
 }
@@ -14,17 +14,17 @@ DownloadTime::DownloadTime(const DownloadTime &other)
     copyToThis(other);
 }
 
-DownloadTime::DownloadTime(qint64 value, Type type)
+DownloadTime::DownloadTime(qint64 value, Entity type)
     : DownloadTime()
 {
     m_defaultType = type;
-    fromTimeStamp(value, type == AllSec ? MT_S : MT_S2MS);
+    fromTimeStamp(value, type == Entity::Second ? MT_S : MT_S2MS);
 }
 
 DownloadTime::DownloadTime(int day, int hour, int min, int sec, int msec)
     : DownloadTime()
 {
-    m_defaultType = AllMsec;
+    m_defaultType = Entity::Millisecond;
     setHMSM(day, hour, min, sec, msec);
 }
 
@@ -69,7 +69,7 @@ DownloadTime DownloadTime::fromString(const QString &s, const QString &format)
     return time;
 }
 
-QString DownloadTime::toString(qint64 value, Type type, const QString &format)
+QString DownloadTime::toString(qint64 value, Entity type, const QString &format)
 {
     return DownloadTime(value, type).toString(format);
 }
@@ -79,11 +79,11 @@ QString DownloadTime::toString(const QString &format) const
     return QTime(m_hour, m_min, m_sec, m_msec).toString(format);
 }
 
-qint64 DownloadTime::timeStamp(Type type) const
+qint64 DownloadTime::timeStamp(Entity type) const
 {
-    qint64 delta = (type == AllSec) ? MT_S : MT_S2MS;
+    qint64 delta = (type == Entity::Second) ? MT_S : MT_S2MS;
            delta = (m_day*MT_D2S + m_hour*MT_H2S + m_min*MT_M2S + m_sec)*delta;
-    return (type == AllSec) ? delta : (delta + m_msec);
+    return (type == Entity::Second) ? delta : (delta + m_msec);
 }
 
 qint64 DownloadTime::timeStamp(bool ms)
@@ -108,7 +108,7 @@ QString DownloadTime::msecTime2LabelJustified() const
 
 QString DownloadTime::msecTime2LabelJustified(qint64 time, bool greedy)
 {
-    const DownloadTime t(time, DownloadTime::AllMsec);
+    const DownloadTime t(time, Entity::Millisecond);
     if(!greedy || time < MT_H2S * MT_S2MS)
     {
         return t.toString("mm:ss");
@@ -173,90 +173,90 @@ DownloadTime& DownloadTime::operator= (const DownloadTime &other)
 
 DownloadTime& DownloadTime::operator+= (const DownloadTime &other)
 {
-    qint64 t = timeStamp(AllMsec) + other.timeStamp(AllMsec);
-    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(Entity::Millisecond) + other.timeStamp(Entity::Millisecond);
+    fromTimeStamp(t, m_defaultType == Entity::Second ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator+= (const int other)
 {
-    qint64 t = timeStamp(AllMsec) + other;
-    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(Entity::Millisecond) + other;
+    fromTimeStamp(t, m_defaultType == Entity::Second ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator-= (const DownloadTime &other)
 {
-    qint64 t = timeStamp(AllMsec) - other.timeStamp(AllMsec);
-    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(Entity::Millisecond) - other.timeStamp(Entity::Millisecond);
+    fromTimeStamp(t, m_defaultType == Entity::Second ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator-= (const int other)
 {
-    qint64 t = timeStamp(AllMsec) - other;
-    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(Entity::Millisecond) - other;
+    fromTimeStamp(t, m_defaultType == Entity::Second ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator*= (const int other)
 {
-    qint64 t = timeStamp(AllMsec) * other;
-    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(Entity::Millisecond) * other;
+    fromTimeStamp(t, m_defaultType == Entity::Second ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime& DownloadTime::operator/= (const int other)
 {
-    qint64 t = timeStamp(AllMsec) / other;
-    fromTimeStamp(t, m_defaultType == AllSec ? MT_S : MT_S2MS);
+    qint64 t = timeStamp(Entity::Millisecond) / other;
+    fromTimeStamp(t, m_defaultType == Entity::Second ? MT_S : MT_S2MS);
     return *this;
 }
 
 DownloadTime DownloadTime::operator+ (const DownloadTime &other)
 {
-    qint64 t = timeStamp(AllMsec) + other.timeStamp(AllMsec);
+    qint64 t = timeStamp(Entity::Millisecond) + other.timeStamp(Entity::Millisecond);
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator+ (const int other)
 {
-    qint64 t = timeStamp(AllMsec) + other;
+    qint64 t = timeStamp(Entity::Millisecond) + other;
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator- (const DownloadTime &other)
 {
-    qint64 t = timeStamp(AllMsec) - other.timeStamp(AllMsec);
+    qint64 t = timeStamp(Entity::Millisecond) - other.timeStamp(Entity::Millisecond);
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator- (const int other)
 {
-    qint64 t = timeStamp(AllMsec) - other;
+    qint64 t = timeStamp(Entity::Millisecond) - other;
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator* (const int other)
 {
-    qint64 t = timeStamp(AllMsec) * other;
+    qint64 t = timeStamp(Entity::Millisecond) * other;
     return DownloadTime(t, m_defaultType);
 }
 
 DownloadTime DownloadTime::operator/ (const int other)
 {
-    qint64 t = timeStamp(AllMsec) / other;
+    qint64 t = timeStamp(Entity::Millisecond) / other;
     return DownloadTime(t, m_defaultType);
 }
 
 bool DownloadTime::operator== (const DownloadTime &other) const
 {
-    return timeStamp(AllMsec) == other.timeStamp(AllMsec);
+    return timeStamp(Entity::Millisecond) == other.timeStamp(Entity::Millisecond);
 }
 
 bool DownloadTime::operator!= (const DownloadTime &other) const
 {
-    return timeStamp(AllMsec) != other.timeStamp(AllMsec);
+    return timeStamp(Entity::Millisecond) != other.timeStamp(Entity::Millisecond);
 }
 
 void DownloadTime::initialize()

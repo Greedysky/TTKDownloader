@@ -8,7 +8,7 @@
 DownloadThread::DownloadThread(QObject *parent)
     : QObject(parent)
 {
-    m_state = Stop;
+    m_state = State::Stop;
     m_manager = new QNetworkAccessManager(this);
 }
 
@@ -21,7 +21,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
                                    qint64 startPoint, qint64 endPoint,
                                    qint64 readySize)
 {
-    if(m_state == Download)
+    if(m_state == State::Download)
     {
         emit errorCode(m_index, "is downloading a file");
         return;
@@ -49,19 +49,19 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     connect(m_reply, SIGNAL(readyRead()), SLOT(readyReadSlot()));
     QtNetworkErrorConnect(m_reply, this, errorSlot);
 
-    m_state = Download;
+    m_state = State::Download;
     emit downloadChanged();
 }
 
 void DownloadThread::pause()
 {
-    if(m_state != Download)
+    if(m_state != State::Download)
     {
         emit errorCode(m_index, "is not downloading");
         return;
     }
 
-    m_state = Pause;
+    m_state = State::Pause;
     m_reply->abort();
     m_file->flush();
     m_reply->deleteLater();
@@ -69,7 +69,7 @@ void DownloadThread::pause()
 
 void DownloadThread::restart()
 {
-    if(m_state != Pause)
+    if(m_state != State::Pause)
     {
         emit errorCode(m_index, "is not stoped");
         return;
@@ -80,14 +80,14 @@ void DownloadThread::restart()
 
 void DownloadThread::finishedSlot()
 {
-    if(m_state != Download)
+    if(m_state != State::Download)
     {
         return;
     }
 
     m_file->flush();
     m_reply->deleteLater();
-    m_state = Finished;
+    m_state = State::Finished;
 
     emit finished(m_index);
 }
@@ -104,14 +104,14 @@ void DownloadThread::readyReadSlot()
 
 void DownloadThread::errorSlot(QNetworkReply::NetworkError code)
 {
-    if(m_state != Download)
+    if(m_state != State::Download)
     {
         return;
     }
     emit errorCode(m_index, "QNetworkReply::NetworkError : " +
                             QString::number((int)code) + " \n" +
                             m_reply->errorString());
-    m_state = Stop;
+    m_state = State::Stop;
     m_reply->abort();
     m_file->flush();
     m_reply->deleteLater();

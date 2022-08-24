@@ -30,10 +30,10 @@ class TTK_MODULE_EXPORT DownloadTime
 {
     TTK_DECLARE_MODULE(DownloadTime)
 public:
-    enum Type
+    enum class Entity
     {
-        AllMsec,   /*!< Current time entity is msec*/
-        AllSec     /*!< Current time entity is sec*/
+        Second,         /*!< Current time entity is sec*/
+        Millisecond     /*!< Current time entity is msec*/
     };
 
     /*!
@@ -47,7 +47,7 @@ public:
     /*!
      * Object contsructor by value and type.
      */
-    DownloadTime(qint64 value, Type type);
+    DownloadTime(qint64 value, Entity type);
     /*!
      * Object contsructor by day and hour and min and sec and msec.
      */
@@ -69,11 +69,11 @@ public:
     /*!
      * Set current time type, see Type.
      */
-    inline void setType(Type type) { m_defaultType = type; }
+    inline void setType(Entity type) { m_defaultType = type; }
     /*!
      * Get current time type, see Type.
      */
-    inline Type type() const { return m_defaultType; }
+    inline Entity type() const { return m_defaultType; }
 
     /*!
      * Set current greedy mode.
@@ -132,7 +132,7 @@ public:
     /*!
      * Transform time from value to string time format.
      */
-    static QString toString(qint64 value, Type type, const QString &format);
+    static QString toString(qint64 value, Entity type, const QString &format);
 
     /*!
      * Transform time to string time format.
@@ -155,7 +155,7 @@ public:
     /*!
      * Get all time value by type.
      */
-    qint64 timeStamp(Type type) const;
+    qint64 timeStamp(Entity type) const;
     //////////////////////////////////////////////
     /*!
      * Transform ms time from utc since epoch.
@@ -228,7 +228,7 @@ protected:
     void fromTimeStamp(qint64 value, int delta);
 
     bool m_greedyMode;
-    Type m_defaultType;
+    Entity m_defaultType;
     int m_day, m_hour;
     int m_min, m_sec, m_msec;
 

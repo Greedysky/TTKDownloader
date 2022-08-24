@@ -48,7 +48,7 @@ public:
     /*!
      * Get download state.
      */
-    inline DownloadThread::DownloadState state() const { return m_state; }
+    inline DownloadThread::State state() const { return m_state; }
 
 Q_SIGNALS:
     /*!
@@ -105,7 +105,7 @@ private:
     int m_runningCount;
     QFile *m_file;
     qint64 m_readySize, m_totalSize;
-    DownloadThread::DownloadState m_state;
+    DownloadThread::State m_state;
     QList<DownloadThread*> m_threads;
 
 };

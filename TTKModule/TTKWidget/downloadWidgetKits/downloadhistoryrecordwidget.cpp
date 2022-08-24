@@ -58,8 +58,8 @@ void DownloadHistoryRecordWidget::clearAllItems()
 
 void DownloadHistoryRecordWidget::resizeWindow()
 {
-    int w = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
-    w += G_SETTING_PTR->value(DownloadSettingManager::ExpandModeChoiced).toInt();
+    int w = G_SETTING_PTR->value(DownloadSettingManager::Config::WidgetSize).toSize().width();
+    w += G_SETTING_PTR->value(DownloadSettingManager::Config::ExpandModeChoiced).toInt();
     QHeaderView *headerview = horizontalHeader();
     headerview->resizeSection(1, 495 + w - WINDOW_WIDTH_MIN);
 }

@@ -51,22 +51,22 @@ void DownloadAnimationStackedWidget::renderPreviousWidget(QPainter &painter)
 
     switch(m_type)
     {
-        case BottomToTop :
+        case Module::BottomToTop :
                 {
                     painter.drawPixmap(0, height() / 2, pixmap);
                     break;
                 }
-        case TopToBottom :
+        case Module::TopToBottom :
                 {
                     painter.drawPixmap(0, -height() / 2, pixmap);
                     break;
                 }
-        case LeftToRight :
+        case Module::LeftToRight :
                 {
                     painter.drawPixmap(width() / 2, 0, pixmap);
                     break;
                 }
-        case RightToLeft :
+        case Module::RightToLeft :
                 {
                     painter.drawPixmap(-width() / 2, 0, pixmap);
                     break;
@@ -86,25 +86,25 @@ void DownloadAnimationStackedWidget::renderCurrentWidget(QPainter &painter)
 
     switch(m_type)
     {
-        case BottomToTop :
+        case Module::BottomToTop :
                 {
                     painter.translate(0, m_currentValue);
                     painter.drawPixmap(0, -height() / 2, pixmap);
                     break;
                 }
-        case TopToBottom :
+        case Module::TopToBottom :
                 {
                     painter.translate(0, m_currentValue);
                     painter.drawPixmap(0, height() / 2, pixmap);
                     break;
                 }
-        case LeftToRight :
+        case Module::LeftToRight :
                 {
                     painter.translate(m_currentValue, 0);
                     painter.drawPixmap(-width() / 2, 0, pixmap);
                     break;
                 }
-        case RightToLeft :
+        case Module::RightToLeft :
                 {
                     painter.translate(m_currentValue, 0);
                     painter.drawPixmap(width() / 2, 0, pixmap);
@@ -138,19 +138,19 @@ void DownloadAnimationStackedWidget::setIndex(int previous, int current)
     m_previousIndex = previous;
 }
 
-void DownloadAnimationStackedWidget::setLength(int length, AnimationType type)
+void DownloadAnimationStackedWidget::setLength(int length, Module type)
 {
     switch(m_type = type)
     {
-        case BottomToTop :
-        case LeftToRight :
+        case Module::BottomToTop :
+        case Module::LeftToRight :
                 {
                     m_animation->setStartValue(-length / 2);
                     m_animation->setEndValue(length / 2);
                     break;
                 }
-        case TopToBottom :
-        case RightToLeft :
+        case Module::TopToBottom :
+        case Module::RightToLeft :
                 {
                     m_animation->setStartValue(length / 2);
                     m_animation->setEndValue(-length / 2);

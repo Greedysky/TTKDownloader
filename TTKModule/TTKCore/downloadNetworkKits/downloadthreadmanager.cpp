@@ -15,7 +15,7 @@ DownloadThreadManager::DownloadThreadManager(QObject *parent)
     : QObject(parent)
 {
     m_file = nullptr;
-    m_state = DownloadThread::Stop;
+    m_state = DownloadThread::State::Stop;
 }
 
 DownloadThreadManager::~DownloadThreadManager()
@@ -73,13 +73,13 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
 {
     emit stateChanged(tr("Waiting"));
 
-    if(m_state == DownloadThread::Download)
+    if(m_state == DownloadThread::State::Download)
     {
         TTK_LOGGER_INFO("Current is downloading a file");
         return false;
     }
 
-    m_state = DownloadThread::Waiting;
+    m_state = DownloadThread::State::Waiting;
     if(THREADCOUNT < 1 || THREADCOUNT > 15)
     {
         TTK_LOGGER_INFO("Download thread count error");
@@ -177,7 +177,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
         m_threads.append(thread);
     }
 
-    m_state = DownloadThread::Download;
+    m_state = DownloadThread::State::Download;
     emit stateChanged(tr("Download"));
     m_runningCount = THREADCOUNT;
 
@@ -191,7 +191,7 @@ void DownloadThreadManager::downloadingFinish()
     m_file->close();
     delete m_file;
     m_file = nullptr;
-    m_state = DownloadThread::Finished;
+    m_state = DownloadThread::State::Finished;
 
     QFile::remove(fileName + SET_FILE);
 
@@ -204,13 +204,13 @@ void DownloadThreadManager::downloadingFinish()
 
 void DownloadThreadManager::pause()
 {
-    if(m_state != DownloadThread::Download && m_state != DownloadThread::Waiting)
+    if(m_state != DownloadThread::State::Download && m_state != DownloadThread::State::Waiting)
     {
         TTK_LOGGER_ERROR("Current is not downloading");
         return;
     }
 
-    m_state = DownloadThread::Pause;
+    m_state = DownloadThread::State::Pause;
     emit stateChanged(tr("Pause"));
 
     DownloadBreakPointItemList records;
@@ -238,13 +238,13 @@ void DownloadThreadManager::pause()
 
 void DownloadThreadManager::restart()
 {
-    if(m_state != DownloadThread::Pause)
+    if(m_state != DownloadThread::State::Pause)
     {
         TTK_LOGGER_ERROR("Current is not paused");
         return;
     }
 
-    m_state = DownloadThread::Download;
+    m_state = DownloadThread::State::Download;
     emit stateChanged(tr("Download"));
 
     for(DownloadThread *thread : qAsConst(m_threads))
@@ -258,7 +258,7 @@ void DownloadThreadManager::finishedSlot(int index)
     m_runningCount--;
     TTK_LOGGER_INFO("Download index of " << index << " finished");
 
-    if(m_runningCount == 0 && m_state == DownloadThread::Download)
+    if(m_runningCount == 0 && m_state == DownloadThread::State::Download)
     {
         downloadingFinish();
     }

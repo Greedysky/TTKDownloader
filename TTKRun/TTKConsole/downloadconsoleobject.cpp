@@ -52,7 +52,7 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
         path = DownloadObject::applicationPath();
         qDebug() << "download save path is empty, just use default '.' path!";
     }
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, path);
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::DownloadPathDirChoiced, path);
 
     m_manager->downloadFile(url);
     qDebug() << "download save path :" << m_manager->downloadedPath();

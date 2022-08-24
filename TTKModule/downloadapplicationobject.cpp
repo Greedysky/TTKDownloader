@@ -36,7 +36,7 @@ DownloadApplicationObject *DownloadApplicationObject::instance()
 
 void DownloadApplicationObject::windowCloseAnimation()
 {
-    float v = G_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
+    float v = G_SETTING_PTR->value(DownloadSettingManager::Config::BgTransparentChoiced).toInt();
     v = DownloadUtils::Widget::reRenderValue<float>(1.0f, 0.35f, v);
     m_animation->stop();
     m_animation->setDuration(MT_S2MS / 2);
@@ -54,8 +54,8 @@ void DownloadApplicationObject::appAboutUs()
 void DownloadApplicationObject::appResetWindow()
 {
     const QRect &geometry = TTKDesktopWrapper::geometry();
-    G_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, geometry.size());
-    G_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, QSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN));
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::ScreenSize, geometry.size());
+    G_SETTING_PTR->setValue(DownloadSettingManager::Config::WidgetSize, QSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN));
 
     QWidget *w = DownloadApplication::instance();
     if(w->isMaximized() || w->isMinimized() || w->isFullScreen())

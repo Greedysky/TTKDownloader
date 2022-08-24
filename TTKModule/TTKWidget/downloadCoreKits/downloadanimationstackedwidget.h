@@ -32,7 +32,7 @@ class TTK_MODULE_EXPORT DownloadAnimationStackedWidget : public QStackedWidget
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAnimationStackedWidget)
 public:
-    enum AnimationType
+    enum class Module
     {
         TopToBottom,    /*!< Animation from top to bottom*/
         BottomToTop,    /*!< Animation from bottom to top*/
@@ -57,7 +57,7 @@ public:
     /*!
      * Set animation start and end pos distance and animation type.
      */
-    void setLength(int length, AnimationType type);
+    void setLength(int length, Module type);
     /*!
      * Get previoud index.
      */
@@ -103,7 +103,7 @@ protected:
     bool m_isAnimating;
     float m_currentValue;
     int m_currentIndex, m_previousIndex;
-    AnimationType m_type;
+    Module m_type;
     QPropertyAnimation *m_animation;
 
 };

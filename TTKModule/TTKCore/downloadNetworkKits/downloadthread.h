@@ -33,7 +33,7 @@ class TTK_MODULE_EXPORT DownloadThread : public QObject
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadThread)
 public:
-    enum DownloadState
+    enum class State
     {
         Waiting = 0,   /*!< Download waiting state */
         Download,      /*!< Download download state */
@@ -116,7 +116,7 @@ private:
     QFile *m_file;
     QNetworkAccessManager *m_manager;
     QNetworkReply *m_reply;
-    DownloadState m_state;
+    State m_state;
 
 };
 
