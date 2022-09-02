@@ -18,7 +18,8 @@
 
 DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),
-      m_ui(new Ui::DownloadBackgroundSkinDialog)
+      m_ui(new Ui::DownloadBackgroundSkinDialog),
+      m_myThemeIndex(CURRENT_ITEMS_COUNT)
 {
     m_ui->setupUi(this);
 
@@ -66,7 +67,6 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     m_ui->remoteScrollArea->setWidget(m_remoteBackgroundList);
     m_ui->remoteScrollArea->verticalScrollBar()->setStyleSheet(DownloadUIObject::MScrollBarStyle03);
 
-    m_myThemeIndex = CURRENT_ITEMS_COUNT;
     addThemeListWidgetItem();
     backgroundListWidgetChanged(0);
     //////////////////////////////////////////////////////
@@ -81,7 +81,6 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     connect(m_ui->localPicButton, SIGNAL(clicked()) ,SLOT(showCustomSkinDialog()));
     connect(m_backgroundList, SIGNAL(itemClicked(QString)), SLOT(backgroundListWidgetItemClicked(QString)));
     connect(m_myBackgroundList, SIGNAL(itemClicked(QString)), SLOT(myBackgroundListWidgetItemClicked(QString)));
-
 }
 
 DownloadBackgroundSkinDialog::~DownloadBackgroundSkinDialog()

@@ -5,12 +5,11 @@
 #include <QPainter>
 
 DownloadToolLabelButton::DownloadToolLabelButton(QWidget *parent)
-    : QToolButton(parent)
+    : QToolButton(parent),
+      m_enterIn(false)
 {
     setFixedHeight(25);
     setStyleSheet(DownloadUIObject::MToolButtonStyle03 + DownloadUIObject:: MToolButtonStyle05);
-
-    m_enterIn = false;
 }
 
 void DownloadToolLabelButton::setLabelText(const QString &text)

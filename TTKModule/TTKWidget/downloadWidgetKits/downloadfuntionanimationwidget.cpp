@@ -11,17 +11,16 @@
 #include <QPropertyAnimation>
 
 DownloadBaseAnimationWidget::DownloadBaseAnimationWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_curIndex(0),
+      m_preIndex(0),
+      m_x(0),
+      m_perWidth(0.0f),
+      m_totalWidth(0.0f),
+      m_isAnimation(true),
+      m_showState(true),
+      m_showLine(true)
 {
-    m_curIndex = 0;
-    m_preIndex = 0;
-    m_x = 0;
-    m_perWidth = 0.0f;
-    m_totalWidth = 0.0f;
-    m_isAnimation = true;
-    m_showState = true;
-    m_showLine = true;
-
     m_animation = new QPropertyAnimation(this, QByteArray());
     m_animation->setDuration(100);
 

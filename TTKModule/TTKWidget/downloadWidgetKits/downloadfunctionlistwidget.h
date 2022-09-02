@@ -69,6 +69,7 @@ protected:
 
     QString m_text, m_iconf, m_iconb;
     bool m_enterIn, m_selectedOn, m_resizeMode;
+
 };
 
 

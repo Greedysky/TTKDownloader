@@ -1,11 +1,12 @@
 #include "downloadnetworkabstract.h"
 
 DownloadNetworkAbstract::DownloadNetworkAbstract(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_stateCode(StateCode::Init),
+      m_reply(nullptr),
+      m_manager(nullptr)
 {
-    m_stateCode = StateCode::Init;
-    m_reply = nullptr;
-    m_manager = nullptr;
+
 }
 
 DownloadNetworkAbstract::~DownloadNetworkAbstract()

@@ -31,12 +31,13 @@ struct TTK_MODULE_EXPORT DownloadSkinRemoteItem
     int m_useCount;
 
     DownloadSkinRemoteItem()
+        : m_name("Greedysky"),
+          m_useCount(8888)
     {
-        m_name = "Greedysky";
-        m_useCount = 8888;
+
     }
 
-    bool isValid() const
+    inline bool isValid() const
     {
         return !(m_name.isEmpty() && m_useCount == 0);
     }
@@ -51,7 +52,7 @@ struct TTK_MODULE_EXPORT DownloadSkinRemoteGroup
     QString m_group;
     DownloadSkinRemoteItemList m_items;
 
-    bool isValid() const
+    inline bool isValid() const
     {
         return !(m_group.isEmpty() && m_items.isEmpty());
     }

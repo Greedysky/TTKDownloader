@@ -20,18 +20,6 @@ QString DownloadUtils::Core::downloadPrefix()
    return path;
 }
 
-QString DownloadUtils::Core::languageName(int index)
-{
-    QString lan(LANGUAGE_DIR_FULL);
-    switch(index)
-    {
-        case 0 : return lan.append("cn.ln");
-        case 1 : return lan.append("cn_c.ln");
-        case 2 : return lan.append("en.ln");
-        default: return QString();
-    }
-}
-
 bool DownloadUtils::Core::removeRecursively(const QString &dir)
 {
     QDir dr(dir);

@@ -10,12 +10,11 @@ DownloadQueueCache::DownloadQueueCache(QObject *parent)
 }
 
 DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, QObject *parent)
-    : DownLoadThreadAbstract(data.m_url, data.m_savePath, parent)
+    : DownLoadThreadAbstract(data.m_url, data.m_savePath, parent),
+      m_isDownload(false),
+      m_isAbort(false),
+      m_request(nullptr)
 {
-    m_request = nullptr;
-    m_isDownload = false;
-    m_isAbort = false;
-
     m_manager = new QNetworkAccessManager(this);
     m_request = new QNetworkRequest();
 #ifndef QT_NO_SSL

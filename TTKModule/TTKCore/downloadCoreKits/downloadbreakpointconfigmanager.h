@@ -32,13 +32,14 @@ struct TTK_MODULE_EXPORT DownloadBreakPointItem
     qint64 m_ready;
 
     DownloadBreakPointItem()
+        : m_start(0),
+          m_end(0),
+          m_ready(0)
     {
-        m_start = 0;
-        m_end = 0;
-        m_ready = 0;
+
     }
 
-    bool isEmpty() const
+    inline bool isEmpty() const
     {
         return m_start == 0 && m_end == 0 && m_ready == 0;
     }

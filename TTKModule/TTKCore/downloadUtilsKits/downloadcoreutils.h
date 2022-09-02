@@ -33,10 +33,6 @@ namespace DownloadUtils
          */
         TTK_MODULE_EXPORT QString downloadPrefix();
         /*!
-         * Get Language Name by given index.
-         */
-        TTK_MODULE_EXPORT QString languageName(int index);
-        /*!
          * Dir remove recursively.
          */
         TTK_MODULE_EXPORT bool removeRecursively(const QString &dir);

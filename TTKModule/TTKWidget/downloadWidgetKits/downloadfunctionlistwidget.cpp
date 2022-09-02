@@ -4,12 +4,12 @@
 #include <QBoxLayout>
 
 DownloadFunctionItemWidget::DownloadFunctionItemWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_enterIn(false),
+      m_selectedOn(false),
+      m_resizeMode(false)
 {
     setFixedSize(205, 35);
-    m_enterIn = false;
-    m_selectedOn = false;
-    m_resizeMode = false;
 }
 
 void DownloadFunctionItemWidget::setLabelText(const QString &text)

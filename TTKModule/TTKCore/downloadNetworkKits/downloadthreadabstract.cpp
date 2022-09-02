@@ -9,19 +9,17 @@
 #include <QThread>
 #include <QSslError>
 
-DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString &save, QObject *parent)
-    : DownloadNetworkAbstract(parent)
+DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString &path, QObject *parent)
+    : DownloadNetworkAbstract(parent),
+      m_url(url),
+      m_hasReceived(0),
+      m_currentReceived(0)
 {
-    m_url = url;
-    m_savePathName = save;
-    m_hasReceived = 0;
-    m_currentReceived = 0;
-
-    if(QFile::exists(save))
+    if(QFile::exists(path))
     {
-        QFile::remove(save);
+        QFile::remove(path);
     }
-    m_file = new QFile(save, this);
+    m_file = new QFile(path, this);
 
     m_timer.setInterval(MT_S2MS);
     connect(&m_timer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));

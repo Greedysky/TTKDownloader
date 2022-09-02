@@ -12,10 +12,12 @@
 #include <QNetworkAccessManager>
 
 DownloadThreadManager::DownloadThreadManager(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_runningCount(THREADCOUNT),
+      m_file(nullptr),
+      m_state(DownloadThread::State::Stop)
 {
-    m_file = nullptr;
-    m_state = DownloadThread::State::Stop;
+
 }
 
 DownloadThreadManager::~DownloadThreadManager()

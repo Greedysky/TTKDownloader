@@ -7,12 +7,11 @@
 
 DownloadMessageBox::DownloadMessageBox(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),
-      m_ui(new Ui::DownloadMessageBox)
+      m_ui(new Ui::DownloadMessageBox),
+      m_status(0)
 {
     m_ui->setupUi(this);
 
-    m_status = 0;
-    ////////////////////////////////////////////////
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_close_hover"));
     m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::MToolButtonStyle04);
     m_ui->topTitleCloseButton->setCursor(QCursor(Qt::PointingHandCursor));

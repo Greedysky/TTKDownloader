@@ -9,12 +9,11 @@
 #include <QButtonGroup>
 
 DownloadHlPalette::DownloadHlPalette(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_dblSaturation(1.0)
 {
     setMinimumSize(QSize(360, 120));
     setMouseTracking(true);
-
-    m_dblSaturation = 1.0;
 }
 
 QColor DownloadHlPalette::color() const
@@ -124,17 +123,16 @@ void DownloadHlPalette::calculateColor()
 
 
 DownloadHlSaturationPalette::DownloadHlSaturationPalette(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_color(Qt::red),
+      m_dblVernierX(0),
+      m_dblVernierPercentX(0),
+      m_dblSaturation(0)
 {
     setMouseTracking(true);
     setMinimumWidth(360);
     setMinimumHeight(16);
     setMaximumHeight(24);
-
-    m_color = Qt::red;
-    m_dblVernierX = 0;
-    m_dblVernierPercentX = 0;
-    m_dblSaturation = 0;
 }
 
 double DownloadHlSaturationPalette::saturation() const
@@ -240,7 +238,8 @@ void DownloadHlSaturationPalette::calculateSuration()
 
 DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),
-      m_ui(new Ui::DownloadColorDialog)
+      m_ui(new Ui::DownloadColorDialog),
+      m_status(0)
 {
     m_ui->setupUi(this);
 
@@ -263,7 +262,6 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     connect(m_ui->wgtPalette, SIGNAL(colorChanged(QColor)), SLOT(colorChanged(QColor)));
     connect(m_ui->wgtSaturationIndicator, SIGNAL(saturationChanged(double)), m_ui->wgtPalette, SLOT(setSaturation(double)));
 
-    m_status = 0;
     m_ui->wgtPalette->initialize();
 
     QButtonGroup *buttonGroup = new QButtonGroup(this);

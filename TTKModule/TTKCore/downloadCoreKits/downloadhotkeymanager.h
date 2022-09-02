@@ -80,7 +80,6 @@ public:
     QStringList keys() const;
 
 protected:
-
     QList<QGlobalShortcut*> m_hotkeys;
 
     DECLARE_SINGLETON_CLASS(DownloadHotKeyManager)

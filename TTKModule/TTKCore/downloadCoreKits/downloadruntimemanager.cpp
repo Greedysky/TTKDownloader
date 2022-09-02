@@ -2,11 +2,26 @@
 #include "downloadsysconfigmanager.h"
 #include "downloadsettingmanager.h"
 #include "downloadnetworkthread.h"
-#include "downloadcoreutils.h"
 #include "downloadcodecutils.h"
 
 #include <QApplication>
 #include <QFontDatabase>
+
+namespace DownloadObject
+{
+static QString languageName(int index)
+{
+    QString lan(LANGUAGE_DIR_FULL);
+    switch(index)
+    {
+        case 0: return lan.append("cn.ln");
+        case 1: return lan.append("tc.ln");
+        case 2: return lan.append("en.ln");
+        default: return QString();
+    }
+}
+}
+
 
 DownloadRunTimeManager::DownloadRunTimeManager()
 {
@@ -51,5 +66,5 @@ void DownloadRunTimeManager::run() const
 
 QString DownloadRunTimeManager::translator() const
 {
-    return DownloadUtils::Core::languageName(0);
+    return DownloadObject::languageName(0);
 }

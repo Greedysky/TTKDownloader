@@ -35,9 +35,10 @@ struct TTK_MODULE_EXPORT DownloadXmlAttribute
     QVariant m_value;
 
     DownloadXmlAttribute(const QString &key, const QVariant &value)
+        : m_key(key),
+          m_value(value)
     {
-        m_key = key;
-        m_value = value;
+
     }
 };
 TTK_DECLARE_LIST(DownloadXmlAttribute);

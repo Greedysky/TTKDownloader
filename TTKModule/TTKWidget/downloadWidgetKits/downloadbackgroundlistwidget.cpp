@@ -8,16 +8,15 @@
 #define ITEM_COUNT      4
 
 DownloadBackgroundListItem::DownloadBackgroundListItem(QWidget *parent)
-    : QLabel(parent)
+    : QLabel(parent),
+      m_printMask(false),
+      m_isSelected(false),
+      m_selectedMask(true),
+      m_closeMask(false),
+      m_closeSet(false)
 {
     setFixedSize(100, 70);
     setCursor(Qt::PointingHandCursor);
-
-    m_printMask = false;
-    m_closeMask = false;
-    m_isSelected = false;
-    m_closeSet = false;
-    m_selectedMask = true;
 }
 
 void DownloadBackgroundListItem::updatePixImage()
@@ -132,15 +131,14 @@ void DownloadBackgroundListItem::paintEvent(QPaintEvent *event)
 
 
 DownloadBackgroundListWidget::DownloadBackgroundListWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_currentItem(nullptr)
 {
     m_layout = new QGridLayout(this);
     m_layout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
     m_layout->setContentsMargins(7, 7, 7, 7);
     m_layout->setSpacing(5);
     setLayout(m_layout);
-
-    m_currentItem = nullptr;
 }
 
 DownloadBackgroundListWidget::~DownloadBackgroundListWidget()

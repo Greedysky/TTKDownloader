@@ -13,12 +13,12 @@
 DownloadBottomAreaWidget *DownloadBottomAreaWidget::m_instance = nullptr;
 
 DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_systemCloseConfig(false),
+      m_expandMode(false),
+      m_toolPopupMenu(nullptr)
 {
     m_instance = this;
-    m_systemCloseConfig = false;
-    m_expandMode = false;
-    m_toolPopupMenu = nullptr;
 
     createSystemTrayIcon();
 

@@ -131,8 +131,9 @@ protected:
      */
     static int cpoyFileToLocal(const QString &path);
 
-    int m_myThemeIndex;
     Ui::DownloadBackgroundSkinDialog *m_ui;
+
+    int m_myThemeIndex;
     DownloadBackgroundListWidget *m_backgroundList, *m_myBackgroundList;
     DownloadBackgroundRemoteWidget *m_remoteBackgroundList;
 

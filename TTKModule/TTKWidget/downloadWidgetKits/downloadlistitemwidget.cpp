@@ -14,14 +14,14 @@
 #define LABEL_NONE      "--"
 
 DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_currentSize(0),
+      m_previousSize(0),
+      m_totalSize(0)
 {
     setFixedHeight(70);
 
     connect(&m_timer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));
-    m_currentSize = 0;
-    m_previousSize = 0;
-    m_totalSize = 0;
 
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->setContentsMargins(9, 9, 22, 9);

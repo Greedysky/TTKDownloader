@@ -13,7 +13,8 @@
 #define NETWORK_REQUEST_ADDRESS     "www.baidu.com"  // ip
 
 DownloadNetworkThread::DownloadNetworkThread()
-    : QObject(nullptr), m_networkState(true)
+    : QObject(nullptr),
+      m_networkState(true)
 {
     connect(&m_timer, SIGNAL(timeout()), SLOT(networkStateChanged()));
 }

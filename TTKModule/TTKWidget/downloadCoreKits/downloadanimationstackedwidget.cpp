@@ -4,13 +4,12 @@
 #include <QPixmap>
 
 DownloadAnimationStackedWidget::DownloadAnimationStackedWidget(QWidget *parent)
-    : QStackedWidget(parent)
+    : QStackedWidget(parent),
+      m_isAnimating(false),
+      m_currentValue(0),
+      m_currentIndex(0),
+      m_previousIndex(0)
 {
-    m_isAnimating = false;
-    m_currentValue = 0;
-    m_currentIndex = 0;
-    m_previousIndex = 0;
-
     m_animation = new QPropertyAnimation(this, QByteArray(), this);
     m_animation->setDuration(120*MT_MS);
     m_animation->setEasingCurve(QEasingCurve::Linear);

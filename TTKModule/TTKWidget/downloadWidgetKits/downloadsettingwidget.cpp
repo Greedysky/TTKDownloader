@@ -8,15 +8,15 @@
 #include <QStyledItemDelegate>
 
 DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
-    : DownloadAbstractTableWidget(parent)
+    : DownloadAbstractTableWidget(parent),
+      m_listIndex(0)
 {
+    setRowCount(3);
+
     QHeaderView *headerview = horizontalHeader();
     headerview->resizeSection(0, 20);
     headerview->resizeSection(1, 20);
     headerview->resizeSection(2, 85);
-
-    setRowCount(3);
-    m_listIndex = 0;
 }
 
 void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunctionItemList &items)
@@ -93,7 +93,6 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
     initSkinSettingWidget();
     ////////////////////////////////////////////////
     selectFunctionTableIndex(0, 0);
-
 }
 
 DownloadSettingWidget::~DownloadSettingWidget()

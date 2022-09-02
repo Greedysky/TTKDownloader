@@ -6,9 +6,9 @@
 #include <QNetworkAccessManager>
 
 DownloadThread::DownloadThread(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_state(State::Stop)
 {
-    m_state = State::Stop;
     m_manager = new QNetworkAccessManager(this);
 }
 

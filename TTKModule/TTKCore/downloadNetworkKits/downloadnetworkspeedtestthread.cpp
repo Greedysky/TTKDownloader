@@ -15,10 +15,10 @@
 #endif
 
 DownloadNetworkSpeedTestThread::DownloadNetworkSpeedTestThread(QObject *parent)
-    : QThread(parent)
+    : QThread(parent),
+      m_run(false),
+      m_process(nullptr)
 {
-    m_run = false;
-    m_process = nullptr;
 #ifdef Q_OS_UNIX
     setAvailableNewtworkNames(QStringList("eth0"));
 #endif

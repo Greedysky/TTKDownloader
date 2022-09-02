@@ -31,12 +31,13 @@ struct TTK_MODULE_EXPORT DownloadSkinConfigItem
     int m_useCount;
 
     DownloadSkinConfigItem()
+        : m_name("Greedysky"),
+          m_useCount(8888)
     {
-        m_name = "Greedysky";
-        m_useCount = 8888;
+
     }
 
-    bool isValid() const
+    inline bool isValid() const
     {
         return !(m_name.isEmpty() && m_useCount == 0);
     }
@@ -50,7 +51,7 @@ struct TTK_MODULE_EXPORT DownloadBackgroundImage
     QPixmap m_pix;
     DownloadSkinConfigItem m_item;
 
-    bool isValid() const
+    inline bool isValid() const
     {
         return !m_pix.isNull() && m_item.isValid();
     }

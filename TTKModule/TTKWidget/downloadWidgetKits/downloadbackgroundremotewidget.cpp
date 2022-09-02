@@ -8,7 +8,11 @@
 #include <QBoxLayout>
 
 DownloadBackgroundRemoteWidget::DownloadBackgroundRemoteWidget(QWidget *parent)
-    : QWidget(parent), m_downloadQueue(nullptr)
+    : QWidget(parent),
+      m_currentIndex(-1),
+      m_functionsWidget(nullptr),
+      m_downloadQueue(nullptr),
+      m_queryThread(nullptr)
 {
     QHBoxLayout *hbox = new QHBoxLayout(this);
     hbox->setContentsMargins(0, 0, 0, 0);
@@ -17,10 +21,6 @@ DownloadBackgroundRemoteWidget::DownloadBackgroundRemoteWidget(QWidget *parent)
     m_listWidget = new DownloadBackgroundListWidget(this);
     hbox->addWidget(m_listWidget);
     setLayout(hbox);
-
-    m_currentIndex = -1;
-    m_functionsWidget = nullptr;
-    m_queryThread = nullptr;
 
     m_downloadQueue = new DownloadQueueCache(this);
     connect(m_downloadQueue, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged(QString)));

@@ -32,11 +32,16 @@ class DownloadSettingWidget;
  */
 struct TTK_MODULE_EXPORT DownloadFunctionItem
 {
-    DownloadFunctionItem() { }
-    DownloadFunctionItem(const QString &icon, const QString &name)
+    DownloadFunctionItem()
     {
-        m_icon = icon;
-        m_name = name;
+
+    }
+
+    DownloadFunctionItem(const QString &icon, const QString &name)
+        : m_icon(icon),
+          m_name(name)
+    {
+
     }
 
     QString m_icon;

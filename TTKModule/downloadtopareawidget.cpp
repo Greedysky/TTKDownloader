@@ -13,12 +13,11 @@
 DownloadTopAreaWidget *DownloadTopAreaWidget::m_instance = nullptr;
 
 DownloadTopAreaWidget::DownloadTopAreaWidget(QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_remoteWidget(nullptr),
+      m_backgroundWidget(nullptr)
 {
     m_instance = this;
-
-    m_remoteWidget = nullptr;
-    m_backgroundWidget = nullptr;
 }
 
 DownloadTopAreaWidget::~DownloadTopAreaWidget()

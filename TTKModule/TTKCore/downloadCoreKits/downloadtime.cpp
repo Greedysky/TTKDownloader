@@ -3,9 +3,9 @@
 #include <QDateTime>
 
 DownloadTime::DownloadTime()
+    : m_greedyMode(false),
+      m_defaultType(Entity::Millisecond)
 {
-    m_defaultType = Entity::Millisecond;
-    m_greedyMode = false;
     initialize();
 }
 

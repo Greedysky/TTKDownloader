@@ -36,7 +36,7 @@ public:
     /*!
      * Object contsructor provide download URL\ save local path and download type.
      */
-    DownLoadThreadAbstract(const QString &url, const QString &save, QObject *parent = nullptr);
+    DownLoadThreadAbstract(const QString &url, const QString &path, QObject *parent = nullptr);
 
     /*!
      * Release the network object.
@@ -71,7 +71,7 @@ public Q_SLOTS:
 
 protected:
     QFile *m_file;
-    QString m_url, m_savePathName;
+    QString m_url;
     qint64 m_hasReceived, m_currentReceived, m_totalSize;
     QTimer m_timer;
 

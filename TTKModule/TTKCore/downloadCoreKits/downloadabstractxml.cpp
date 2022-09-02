@@ -1,10 +1,11 @@
 #include "downloadabstractxml.h"
 
 DownloadAbstractXml::DownloadAbstractXml(QObject *parent)
-    : QObject(parent)
+    : QObject(parent),
+      m_file(nullptr),
+      m_document(nullptr)
 {
-    m_file = nullptr;
-    m_document = nullptr;
+
 }
 
 DownloadAbstractXml::~DownloadAbstractXml()
@@ -17,6 +18,7 @@ bool DownloadAbstractXml::readConfig(const QString &name)
 {
     delete m_file;
     delete m_document;
+
     m_file = new QFile(name);
     m_document = new QDomDocument;
 
@@ -39,6 +41,7 @@ bool DownloadAbstractXml::writeConfig(const QString &name)
 {
     delete m_file;
     delete m_document;
+
     m_file = new QFile(name);
     m_document = new QDomDocument;
     return m_file->open(QFile::WriteOnly | QFile::Text);
@@ -48,6 +51,7 @@ bool DownloadAbstractXml::fromString(const QString &data)
 {
     delete m_file;
     delete m_document;
+
     m_file = nullptr;
     m_document = new QDomDocument;
     return m_document->setContent(data);
@@ -57,6 +61,7 @@ bool DownloadAbstractXml::fromByteArray(const QByteArray &data)
 {
     delete m_file;
     delete m_document;
+
     m_file = nullptr;
     m_document = new QDomDocument;
     return m_document->setContent(data);

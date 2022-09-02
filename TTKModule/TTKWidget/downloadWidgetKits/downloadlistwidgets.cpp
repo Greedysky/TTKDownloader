@@ -19,12 +19,12 @@
 #include <QApplication>
 
 DownloadListWidgets::DownloadListWidgets(QWidget *parent)
-    : DownloadAbstractTableWidget(parent)
+    : DownloadAbstractTableWidget(parent),
+      m_maxDownloadCount(0)
 {
     setColumnCount(1);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-    m_maxDownloadCount = 0;
     m_speedTimer.setInterval(MT_S2MS/4);
     connect(&m_speedTimer, SIGNAL(timeout()), SLOT(updateTotalSpeedLabel()));
     m_speedTimer.start();

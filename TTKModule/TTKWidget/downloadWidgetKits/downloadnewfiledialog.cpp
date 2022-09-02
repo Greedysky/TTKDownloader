@@ -15,8 +15,7 @@ DownloadNewFileDialog::DownloadNewFileDialog(QWidget *parent)
     m_ui->topTitleCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
 
-    m_ui->urlTextEdit->setStyleSheet(QString("QTextEdit{ border:1px solid %1;}").arg(
-                                     G_BACKGROUND_PTR->backgroundColor().name()));
+    m_ui->urlTextEdit->setStyleSheet(QString("QTextEdit{ border:1px solid %1;}").arg(G_BACKGROUND_PTR->backgroundColor().name()));
 
     m_ui->confirmButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->confirmButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);

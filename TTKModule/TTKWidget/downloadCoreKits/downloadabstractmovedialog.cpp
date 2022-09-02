@@ -16,15 +16,14 @@ DownloadAbstractMoveDialog::DownloadAbstractMoveDialog(QWidget *parent)
 }
 
 DownloadAbstractMoveDialog::DownloadAbstractMoveDialog(bool transparent, QWidget *parent)
-    : QDialog(parent)
+    : QDialog(parent),
+      m_moveOption(false),
+      m_showShadow(true),
+      m_leftButtonPress(false),
+      m_background(nullptr)
 {
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, transparent);
-
-    m_moveOption = false;
-    m_leftButtonPress = false;
-    m_showShadow = true;
-    m_background = nullptr;
 
     G_BACKGROUND_PTR->addObserver(this);
 }

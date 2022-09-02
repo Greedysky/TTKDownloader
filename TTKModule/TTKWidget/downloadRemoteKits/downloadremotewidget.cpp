@@ -10,7 +10,8 @@
 #include <QPainterPath>
 
 DownloadRemoteWidget::DownloadRemoteWidget(QWidget *parent)
-    : DownloadAbstractMoveWidget(parent)
+    : DownloadAbstractMoveWidget(parent),
+      m_value(0)
 {
     setWindowFlags(windowFlags() | Qt::WindowStaysOnTopHint | Qt::Tool);
     setAttribute(Qt::WA_DeleteOnClose);
@@ -20,8 +21,6 @@ DownloadRemoteWidget::DownloadRemoteWidget(QWidget *parent)
 
     drawWindowShadow(false);
     setMouseTracking(true);
-
-    m_value = 0;
 }
 
 DownloadRemoteWidget::~DownloadRemoteWidget()

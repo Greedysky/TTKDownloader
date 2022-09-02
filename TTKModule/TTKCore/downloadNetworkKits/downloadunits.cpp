@@ -3,21 +3,17 @@
 #include "downloadthreadmanager.h"
 
 DownloadUnits::DownloadUnits(const QString &url, QObject *parent)
-    : QObject(parent), m_url(url)
+    : QObject(parent),
+      m_pause(false),
+      m_url(url)
 {
     m_downloadItem = new DownloadListItemWidget(nullptr);
     m_downloadThread = new DownloadThreadManager(this);
 
-    connect(m_downloadThread, SIGNAL(progressChanged(qint64,qint64)),
-            m_downloadItem, SLOT(progressChanged(qint64,qint64)));
-    connect(m_downloadThread, SIGNAL(updateFileInfoChanged(QString,qint64)),
-            m_downloadItem, SLOT(updateFileInfoChanged(QString,qint64)));
-    connect(m_downloadThread, SIGNAL(stateChanged(QString)),
-            m_downloadItem, SLOT(stateChanged(QString)));
-    connect(m_downloadThread, SIGNAL(downloadingFinished(QString)),
-                            SLOT(downloadingFinished(QString)));
-
-    m_pause = false;
+    connect(m_downloadThread, SIGNAL(progressChanged(qint64,qint64)), m_downloadItem, SLOT(progressChanged(qint64,qint64)));
+    connect(m_downloadThread, SIGNAL(updateFileInfoChanged(QString,qint64)), m_downloadItem, SLOT(updateFileInfoChanged(QString,qint64)));
+    connect(m_downloadThread, SIGNAL(stateChanged(QString)), m_downloadItem, SLOT(stateChanged(QString)));
+    connect(m_downloadThread, SIGNAL(downloadingFinished(QString)), SLOT(downloadingFinished(QString)));
 }
 
 DownloadUnits::~DownloadUnits()

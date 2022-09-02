@@ -18,8 +18,7 @@ DownloadRightAreaWidget::DownloadRightAreaWidget(QWidget *parent)
 
     G_HOTKEY_PTR->connectParentObject(this, "Ctrl+N", SLOT(showNewFileDialog()));
     connect(m_listWidget, SIGNAL(downloadStateChanged(bool)), SLOT(downloadStateChanged(bool)));
-    connect(m_listWidget, SIGNAL(downloadingFinished(QString,QString)), m_historyWidget,
-                          SLOT(createDownloadItem(QString,QString)));
+    connect(m_listWidget, SIGNAL(downloadingFinished(QString,QString)), m_historyWidget, SLOT(createDownloadItem(QString,QString)));
 }
 
 DownloadRightAreaWidget::~DownloadRightAreaWidget()

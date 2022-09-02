@@ -16,15 +16,14 @@ DownloadAbstractMoveWidget::DownloadAbstractMoveWidget(QWidget *parent)
 }
 
 DownloadAbstractMoveWidget::DownloadAbstractMoveWidget(bool transparent, QWidget *parent)
-    : QWidget(parent)
+    : QWidget(parent),
+      m_moveOption(false),
+      m_showShadow(true),
+      m_leftButtonPress(false),
+      m_background(nullptr)
 {
     setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground, transparent);
-
-    m_moveOption = false;
-    m_leftButtonPress = false;
-    m_showShadow = true;
-    m_background = nullptr;
 
     G_BACKGROUND_PTR->addObserver(this);
 }
@@ -128,6 +127,7 @@ DownloadAbstractMoveSingleWidget::DownloadAbstractMoveSingleWidget(bool transpar
     QVBoxLayout *l = new QVBoxLayout(this);
     l->setContentsMargins(WIDTH, HEIGHT, WIDTH, HEIGHT);
     l->setSpacing(0);
+
     m_container = new QWidget(this);
     l->addWidget(m_container);
     setLayout(l);

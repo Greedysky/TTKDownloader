@@ -15,7 +15,6 @@ DownloadMessageAboutDialog::DownloadMessageAboutDialog(QWidget *parent)
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
 
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
-
 }
 
 DownloadMessageAboutDialog::~DownloadMessageAboutDialog()
