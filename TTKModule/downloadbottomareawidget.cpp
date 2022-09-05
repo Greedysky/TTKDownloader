@@ -141,7 +141,7 @@ void DownloadBottomAreaWidget::expandButtonClicked()
 {
     if(m_expandMode)
     {
-        G_SETTING_PTR->setValue(DownloadSettingManager::Config::ExpandModeChoiced, 0);
+        G_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 0);
         m_ui->leftWidget->setMinimumWidth(205);
         m_ui->leftWidget->setMaximumWidth(205);
         m_ui->expandButton->setLabelIcon(":/functions/lb_left");
@@ -150,7 +150,7 @@ void DownloadBottomAreaWidget::expandButtonClicked()
     }
     else
     {
-        G_SETTING_PTR->setValue(DownloadSettingManager::Config::ExpandModeChoiced, 135);
+        G_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 135);
         m_ui->leftWidget->setMinimumWidth(70);
         m_ui->leftWidget->setMaximumWidth(70);
         m_ui->expandButton->setLabelIcon(":/functions/lb_right");

@@ -179,7 +179,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRectString()
     float v = DownloadUtils::Widget::reRenderValue<float>(1.0f, 0.35f, m_backgroundAlpha);
     DownloadApplication::instance()->setWindowOpacity(v);
 
-    QSize size(G_SETTING_PTR->value(DownloadSettingManager::Config::WidgetSize).toSize());
+    QSize size(G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize());
     QPixmap after(size);
     after.fill(Qt::transparent);
     QPainter paint(&after);

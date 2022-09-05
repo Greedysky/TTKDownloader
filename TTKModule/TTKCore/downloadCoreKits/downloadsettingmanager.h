@@ -35,7 +35,7 @@ class TTK_MODULE_EXPORT DownloadSettingManager : public QObject
     Q_ENUMS(Config)
     TTK_DECLARE_MODULE(DownloadSettingManager)
 public:
-    enum class Config
+    enum Config
     {
         Null = -1,                      /*!< No Parameter*/
         ScreenSize,                     /*!< Screen Size Parameter*/
