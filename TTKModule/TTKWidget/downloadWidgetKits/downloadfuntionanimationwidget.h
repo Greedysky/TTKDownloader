@@ -28,16 +28,16 @@ class QPropertyAnimation;
 /*! @brief The class of the animation base widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadBaseAnimationWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadAbstractAnimationWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBaseAnimationWidget)
+    TTK_DECLARE_MODULE(DownloadAbstractAnimationWidget)
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBaseAnimationWidget(QWidget *parent = nullptr);
-    ~DownloadBaseAnimationWidget();
+    explicit DownloadAbstractAnimationWidget(QWidget *parent = nullptr);
+    ~DownloadAbstractAnimationWidget();
 
 Q_SIGNALS:
     /*!
@@ -80,7 +80,7 @@ protected:
 /*! @brief The class of the function skin animation widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSkinAnimationWidget : public DownloadBaseAnimationWidget
+class TTK_MODULE_EXPORT DownloadSkinAnimationWidget : public DownloadAbstractAnimationWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinAnimationWidget)

@@ -10,7 +10,7 @@
 #include <QButtonGroup>
 #include <QPropertyAnimation>
 
-DownloadBaseAnimationWidget::DownloadBaseAnimationWidget(QWidget *parent)
+DownloadAbstractAnimationWidget::DownloadAbstractAnimationWidget(QWidget *parent)
     : QWidget(parent),
       m_curIndex(0),
       m_preIndex(0),
@@ -36,14 +36,14 @@ DownloadBaseAnimationWidget::DownloadBaseAnimationWidget(QWidget *parent)
     QtButtonGroupConnect(m_buttonGroup, this, switchToSelectedItemStyle);
 }
 
-DownloadBaseAnimationWidget::~DownloadBaseAnimationWidget()
+DownloadAbstractAnimationWidget::~DownloadAbstractAnimationWidget()
 {
     qDeleteAll(m_container);
     delete m_animation;
     delete m_buttonGroup;
 }
 
-void DownloadBaseAnimationWidget::paintEvent(QPaintEvent *event)
+void DownloadAbstractAnimationWidget::paintEvent(QPaintEvent *event)
 {
     QWidget::paintEvent(event);
 
@@ -66,7 +66,7 @@ void DownloadBaseAnimationWidget::paintEvent(QPaintEvent *event)
     }
 }
 
-void DownloadBaseAnimationWidget::switchToSelectedItemStyle(int index)
+void DownloadAbstractAnimationWidget::switchToSelectedItemStyle(int index)
 {
     m_isAnimation = true;
     m_preIndex = m_curIndex;
@@ -78,13 +78,13 @@ void DownloadBaseAnimationWidget::switchToSelectedItemStyle(int index)
     emit buttonClicked(index);
 }
 
-void DownloadBaseAnimationWidget::animationChanged(const QVariant &value)
+void DownloadAbstractAnimationWidget::animationChanged(const QVariant &value)
 {
     m_x = value.toInt();
     update();
 }
 
-void DownloadBaseAnimationWidget::finished()
+void DownloadAbstractAnimationWidget::finished()
 {
     m_isAnimation = false;
 }
@@ -92,7 +92,7 @@ void DownloadBaseAnimationWidget::finished()
 
 
 DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
-    : DownloadBaseAnimationWidget(parent)
+    : DownloadAbstractAnimationWidget(parent)
 {
     m_pix = QPixmap(54, 2);
     m_pix.fill(QColor(0x80, 0xB7, 0xF1));
@@ -118,7 +118,7 @@ DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
 void DownloadSkinAnimationWidget::paintEvent(QPaintEvent *event)
 {
     m_totalWidth = width();
-    DownloadBaseAnimationWidget::paintEvent(event);
+    DownloadAbstractAnimationWidget::paintEvent(event);
 }
 
 void DownloadSkinAnimationWidget::switchToSelectedItemStyle(int index)
@@ -135,5 +135,5 @@ void DownloadSkinAnimationWidget::switchToSelectedItemStyle(int index)
         default: break;
     }
 
-    DownloadBaseAnimationWidget::switchToSelectedItemStyle(index);
+    DownloadAbstractAnimationWidget::switchToSelectedItemStyle(index);
 }
