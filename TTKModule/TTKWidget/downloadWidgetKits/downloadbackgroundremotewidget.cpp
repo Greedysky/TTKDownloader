@@ -83,7 +83,7 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
         m_functionsWidget->setLayout(hbox);
     }
 
-    QHBoxLayout *ly = TTKStatic_cast(QHBoxLayout*, m_functionsWidget->layout());
+    QHBoxLayout *ly = TTKObject_cast(QHBoxLayout*, m_functionsWidget->layout());
     int count = ly->count();
     if(revert)
     {
