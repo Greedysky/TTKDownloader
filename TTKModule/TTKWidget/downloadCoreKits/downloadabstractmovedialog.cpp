@@ -102,14 +102,13 @@ void DownloadAbstractMoveDialog::setBackgroundPixmap(QLabel *label, const QSize 
 
 void DownloadAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
 {
-    QLabel *label = TTKObject_cast(QLabel*, m_background);
     DownloadBackgroundImage image;
     if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->background()))
     {
-        label->setPixmap(image.m_pix.scaled(size));
+        m_background->setPixmap(image.m_pix.scaled(size));
     }
     else
     {
-        label->setPixmap(QPixmap(G_BACKGROUND_PTR->background()).scaled(size));
+        m_background->setPixmap(QPixmap(G_BACKGROUND_PTR->background()).scaled(size));
     }
 }

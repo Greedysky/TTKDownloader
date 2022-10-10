@@ -76,7 +76,7 @@ protected:
     QPoint m_pressAt;
     bool m_moveOption, m_showShadow;
     bool m_leftButtonPress;
-    QWidget *m_background;
+    QLabel *m_background;
 
 };
 
