@@ -93,7 +93,7 @@ public Q_SLOTS:
      */
     void expandButtonClicked();
 
-protected:
+private:
     /*!
      * Create system tray icon.
      */
@@ -109,6 +109,7 @@ protected:
     DownloadNetworkSpeedTestThread *m_speedThread;
 
     static DownloadBottomAreaWidget *m_instance;
+
 };
 
 #endif // DOWNLOADBOTTOMAREAWIDGET_H

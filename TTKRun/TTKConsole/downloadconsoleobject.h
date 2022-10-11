@@ -49,7 +49,7 @@ public Q_SLOTS:
      */
     void progressChanged(qint64 current, qint64 total);
 
-protected:
+private:
     DownloadThreadManager *m_manager;
 
 };

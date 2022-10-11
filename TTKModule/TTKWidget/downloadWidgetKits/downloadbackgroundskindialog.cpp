@@ -271,7 +271,7 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
     QString path = USER_THEME_DIR_FULL + s + TKM_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(s, path);
     G_BACKGROUND_PTR->setBackground(path);
-    emit G_BACKGROUND_PTR->backgroundHasChanged();
+    Q_EMIT G_BACKGROUND_PTR->backgroundHasChanged();
 }
 
 void DownloadBackgroundSkinDialog::addThemeListWidgetItem()

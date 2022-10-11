@@ -81,7 +81,7 @@ private Q_SLOTS:
      */
     void downloadingFinished(const QString &path);
 
-protected:
+private:
     bool m_pause;
     QString m_url, m_path;
     DownloadListItemWidget* m_downloadItem;

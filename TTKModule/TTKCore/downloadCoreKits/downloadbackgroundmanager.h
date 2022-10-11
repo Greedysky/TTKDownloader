@@ -71,7 +71,7 @@ Q_SIGNALS:
      */
     void backgroundChanged();
 
-protected:
+private:
     /*!
      * Object contsructor.
      */
@@ -83,6 +83,7 @@ protected:
     QString m_background;
 
     DECLARE_SINGLETON_CLASS(DownloadBackgroundManager)
+
 };
 
 #endif // DOWNLOADBACKGROUNDMANAGER_H

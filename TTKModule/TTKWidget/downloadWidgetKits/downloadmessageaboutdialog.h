@@ -44,7 +44,7 @@ public Q_SLOTS:
      */
     virtual int exec();
 
-protected:
+private:
     Ui::DownloadMessageAboutDialog *m_ui;
 
 };

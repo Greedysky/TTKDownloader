@@ -26,7 +26,7 @@ void DownloadToolLabelButton::setLabelIcon(const QString &icon)
 
 void DownloadToolLabelButton::mousePressEvent(QMouseEvent *event)
 {
-    emit mouseClicked();
+    Q_EMIT mouseClicked();
     QToolButton::mousePressEvent(event);
 }
 

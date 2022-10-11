@@ -79,7 +79,7 @@ public Q_SLOTS:
      */
     void downLoadDataChanged(const DownloadSkinRemoteGroupList &data);
 
-protected:
+private:
     /*!
      * Create button.
      */

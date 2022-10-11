@@ -69,7 +69,7 @@ private Q_SLOTS:
      */
     void updateDownloadSpeed();
 
-protected:
+private:
     /*!
      * Update download left time.
      */

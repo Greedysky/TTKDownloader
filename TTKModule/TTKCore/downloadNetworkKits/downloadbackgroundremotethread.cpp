@@ -79,5 +79,5 @@ void DownloadBackgroundRemoteThread::downLoadDataFinished(const QByteArray &byte
         manager.readSkinRemoteXMLConfig(items);
     }
 
-    emit downLoadDataChanged(items);
+    Q_EMIT downLoadDataChanged(items);
 }

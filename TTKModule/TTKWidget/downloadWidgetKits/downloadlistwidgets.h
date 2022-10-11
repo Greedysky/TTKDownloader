@@ -122,7 +122,7 @@ private Q_SLOTS:
      */
     void updateTotalSpeedLabel();
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

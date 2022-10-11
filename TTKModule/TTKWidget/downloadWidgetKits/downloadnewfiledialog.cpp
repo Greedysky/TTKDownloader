@@ -34,7 +34,7 @@ DownloadNewFileDialog::~DownloadNewFileDialog()
 
 void DownloadNewFileDialog::confirmButtonPressed()
 {
-    emit setDownloadPath(m_ui->urlTextEdit->toPlainText().split(';'));
+    Q_EMIT setDownloadPath(m_ui->urlTextEdit->toPlainText().split(';'));
     close();
 }
 

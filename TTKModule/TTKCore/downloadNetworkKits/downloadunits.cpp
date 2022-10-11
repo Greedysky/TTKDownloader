@@ -61,5 +61,5 @@ void DownloadUnits::setStateChanged(const QString &state)
 void DownloadUnits::downloadingFinished(const QString &path)
 {
     m_path = path;
-    emit removeItemWidget(this);
+    Q_EMIT removeItemWidget(this);
 }

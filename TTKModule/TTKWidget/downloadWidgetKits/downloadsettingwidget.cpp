@@ -42,7 +42,7 @@ void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunc
 void DownloadFunctionTableWidget::listCellClicked(int row, int column)
 {
     Q_UNUSED(column);
-    emit currentIndexChanged(row + m_listIndex);
+    Q_EMIT currentIndexChanged(row + m_listIndex);
     selectRow(currentRow());
 }
 
@@ -177,8 +177,7 @@ void DownloadSettingWidget::commitTheResults()
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, m_ui->suspensionVisiableBox->isChecked());
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, m_ui->suspensionShowPerBox->isChecked());
 
-
-    emit parameterSettingChanged();
+    Q_EMIT parameterSettingChanged();
     close();
 }
 

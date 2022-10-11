@@ -123,7 +123,7 @@ public:
         return m_para.contains(type);
     }
 
-protected:
+private:
     /*!
      * Convert String type to Config Type.
      */
@@ -139,7 +139,7 @@ protected:
     QMap<Config, QVariant> m_para;
 
     DECLARE_SINGLETON_CLASS(DownloadSettingManager)
-};
 
+};
 
 #endif // DOWNLOADSETTINGMANAGER

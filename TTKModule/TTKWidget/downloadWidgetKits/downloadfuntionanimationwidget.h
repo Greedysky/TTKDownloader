@@ -96,7 +96,7 @@ public Q_SLOTS:
      */
     virtual void switchToSelectedItemStyle(int index) override final;
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

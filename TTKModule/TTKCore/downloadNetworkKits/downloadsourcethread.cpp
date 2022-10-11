@@ -43,14 +43,14 @@ void DownloadSourceThread::downLoadFinished()
         }
         else
         {
-            emit downLoadByteDataChanged(m_reply->readAll());
+            Q_EMIT downLoadByteDataChanged(m_reply->readAll());
             deleteAll();
         }
     }
     else
     {
         TTK_LOGGER_ERROR("Download source data error");
-        emit downLoadByteDataChanged(QByteArray());
+        Q_EMIT downLoadByteDataChanged(QByteArray());
         deleteAll();
     }
 }
@@ -58,7 +58,7 @@ void DownloadSourceThread::downLoadFinished()
 void DownloadSourceThread::replyError(QNetworkReply::NetworkError)
 {
     TTK_LOGGER_ERROR("Abnormal network connection");
-    emit downLoadByteDataChanged(QByteArray());
+    Q_EMIT downLoadByteDataChanged(QByteArray());
     deleteAll();
 }
 
@@ -66,7 +66,7 @@ void DownloadSourceThread::replyError(QNetworkReply::NetworkError)
 void DownloadSourceThread::sslErrors(QNetworkReply* reply, const QList<QSslError> &errors)
 {
     sslErrorsString(reply, errors);
-    emit downLoadByteDataChanged(QByteArray());
+    Q_EMIT downLoadByteDataChanged(QByteArray());
     deleteAll();
 }
 #endif

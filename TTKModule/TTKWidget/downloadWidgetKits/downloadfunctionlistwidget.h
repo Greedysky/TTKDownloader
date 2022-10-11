@@ -58,7 +58,7 @@ Q_SIGNALS:
      */
     void selectedChanged(DownloadFunctionItemWidget *item);
 
-protected:
+private:
     /*!
      * Override the widget event.
      */
@@ -104,7 +104,7 @@ public Q_SLOTS:
      */
     void selectedChanged(DownloadFunctionItemWidget *item);
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

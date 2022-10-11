@@ -45,7 +45,7 @@ public Q_SLOTS:
      */
     void show();
 
-protected:
+private:
     /*!
      * Adjust the widget postion.
      */

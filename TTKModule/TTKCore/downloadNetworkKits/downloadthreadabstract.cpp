@@ -39,7 +39,7 @@ void DownLoadThreadAbstract::deleteAll()
 void DownLoadThreadAbstract::replyError(QNetworkReply::NetworkError)
 {
     TTK_LOGGER_ERROR("Abnormal network connection");
-    emit downLoadDataChanged("The file create failed");
+    Q_EMIT downLoadDataChanged("The file create failed");
     deleteAll();
 }
 
@@ -47,7 +47,7 @@ void DownLoadThreadAbstract::replyError(QNetworkReply::NetworkError)
 void DownLoadThreadAbstract::sslErrors(QNetworkReply* reply, const QList<QSslError> &errors)
 {
     sslErrorsString(reply, errors);
-    emit downLoadDataChanged("The file create failed");
+    Q_EMIT downLoadDataChanged("The file create failed");
     deleteAll();
 }
 #endif

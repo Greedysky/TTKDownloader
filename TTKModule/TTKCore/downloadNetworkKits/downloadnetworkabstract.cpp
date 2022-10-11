@@ -33,7 +33,7 @@ void DownloadNetworkAbstract::deleteAll()
 void DownloadNetworkAbstract::replyError(QNetworkReply::NetworkError)
 {
     TTK_LOGGER_ERROR("Abnormal network connection");
-    emit downLoadDataChanged(QString());
+    Q_EMIT downLoadDataChanged(QString());
     deleteAll();
 }
 
@@ -41,7 +41,7 @@ void DownloadNetworkAbstract::replyError(QNetworkReply::NetworkError)
 void DownloadNetworkAbstract::sslErrors(QNetworkReply* reply, const QList<QSslError> &errors)
 {
     sslErrorsString(reply, errors);
-    emit downLoadDataChanged(QString());
+    Q_EMIT downLoadDataChanged(QString());
     deleteAll();
 }
 

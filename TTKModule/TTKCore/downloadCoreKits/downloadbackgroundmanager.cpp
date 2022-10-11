@@ -42,5 +42,5 @@ QColor DownloadBackgroundManager::backgroundColor() const
 
 void DownloadBackgroundManager::backgroundHasChanged()
 {
-    emit backgroundChanged();
+    Q_EMIT backgroundChanged();
 }

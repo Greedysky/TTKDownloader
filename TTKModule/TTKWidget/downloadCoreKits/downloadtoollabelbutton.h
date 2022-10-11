@@ -52,7 +52,7 @@ Q_SIGNALS:
      */
     void mouseClicked();
 
-protected:
+private:
     /*!
      * Override the widget event.
      */
@@ -84,7 +84,7 @@ public:
      */
     void setLabelText(const QString &up, const QString &down);
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

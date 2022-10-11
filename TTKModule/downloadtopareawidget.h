@@ -112,7 +112,7 @@ public Q_SLOTS:
      */
     void backgroundSkinChanged(const QString &fileName);
 
-protected:
+private:
     /*!
      * Draw window background rect.
      */
@@ -140,6 +140,7 @@ protected:
     int m_backgroundAlpha;
 
     static DownloadTopAreaWidget *m_instance;
+
 };
 
 #endif // DOWNLOADTOPAREAWIDGET_H

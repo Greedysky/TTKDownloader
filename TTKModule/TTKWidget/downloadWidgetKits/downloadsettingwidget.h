@@ -79,13 +79,14 @@ public Q_SLOTS:
      */
     virtual void listCellClicked(int row, int column) override final;
 
-protected:
+private:
     /*!
      * Override the widget event.
      */
     virtual void leaveEvent(QEvent *event) override final;
 
     int m_listIndex;
+
 };
 
 
@@ -136,7 +137,7 @@ public Q_SLOTS:
      */
     virtual int exec();
 
-protected:
+private:
     /*!
      * Select function table index.
      */

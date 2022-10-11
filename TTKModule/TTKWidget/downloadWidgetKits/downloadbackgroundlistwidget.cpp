@@ -69,11 +69,11 @@ void DownloadBackgroundListItem::mousePressEvent(QMouseEvent *event)
     QLabel::mousePressEvent(event);
     if(m_closeSet && QRect(width() - 18 - 4, 4, 18, 18).contains(event->pos()))
     {
-        emit closeClicked(this);
+        Q_EMIT closeClicked(this);
     }
     else
     {
-        emit itemClicked(this);
+        Q_EMIT itemClicked(this);
     }
 }
 
@@ -325,5 +325,5 @@ void DownloadBackgroundListWidget::itemHasClicked(DownloadBackgroundListItem *it
 
     m_currentItem = item;
     m_currentItem->setSelect(true);
-    emit itemClicked(item->fileName());
+    Q_EMIT itemClicked(item->fileName());
 }

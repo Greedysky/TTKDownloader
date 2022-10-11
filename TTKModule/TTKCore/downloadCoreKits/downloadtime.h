@@ -213,7 +213,7 @@ public:
         return stream;
     }
 
-protected:
+private:
     /*!
      * Init parameters;
      */

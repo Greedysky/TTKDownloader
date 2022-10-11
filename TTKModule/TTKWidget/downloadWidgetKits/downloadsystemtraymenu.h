@@ -36,7 +36,7 @@ public:
     explicit DownloadSystemTrayMenu(QWidget *parent = nullptr);
     ~DownloadSystemTrayMenu();
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

@@ -86,7 +86,7 @@ private Q_SLOTS:
      */
     void animationFinished();
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

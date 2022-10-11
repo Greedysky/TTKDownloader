@@ -23,7 +23,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
 {
     if(m_state == State::Download)
     {
-        emit errorCode(m_index, "is downloading a file");
+        Q_EMIT errorCode(m_index, "is downloading a file");
         return;
     }
 
@@ -50,14 +50,14 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     QtNetworkErrorConnect(m_reply, this, errorSlot);
 
     m_state = State::Download;
-    emit downloadChanged();
+    Q_EMIT downloadChanged();
 }
 
 void DownloadThread::pause()
 {
     if(m_state != State::Download)
     {
-        emit errorCode(m_index, "is not downloading");
+        Q_EMIT errorCode(m_index, "is not downloading");
         return;
     }
 
@@ -71,7 +71,7 @@ void DownloadThread::restart()
 {
     if(m_state != State::Pause)
     {
-        emit errorCode(m_index, "is not stoped");
+        Q_EMIT errorCode(m_index, "is not stoped");
         return;
     }
 
@@ -89,7 +89,7 @@ void DownloadThread::finishedSlot()
     m_reply->deleteLater();
     m_state = State::Finished;
 
-    emit finished(m_index);
+    Q_EMIT finished(m_index);
 }
 
 void DownloadThread::readyReadSlot()
@@ -99,7 +99,7 @@ void DownloadThread::readyReadSlot()
     m_file->write(buffer);
     m_readySize += buffer.length();
 
-    emit downloadChanged();
+    Q_EMIT downloadChanged();
 }
 
 void DownloadThread::errorSlot(QNetworkReply::NetworkError code)
@@ -108,9 +108,8 @@ void DownloadThread::errorSlot(QNetworkReply::NetworkError code)
     {
         return;
     }
-    emit errorCode(m_index, "QNetworkReply::NetworkError : " +
-                            QString::number((int)code) + " \n" +
-                            m_reply->errorString());
+    Q_EMIT errorCode(m_index, "QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString());
+
     m_state = State::Stop;
     m_reply->abort();
     m_file->flush();

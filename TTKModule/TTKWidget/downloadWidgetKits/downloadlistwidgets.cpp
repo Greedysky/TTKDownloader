@@ -217,7 +217,7 @@ void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
         return;
     }
 
-    emit downloadingFinished(unit->downloadedPath(), unit->url());
+    Q_EMIT downloadingFinished(unit->downloadedPath(), unit->url());
 
     --m_maxDownloadCount;
     removeCellWidget(row, 0);
@@ -345,7 +345,7 @@ void DownloadListWidgets::clearItems()
 void DownloadListWidgets::stateChanged(int row)
 {
     int state = m_itemList[row]->state();
-    emit downloadStateChanged(state != 1 && state != 0);
+    Q_EMIT downloadStateChanged(state != 1 && state != 0);
 }
 
 void DownloadListWidgets::start(int row, const QString &name)

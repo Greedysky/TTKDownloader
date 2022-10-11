@@ -75,7 +75,7 @@ void DownloadAbstractAnimationWidget::switchToSelectedItemStyle(int index)
     m_animation->setEndValue(index*m_perWidth);
     m_animation->start();
 
-    emit buttonClicked(index);
+    Q_EMIT buttonClicked(index);
 }
 
 void DownloadAbstractAnimationWidget::animationChanged(const QVariant &value)

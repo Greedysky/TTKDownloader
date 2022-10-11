@@ -59,11 +59,12 @@ public Q_SLOTS:
      */
     void showSettingWidget();
 
-protected:
+private:
 
     Ui::DownloadApplication *m_ui;
 
     static DownloadLeftAreaWidget *m_instance;
+
 };
 
 #endif // DOWNLOADLEFTAREAWIDGET_H

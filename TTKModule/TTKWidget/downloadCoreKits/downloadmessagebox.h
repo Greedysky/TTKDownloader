@@ -78,7 +78,7 @@ public Q_SLOTS:
      */
     void show();
 
-protected:
+private:
     Ui::DownloadMessageBox *m_ui;
     int m_status;
 

@@ -79,10 +79,11 @@ public:
      */
     QStringList keys() const;
 
-protected:
+private:
     QList<QGlobalShortcut*> m_hotkeys;
 
     DECLARE_SINGLETON_CLASS(DownloadHotKeyManager)
+
 };
 
 #endif // DOWNLOADHOTKEYMANAGER_H

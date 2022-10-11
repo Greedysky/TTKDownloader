@@ -78,7 +78,7 @@ private Q_SLOTS:
      */
     void outputRecieved();
 
-protected:
+private:
     bool m_run;
     QStringList m_names;
     QProcess *m_process ;

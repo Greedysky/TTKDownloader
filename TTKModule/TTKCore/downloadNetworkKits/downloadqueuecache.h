@@ -81,7 +81,7 @@ public Q_SLOTS:
      */
     void errorSlot(QNetworkReply::NetworkError code);
 
-protected:
+private:
     /*!
      * Start to download data from url.
      */

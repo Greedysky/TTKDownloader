@@ -28,12 +28,12 @@ int DownloadBackgroundPopWidget::value() const
 
 void DownloadBackgroundPopWidget::sliderPressed()
 {
-    emit sliderStateChanged(true);
+    Q_EMIT sliderStateChanged(true);
 }
 
 void DownloadBackgroundPopWidget::sliderReleased()
 {
-    emit sliderStateChanged(false);
+    Q_EMIT sliderStateChanged(false);
 }
 
 void DownloadBackgroundPopWidget::initialize()

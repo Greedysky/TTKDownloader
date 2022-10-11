@@ -12,13 +12,13 @@ DownloadToolMenu::DownloadToolMenu(QWidget *parent)
 void DownloadToolMenu::showEvent(QShowEvent *event)
 {
     QMenu::showEvent(event);
-    emit windowStateChanged(true);
+    Q_EMIT windowStateChanged(true);
 }
 
 void DownloadToolMenu::hideEvent(QHideEvent *event)
 {
     QMenu::hideEvent(event);
-    emit windowStateChanged(false);
+    Q_EMIT windowStateChanged(false);
 }
 
 

@@ -36,7 +36,7 @@ public:
     explicit DownloadClickedSlider(QWidget *parent = nullptr);
     explicit DownloadClickedSlider(Qt::Orientation orientation, QWidget *parent = nullptr);
 
-protected:
+private:
     /*!
      * Override the widget event.
      */
@@ -45,7 +45,7 @@ protected:
     virtual void mouseMoveEvent(QMouseEvent *event) override final;
     virtual void mouseReleaseEvent(QMouseEvent *event) override final;
 
-protected:
+private:
     int m_value;
     bool m_mousePress;
 

@@ -55,7 +55,7 @@ public Q_SLOTS:
      */
     void confirmButtonPressed();
 
-protected:
+private:
     Ui::DownloadNewFileDialog *m_ui;
 
 };

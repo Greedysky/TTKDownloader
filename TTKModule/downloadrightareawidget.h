@@ -88,13 +88,14 @@ public Q_SLOTS:
      */
     void editReverseSelect();
 
-protected:
+private:
     Ui::DownloadApplication *m_ui;
 
     DownloadListWidgets *m_listWidget;
     DownloadHistoryRecordWidget *m_historyWidget;
 
     static DownloadRightAreaWidget *m_instance;
+
 };
 
 #endif // DOWNLOADRIGHTAREAWIDGET_H

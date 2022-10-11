@@ -80,7 +80,7 @@ public Q_SLOTS:
      */
     void copyUrlClicked();
 
-protected:
+private:
     /*!
      * Override the widget event.
      */

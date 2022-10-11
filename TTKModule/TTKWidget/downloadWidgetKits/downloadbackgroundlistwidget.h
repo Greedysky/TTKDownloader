@@ -107,7 +107,7 @@ Q_SIGNALS:
      */
     void itemClicked(DownloadBackgroundListItem *item);
 
-protected:
+private:
     /*!
      * Override the widget event.
      */
@@ -213,7 +213,7 @@ private Q_SLOTS:
      */
     void itemHasClicked(DownloadBackgroundListItem *item);
 
-protected:
+private:
     QGridLayout *m_layout;
     DownloadBackgroundListItem *m_currentItem;
     QList<DownloadBackgroundListItem*> m_items;

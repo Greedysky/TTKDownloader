@@ -40,7 +40,7 @@ void DownloadFunctionItemWidget::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
     m_selectedOn = true;
-    emit selectedChanged(this);
+    Q_EMIT selectedChanged(this);
     update();
 }
 
@@ -150,7 +150,7 @@ void DownloadFunctionListWidget::selectedChanged(DownloadFunctionItemWidget *ite
         return;
     }
 
-    emit currentIndexChanged(index);
+    Q_EMIT currentIndexChanged(index);
 
     for(DownloadFunctionItemWidget *it : qAsConst(m_items))
     {

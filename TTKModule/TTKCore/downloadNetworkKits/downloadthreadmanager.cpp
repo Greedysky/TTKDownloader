@@ -73,7 +73,7 @@ QString DownloadThreadManager::downloadedPath() const
 
 bool DownloadThreadManager::downloadFile(const QString &url, const QString &name)
 {
-    emit stateChanged(tr("Waiting"));
+    Q_EMIT stateChanged(tr("Waiting"));
 
     if(m_state == DownloadThread::State::Download)
     {
@@ -131,7 +131,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
         fileName = name;
     }
     ////////////////////////////////////////////////
-    emit updateFileInfoChanged(fileName, m_totalSize);
+    Q_EMIT updateFileInfoChanged(fileName, m_totalSize);
 
     fileName = DownloadUtils::Core::downloadPrefix() + fileName;
 
@@ -180,7 +180,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     }
 
     m_state = DownloadThread::State::Download;
-    emit stateChanged(tr("Download"));
+    Q_EMIT stateChanged(tr("Download"));
     m_runningCount = THREADCOUNT;
 
     return true;
@@ -200,8 +200,8 @@ void DownloadThreadManager::downloadingFinish()
     qDeleteAll(m_threads);
     m_threads.clear();
 
-    emit stateChanged(tr("Finished"));
-    emit downloadingFinished(fileName);
+    Q_EMIT stateChanged(tr("Finished"));
+    Q_EMIT downloadingFinished(fileName);
 }
 
 void DownloadThreadManager::pause()
@@ -213,7 +213,7 @@ void DownloadThreadManager::pause()
     }
 
     m_state = DownloadThread::State::Pause;
-    emit stateChanged(tr("Pause"));
+    Q_EMIT stateChanged(tr("Pause"));
 
     DownloadBreakPointItemList records;
     for(DownloadThread *thread : qAsConst(m_threads))
@@ -247,7 +247,7 @@ void DownloadThreadManager::restart()
     }
 
     m_state = DownloadThread::State::Download;
-    emit stateChanged(tr("Download"));
+    Q_EMIT stateChanged(tr("Download"));
 
     for(DownloadThread *thread : qAsConst(m_threads))
     {
@@ -274,7 +274,7 @@ void DownloadThreadManager::progressChangedSlot()
         m_readySize += thread->readySize();
     }
 
-    emit progressChanged(m_readySize, m_totalSize);
+    Q_EMIT progressChanged(m_readySize, m_totalSize);
 }
 
 void DownloadThreadManager::errorSlot(int index, const QString &errorString)
