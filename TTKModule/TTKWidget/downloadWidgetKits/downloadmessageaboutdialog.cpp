@@ -8,11 +8,15 @@ DownloadMessageAboutDialog::DownloadMessageAboutDialog(QWidget *parent)
       m_ui(new Ui::DownloadMessageAboutDialog)
 {
     m_ui->setupUi(this);
+    setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_delete_normal"));
     m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::MToolButtonStyle04);
     m_ui->topTitleCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
+
+    m_ui->iconLabel->setPixmap(QPixmap(":/image/lb_logo"));
+    m_ui->textLabel->setText(QString("TTKDownloader Version: %1\n").arg(TTK_VERSION_STR) + m_ui->textLabel->text());
 
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
 }
@@ -20,13 +24,4 @@ DownloadMessageAboutDialog::DownloadMessageAboutDialog(QWidget *parent)
 DownloadMessageAboutDialog::~DownloadMessageAboutDialog()
 {
     delete m_ui;
-}
-
-int DownloadMessageAboutDialog::exec()
-{
-    m_ui->iconLabel->setPixmap(QPixmap(":/image/lb_logo"));
-    m_ui->textLabel->setText(QString("TTKDownloader Version: %1\n").arg(TTK_VERSION_STR) +
-                             m_ui->textLabel->text());
-    setBackgroundPixmap(m_ui->background, size());
-    return DownloadAbstractMoveDialog::exec();
 }

@@ -35,10 +35,19 @@ DownloadAbstractMoveDialog::~DownloadAbstractMoveDialog()
 
 void DownloadAbstractMoveDialog::backgroundChanged()
 {
-    if(m_background)
-    {
-        setBackgroundPixmap(size());
-    }
+    setBackgroundPixmap(size());
+}
+
+int DownloadAbstractMoveDialog::exec()
+{
+    setBackgroundPixmap(size());
+    return QDialog::exec();
+}
+
+void DownloadAbstractMoveDialog::show()
+{
+    setBackgroundPixmap(size());
+    QDialog::show();
 }
 
 void DownloadAbstractMoveDialog::paintEvent(QPaintEvent *event)
@@ -94,14 +103,13 @@ void DownloadAbstractMoveDialog::mouseReleaseEvent(QMouseEvent *event)
     m_leftButtonPress = false;
 }
 
-void DownloadAbstractMoveDialog::setBackgroundPixmap(QLabel *label, const QSize &size)
-{
-    m_background = label;
-    setBackgroundPixmap(size);
-}
-
 void DownloadAbstractMoveDialog::setBackgroundPixmap(const QSize &size)
 {
+    if(!m_background)
+    {
+        return;
+    }
+
     DownloadBackgroundImage image;
     if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->background()))
     {

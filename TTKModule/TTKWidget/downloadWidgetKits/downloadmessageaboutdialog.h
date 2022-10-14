@@ -38,12 +38,6 @@ public:
     explicit DownloadMessageAboutDialog(QWidget *parent = nullptr);
     ~DownloadMessageAboutDialog();
 
-public Q_SLOTS:
-    /*!
-     * Override exec function.
-     */
-    virtual int exec();
-
 private:
     Ui::DownloadMessageAboutDialog *m_ui;
 

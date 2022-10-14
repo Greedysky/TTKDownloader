@@ -2,15 +2,15 @@
 #include "ui_downloadmessagebox.h"
 #include "downloaduiobject.h"
 
-#include <QButtonGroup>
 #include <QPainter>
+#include <QButtonGroup>
 
 DownloadMessageBox::DownloadMessageBox(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),
-      m_ui(new Ui::DownloadMessageBox),
-      m_status(0)
+      m_ui(new Ui::DownloadMessageBox)
 {
     m_ui->setupUi(this);
+    setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_close_hover"));
     m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::MToolButtonStyle04);
@@ -81,21 +81,8 @@ void DownloadMessageBox::buttonClicked(int index)
     switch(index)
     {
         case 0:
-        case 2: m_status = 0; break;
-        case 1: m_status = 1; break;
+        case 2: reject(); break;
+        case 1: accept(); break;
+        default: break;
     }
-    close();
-}
-
-int DownloadMessageBox::exec()
-{
-    setBackgroundPixmap(m_ui->background, size());
-    DownloadAbstractMoveDialog::exec();
-    return m_status;
-}
-
-void DownloadMessageBox::show()
-{
-    setBackgroundPixmap(m_ui->background, size());
-    DownloadAbstractMoveDialog::show();
 }

@@ -161,15 +161,9 @@ public Q_SLOTS:
      * Current color has changed.
      */
     void colorChanged(const QColor &color);
-    /*!
-     * Override exec function.
-     */
-    virtual int exec();
 
 private:
     Ui::DownloadColorDialog *m_ui;
-
-    int m_status;
     QColor m_color;
 
 };

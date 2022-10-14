@@ -47,10 +47,6 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     /*!
-     * Override exec function.
-     */
-    virtual int exec();
-    /*!
      * Congorm button clicked.
      */
     void confirmButtonPressed();

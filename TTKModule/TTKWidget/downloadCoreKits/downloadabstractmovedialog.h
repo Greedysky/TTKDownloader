@@ -49,12 +49,24 @@ public:
      * Set or not block widget moving.
      */
     inline void blockMoveOption(bool block) { m_moveOption = block;}
+    /*!
+     * Set background label.
+     */
+    inline void setBackgroundLabel(QLabel *label) { m_background = label; }
 
 public Q_SLOTS:
     /*!
      * Background image changed.
      */
     void backgroundChanged();
+    /*!
+     * Override exec function.
+     */
+    virtual int exec();
+    /*!
+     * Override show function.
+     */
+    void show();
 
 protected:
     /*!
@@ -64,10 +76,6 @@ protected:
     virtual void mousePressEvent(QMouseEvent *event) override final;
     virtual void mouseMoveEvent(QMouseEvent *event) override final;
     virtual void mouseReleaseEvent(QMouseEvent *event) override final;
-    /*!
-     * Set background pixmap.
-     */
-    void setBackgroundPixmap(QLabel *label, const QSize &size);
     /*!
      * Set background pixmap.
      */

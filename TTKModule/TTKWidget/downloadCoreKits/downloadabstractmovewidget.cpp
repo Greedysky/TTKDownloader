@@ -35,10 +35,13 @@ DownloadAbstractMoveWidget::~DownloadAbstractMoveWidget()
 
 void DownloadAbstractMoveWidget::backgroundChanged()
 {
-    if(m_background)
-    {
-        setBackgroundPixmap(size());
-    }
+    setBackgroundPixmap(size());
+}
+
+void DownloadAbstractMoveWidget::show()
+{
+    setBackgroundPixmap(size());
+    QWidget::show();
 }
 
 void DownloadAbstractMoveWidget::paintEvent(QPaintEvent *event)
@@ -94,14 +97,13 @@ void DownloadAbstractMoveWidget::mouseReleaseEvent(QMouseEvent *event)
     m_leftButtonPress = false;
 }
 
-void DownloadAbstractMoveWidget::setBackgroundPixmap(QLabel *label, const QSize &size)
-{
-    m_background = label;
-    setBackgroundPixmap(size);
-}
-
 void DownloadAbstractMoveWidget::setBackgroundPixmap(const QSize &size)
 {
+    if(!m_background)
+    {
+        return;
+    }
+
     DownloadBackgroundImage image;
     if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->background()))
     {

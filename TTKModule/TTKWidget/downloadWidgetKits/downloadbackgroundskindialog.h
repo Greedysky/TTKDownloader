@@ -104,10 +104,6 @@ public Q_SLOTS:
      * Remote background list widget item has clicked.
      */
     void remoteBackgroundListWidgetItemClicked(const QString &name);
-    /*!
-     * Override exec function.
-     */
-    virtual int exec();
 
 private:
     /*!

@@ -238,10 +238,10 @@ void DownloadHlSaturationPalette::calculateSuration()
 
 DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),
-      m_ui(new Ui::DownloadColorDialog),
-      m_status(0)
+      m_ui(new Ui::DownloadColorDialog)
 {
     m_ui->setupUi(this);
+    setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_close_hover"));
     m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::MToolButtonStyle04);
@@ -292,20 +292,13 @@ void DownloadColorDialog::buttonClicked(int index)
     switch(index)
     {
         case 0:
-        case 2: m_status = 0; break;
-        case 1: m_status = 1; break;
+        case 2: reject(); break;
+        case 1: accept(); break;
+        default: break;
     }
-    close();
 }
 
 void DownloadColorDialog::colorChanged(const QColor &color)
 {
     m_color = color;
-}
-
-int DownloadColorDialog::exec()
-{
-    setBackgroundPixmap(m_ui->background, size());
-    DownloadAbstractMoveDialog::exec();
-    return m_status;
 }

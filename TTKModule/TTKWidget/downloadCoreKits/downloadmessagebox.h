@@ -69,18 +69,9 @@ public Q_SLOTS:
      * Confirm or cancal button clicked, set the state.
      */
     void buttonClicked(int index);
-    /*!
-     * Override exec function.
-     */
-    virtual int exec();
-    /*!
-     * Override show function.
-     */
-    void show();
 
 private:
     Ui::DownloadMessageBox *m_ui;
-    int m_status;
 
 };
 

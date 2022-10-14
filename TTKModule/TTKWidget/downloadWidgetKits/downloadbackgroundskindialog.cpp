@@ -22,6 +22,7 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
       m_myThemeIndex(CURRENT_ITEMS_COUNT)
 {
     m_ui->setupUi(this);
+    setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_delete_normal"));
     m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::MToolButtonStyle04);
@@ -252,12 +253,6 @@ void DownloadBackgroundSkinDialog::remoteBackgroundListWidgetItemClicked(const Q
             listWidgetItemClicked(m_myBackgroundList, it->fileName());
         }
     }
-}
-
-int DownloadBackgroundSkinDialog::exec()
-{
-    setBackgroundPixmap(m_ui->background, size());
-    return DownloadAbstractMoveDialog::exec();
 }
 
 void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListWidget *item, const QString &name)

@@ -132,10 +132,6 @@ public Q_SLOTS:
      * Save the change results.
      */
     void commitTheResults();
-    /*!
-     * Override exec function.
-     */
-    virtual int exec();
 
 private:
     /*!

@@ -9,6 +9,7 @@ DownloadNewFileDialog::DownloadNewFileDialog(QWidget *parent)
     m_ui(new Ui::DownloadNewFileDialog)
 {
     m_ui->setupUi(this);
+    setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_delete_normal"));
     m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::MToolButtonStyle04);
@@ -36,10 +37,4 @@ void DownloadNewFileDialog::confirmButtonPressed()
 {
     Q_EMIT setDownloadPath(m_ui->urlTextEdit->toPlainText().split(';'));
     close();
-}
-
-int DownloadNewFileDialog::exec()
-{
-    setBackgroundPixmap(m_ui->background, size());
-    return DownloadAbstractMoveDialog::exec();
 }

@@ -58,6 +58,7 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
       m_ui(new Ui::DownloadSettingWidget)
 {
     m_ui->setupUi(this);
+    setBackgroundLabel(m_ui->background);
 
     ////////////////////////////////////////////////
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_delete_normal"));
@@ -179,12 +180,6 @@ void DownloadSettingWidget::commitTheResults()
 
     Q_EMIT parameterSettingChanged();
     close();
-}
-
-int DownloadSettingWidget::exec()
-{
-    setBackgroundPixmap(m_ui->background, size());
-    return DownloadAbstractMoveDialog::exec();
 }
 
 void DownloadSettingWidget::selectFunctionTableIndex(int row, int col)
