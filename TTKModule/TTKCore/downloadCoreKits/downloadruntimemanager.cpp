@@ -9,7 +9,7 @@
 
 namespace DownloadObject
 {
-static QString languageName(int index)
+static QString languageCore(int index)
 {
     QString lan(LANGUAGE_DIR_FULL);
     switch(index)
@@ -66,5 +66,5 @@ void DownloadRunTimeManager::run() const
 
 QString DownloadRunTimeManager::translator() const
 {
-    return DownloadObject::languageName(0);
+    return DownloadObject::languageCore(0);
 }
