@@ -63,11 +63,11 @@ void TTKRunObject::finished(int code)
 {
     if(code == 0)
     {
-        TTK_LOGGER_INFO("Application exit success");
+        TTK_INFO_STREAM("Application exit success");
     }
     else
     {
-        TTK_LOGGER_INFO("Application run error, please run TTKService instead");
+        TTK_INFO_STREAM("Application run error, please run TTKService instead");
     }
 
     qApp->quit();

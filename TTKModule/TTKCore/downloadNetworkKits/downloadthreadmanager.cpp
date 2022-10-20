@@ -77,21 +77,21 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
 
     if(m_state == DownloadThread::State::Download)
     {
-        TTK_LOGGER_INFO("Current is downloading a file");
+        TTK_INFO_STREAM("Current is downloading a file");
         return false;
     }
 
     m_state = DownloadThread::State::Waiting;
     if(THREADCOUNT < 1 || THREADCOUNT > 15)
     {
-        TTK_LOGGER_INFO("Download thread count error");
+        TTK_INFO_STREAM("Download thread count error");
         return false;
     }
 
     QString durl(DownloadUrlEncoder().decoder(url));
     if((m_totalSize = fileSize(durl)) == -1)
     {
-        TTK_LOGGER_ERROR("Download file size error");
+        TTK_ERROR_STREAM("Download file size error");
         return false;
     }
 
@@ -147,7 +147,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     if(!m_file->open(QFile::WriteOnly))
     {
         m_file->close();
-        TTK_LOGGER_ERROR("Can not open file : " + m_file->errorString());
+        TTK_ERROR_STREAM("Can not open file : " + m_file->errorString());
         delete m_file;
         m_file = nullptr;
         return false;
@@ -208,7 +208,7 @@ void DownloadThreadManager::pause()
 {
     if(m_state != DownloadThread::State::Download && m_state != DownloadThread::State::Waiting)
     {
-        TTK_LOGGER_ERROR("Current is not downloading");
+        TTK_ERROR_STREAM("Current is not downloading");
         return;
     }
 
@@ -242,7 +242,7 @@ void DownloadThreadManager::restart()
 {
     if(m_state != DownloadThread::State::Pause)
     {
-        TTK_LOGGER_ERROR("Current is not paused");
+        TTK_ERROR_STREAM("Current is not paused");
         return;
     }
 
@@ -258,7 +258,7 @@ void DownloadThreadManager::restart()
 void DownloadThreadManager::finishedSlot(int index)
 {
     m_runningCount--;
-    TTK_LOGGER_INFO("Download index of " << index << " finished");
+    TTK_INFO_STREAM("Download index of " << index << " finished");
 
     if(m_runningCount == 0 && m_state == DownloadThread::State::Download)
     {
@@ -285,5 +285,5 @@ void DownloadThreadManager::errorSlot(int index, const QString &errorString)
     }
 
     m_threads[index]->pause();
-    TTK_LOGGER_INFO("Download index of " << index << " error: " << errorString);
+    TTK_INFO_STREAM("Download index of " << index << " error: " << errorString);
 }

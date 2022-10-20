@@ -26,7 +26,7 @@ DownloadNetworkThread::~DownloadNetworkThread()
 
 void DownloadNetworkThread::start()
 {
-    TTK_LOGGER_INFO("Load NetworkThread");
+    TTK_INFO_STREAM("Load NetworkThread");
     m_timer.start(NETWORK_DETECT_INTERVAL);
 }
 

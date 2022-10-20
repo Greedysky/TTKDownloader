@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
     QTranslator translator;
     if(!translator.load(manager.translator()))
     {
-        TTK_LOGGER_ERROR("Load translation error");
+        TTK_ERROR_STREAM("Load translation error");
     }
     a.installTranslator(&translator);
 

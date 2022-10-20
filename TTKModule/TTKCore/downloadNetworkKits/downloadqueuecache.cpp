@@ -20,7 +20,7 @@ DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, QObject *p
 #ifndef QT_NO_SSL
     connect(m_manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)),
                        SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
-    TTK_LOGGER_INFO(QString("%1 Support ssl: %2").arg(className()).arg(QSslSocket::supportsSsl()));
+    TTK_INFO_STREAM(QString("%1 Support ssl: %2").arg(className()).arg(QSslSocket::supportsSsl()));
 
     QSslConfiguration sslConfig = m_request->sslConfiguration();
     sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
@@ -151,7 +151,7 @@ void DownloadQueueCache::errorSlot(QNetworkReply::NetworkError code)
 #ifndef TTK_DEBUG
     Q_UNUSED(code);
 #endif
-    TTK_LOGGER_ERROR(QString("QNetworkReply::NetworkError : %1 %2").arg(code).arg(m_reply->errorString()));
+    TTK_ERROR_STREAM(QString("QNetworkReply::NetworkError : %1 %2").arg(code).arg(m_reply->errorString()));
     m_file->flush();
     if(!m_isAbort)
     {
