@@ -703,22 +703,6 @@ Copyright© 2015-2022 Greedysky All Rights Reserved
 <context>
     <name>QObject</name>
     <message>
-        <source>ss</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>mm</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>hh</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>day</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>choose a filename to open under</source>
         <translation>打开文件</translation>
     </message>
