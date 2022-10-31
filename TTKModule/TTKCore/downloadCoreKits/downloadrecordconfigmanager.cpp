@@ -1,14 +1,14 @@
 #include "downloadrecordconfigmanager.h"
 
 DownloadRecordConfigManager::DownloadRecordConfigManager(QObject *parent)
-    : DownloadAbstractXml(parent)
+    : TTKAbstractXml(parent)
 {
 
 }
 
 void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecordList &records)
 {
-    if(!writeConfig(HISTORY_PATH_FULL))
+    if(!toFile(HISTORY_PATH_FULL))
     {
         return;
     }
@@ -19,11 +19,11 @@ void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecordList &
 
     for(const DownloadRecord &record : qAsConst(records))
     {
-        writeDomMutilElement(recordDom, "value", DownloadXmlAttributeList() <<
-                                                 DownloadXmlAttribute("name", record.m_path) <<
-                                                 DownloadXmlAttribute("size", record.m_size) <<
-                                                 DownloadXmlAttribute("time", record.m_time) <<
-                                                 DownloadXmlAttribute("url", record.m_url));
+        writeDomMutilElement(recordDom, "value", TTKXmlAttributeList() <<
+                                                 TTKXmlAttribute("name", record.m_path) <<
+                                                 TTKXmlAttribute("size", record.m_size) <<
+                                                 TTKXmlAttribute("time", record.m_time) <<
+                                                 TTKXmlAttribute("url", record.m_url));
     }
 
     QTextStream out(m_file);

@@ -30,7 +30,7 @@ greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
 
 include($$PWD/TTKVersion.pri)
 
-DESTDIR = $$OUT_PWD/../bin/$$TTKDownloader
+DESTDIR = $$OUT_PWD/../bin/$$TTKVersion
 
 ##openssl lib check
 win32{
@@ -39,44 +39,43 @@ win32{
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 unix:!mac{
-    SSL_DEPANDS = $$OUT_PWD/../lib/$$TTKDownloader/libssleay32.so
+    SSL_DEPANDS = $$OUT_PWD/../lib/$$TTKVersion/libssleay32.so
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 
 win32{
     LIBS += -lIphlpapi
     msvc{
-        LIBS += -lshell32 -luser32
-        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
         CONFIG += c++11
         !contains(QMAKE_TARGET.arch, x86_64){
              #support on windows XP
              QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
              QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
         }
+        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip -lshell32 -luser32
     }
 
     gcc{
-        LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
         equals(QT_MAJOR_VERSION, 6){ #Qt6
             QMAKE_CXXFLAGS += -std=c++17
         }else{
             QMAKE_CXXFLAGS += -std=c++11
         }
         QMAKE_CXXFLAGS += -Wunused-function -Wswitch
+        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
     }
 
     equals(QT_MAJOR_VERSION, 4):QT += multimedia
 }
 
 unix:!mac{
-    LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lzlib -lTTKZip
     equals(QT_MAJOR_VERSION, 6){ #Qt6
         QMAKE_CXXFLAGS += -std=c++17
     }else{
         QMAKE_CXXFLAGS += -std=c++11
     }
     QMAKE_CXXFLAGS += -Wunused-function -Wswitch
+    LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
 }
 
 DEFINES += TTK_LIBRARY

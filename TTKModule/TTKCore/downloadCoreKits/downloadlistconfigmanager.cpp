@@ -1,14 +1,14 @@
 #include "downloadlistconfigmanager.h"
 
 DownloadListConfigManager::DownloadListConfigManager(QObject *parent)
-    : DownloadAbstractXml(parent)
+    : TTKAbstractXml(parent)
 {
 
 }
 
 void DownloadListConfigManager::writeListConfig(const DownloadItemList &records)
 {
-    if(!writeConfig(LIST_PATH_FULL))
+    if(!toFile(LIST_PATH_FULL))
     {
         return;
     }
@@ -19,9 +19,9 @@ void DownloadListConfigManager::writeListConfig(const DownloadItemList &records)
 
     for(const DownloadItem &record : qAsConst(records))
     {
-        writeDomMutilElement(recordDom, "value", DownloadXmlAttributeList() <<
-                                                 DownloadXmlAttribute("url", record.m_url) <<
-                                                 DownloadXmlAttribute("name", record.m_name));
+        writeDomMutilElement(recordDom, "value", TTKXmlAttributeList() <<
+                                                 TTKXmlAttribute("url", record.m_url) <<
+                                                 TTKXmlAttribute("name", record.m_name));
     }
 
     QTextStream out(m_file);

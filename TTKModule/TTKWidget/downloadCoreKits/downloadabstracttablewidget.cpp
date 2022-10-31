@@ -5,7 +5,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     : QTableWidget(parent),
       m_previousColorRow(-1),
       m_previousClickRow(-1),
-      m_defaultBkColor(255, 255, 255, 0)
+      m_backgroundColor(255, 255, 255, 0)
 {
     setAttribute(Qt::WA_TranslucentBackground);
     setFont(QtFontInit("Helvetica"));
@@ -21,9 +21,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     verticalHeader()->setVisible(false);
 
     setMouseTracking(true);  //Open the capture mouse function
-    setStyleSheet(DownloadUIObject::MTableWidgetStyle01 + \
-                  DownloadUIObject::MScrollBarStyle03 + \
-                  DownloadUIObject::MLineEditStyle01);
+    setStyleSheet(DownloadUIObject::MTableWidgetStyle01 + DownloadUIObject::MScrollBarStyle03 + DownloadUIObject::MLineEditStyle01);
 
     QFont f = font();
     f.setBold(false);
@@ -38,9 +36,11 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     setFocusPolicy(Qt::NoFocus);
 
     DownloadUtils::Widget::setTransparent(this, 0);
-
-    connect(this, SIGNAL(cellEntered(int,int)), SLOT(listCellEntered(int,int)));
-    connect(this, SIGNAL(cellClicked(int,int)), SLOT(listCellClicked(int,int)));
+#if defined Q_OS_UNIX && !TTK_QT_VERSION_CHECK(5,7,0) //Fix linux selection-background-color stylesheet bug
+    DownloadUtils::Widget::setTransparent(this, QColor(20, 20, 20, 10));
+#endif
+    connect(this, SIGNAL(cellEntered(int,int)), SLOT(itemCellEntered(int,int)));
+    connect(this, SIGNAL(cellClicked(int,int)), SLOT(itemCellClicked(int,int)));
 }
 
 DownloadAbstractTableWidget::~DownloadAbstractTableWidget()
@@ -48,22 +48,14 @@ DownloadAbstractTableWidget::~DownloadAbstractTableWidget()
 
 }
 
-void DownloadAbstractTableWidget::clear()
+void DownloadAbstractTableWidget::itemCellEntered(int row, int column)
 {
-    clearContents();
-    setRowCount(0);
-}
-
-void DownloadAbstractTableWidget::listCellEntered(int row, int column)
-{
-    QTableWidgetItem *it = item(m_previousColorRow, 0);
-    if(it != nullptr)
+    if(item(m_previousColorRow, 0))
     {
-       setRowColor(m_previousColorRow, m_defaultBkColor);
+       setRowColor(m_previousColorRow, m_backgroundColor);
     }
 
-    it = item(row, column);
-    if(it != nullptr)
+    if(item(row, column))
     {
        setRowColor(row, QColor(20, 20, 20, 20));
     }
@@ -71,12 +63,28 @@ void DownloadAbstractTableWidget::listCellEntered(int row, int column)
     m_previousColorRow = row;
 }
 
+void DownloadAbstractTableWidget::itemCellClicked(int row, int column)
+{
+    Q_UNUSED(row);
+    Q_UNUSED(column);
+}
+
+void DownloadAbstractTableWidget::removeItems()
+{
+    clearContents();
+    setRowCount(0);
+
+    m_previousColorRow = -1;
+    m_previousClickRow = -1;
+    m_backgroundColor = Qt::transparent;
+}
+
 void DownloadAbstractTableWidget::setRowColor(int row, const QColor &color) const
 {
-    for(int col = 0; col < columnCount(); ++col)
+    for(int i = 0; i < columnCount(); ++i)
     {
-        QTableWidgetItem *it = item(row, col);
-        if(it != nullptr)
+        QTableWidgetItem *it = item(row, i);
+        if(it)
         {
             QtItemSetBackgroundColor(it, color);
         }

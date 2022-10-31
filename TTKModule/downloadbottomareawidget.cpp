@@ -5,7 +5,7 @@
 #include "downloadnumberutils.h"
 #include "downloadnetworkspeedtestthread.h"
 #include "downloaduiobject.h"
-#include "downloadwidgetutils.h"
+#include "downloadimageutils.h"
 #include "downloadbackgroundmanager.h"
 #include "downloadsettingmanager.h"
 #include "downloadrightareawidget.h"
@@ -104,14 +104,14 @@ void DownloadBottomAreaWidget::downloadSettingButtonClicked()
 
     QPixmap pix(17, 17);
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
-    DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_protection"), QPoint(2, 2));
+    DownloadUtils::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_protection"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Speed Protection"));
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
-    DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_custom"), QPoint(2, 2));
+    DownloadUtils::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_custom"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Custom Speed Limit"));
     m_toolPopupMenu->addSeparator();
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
-    DownloadUtils::Widget::fusionPixmap(pix, QPixmap(":/contextMenu/lb_setting"), QPoint(2, 2));
+    DownloadUtils::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_setting"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("More Setting..."));
 
     m_ui->downloadSettingButton->setMenu(m_toolPopupMenu);

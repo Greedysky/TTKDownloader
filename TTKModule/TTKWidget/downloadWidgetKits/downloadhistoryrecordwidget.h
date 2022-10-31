@@ -52,10 +52,6 @@ public Q_SLOTS:
      */
     void reverseSelect();
     /*!
-     * Table widget list cell click.
-     */
-    void listCellClicked(int row, int column);
-    /*!
      * Create download item from download path.
      */
     void createDownloadItem(const QString &path, const QString &url);

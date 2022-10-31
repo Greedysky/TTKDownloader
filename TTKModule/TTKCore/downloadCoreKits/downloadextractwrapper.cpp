@@ -1,8 +1,8 @@
 #include "downloadextractwrapper.h"
 #include "downloadbackgroundconfigmanager.h"
-#include "downloadnumberdefine.h"
 #include "downloadotherdefine.h"
-#include "downloadwidgetutils.h"
+#include "downloadimageutils.h"
+#include "ttknumberdefine.h"
 
 #include "ttkzip/zip.h"
 #include "ttkzip/unzip.h"
@@ -171,7 +171,7 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
     memset(&fileInfo, 0, sizeof(fileInfo));
 
     zipOpenNewFileInZip(zFile, (nPrefix + SKN_FILE).toLocal8Bit().constData(), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
-    QByteArray data = DownloadUtils::Widget::generatePixmapData(image->m_pix);
+    QByteArray data = DownloadUtils::Image::generatePixmapData(image->m_pix);
     zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
 

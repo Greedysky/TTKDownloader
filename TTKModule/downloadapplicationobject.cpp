@@ -2,9 +2,9 @@
 #include "downloadapplication.h"
 #include "downloadsettingmanager.h"
 #include "downloadotherdefine.h"
-#include "downloadnumberdefine.h"
 #include "downloadmessageaboutdialog.h"
-#include "downloadwidgetutils.h"
+#include "downloadimageutils.h"
+#include "ttknumberdefine.h"
 #include "ttkdesktopwrapper.h"
 
 #include <QTimer>
@@ -37,7 +37,7 @@ DownloadApplicationObject *DownloadApplicationObject::instance()
 void DownloadApplicationObject::windowCloseAnimation()
 {
     float v = G_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
-    v = DownloadUtils::Widget::reRenderValue<float>(1.0f, 0.35f, v);
+    v = DownloadUtils::Image::reRenderValue<float>(1.0f, 0.35f, v);
     m_animation->stop();
     m_animation->setDuration(MT_S2MS / 2);
     m_animation->setStartValue(v);

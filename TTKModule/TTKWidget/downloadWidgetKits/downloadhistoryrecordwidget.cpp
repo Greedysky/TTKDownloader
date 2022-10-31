@@ -52,7 +52,7 @@ void DownloadHistoryRecordWidget::initialize()
 void DownloadHistoryRecordWidget::clearAllItems()
 {
     //Remove all the original item
-    DownloadAbstractTableWidget::clear();
+    DownloadAbstractTableWidget::removeItems();
     setColumnCount(4);
 }
 
@@ -84,12 +84,6 @@ void DownloadHistoryRecordWidget::reverseSelect()
     }
 
     setSelectionMode(QAbstractItemView::ExtendedSelection);
-}
-
-void DownloadHistoryRecordWidget::listCellClicked(int row, int column)
-{
-    Q_UNUSED(row);
-    Q_UNUSED(column);
 }
 
 void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const QString &url)

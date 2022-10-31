@@ -1,7 +1,7 @@
 #include "downloadbreakpointconfigmanager.h"
 
 DownloadBreakPointConfigManager::DownloadBreakPointConfigManager(QObject *parent)
-    : DownloadAbstractXml(parent)
+    : TTKAbstractXml(parent)
 {
 
 }
@@ -19,10 +19,10 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 
     for(const DownloadBreakPointItem &record : qAsConst(records))
     {
-        writeDomMutilElement(recordDom, "value", DownloadXmlAttributeList() <<
-                                                 DownloadXmlAttribute("start", record.m_start) <<
-                                                 DownloadXmlAttribute("end", record.m_end) <<
-                                                 DownloadXmlAttribute("ready", record.m_ready));
+        writeDomMutilElement(recordDom, "value", TTKXmlAttributeList() <<
+                                                 TTKXmlAttribute("start", record.m_start) <<
+                                                 TTKXmlAttribute("end", record.m_end) <<
+                                                 TTKXmlAttribute("ready", record.m_ready));
     }
 
     QTextStream out(m_file);

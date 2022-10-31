@@ -7,9 +7,9 @@
 #include "downloadabstracttablewidget.h"
 #include "downloadlistconfigmanager.h"
 #include "downloadurlutils.h"
-#include "downloadnumberdefine.h"
 #include "downloadmessagebox.h"
 #include "downloadtopareawidget.h"
+#include "ttknumberdefine.h"
 
 #include <qmath.h>
 
@@ -227,7 +227,7 @@ void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
     topUrlToDownload();
 }
 
-void DownloadListWidgets::listCellClicked(int row, int column)
+void DownloadListWidgets::itemCellClicked(int row, int column)
 {
     Q_UNUSED(column);
     if(row < 0)
@@ -339,7 +339,7 @@ void DownloadListWidgets::clearItems()
     {
         delete m_itemList.takeLast();
     }
-    clear();
+    removeItems();
 }
 
 void DownloadListWidgets::stateChanged(int row)

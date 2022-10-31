@@ -1,9 +1,9 @@
 #include "downloadlistitemwidget.h"
 #include "downloadobject.h"
 #include "downloadnumberutils.h"
-#include "downloadtime.h"
 #include "downloaduiobject.h"
 #include "downloadbackgroundmanager.h"
+#include "ttktime.h"
 
 #include <QLabel>
 #include <QBoxLayout>
@@ -149,7 +149,7 @@ void DownloadListItemWidget::updateDownloadSpeed()
 
 QString DownloadListItemWidget::timeStandardization(qint64 time)
 {
-    DownloadTime t(time, DownloadTime::Entity::Second);
+    TTKTime t(time, TTKTime::Entity::Second);
     return QString("%1:%2:%3").arg(QString::number(t.hour()).rightJustified(2, '0'))
                               .arg(QString::number(t.minute()).rightJustified(2, '0'))
                               .arg(QString::number(t.second()).rightJustified(2, '0'));

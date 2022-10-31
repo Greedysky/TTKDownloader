@@ -19,7 +19,8 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadabstractmoveresizewidget.h"
+#include "downloadobject.h"
+#include "ttkabstractmoveresizewidget.h"
 
 class DownloadBottomAreaWidget;
 class DownloadTopAreaWidget;
@@ -34,7 +35,7 @@ class DownloadApplication;
 /*! @brief The class of the app main widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadApplication : public DownloadAbstractMoveResizeWidget
+class TTK_MODULE_EXPORT DownloadApplication : public TTKAbstractMoveResizeWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadApplication)

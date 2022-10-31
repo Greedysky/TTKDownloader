@@ -1,14 +1,14 @@
 #include "downloadbackgroundconfigmanager.h"
 
 DownloadSkinConfigManager::DownloadSkinConfigManager(QObject *parent)
-    : DownloadAbstractXml(parent)
+    : TTKAbstractXml(parent)
 {
 
 }
 
 void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem &item, const QString &path)
 {
-    if(!writeConfig(path))
+    if(!toFile(path))
     {
         return;
     }
@@ -16,9 +16,9 @@ void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem 
     createProcessingInstruction();
     QDomElement rootDom = createRoot("TTKSkin");
 
-    writeDomElement(rootDom, "creator", DownloadXmlAttribute("value", APP_NAME));
-    writeDomElement(rootDom, "name", DownloadXmlAttribute("value", item.m_name));
-    writeDomElement(rootDom, "useCount", DownloadXmlAttribute("value", item.m_useCount));
+    writeDomElement(rootDom, "creator", TTKXmlAttribute("value", APP_NAME));
+    writeDomElement(rootDom, "name", TTKXmlAttribute("value", item.m_name));
+    writeDomElement(rootDom, "useCount", TTKXmlAttribute("value", item.m_useCount));
 
     QTextStream out(m_file);
     m_document->save(out, 4);

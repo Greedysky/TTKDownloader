@@ -31,8 +31,7 @@ INCLUDEPATH +=  \
 
 win32:msvc{
 HEADERS += \
-    $$PWD/../TTKModule/downloadapplication.h \
-    $$PWD/../TTKModule/TTKWidget/downloadCoreKits/downloadabstractmoveresizewidget.h
+    $$PWD/../TTKModule/downloadapplication.h
 }
 
 SOURCES += $$PWD/downloadservicemain.cpp

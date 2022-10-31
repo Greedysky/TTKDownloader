@@ -41,8 +41,6 @@ win32:msvc{
 INCLUDEPATH += \
     $$PWD/../ \
     $$PWD/../../TTKCommon \
-    $$PWD/../../TTKThirdParty \
-    $$PWD/../../TTKThirdParty/TTKDumper \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits
 
 HEADERS += $$PWD/downloadinitobject.h

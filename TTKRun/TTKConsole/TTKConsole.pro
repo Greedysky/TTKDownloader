@@ -30,17 +30,17 @@ CONFIG += console
 
 ##openssl lib check
 win32{
-    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKDownloader/ssleay32.dll
+    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKVersion/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
-    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKDownloader -lssl
+    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKVersion -lssl
 }
 unix:!mac{
-    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKDownloader/libssleay32.so
-    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKDownloader -lssl
+    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKVersion/libssleay32.so
+    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKVersion -lssl
 }
 
-LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKCore
-unix:LIBS += -L$$DESTDIR/$$TTKDownloader -lTTKUi -lTTKExtras -lzlib -lTTKZip
+LIBS += -L$$DESTDIR/$$TTKVersion -lTTKCore
+unix:LIBS += -L$$DESTDIR/$$TTKVersion -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
 
 win32:msvc{
     CONFIG += c++11
@@ -61,8 +61,6 @@ HEADERS += \
 INCLUDEPATH += \
     $$PWD/../ \
     $$PWD/../../TTKCommon \
-    $$PWD/../../TTKThirdParty \
-    $$PWD/../../TTKThirdParty/TTKDumper \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits \
     $$PWD/../../TTKModule/TTKCore/downloadNetworkKits
 

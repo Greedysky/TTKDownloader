@@ -39,21 +39,19 @@ public:
     explicit DownloadAbstractTableWidget(QWidget *parent = nullptr);
     ~DownloadAbstractTableWidget();
 
-    /*!
-     * Clear current items.
-     */
-    void clear();
-
 public Q_SLOTS:
     /*!
-     * Table widget list cell enter.
+     * Table widget item cell enter.
      */
-    virtual void listCellEntered(int row, int column);
+    virtual void itemCellEntered(int row, int column);
     /*!
-     * Table widget list cell click.
-     * Subclass should implement this function.
+     * Table widget item cell click.
      */
-    virtual void listCellClicked(int row, int column) = 0;
+    virtual void itemCellClicked(int row, int column);
+    /*!
+     * Remove all items.
+     */
+    virtual void removeItems();
 
 protected:
     /*!
@@ -63,7 +61,7 @@ protected:
 
     int m_previousColorRow;
     int m_previousClickRow;
-    QColor m_defaultBkColor;
+    QColor m_backgroundColor;
 
 };
 

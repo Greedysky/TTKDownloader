@@ -24,7 +24,9 @@ HEADERS += \
     $$PWD/downloadnumberutils.h \
     $$PWD/downloadwidgetutils.h \
     $$PWD/downloadurlutils.h \
-    $$PWD/downloadcodecutils.h
+    $$PWD/downloadcodecutils.h \
+    $$PWD/downloadfileutils.h \
+    $$PWD/downloadimageutils.h
 
 SOURCES += \
     $$PWD/downloadalgorithmutils.cpp \
@@ -32,4 +34,6 @@ SOURCES += \
     $$PWD/downloadnumberutils.cpp \
     $$PWD/downloadwidgetutils.cpp \
     $$PWD/downloadurlutils.cpp \
-    $$PWD/downloadcodecutils.cpp
+    $$PWD/downloadcodecutils.cpp \
+    $$PWD/downloadfileutils.cpp \
+    $$PWD/downloadimageutils.cpp

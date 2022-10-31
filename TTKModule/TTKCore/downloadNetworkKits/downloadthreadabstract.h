@@ -23,7 +23,7 @@
 #include <QTimer>
 #include "downloadobject.h"
 #include "downloadnetworkabstract.h"
-#include "downloadnumberdefine.h"
+#include "ttknumberdefine.h"
 
 /*! @brief The class of abstract downloading data.
  * @author Greedysky <greedysky@163.com>

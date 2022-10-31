@@ -19,7 +19,8 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadabstractxml.h"
+#include "downloadobject.h"
+#include "ttkabstractxml.h"
 
 /*! @brief The class of the local download record item.
  * @author Greedysky <greedysky@163.com>
@@ -36,7 +37,7 @@ TTK_DECLARE_LIST(DownloadRecord);
 /*! @brief The class of the download record manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadRecordConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadRecordConfigManager)
@@ -49,7 +50,7 @@ public:
     /*!
      * Read history download datas from xml file by given name.
      */
-    inline bool readDownloadXMLConfig() { return readConfig(HISTORY_PATH_FULL); }
+    inline bool readDownloadXMLConfig() { return fromFile(HISTORY_PATH_FULL); }
 
     /*!
      * Write history download datas into xml file.

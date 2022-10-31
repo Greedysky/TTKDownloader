@@ -21,18 +21,13 @@
 
 #include "ttkglobaldefine.h"
 
-/*! @brief The class of the utils url object namespace.
+/*! @brief The namespace of the utils url.
  * @author Greedysky <greedysky@163.com>
  */
 namespace DownloadUtils
 {
     namespace Url
     {
-        /*!
-         * Open file from local by path or net url.
-         */
-        TTK_MODULE_EXPORT bool openUrl(const QString &exe, const QString &path);
-
         /*!
          * Open file from local by path or net url.
          */

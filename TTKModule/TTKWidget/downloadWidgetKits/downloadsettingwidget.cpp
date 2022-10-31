@@ -39,7 +39,7 @@ void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunc
     }
 }
 
-void DownloadFunctionTableWidget::listCellClicked(int row, int column)
+void DownloadFunctionTableWidget::itemCellClicked(int row, int column)
 {
     Q_UNUSED(column);
     Q_EMIT currentIndexChanged(row + m_listIndex);
@@ -49,7 +49,7 @@ void DownloadFunctionTableWidget::listCellClicked(int row, int column)
 void DownloadFunctionTableWidget::leaveEvent(QEvent *event)
 {
     QTableWidget::leaveEvent(event);
-    listCellEntered(-1, -1);
+    itemCellEntered(-1, -1);
 }
 
 

@@ -19,7 +19,8 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadabstractxml.h"
+#include "downloadobject.h"
+#include "ttkabstractxml.h"
 
 /*! @brief The class of the break point item.
  * @author Greedysky <greedysky@163.com>
@@ -49,7 +50,7 @@ TTK_DECLARE_LIST(DownloadBreakPointItem);
 /*! @brief The class of the break point config manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public TTKAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBreakPointConfigManager)

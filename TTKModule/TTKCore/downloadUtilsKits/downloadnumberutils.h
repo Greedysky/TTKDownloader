@@ -21,7 +21,7 @@
 
 #include "ttkglobaldefine.h"
 
-/*! @brief The class of the utils number object namespace.
+/*! @brief The namespace of the utils number.
  * @author Greedysky <greedysky@163.com>
  */
 namespace DownloadUtils

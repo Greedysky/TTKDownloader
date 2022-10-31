@@ -19,14 +19,13 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QLabel>
-#include <QDialog>
-#include "ttkglobaldefine.h"
+#include "downloadwidgetrenderer.h"
+#include "ttkabstractmovedialog.h"
 
 /*! @brief The class of the moving dialog base.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadAbstractMoveDialog : public QDialog
+class TTK_MODULE_EXPORT DownloadAbstractMoveDialog : public TTKAbstractMoveDialog, protected DownloadWidgetRenderer
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractMoveDialog)
@@ -41,19 +40,6 @@ public:
     explicit DownloadAbstractMoveDialog(bool transparent, QWidget *parent = nullptr);
     ~DownloadAbstractMoveDialog();
 
-    /*!
-     * Set or not draw window bound shadow.
-     */
-    inline void drawWindowShadow(bool show) { m_showShadow = show;}
-    /*!
-     * Set or not block widget moving.
-     */
-    inline void blockMoveOption(bool block) { m_moveOption = block;}
-    /*!
-     * Set background label.
-     */
-    inline void setBackgroundLabel(QLabel *label) { m_background = label; }
-
 public Q_SLOTS:
     /*!
      * Background image changed.
@@ -67,24 +53,6 @@ public Q_SLOTS:
      * Override show function.
      */
     void show();
-
-protected:
-    /*!
-     * Override the widget event.
-     */
-    virtual void paintEvent(QPaintEvent *event) override final;
-    virtual void mousePressEvent(QMouseEvent *event) override final;
-    virtual void mouseMoveEvent(QMouseEvent *event) override final;
-    virtual void mouseReleaseEvent(QMouseEvent *event) override final;
-    /*!
-     * Set background pixmap.
-     */
-    void setBackgroundPixmap(const QSize &size);
-
-    QPoint m_pressAt;
-    bool m_moveOption, m_showShadow;
-    bool m_leftButtonPress;
-    QLabel *m_background;
 
 };
 

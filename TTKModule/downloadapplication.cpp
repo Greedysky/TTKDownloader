@@ -17,7 +17,7 @@
 DownloadApplication *DownloadApplication::m_instance = nullptr;
 
 DownloadApplication::DownloadApplication(QWidget *parent)
-    : DownloadAbstractMoveResizeWidget(parent),
+    : TTKAbstractMoveResizeWidget(parent),
       m_ui(new Ui::DownloadApplication)
 {
     m_instance = this;
@@ -130,12 +130,12 @@ void DownloadApplication::resizeEvent(QResizeEvent *event)
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, size());
     m_topAreaWidget->backgroundThemeChangedByResize();
     m_rightAreaWidget->resizeWindow();
-    DownloadAbstractMoveResizeWidget::resizeEvent(event);
+    TTKAbstractMoveResizeWidget::resizeEvent(event);
 }
 
 void DownloadApplication::closeEvent(QCloseEvent *event)
 {
-    DownloadAbstractMoveResizeWidget::closeEvent(event);
+    TTKAbstractMoveResizeWidget::closeEvent(event);
     event->ignore();
     if(!m_bottomAreaWidget->systemCloseConfig() && m_bottomAreaWidget->systemTrayIsVisible())
     {
@@ -152,7 +152,11 @@ void DownloadApplication::mouseDoubleClickEvent(QMouseEvent *event)
 {
     if(event->pos().y() <= m_ui->topWidget->height())
     {
-        DownloadAbstractMoveResizeWidget::mouseDoubleClickEvent(event);
+        TTKAbstractMoveResizeWidget::mouseDoubleClickEvent(event);
+        if(event->buttons() == Qt::LeftButton)
+        {
+            isMaximized() ? showNormal() : showMaximized();
+        }
     }
     else
     {

@@ -20,7 +20,8 @@
  ***************************************************************************/
 
 #include <QPixmap>
-#include "downloadabstractxml.h"
+#include "downloadobject.h"
+#include "ttkabstractxml.h"
 
 /*! @brief The class of the skin config item.
  * @author Greedysky <greedysky@163.com>
@@ -61,7 +62,7 @@ struct TTK_MODULE_EXPORT DownloadBackgroundImage
 /*! @brief The class of the skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSkinConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadSkinConfigManager : public TTKAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinConfigManager)

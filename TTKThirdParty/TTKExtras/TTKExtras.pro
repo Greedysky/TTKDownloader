@@ -23,7 +23,7 @@ include($$PWD/../../TTKVersion.pri)
 
 CONFIG += plugin lib
 
-DESTDIR = $$OUT_PWD/../../bin/$$TTKDownloader
+DESTDIR = $$OUT_PWD/../../bin/$$TTKVersion
 TARGET = TTKExtras
 
 TEMPLATE = lib
@@ -40,7 +40,7 @@ win32:msvc{
     }
 }
 
-include($$PWD/../TTKExtrasDefine.pri)
+include($$PWD/../TTKThirdParty.pri)
 
 include($$PWD/qjson/QJson.pri)
 include($$PWD/qshortcut/QShortCut.pri)

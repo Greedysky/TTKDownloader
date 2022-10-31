@@ -21,7 +21,7 @@
 
 #include "ttkglobaldefine.h"
 
-/*! @brief The class of the utils core object namespace.
+/*! @brief The namespace of the utils core.
  * @author Greedysky <greedysky@163.com>
  */
 namespace DownloadUtils
@@ -32,10 +32,6 @@ namespace DownloadUtils
          * Get download dir path.
          */
         TTK_MODULE_EXPORT QString downloadPrefix();
-        /*!
-         * Dir remove recursively.
-         */
-        TTK_MODULE_EXPORT bool removeRecursively(const QString &dir);
 
     }
 }

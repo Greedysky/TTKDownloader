@@ -21,7 +21,7 @@
 
 #include "ttkglobaldefine.h"
 
-/*! @brief The class of the utils widget object namespace.
+/*! @brief The namespace of the utils widget.
  * @author Greedysky <greedysky@163.com>
  */
 namespace DownloadUtils
@@ -33,40 +33,9 @@ namespace DownloadUtils
          */
         TTK_MODULE_EXPORT void setTransparent(QWidget *widget, int alpha);
         /*!
-         * Set fusion two image.
+         * Set widget transparent.
          */
-        TTK_MODULE_EXPORT void fusionPixmap(QPixmap &bg, const QPixmap &fg, const QPoint &pt);
-        /*!
-         * Get pximap data.
-         */
-        TTK_MODULE_EXPORT QByteArray generatePixmapData(const QPixmap &pix);
-
-        /*!
-         * Rerender the custum value.
-         */
-        template <typename T>
-        TTK_MODULE_EXPORT T reRenderValue(const T &key, const T &alpha, const T &value)
-        {
-            if(alpha < 0)
-            {
-                return 0;
-            }
-            else if(alpha > key)
-            {
-                return key;
-            }
-            return (key - alpha) * 1.0 / 100 * value + alpha;
-        }
-
-        /*!
-        * Rerender the image by color burn transform.
-        */
-        TTK_MODULE_EXPORT void reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output);
-
-        /*!
-         * Get open file dialog.
-         */
-        TTK_MODULE_EXPORT QString openFileDialog(QWidget *obj);
+        TTK_MODULE_EXPORT void setTransparent(QWidget *widget, const QColor &color);
 
     }
 }

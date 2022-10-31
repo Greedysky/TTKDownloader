@@ -21,7 +21,7 @@
 
 #include "downloadtoolmenuwidget.h"
 
-class DownloadClickedSlider;
+class TTKClickedSlider;
 
 /*! @brief The class of the background popup widget.
  * @author Greedysky <greedysky@163.com>
@@ -72,7 +72,7 @@ private:
      */
     void initialize();
 
-    DownloadClickedSlider *m_slider;
+    TTKClickedSlider *m_slider;
 
 };
 

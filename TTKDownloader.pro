@@ -20,7 +20,7 @@ include($$PWD/TTKVersion.pri)
 
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = TTKUi TTKThirdParty TTKModule TTKService TTKRun
+SUBDIRS = TTKCommon TTKUi TTKThirdParty TTKModule TTKService TTKRun
 
 TRANSLATIONS += $$PWD/TTKLanguage/cn.ts
 
@@ -44,7 +44,7 @@ isEmpty(LRELEASE_EXECUTABLE){
 }
 
 unix{
-    output = $$OUT_PWD/bin/$$TTKDownloader/GLanguage
+    output = $$OUT_PWD/bin/$$TTKVersion/GLanguage
     !exists($$output):system(mkdir -p $$output)
 
     system(find $$PWD/TTKLanguage -name *.ts | xargs $$LRELEASE_EXECUTABLE)
@@ -53,7 +53,7 @@ unix{
 }
 
 win32{
-    output = $$OUT_PWD/bin/$$TTKDownloader/GLanguage
+    output = $$OUT_PWD/bin/$$TTKVersion/GLanguage
     output = $$replace(output, /, \\)
     !exists($$output):system(md $$output)
 

@@ -22,24 +22,22 @@ HEADERS += \
     $$PWD/downloadabstractmovedialog.h \
     $$PWD/downloadabstractmovewidget.h \
     $$PWD/downloadabstracttablewidget.h \
-    $$PWD/downloadabstractmoveresizewidget.h \
     $$PWD/downloadanimationstackedwidget.h \
     $$PWD/downloadtransitionanimationlabel.h \
-    $$PWD/downloadclickedslider.h \
     $$PWD/downloadcolordialog.h \
     $$PWD/downloadmessagebox.h \
     $$PWD/downloadtoolmenuwidget.h \
-    $$PWD/downloadtoollabelbutton.h
+    $$PWD/downloadtoollabelbutton.h \
+    $$PWD/downloadwidgetrenderer.h
 
 SOURCES += \
     $$PWD/downloadabstractmovedialog.cpp \
     $$PWD/downloadabstractmovewidget.cpp \
     $$PWD/downloadabstracttablewidget.cpp \
-    $$PWD/downloadabstractmoveresizewidget.cpp \
     $$PWD/downloadanimationstackedwidget.cpp \
     $$PWD/downloadtransitionanimationlabel.cpp \
-    $$PWD/downloadclickedslider.cpp \
     $$PWD/downloadmessagebox.cpp \
     $$PWD/downloadcolordialog.cpp \
     $$PWD/downloadtoolmenuwidget.cpp \
-    $$PWD/downloadtoollabelbutton.cpp
+    $$PWD/downloadtoollabelbutton.cpp \
+    $$PWD/downloadwidgetrenderer.cpp

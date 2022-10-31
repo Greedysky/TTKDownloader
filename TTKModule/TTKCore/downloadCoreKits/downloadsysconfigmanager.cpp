@@ -5,7 +5,7 @@
 #include <QRect>
 
 DownloadSysConfigManager::DownloadSysConfigManager(QObject *parent)
-    : DownloadAbstractXml(parent)
+    : TTKAbstractXml(parent)
 {
 
 }
@@ -36,7 +36,7 @@ void DownloadSysConfigManager::writeXMLConfig()
     int skinSuspensionChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toInt();
     int skinSuspensionPerChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toInt();
 
-    if(!writeConfig(COFIG_PATH_FULL))
+    if(!toFile(COFIG_PATH_FULL))
     {
         return;
     }
@@ -48,29 +48,29 @@ void DownloadSysConfigManager::writeXMLConfig()
     QDomElement downloadSettingDom = writeDomNode(rootDom, "downloadSetting");
     QDomElement skinSettingDom = writeDomNode(rootDom, "skinSetting");
 
-    writeDomElement(plusSettingDom, "geometry", DownloadXmlAttribute("value", QString("%1,%2,%3,%4").arg(widgetPositionChoiced.x())
+    writeDomElement(plusSettingDom, "geometry", TTKXmlAttribute("value", QString("%1,%2,%3,%4").arg(widgetPositionChoiced.x())
                     .arg(widgetPositionChoiced.y()).arg(widgetSizeChoiced.width()).arg(widgetSizeChoiced.height())));
-    writeDomElement(plusSettingDom, "closeEvent", DownloadXmlAttribute("value", closeEventChoiced));
-    writeDomElement(plusSettingDom, "closeNetwork", DownloadXmlAttribute("value", closeNetWorkChoiced));
-    writeDomElement(plusSettingDom, "fileAssociation", DownloadXmlAttribute("value", fileAssociationChoiced));
-    writeDomElement(plusSettingDom, "startUpMode", DownloadXmlAttribute("value", startupModeChoiced));
-    writeDomElement(plusSettingDom, "startUpRunMode", DownloadXmlAttribute("value", startupRunModeChoiced));
-    writeDomElement(plusSettingDom, "slienceRunMode", DownloadXmlAttribute("value", slienceRunModeChoiced));
+    writeDomElement(plusSettingDom, "closeEvent", TTKXmlAttribute("value", closeEventChoiced));
+    writeDomElement(plusSettingDom, "closeNetwork", TTKXmlAttribute("value", closeNetWorkChoiced));
+    writeDomElement(plusSettingDom, "fileAssociation", TTKXmlAttribute("value", fileAssociationChoiced));
+    writeDomElement(plusSettingDom, "startUpMode", TTKXmlAttribute("value", startupModeChoiced));
+    writeDomElement(plusSettingDom, "startUpRunMode", TTKXmlAttribute("value", startupRunModeChoiced));
+    writeDomElement(plusSettingDom, "slienceRunMode", TTKXmlAttribute("value", slienceRunModeChoiced));
 
-    writeDomElement(backgroundSettingDom, "bgTheme", DownloadXmlAttribute("value", bgThemeChoiced));
-    writeDomElement(backgroundSettingDom, "bgTransparent", DownloadXmlAttribute("value", bgTransparentChoiced));
+    writeDomElement(backgroundSettingDom, "bgTheme", TTKXmlAttribute("value", bgThemeChoiced));
+    writeDomElement(backgroundSettingDom, "bgTransparent", TTKXmlAttribute("value", bgTransparentChoiced));
 
-    writeDomElement(downloadSettingDom, "downloadLimit", DownloadXmlAttribute("value", downloadLimit));
-    writeDomElement(downloadSettingDom, "downloadMode", DownloadXmlAttribute("value", downloadModeChoiced));
-    writeDomElement(downloadSettingDom, "downloadMaxCount", DownloadXmlAttribute("value", downloadMaxCountChoiced));
-    writeDomElement(downloadSettingDom, "downloadPathDir", DownloadXmlAttribute("value", downloadPathDir));
-    writeDomElement(downloadSettingDom, "downloadDLoadLimit", DownloadXmlAttribute("value", downloadDLoadLimit));
-    writeDomElement(downloadSettingDom, "downloadULoadLimit", DownloadXmlAttribute("value", downloadULoadLimit));
+    writeDomElement(downloadSettingDom, "downloadLimit", TTKXmlAttribute("value", downloadLimit));
+    writeDomElement(downloadSettingDom, "downloadMode", TTKXmlAttribute("value", downloadModeChoiced));
+    writeDomElement(downloadSettingDom, "downloadMaxCount", TTKXmlAttribute("value", downloadMaxCountChoiced));
+    writeDomElement(downloadSettingDom, "downloadPathDir", TTKXmlAttribute("value", downloadPathDir));
+    writeDomElement(downloadSettingDom, "downloadDLoadLimit", TTKXmlAttribute("value", downloadDLoadLimit));
+    writeDomElement(downloadSettingDom, "downloadULoadLimit", TTKXmlAttribute("value", downloadULoadLimit));
 
-    writeDomElement(skinSettingDom, "skinEffectLevel", DownloadXmlAttribute("value", skinEffectLevelChoiced));
-    writeDomElement(skinSettingDom, "skinFont", DownloadXmlAttribute("value", skinFontChoiced));
-    writeDomElement(skinSettingDom, "skinSuspension", DownloadXmlAttribute("value", skinSuspensionChoiced));
-    writeDomElement(skinSettingDom, "skinSuspensionPer", DownloadXmlAttribute("value", skinSuspensionPerChoiced));
+    writeDomElement(skinSettingDom, "skinEffectLevel", TTKXmlAttribute("value", skinEffectLevelChoiced));
+    writeDomElement(skinSettingDom, "skinFont", TTKXmlAttribute("value", skinFontChoiced));
+    writeDomElement(skinSettingDom, "skinSuspension", TTKXmlAttribute("value", skinSuspensionChoiced));
+    writeDomElement(skinSettingDom, "skinSuspensionPer", TTKXmlAttribute("value", skinSuspensionPerChoiced));
 
     QTextStream out(m_file);
     m_document->save(out, 4);

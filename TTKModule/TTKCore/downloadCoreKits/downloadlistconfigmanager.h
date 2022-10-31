@@ -19,7 +19,8 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadabstractxml.h"
+#include "downloadobject.h"
+#include "ttkabstractxml.h"
 
 /*! @brief The class of the local download list item.
  * @author Greedysky <greedysky@163.com>
@@ -34,7 +35,7 @@ TTK_DECLARE_LIST(DownloadItem);
 /*! @brief The class of the download list manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadListConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadListConfigManager : public TTKAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadListConfigManager)
@@ -47,7 +48,7 @@ public:
     /*!
      * Read list download datas from xml file by given name.
      */
-    inline bool readListXMLConfig() { return readConfig(LIST_PATH_FULL); }
+    inline bool readListXMLConfig() { return fromFile(LIST_PATH_FULL); }
 
     /*!
      * Write list download datas into xml file.

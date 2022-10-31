@@ -1,6 +1,6 @@
 #include "downloadbackgroundpopwidget.h"
 #include "downloaduiobject.h"
-#include "downloadclickedslider.h"
+#include "ttkclickedslider.h"
 
 #include <QLabel>
 #include <QBoxLayout>
@@ -50,7 +50,7 @@ void DownloadBackgroundPopWidget::initialize()
     textLabel->setStyleSheet(DownloadUIObject::MColorStyle02);
     textLabel->setText("100%\n\n\n\n\n50%\n\n\n\n\n0%");
 
-    m_slider = new DownloadClickedSlider(Qt::Vertical, m_containWidget);
+    m_slider = new TTKClickedSlider(Qt::Vertical, m_containWidget);
     m_slider->setStyleSheet(DownloadUIObject::MSliderStyle03);
     connect(m_slider, SIGNAL(valueChanged(int)), SIGNAL(valueChanged(int)));
     connect(m_slider, SIGNAL(sliderPressed()), SLOT(sliderPressed()));

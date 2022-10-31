@@ -6,7 +6,7 @@
 #include "downloadobject.h"
 #include "downloadtopareawidget.h"
 #include "downloadotherdefine.h"
-#include "downloadwidgetutils.h"
+#include "downloadfileutils.h"
 #include "downloadextractwrapper.h"
 #include "downloaduiobject.h"
 #include "downloadotherdefine.h"
@@ -172,7 +172,7 @@ void DownloadBackgroundSkinDialog::showPaletteDialog(const QString &path)
 
 void DownloadBackgroundSkinDialog::showCustomSkinDialog()
 {
-    const QString &customSkinPath = DownloadUtils::Widget::openFileDialog(this);
+    const QString &customSkinPath = DownloadUtils::File::getOpenFileName(this);
     if(customSkinPath.isEmpty())
     {
         return;

@@ -3,7 +3,7 @@
 #include "downloadtinyuiobject.h"
 #include "downloadapplication.h"
 #include "downloadbackgroundskindialog.h"
-#include "downloadwidgetutils.h"
+#include "downloadimageutils.h"
 #include "downloadsettingmanager.h"
 #include "downloadbackgroundmanager.h"
 #include "downloadremotewidget.h"
@@ -167,7 +167,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
     }
 
     qint64 average = 0;
-    DownloadUtils::Widget::reRenderImage(average, 35, &origin, &origin);
+    DownloadUtils::Image::reRenderImage(average, 35, &origin, &origin);
     G_BACKGROUND_PTR->setBackgroundColor(average);
 
     m_backgroundImage = origin;
@@ -176,7 +176,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
 
 void DownloadTopAreaWidget::drawWindowBackgroundRectString()
 {
-    float v = DownloadUtils::Widget::reRenderValue<float>(1.0f, 0.35f, m_backgroundAlpha);
+    float v = DownloadUtils::Image::reRenderValue<float>(1.0f, 0.35f, m_backgroundAlpha);
     DownloadApplication::instance()->setWindowOpacity(v);
 
     QSize size(G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize());

@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadabstractxml.h"
+#include "ttkabstractxml.h"
 
 /*! @brief The class of the remote skin item.
  * @author Greedysky <greedysky@163.com>
@@ -63,7 +63,7 @@ TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
 /*! @brief The class of the remote skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSkinRemoteConfigManager : public DownloadAbstractXml
+class TTK_MODULE_EXPORT DownloadSkinRemoteConfigManager : public TTKAbstractXml
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinRemoteConfigManager)

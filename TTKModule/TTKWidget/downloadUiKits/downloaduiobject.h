@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QObject>
+#include "ttkglobal.h"
 
 /*! @brief The namespace of the application ui object.
  * @author Greedysky <greedysky@163.com>
@@ -486,14 +486,26 @@ namespace DownloadUIObject
 
 ///TableWidget
 //////////////////////////////////////////////////////
-    const QString MTableWidgetStyle01 = " \
-            QTableWidget{ selection-background-color:rgba(20, 20, 20, 20);}";
+    const QString MTableWidgetStyle01 =
+#if defined Q_OS_UNIX && !TTK_QT_VERSION_CHECK(5,7,0) //Fix linux selection-background-color stylesheet bug
+            "QTableWidget::item:selected{ background:rgba(20, 20, 20, 20); }";
+#else
+            "QTableWidget{ selection-background-color:rgba(20, 20, 20, 20); }";
+#endif
 
-    const QString MTableWidgetStyle02 = " \
-            QTableWidget{ selection-background-color:rgb(220, 220, 220);}";
+    const QString MTableWidgetStyle02 =
+#if defined Q_OS_UNIX && !TTK_QT_VERSION_CHECK(5,7,0) //Fix linux selection-background-color stylesheet bug
+            "QTableWidget::item:selected{ background:rgb(220, 220, 220); }";
+#else
+            "QTableWidget{ selection-background-color:rgb(220, 220, 220); }";
+#endif
 
-    const QString MTableWidgetStyle03 = " \
-            QTableWidget{ selection-background-color:rgb(50, 50, 50);}";
+    const QString MTableWidgetStyle03 =
+#if defined Q_OS_UNIX && !TTK_QT_VERSION_CHECK(5,7,0) //Fix linux selection-background-color stylesheet bug
+            "QTableWidget::item:selected{ background:rgb(50, 50, 50); }";
+#else
+            "QTableWidget{ selection-background-color:rgb(50, 50, 50); }";
+#endif
 
     const QString MTableWidgetStyle04 = " \
             QTableWidget{ background:rgba(0, 0, 0, 255);}";
