@@ -2,7 +2,7 @@
 #define DOWNLOADWIDGETRENDERER_H
 
 /***************************************************************************
- * This file is part of the TTK OCR project
+ * This file is part of the TTK Downloader project
  * Copyright (C) 2015 - 2022 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
