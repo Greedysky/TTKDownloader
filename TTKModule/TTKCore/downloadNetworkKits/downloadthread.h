@@ -25,7 +25,7 @@
 class QFile;
 class QNetworkAccessManager;
 
-/*! @brief The class of download thread.
+/*! @brief The class of the download thread.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadThread : public QObject

@@ -81,7 +81,7 @@ public:
 };
 
 
-/*! @brief The class of download skin remote background.
+/*! @brief The class of the download skin remote background.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadBackgroundRemoteThread : public QObject

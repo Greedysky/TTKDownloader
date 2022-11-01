@@ -23,7 +23,7 @@
 
 #define THREADCOUNT 1
 
-/*! @brief The class of download thread manager.
+/*! @brief The class of the download thread manager.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadThreadManager : public QObject

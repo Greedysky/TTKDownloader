@@ -9,7 +9,7 @@
 
 #define TTK_DEBUG
 
-void loadAppScaledFactor(int argc, char *argv[])
+static void loadAppScaledFactor(int argc, char *argv[])
 {
 #if TTK_QT_VERSION_CHECK(5,4,0)
 #  if TTK_QT_VERSION_CHECK(6,0,0)

@@ -25,7 +25,7 @@
 
 #define G_NETWORK_PTR (TTKSingleton<DownloadNetworkThread>::createInstance())
 
-/*! @brief The class of thread to check current network.
+/*! @brief The class of the thread to check current network.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadNetworkThread : public QObject

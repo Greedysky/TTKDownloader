@@ -24,7 +24,7 @@
 class DownloadThreadManager;
 class DownloadListItemWidget;
 
-/*! @brief The class of download thread manager.
+/*! @brief The class of the download thread manager.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadUnits : public QObject

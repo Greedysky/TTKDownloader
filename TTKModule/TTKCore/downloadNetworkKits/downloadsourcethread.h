@@ -21,7 +21,7 @@
 
 #include "downloadnetworkabstract.h"
 
-/*! @brief The class of source data download thread.
+/*! @brief The class of the source data download thread.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadSourceThread : public DownloadNetworkAbstract

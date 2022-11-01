@@ -23,7 +23,7 @@
 #include <QSslConfiguration>
 #include "downloadalgorithmutils.h"
 
-/*! @brief The class of abstract downloading data.
+/*! @brief The class of the abstract downloading data.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadNetworkAbstract : public QObject
