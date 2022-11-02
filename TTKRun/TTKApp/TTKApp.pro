@@ -16,15 +16,15 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-QT += core gui network
-greaterThan(QT_MAJOR_VERSION, 4):QT += widgets
+QT += core
+
+TEMPLATE = app
 
 include($$PWD/../../TTKVersion.pri)
 
 DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKDownloader
 
-TEMPLATE = app
 DEFINES += TTK_LIBRARY
 
 win32:msvc{

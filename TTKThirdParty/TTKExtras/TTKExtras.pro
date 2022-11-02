@@ -17,16 +17,18 @@
 # ***************************************************************************
 
 QT += core gui
-greaterThan(QT_MAJOR_VERSION, 4):QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4){ #Qt5
+    QT += widgets
+}
+
+TEMPLATE = lib
+CONFIG += plugin lib
 
 include($$PWD/../../TTKVersion.pri)
-
-CONFIG += plugin lib
 
 DESTDIR = $$OUT_PWD/../../bin/$$TTKVersion
 TARGET = TTKExtras
 
-TEMPLATE = lib
 DEFINES += TTK_LIBRARY
 
 win32:msvc{
@@ -40,6 +42,7 @@ win32:msvc{
     }
 }
 
+#load extra define
 include($$PWD/../TTKThirdParty.pri)
 
 include($$PWD/qjson/QJson.pri)

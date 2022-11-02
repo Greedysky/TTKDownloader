@@ -18,15 +18,15 @@
 
 QT += core network xml
 
+TEMPLATE = app
+CONFIG += console
+
 include($$PWD/../../TTKVersion.pri)
 
 DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKConsole
 
-TEMPLATE = app
 DEFINES += TTK_LIBRARY
-
-CONFIG += console
 
 ##openssl lib check
 win32{
@@ -38,9 +38,6 @@ unix:!mac{
     SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKVersion/libssleay32.so
     exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKVersion -lssl
 }
-
-LIBS += -L$$DESTDIR/$$TTKVersion -lTTKCore
-unix:LIBS += -L$$DESTDIR/$$TTKVersion -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
 
 win32:msvc{
     CONFIG += c++11
@@ -57,6 +54,9 @@ HEADERS += \
         QMAKE_CXXFLAGS += -std=c++11
     }
 }
+
+LIBS += -L$$DESTDIR/$$TTKVersion -lTTKCore
+unix:LIBS += -L$$DESTDIR/$$TTKVersion -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
 
 INCLUDEPATH += \
     $$PWD/../ \

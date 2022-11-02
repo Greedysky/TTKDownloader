@@ -17,7 +17,7 @@
 # ***************************************************************************
 
 QT += core gui network xml
-equals(QT_MAJOR_VERSION, 4){
+equals(QT_MAJOR_VERSION, 4){ #Qt4
     CONFIG += gcc
 }
 
@@ -39,7 +39,7 @@ win32{
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 unix:!mac{
-    SSL_DEPANDS = $$OUT_PWD/../lib/$$TTKVersion/libssleay32.so
+    SSL_DEPANDS = $$DESTDIR/libssleay32.so
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 
