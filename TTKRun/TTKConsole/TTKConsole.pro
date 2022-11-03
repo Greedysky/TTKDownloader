@@ -56,7 +56,7 @@ HEADERS += \
 }
 
 LIBS += -L$$DESTDIR/$$TTKVersion -lTTKCore
-unix:LIBS += -L$$DESTDIR/$$TTKVersion -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
+unix:LIBS += -L$$DESTDIR/$$TTKVersion -lTTKLibrary -lTTKUi -lTTKExtras -lTTKZip -lzlib
 
 INCLUDEPATH += \
     $$PWD/../ \

@@ -52,7 +52,7 @@ win32{
              QMAKE_LFLAGS_WINDOWS = /SUBSYSTEM:WINDOWS,5.01
              QMAKE_LFLAGS_CONSOLE = /SUBSYSTEM:CONSOLE,5.01
         }
-        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip -lshell32 -luser32
+        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lTTKZip -lzlib -lshell32 -luser32
     }
 
     gcc{
@@ -62,7 +62,7 @@ win32{
             QMAKE_CXXFLAGS += -std=c++11
         }
         QMAKE_CXXFLAGS += -Wunused-function -Wswitch
-        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
+        LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lTTKZip -lzlib
     }
 
     equals(QT_MAJOR_VERSION, 4):QT += multimedia
@@ -75,7 +75,7 @@ unix:!mac{
         QMAKE_CXXFLAGS += -std=c++11
     }
     QMAKE_CXXFLAGS += -Wunused-function -Wswitch
-    LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lzlib -lTTKZip
+    LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lTTKZip -lzlib
 }
 
 DEFINES += TTK_LIBRARY
