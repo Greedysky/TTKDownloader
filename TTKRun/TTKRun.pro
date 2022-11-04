@@ -18,4 +18,4 @@
 
 TEMPLATE = subdirs
 CONFIG += ordered
-SUBDIRS = TTKInit TTKConsole TTKApp
+SUBDIRS += TTKInit TTKConsole TTKApp
