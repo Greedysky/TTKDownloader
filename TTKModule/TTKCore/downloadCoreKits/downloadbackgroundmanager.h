@@ -79,7 +79,7 @@ private:
 
     QColor m_skinColor;
     QStringList m_photos;
-    QList<QObject*> m_observer;
+    QObjectList m_observer;
     QString m_background;
 
     DECLARE_SINGLETON_CLASS(DownloadBackgroundManager)

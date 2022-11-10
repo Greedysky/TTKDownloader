@@ -271,7 +271,7 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
 
 void DownloadBackgroundSkinDialog::addThemeListWidgetItem()
 {
-    QList<QFileInfo> files(QDir(THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+    QFileInfoList files(QDir(THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
     for(const QFileInfo &fin : qAsConst(files))
     {
         m_backgroundList->createItem(fin.baseName(), fin.filePath(), false);
@@ -297,7 +297,7 @@ void DownloadBackgroundSkinDialog::cpoyFileFromLocal(const QString &path)
 
 int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
 {
-    QList<QFileInfo> files(QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+    QFileInfoList files(QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
     TTKIntList data;
     for(const QFileInfo &fin : qAsConst(files))
     {
