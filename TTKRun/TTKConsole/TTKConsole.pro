@@ -30,13 +30,13 @@ DEFINES += TTK_LIBRARY
 
 ##openssl lib check
 win32{
-    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKVersion/ssleay32.dll
+    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTK_VERSION/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
-    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKVersion -lssl
+    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTK_VERSION -lssl
 }
 unix:!mac{
-    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTKVersion/libssleay32.so
-    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTKVersion -lssl
+    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTK_VERSION/libssleay32.so
+    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTK_VERSION -lssl
 }
 
 win32:msvc{
@@ -55,8 +55,8 @@ HEADERS += \
     }
 }
 
-LIBS += -L$$DESTDIR/$$TTKVersion -lTTKCore
-unix:LIBS += -L$$DESTDIR/$$TTKVersion -lTTKLibrary -lTTKUi -lTTKExtras -lTTKZip -lzlib
+LIBS += -L$$DESTDIR/$$TTK_VERSION -lTTKCore
+unix:LIBS += -L$$DESTDIR/$$TTK_VERSION -lTTKLibrary -lTTKUi -lTTKExtras -lTTKZip -lzlib
 
 INCLUDEPATH += \
     $$PWD/../ \
