@@ -81,7 +81,6 @@ void DownloadTransitionAnimationLabel::paintEvent(QPaintEvent *event)
         paint.fillRect(rect(), QColor(0xFF, 0xFF, 0xFF, 2.55*m_currentValue));
         paint.setCompositionMode(QPainter::CompositionMode_SourceIn);
         paint.drawPixmap(rect(), m_currentPixmap);
-        paint.end();
 
         m_rendererPixmap = pixed;
         painter.drawPixmap(rect(), pixed);

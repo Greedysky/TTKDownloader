@@ -184,7 +184,6 @@ void DownloadTopAreaWidget::drawWindowBackgroundRectString()
     after.fill(Qt::transparent);
     QPainter paint(&after);
     paint.drawPixmap(0, 0, QPixmap::fromImage(m_backgroundImage.scaled(size, Qt::KeepAspectRatioByExpanding)));
-    paint.end();
 
     m_ui->background->setPixmap(after);
 }
