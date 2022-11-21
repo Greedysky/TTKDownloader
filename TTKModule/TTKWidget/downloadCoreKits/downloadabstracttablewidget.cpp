@@ -29,8 +29,8 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
 
     //Set the color of selected row
     setFrameShape(QFrame::NoFrame);//Set No Border
-    setEditTriggers(QTableWidget::NoEditTriggers);//No edit
-    setSelectionBehavior(QTableWidget::SelectRows);
+    setEditTriggers(QAbstractItemView::NoEditTriggers);//No edit
+    setSelectionBehavior(QAbstractItemView::SelectRows);
     //Multi-line election
     setSelectionMode(QAbstractItemView::SingleSelection);
     setFocusPolicy(Qt::NoFocus);

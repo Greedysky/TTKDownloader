@@ -144,7 +144,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
 
     m_readySize = 0;
     m_file = new QFile(fileName, this);
-    if(!m_file->open(QFile::WriteOnly))
+    if(!m_file->open(QIODevice::WriteOnly))
     {
         m_file->close();
         TTK_ERROR_STREAM("Can not open file : " + m_file->errorString());
