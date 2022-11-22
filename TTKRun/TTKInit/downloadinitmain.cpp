@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     DownloadInitObject object;
     object.initialize();
-    qDebug() << "Parameter Init success!";
+    TTK_INFO_STREAM("Parameter Init success!");
 
     Q_UNUSED(app);
     return 0;

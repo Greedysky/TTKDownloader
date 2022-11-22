@@ -2,11 +2,6 @@
 #include "downloadthreadmanager.h"
 #include "downloadsettingmanager.h"
 
-#if TTK_QT_VERSION_CHECK(5,2,0)
-#  include <QCommandLineOption>
-#  include <QCommandLineParser>
-#endif
-
 DownloadConsoleObject::DownloadConsoleObject(QObject *parent)
     : QObject(parent)
 {
@@ -22,48 +17,54 @@ DownloadConsoleObject::~DownloadConsoleObject()
 
 bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
 {
-#if TTK_QT_VERSION_CHECK(5,2,0)
-    QCommandLineOption op1("u", "", TTK_DOT);
-    QCommandLineOption op2("s", "", TTK_DOT);
+    TTKCommandLineOption op1("-u", "--url", "download url");
+    TTKCommandLineOption op2("-s", "--save", "download save path, if empty default is");
 
-    QCommandLineParser parser;
+    TTKCommandLineParser parser;
     parser.addOption(op1);
     parser.addOption(op2);
     parser.process(app);
 
-    if(app.arguments().count() == 1)
+    if(parser.isEmpty())
     {
-        qDebug() << "\nOptions:";
-        qDebug() << "-u //download url";
-        qDebug() << "-s //download save path, if empty default is .\n";
+        parser.printHelp();
         return false;
     }
 
-    QString url = parser.value(op1);
+    QString url, path = DownloadObject::applicationPath();
+    if(parser.isSet(op1))
+    {
+        url = parser.value(op1);
+        if(url.isEmpty())
+        {
+            TTK_INFO_STREAM("download url is empty!");
+            return false;
+        }
+    }
+
     if(url.isEmpty())
     {
-        qDebug() << "download url is empty!";
         return false;
     }
 
-    QString path = parser.value(op2);
-    if(path.isEmpty())
+    if(parser.isSet(op2))
     {
-        path = DownloadObject::applicationPath();
-        qDebug() << "download save path is empty, just use default '.' path!";
+        const QString &v = parser.value(op2);
+        if(!v.isEmpty())
+        {
+            path = v + TTK_SEPARATOR;
+        }
     }
+
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, path);
 
     m_manager->downloadFile(url);
-    qDebug() << "download save path :" << m_manager->downloadedPath();
-#else
-    qDebug() << "Qt version less than 5.2 not support commend line!";
-#endif
+    TTK_INFO_STREAM("download save path: " << m_manager->downloadedPath());
     return app.exec();
 }
 
 void DownloadConsoleObject::progressChanged(qint64 current, qint64 total)
 {
-    qDebug() << "process: " << TTKStatic_cast(int, (current*100000000.0/total))/1000000.0
-             << "% " << current << "kb " << total << "kb";
+    TTK_INFO_STREAM("process: " << TTKStatic_cast(int, (current * 100000000.0 / total)) / 1000000.0 <<
+                    "% " << current << "kb " << total << "kb");
 }
