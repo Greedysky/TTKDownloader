@@ -32,9 +32,7 @@ void DownloadRunTimeManager::run() const
 {
     TTK_INFO_STREAM("DownloadApplication Begin");
 
-#if !TTK_QT_VERSION_CHECK(5,0,0)
     DownloadUtils::Codec::setLocalCodec();
-#endif
 
     TTK_INFO_STREAM("Load Translation");
     DownloadSysConfigManager *xml = new DownloadSysConfigManager;

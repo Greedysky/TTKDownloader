@@ -31,7 +31,7 @@ namespace DownloadUtils
         /*!
          * Set local codec by format.
          */
-        TTK_MODULE_EXPORT void setLocalCodec(const char *format = "utf-8");
+        TTK_MODULE_EXPORT void setLocalCodec(const char *format = "UTF-8");
 
     }
 }

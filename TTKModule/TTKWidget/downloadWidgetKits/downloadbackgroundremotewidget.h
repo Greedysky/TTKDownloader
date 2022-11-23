@@ -61,7 +61,7 @@ public:
 
 Q_SIGNALS:
     /*!
-     * Reset the current bg when user click remote bg emit.
+     * Reset the current bg when user click remote bg.
      */
     void showCustomSkin(const QString &path);
 

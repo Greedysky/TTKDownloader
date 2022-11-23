@@ -71,7 +71,7 @@ public:
 
 Q_SIGNALS:
     /*!
-     * Update app bg when user change the current bg emit.
+     * Update app bg when user change the current bg.
      */
     void currentTextChanged(const QString &text);
 
