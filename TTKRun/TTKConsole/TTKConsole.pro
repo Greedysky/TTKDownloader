@@ -23,20 +23,20 @@ CONFIG += console
 
 include($$PWD/../../TTKVersion.pri)
 
-DESTDIR = $$OUT_PWD/../../bin
+DESTDIR = $$OUT_PWD/../../bin/$$TTK_VERSION
 TARGET = TTKConsole
 
 DEFINES += TTK_LIBRARY
 
 ##openssl lib check
 win32{
-    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTK_VERSION/ssleay32.dll
+    SSL_DEPANDS = $$DESTDIR/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
-    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTK_VERSION -lssl
+    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 unix:!mac{
-    SSL_DEPANDS = $$OUT_PWD/../../bin/$$TTK_VERSION/libssleay32.so
-    exists($$SSL_DEPANDS):LIBS += -L../../bin/$$TTK_VERSION -lssl
+    SSL_DEPANDS = $$DESTDIR/libssleay32.so
+    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 
 win32:msvc{
@@ -55,8 +55,8 @@ HEADERS += \
     }
 }
 
-LIBS += -L$$DESTDIR/$$TTK_VERSION -lTTKCore
-unix:LIBS += -L$$DESTDIR/$$TTK_VERSION -lTTKLibrary -lTTKUi -lTTKExtras -lTTKZip -lzlib
+LIBS += -L$$DESTDIR -lTTKCore -lTTKLibrary
+unix:LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lTTKZip -lzlib
 
 INCLUDEPATH += \
     $$PWD/../ \
