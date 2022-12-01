@@ -150,7 +150,7 @@ void DownloadListItemWidget::updateDownloadSpeed()
 QString DownloadListItemWidget::timeStandardization(qint64 time)
 {
     TTKTime t(time, TTKTime::Entity::Second);
-    return QString("%1:%2:%3").arg(QString::number(t.hour()).rightJustified(2, '0'))
-                              .arg(QString::number(t.minute()).rightJustified(2, '0'))
-                              .arg(QString::number(t.second()).rightJustified(2, '0'));
+    return QString("%1:%2:%3").arg(QString::number(t.hour()).rightJustified(2, '0'),
+                                   QString::number(t.minute()).rightJustified(2, '0'),
+                                   QString::number(t.second()).rightJustified(2, '0'));
 }
