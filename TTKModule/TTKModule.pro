@@ -24,8 +24,6 @@ include($$PWD/../TTKDownloader.pri)
 
 TARGET = TTKCore
 
-INCLUDEPATH += $$PWD
-
 HEADERS += \
     $$PWD/downloadapplication.h \
     $$PWD/downloadapplicationobject.h \
