@@ -23,9 +23,9 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     setMouseTracking(true);  //Open the capture mouse function
     setStyleSheet(DownloadUIObject::MTableWidgetStyle01 + DownloadUIObject::MScrollBarStyle03 + DownloadUIObject::MLineEditStyle01);
 
-    QFont f = font();
-    f.setBold(false);
-    setFont(f);
+    QFont font = this->font();
+    font.setBold(false);
+    setFont(font);
 
     //Set the color of selected row
     setFrameShape(QFrame::NoFrame);//Set No Border

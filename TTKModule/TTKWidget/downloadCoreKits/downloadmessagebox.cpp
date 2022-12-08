@@ -27,10 +27,10 @@ DownloadMessageBox::DownloadMessageBox(QWidget *parent)
     m_ui->cancelButton->setFocusPolicy(Qt::NoFocus);
 #endif
 
-    QFont f = font();
-    f.setFamily("Times New Roman");
-    setFont(f);
-    m_ui->textLabel->setFont(f);
+    QFont font = this->font();
+    font.setFamily("Times New Roman");
+    setFont(font);
+    m_ui->textLabel->setFont(font);
 
     QButtonGroup *buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(m_ui->topTitleCloseButton, 0);

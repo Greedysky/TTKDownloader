@@ -109,17 +109,17 @@ void DownloadBackgroundListItem::paintEvent(QPaintEvent *event)
         painter.setBrush(QColor(0, 0, 0, 155));
         painter.drawRect(rect());
 
-        QFont f = painter.font();
-        f.setPixelSize(13);
-        painter.setFont(f);
-        const QFontMetrics ft(painter.font());
+        QFont font = painter.font();
+        font.setPixelSize(13);
+        painter.setFont(font);
+        const QFontMetrics ftm(font);
 
         painter.setPen(Qt::white);
         QString v = QString::number(m_imageInfo.m_useCount);
-        painter.drawText((width() - QtFontWidth(ft, v)) / 2, 30, v);
+        painter.drawText((width() - QtFontWidth(ftm, v)) / 2, 30, v);
 
         v = m_imageInfo.m_name;
-        painter.drawText((width() - QtFontWidth(ft, v)) / 2, 48, v);
+        painter.drawText((width() - QtFontWidth(ftm, v)) / 2, 48, v);
     }
 
     if(m_closeSet && m_closeMask)
