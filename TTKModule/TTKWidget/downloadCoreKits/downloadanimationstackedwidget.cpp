@@ -25,13 +25,13 @@ DownloadAnimationStackedWidget::~DownloadAnimationStackedWidget()
     delete m_animation;
 }
 
-void DownloadAnimationStackedWidget::paintEvent(QPaintEvent * event)
+void DownloadAnimationStackedWidget::paintEvent(QPaintEvent *event)
 {
     if(m_isAnimating)
     {
         QPainter painter(this);
-        renderCurrentWidget(painter);
-        renderPreviousWidget(painter);
+        renderCurrentWidget(&painter);
+        renderPreviousWidget(&painter);
     }
     else
     {
@@ -39,7 +39,7 @@ void DownloadAnimationStackedWidget::paintEvent(QPaintEvent * event)
     }
 }
 
-void DownloadAnimationStackedWidget::renderPreviousWidget(QPainter &painter)
+void DownloadAnimationStackedWidget::renderPreviousWidget(QPainter *painter)
 {
     QWidget *w = widget(m_previousIndex);
     QPixmap pixmap(w->size());
@@ -52,29 +52,29 @@ void DownloadAnimationStackedWidget::renderPreviousWidget(QPainter &painter)
     {
         case Module::BottomToTop :
                 {
-                    painter.drawPixmap(0, height() / 2, pixmap);
+                    painter->drawPixmap(0, height() / 2, pixmap);
                     break;
                 }
         case Module::TopToBottom :
                 {
-                    painter.drawPixmap(0, -height() / 2, pixmap);
+                    painter->drawPixmap(0, -height() / 2, pixmap);
                     break;
                 }
         case Module::LeftToRight :
                 {
-                    painter.drawPixmap(width() / 2, 0, pixmap);
+                    painter->drawPixmap(width() / 2, 0, pixmap);
                     break;
                 }
         case Module::RightToLeft :
                 {
-                    painter.drawPixmap(-width() / 2, 0, pixmap);
+                    painter->drawPixmap(-width() / 2, 0, pixmap);
                     break;
                 }
         default: break;
     }
 }
 
-void DownloadAnimationStackedWidget::renderCurrentWidget(QPainter &painter)
+void DownloadAnimationStackedWidget::renderCurrentWidget(QPainter *painter)
 {
     QWidget *w = widget(m_currentIndex);
     QPixmap pixmap(w->size());
@@ -87,26 +87,26 @@ void DownloadAnimationStackedWidget::renderCurrentWidget(QPainter &painter)
     {
         case Module::BottomToTop :
                 {
-                    painter.translate(0, m_currentValue);
-                    painter.drawPixmap(0, -height() / 2, pixmap);
+                    painter->translate(0, m_currentValue);
+                    painter->drawPixmap(0, -height() / 2, pixmap);
                     break;
                 }
         case Module::TopToBottom :
                 {
-                    painter.translate(0, m_currentValue);
-                    painter.drawPixmap(0, height() / 2, pixmap);
+                    painter->translate(0, m_currentValue);
+                    painter->drawPixmap(0, height() / 2, pixmap);
                     break;
                 }
         case Module::LeftToRight :
                 {
-                    painter.translate(m_currentValue, 0);
-                    painter.drawPixmap(-width() / 2, 0, pixmap);
+                    painter->translate(m_currentValue, 0);
+                    painter->drawPixmap(-width() / 2, 0, pixmap);
                     break;
                 }
         case Module::RightToLeft :
                 {
-                    painter.translate(m_currentValue, 0);
-                    painter.drawPixmap(width() / 2, 0, pixmap);
+                    painter->translate(m_currentValue, 0);
+                    painter->drawPixmap(width() / 2, 0, pixmap);
                     break;
                 }
         default: break;
