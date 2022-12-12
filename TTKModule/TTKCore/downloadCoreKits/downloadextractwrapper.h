@@ -44,15 +44,6 @@ public:
      */
     static bool inputSkin(DownloadBackgroundImage *image, const QString &path);
 
-    /*!
-     * Transfer file to data.
-     */
-    static bool outputText(QByteArray &data, const QString &path);
-    /*!
-     * Transfer data to file.
-     */
-    static bool inputText(const QByteArray &data, const QString &path);
-
 };
 
 #endif // DOWNLOADEXTRACTWRAPPER_H

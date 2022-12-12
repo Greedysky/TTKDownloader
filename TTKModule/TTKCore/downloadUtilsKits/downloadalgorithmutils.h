@@ -37,6 +37,11 @@ namespace DownloadUtils
          * Get mdII(greedysky) algorithm.
          */
         TTK_MODULE_EXPORT QString mdII(const QString &data, bool encode);
+        /*!
+         * Get mdII(greedysky) algorithm.
+         */
+        TTK_MODULE_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
+
 
     }
 }

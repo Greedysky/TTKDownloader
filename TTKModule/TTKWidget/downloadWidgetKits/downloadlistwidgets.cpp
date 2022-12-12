@@ -335,10 +335,7 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
 
 void DownloadListWidgets::clearItems()
 {
-    while(!m_itemList.isEmpty())
-    {
-        delete m_itemList.takeLast();
-    }
+    qDeleteAll(m_itemList);
     removeItems();
 }
 
