@@ -42,7 +42,6 @@ namespace DownloadUtils
          */
         TTK_MODULE_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
 
-
     }
 }
 
