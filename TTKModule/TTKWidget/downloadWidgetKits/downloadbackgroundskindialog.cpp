@@ -301,7 +301,7 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
     TTKIntList data;
     for(const QFileInfo &fin : qAsConst(files))
     {
-        if(fin.suffix().toLower() != TKM_FILE_PREFIX)
+        if(fin.suffix().toLower() != TKM_FILE_SUFFIX)
         {
             continue;
         }

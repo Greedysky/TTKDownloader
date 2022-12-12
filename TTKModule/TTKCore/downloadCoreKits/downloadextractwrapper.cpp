@@ -11,28 +11,29 @@
 
 #define WIN_NAME_MAX_LENGTH     256
 
-bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &path)
+bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &input)
 {
-    unzFile zFile = unzOpen64(path.toLocal8Bit().constData());
-    if(nullptr == zFile)
+    const unzFile &zFile = unzOpen64(qPrintable(input));
+    if(!zFile)
     {
         return false;
     }
 
     unz_file_info64 fileInfo;
     unz_global_info64 gInfo;
-    if (unzGetGlobalInfo64(zFile, &gInfo) != UNZ_OK)
+    if(unzGetGlobalInfo64(zFile, &gInfo) != UNZ_OK)
     {
+        unzClose(zFile);
         return false;
     }
 
     for(ZPOS64_T i = 0; i < gInfo.number_entry; ++i)
     {
-        char file[WIN_NAME_MAX_LENGTH] = {0};
+        char name[WIN_NAME_MAX_LENGTH] = {0};
         char ext[WIN_NAME_MAX_LENGTH] = {0};
         char com[MH_KB] = {0};
 
-        if(unzGetCurrentFileInfo64(zFile, &fileInfo, file, sizeof(file), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK)
+        if(unzGetCurrentFileInfo64(zFile, &fileInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK)
         {
             break;
         }
@@ -46,7 +47,7 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &pa
         int size = 0;
 
         QByteArray arrayData;
-        if(QString(file).toLower().contains("image/bkg"))
+        if(QString(name).toLower().contains("image/bkg"))
         {
             while(true)
             {
@@ -67,33 +68,34 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &pa
             return false;
         }
     }
-    unzClose(zFile);
 
+    unzClose(zFile);
     return true;
 }
 
-bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QString &path)
+bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QString &input)
 {
-    unzFile zFile = unzOpen64(path.toLocal8Bit().constData());
-    if(nullptr == zFile)
+    const unzFile &zFile = unzOpen64(qPrintable(input));
+    if(!zFile)
     {
         return false;
     }
 
     unz_file_info64 fileInfo;
     unz_global_info64 gInfo;
-    if (unzGetGlobalInfo64(zFile, &gInfo) != UNZ_OK)
+    if(unzGetGlobalInfo64(zFile, &gInfo) != UNZ_OK)
     {
+        unzClose(zFile);
         return false;
     }
 
     for(ZPOS64_T i = 0; i < gInfo.number_entry; ++i)
     {
-        char file[WIN_NAME_MAX_LENGTH] = {0};
+        char name[WIN_NAME_MAX_LENGTH] = {0};
         char ext[WIN_NAME_MAX_LENGTH] = {0};
         char com[MH_KB] = {0};
 
-        if(unzGetCurrentFileInfo64(zFile, &fileInfo, file, sizeof(file), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK)
+        if(unzGetCurrentFileInfo64(zFile, &fileInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK)
         {
             break;
         }
@@ -107,7 +109,7 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
         int size = 0;
 
         QByteArray arrayData;
-        if(QString(file).toLower().contains(SKN_FILE))
+        if(QString(name).toLower().contains(SKN_FILE))
         {
             while(true)
             {
@@ -123,7 +125,7 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
             pix.loadFromData(arrayData);
             image->m_pix = pix;
         }
-        else if(QString(file).toLower().contains(XML_FILE))
+        else if(QString(name).toLower().contains(XML_FILE))
         {
             while(true)
             {
@@ -151,26 +153,26 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
             return false;
         }
     }
-    unzClose(zFile);
 
+    unzClose(zFile);
     return true;
 }
 
-bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QString &path)
+bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QString &output)
 {
-    zipFile zFile = zipOpen64(path.toLocal8Bit().constData(), 0);
-    if(nullptr == zFile)
+    const zipFile &zFile = zipOpen64(qPrintable(output), 0);
+    if(!zFile)
     {
         return false;
     }
 
-    QString nPrefix = QFileInfo(path).baseName();
-    int level = 5;
+    const QString &prefix = QFileInfo(output).baseName();
+    const int level = 5;
 
     zip_fileinfo fileInfo;
     memset(&fileInfo, 0, sizeof(fileInfo));
 
-    zipOpenNewFileInZip(zFile, (nPrefix + SKN_FILE).toLocal8Bit().constData(), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
+    zipOpenNewFileInZip(zFile, qPrintable(prefix + SKN_FILE), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
     QByteArray data = DownloadUtils::Image::generatePixmapData(image->m_pix);
     zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
@@ -179,12 +181,12 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
     manager.writeSkinXMLConfig(image->m_item, DOWNLOAD_IMAGE_FILE);
     data = manager.toByteArray();
 
-    zipOpenNewFileInZip(zFile, (nPrefix + XML_FILE).toLocal8Bit().constData(), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
+    zipOpenNewFileInZip(zFile, qPrintable(prefix + XML_FILE), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
     zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
     QFile::remove(DOWNLOAD_IMAGE_FILE);
 
-    zipClose(zFile, 0);
+    zipClose(zFile, nullptr);
 
     return true;
 }

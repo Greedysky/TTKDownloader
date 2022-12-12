@@ -24,29 +24,29 @@
 #include "ttkglobal.h"
 
 //
-#define TKF_FILE_PREFIX         "tkf"
-#define TKX_FILE_PREFIX         "tkx"
-#define TKM_FILE_PREFIX         "tkm"
+#define TKF_FILE_SUFFIX         "tkf"
+#define TKX_FILE_SUFFIX         "tkx"
+#define TKM_FILE_SUFFIX         "tkm"
 //
-#define SKN_FILE_PREFIX         "skn"
-#define JPG_FILE_PREFIX         "jpg"
-#define EXE_FILE_PREFIX         "exe"
-#define XML_FILE_PREFIX         "xml"
-#define SET_FILE_PREFIX         "stk"
-#define COM_FILE_PREFIX         "com"
+#define SKN_FILE_SUFFIX         "skn"
+#define JPG_FILE_SUFFIX         "jpg"
+#define EXE_FILE_SUFFIX         "exe"
+#define XML_FILE_SUFFIX         "xml"
+#define SET_FILE_SUFFIX         "stk"
+#define COM_FILE_SUFFIX         "com"
 // playlist ext
-#define TPL_FILE_PREFIX         "tkpl"
+#define TPL_FILE_SUFFIX         "tkpl"
 
 
-#define TKF_FILE                TTK_STRCAT(TTK_DOT, TKF_FILE_PREFIX)
-#define TKM_FILE                TTK_STRCAT(TTK_DOT, TKM_FILE_PREFIX)
-#define SKN_FILE                TTK_STRCAT(TTK_DOT, SKN_FILE_PREFIX)
-#define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_PREFIX)
-#define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_PREFIX)
-#define XML_FILE                TTK_STRCAT(TTK_DOT, XML_FILE_PREFIX)
-#define SET_FILE                TTK_STRCAT(TTK_DOT, SET_FILE_PREFIX)
-#define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_PREFIX)
-#define TPL_FILE                TTK_STRCAT(TTK_DOT, TPL_FILE_PREFIX)
+#define TKF_FILE                TTK_STRCAT(TTK_DOT, TKF_FILE_SUFFIX)
+#define TKM_FILE                TTK_STRCAT(TTK_DOT, TKM_FILE_SUFFIX)
+#define SKN_FILE                TTK_STRCAT(TTK_DOT, SKN_FILE_SUFFIX)
+#define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_SUFFIX)
+#define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_SUFFIX)
+#define XML_FILE                TTK_STRCAT(TTK_DOT, XML_FILE_SUFFIX)
+#define SET_FILE                TTK_STRCAT(TTK_DOT, SET_FILE_SUFFIX)
+#define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_SUFFIX)
+#define TPL_FILE                TTK_STRCAT(TTK_DOT, TPL_FILE_SUFFIX)
 
 
 #define APP_NAME                "TTKDownloader"
