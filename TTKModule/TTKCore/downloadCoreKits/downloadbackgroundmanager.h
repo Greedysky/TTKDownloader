@@ -82,7 +82,7 @@ private:
     QObjectList m_observer;
     QString m_background;
 
-    DECLARE_SINGLETON_CLASS(DownloadBackgroundManager)
+    TTK_DECLARE_SINGLETON_CLASS(DownloadBackgroundManager)
 
 };
 

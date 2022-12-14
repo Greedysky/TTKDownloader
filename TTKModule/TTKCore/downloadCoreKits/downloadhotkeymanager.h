@@ -82,7 +82,7 @@ public:
 private:
     QList<QGlobalShortcut*> m_hotkeys;
 
-    DECLARE_SINGLETON_CLASS(DownloadHotKeyManager)
+    TTK_DECLARE_SINGLETON_CLASS(DownloadHotKeyManager)
 
 };
 

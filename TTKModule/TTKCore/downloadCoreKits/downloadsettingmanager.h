@@ -138,7 +138,7 @@ private:
     QVariant m_variant;
     QMap<Config, QVariant> m_para;
 
-    DECLARE_SINGLETON_CLASS(DownloadSettingManager)
+    TTK_DECLARE_SINGLETON_CLASS(DownloadSettingManager)
 
 };
 
