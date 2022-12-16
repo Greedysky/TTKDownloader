@@ -11,20 +11,23 @@
 
 static void loadAppScaledFactor(int argc, char *argv[])
 {
-#if TTK_QT_VERSION_CHECK(5,4,0)
-#  if TTK_QT_VERSION_CHECK(6,0,0)
-     // do nothing
+#if TTK_QT_VERSION_CHECK(6,0,0)
+   // do nothing
+#elif TTK_QT_VERSION_CHECK(5,4,0)
+#  if TTK_QT_VERSION_CHECK(5,14,0)
+      QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Floor);
 #  elif TTK_QT_VERSION_CHECK(5,12,0)
-     QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+      QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+      QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 #  elif TTK_QT_VERSION_CHECK(5,6,0)
-     QApplication a(argc, argv);
-     qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
-     QScreen *screen = QApplication::primaryScreen();
-     qreal dpi = screen->logicalDotsPerInch() / 96;
-     qputenv("QT_SCALE_FACTOR", QByteArray::number(dpi));
-     Q_UNUSED(a);
+      QApplication a(argc, argv);
+      qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
+      const QScreen *screen = QApplication::primaryScreen();
+      const qreal dpi = screen->logicalDotsPerInch() / 96.0;
+      qputenv("QT_SCALE_FACTOR", QByteArray::number(dpi));
+      Q_UNUSED(a);
 #  else
-     qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
+      qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
 #  endif
 #endif
     Q_UNUSED(argc);
@@ -37,7 +40,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
 #if !defined TTK_DEBUG && !defined Q_OS_UNIX
-    if(argc <= 1 || QString(argv[1]) != APPNAME)
+    if(argc <= 1 || QString(argv[1]) != APP_NAME)
     {
         return -1;
     }
