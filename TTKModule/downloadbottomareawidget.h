@@ -52,7 +52,7 @@ public:
     /*!
      * Set up app ui.
      */
-    void setupUi(Ui::DownloadApplication* ui);
+    void setupUi(Ui::DownloadApplication *ui);
 
     /*!
      * Set system close config or not.

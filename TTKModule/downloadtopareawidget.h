@@ -51,7 +51,7 @@ public:
     /*!
      * Set up app ui.
      */
-    void setupUi(Ui::DownloadApplication* ui);
+    void setupUi(Ui::DownloadApplication *ui);
 
     /*!
      * Set background skin and alpha and list alpha parameter.

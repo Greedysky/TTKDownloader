@@ -47,7 +47,7 @@ public:
     /*!
      * Set up app ui.
      */
-    void setupUi(Ui::DownloadApplication* ui);
+    void setupUi(Ui::DownloadApplication *ui);
 
 public Q_SLOTS:
     /*!

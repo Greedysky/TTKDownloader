@@ -38,7 +38,7 @@ DownloadRightAreaWidget *DownloadRightAreaWidget::instance()
     return m_instance;
 }
 
-void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication* ui)
+void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication *ui)
 {
     m_ui = ui;
 

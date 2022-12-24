@@ -24,7 +24,7 @@ DownloadLeftAreaWidget *DownloadLeftAreaWidget::instance()
     return m_instance;
 }
 
-void DownloadLeftAreaWidget::setupUi(Ui::DownloadApplication* ui)
+void DownloadLeftAreaWidget::setupUi(Ui::DownloadApplication *ui)
 {
     m_ui = ui;
 

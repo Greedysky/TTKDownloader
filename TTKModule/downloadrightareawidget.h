@@ -55,7 +55,7 @@ public:
     /*!
      * Set up app ui.
      */
-    void setupUi(Ui::DownloadApplication* ui);
+    void setupUi(Ui::DownloadApplication *ui);
 
     /*!
      * Resize window bound by widgte resize called.

@@ -31,7 +31,7 @@ DownloadTopAreaWidget *DownloadTopAreaWidget::instance()
     return m_instance;
 }
 
-void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication* ui)
+void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication *ui)
 {
     m_ui = ui;
 

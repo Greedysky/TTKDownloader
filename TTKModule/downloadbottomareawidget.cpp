@@ -41,7 +41,7 @@ DownloadBottomAreaWidget *DownloadBottomAreaWidget::instance()
     return m_instance;
 }
 
-void DownloadBottomAreaWidget::setupUi(Ui::DownloadApplication* ui)
+void DownloadBottomAreaWidget::setupUi(Ui::DownloadApplication *ui)
 {
     m_ui = ui;
     m_speedThread->start();
