@@ -45,6 +45,10 @@ public:
 
 public Q_SLOTS:
     /*!
+     * Application quit.
+     */
+    void quit();
+    /*!
      * Window close animation.
      */
     void windowCloseAnimation();

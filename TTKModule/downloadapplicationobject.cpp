@@ -34,6 +34,11 @@ DownloadApplicationObject *DownloadApplicationObject::instance()
     return m_instance;
 }
 
+void DownloadApplicationObject::quit()
+{
+    qApp->exit();
+}
+
 void DownloadApplicationObject::windowCloseAnimation()
 {
     float v = G_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
@@ -43,7 +48,8 @@ void DownloadApplicationObject::windowCloseAnimation()
     m_animation->setStartValue(v);
     m_animation->setEndValue(0);
     m_animation->start();
-    QTimer::singleShot(MT_S2MS, qApp, SLOT(quit()));
+
+    QTimer::singleShot(MT_S2MS, this, SLOT(quit()));
 }
 
 void DownloadApplicationObject::appAboutUs()
