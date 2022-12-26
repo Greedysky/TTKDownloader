@@ -1,11 +1,13 @@
 *.user
 *.user.*
 *.aps
-build-TTKDownloader-*/
+build-*/
 *.*-pre1
 *.autosave
 *.*~
 *.uxf
+*.bak
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
