@@ -1,6 +1,7 @@
 #include "downloadconsoleobject.h"
 #include "downloadthreadmanager.h"
 #include "downloadsettingmanager.h"
+#include "ttkversion.h"
 
 DownloadConsoleObject::DownloadConsoleObject(QObject *parent)
     : QObject(parent)
@@ -17,6 +18,8 @@ DownloadConsoleObject::~DownloadConsoleObject()
 
 bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
 {
+    TTK_LOG_STREAM("\n" APP_NAME << "Console Module" << TTK_VERSION_STR "\n");
+
     TTKCommandLineOption op1("-u", "--url", "download url");
     TTKCommandLineOption op2("-s", "--save", "download save path, if empty default is");
 
@@ -37,7 +40,7 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
         url = parser.value(op1);
         if(url.isEmpty())
         {
-            TTK_INFO_STREAM("download url is empty!");
+            TTK_LOG_STREAM("download url is empty!");
             return false;
         }
     }
@@ -58,13 +61,17 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
 
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, path);
 
-    m_manager->downloadFile(url);
-    TTK_INFO_STREAM("download save path: " << m_manager->downloadedPath());
+    if(!m_manager->downloadFile(url))
+    {
+        return false;
+    }
+
+    TTK_LOG_STREAM("download save path: " << m_manager->downloadedPath());
     return app.exec();
 }
 
 void DownloadConsoleObject::progressChanged(qint64 current, qint64 total)
 {
-    TTK_INFO_STREAM("process: " << TTKStatic_cast(int, (current * 100000000.0 / total)) / 1000000.0 <<
-                    "% " << current << "kb " << total << "kb");
+    TTK_LOG_STREAM("process: " << TTKStatic_cast(int, (current * 100000000.0 / total)) / 1000000.0 <<
+                   "% " << current << "kb " << total << "kb");
 }
