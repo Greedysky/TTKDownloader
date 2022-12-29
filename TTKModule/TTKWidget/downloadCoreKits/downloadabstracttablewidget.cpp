@@ -86,7 +86,7 @@ void DownloadAbstractTableWidget::setRowColor(int row, const QColor &color) cons
         QTableWidgetItem *it = item(row, i);
         if(it)
         {
-            QtItemSetBackgroundColor(it, color);
+            it->setBackground(color);
         }
     }
 }
