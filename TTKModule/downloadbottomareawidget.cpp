@@ -91,8 +91,8 @@ void DownloadBottomAreaWidget::iconActivated(QSystemTrayIcon::ActivationReason r
 
 void DownloadBottomAreaWidget::updateNetworkData(ulong upload, ulong download)
 {
-    const QString &up = DownloadUtils::Number::speedByte2Label(upload);
-    const QString &down = DownloadUtils::Number::speedByte2Label(download);
+    const QString &up = DownloadUtils::Number::speedByteToLabel(upload);
+    const QString &down = DownloadUtils::Number::speedByteToLabel(download);
     m_ui->downloadSpeedButton->setLabelText(up, down);
 }
 

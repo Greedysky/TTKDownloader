@@ -25,7 +25,7 @@ static QString size2Number(qint64 size)
     }
 }
 
-QString DownloadUtils::Number::sizeByte2Label(qint64 size)
+QString DownloadUtils::Number::sizeByteToLabel(qint64 size)
 {
     if(size < 0)
     {
@@ -55,7 +55,7 @@ QString DownloadUtils::Number::sizeByte2Label(qint64 size)
     }
 }
 
-QString DownloadUtils::Number::speedByte2Label(qint64 size)
+QString DownloadUtils::Number::speedByteToLabel(qint64 size)
 {
     if(size < 0)
     {

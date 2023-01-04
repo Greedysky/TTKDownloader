@@ -31,11 +31,11 @@ namespace DownloadUtils
         /*!
          * Transform value to cp float value.
          */
-        TTK_MODULE_EXPORT QString sizeByte2Label(qint64 size);
+        TTK_MODULE_EXPORT QString sizeByteToLabel(qint64 size);
         /*!
          * Transform value to speed float value.
          */
-        TTK_MODULE_EXPORT QString speedByte2Label(qint64 size);
+        TTK_MODULE_EXPORT QString speedByteToLabel(qint64 size);
 
     }
 }

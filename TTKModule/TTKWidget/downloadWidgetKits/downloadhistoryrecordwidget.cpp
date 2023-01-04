@@ -95,7 +95,7 @@ void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const 
     DownloadRecord record;
     record.m_time = fin.lastModified().toString("yyyy-MM-dd HH:mm:ss");
     record.m_path = fin.absoluteFilePath();
-    record.m_size = DownloadUtils::Number::sizeByte2Label(fin.size());
+    record.m_size = DownloadUtils::Number::sizeByteToLabel(fin.size());
     record.m_url = url;
     m_records << record;
 
