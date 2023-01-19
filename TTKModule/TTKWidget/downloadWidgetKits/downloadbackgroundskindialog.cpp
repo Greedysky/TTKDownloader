@@ -156,11 +156,11 @@ void DownloadBackgroundSkinDialog::showPaletteDialog()
     {
         QPixmap pix(1, 1);
         pix.fill(color);
-        if(pix.save(DOWNLOAD_COLOR_FILE))
+        if(pix.save(TTK_COLOR_FILE))
         {
-            showPaletteDialog(DOWNLOAD_COLOR_FILE);
+            showPaletteDialog(TTK_COLOR_FILE);
         }
-        QFile::remove(DOWNLOAD_COLOR_FILE);
+        QFile::remove(TTK_COLOR_FILE);
     }
 }
 

@@ -3,6 +3,7 @@
 #include "downloadrightareawidget.h"
 #include "downloadtopareawidget.h"
 #include "downloaduiobject.h"
+#include "ttknumberdefine.h"
 
 #include <qmath.h>
 #include <QMenu>
@@ -30,16 +31,16 @@ DownloadRemoteWidget::~DownloadRemoteWidget()
 
 void DownloadRemoteWidget::setValue(int value)
 {
-    if(value > 100)
+    if(value > MV_MAX)
     {
-        value = 100;
+        value = MV_MAX;
     }
-    else if(value < 0)
+    else if(value < MV_MIN)
     {
-        value = 0;
+        value = MV_MIN;
     }
 
-    m_value = height() * 1.0f / 100 * value;
+    m_value = height() * 1.0f / MV_MAX * value;
     update();
 }
 

@@ -73,10 +73,10 @@ void DownloadApplicationObject::appResetWindow()
 
 void DownloadApplicationObject::cleanUp()
 {
-    QFile::remove(DOWNLOAD_COLOR_FILE);
-    QFile::remove(DOWNLOAD_IMAGE_FILE);
-    QFile::remove(DOWNLOAD_RECORD_FILE);
-    QFile::remove(DOWNLOAD_RECORD_IN_FILE);
-    QFile::remove(DOWNLOAD_RECORD_OUT_FILE);
+    QFile::remove(TTK_COLOR_FILE);
+    QFile::remove(TTK_IMAGE_FILE);
+    QFile::remove(TTK_RECORD_FILE);
+    QFile::remove(TTK_RECORD_IN_FILE);
+    QFile::remove(TTK_RECORD_OUT_FILE);
     QFile::remove(DOWNLOAD_NETWORK_TEST_FILE);
 }

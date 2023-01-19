@@ -178,13 +178,13 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
     zipCloseFileInZip(zFile);
 
     DownloadSkinConfigManager manager;
-    manager.writeSkinXMLConfig(image->m_item, DOWNLOAD_IMAGE_FILE);
+    manager.writeSkinXMLConfig(image->m_item, TTK_IMAGE_FILE);
     data = manager.toByteArray();
 
     zipOpenNewFileInZip(zFile, qPrintable(prefix + XML_FILE), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
     zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
-    QFile::remove(DOWNLOAD_IMAGE_FILE);
+    QFile::remove(TTK_IMAGE_FILE);
 
     zipClose(zFile, nullptr);
 
