@@ -1,12 +1,8 @@
 #include "downloadthreadabstract.h"
 #include "downloadsettingmanager.h"
-
-#include <QNetworkAccessManager>
-#include <QNetworkRequest>
 #if defined Q_OS_UNIX || defined Q_CC_MINGW
 #  include <unistd.h>
 #endif
-#include <QThread>
 #include <QSslError>
 
 DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString &path, QObject *parent)
@@ -60,22 +56,19 @@ void DownLoadThreadAbstract::downloadProgress(qint64 bytesReceived, qint64 bytes
 
 void DownLoadThreadAbstract::updateDownloadSpeed()
 {
-    int delta = m_currentReceived - m_hasReceived;
-    //////////////////////////////////////
+    const int delta = m_currentReceived - m_hasReceived;
     ///limit speed
     if(G_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 0)
     {
         const int limitValue = G_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toInt();
-        if(limitValue != 0 && delta > limitValue*MH_KB)
+        if(limitValue != 0 && delta > limitValue * MH_KB)
         {
-#if defined Q_OS_WIN && TTK_QT_VERSION_CHECK(5,0,0)
-            QThread::msleep(MT_S2MS - limitValue * MH_KB * MT_S2MS / delta);
-#else
-            usleep((MT_S2MS - limitValue * MH_KB * MT_S2MS / delta) * MT_S2MS);
+#ifdef Q_CC_MSVC
+            ::Sleep(MT_S2MS - limitValue * MH_KB * MT_S2MS / delta);
+#elif defined Q_OS_UNIX || defined Q_CC_MINGW
+            usleep((MT_S2MS - limitValue * MH_KB * MT_S2MS / delta) * MT_MS2US);
 #endif
-            delta = limitValue * MH_KB;
         }
     }
-    //////////////////////////////////////
     m_hasReceived = m_currentReceived;
 }
