@@ -7,7 +7,7 @@
 DownloadSystemTrayMenu::DownloadSystemTrayMenu(QWidget *parent)
     : QMenu(parent)
 {
-    setStyleSheet(DownloadUIObject::MMenuStyle02);
+    setStyleSheet(DownloadUIObject::MenuStyle02);
 
     DownloadRightAreaWidget *rw = DownloadRightAreaWidget::instance();
     addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload(N)"), rw, SLOT(showNewFileDialog()));

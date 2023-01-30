@@ -166,7 +166,7 @@ void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
     DownloadAbstractTableWidget::contextMenuEvent(event);
 
     QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(DownloadUIObject::MMenuStyle02);
+    rightClickMenu.setStyleSheet(DownloadUIObject::MenuStyle02);
 
     int row = currentRow();
     rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
@@ -200,21 +200,21 @@ void DownloadHistoryRecordWidget::createItem(int index, const DownloadRecord &re
 
                       item = new QTableWidgetItem;
     item->setText(fin.fileName());
-    item->setForeground(QColor(DownloadUIObject::MColorStyle12_S));
+    item->setForeground(QColor(50, 50, 50));
     QtItemSetTextAlignment(item, Qt::AlignLeft | Qt::AlignVCenter);
     item->setToolTip(fin.fileName());
     setItem(index, 1, item);
 
                       item = new QTableWidgetItem;
     item->setText(record.m_time);
-    item->setForeground(QColor(DownloadUIObject::MColorStyle12_S));
+    item->setForeground(QColor(50, 50, 50));
     QtItemSetTextAlignment(item, Qt::AlignLeft | Qt::AlignVCenter);
     item->setToolTip(record.m_time);
     setItem(index, 2, item);
 
                       item = new QTableWidgetItem;
     item->setText(record.m_size);
-    item->setForeground(QColor(DownloadUIObject::MColorStyle12_S));
+    item->setForeground(QColor(50, 50, 50));
     QtItemSetTextAlignment(item, Qt::AlignLeft | Qt::AlignVCenter);
     item->setToolTip(record.m_size);
     setItem(index, 3, item);

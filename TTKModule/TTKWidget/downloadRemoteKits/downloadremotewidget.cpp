@@ -61,7 +61,7 @@ void DownloadRemoteWidget::contextMenuEvent(QContextMenuEvent *event)
     DownloadAbstractMoveWidget::contextMenuEvent(event);
 
     QMenu menu(this);
-    menu.setStyleSheet(DownloadUIObject::MMenuStyle02);
+    menu.setStyleSheet(DownloadUIObject::MenuStyle02);
 
     DownloadRightAreaWidget *rw = DownloadRightAreaWidget::instance();
     menu.addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload(N)"), rw, SLOT(showNewFileDialog()));

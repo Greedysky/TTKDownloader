@@ -47,7 +47,7 @@ void DownloadToolMenuWidget::setTranslucentBackground()
 {
     m_menu->setWindowFlags(m_menu->windowFlags() | Qt::FramelessWindowHint);
     m_menu->setAttribute(Qt::WA_TranslucentBackground);
-    m_menu->setStyleSheet(DownloadUIObject::MMenuStyle03);
+    m_menu->setStyleSheet(DownloadUIObject::MenuStyle03);
 }
 
 void DownloadToolMenuWidget::popupMenu()

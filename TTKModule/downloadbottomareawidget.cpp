@@ -100,7 +100,7 @@ void DownloadBottomAreaWidget::downloadSettingButtonClicked()
 {
     delete m_toolPopupMenu;
     m_toolPopupMenu = new QMenu(this);
-    m_toolPopupMenu->setStyleSheet(DownloadUIObject::MMenuStyle02);
+    m_toolPopupMenu->setStyleSheet(DownloadUIObject::MenuStyle02);
 
     QPixmap pix(17, 17);
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
@@ -122,7 +122,7 @@ void DownloadBottomAreaWidget::downloadPlanButtonClicked()
 {
     delete m_toolPopupMenu;
     m_toolPopupMenu = new QMenu(this);
-    m_toolPopupMenu->setStyleSheet(DownloadUIObject::MMenuStyle02);
+    m_toolPopupMenu->setStyleSheet(DownloadUIObject::MenuStyle02);
     m_toolPopupMenu->addAction(tr("Spare"));
     m_toolPopupMenu->addAction(tr("Add Plan"));
     m_toolPopupMenu->addAction(tr("Delete Plan"))->setEnabled(false);

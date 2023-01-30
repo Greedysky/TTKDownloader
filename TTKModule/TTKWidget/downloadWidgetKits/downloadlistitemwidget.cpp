@@ -97,7 +97,7 @@ void DownloadListItemWidget::backgroundChanged()
 {
     if(m_progressBar)
     {
-        m_progressBar->setStyleSheet(DownloadUIObject::MProgressBar01 +
+        m_progressBar->setStyleSheet(DownloadUIObject::ProgressBar01 +
                                      QString("QProgressBar::chunk{ background:%1; }").arg(
                                      G_BACKGROUND_PTR->backgroundColor().name()));
     }

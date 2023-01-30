@@ -21,7 +21,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     verticalHeader()->setVisible(false);
 
     setMouseTracking(true);  //Open the capture mouse function
-    setStyleSheet(DownloadUIObject::MTableWidgetStyle01 + DownloadUIObject::MScrollBarStyle03 + DownloadUIObject::MLineEditStyle01);
+    setStyleSheet(DownloadUIObject::TableWidgetStyle01 + DownloadUIObject::ScrollBarStyle02 + DownloadUIObject::LineEditStyle01);
 
     QFont font = this->font();
     font.setBold(false);

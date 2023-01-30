@@ -62,7 +62,7 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
 
     ////////////////////////////////////////////////
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_delete_normal"));
-    m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::MToolButtonStyle04);
+    m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::ToolButtonStyle03);
     m_ui->topTitleCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
@@ -75,8 +75,8 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
     m_ui->normalFunTableWidget->setRowCount(items.count());
     m_ui->normalFunTableWidget->addFunctionItems(0, items);
 
-    m_ui->confirmButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
-    m_ui->cancelButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
+    m_ui->confirmButton->setStyleSheet(DownloadUIObject::PushButtonStyle03);
+    m_ui->cancelButton->setStyleSheet(DownloadUIObject::PushButtonStyle03);
     m_ui->confirmButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->cancelButton->setCursor(QCursor(Qt::PointingHandCursor));
 #ifdef Q_OS_UNIX
@@ -195,18 +195,18 @@ void DownloadSettingWidget::selectFunctionTableIndex(int row, int col)
 
 void DownloadSettingWidget::initNormalSettingWidget()
 {
-    m_ui->downloadDirEdit->setStyleSheet(DownloadUIObject::MLineEditStyle01);
-    m_ui->downloadDirButton->setStyleSheet(DownloadUIObject::MPushButtonStyle04);
+    m_ui->downloadDirEdit->setStyleSheet(DownloadUIObject::LineEditStyle01);
+    m_ui->downloadDirButton->setStyleSheet(DownloadUIObject::PushButtonStyle03);
     m_ui->downloadDirButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->downloadDirEdit->setText(TDDOWNLOAD_DIR_FULL);
 
-    m_ui->quitRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
-    m_ui->minimumRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
+    m_ui->quitRadioBox->setStyleSheet(DownloadUIObject::RadioButtonStyle01);
+    m_ui->minimumRadioBox->setStyleSheet(DownloadUIObject::RadioButtonStyle01);
 
-    m_ui->startupCheckBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
-    m_ui->startupRunCheckBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+    m_ui->startupCheckBox->setStyleSheet(DownloadUIObject::CheckBoxStyle01);
+    m_ui->startupRunCheckBox->setStyleSheet(DownloadUIObject::CheckBoxStyle01);
 
-    m_ui->slienceRunCheckBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+    m_ui->slienceRunCheckBox->setStyleSheet(DownloadUIObject::CheckBoxStyle01);
 
 #ifdef Q_OS_UNIX
     m_ui->downloadDirButton->setFocusPolicy(Qt::NoFocus);
@@ -221,8 +221,8 @@ void DownloadSettingWidget::initNormalSettingWidget()
 
 void DownloadSettingWidget::initDownloadSettingWidget()
 {
-    m_ui->downloadFullRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
-    m_ui->downloadLimitRadioBox->setStyleSheet(DownloadUIObject::MRadioButtonStyle01);
+    m_ui->downloadFullRadioBox->setStyleSheet(DownloadUIObject::RadioButtonStyle01);
+    m_ui->downloadLimitRadioBox->setStyleSheet(DownloadUIObject::RadioButtonStyle01);
 #ifdef Q_OS_UNIX
     m_ui->downloadFullRadioBox->setFocusPolicy(Qt::NoFocus);
     m_ui->downloadLimitRadioBox->setFocusPolicy(Qt::NoFocus);
@@ -233,17 +233,17 @@ void DownloadSettingWidget::initDownloadSettingWidget()
     QtButtonGroupConnect(buttonGroup, this, downloadGroupSpeedLimit);
 
     m_ui->defaultDownloadModeBox->setItemDelegate(new QStyledItemDelegate(m_ui->defaultDownloadModeBox));
-    m_ui->defaultDownloadModeBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
-    m_ui->defaultDownloadModeBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->defaultDownloadModeBox->setStyleSheet(DownloadUIObject::ComboBoxStyle01 + DownloadUIObject::ItemView01);
+    m_ui->defaultDownloadModeBox->view()->setStyleSheet(DownloadUIObject::ScrollBarStyle01);
     m_ui->downloadMaxCountBox->setItemDelegate(new QStyledItemDelegate(m_ui->downloadMaxCountBox));
-    m_ui->downloadMaxCountBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
-    m_ui->downloadMaxCountBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->downloadMaxCountBox->setStyleSheet(DownloadUIObject::ComboBoxStyle01 + DownloadUIObject::ItemView01);
+    m_ui->downloadMaxCountBox->view()->setStyleSheet(DownloadUIObject::ScrollBarStyle01);
     m_ui->downloadLimitSpeedComboBox->setItemDelegate(new QStyledItemDelegate(m_ui->downloadLimitSpeedComboBox));
-    m_ui->downloadLimitSpeedComboBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
-    m_ui->downloadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->downloadLimitSpeedComboBox->setStyleSheet(DownloadUIObject::ComboBoxStyle01 + DownloadUIObject::ItemView01);
+    m_ui->downloadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::ScrollBarStyle01);
     m_ui->uploadLimitSpeedComboBox->setItemDelegate(new QStyledItemDelegate(m_ui->uploadLimitSpeedComboBox));
-    m_ui->uploadLimitSpeedComboBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
-    m_ui->uploadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->uploadLimitSpeedComboBox->setStyleSheet(DownloadUIObject::ComboBoxStyle01 + DownloadUIObject::ItemView01);
+    m_ui->uploadLimitSpeedComboBox->view()->setStyleSheet(DownloadUIObject::ScrollBarStyle01);
 
     m_ui->defaultDownloadModeBox->addItems(QStringList() << tr("Auto") << tr("Manual"));
     for(int i = 1; i <= 50; ++i)
@@ -261,19 +261,19 @@ void DownloadSettingWidget::initDownloadSettingWidget()
 
 void DownloadSettingWidget::initSkinSettingWidget()
 {
-    m_ui->suspensionVisiableBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
-    m_ui->suspensionShowPerBox->setStyleSheet(DownloadUIObject::MCheckBoxStyle01);
+    m_ui->suspensionVisiableBox->setStyleSheet(DownloadUIObject::CheckBoxStyle01);
+    m_ui->suspensionShowPerBox->setStyleSheet(DownloadUIObject::CheckBoxStyle01);
 #ifdef Q_OS_UNIX
     m_ui->suspensionVisiableBox->setFocusPolicy(Qt::NoFocus);
     m_ui->suspensionShowPerBox->setFocusPolicy(Qt::NoFocus);
 #endif
 
     m_ui->effectLevelBox->setItemDelegate(new QStyledItemDelegate(m_ui->effectLevelBox));
-    m_ui->effectLevelBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
-    m_ui->effectLevelBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->effectLevelBox->setStyleSheet(DownloadUIObject::ComboBoxStyle01 + DownloadUIObject::ItemView01);
+    m_ui->effectLevelBox->view()->setStyleSheet(DownloadUIObject::ScrollBarStyle01);
     m_ui->fontBox->setItemDelegate(new QStyledItemDelegate(m_ui->fontBox));
-    m_ui->fontBox->setStyleSheet(DownloadUIObject::MComboBoxStyle01 + DownloadUIObject::MItemView01);
-    m_ui->fontBox->view()->setStyleSheet(DownloadUIObject::MScrollBarStyle01);
+    m_ui->fontBox->setStyleSheet(DownloadUIObject::ComboBoxStyle01 + DownloadUIObject::ItemView01);
+    m_ui->fontBox->view()->setStyleSheet(DownloadUIObject::ScrollBarStyle01);
 
     m_ui->effectLevelBox->addItems(QStringList() << tr("Heigh") << tr("Low") << tr("Close"));
     m_ui->fontBox->addItems(QFontDatabase().families(QFontDatabase::Any));

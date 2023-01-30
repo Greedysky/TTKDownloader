@@ -26,27 +26,27 @@
  */
 namespace DownloadUIObject
 {
-    const QString MTHDNewDownload = " \
+    const QString THDNewDownload = " \
             QToolButton{ border:none; \
             background-image: url(:/functions/btn_new_normal);} \
             QToolButton:hover{ background-image: url(:/functions/btn_new_hover);}";
 
-    const QString MTHDStartDownload = " \
+    const QString THDStartDownload = " \
             QToolButton{ border:none; \
             background-image: url(:/functions/btn_start_normal);} \
             QToolButton:hover{ background-image: url(:/functions/btn_start_hover);}";
 
-    const QString MTHDStopDownload = " \
+    const QString THDStopDownload = " \
             QToolButton{ border:none; \
             background-image: url(:/functions/btn_stop_normal);} \
             QToolButton:hover{ background-image: url(:/functions/btn_stop_hover);}";
 
-    const QString MTHDDeleteDownload = " \
+    const QString THDDeleteDownload = " \
             QToolButton{ border:none; \
             background-image: url(:/functions/btn_delete_normal);} \
             QToolButton:hover{ background-image: url(:/functions/btn_delete_hover);}";
 
-    const QString MTHDSetting = " \
+    const QString THDSettings = " \
             QToolButton{ border:none; \
             background-image: url(:/functions/btn_setting_normal);} \
             QToolButton:hover{ background-image: url(:/functions/btn_setting_hover);}";

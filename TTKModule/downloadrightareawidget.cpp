@@ -42,27 +42,27 @@ void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication *ui)
 {
     m_ui = ui;
 
-    ui->newDownloadButton->setStyleSheet(DownloadUIObject::MTHDNewDownload);
+    ui->newDownloadButton->setStyleSheet(DownloadUIObject::THDNewDownload);
     ui->newDownloadButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->newDownloadButton->setToolTip(tr("NewDownload"));
     connect(ui->newDownloadButton, SIGNAL(clicked()), SLOT(showNewFileDialog()));
 
-    ui->startDownloadButton->setStyleSheet(DownloadUIObject::MTHDStartDownload);
+    ui->startDownloadButton->setStyleSheet(DownloadUIObject::THDStartDownload);
     ui->startDownloadButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->startDownloadButton->setToolTip(tr("Start"));
     connect(ui->startDownloadButton, SIGNAL(clicked()), m_listWidget, SLOT(start()));
 
-    ui->pauseDownloadButton->setStyleSheet(DownloadUIObject::MTHDStopDownload);
+    ui->pauseDownloadButton->setStyleSheet(DownloadUIObject::THDStopDownload);
     ui->pauseDownloadButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->pauseDownloadButton->setToolTip(tr("Stop"));
     connect(ui->pauseDownloadButton, SIGNAL(clicked()), m_listWidget, SLOT(pause()));
 
-    ui->deleteDownloadButton->setStyleSheet(DownloadUIObject::MTHDDeleteDownload);
+    ui->deleteDownloadButton->setStyleSheet(DownloadUIObject::THDDeleteDownload);
     ui->deleteDownloadButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->deleteDownloadButton->setToolTip(tr("Delete"));
     connect(ui->deleteDownloadButton, SIGNAL(clicked()), m_listWidget, SLOT(deleteItemFromList()));
 
-    ui->settingButton->setStyleSheet(DownloadUIObject::MTHDSetting);
+    ui->settingButton->setStyleSheet(DownloadUIObject::THDSettings);
     ui->settingButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->settingButton->setToolTip(tr("Setting"));
 

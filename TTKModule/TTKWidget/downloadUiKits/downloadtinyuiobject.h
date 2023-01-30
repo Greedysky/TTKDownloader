@@ -26,27 +26,27 @@
  */
 namespace DownloadUIObject
 {
-    const QString MTHDSkin = " \
+    const QString THDSkin = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_skin_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover);}";
 
-    const QString MTHDSetting = " \
+    const QString THDSetting = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_setting_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover);}";
 
-    const QString MTHDMinimum = " \
+    const QString THDMinimum = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_min_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_min_hover);}";
 
-    const QString MTHDMaximum = " \
+    const QString THDMaximum = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_max_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_max_hover);}";
 
-    const QString MTHDClose = " \
+    const QString THDClose = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_close_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_close_hover);}";

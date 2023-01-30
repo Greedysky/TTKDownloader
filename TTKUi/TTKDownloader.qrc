@@ -8,34 +8,19 @@
     </qresource>
     <qresource prefix="/remote">
         <file alias="lb_back">../TTKResource/remote/lb_back.png</file>
-        <file alias="lb_star">../TTKResource/remote/lb_star.png</file>
     </qresource>
     <qresource prefix="/usermanager">
-        <file alias="lb_top_arrow">../TTKResource/usermanager/lb_top_arrow.png</file>
         <file alias="btn_down_arrow">../TTKResource/usermanager/btn_down_arrow.png</file>
         <file alias="btn_up_arrow">../TTKResource/usermanager/btn_up_arrow.png</file>
     </qresource>
     <qresource prefix="/control">
         <file alias="btn_checkBox_checked">../TTKResource/controls/btn_checkBox_checked.png</file>
         <file alias="btn_checkBox_unchecked">../TTKResource/controls/btn_checkBox_unchecked.png</file>
-        <file alias="btn_checkBox2_checked">../TTKResource/controls/btn_checkBox2_checked.png</file>
-        <file alias="btn_checkBox2_unchecked">../TTKResource/controls/btn_checkBox2_unchecked.png</file>
         <file alias="btn_radiobutton_checked">../TTKResource/controls/btn_radiobutton_checked.png</file>
         <file alias="btn_radioButton_unchecked">../TTKResource/controls/btn_radioButton_unchecked.png</file>
-        <file alias="btn_radiobutton2_checked">../TTKResource/controls/btn_radiobutton2_checked.png</file>
-        <file alias="btn_radioButton2_unchecked">../TTKResource/controls/btn_radioButton2_unchecked.png</file>
-        <file alias="lb_volume_back">../TTKResource/controls/lb_volume_back.png</file>
-        <file alias="lb_volume_fore">../TTKResource/controls/lb_volume_fore.png</file>
-        <file alias="lb_volume_handle_normal">../TTKResource/controls/lb_volume_handle_normal.png</file>
-        <file alias="lb_volume_handle_hover">../TTKResource/controls/lb_volume_handle_hover.png</file>
         <file alias="lb_slider_disable">../TTKResource/controls/lb_slider_disable.png</file>
         <file alias="lb_slider_handle_hover">../TTKResource/controls/lb_slider_handle_hover.png</file>
         <file alias="lb_slider_handle_normal">../TTKResource/controls/lb_slider_handle_normal.png</file>
-        <file alias="lb_make_back">../TTKResource/controls/lb_make_back.png</file>
-        <file alias="lb_make_fore">../TTKResource/controls/lb_make_fore.png</file>
-        <file alias="lb_make_slider_disable">../TTKResource/controls/lb_make_slider_disable.png</file>
-        <file alias="lb_make_slider_handle_hover">../TTKResource/controls/lb_make_slider_handle_hover.png</file>
-        <file alias="lb_make_slider_handle_normal">../TTKResource/controls/lb_make_slider_handle_normal.png</file>
     </qresource>
     <qresource prefix="/contextMenu">
         <file alias="lb_new_normal">../TTKResource/contextMenu/lb_new_normal.png</file>

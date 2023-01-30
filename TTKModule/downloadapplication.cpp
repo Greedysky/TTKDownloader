@@ -93,7 +93,7 @@ void DownloadApplication::quitWindowClose()
 void DownloadApplication::appCreateRightMenu()
 {
     QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(DownloadUIObject::MMenuStyle02);
+    rightClickMenu.setStyleSheet(DownloadUIObject::MenuStyle02);
 
     rightClickMenu.addAction(tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
     rightClickMenu.addSeparator();

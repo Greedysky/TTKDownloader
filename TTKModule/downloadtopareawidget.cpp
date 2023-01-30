@@ -35,27 +35,27 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication *ui)
 {
     m_ui = ui;
 
-    ui->windowSkinButton->setStyleSheet(DownloadUIObject::MTHDSkin);
+    ui->windowSkinButton->setStyleSheet(DownloadUIObject::THDSkin);
     ui->windowSkinButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowSkinButton->setToolTip(tr("Skin"));
     connect(ui->windowSkinButton, SIGNAL(clicked()), SLOT(showSkinChangedWindow()));
 
-    ui->windowSettingButton->setStyleSheet(DownloadUIObject::MTHDSetting);
+    ui->windowSettingButton->setStyleSheet(DownloadUIObject::THDSetting);
     ui->windowSettingButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowSettingButton->setToolTip(tr("Setting"));
     connect(ui->windowSettingButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(appCreateRightMenu()));
 
-    ui->windowMinButton->setStyleSheet(DownloadUIObject::MTHDMinimum);
+    ui->windowMinButton->setStyleSheet(DownloadUIObject::THDMinimum);
     ui->windowMinButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowMinButton->setToolTip(tr("Minimum"));
     connect(ui->windowMinButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(showMinimized()));
 
-    ui->windowMaxButton->setStyleSheet(DownloadUIObject::MTHDMaximum);
+    ui->windowMaxButton->setStyleSheet(DownloadUIObject::THDMaximum);
     ui->windowMaxButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowMaxButton->setToolTip(tr("Maximum"));
     connect(ui->windowMaxButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(showMaximizedWindow()));
 
-    ui->windowCloseButton->setStyleSheet(DownloadUIObject::MTHDClose);
+    ui->windowCloseButton->setStyleSheet(DownloadUIObject::THDClose);
     ui->windowCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowCloseButton->setToolTip(tr("Close"));
     connect(ui->windowCloseButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(close()));

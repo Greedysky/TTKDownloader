@@ -78,7 +78,7 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
 
         hbox->addStretch(1);
         QPushButton *p = createButton(tr("ALL"));
-        p->setStyleSheet(p->styleSheet() + QString("QPushButton{%1}").arg(DownloadUIObject::MColorStyle08));
+        p->setStyleSheet(p->styleSheet() + QString("QPushButton{%1}").arg(DownloadUIObject::ColorStyle03));
 
         m_functionsWidget->setLayout(hbox);
     }
@@ -195,7 +195,7 @@ void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemot
 QPushButton* DownloadBackgroundRemoteWidget::createButton(const QString &name)
 {
     QPushButton *btn = new QPushButton(name, m_functionsWidget);
-    btn->setStyleSheet(DownloadUIObject::MPushButtonStyle02);
+    btn->setStyleSheet(DownloadUIObject::PushButtonStyle02);
     btn->setCursor(QCursor(Qt::PointingHandCursor));
     btn->setFixedSize(35, 20);
     btn->hide();
@@ -211,8 +211,8 @@ void DownloadBackgroundRemoteWidget::buttonStyleChanged()
 {
     for(int i = 0; i < m_functionsItems.count() - 1; ++i)
     {
-        m_functionsItems[i]->setStyleSheet(DownloadUIObject::MPushButtonStyle02);
+        m_functionsItems[i]->setStyleSheet(DownloadUIObject::PushButtonStyle02);
     }
-    m_functionsItems[m_currentIndex]->setStyleSheet(DownloadUIObject::MPushButtonStyle02 +
-                                                    QString("QPushButton{%1}").arg(DownloadUIObject::MColorStyle08));
+    m_functionsItems[m_currentIndex]->setStyleSheet(DownloadUIObject::PushButtonStyle02 +
+                                                    QString("QPushButton{%1}").arg(DownloadUIObject::ColorStyle03));
 }

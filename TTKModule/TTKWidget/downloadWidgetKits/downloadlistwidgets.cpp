@@ -302,7 +302,7 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
     DownloadAbstractTableWidget::contextMenuEvent(event);
 
     QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(DownloadUIObject::MMenuStyle02);
+    rightClickMenu.setStyleSheet(DownloadUIObject::MenuStyle02);
 
     int row = currentRow();
     rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
