@@ -290,7 +290,7 @@ void DownloadBackgroundListWidget::itemCloseClicked(DownloadBackgroundListItem *
     if(m_items.count() == 1)
     {
         DownloadMessageBox message;
-        message.setText(tr("Last One Item Can not be deleted!"));
+        message.setText(tr("Last One Item Can not be deleted"));
         message.exec();
         return;
     }

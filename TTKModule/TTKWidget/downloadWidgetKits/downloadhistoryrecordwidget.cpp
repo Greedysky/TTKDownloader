@@ -145,7 +145,7 @@ void DownloadHistoryRecordWidget::openFileDir()
     if(!DownloadUtils::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
     {
         DownloadMessageBox message;
-        message.setText(tr("The origin one does not exist!"));
+        message.setText(tr("The origin one does not exist"));
         message.exec();
     }
 }

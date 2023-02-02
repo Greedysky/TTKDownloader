@@ -40,7 +40,7 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
         url = parser.value(op1);
         if(url.isEmpty())
         {
-            TTK_LOG_STREAM("download url is empty!");
+            TTK_LOG_STREAM("download url is empty");
             return false;
         }
     }

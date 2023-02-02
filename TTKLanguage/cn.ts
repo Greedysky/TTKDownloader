@@ -75,8 +75,8 @@
 <context>
     <name>DownloadBackgroundListWidget</name>
     <message>
-        <source>Last One Item Can not be deleted!</source>
-        <translation>最后一个不能删除哦！</translation>
+        <source>Last One Item Can not be deleted</source>
+        <translation>最后一个不能删除哦</translation>
     </message>
 </context>
 <context>
@@ -221,10 +221,6 @@
 <context>
     <name>DownloadHistoryRecordWidget</name>
     <message>
-        <source>The origin one does not exist!</source>
-        <translation>您所指定的文件已被移动或者不存在！</translation>
-    </message>
-    <message>
         <source>Open File</source>
         <translation>打开文件夹</translation>
     </message>
@@ -247,6 +243,10 @@
     <message>
         <source>Copy Url</source>
         <translation>复制下载链接</translation>
+    </message>
+    <message>
+        <source>The origin one does not exist</source>
+        <translation>您所指定的文件已被移动或者不存在</translation>
     </message>
 </context>
 <context>
@@ -281,10 +281,6 @@
         <translation>排队中</translation>
     </message>
     <message>
-        <source>The origin one does not exist!</source>
-        <translation>您所指定的文件已被移动或者不存在！</translation>
-    </message>
-    <message>
         <source>Open File</source>
         <translation>打开文件夹</translation>
     </message>
@@ -315,6 +311,10 @@
     <message>
         <source>Copy Url</source>
         <translation>复制下载链接</translation>
+    </message>
+    <message>
+        <source>The origin one does not exist</source>
+        <translation>您所指定的文件已被移动或者不存在</translation>
     </message>
 </context>
 <context>
