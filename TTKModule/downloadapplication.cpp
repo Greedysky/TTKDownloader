@@ -17,23 +17,22 @@
 DownloadApplication *DownloadApplication::m_instance = nullptr;
 
 DownloadApplication::DownloadApplication(QWidget *parent)
-    : TTKAbstractMoveResizeWidget(parent),
+    : TTKAbstractMoveResizeWidget(false, parent),
       m_ui(new Ui::DownloadApplication)
 {
     m_instance = this;
-    setAttribute(Qt::WA_TranslucentBackground, false);
 
     m_applicationObject = new DownloadApplicationObject(this);
     m_topAreaWidget = new DownloadTopAreaWidget(this);
     m_rightAreaWidget = new DownloadRightAreaWidget(this);
     m_leftAreaWidget = new DownloadLeftAreaWidget(this);
     m_bottomAreaWidget = new DownloadBottomAreaWidget(this);
-    ////////////////////////////////////////////////
+
     m_ui->setupUi(this);
     const QSize &size = G_SETTING_PTR->value(DownloadSettingManager::ScreenSize).toSize();
     setMinimumSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
     setMaximumSize(size.width(), size.height());
-    ////////////////////////////////////////////////
+
     m_bottomAreaWidget->setupUi(m_ui);
     m_topAreaWidget->setupUi(m_ui);
     m_rightAreaWidget->setupUi(m_ui);
@@ -43,12 +42,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     G_HOTKEY_PTR->connectParentObject(this, "Ctrl+X", SLOT(quitWindowClose()));
 
     /////////// Mouse tracking
-    for(QObject *obj : foreachWidget(this))
-    {
-        QWidget *w = TTKObject_cast(QWidget*, obj);
-        w->installEventFilter(this);
-        w->setMouseTracking(true);
-    }
+    setObjectsTracking(QWidgetList() << m_ui->background);
 
     readXMLConfigFromText();
     m_rightAreaWidget->initialize();
