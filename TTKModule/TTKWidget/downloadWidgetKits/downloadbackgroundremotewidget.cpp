@@ -121,7 +121,7 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
 
 void DownloadBackgroundRemoteWidget::outputRemoteSkin(DownloadBackgroundImage &image, const QString &data)
 {
-    int index = QFileInfo(data).baseName().toInt();
+    const int index = QFileInfo(data).baseName().toInt();
     DownloadSkinRemoteItemList *items = &m_groups[m_currentIndex].m_items;
     if(index >= 0 || index < items->count())
     {

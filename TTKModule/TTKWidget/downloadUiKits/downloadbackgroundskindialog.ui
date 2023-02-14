@@ -83,7 +83,7 @@
    <widget class="QPushButton" name="paletteButton">
     <property name="geometry">
      <rect>
-      <x>355</x>
+      <x>280</x>
       <y>300</y>
       <width>70</width>
       <height>25</height>
@@ -112,13 +112,13 @@
      <string notr="true"/>
     </property>
    </widget>
-   <widget class="QPushButton" name="localSkinButton">
+   <widget class="QPushButton" name="customSkin">
     <property name="geometry">
      <rect>
-      <x>14</x>
-      <y>38</y>
+      <x>360</x>
+      <y>300</y>
       <width>70</width>
-      <height>20</height>
+      <height>25</height>
      </rect>
     </property>
     <property name="cursor">
@@ -128,28 +128,6 @@
      <string>本地皮肤</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="localPicButton">
-    <property name="geometry">
-     <rect>
-      <x>90</x>
-      <y>38</y>
-      <width>70</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="text">
-     <string>本地图片</string>
-    </property>
-   </widget>
-   <zorder>stackedWidget</zorder>
-   <zorder>skinTransparentLabel</zorder>
-   <zorder>paletteButton</zorder>
-   <zorder>skinTransparentButton</zorder>
-   <zorder>localPicButton</zorder>
-   <zorder>localSkinButton</zorder>
   </widget>
   <widget class="DownloadSkinAnimationWidget" name="skinAnimationSiwidget" native="true">
    <property name="geometry">
