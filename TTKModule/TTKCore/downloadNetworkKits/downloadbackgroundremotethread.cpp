@@ -11,34 +11,34 @@ DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent
 
 void DownloadSkinRemoteConfigManager::readSkinRemoteXMLConfig(DownloadSkinRemoteGroupList &items)
 {
-    const QDomNodeList &nodelist = m_document->elementsByTagName("group");
-    for(int i = 0; i < nodelist.count(); ++i)
+    const QDomNodeList &nodes = m_document->elementsByTagName("group");
+    for(int i = 0; i < nodes.count(); ++i)
     {
         DownloadSkinRemoteGroup group;
-        QDomNode node = nodelist.at(i);
+        QDomNode node = nodes.item(i);
         group.m_group = node.toElement().attribute("name");
 
-        const QDomNodeList &grouplist = node.childNodes();
-        for(int j = 0; j < grouplist.count(); ++j)
+        const QDomNodeList &groupNodes = node.childNodes();
+        for(int j = 0; j < groupNodes.count(); ++j)
         {
-            node = grouplist.at(j);
+            node = groupNodes.item(j);
+            const QDomNodeList &packageNodes = node.childNodes();
 
             DownloadSkinRemoteItem item;
-            const QDomNodeList &packagelist = node.childNodes();
-            for(int k = 0; k < packagelist.count(); ++k)
+            for(int k = 0; k < packageNodes.count(); ++k)
             {
-                const QDomElement &ele = packagelist.at(k).toElement();
-                if(ele.nodeName() == "name")
+                const QDomElement &element = packageNodes.item(k).toElement();
+                if(element.nodeName() == "name")
                 {
-                    item.m_name = ele.text();
+                    item.m_name = element.text();
                 }
-                else if(ele.nodeName() == "popularity")
+                else if(element.nodeName() == "popularity")
                 {
-                    item.m_useCount = ele.text().toInt();
+                    item.m_useCount = element.text().toInt();
                 }
-                else if(ele.nodeName() == "file")
+                else if(element.nodeName() == "file")
                 {
-                    item.m_url = ele.text();
+                    item.m_url = element.text();
                 }
             }
 

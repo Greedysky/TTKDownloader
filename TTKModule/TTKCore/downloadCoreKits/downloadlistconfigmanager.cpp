@@ -30,10 +30,11 @@ void DownloadListConfigManager::writeListConfig(const DownloadItemList &records)
 
 void DownloadListConfigManager::readListConfig(DownloadItemList &records)
 {
-    const QDomNodeList &nodelist = m_document->elementsByTagName("value");
-    for(int i = 0; i < nodelist.count(); ++i)
+    const QDomNodeList &nodes = m_document->elementsByTagName("value");
+    for(int i = 0; i < nodes.count(); ++i)
     {
-        const QDomElement &element = nodelist.at(i).toElement();
+        const QDomElement &element = nodes.item(i).toElement();
+
         DownloadItem record;
         record.m_url = element.attribute("url");
         record.m_name = element.attribute("name");

@@ -32,10 +32,11 @@ void DownloadRecordConfigManager::writeDownloadConfig(const DownloadRecordList &
 
 void DownloadRecordConfigManager::readDownloadConfig(DownloadRecordList &records)
 {
-    const QDomNodeList &nodelist = m_document->elementsByTagName("value");
-    for(int i = 0; i < nodelist.count(); ++i)
+    const QDomNodeList &nodes = m_document->elementsByTagName("value");
+    for(int i = 0; i < nodes.count(); ++i)
     {
-        const QDomElement &element = nodelist.at(i).toElement();
+        const QDomElement &element = nodes.item(i).toElement();
+
         DownloadRecord record;
         record.m_path = element.attribute("name");
         record.m_time = element.attribute("time");

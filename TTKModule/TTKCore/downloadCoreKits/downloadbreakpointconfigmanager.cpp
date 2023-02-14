@@ -31,24 +31,23 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 
 void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointItemList &records)
 {
-    QDomNodeList nodelist = m_document->elementsByTagName("value");
-    for(int i = 0; i < nodelist.count(); ++i)
+    QDomNodeList nodes = m_document->elementsByTagName("value");
+    for(int i = 0; i < nodes.count(); ++i)
     {
         DownloadBreakPointItem record;
-        const QDomElement &element = nodelist.at(i).toElement();
+        const QDomElement &element = nodes.item(i).toElement();
         record.m_ready = element.attribute("ready").toLongLong();
         record.m_end = element.attribute("end").toLongLong();
         record.m_start = element.attribute("start").toLongLong();
         records << record;
     }
 
-    nodelist = m_document->elementsByTagName("url");
-    for(int i = 0; i < nodelist.count(); ++i)
+    nodes = m_document->elementsByTagName("url");
+    for(int i = 0; i < nodes.count(); ++i)
     {
         for(int j = 0; j < records.count(); ++j)
         {
-            const QDomElement &element = nodelist.at(i).toElement();
-            records[j].m_url = element.text();
+            records[j].m_url = nodes.item(i).toElement().text();
         }
     }
 }

@@ -26,6 +26,6 @@ void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem 
 
 void DownloadSkinConfigManager::readSkinXMLConfig(DownloadSkinConfigItem &item)
 {
-    item.m_name = readXmlAttributeByTagNameValue("name");
-    item.m_useCount = readXmlAttributeByTagNameValue("useCount").toInt();
+    item.m_name = readXmlAttributeByTagName("name");
+    item.m_useCount = readXmlAttributeByTagName("useCount").toInt();
 }
