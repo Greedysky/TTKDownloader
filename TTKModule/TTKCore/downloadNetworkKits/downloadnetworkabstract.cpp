@@ -61,3 +61,18 @@ void DownloadNetworkAbstract::sslErrorsString(QNetworkReply *reply, const QList<
     reply->ignoreSslErrors();
 }
 #endif
+
+namespace DownloadObject
+{
+void setSslConfiguration(QNetworkRequest *request, QSslSocket::PeerVerifyMode mode)
+{
+#ifndef QT_NO_SSL
+    QSslConfiguration sslConfig = request->sslConfiguration();
+    sslConfig.setPeerVerifyMode(mode);
+    request->setSslConfiguration(sslConfig);
+#else
+    Q_UNUSED(request);
+    Q_UNUSED(mode);
+#endif
+}
+}

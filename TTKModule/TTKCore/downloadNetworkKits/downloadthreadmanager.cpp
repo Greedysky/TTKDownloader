@@ -3,13 +3,10 @@
 #include "downloadbreakpointconfigmanager.h"
 #include "downloadcoreutils.h"
 #include "downloadurlencoder.h"
+#include "downloadnetworkabstract.h"
 
 #include <QFileInfo>
 #include <QEventLoop>
-#include <QNetworkReply>
-#include <QNetworkRequest>
-#include <QSslConfiguration>
-#include <QNetworkAccessManager>
 
 DownloadThreadManager::DownloadThreadManager(QObject *parent)
     : QObject(parent),
@@ -32,14 +29,12 @@ qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
     while(tryTimes--)
     {
         QNetworkAccessManager manager;
+
         QEventLoop loop;
         QNetworkRequest request;
         request.setUrl(url);
-    #ifndef QT_NO_SSL
-        QSslConfiguration sslConfig = request.sslConfiguration();
-        sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
-        request.setSslConfiguration(sslConfig);
-    #endif
+        DownloadObject::setSslConfiguration(&request);
+
         QNetworkReply *reply = manager.head(request);
         if(!reply)
         {

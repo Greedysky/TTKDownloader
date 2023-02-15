@@ -8,6 +8,7 @@
 #include "downloadsettingmanager.h"
 #include "downloadsysconfigmanager.h"
 #include "downloadhotkeymanager.h"
+#include "downloadnetworkabstract.h"
 #include "downloaduiobject.h"
 #include "ttkversion.h"
 
@@ -185,7 +186,10 @@ void DownloadApplication::readXMLConfigFromText()
 
     //Reset geometry
     setGeometry(xml.readWindowGeometry());
-
+#ifndef QT_NO_SSL
+    // ssl support check
+    TTK_INFO_STREAM(QString("Application network support ssl: %1").arg(QSslSocket::supportsSsl() ? "true" : "false"));
+#endif
 }
 
 void DownloadApplication::writeXMLConfigToText()

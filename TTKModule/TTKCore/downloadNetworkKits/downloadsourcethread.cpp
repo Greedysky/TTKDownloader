@@ -19,11 +19,7 @@ void DownloadSourceThread::startToDownload(const QString &url)
     request.setUrl(url);
 #ifndef QT_NO_SSL
     connect(m_manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
-    TTK_INFO_STREAM(QString("%1 Support ssl: %2").arg(className()).arg(QSslSocket::supportsSsl()));
-
-    QSslConfiguration sslConfig = request.sslConfiguration();
-    sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
-    request.setSslConfiguration(sslConfig);
+    DownloadObject::setSslConfiguration(&request);
 #endif
 
     m_reply = m_manager->get(request);

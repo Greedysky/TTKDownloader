@@ -23,7 +23,6 @@
 #include "ttkglobaldefine.h"
 
 class QFile;
-class QNetworkAccessManager;
 
 /*! @brief The class of the download thread.
  * @author Greedysky <greedysky@163.com>

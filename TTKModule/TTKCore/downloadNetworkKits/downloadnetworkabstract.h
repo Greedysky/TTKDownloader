@@ -84,4 +84,15 @@ protected:
 
 };
 
+/*! @brief The namespace of the application object.
+ * @author Greedysky <greedysky@163.com>
+ */
+namespace DownloadObject
+{
+    /*!
+     * Set request ssl configuration.
+     */
+    TTK_MODULE_EXPORT void setSslConfiguration(QNetworkRequest *request, QSslSocket::PeerVerifyMode mode = QSslSocket::VerifyNone);
+}
+
 #endif // DOWNLOADNETWORKABSTRACT_H

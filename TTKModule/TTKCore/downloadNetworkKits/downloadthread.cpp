@@ -1,9 +1,7 @@
 #include "downloadthread.h"
+#include "downloadnetworkabstract.h"
 
 #include <QFile>
-#include <QSslConfiguration>
-#include <QNetworkRequest>
-#include <QNetworkAccessManager>
 
 DownloadThread::DownloadThread(QObject *parent)
     : QObject(parent),
@@ -38,11 +36,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     request.setUrl(m_url);
     QString range = QString("bytes=%0-%1").arg(m_startPoint + m_readySize).arg(m_endPoint);
     request.setRawHeader("Range", range.toUtf8());
-#ifndef QT_NO_SSL
-    QSslConfiguration sslConfig = request.sslConfiguration();
-    sslConfig.setPeerVerifyMode(QSslSocket::VerifyNone);
-    request.setSslConfiguration(sslConfig);
-#endif
+    DownloadObject::setSslConfiguration(&request);
 
     m_reply = m_manager->get(request);
     connect(m_reply, SIGNAL(finished()), SLOT(finishedSlot()));
