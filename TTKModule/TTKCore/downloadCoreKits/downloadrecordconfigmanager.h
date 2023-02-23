@@ -37,7 +37,7 @@ TTK_DECLARE_LIST(DownloadRecord);
 /*! @brief The class of the download record manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKAbstractXml
+class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKXmlDocument
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadRecordConfigManager)

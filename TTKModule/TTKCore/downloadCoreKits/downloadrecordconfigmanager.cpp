@@ -1,7 +1,7 @@
 #include "downloadrecordconfigmanager.h"
 
 DownloadRecordConfigManager::DownloadRecordConfigManager(QObject *parent)
-    : TTKAbstractXml(parent)
+    : TTKXmlDocument(parent)
 {
 
 }

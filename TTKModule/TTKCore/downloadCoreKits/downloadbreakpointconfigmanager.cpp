@@ -1,7 +1,7 @@
 #include "downloadbreakpointconfigmanager.h"
 
 DownloadBreakPointConfigManager::DownloadBreakPointConfigManager(QObject *parent)
-    : TTKAbstractXml(parent)
+    : TTKXmlDocument(parent)
 {
 
 }

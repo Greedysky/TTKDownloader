@@ -1,7 +1,7 @@
 #include "downloadlistconfigmanager.h"
 
 DownloadListConfigManager::DownloadListConfigManager(QObject *parent)
-    : TTKAbstractXml(parent)
+    : TTKXmlDocument(parent)
 {
 
 }

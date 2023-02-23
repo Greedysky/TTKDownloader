@@ -1,7 +1,7 @@
 #include "downloadbackgroundconfigmanager.h"
 
 DownloadSkinConfigManager::DownloadSkinConfigManager(QObject *parent)
-    : TTKAbstractXml(parent)
+    : TTKXmlDocument(parent)
 {
 
 }

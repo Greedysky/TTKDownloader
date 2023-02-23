@@ -5,7 +5,7 @@
 #include <QRect>
 
 DownloadSysConfigManager::DownloadSysConfigManager(QObject *parent)
-    : TTKAbstractXml(parent)
+    : TTKXmlDocument(parent)
 {
 
 }

@@ -63,7 +63,7 @@ TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
 /*! @brief The class of the remote skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSkinRemoteConfigManager : public TTKAbstractXml
+class TTK_MODULE_EXPORT DownloadSkinRemoteConfigManager : public TTKXmlDocument
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinRemoteConfigManager)
