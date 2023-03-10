@@ -91,8 +91,8 @@ void DownloadBottomAreaWidget::iconActivated(QSystemTrayIcon::ActivationReason r
 
 void DownloadBottomAreaWidget::updateNetworkData(ulong upload, ulong download)
 {
-    const QString &up = DownloadUtils::Number::speedByteToLabel(upload);
-    const QString &down = DownloadUtils::Number::speedByteToLabel(download);
+    const QString &up = TTK::Number::speedByteToLabel(upload);
+    const QString &down = TTK::Number::speedByteToLabel(download);
     m_ui->downloadSpeedButton->setLabelText(up, down);
 }
 
@@ -100,18 +100,18 @@ void DownloadBottomAreaWidget::downloadSettingButtonClicked()
 {
     delete m_toolPopupMenu;
     m_toolPopupMenu = new QMenu(this);
-    m_toolPopupMenu->setStyleSheet(DownloadUIObject::MenuStyle02);
+    m_toolPopupMenu->setStyleSheet(TTK::UI::MenuStyle02);
 
     QPixmap pix(17, 17);
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
-    DownloadUtils::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_protection"), QPoint(2, 2));
+    TTK::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_protection"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Speed Protection"));
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
-    DownloadUtils::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_custom"), QPoint(2, 2));
+    TTK::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_custom"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Custom Speed Limit"));
     m_toolPopupMenu->addSeparator();
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
-    DownloadUtils::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_setting"), QPoint(2, 2));
+    TTK::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_setting"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("More Setting..."));
 
     m_ui->downloadSettingButton->setMenu(m_toolPopupMenu);
@@ -122,7 +122,7 @@ void DownloadBottomAreaWidget::downloadPlanButtonClicked()
 {
     delete m_toolPopupMenu;
     m_toolPopupMenu = new QMenu(this);
-    m_toolPopupMenu->setStyleSheet(DownloadUIObject::MenuStyle02);
+    m_toolPopupMenu->setStyleSheet(TTK::UI::MenuStyle02);
     m_toolPopupMenu->addAction(tr("Spare"));
     m_toolPopupMenu->addAction(tr("Add Plan"));
     m_toolPopupMenu->addAction(tr("Delete Plan"))->setEnabled(false);

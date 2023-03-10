@@ -9,7 +9,7 @@ DownloadToolLabelButton::DownloadToolLabelButton(QWidget *parent)
       m_enterIn(false)
 {
     setFixedHeight(25);
-    setStyleSheet(DownloadUIObject::ToolButtonStyle02 + DownloadUIObject:: ToolButtonStyle04);
+    setStyleSheet(TTK::UI::ToolButtonStyle02 + TTK::UI::ToolButtonStyle04);
 }
 
 void DownloadToolLabelButton::setLabelText(const QString &text)
@@ -71,7 +71,7 @@ DownloadSpeedToolLabelButton::DownloadSpeedToolLabelButton(QWidget *parent)
     : QToolButton(parent)
 {
     setFixedHeight(25);
-    setStyleSheet(DownloadUIObject::ToolButtonStyle02 + DownloadUIObject:: ToolButtonStyle01);
+    setStyleSheet(TTK::UI::ToolButtonStyle02 + TTK::UI::ToolButtonStyle01);
 
     m_enterIn = false;
 }

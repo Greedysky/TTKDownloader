@@ -97,7 +97,7 @@ void DownloadListItemWidget::backgroundChanged()
 {
     if(m_progressBar)
     {
-        m_progressBar->setStyleSheet(DownloadUIObject::ProgressBar01 +
+        m_progressBar->setStyleSheet(TTK::UI::ProgressBar01 +
                                      QString("QProgressBar::chunk{ background:%1; }").arg(
                                      G_BACKGROUND_PTR->backgroundColor().name()));
     }
@@ -112,7 +112,7 @@ void DownloadListItemWidget::progressChanged(qint64 current, qint64 total)
 void DownloadListItemWidget::updateFileInfoChanged(const QString &name, qint64 size)
 {
     m_fileNameLabel->setText(name);
-    m_fileSizeLabel->setText(DownloadUtils::Number::sizeByteToLabel(m_totalSize = size));
+    m_fileSizeLabel->setText(TTK::Number::sizeByteToLabel(m_totalSize = size));
     QFileIconProvider provider;
     QPixmap pix(provider.icon(QFileInfo(name)).pixmap(40, 40));
     if(pix.isNull())
@@ -142,7 +142,7 @@ void DownloadListItemWidget::updateDownloadSpeed()
 {
     const int delta = (m_currentSize - m_previousSize) * 2;
     m_previousSize = m_currentSize;
-    m_speedLabel->setText(DownloadUtils::Number::speedByteToLabel(delta));
+    m_speedLabel->setText(TTK::Number::speedByteToLabel(delta));
 
     m_speedTimeLabel->setText(delta == 0 ? LABEL_MAX_TIME : timeStandardization((m_totalSize - m_previousSize)/delta + 1));
 }

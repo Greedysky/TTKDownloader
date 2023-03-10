@@ -2,7 +2,7 @@
 
 #include <QTextCodec>
 
-void DownloadUtils::Codec::setLocalCodec(const char *format)
+void TTK::Codec::setLocalCodec(const char *format)
 {
     QTextCodec *codec = QTextCodec::codecForName(format);
     QTextCodec::setCodecForLocale(codec);

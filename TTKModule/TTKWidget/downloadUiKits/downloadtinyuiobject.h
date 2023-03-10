@@ -24,33 +24,36 @@
 /*! @brief The namespace of the tiny button style.
  * @author Greedysky <greedysky@163.com>
  */
-namespace DownloadUIObject
+namespace TTK
 {
-    const QString THDSkin = " \
-            QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_skin_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover);}";
+    namespace UI
+    {
+        const QString THDSkin = " \
+                QToolButton{ border:none; \
+                background-image: url(:/tiny/btn_skin_normal);} \
+                QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover);}";
 
-    const QString THDSetting = " \
-            QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_setting_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover);}";
+        const QString THDSetting = " \
+                QToolButton{ border:none; \
+                background-image: url(:/tiny/btn_setting_normal);} \
+                QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover);}";
 
-    const QString THDMinimum = " \
-            QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_min_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_min_hover);}";
+        const QString THDMinimum = " \
+                QToolButton{ border:none; \
+                background-image: url(:/tiny/btn_min_normal);} \
+                QToolButton:hover{ background-image: url(:/tiny/btn_min_hover);}";
 
-    const QString THDMaximum = " \
-            QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_max_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_max_hover);}";
+        const QString THDMaximum = " \
+                QToolButton{ border:none; \
+                background-image: url(:/tiny/btn_max_normal);} \
+                QToolButton:hover{ background-image: url(:/tiny/btn_max_hover);}";
 
-    const QString THDClose = " \
-            QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_close_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_close_hover);}";
+        const QString THDClose = " \
+                QToolButton{ border:none; \
+                background-image: url(:/tiny/btn_close_normal);} \
+                QToolButton:hover{ background-image: url(:/tiny/btn_close_hover);}";
 
+    }
 }
 
 #endif // DOWNLOADTINYUIOBJECT_H

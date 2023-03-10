@@ -123,15 +123,15 @@ void DownloadSkinAnimationWidget::paintEvent(QPaintEvent *event)
 
 void DownloadSkinAnimationWidget::switchToSelectedItemStyle(int index)
 {
-    m_container[0]->setStyleSheet(DownloadUIObject::ColorStyle02 + DownloadUIObject::BackgroundStyle01);
-    m_container[1]->setStyleSheet(DownloadUIObject::ColorStyle02 + DownloadUIObject::BackgroundStyle01);
-    m_container[2]->setStyleSheet(DownloadUIObject::ColorStyle02 + DownloadUIObject::BackgroundStyle01);
+    m_container[0]->setStyleSheet(TTK::UI::ColorStyle02 + TTK::UI::BackgroundStyle01);
+    m_container[1]->setStyleSheet(TTK::UI::ColorStyle02 + TTK::UI::BackgroundStyle01);
+    m_container[2]->setStyleSheet(TTK::UI::ColorStyle02 + TTK::UI::BackgroundStyle01);
 
     switch(index)
     {
-        case 0: m_container[0]->setStyleSheet(DownloadUIObject::ColorStyle03 + DownloadUIObject::BackgroundStyle01); break;
-        case 1: m_container[1]->setStyleSheet(DownloadUIObject::ColorStyle03 + DownloadUIObject::BackgroundStyle01); break;
-        case 2: m_container[2]->setStyleSheet(DownloadUIObject::ColorStyle03 + DownloadUIObject::BackgroundStyle01); break;
+        case 0: m_container[0]->setStyleSheet(TTK::UI::ColorStyle03 + TTK::UI::BackgroundStyle01); break;
+        case 1: m_container[1]->setStyleSheet(TTK::UI::ColorStyle03 + TTK::UI::BackgroundStyle01); break;
+        case 2: m_container[2]->setStyleSheet(TTK::UI::ColorStyle03 + TTK::UI::BackgroundStyle01); break;
         default: break;
     }
 

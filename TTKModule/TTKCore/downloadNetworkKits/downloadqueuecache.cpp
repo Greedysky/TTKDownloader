@@ -19,7 +19,7 @@ DownloadQueueCache::DownloadQueueCache(const DownloadQueueData &data, QObject *p
     m_request = new QNetworkRequest();
 #ifndef QT_NO_SSL
     connect(m_manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
-    DownloadObject::setSslConfiguration(m_request);
+    TTK::setSslConfiguration(m_request);
 #endif
 }
 

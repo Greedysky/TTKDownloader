@@ -71,9 +71,9 @@
 #define HISTORY_PATH            TTK_STRCAT("history", TKF_FILE)
 
 
-#define MAIN_DIR_FULL           DownloadObject::applicationPath() + TTK_PDIR
-#define APPDATA_DIR_FULL        DownloadObject::configPath() + APPDATA_DIR
-#define APPCACHE_DIR_FULL       DownloadObject::configPath() + APPCACHE_DIR
+#define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PDIR
+#define APPDATA_DIR_FULL        TTK::configPath() + APPDATA_DIR
+#define APPCACHE_DIR_FULL       TTK::configPath() + APPCACHE_DIR
 #define TDDOWNLOAD_DIR_FULL     MAIN_DIR_FULL + TDDOWNLOAD_DIR
 
 
@@ -83,8 +83,8 @@
 #define HISTORY_PATH_FULL       APPDATA_DIR_FULL + HISTORY_PATH
 #define USER_THEME_DIR_FULL     APPDATA_DIR_FULL + USER_THEME_DIR
 
-#define THEME_DIR_FULL          DownloadObject::applicationPath() + THEME_DIR
-#define LANGUAGE_DIR_FULL       DownloadObject::applicationPath() + LANGUAGE_DIR
+#define THEME_DIR_FULL          TTK::applicationPath() + THEME_DIR
+#define LANGUAGE_DIR_FULL       TTK::applicationPath() + LANGUAGE_DIR
 
 
 #define WINDOW_WIDTH_MIN        1000
@@ -94,7 +94,7 @@
 /*! @brief The namespace of the application object.
  * @author Greedysky <greedysky@163.com>
  */
-namespace DownloadObject
+namespace TTK
 {
     /*!
      * Get application work dir.

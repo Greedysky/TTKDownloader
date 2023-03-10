@@ -1,7 +1,7 @@
 #include "downloadcoreutils.h"
 #include "downloadsettingmanager.h"
 
-QString DownloadUtils::Core::downloadPrefix()
+QString TTK::Core::downloadPrefix()
 {
    QString path = G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
    if(path.isEmpty())

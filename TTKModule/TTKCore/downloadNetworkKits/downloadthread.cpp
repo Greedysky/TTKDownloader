@@ -36,7 +36,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     request.setUrl(m_url);
     QString range = QString("bytes=%0-%1").arg(m_startPoint + m_readySize).arg(m_endPoint);
     request.setRawHeader("Range", range.toUtf8());
-    DownloadObject::setSslConfiguration(&request);
+    TTK::setSslConfiguration(&request);
 
     m_reply = m_manager->get(request);
     connect(m_reply, SIGNAL(finished()), SLOT(finishedSlot()));

@@ -8,7 +8,7 @@
 #  include <shellapi.h>
 #endif
 
-bool DownloadUtils::Url::openUrl(const QString &path, bool local)
+bool TTK::Url::openUrl(const QString &path, bool local)
 {
     if(path.isEmpty())
     {

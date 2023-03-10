@@ -24,7 +24,7 @@
 /*! @brief The namespace of the utils algorithm.
  * @author Greedysky <greedysky@163.com>
  */
-namespace DownloadUtils
+namespace TTK
 {
     namespace Algorithm
     {

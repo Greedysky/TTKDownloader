@@ -244,13 +244,13 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_close_hover"));
-    m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::ToolButtonStyle03);
+    m_ui->topTitleCloseButton->setStyleSheet(TTK::UI::ToolButtonStyle03);
     m_ui->topTitleCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
 
-    m_ui->confirmButton->setStyleSheet(DownloadUIObject::PushButtonStyle03);
-    m_ui->cancelButton->setStyleSheet(DownloadUIObject::PushButtonStyle03);
+    m_ui->confirmButton->setStyleSheet(TTK::UI::PushButtonStyle03);
+    m_ui->cancelButton->setStyleSheet(TTK::UI::PushButtonStyle03);
     m_ui->confirmButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->cancelButton->setCursor(QCursor(Qt::PointingHandCursor));
 

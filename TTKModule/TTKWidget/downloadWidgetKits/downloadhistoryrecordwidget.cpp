@@ -95,7 +95,7 @@ void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const 
     DownloadRecord record;
     record.m_time = fin.lastModified().toString("yyyy-MM-dd HH:mm:ss");
     record.m_path = fin.absoluteFilePath();
-    record.m_size = DownloadUtils::Number::sizeByteToLabel(fin.size());
+    record.m_size = TTK::Number::sizeByteToLabel(fin.size());
     record.m_url = url;
     m_records << record;
 
@@ -142,7 +142,7 @@ void DownloadHistoryRecordWidget::openFileDir()
     }
 
     QString path = m_records[ currentRow() ].m_path;
-    if(!DownloadUtils::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    if(!TTK::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
     {
         DownloadMessageBox message;
         message.setText(tr("The origin one does not exist"));
@@ -166,7 +166,7 @@ void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
     DownloadAbstractTableWidget::contextMenuEvent(event);
 
     QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(DownloadUIObject::MenuStyle02);
+    rightClickMenu.setStyleSheet(TTK::UI::MenuStyle02);
 
     int row = currentRow();
     rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);

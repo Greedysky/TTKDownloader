@@ -35,27 +35,27 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication *ui)
 {
     m_ui = ui;
 
-    ui->windowSkinButton->setStyleSheet(DownloadUIObject::THDSkin);
+    ui->windowSkinButton->setStyleSheet(TTK::UI::THDSkin);
     ui->windowSkinButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowSkinButton->setToolTip(tr("Skin"));
     connect(ui->windowSkinButton, SIGNAL(clicked()), SLOT(showSkinChangedWindow()));
 
-    ui->windowSettingButton->setStyleSheet(DownloadUIObject::THDSetting);
+    ui->windowSettingButton->setStyleSheet(TTK::UI::THDSetting);
     ui->windowSettingButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowSettingButton->setToolTip(tr("Setting"));
     connect(ui->windowSettingButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(appCreateRightMenu()));
 
-    ui->windowMinButton->setStyleSheet(DownloadUIObject::THDMinimum);
+    ui->windowMinButton->setStyleSheet(TTK::UI::THDMinimum);
     ui->windowMinButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowMinButton->setToolTip(tr("Minimum"));
     connect(ui->windowMinButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(showMinimized()));
 
-    ui->windowMaxButton->setStyleSheet(DownloadUIObject::THDMaximum);
+    ui->windowMaxButton->setStyleSheet(TTK::UI::THDMaximum);
     ui->windowMaxButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowMaxButton->setToolTip(tr("Maximum"));
     connect(ui->windowMaxButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(showMaximizedWindow()));
 
-    ui->windowCloseButton->setStyleSheet(DownloadUIObject::THDClose);
+    ui->windowCloseButton->setStyleSheet(TTK::UI::THDClose);
     ui->windowCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowCloseButton->setToolTip(tr("Close"));
     connect(ui->windowCloseButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(close()));
@@ -167,7 +167,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
     }
 
     qint64 average = 0;
-    DownloadUtils::Image::reRenderImage(average, 35, &origin, &origin);
+    TTK::Image::reRenderImage(average, 35, &origin, &origin);
     G_BACKGROUND_PTR->setBackgroundColor(average);
 
     m_backgroundImage = origin;
@@ -176,7 +176,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
 
 void DownloadTopAreaWidget::drawWindowBackgroundRectString()
 {
-    float v = DownloadUtils::Image::reRenderValue<float>(1.0f, 0.35f, m_backgroundAlpha);
+    float v = TTK::Image::reRenderValue<float>(1.0f, 0.35f, m_backgroundAlpha);
     DownloadApplication::instance()->setWindowOpacity(v);
 
     QSize size(G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize());

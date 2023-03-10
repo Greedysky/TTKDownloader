@@ -34,7 +34,7 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
         return false;
     }
 
-    QString url, path = DownloadObject::applicationPath();
+    QString url, path = TTK::applicationPath();
     if(parser.isSet(op1))
     {
         url = parser.value(op1);

@@ -24,33 +24,36 @@
 /*! @brief The namespace of the function button style.
  * @author Greedysky <greedysky@163.com>
  */
-namespace DownloadUIObject
+namespace TTK
 {
-    const QString THDNewDownload = " \
-            QToolButton{ border:none; \
-            background-image: url(:/functions/btn_new_normal);} \
-            QToolButton:hover{ background-image: url(:/functions/btn_new_hover);}";
+    namespace UI
+    {
+        const QString THDNewDownload = " \
+                QToolButton{ border:none; \
+                background-image: url(:/functions/btn_new_normal);} \
+                QToolButton:hover{ background-image: url(:/functions/btn_new_hover);}";
 
-    const QString THDStartDownload = " \
-            QToolButton{ border:none; \
-            background-image: url(:/functions/btn_start_normal);} \
-            QToolButton:hover{ background-image: url(:/functions/btn_start_hover);}";
+        const QString THDStartDownload = " \
+                QToolButton{ border:none; \
+                background-image: url(:/functions/btn_start_normal);} \
+                QToolButton:hover{ background-image: url(:/functions/btn_start_hover);}";
 
-    const QString THDStopDownload = " \
-            QToolButton{ border:none; \
-            background-image: url(:/functions/btn_stop_normal);} \
-            QToolButton:hover{ background-image: url(:/functions/btn_stop_hover);}";
+        const QString THDStopDownload = " \
+                QToolButton{ border:none; \
+                background-image: url(:/functions/btn_stop_normal);} \
+                QToolButton:hover{ background-image: url(:/functions/btn_stop_hover);}";
 
-    const QString THDDeleteDownload = " \
-            QToolButton{ border:none; \
-            background-image: url(:/functions/btn_delete_normal);} \
-            QToolButton:hover{ background-image: url(:/functions/btn_delete_hover);}";
+        const QString THDDeleteDownload = " \
+                QToolButton{ border:none; \
+                background-image: url(:/functions/btn_delete_normal);} \
+                QToolButton:hover{ background-image: url(:/functions/btn_delete_hover);}";
 
-    const QString THDSettings = " \
-            QToolButton{ border:none; \
-            background-image: url(:/functions/btn_setting_normal);} \
-            QToolButton:hover{ background-image: url(:/functions/btn_setting_hover);}";
+        const QString THDSettings = " \
+                QToolButton{ border:none; \
+                background-image: url(:/functions/btn_setting_normal);} \
+                QToolButton:hover{ background-image: url(:/functions/btn_setting_hover);}";
 
+    }
 }
 
 #endif // DOWNLOADFUNCTIONUIOBJECT_H

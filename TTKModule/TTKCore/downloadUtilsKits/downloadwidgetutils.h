@@ -24,7 +24,7 @@
 /*! @brief The namespace of the utils widget.
  * @author Greedysky <greedysky@163.com>
  */
-namespace DownloadUtils
+namespace TTK
 {
     namespace Widget
     {

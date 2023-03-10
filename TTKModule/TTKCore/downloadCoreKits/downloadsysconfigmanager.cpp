@@ -116,7 +116,7 @@ void DownloadSysConfigManager::readSysLoadConfig() const
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced, readXmlAttributeByTagName("downloadMaxCount").toInt());
 
     const QString &path = readXmlAttributeByTagName("downloadPathDir");
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, (path.isEmpty() || !QFile::exists(path)) ? DownloadUtils::Core::downloadPrefix() : path);
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, (path.isEmpty() || !QFile::exists(path)) ? TTK::Core::downloadPrefix() : path);
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimitChoiced, readXmlAttributeByTagName("downloadDLoadLimit"));
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimitChoiced, readXmlAttributeByTagName("downloadULoadLimit"));
 

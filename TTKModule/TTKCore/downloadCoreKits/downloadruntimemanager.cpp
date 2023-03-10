@@ -7,7 +7,7 @@
 #include <QApplication>
 #include <QFontDatabase>
 
-namespace DownloadObject
+namespace TTK
 {
 static QString languageCore(int index)
 {
@@ -32,7 +32,7 @@ void DownloadRunTimeManager::run() const
 {
     TTK_INFO_STREAM("DownloadApplication Begin");
 
-    DownloadUtils::Codec::setLocalCodec();
+    TTK::Codec::setLocalCodec();
 
     TTK_INFO_STREAM("Load Translation");
     DownloadSysConfigManager *xml = new DownloadSysConfigManager;
@@ -64,5 +64,5 @@ void DownloadRunTimeManager::run() const
 
 QString DownloadRunTimeManager::translator() const
 {
-    return DownloadObject::languageCore(0);
+    return TTK::languageCore(0);
 }

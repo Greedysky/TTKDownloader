@@ -62,7 +62,7 @@ void DownloadNetworkAbstract::sslErrorsString(QNetworkReply *reply, const QList<
 }
 #endif
 
-namespace DownloadObject
+namespace TTK
 {
 void setSslConfiguration(QNetworkRequest *request, QSslSocket::PeerVerifyMode mode)
 {

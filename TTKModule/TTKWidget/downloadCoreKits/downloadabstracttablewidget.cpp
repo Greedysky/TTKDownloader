@@ -21,7 +21,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     verticalHeader()->setVisible(false);
 
     setMouseTracking(true);  //Open the capture mouse function
-    setStyleSheet(DownloadUIObject::TableWidgetStyle01 + DownloadUIObject::ScrollBarStyle02 + DownloadUIObject::LineEditStyle01);
+    setStyleSheet(TTK::UI::TableWidgetStyle01 + TTK::UI::ScrollBarStyle02 + TTK::UI::LineEditStyle01);
 
     QFont font = this->font();
     font.setBold(false);
@@ -35,9 +35,9 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     setSelectionMode(QAbstractItemView::SingleSelection);
     setFocusPolicy(Qt::NoFocus);
 
-    DownloadUtils::Widget::setTransparent(this, 0);
+    TTK::Widget::setTransparent(this, 0);
 #if defined Q_OS_UNIX && !TTK_QT_VERSION_CHECK(5,7,0) //Fix linux selection-background-color stylesheet bug
-    DownloadUtils::Widget::setTransparent(this, QColor(20, 20, 20, 10));
+    TTK::Widget::setTransparent(this, QColor(20, 20, 20, 10));
 #endif
     connect(this, SIGNAL(cellEntered(int,int)), SLOT(itemCellEntered(int,int)));
     connect(this, SIGNAL(cellClicked(int,int)), SLOT(itemCellClicked(int,int)));

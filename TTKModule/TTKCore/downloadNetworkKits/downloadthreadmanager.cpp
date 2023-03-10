@@ -33,7 +33,7 @@ qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
         QEventLoop loop;
         QNetworkRequest request;
         request.setUrl(url);
-        DownloadObject::setSslConfiguration(&request);
+        TTK::setSslConfiguration(&request);
 
         QNetworkReply *reply = manager.head(request);
         if(!reply)
@@ -100,7 +100,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     ////////////////////////////////////////////////
     if(name.isEmpty())
     {
-        QDir dir(DownloadUtils::Core::downloadPrefix());
+        QDir dir(TTK::Core::downloadPrefix());
         QString idFileName = fileName;
         for(int i = 1; i < 99; ++i)
         {
@@ -128,7 +128,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     ////////////////////////////////////////////////
     Q_EMIT updateFileInfoChanged(fileName, m_totalSize);
 
-    fileName = DownloadUtils::Core::downloadPrefix() + fileName;
+    fileName = TTK::Core::downloadPrefix() + fileName;
 
     DownloadBreakPointConfigManager manager;
     DownloadBreakPointItemList records;

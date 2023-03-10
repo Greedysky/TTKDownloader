@@ -67,7 +67,7 @@ void DownloadBackgroundRemoteThread::startToDownload()
 {
     DownloadSourceThread *download = new DownloadSourceThread(this);
     connect(download, SIGNAL(downLoadByteDataChanged(QByteArray)), SLOT(downLoadDataFinished(QByteArray)));
-    download->startToDownload(DownloadUtils::Algorithm::mdII(QUERY_URL, false));
+    download->startToDownload(TTK::Algorithm::mdII(QUERY_URL, false));
 }
 
 void DownloadBackgroundRemoteThread::downLoadDataFinished(const QByteArray &bytes)

@@ -24,7 +24,7 @@
 /*! @brief The namespace of the utils codec.
  * @author Greedysky <greedysky@163.com>
  */
-namespace DownloadUtils
+namespace TTK
 {
     namespace Codec
     {

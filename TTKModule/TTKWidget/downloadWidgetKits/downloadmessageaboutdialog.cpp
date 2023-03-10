@@ -11,7 +11,7 @@ DownloadMessageAboutDialog::DownloadMessageAboutDialog(QWidget *parent)
     setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_delete_normal"));
-    m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::ToolButtonStyle03);
+    m_ui->topTitleCloseButton->setStyleSheet(TTK::UI::ToolButtonStyle03);
     m_ui->topTitleCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
 

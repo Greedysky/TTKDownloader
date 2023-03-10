@@ -38,7 +38,7 @@ void DownloadBackgroundPopWidget::sliderReleased()
 
 void DownloadBackgroundPopWidget::initialize()
 {
-    m_menu->setStyleSheet(DownloadUIObject::MenuStyle02);
+    m_menu->setStyleSheet(TTK::UI::MenuStyle02);
 
     m_containWidget->setFixedSize(60, 160);
 
@@ -47,11 +47,11 @@ void DownloadBackgroundPopWidget::initialize()
     hbox->setSpacing(0);
 
     QLabel *textLabel = new QLabel(m_containWidget);
-    textLabel->setStyleSheet(DownloadUIObject::ColorStyle01);
+    textLabel->setStyleSheet(TTK::UI::ColorStyle01);
     textLabel->setText("100%\n\n\n\n\n50%\n\n\n\n\n0%");
 
     m_slider = new TTKClickedSlider(Qt::Vertical, m_containWidget);
-    m_slider->setStyleSheet(DownloadUIObject::SliderStyle01);
+    m_slider->setStyleSheet(TTK::UI::SliderStyle01);
     connect(m_slider, SIGNAL(valueChanged(int)), SIGNAL(valueChanged(int)));
     connect(m_slider, SIGNAL(sliderPressed()), SLOT(sliderPressed()));
     connect(m_slider, SIGNAL(sliderReleased()), SLOT(sliderReleased()));

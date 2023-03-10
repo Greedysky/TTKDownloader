@@ -25,12 +25,12 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_delete_normal"));
-    m_ui->topTitleCloseButton->setStyleSheet(DownloadUIObject::ToolButtonStyle03);
+    m_ui->topTitleCloseButton->setStyleSheet(TTK::UI::ToolButtonStyle03);
     m_ui->topTitleCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
 
-    m_ui->paletteButton->setStyleSheet(DownloadUIObject::PushButtonStyle03);
-    m_ui->customSkin->setStyleSheet(DownloadUIObject::PushButtonStyle03);
+    m_ui->paletteButton->setStyleSheet(TTK::UI::PushButtonStyle03);
+    m_ui->customSkin->setStyleSheet(TTK::UI::PushButtonStyle03);
     m_ui->stackedWidget->setLength(m_ui->stackedWidget->width(), DownloadAnimationStackedWidget::Module::RightToLeft);
 #ifdef Q_OS_UNIX
     m_ui->paletteButton->setFocusPolicy(Qt::NoFocus);
@@ -45,7 +45,7 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     m_ui->recommandScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->recommandScrollArea->setAlignment(Qt::AlignVCenter);
     m_ui->recommandScrollArea->setWidget(m_backgroundList);
-    m_ui->recommandScrollArea->verticalScrollBar()->setStyleSheet(DownloadUIObject::ScrollBarStyle02);
+    m_ui->recommandScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
 
     m_myBackgroundList = new DownloadBackgroundListWidget(this);
     m_ui->userScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -54,7 +54,7 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     m_ui->userScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->userScrollArea->setAlignment(Qt::AlignVCenter);
     m_ui->userScrollArea->setWidget(m_myBackgroundList);
-    m_ui->userScrollArea->verticalScrollBar()->setStyleSheet(DownloadUIObject::ScrollBarStyle02);
+    m_ui->userScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
 
     m_remoteBackgroundList = new DownloadBackgroundRemoteWidget(this);
     m_ui->remoteScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -63,13 +63,13 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     m_ui->remoteScrollArea->setFrameShadow(QFrame::Plain);
     m_ui->remoteScrollArea->setAlignment(Qt::AlignVCenter);
     m_ui->remoteScrollArea->setWidget(m_remoteBackgroundList);
-    m_ui->remoteScrollArea->verticalScrollBar()->setStyleSheet(DownloadUIObject::ScrollBarStyle02);
+    m_ui->remoteScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
 
     addThemeListWidgetItem();
     backgroundListWidgetChanged(0);
 
-    m_ui->skinTransparentButton->setStyleSheet(DownloadUIObject::ToolButtonStyle05);
-    m_ui->skinTransparentLabel->setStyleSheet(DownloadUIObject::ColorStyle02);
+    m_ui->skinTransparentButton->setStyleSheet(TTK::UI::ToolButtonStyle05);
+    m_ui->skinTransparentLabel->setStyleSheet(TTK::UI::ColorStyle02);
 
     connect(m_ui->skinTransparentButton, SIGNAL(valueChanged(int)), DownloadTopAreaWidget::instance(), SLOT(backgroundTransparentChanged(int)));
     connect(m_ui->skinTransparentButton, SIGNAL(sliderStateChanged(bool)), DownloadTopAreaWidget::instance(), SLOT(backgroundSliderStateChanged(bool)));
@@ -169,7 +169,7 @@ void DownloadBackgroundSkinDialog::showPaletteDialog(const QString &path)
 
 void DownloadBackgroundSkinDialog::showCustomSkinDialog()
 {
-    const QString &path = DownloadUtils::File::getOpenFileName(this);
+    const QString &path = TTK::File::getOpenFileName(this);
     if(path.isEmpty())
     {
         return;

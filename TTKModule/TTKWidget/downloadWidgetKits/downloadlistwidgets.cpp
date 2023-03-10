@@ -247,7 +247,7 @@ void DownloadListWidgets::openFileDir()
 
     QString path = m_itemList[currentRow()]->downloadedPath();
 
-    if(!DownloadUtils::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    if(!TTK::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
     {
         DownloadMessageBox message;
         message.setText(tr("The origin one does not exist"));
@@ -302,7 +302,7 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
     DownloadAbstractTableWidget::contextMenuEvent(event);
 
     QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(DownloadUIObject::MenuStyle02);
+    rightClickMenu.setStyleSheet(TTK::UI::MenuStyle02);
 
     int row = currentRow();
     rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);

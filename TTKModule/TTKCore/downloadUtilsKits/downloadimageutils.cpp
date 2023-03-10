@@ -3,7 +3,7 @@
 #include <QBuffer>
 #include <QPainter>
 
-void DownloadUtils::Image::fusionPixmap(QPixmap &back, const QPixmap &front, const QPoint &pt)
+void TTK::Image::fusionPixmap(QPixmap &back, const QPixmap &front, const QPoint &pt)
 {
     if(front.isNull())
     {
@@ -15,7 +15,7 @@ void DownloadUtils::Image::fusionPixmap(QPixmap &back, const QPixmap &front, con
     painter.drawPixmap(pt.x(), pt.y(), front);
 }
 
-QByteArray DownloadUtils::Image::generatePixmapData(const QPixmap &input)
+QByteArray TTK::Image::generatePixmapData(const QPixmap &input)
 {
     if(input.isNull())
     {
@@ -51,7 +51,7 @@ static int colorBurnTransform(int c, int delta)
     return result;
 }
 
-void DownloadUtils::Image::reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output)
+void TTK::Image::reRenderImage(qint64 &avg, int delta, const QImage *input, QImage *output)
 {
    if(input->isNull())
    {
