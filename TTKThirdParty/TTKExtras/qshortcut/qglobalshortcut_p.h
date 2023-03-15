@@ -2,7 +2,7 @@
 #define QGLOBALSHORTCUT_P_H
 
 /***************************************************************************
- * This file is part of the TTK Downloader project
+ * This file is part of the TTK Music Player project
  * Copyright (C) 2015 - 2023 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -24,11 +24,6 @@
 #include <QAbstractEventDispatcher>
 #if TTK_QT_VERSION_CHECK(5,0,0)
 #  include <QAbstractNativeEventFilter>
-#  if TTK_QT_VERSION_CHECK(6,0,0)
-#    define qint qintptr
-#  else
-#    define qint long
-#  endif
 #endif
 
 /*! @brief The class of the qglobal shortcut private.
