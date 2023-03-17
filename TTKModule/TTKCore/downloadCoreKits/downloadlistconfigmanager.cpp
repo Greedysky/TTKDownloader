@@ -19,9 +19,8 @@ void DownloadListConfigManager::writeListConfig(const DownloadItemList &records)
 
     for(const DownloadItem &record : qAsConst(records))
     {
-        writeDomMutilElement(recordDom, "value", TTKXmlAttributeList() <<
-                                                 TTKXmlAttribute("url", record.m_url) <<
-                                                 TTKXmlAttribute("name", record.m_name));
+        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("url", record.m_url),
+                                                  TTKXmlAttribute("name", record.m_name)});
     }
 
     QTextStream out(m_file);

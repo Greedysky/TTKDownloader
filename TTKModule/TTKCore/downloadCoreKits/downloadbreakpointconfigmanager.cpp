@@ -19,10 +19,9 @@ void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakP
 
     for(const DownloadBreakPointItem &record : qAsConst(records))
     {
-        writeDomMutilElement(recordDom, "value", TTKXmlAttributeList() <<
-                                                 TTKXmlAttribute("start", record.m_start) <<
-                                                 TTKXmlAttribute("end", record.m_end) <<
-                                                 TTKXmlAttribute("ready", record.m_ready));
+        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("start", record.m_start),
+                                                  TTKXmlAttribute("end", record.m_end),
+                                                  TTKXmlAttribute("ready", record.m_ready)});
     }
 
     QTextStream out(m_file);

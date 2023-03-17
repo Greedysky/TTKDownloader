@@ -8,7 +8,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
       m_backgroundColor(255, 255, 255, 0)
 {
     setAttribute(Qt::WA_TranslucentBackground);
-    setFont(QtFontInit("Helvetica"));
+    setFont(QFont("Helvetica"));
     setColumnCount(3);
     setRowCount(0);
     setShowGrid(false);//Does not display the grid

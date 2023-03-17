@@ -80,8 +80,10 @@ void DownloadInitObject::copyFile(const QString &origin, const QString &des) con
     }
 }
 
+#ifdef Q_OS_UNIX
 void DownloadInitObject::copyLinuxShellFile(const QString &name, const QString &path) const
 {
     copyFileOverwrite(name, path);
     QProcess::execute("chmod", {"+x", path});
 }
+#endif
