@@ -132,7 +132,7 @@ private:
         int index = staticMetaObject.indexOfEnumerator("Config");
         QMetaEnum metaEnum = staticMetaObject.enumerator(index);
         int key = metaEnum.keyToValue(stype.toStdString().c_str());
-        return TTKStatic_cast(Config, key);
+        return TTKStaticCast(Config, key);
     }
 
     QVariant m_variant;

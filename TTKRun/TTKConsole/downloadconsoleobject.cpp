@@ -72,6 +72,6 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
 
 void DownloadConsoleObject::progressChanged(qint64 current, qint64 total)
 {
-    TTK_LOG_STREAM("process: " << TTKStatic_cast(int, (current * 100000000.0 / total)) / 1000000.0 <<
+    TTK_LOG_STREAM("process: " << TTKStaticCast(int, (current * 100000000.0 / total)) / 1000000.0 <<
                    "% " << current << "kb " << total << "kb");
 }

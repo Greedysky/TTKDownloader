@@ -97,7 +97,7 @@ DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
     m_pix = QPixmap(54, 2);
     m_pix.fill(QColor(0x80, 0xB7, 0xF1));
 
-    QHBoxLayout *ly = TTKObject_cast(QHBoxLayout*, layout());
+    QHBoxLayout *ly = TTKObjectCast(QHBoxLayout*, layout());
 
     QStringList names;
     names << tr("Re") << tr("My") << tr("Online");
