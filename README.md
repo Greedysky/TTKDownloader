@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/Version-2.6.0.0-blue.svg?style=flat-square)
 ![License](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
 
-![LOGO](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/logo_pic.png?raw=true)
+![LOGO](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/logo_banner.png?raw=true)
 
 ### **|[About](https://github.com/Greedysky/TTKDownloader#usage)|[License](https://github.com/Greedysky/TTKDownloader#license)|[Download](https://github.com/Greedysky/TTKDownloader#download)|[Features](https://github.com/Greedysky/TTKDownloader#features)|[Screenshots](https://github.com/Greedysky/TTKDownloader#screenshots)|[Copyright](https://github.com/Greedysky/TTKDownloader#copyright)|[Contribute](https://github.com/Greedysky/TTKDownloader#how-to-contribute)|**
 
