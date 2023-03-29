@@ -83,6 +83,11 @@ QStringList DownloadNetworkSpeedTestThread::newtworkNames() const
         pTable = (PMIB_IFTABLE)new BYTE[65535];
     }
 
+    if(!pTable)
+    {
+        return QStringList();
+    }
+
     GetIfTable(pTable, &dwAdapters, TRUE);
     for(UINT i = 0; i < pTable->dwNumEntries; ++i)
     {
@@ -104,7 +109,7 @@ QStringList DownloadNetworkSpeedTestThread::newtworkNames() const
 
     for(ifa = ifList; ifa != nullptr; ifa = ifa->ifa_next)
     {
-        if(ifa->ifa_addr->sa_family == AF_INET)
+        if(ifa->ifa_addr && ifa->ifa_addr->sa_family == AF_INET)
         {
             names << QString(ifa->ifa_name);
         }
