@@ -21,14 +21,14 @@
 
 #include <QThread>
 #include <QStringList>
-#include "ttkglobaldefine.h"
+#include "ttkabstractthread.h"
 
 class QProcess;
 
 /*! @brief The class of the network speed test thread.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadNetworkSpeedTestThread : public QThread
+class TTK_MODULE_EXPORT DownloadNetworkSpeedTestThread : public TTKAbstractThread
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadNetworkSpeedTestThread)
@@ -39,10 +39,6 @@ public:
     explicit DownloadNetworkSpeedTestThread(QObject *parent = nullptr);
     ~DownloadNetworkSpeedTestThread();
 
-    /*!
-     * Stop and quit current thread.
-     */
-    void stopAndQuitThread();
     /*!
      * Set available newtwork names.
      */
@@ -64,10 +60,6 @@ Q_SIGNALS:
 
 public Q_SLOTS:
     /*!
-     * Strat thread now.
-     */
-    void start();
-    /*!
      * Thread run now.
      */
     virtual void run() override final;
@@ -79,7 +71,6 @@ private Q_SLOTS:
     void outputRecieved();
 
 private:
-    bool m_run;
     QStringList m_names;
     QProcess *m_process ;
 

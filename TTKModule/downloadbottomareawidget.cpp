@@ -29,7 +29,7 @@ DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
 
 DownloadBottomAreaWidget::~DownloadBottomAreaWidget()
 {
-    m_speedThread->stopAndQuitThread();
+    m_speedThread->stop();
     delete m_toolPopupMenu;
     delete m_systemTrayMenu;
     delete m_systemTray;

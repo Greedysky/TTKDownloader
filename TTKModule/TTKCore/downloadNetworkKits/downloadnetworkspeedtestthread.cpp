@@ -15,8 +15,7 @@
 #endif
 
 DownloadNetworkSpeedTestThread::DownloadNetworkSpeedTestThread(QObject *parent)
-    : QThread(parent),
-      m_run(false),
+    : TTKAbstractThread(parent),
       m_process(nullptr)
 {
 #ifdef Q_OS_UNIX
@@ -26,22 +25,12 @@ DownloadNetworkSpeedTestThread::DownloadNetworkSpeedTestThread(QObject *parent)
 
 DownloadNetworkSpeedTestThread::~DownloadNetworkSpeedTestThread()
 {
+    stop();
     if(m_process)
     {
         m_process->kill();
     }
     delete m_process;
-    stopAndQuitThread();
-}
-
-void DownloadNetworkSpeedTestThread::stopAndQuitThread()
-{
-    if(isRunning())
-    {
-        m_run = false;
-        wait();
-    }
-    quit();
 }
 
 void DownloadNetworkSpeedTestThread::setAvailableNewtworkNames(const QStringList &names)
@@ -138,12 +127,6 @@ void DownloadNetworkSpeedTestThread::outputRecieved()
 #endif
 }
 
-void DownloadNetworkSpeedTestThread::start()
-{
-    m_run = true;
-    QThread::start();
-}
-
 void DownloadNetworkSpeedTestThread::run()
 {
 #ifdef Q_OS_WIN
@@ -164,7 +147,7 @@ void DownloadNetworkSpeedTestThread::run()
     DWORD dwLastIn = 0, dwLastOut = 0;
     DWORD dwBandIn = 0, dwBandOut = 0;
 
-    while(m_run)
+    while(m_running)
     {
         GetIfTable(pTable, &dwAdapters, TRUE);
         DWORD dwInOctets = 0, dwOutOctets = 0;
