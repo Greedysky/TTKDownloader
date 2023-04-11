@@ -35,7 +35,9 @@ TTKDownloader is free software licensed under the term of [Licence GPL v3](https
 
 Download
 --------
-Github: **<u>https://github.com/Greedysky/TTKDownloader</u>**
+Gitee URL: **<u>https://gitee.com/Greedysky/TTKDownloader</u>**
+
+Github URL: **<u>https://github.com/Greedysky/TTKDownloader</u>**
 
 Skin Download URL: **<u>http://pan.baidu.com/s/1mh7AeG4</u>**
 
