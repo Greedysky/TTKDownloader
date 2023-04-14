@@ -109,10 +109,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>本地图片</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Close</source>
         <translation>关闭</translation>
     </message>
