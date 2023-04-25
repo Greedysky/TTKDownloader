@@ -1,8 +1,8 @@
 #include "downloadurlencoder.h"
 
-const QString THUNDER = "thunder://";
-const QString FLASHGET = "Flashget://";
-const QString QQDL = "qqdl://";
+static const QString THUNDER = "thunder://";
+static const QString FLASHGET = "Flashget://";
+static const QString QQDL = "qqdl://";
 
 DownloadUrlEncoder::DownloadUrlEncoder(QObject *parent)
     : QObject(parent)

@@ -28,30 +28,30 @@ namespace TTK
 {
     namespace UI
     {
-        const QString THDSkin = " \
-                QToolButton{ border:none; \
-                background-image: url(:/tiny/btn_skin_normal);} \
-                QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover);}";
+        static const QString THDSkin = " \
+            QToolButton{ border:none; \
+            background-image: url(:/tiny/btn_skin_normal);} \
+            QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover);}";
 
-        const QString THDSetting = " \
-                QToolButton{ border:none; \
-                background-image: url(:/tiny/btn_setting_normal);} \
-                QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover);}";
+        static const QString THDSetting = " \
+            QToolButton{ border:none; \
+            background-image: url(:/tiny/btn_setting_normal);} \
+            QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover);}";
 
-        const QString THDMinimum = " \
-                QToolButton{ border:none; \
-                background-image: url(:/tiny/btn_min_normal);} \
-                QToolButton:hover{ background-image: url(:/tiny/btn_min_hover);}";
+        static const QString THDMinimum = " \
+            QToolButton{ border:none; \
+            background-image: url(:/tiny/btn_min_normal);} \
+            QToolButton:hover{ background-image: url(:/tiny/btn_min_hover);}";
 
-        const QString THDMaximum = " \
-                QToolButton{ border:none; \
-                background-image: url(:/tiny/btn_max_normal);} \
-                QToolButton:hover{ background-image: url(:/tiny/btn_max_hover);}";
+        static const QString THDMaximum = " \
+            QToolButton{ border:none; \
+            background-image: url(:/tiny/btn_max_normal);} \
+            QToolButton:hover{ background-image: url(:/tiny/btn_max_hover);}";
 
-        const QString THDClose = " \
-                QToolButton{ border:none; \
-                background-image: url(:/tiny/btn_close_normal);} \
-                QToolButton:hover{ background-image: url(:/tiny/btn_close_hover);}";
+        static const QString THDClose = " \
+            QToolButton{ border:none; \
+            background-image: url(:/tiny/btn_close_normal);} \
+            QToolButton:hover{ background-image: url(:/tiny/btn_close_hover);}";
 
     }
 }
