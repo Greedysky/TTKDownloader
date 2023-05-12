@@ -50,13 +50,17 @@ void TTKRunObject::run(int argc, char **argv) const
 {
     TTK_D(TTKRunObject);
 
-    QStringList list(APP_NAME);
-    if(argc == 3)
+    QStringList args;
+    for(int i = 0; i < argc; ++i)
     {
-        list << argv[1] << argv[2];
+        const QString &&arg = QString::fromLocal8Bit(argv[i]);
+        if(!arg.endsWith(APP_EXE_NAME))
+        {
+            args << arg;
+        }
     }
 
-    d->m_process->start(TTK_SERVICE_FULL, list);
+    d->m_process->start(TTK_SERVICE_FULL, args);
 }
 
 void TTKRunObject::finished(int code)

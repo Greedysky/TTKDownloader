@@ -7,8 +7,6 @@
 #include <QTranslator>
 #include <QApplication>
 
-#define TTK_DEBUG
-
 static void loadAppScaledFactor(int argc, char *argv[])
 {
 #if TTK_QT_VERSION_CHECK(6,0,0)
@@ -40,13 +38,7 @@ int main(int argc, char *argv[])
     loadAppScaledFactor(argc, argv);
 
     QApplication a(argc, argv);
-#if !defined TTK_DEBUG && !defined Q_OS_UNIX
-    if(argc <= 1 || QString(argv[1]) != APP_NAME)
-    {
-        return -1;
-    }
-#endif
-    ///////////////////////////////////////////////////////
+
     QCoreApplication::setOrganizationName(APP_NAME);
     QCoreApplication::setOrganizationDomain(APP_COME_NAME);
     QCoreApplication::setApplicationName(APP_NAME);
