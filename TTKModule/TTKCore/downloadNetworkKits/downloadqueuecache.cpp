@@ -31,11 +31,8 @@ DownloadQueueCache::DownloadQueueCache(const DownloadQueueDataList &datas, QObje
 
 DownloadQueueCache::~DownloadQueueCache()
 {
-    if(m_request)
-    {
-        delete m_request;
-        m_request = nullptr;
-    }
+    delete m_request;
+    m_request = nullptr;
     deleteAll();
 }
 
