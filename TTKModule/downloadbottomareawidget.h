@@ -83,11 +83,11 @@ public Q_SLOTS:
     /*!
      * Download setting button clicked.
      */
-    void downloadSettingButtonClicked();
+    void settingButtonClicked();
     /*!
      * Download plan button clicked.
      */
-    void downloadPlanButtonClicked();
+    void planButtonClicked();
     /*!
      * Expand button clicked.
      */

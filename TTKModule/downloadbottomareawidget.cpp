@@ -58,8 +58,8 @@ void DownloadBottomAreaWidget::setupUi(Ui::DownloadApplication *ui)
 
     ui->downloadSpeedButton->setLabelText("--", "--");
 
-    connect(ui->downloadSettingButton, SIGNAL(mouseClicked()), SLOT(downloadSettingButtonClicked()));
-    connect(ui->downloadPlanButton, SIGNAL(mouseClicked()), SLOT(downloadPlanButtonClicked()));
+    connect(ui->downloadSettingButton, SIGNAL(mouseClicked()), SLOT(settingButtonClicked()));
+    connect(ui->downloadPlanButton, SIGNAL(mouseClicked()), SLOT(planButtonClicked()));
     connect(ui->expandButton, SIGNAL(clicked()), SLOT(expandButtonClicked()));
 }
 
@@ -96,7 +96,7 @@ void DownloadBottomAreaWidget::updateNetworkData(ulong upload, ulong download)
     m_ui->downloadSpeedButton->setLabelText(up, down);
 }
 
-void DownloadBottomAreaWidget::downloadSettingButtonClicked()
+void DownloadBottomAreaWidget::settingButtonClicked()
 {
     delete m_toolPopupMenu;
     m_toolPopupMenu = new QMenu(this);
@@ -118,7 +118,7 @@ void DownloadBottomAreaWidget::downloadSettingButtonClicked()
     m_ui->downloadSettingButton->setPopupMode(QToolButton::InstantPopup);
 }
 
-void DownloadBottomAreaWidget::downloadPlanButtonClicked()
+void DownloadBottomAreaWidget::planButtonClicked()
 {
     delete m_toolPopupMenu;
     m_toolPopupMenu = new QMenu(this);
