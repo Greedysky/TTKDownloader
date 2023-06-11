@@ -11,7 +11,7 @@ DownloadLeftAreaWidget::DownloadLeftAreaWidget(QWidget *parent)
 {
     m_instance = this;
 
-    G_HOTKEY_PTR->connectParentObject(this, "Ctrl+O", SLOT(showSettingWidget()));
+    G_HOTKEY_PTR->setInputModule(this, "Ctrl+O", SLOT(showSettingWidget()));
 }
 
 DownloadLeftAreaWidget::~DownloadLeftAreaWidget()
@@ -42,7 +42,7 @@ void DownloadLeftAreaWidget::funcitonIndexChanged(int index)
 
 void DownloadLeftAreaWidget::showSettingWidget()
 {
-    DownloadSettingWidget setting;
+    DownloadSettingWidget setting(this);
     connect(&setting, SIGNAL(parameterSettingChanged()), DownloadApplication::instance(), SLOT(parameterSetting()));
     setting.initialize();
     setting.exec();

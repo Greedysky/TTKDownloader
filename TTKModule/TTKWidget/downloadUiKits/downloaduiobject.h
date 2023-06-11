@@ -120,7 +120,12 @@ namespace TTK
             QMenu::item{ color:#666666; padding:5px 30px 5px 30px; border:1px solid transparent;} \
             QMenu::item:disabled{ color:#AAAAAA;} \
             QMenu::item:selected{ color:white; background: rgb(112, 56, 197);} \
-            QMenu::separator{ height:1px; background:#DDDDDD; margin-top:1px; margin-bottom:1px;}";
+            QMenu::separator{ height:1px; background:#DDDDDD; margin-top:1px; margin-bottom:1px;}" +
+#if TTK_QT_VERSION_CHECK(5,12,0)
+            QString("QMenu::item{ padding:6px 30px 6px 10px; } "
+                    "QMenu::item::icon{ padding:6px 30px 6px 10px; }") +
+#endif
+            QString();
 
         static const QString MenuStyle02 = MenuStyle01 + " \
             QMenu{ background:rgba(255, 255, 255, 235);}";

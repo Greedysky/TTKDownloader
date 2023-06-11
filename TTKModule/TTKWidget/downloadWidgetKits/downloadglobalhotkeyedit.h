@@ -1,5 +1,5 @@
-#ifndef DOWNLOADWIDGETUTILS_H
-#define DOWNLOADWIDGETUTILS_H
+#ifndef DOWNLOADGLOBALHOTKEYEDIT_H
+#define DOWNLOADGLOBALHOTKEYEDIT_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -19,36 +19,33 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include <QLineEdit>
 #include "ttkglobaldefine.h"
 
-class QMenu;
-
-/*! @brief The namespace of the utils widget.
+/*! @brief The class of the global hotKey lineEdit.
  * @author Greedysky <greedysky@163.com>
  */
-namespace TTK
+class TTK_MODULE_EXPORT DownloadGlobalHotKeyEdit : public QLineEdit
 {
-    namespace Widget
-    {
-        /*!
-         * Adjust the menu position.
-         */
-        TTK_MODULE_EXPORT void adjustMenuPosition(QMenu *menu);
-        /*!
-         * Adjust the widget in screen center.
-         */
-        TTK_MODULE_EXPORT void adjustWidgetPosition(QWidget *widget);
+    Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadGlobalHotKeyEdit)
+public:
+    /*!
+     * Object contsructor.
+     */
+    explicit DownloadGlobalHotKeyEdit(QWidget *parent = nullptr);
 
-        /*!
-         * Set widget transparent.
-         */
-        TTK_MODULE_EXPORT void setTransparent(QWidget *widget, int alpha);
-        /*!
-         * Set widget transparent.
-         */
-        TTK_MODULE_EXPORT void setTransparent(QWidget *widget, const QColor &color);
+    /*!
+     * Set hotKey enable state.
+     */
+    void setHotKeyEnabled(bool state);
 
-    }
-}
+private:
+    /*!
+     * Override the widget event.
+     */
+    virtual void keyPressEvent(QKeyEvent *event) override final;
 
-#endif // DOWNLOADWIDGETUTILS_H
+};
+
+#endif // DOWNLOADGLOBALHOTKEYEDIT_H

@@ -1,11 +1,16 @@
 #include "downloadapplication.h"
 #include "downloadruntimemanager.h"
 #include "ttkdumper.h"
+#include "ttkglobalhelper.h"
 
 #include <QTimer>
 #include <QScreen>
 #include <QTranslator>
 #include <QApplication>
+
+#ifdef Q_OS_UNIX
+#  include <malloc.h>
+#endif
 
 static void loadAppScaledFactor(int argc, char *argv[])
 {
@@ -19,12 +24,12 @@ static void loadAppScaledFactor(int argc, char *argv[])
         QApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::Floor);
 #    endif
 #  elif TTK_QT_VERSION_CHECK(5,6,0)
-      QApplication a(argc, argv);
+      QApplication app(argc, argv);
       qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
       const QScreen *screen = QApplication::primaryScreen();
       const qreal dpi = screen->logicalDotsPerInch() / 96.0;
       qputenv("QT_SCALE_FACTOR", QByteArray::number(dpi));
-      Q_UNUSED(a);
+      Q_UNUSED(app);
 #  else
       qputenv("QT_DEVICE_PIXEL_RATIO", "auto");
 #  endif
@@ -37,7 +42,7 @@ int main(int argc, char *argv[])
 {
     loadAppScaledFactor(argc, argv);
 
-    QApplication a(argc, argv);
+    QApplication app(argc, argv);
 
     QCoreApplication::setOrganizationName(APP_NAME);
     QCoreApplication::setOrganizationDomain(APP_COME_NAME);
@@ -54,10 +59,17 @@ int main(int argc, char *argv[])
     {
         TTK_ERROR_STREAM("Load translation error");
     }
-    a.installTranslator(&translator);
+    app.installTranslator(&translator);
+
+    TTK::setApplicationFont(&app);
 
     DownloadApplication w;
     w.show();
 
-    return a.exec();
+#ifdef Q_OS_UNIX
+    // memory free
+    mallopt(M_MMAP_THRESHOLD, 1024 * 1024);   // 1MB mmap
+    mallopt(M_TRIM_THRESHOLD, 2 * 1024 * 1024); // 2MB brk
+#endif
+    return app.exec();
 }

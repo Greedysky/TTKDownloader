@@ -8,17 +8,18 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
       m_backgroundColor(255, 255, 255, 0)
 {
     setAttribute(Qt::WA_TranslucentBackground);
-    setFont(QFont("Helvetica"));
     setColumnCount(3);
     setRowCount(0);
-    setShowGrid(false);//Does not display the grid
 
     QHeaderView *headerview = horizontalHeader();
+    headerview->setMinimumSectionSize(0);
     headerview->setVisible(false);
     headerview->resizeSection(0, 20);
     headerview->resizeSection(1, 247);
     headerview->resizeSection(2, 45);
     verticalHeader()->setVisible(false);
+
+    setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     setMouseTracking(true);  //Open the capture mouse function
     setStyleSheet(TTK::UI::TableWidgetStyle01 + TTK::UI::ScrollBarStyle02 + TTK::UI::LineEditStyle01);
@@ -27,11 +28,10 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     font.setBold(false);
     setFont(font);
 
-    //Set the color of selected row
+    setShowGrid(false);//Does not display the grid
     setFrameShape(QFrame::NoFrame);//Set No Border
     setEditTriggers(QAbstractItemView::NoEditTriggers);//No edit
     setSelectionBehavior(QAbstractItemView::SelectRows);
-    //Multi-line election
     setSelectionMode(QAbstractItemView::SingleSelection);
     setFocusPolicy(Qt::NoFocus);
 

@@ -10,7 +10,33 @@ DownloadSysConfigManager::DownloadSysConfigManager(QObject *parent)
 
 }
 
-void DownloadSysConfigManager::writeXMLConfig()
+void DownloadSysConfigManager::readBuffer() const
+{
+    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventChoiced, readXmlAttributeByTagName("closeEvent").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkChoiced, readXmlAttributeByTagName("closeNetwork").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationChoiced, readXmlAttributeByTagName("fileAssociation").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced, readXmlAttributeByTagName("startUpMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced, readXmlAttributeByTagName("startUpRunMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced, readXmlAttributeByTagName("slienceRunMode").toInt());
+
+    G_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced, readXmlAttributeByTagName("bgTheme"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::BgTransparentChoiced, readXmlAttributeByTagName("bgTransparent").toInt());
+
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced, readXmlAttributeByTagName("downloadLimit").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced, readXmlAttributeByTagName("downloadMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced, readXmlAttributeByTagName("downloadMaxCount").toInt());
+
+    const QString &path = readXmlAttributeByTagName("downloadPathDir");
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, (path.isEmpty() || !QFile::exists(path)) ? TTK::Core::downloadPrefix() : path);
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimitChoiced, readXmlAttributeByTagName("downloadDLoadLimit"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimitChoiced, readXmlAttributeByTagName("downloadULoadLimit"));
+
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced, readXmlAttributeByTagName("skinEffectLevel"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, readXmlAttributeByTagName("skinSuspension"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, readXmlAttributeByTagName("skinSuspensionPer").toInt());
+}
+
+void DownloadSysConfigManager::writeBuffer()
 {
     QPoint widgetPositionChoiced = G_SETTING_PTR->value(DownloadSettingManager::WidgetPosition).toPoint();
     QSize widgetSizeChoiced = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize();
@@ -32,7 +58,6 @@ void DownloadSysConfigManager::writeXMLConfig()
     QString downloadULoadLimit = G_SETTING_PTR->value(DownloadSettingManager::DownloadULoadLimitChoiced).toString();
 
     int skinEffectLevelChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt();
-    int skinFontChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
     int skinSuspensionChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toInt();
     int skinSuspensionPerChoiced = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toInt();
 
@@ -68,7 +93,6 @@ void DownloadSysConfigManager::writeXMLConfig()
     writeDomElement(downloadSettingDom, "downloadULoadLimit", TTKXmlAttribute("value", downloadULoadLimit));
 
     writeDomElement(skinSettingDom, "skinEffectLevel", TTKXmlAttribute("value", skinEffectLevelChoiced));
-    writeDomElement(skinSettingDom, "skinFont", TTKXmlAttribute("value", skinFontChoiced));
     writeDomElement(skinSettingDom, "skinSuspension", TTKXmlAttribute("value", skinSuspensionChoiced));
     writeDomElement(skinSettingDom, "skinSuspensionPer", TTKXmlAttribute("value", skinSuspensionPerChoiced));
 
@@ -97,31 +121,4 @@ QRect DownloadSysConfigManager::readWindowGeometry() const
     {
         return QRect(0, 0, WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
     }
-}
-
-void DownloadSysConfigManager::readSysLoadConfig() const
-{
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventChoiced, readXmlAttributeByTagName("closeEvent").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkChoiced, readXmlAttributeByTagName("closeNetwork").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationChoiced, readXmlAttributeByTagName("fileAssociation").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced, readXmlAttributeByTagName("startUpMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced, readXmlAttributeByTagName("startUpRunMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced, readXmlAttributeByTagName("slienceRunMode").toInt());
-
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced, readXmlAttributeByTagName("bgTheme"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgTransparentChoiced, readXmlAttributeByTagName("bgTransparent").toInt());
-
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced, readXmlAttributeByTagName("downloadLimit").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced, readXmlAttributeByTagName("downloadMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced, readXmlAttributeByTagName("downloadMaxCount").toInt());
-
-    const QString &path = readXmlAttributeByTagName("downloadPathDir");
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, (path.isEmpty() || !QFile::exists(path)) ? TTK::Core::downloadPrefix() : path);
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimitChoiced, readXmlAttributeByTagName("downloadDLoadLimit"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimitChoiced, readXmlAttributeByTagName("downloadULoadLimit"));
-
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced, readXmlAttributeByTagName("skinEffectLevel"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinFontChoiced, readXmlAttributeByTagName("skinFont").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, readXmlAttributeByTagName("skinSuspension"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, readXmlAttributeByTagName("skinSuspensionPer").toInt());
 }

@@ -74,7 +74,7 @@
     <widget class="QLineEdit" name="downloadDirEdit">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>85</x>
        <y>48</y>
        <width>270</width>
        <height>20</height>
@@ -84,12 +84,12 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QLabel" name="baseSetDownloadWidget">
+    <widget class="TTKThemeLineLabel" name="baseSetDownloadWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>20</y>
-       <width>60</width>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -105,7 +105,7 @@ font-weight:bold;</string>
     <widget class="QPushButton" name="downloadDirButton">
      <property name="geometry">
       <rect>
-       <x>370</x>
+       <x>365</x>
        <y>47</y>
        <width>60</width>
        <height>21</height>
@@ -118,7 +118,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="downloadDirLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>50</y>
        <width>51</width>
        <height>16</height>
@@ -128,12 +128,12 @@ font-weight:bold;</string>
       <string>下载目录</string>
      </property>
     </widget>
-    <widget class="QLabel" name="startupDownloadWidget">
+    <widget class="TTKThemeLineLabel" name="startupDownloadWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>150</y>
-       <width>60</width>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -149,7 +149,7 @@ font-weight:bold;</string>
     <widget class="QCheckBox" name="startupCheckBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>175</y>
        <width>200</width>
        <height>20</height>
@@ -162,7 +162,7 @@ font-weight:bold;</string>
     <widget class="QRadioButton" name="minimumRadioBox">
      <property name="geometry">
       <rect>
-       <x>190</x>
+       <x>185</x>
        <y>110</y>
        <width>201</width>
        <height>20</height>
@@ -175,7 +175,7 @@ font-weight:bold;</string>
     <widget class="QRadioButton" name="quitRadioBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>110</y>
        <width>131</width>
        <height>20</height>
@@ -185,12 +185,12 @@ font-weight:bold;</string>
       <string>直接退出程序</string>
      </property>
     </widget>
-    <widget class="QLabel" name="closeSetShowInfoWidget">
+    <widget class="TTKThemeLineLabel" name="closeSetShowInfoWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>85</y>
-       <width>101</width>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -206,7 +206,7 @@ font-weight:bold;</string>
     <widget class="QCheckBox" name="startupRunCheckBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>200</y>
        <width>200</width>
        <height>20</height>
@@ -216,12 +216,12 @@ font-weight:bold;</string>
       <string>启动后自动开始未完成任务</string>
      </property>
     </widget>
-    <widget class="QLabel" name="slienceDownloadWidget">
+    <widget class="TTKThemeLineLabel" name="slienceDownloadWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>235</y>
-       <width>60</width>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -237,7 +237,7 @@ font-weight:bold;</string>
     <widget class="QCheckBox" name="slienceRunCheckBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>260</y>
        <width>200</width>
        <height>20</height>
@@ -249,10 +249,323 @@ font-weight:bold;</string>
     </widget>
    </widget>
    <widget class="QWidget" name="second">
+    <widget class="TTKThemeLineLabel" name="baseSetShotKeyWidget">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>20</y>
+       <width>415</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color:transparent;
+font-size:13px;
+font-weight:bold;</string>
+     </property>
+     <property name="text">
+      <string>基本设置</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S1">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>50</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>播放/暂停</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S02" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>50</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+B</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S3">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>80</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>上一曲</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S04" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>80</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+Left</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S5">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>110</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>下一曲</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S7">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>140</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>增加音量</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S9">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>170</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>减少音量</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S11">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>230</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>设置</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S06" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>110</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+Right</string>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S08" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>140</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+Up</string>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S10" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>170</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+Down</string>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S12" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>230</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+S</string>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S14" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>260</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+I</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S13">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>260</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>导入歌曲</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="globalHotkeyBox">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>295</y>
+       <width>250</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>启用全局快捷键</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S15">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>200</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>静音</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S16" native="true">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>200</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+     </property>
+     <property name="text" stdset="0">
+      <string>Ctrl+M</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="third">
     <widget class="QComboBox" name="defaultDownloadModeBox">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>115</x>
        <y>50</y>
        <width>120</width>
        <height>22</height>
@@ -262,7 +575,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="defaultDownloadModeLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>50</y>
        <width>80</width>
        <height>21</height>
@@ -275,12 +588,12 @@ font-weight:bold;</string>
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="taskmanagerChoiceWidget">
+    <widget class="TTKThemeLineLabel" name="taskmanagerChoiceWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>20</y>
-       <width>100</width>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -296,7 +609,7 @@ font-weight:bold;</string>
     <widget class="QComboBox" name="downloadMaxCountBox">
      <property name="geometry">
       <rect>
-       <x>170</x>
+       <x>165</x>
        <y>80</y>
        <width>120</width>
        <height>22</height>
@@ -306,7 +619,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="downloadMaxCountLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>80</y>
        <width>131</width>
        <height>21</height>
@@ -322,7 +635,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="downloadCountRangeLabel">
      <property name="geometry">
       <rect>
-       <x>295</x>
+       <x>290</x>
        <y>80</y>
        <width>41</width>
        <height>21</height>
@@ -338,7 +651,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="downloadSpeedLabel">
      <property name="geometry">
       <rect>
-       <x>185</x>
+       <x>180</x>
        <y>205</y>
        <width>31</width>
        <height>16</height>
@@ -351,7 +664,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="downloadLimitSpeedLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>205</y>
        <width>31</width>
        <height>16</height>
@@ -364,7 +677,7 @@ font-weight:bold;</string>
     <widget class="QRadioButton" name="downloadLimitRadioBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>175</y>
        <width>110</width>
        <height>16</height>
@@ -377,7 +690,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="uploadLimitSpeedLabel">
      <property name="geometry">
       <rect>
-       <x>230</x>
+       <x>225</x>
        <y>205</y>
        <width>31</width>
        <height>16</height>
@@ -390,7 +703,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="uploadSpeedLabel">
      <property name="geometry">
       <rect>
-       <x>385</x>
+       <x>380</x>
        <y>205</y>
        <width>31</width>
        <height>16</height>
@@ -403,7 +716,7 @@ font-weight:bold;</string>
     <widget class="QComboBox" name="downloadLimitSpeedComboBox">
      <property name="geometry">
       <rect>
-       <x>65</x>
+       <x>60</x>
        <y>202</y>
        <width>110</width>
        <height>22</height>
@@ -413,7 +726,7 @@ font-weight:bold;</string>
     <widget class="QComboBox" name="uploadLimitSpeedComboBox">
      <property name="geometry">
       <rect>
-       <x>265</x>
+       <x>260</x>
        <y>202</y>
        <width>110</width>
        <height>22</height>
@@ -423,7 +736,7 @@ font-weight:bold;</string>
     <widget class="QRadioButton" name="downloadFullRadioBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>150</y>
        <width>110</width>
        <height>16</height>
@@ -433,12 +746,12 @@ font-weight:bold;</string>
       <string>下载优先模式</string>
      </property>
     </widget>
-    <widget class="QLabel" name="downloadModeWidget">
+    <widget class="TTKThemeLineLabel" name="downloadModeWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>120</y>
-       <width>60</width>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -452,13 +765,13 @@ font-weight:bold;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QWidget" name="third">
-    <widget class="QLabel" name="appearanceSettingWidget">
+   <widget class="QWidget" name="four">
+    <widget class="TTKThemeLineLabel" name="appearanceSettingWidget">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>20</y>
-       <width>100</width>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -474,7 +787,7 @@ font-weight:bold;</string>
     <widget class="QComboBox" name="effectLevelBox">
      <property name="geometry">
       <rect>
-       <x>90</x>
+       <x>85</x>
        <y>50</y>
        <width>120</width>
        <height>22</height>
@@ -484,7 +797,7 @@ font-weight:bold;</string>
     <widget class="QLabel" name="effectLevelLabel">
      <property name="geometry">
       <rect>
-       <x>30</x>
+       <x>25</x>
        <y>50</y>
        <width>61</width>
        <height>21</height>
@@ -497,54 +810,12 @@ font-weight:bold;</string>
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
      </property>
     </widget>
-    <widget class="QComboBox" name="fontBox">
+    <widget class="TTKThemeLineLabel" name="suspensionModeWidget">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>80</y>
-       <width>240</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QLabel" name="fontLabel">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>80</y>
-       <width>61</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>字体</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="currentWarningLabel">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>110</y>
-       <width>241</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>注: 改变字体时重启应用方能生效</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="suspensionModeWidget">
-     <property name="geometry">
-      <rect>
-       <x>30</x>
-       <y>150</y>
-       <width>81</width>
+       <x>25</x>
+       <y>95</y>
+       <width>415</width>
        <height>20</height>
       </rect>
      </property>
@@ -560,8 +831,8 @@ font-weight:bold;</string>
     <widget class="QCheckBox" name="suspensionVisiableBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>180</y>
+       <x>25</x>
+       <y>125</y>
        <width>200</width>
        <height>20</height>
       </rect>
@@ -573,8 +844,8 @@ font-weight:bold;</string>
     <widget class="QCheckBox" name="suspensionShowPerBox">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>210</y>
+       <x>25</x>
+       <y>155</y>
        <width>200</width>
        <height>20</height>
       </rect>
@@ -600,7 +871,7 @@ font-weight:bold;</string>
    <widget class="QLabel" name="baseSetWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>20</x>
       <y>20</y>
       <width>60</width>
       <height>20</height>
@@ -608,9 +879,9 @@ font-weight:bold;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color:transparent;
-font-size:14px;
+font-size:12px;
 color:rgb(80,80,80);
-font-weight:bold;;</string>
+font-weight:bold;</string>
     </property>
     <property name="text">
      <string>基本设置</string>
@@ -680,6 +951,16 @@ font-weight:bold;;</string>
    <class>DownloadFunctionTableWidget</class>
    <extends>QTableWidget</extends>
    <header location="global">downloadsettingwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TTKThemeLineLabel</class>
+   <extends>QLabel</extends>
+   <header>ttkthemelinelabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DownloadGlobalHotKeyEdit</class>
+   <extends>QWidget</extends>
+   <header>downloadglobalhotkeyedit.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

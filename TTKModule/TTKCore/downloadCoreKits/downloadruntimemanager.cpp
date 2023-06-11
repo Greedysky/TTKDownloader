@@ -34,32 +34,20 @@ void DownloadRunTimeManager::run() const
 
     TTK::Codec::setLocalCodec();
 
-    TTK_INFO_STREAM("Load Translation");
-    DownloadSysConfigManager *xml = new DownloadSysConfigManager;
-    xml->readXMLConfig();
-    xml->readSysLoadConfig();
-
-    ///////////////////////////////////////////////////////
-    QFont font;
-    QStringList fts(QFontDatabase().families(QFontDatabase::Any));
-    int index = G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt();
-    if(index >= 0 && index < fts.count())
-    {
-        font.setFamily(fts[index]);
-    }
 #ifdef Q_OS_UNIX
+    QFont font;
     font.setPixelSize(13);
-#endif
     qApp->setFont(font);
-    ///////////////////////////////////////////////////////
+#endif
 
     //detect the current network state
     G_NETWORK_PTR->start();
-    index = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt();
-    G_NETWORK_PTR->setBlockNetWork(index);
 
-    delete xml;
-    TTK_INFO_STREAM("End load translation");
+    DownloadSysConfigManager xml;
+    xml.fromFile();
+    xml.readBuffer();
+
+    G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt());
 }
 
 QString DownloadRunTimeManager::translator() const

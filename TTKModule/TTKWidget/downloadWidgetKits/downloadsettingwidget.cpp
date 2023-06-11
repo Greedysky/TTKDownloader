@@ -2,21 +2,22 @@
 #include "ui_downloadsettingwidget.h"
 #include "downloadsettingmanager.h"
 
-#include <QButtonGroup>
-#include <QFontDatabase>
 #include <QFileDialog>
+#include <QButtonGroup>
 #include <QStyledItemDelegate>
 
 DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
     : DownloadAbstractTableWidget(parent),
       m_listIndex(0)
 {
-    setRowCount(3);
-
     QHeaderView *headerview = horizontalHeader();
     headerview->resizeSection(0, 20);
     headerview->resizeSection(1, 20);
     headerview->resizeSection(2, 85);
+
+    setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
+    setRowCount(3);
 }
 
 void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunctionItemList &items)
@@ -24,18 +25,21 @@ void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunc
     m_listIndex = index;
     for(int i = 0; i < items.count(); ++i)
     {
-        const DownloadFunctionItem &&fItem = std::move(items[i]);
-        QTableWidgetItem *item = nullptr;
-        setItem(i, 0, item = new QTableWidgetItem());
+        const DownloadFunctionItem &v = items[i];
 
-                      item = new QTableWidgetItem(QIcon(fItem.m_icon), QString());
+        QTableWidgetItem *item = nullptr;
+        setItem(i, 0, item = new QTableWidgetItem);
+
+                      item = new QTableWidgetItem(QIcon(v.m_icon), QString());
         QtItemSetTextAlignment(item, Qt::AlignCenter);
         setItem(i, 1, item);
 
-                      item = new QTableWidgetItem(fItem.m_name);
+                      item = new QTableWidgetItem(v.m_name);
         item->setForeground(QColor(80, 80, 80));
         QtItemSetTextAlignment(item, Qt::AlignLeft | Qt::AlignVCenter);
         setItem(i, 2, item);
+
+        setRowHeight(i, 28);
     }
 }
 
@@ -69,9 +73,10 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
 
     ////////////////////////////////////////////////
     DownloadFunctionItemList items;
-    items << DownloadFunctionItem(QString(), tr("Normal"))
-          << DownloadFunctionItem(QString(), tr("Dwonload"))
-          << DownloadFunctionItem(QString(), tr("Outlook"));
+    items << DownloadFunctionItem(":/contextMenu/btn_setting", tr("Normal"))
+          << DownloadFunctionItem(":/contextMenu/btn_keyboard", tr("Hotkey"))
+          << DownloadFunctionItem(":/contextMenu/btn_download", tr("Dwonload"))
+          << DownloadFunctionItem(":/contextMenu/btn_window", tr("Outlook"));
     m_ui->normalFunTableWidget->setRowCount(items.count());
     m_ui->normalFunTableWidget->addFunctionItems(0, items);
 
@@ -126,7 +131,6 @@ void DownloadSettingWidget::initialize()
 
     ///////////////////////////////////////////////////////////////////////////
     m_ui->effectLevelBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt());
-    m_ui->fontBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::SkinFontChoiced).toInt());
 
     m_ui->suspensionVisiableBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool());
     m_ui->suspensionShowPerBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool());
@@ -174,7 +178,6 @@ void DownloadSettingWidget::commitTheResults()
 
     ///////////////////////////////////////////////////////////////////////////
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced, m_ui->effectLevelBox->currentIndex());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinFontChoiced, m_ui->fontBox->currentIndex());
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, m_ui->suspensionVisiableBox->isChecked());
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, m_ui->suspensionShowPerBox->isChecked());
 
@@ -271,10 +274,6 @@ void DownloadSettingWidget::initSkinSettingWidget()
     m_ui->effectLevelBox->setItemDelegate(new QStyledItemDelegate(m_ui->effectLevelBox));
     m_ui->effectLevelBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
     m_ui->effectLevelBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
-    m_ui->fontBox->setItemDelegate(new QStyledItemDelegate(m_ui->fontBox));
-    m_ui->fontBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
-    m_ui->fontBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
 
     m_ui->effectLevelBox->addItems({tr("Heigh"), tr("Low"), tr("Close")});
-    m_ui->fontBox->addItems(QFontDatabase().families(QFontDatabase::Any));
 }

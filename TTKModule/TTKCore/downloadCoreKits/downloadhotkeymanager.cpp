@@ -3,7 +3,7 @@
 
 #include <QStringList>
 
-void DownloadHotKeyManager::connectParentObject(QObject *object, const QString &sn, const char *slot)
+void DownloadHotKeyManager::setInputModule(QObject *object, const QString &sn, const char *slot)
 {
     QGlobalShortcut *hotkey = new QGlobalShortcut(object);
     connect(hotkey, SIGNAL(activated()), object, slot);
@@ -19,6 +19,7 @@ void DownloadHotKeyManager::setHotKey(int index, const QString &key)
     {
         return;
     }
+
     m_hotkeys[index]->setShortcut(QKeySequence(key));
 }
 
@@ -28,16 +29,54 @@ void DownloadHotKeyManager::setHotKey(int index, int key)
     {
         return;
     }
+
     m_hotkeys[index]->setShortcut(QKeySequence(key));
 }
 
-QString DownloadHotKeyManager::hotKey(int index)
+void DownloadHotKeyManager::setHotKeys(const QStringList &keys)
+{
+    for(int i = 0; i < m_hotkeys.count(); ++i)
+    {
+        setHotKey(i, keys[i]);
+        setEnabled(i, false);
+    }
+}
+
+void DownloadHotKeyManager::addHotKey(int key)
+{
+    m_hotkeys << (new QGlobalShortcut(QKeySequence(key)));
+}
+
+void DownloadHotKeyManager::addHotKey(const QString &key)
+{
+    m_hotkeys << (new QGlobalShortcut(QKeySequence(key)));
+}
+
+QObject* DownloadHotKeyManager::hotKey(int index)
 {
     if(index >= m_hotkeys.count())
     {
-        return QString();
+        return nullptr;
     }
-    return m_hotkeys[index]->shortcut().toString();
+
+    return m_hotkeys[index];
+}
+
+void DownloadHotKeyManager::unsetShortcut()
+{
+    for(QGlobalShortcut *key : qAsConst(m_hotkeys))
+    {
+        key->unsetShortcut();
+        key->setEnabled(false);
+    }
+}
+
+void DownloadHotKeyManager::setEnabled(bool enabled)
+{
+    for(QGlobalShortcut *key : qAsConst(m_hotkeys))
+    {
+        key->setEnabled(enabled);
+    }
 }
 
 void DownloadHotKeyManager::setEnabled(int index, bool enabled)
@@ -46,24 +85,18 @@ void DownloadHotKeyManager::setEnabled(int index, bool enabled)
     {
         return;
     }
+
     m_hotkeys[index]->setEnabled(enabled);
 }
 
-bool DownloadHotKeyManager::enabled(int index)
+bool DownloadHotKeyManager::isEnabled(int index)
 {
     if(index >= m_hotkeys.count())
     {
         return false;
     }
-    return m_hotkeys[index]->isEnabled();
-}
 
-void DownloadHotKeyManager::enabledAll(bool enabled)
-{
-    for(QGlobalShortcut *key : qAsConst(m_hotkeys))
-    {
-        key->setEnabled(enabled);
-    }
+    return m_hotkeys[index]->isEnabled();
 }
 
 QString DownloadHotKeyManager::toString(int key, int modifiers)

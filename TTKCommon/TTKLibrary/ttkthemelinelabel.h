@@ -1,8 +1,8 @@
-#ifndef DOWNLOADWIDGETUTILS_H
-#define DOWNLOADWIDGETUTILS_H
+#ifndef TTKTHEMELINELABEL_H
+#define TTKTHEMELINELABEL_H
 
 /***************************************************************************
- * This file is part of the TTK Downloader project
+ * This file is part of the TTK Library Module project
  * Copyright (C) 2015 - 2023 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -19,36 +19,28 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include <QLabel>
 #include "ttkglobaldefine.h"
 
-class QMenu;
-
-/*! @brief The namespace of the utils widget.
+/*! @brief The class of the theme line label.
  * @author Greedysky <greedysky@163.com>
  */
-namespace TTK
+class TTK_MODULE_EXPORT TTKThemeLineLabel : public QLabel
 {
-    namespace Widget
-    {
-        /*!
-         * Adjust the menu position.
-         */
-        TTK_MODULE_EXPORT void adjustMenuPosition(QMenu *menu);
-        /*!
-         * Adjust the widget in screen center.
-         */
-        TTK_MODULE_EXPORT void adjustWidgetPosition(QWidget *widget);
+    Q_OBJECT
+    TTK_DECLARE_MODULE(TTKThemeLineLabel)
+public:
+    /*!
+     * Object contsructor.
+     */
+    explicit TTKThemeLineLabel(QWidget *parent = nullptr);
 
-        /*!
-         * Set widget transparent.
-         */
-        TTK_MODULE_EXPORT void setTransparent(QWidget *widget, int alpha);
-        /*!
-         * Set widget transparent.
-         */
-        TTK_MODULE_EXPORT void setTransparent(QWidget *widget, const QColor &color);
+protected:
+    /*!
+     * Override the widget event.
+     */
+    virtual void paintEvent(QPaintEvent *event) override final;
 
-    }
-}
+};
 
-#endif // DOWNLOADWIDGETUTILS_H
+#endif // TTKTHEMELINELABEL_H

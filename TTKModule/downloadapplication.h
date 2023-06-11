@@ -63,11 +63,11 @@ public Q_SLOTS:
     /*!
      * Application window close.
      */
-    void quitWindowClose();
+    void quitWindow();
     /*!
      * Create right menu.
      */
-    void appCreateRightMenu();
+    void createRightMenu();
 
 private:
     /*!
@@ -80,11 +80,11 @@ private:
     /*!
      * Read XML config from text.
      */
-    void readXMLConfigFromText();
+    void readSystemConfigFromFile();
     /*!
      * Write XML config to text.
      */
-    void writeXMLConfigToText();
+    void writeSystemConfigToFile();
 
     Ui::DownloadApplication *m_ui;
 

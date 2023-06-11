@@ -38,21 +38,21 @@ public:
     /*!
      * Read config datas from xml file by given name.
      */
-    inline bool readXMLConfig() { return fromFile(COFIG_PATH_FULL); }
+    inline bool fromFile() { return TTKXmlDocument::fromFile(COFIG_PATH_FULL); }
 
     /*!
-     * Write datas into xml file.
+     * Read datas from config file.
      */
-    void writeXMLConfig();
+    void readBuffer() const;
+    /*!
+     * Write datas into config file.
+     */
+    void writeBuffer();
 
     /*!
      * Read window widget Geometry Config.
      */
     QRect readWindowGeometry() const;
-    /*!
-     * Read Sys Load Config.
-     */
-    void readSysLoadConfig() const;
 
 };
 

@@ -20,7 +20,7 @@ DownloadSystemTrayMenu::DownloadSystemTrayMenu(QWidget *parent)
     m_floatMenu->addAction(tr("Hide"), tw, SLOT(closeRemoteSpeedWidget()));
     addMenu(m_floatMenu);
 
-    addAction(QIcon(":/contextMenu/lb_quit_normal"), tr("appClose(X)"), parent, SLOT(quitWindowClose()));
+    addAction(QIcon(":/contextMenu/lb_quit_normal"), tr("appClose(X)"), parent, SLOT(quitWindow()));
 }
 
 DownloadSystemTrayMenu::~DownloadSystemTrayMenu()

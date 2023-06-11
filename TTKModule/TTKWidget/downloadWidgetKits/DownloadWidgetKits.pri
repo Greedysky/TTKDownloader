@@ -24,6 +24,7 @@ HEADERS += \
     $$PWD/downloadbackgroundlistwidget.h \
     $$PWD/downloadbackgroundpopwidget.h \
     $$PWD/downloadbackgroundremotewidget.h \
+    $$PWD/downloadglobalhotkeyedit.h \
     $$PWD/downloadsystemtraymenu.h \
     $$PWD/downloadnewfiledialog.h\
     $$PWD/downloadlistitemwidget.h \
@@ -38,6 +39,7 @@ SOURCES += \
     $$PWD/downloadfuntionanimationwidget.cpp \
     $$PWD/downloadbackgroundpopwidget.cpp \
     $$PWD/downloadbackgroundlistwidget.cpp \
+    $$PWD/downloadglobalhotkeyedit.cpp \
     $$PWD/downloadsystemtraymenu.cpp \
     $$PWD/downloadbackgroundremotewidget.cpp \
     $$PWD/downloadnewfiledialog.cpp\

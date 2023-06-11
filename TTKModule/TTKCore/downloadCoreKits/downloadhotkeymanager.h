@@ -35,9 +35,9 @@ class TTK_MODULE_EXPORT DownloadHotKeyManager : public QObject
     TTK_DECLARE_MODULE(DownloadHotKeyManager)
 public:
     /*!
-     * To connect parent slot object.
+     * Set input connection.
      */
-    void connectParentObject(QObject *object, const QString &sn, const char *slot);
+    void setInputModule(QObject *object, const QString &sn, const char *slot);
 
     /*!
      * Set hotKey by given index and string key.
@@ -48,10 +48,32 @@ public:
      */
     void setHotKey(int index, int key);
     /*!
+     * Set hotKey by given string list keys.
+     */
+    void setHotKeys(const QStringList &keys);
+
+    /*!
+     * Set hotKey by given index and virtual key.
+     */
+    void addHotKey(int key);
+    /*!
+     * Add hotKey by given index and string key.
+     */
+    void addHotKey(const QString &key);
+    /*!
      * Get the string key by given hotKey index.
      */
-    QString hotKey(int index);
+    QObject* hotKey(int index);
 
+    /*!
+     * Unset registered hotKeys.
+     */
+    void unsetShortcut();
+
+    /*!
+     * Enable or disable all hotkeys.
+     */
+    void setEnabled(bool enabled);
     /*!
      * Enable or disable the hotkey by index.
      */
@@ -59,11 +81,7 @@ public:
     /*!
      * check the given hotkey is enabled or not.
      */
-    bool enabled(int index);
-    /*!
-     * Enable or disable all hotkeys.
-     */
-    void enabledAll(bool enabled);
+    bool isEnabled(int index);
 
     /*!
      * Mapping the virtual key to string key.

@@ -10,6 +10,7 @@
 #include "downloadhotkeymanager.h"
 #include "downloadnetworkabstract.h"
 #include "downloaduiobject.h"
+#include "downloadwidgetutils.h"
 #include "ttkversion.h"
 
 #include <QMenu>
@@ -40,12 +41,12 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     m_leftAreaWidget->setupUi(m_ui);
     m_topAreaWidget->backgroundSliderStateChanged(false);
 
-    G_HOTKEY_PTR->connectParentObject(this, "Ctrl+X", SLOT(quitWindowClose()));
+    G_HOTKEY_PTR->setInputModule(this, "Ctrl+X", SLOT(quitWindow()));
 
     /////////// Mouse tracking
     setObjectsTracking({m_ui->background});
 
-    readXMLConfigFromText();
+    readSystemConfigFromFile();
     m_rightAreaWidget->initialize();
 }
 
@@ -78,14 +79,13 @@ void DownloadApplication::parameterSetting()
     config ? m_topAreaWidget->showRemoteSpeedWidget() : m_topAreaWidget->closeRemoteSpeedWidget();
 }
 
-void DownloadApplication::quitWindowClose()
+void DownloadApplication::quitWindow()
 {
-    //Write configuration files
-    writeXMLConfigToText();
+    writeSystemConfigToFile();
     m_applicationObject->windowCloseAnimation();
 }
 
-void DownloadApplication::appCreateRightMenu()
+void DownloadApplication::createRightMenu()
 {
     QMenu rightClickMenu(this);
     rightClickMenu.setStyleSheet(TTK::UI::MenuStyle02);
@@ -105,6 +105,7 @@ void DownloadApplication::appCreateRightMenu()
     editMenu.addAction(tr("Select All"), DownloadRightAreaWidget::instance(), SLOT(editSelectAll()));
     editMenu.addAction(tr("Reverse Select"), DownloadRightAreaWidget::instance(), SLOT(editReverseSelect()));
     rightClickMenu.addMenu(&editMenu);
+    TTK::Widget::adjustMenuPosition(&editMenu);
 
     rightClickMenu.addAction(tr("Plan"));
     rightClickMenu.addSeparator();
@@ -116,7 +117,7 @@ void DownloadApplication::appCreateRightMenu()
     aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(TTK_VERSION_STR) + QString(TTK_VERSION_TIME_STR), m_applicationObject, SLOT(appAboutUs()));
     rightClickMenu.addMenu(&aboutMenu);
     rightClickMenu.addSeparator();
-    rightClickMenu.addAction(tr("appClose(X)"), this, SLOT(quitWindowClose()));
+    rightClickMenu.addAction(tr("appClose(X)"), this, SLOT(quitWindow()));
     rightClickMenu.exec(QCursor::pos());
 }
 
@@ -139,7 +140,7 @@ void DownloadApplication::closeEvent(QCloseEvent *event)
     }
     else
     {
-        quitWindowClose();
+        quitWindow();
     }
 }
 
@@ -159,15 +160,16 @@ void DownloadApplication::mouseDoubleClickEvent(QMouseEvent *event)
     }
 }
 
-void DownloadApplication::readXMLConfigFromText()
+void DownloadApplication::readSystemConfigFromFile()
 {
     DownloadSysConfigManager xml;
 
-    if(!xml.readXMLConfig())//open file
+    if(!xml.fromFile())//open file
     {
         return;
     }
-    xml.readSysLoadConfig();
+
+    xml.readBuffer();
 
     //Set the current background color and alpha value
     m_topAreaWidget->setParameters(G_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString(),
@@ -192,12 +194,12 @@ void DownloadApplication::readXMLConfigFromText()
 #endif
 }
 
-void DownloadApplication::writeXMLConfigToText()
+void DownloadApplication::writeSystemConfigToFile()
 {
-    DownloadSysConfigManager xml;
-
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetPosition, pos());
     G_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced, m_topAreaWidget->backgroundPath());
     G_SETTING_PTR->setValue(DownloadSettingManager::BgTransparentChoiced, m_topAreaWidget->backgroundAlpha());
-    xml.writeXMLConfig();
+
+    DownloadSysConfigManager xml;
+    xml.writeBuffer();
 }

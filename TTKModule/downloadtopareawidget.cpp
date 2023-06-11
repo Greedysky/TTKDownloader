@@ -43,7 +43,7 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication *ui)
     ui->windowSettingButton->setStyleSheet(TTK::UI::THDSetting);
     ui->windowSettingButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowSettingButton->setToolTip(tr("Setting"));
-    connect(ui->windowSettingButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(appCreateRightMenu()));
+    connect(ui->windowSettingButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(createRightMenu()));
 
     ui->windowMinButton->setStyleSheet(TTK::UI::THDMinimum);
     ui->windowMinButton->setCursor(QCursor(Qt::PointingHandCursor));
@@ -128,6 +128,7 @@ void DownloadTopAreaWidget::backgroundTransparentChanged(int index)
     {
         m_backgroundWidget->setSkinTransToolText(index);
     }
+
     m_backgroundAlpha = index;
     drawWindowBackgroundRectString();
 }

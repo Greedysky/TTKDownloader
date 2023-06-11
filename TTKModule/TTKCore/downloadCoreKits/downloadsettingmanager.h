@@ -61,7 +61,6 @@ public:
         DownloadULoadLimitChoiced,      /*!< Download ULoad Limit Parameter*/
 
         SkinEffectLevelChoiced,         /*!< Skin effect Level Parameter*/
-        SkinFontChoiced,                /*!< Skin Font Parameter*/
         SkinSuspensionChoiced,          /*!< Skin Suspension Show Parameter*/
         SkinSuspensionPerChoiced        /*!< Skin Suspension Show Percent Parameter*/
 

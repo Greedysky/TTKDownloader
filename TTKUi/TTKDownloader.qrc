@@ -32,6 +32,10 @@
         <file alias="lb_custom">../TTKResource/contextMenu/lb_custom.png</file>
         <file alias="lb_protection">../TTKResource/contextMenu/lb_protection.png</file>
         <file alias="lb_setting">../TTKResource/contextMenu/lb_setting.png</file>
+        <file alias="btn_download">../TTKResource/contextMenu/btn_download.png</file>
+        <file alias="btn_keyboard">../TTKResource/contextMenu/btn_keyboard.png</file>
+        <file alias="btn_setting">../TTKResource/contextMenu/btn_setting.png</file>
+        <file alias="btn_window">../TTKResource/contextMenu/btn_window.png</file>
     </qresource>
     <qresource prefix="/appTools">
         <file alias="item_delete_clicked">../TTKResource/appTools/item_delete_clicked.png</file>
