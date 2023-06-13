@@ -59,7 +59,7 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
         }
     }
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, path);
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDir, path);
 
     if(!m_manager->downloadFile(url))
     {

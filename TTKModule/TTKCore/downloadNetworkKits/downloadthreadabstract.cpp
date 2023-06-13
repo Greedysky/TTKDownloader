@@ -60,9 +60,9 @@ void DownLoadThreadAbstract::updateDownloadSpeed()
 {
     const int delta = m_currentReceived - m_hasReceived;
     ///limit speed
-    if(G_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 0)
+    if(G_SETTING_PTR->value(DownloadSettingManager::DownloadLimit).toInt() == 0)
     {
-        const int limitValue = G_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimitChoiced).toInt();
+        const int limitValue = G_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimit).toInt();
         if(limitValue != 0 && delta > limitValue * MH_KB)
         {
 #ifdef Q_CC_MSVC

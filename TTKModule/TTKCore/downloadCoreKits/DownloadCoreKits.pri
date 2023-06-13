@@ -26,7 +26,7 @@ HEADERS += \
     $$PWD/downloadhotkeymanager.h \
     $$PWD/downloadotherdefine.h \
     $$PWD/downloadsettingmanager.h \
-    $$PWD/downloadsysconfigmanager.h \
+    $$PWD/downloadconfigmanager.h \
     $$PWD/downloadruntimemanager.h \
     $$PWD/downloadbreakpointconfigmanager.h \
     $$PWD/downloadrecordconfigmanager.h \
@@ -37,7 +37,7 @@ SOURCES += \
     $$PWD/downloadbackgroundmanager.cpp \
     $$PWD/downloadextractwrapper.cpp \
     $$PWD/downloadhotkeymanager.cpp \
-    $$PWD/downloadsysconfigmanager.cpp \
+    $$PWD/downloadconfigmanager.cpp \
     $$PWD/downloadruntimemanager.cpp \
     $$PWD/downloadbreakpointconfigmanager.cpp \
     $$PWD/downloadrecordconfigmanager.cpp \

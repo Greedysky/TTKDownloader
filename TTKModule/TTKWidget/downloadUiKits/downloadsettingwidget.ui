@@ -249,6 +249,9 @@ font-weight:bold;</string>
     </widget>
    </widget>
    <widget class="QWidget" name="second">
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
     <widget class="TTKThemeLineLabel" name="baseSetShotKeyWidget">
      <property name="geometry">
       <rect>
@@ -280,13 +283,13 @@ font-weight:bold;</string>
       <string notr="true">background:#3BA1E6;border-radius:2px</string>
      </property>
      <property name="text">
-      <string>播放/暂停</string>
+      <string>新建</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S02" native="true">
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S01">
      <property name="geometry">
       <rect>
        <x>205</x>
@@ -296,109 +299,20 @@ font-weight:bold;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
+      <string notr="true">background:white;</string>
      </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+B</string>
+     <property name="text">
+      <string>Ctrl+N</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="item_S3">
+    <widget class="QLabel" name="item_S2">
      <property name="geometry">
       <rect>
        <x>25</x>
        <y>80</y>
-       <width>70</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:#3BA1E6;border-radius:2px</string>
-     </property>
-     <property name="text">
-      <string>上一曲</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S04" native="true">
-     <property name="geometry">
-      <rect>
-       <x>205</x>
-       <y>80</y>
-       <width>180</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
-     </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+Left</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="item_S5">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>110</y>
-       <width>70</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:#3BA1E6;border-radius:2px</string>
-     </property>
-     <property name="text">
-      <string>下一曲</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="item_S7">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>140</y>
-       <width>70</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:#3BA1E6;border-radius:2px</string>
-     </property>
-     <property name="text">
-      <string>增加音量</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="item_S9">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>170</y>
-       <width>70</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:#3BA1E6;border-radius:2px</string>
-     </property>
-     <property name="text">
-      <string>减少音量</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="QLabel" name="item_S11">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>230</y>
        <width>70</width>
        <height>20</height>
       </rect>
@@ -413,7 +327,45 @@ font-weight:bold;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S06" native="true">
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S02">
+     <property name="geometry">
+      <rect>
+       <x>205</x>
+       <y>80</y>
+       <width>180</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:white;</string>
+     </property>
+     <property name="text">
+      <string>Ctrl+S</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="item_S3">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>110</y>
+       <width>70</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+     </property>
+     <property name="text">
+      <string>退出</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="DownloadGlobalHotKeyEdit" name="item_S03">
      <property name="geometry">
       <rect>
        <x>205</x>
@@ -423,90 +375,10 @@ font-weight:bold;</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
-     </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+Right</string>
-     </property>
-    </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S08" native="true">
-     <property name="geometry">
-      <rect>
-       <x>205</x>
-       <y>140</y>
-       <width>180</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
-     </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+Up</string>
-     </property>
-    </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S10" native="true">
-     <property name="geometry">
-      <rect>
-       <x>205</x>
-       <y>170</y>
-       <width>180</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
-     </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+Down</string>
-     </property>
-    </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S12" native="true">
-     <property name="geometry">
-      <rect>
-       <x>205</x>
-       <y>230</y>
-       <width>180</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
-     </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+S</string>
-     </property>
-    </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S14" native="true">
-     <property name="geometry">
-      <rect>
-       <x>205</x>
-       <y>260</y>
-       <width>180</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
-     </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+I</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="item_S13">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>260</y>
-       <width>70</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:#3BA1E6;border-radius:2px</string>
+      <string notr="true">background:white;</string>
      </property>
      <property name="text">
-      <string>导入歌曲</string>
+      <string>Ctrl+X</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -516,48 +388,13 @@ font-weight:bold;</string>
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>295</y>
+       <y>150</y>
        <width>250</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
       <string>启用全局快捷键</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="item_S15">
-     <property name="geometry">
-      <rect>
-       <x>25</x>
-       <y>200</y>
-       <width>70</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:#3BA1E6;border-radius:2px</string>
-     </property>
-     <property name="text">
-      <string>静音</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S16" native="true">
-     <property name="geometry">
-      <rect>
-       <x>205</x>
-       <y>200</y>
-       <width>180</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background:rgba(0, 0, 0, 100);border-radius:2px; </string>
-     </property>
-     <property name="text" stdset="0">
-      <string>Ctrl+M</string>
      </property>
     </widget>
    </widget>
@@ -959,7 +796,7 @@ font-weight:bold;</string>
   </customwidget>
   <customwidget>
    <class>DownloadGlobalHotKeyEdit</class>
-   <extends>QWidget</extends>
+   <extends>QLineEdit</extends>
    <header>downloadglobalhotkeyedit.h</header>
   </customwidget>
  </customwidgets>

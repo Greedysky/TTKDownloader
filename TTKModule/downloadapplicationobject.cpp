@@ -41,7 +41,7 @@ void DownloadApplicationObject::quit()
 
 void DownloadApplicationObject::windowCloseAnimation()
 {
-    float v = G_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt();
+    float v = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
     v = TTK::Image::reRenderValue<float>(1.0f, 0.35f, v);
     m_animation->stop();
     m_animation->setDuration(MT_S2MS / 2);

@@ -1,5 +1,5 @@
-#ifndef DOWNLOADSYSCONFIGMANAGER_H
-#define DOWNLOADSYSCONFIGMANAGER_H
+#ifndef DOWNLOADCONFIGMANAGER_H
+#define DOWNLOADCONFIGMANAGER_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -22,18 +22,18 @@
 #include "downloadobject.h"
 #include "ttkabstractxml.h"
 
-/*! @brief The class of the sys xml config manager.
+/*! @brief The class of the xml config manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSysConfigManager : public TTKXmlDocument
+class TTK_MODULE_EXPORT DownloadConfigManager : public TTKXmlDocument
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadSysConfigManager)
+    TTK_DECLARE_MODULE(DownloadConfigManager)
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSysConfigManager(QObject *parent = nullptr);
+    explicit DownloadConfigManager(QObject *parent = nullptr);
 
     /*!
      * Read config datas from xml file by given name.
@@ -56,4 +56,4 @@ public:
 
 };
 
-#endif // DOWNLOADSYSCONFIGMANAGER_H
+#endif // DOWNLOADCONFIGMANAGER_H

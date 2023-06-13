@@ -22,6 +22,8 @@
 #include <QWidget>
 #include "ttkglobaldefine.h"
 
+class DownloadSettingWidget;
+
 namespace Ui {
     class DownloadApplication;
 }
@@ -63,6 +65,7 @@ private:
 
     Ui::DownloadApplication *m_ui;
 
+    DownloadSettingWidget *m_settingWidget;
     static DownloadLeftAreaWidget *m_instance;
 
 };

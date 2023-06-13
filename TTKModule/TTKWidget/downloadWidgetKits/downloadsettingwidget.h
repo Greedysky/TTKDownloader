@@ -121,6 +121,10 @@ public Q_SLOTS:
      */
     void clearFunctionTableSelection();
     /*!
+     * Set global hotkey box changed.
+     */
+    void globalHotkeyBoxChanged(bool state);
+    /*!
      * Set select download dir.
      */
     void downloadDirSelected();
@@ -129,9 +133,9 @@ public Q_SLOTS:
      */
     void downloadGroupSpeedLimit(int index);
     /*!
-     * Save the change results.
+     * Save the parameter setting results.
      */
-    void commitTheResults();
+    void saveParameterSettings();
 
 private:
     /*!

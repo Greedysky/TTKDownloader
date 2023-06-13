@@ -3,7 +3,7 @@
 
 QString TTK::Core::downloadPrefix()
 {
-   QString path = G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString();
+   QString path = G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDir).toString();
    if(path.isEmpty())
    {
        path = TDDOWNLOAD_DIR_FULL;

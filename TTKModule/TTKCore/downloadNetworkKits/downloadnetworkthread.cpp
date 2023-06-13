@@ -32,14 +32,14 @@ void DownloadNetworkThread::start()
 
 void DownloadNetworkThread::setBlockNetWork(int block)
 {
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkChoiced, block);
+    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkMode, block);
 }
 
 void DownloadNetworkThread::networkStateChanged()
 {
     const auto status = QtConcurrent::run([&]()
     {
-        bool block = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toBool();
+        bool block = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toBool();
         QHostInfo info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);
         m_networkState = !info.addresses().isEmpty();
         m_networkState = block ? false : m_networkState;

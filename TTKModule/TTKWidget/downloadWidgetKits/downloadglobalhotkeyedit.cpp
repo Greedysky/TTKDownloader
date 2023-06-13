@@ -13,7 +13,6 @@ void DownloadGlobalHotKeyEdit::setHotKeyEnabled(bool state)
 {
     setEnabled(state);
     setReadOnly(!state);
-    setStyleSheet("color:#444444;");
 }
 
 void DownloadGlobalHotKeyEdit::keyPressEvent(QKeyEvent *event)

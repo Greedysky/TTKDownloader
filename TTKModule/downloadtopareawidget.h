@@ -56,7 +56,7 @@ public:
     /*!
      * Set background skin and alpha and list alpha parameter.
      */
-    void setParameters(const QString &skin, int alpha);
+    void setBackgroundParameter();
     /*!
      * Get background skin name.
      */

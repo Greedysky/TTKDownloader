@@ -62,10 +62,10 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication *ui)
 
 }
 
-void DownloadTopAreaWidget::setParameters(const QString &skin, int alpha)
+void DownloadTopAreaWidget::setBackgroundParameter()
 {
-    m_backgroundImagePath = skin;
-    m_backgroundAlpha = alpha;
+    m_backgroundImagePath = G_SETTING_PTR->value(DownloadSettingManager::BackgroundThemeValue).toString();
+    m_backgroundAlpha = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
     drawWindowBackgroundRect();
 }
 

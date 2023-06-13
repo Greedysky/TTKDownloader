@@ -1,6 +1,7 @@
 #include "downloadsettingwidget.h"
 #include "ui_downloadsettingwidget.h"
 #include "downloadsettingmanager.h"
+#include "downloadhotkeymanager.h"
 
 #include <QFileDialog>
 #include <QButtonGroup>
@@ -90,7 +91,7 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
 #endif
     connect(m_ui->normalFunTableWidget, SIGNAL(currentIndexChanged(int)), m_ui->stackedWidget, SLOT(setCurrentIndex(int)));
     connect(m_ui->normalFunTableWidget, SIGNAL(currentIndexChanged(int)), SLOT(clearFunctionTableSelection()));
-    connect(m_ui->confirmButton, SIGNAL(clicked()), SLOT(commitTheResults()));
+    connect(m_ui->confirmButton, SIGNAL(clicked()), SLOT(saveParameterSettings()));
     connect(m_ui->cancelButton, SIGNAL(clicked()), SLOT(close()));
 
     ////////////////////////////////////////////////
@@ -108,9 +109,9 @@ DownloadSettingWidget::~DownloadSettingWidget()
 
 void DownloadSettingWidget::initialize()
 {
-    m_ui->downloadDirEdit->setText(G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDirChoiced).toString());
+    m_ui->downloadDirEdit->setText(G_SETTING_PTR->value(DownloadSettingManager::DownloadPathDir).toString());
 
-    if(!G_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toBool())
+    if(!G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toBool())
     {
         m_ui->minimumRadioBox->setChecked(true);
     }
@@ -119,27 +120,47 @@ void DownloadSettingWidget::initialize()
         m_ui->quitRadioBox->setChecked(true);
     }
 
-    m_ui->startupCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpModeChoiced).toBool());
-    m_ui->startupRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpRunModeChoiced).toBool());
-    m_ui->slienceRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SlienceRunModeChoiced).toBool());
+    m_ui->startupCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpMode).toBool());
+    m_ui->startupRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpRunMode).toBool());
+    m_ui->slienceRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SlienceRunMode).toBool());
+
+    //
+    QStringList hotkeys = G_SETTING_PTR->value(DownloadSettingManager::HotkeyValue).toString().split(TTK_SPLITER);
+    if(hotkeys.count() != G_HOTKEY_PTR->count())
+    {
+        hotkeys = G_HOTKEY_PTR->defaultKeys();
+    }
+
+    m_ui->item_S01->setText(hotkeys[0]);
+    m_ui->item_S02->setText(hotkeys[1]);
+    m_ui->item_S03->setText(hotkeys[2]);
+    m_ui->globalHotkeyBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::HotkeyEnable).toBool());
+    globalHotkeyBoxChanged(m_ui->globalHotkeyBox->isChecked());
 
     ///////////////////////////////////////////////////////////////////////////
-    G_SETTING_PTR->value(DownloadSettingManager::DownloadLimitChoiced).toInt() == 1 ?
+    G_SETTING_PTR->value(DownloadSettingManager::DownloadLimit).toInt() == 1 ?
                          m_ui->downloadFullRadioBox->click() : m_ui->downloadLimitRadioBox->click();
-    m_ui->defaultDownloadModeBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadModeChoiced).toInt());
-    m_ui->downloadMaxCountBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCountChoiced).toInt());
+    m_ui->defaultDownloadModeBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadMode).toInt());
+    m_ui->downloadMaxCountBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCount).toInt());
 
     ///////////////////////////////////////////////////////////////////////////
-    m_ui->effectLevelBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevelChoiced).toInt());
+    m_ui->effectLevelBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::SkinEffectLevel).toInt());
 
-    m_ui->suspensionVisiableBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool());
-    m_ui->suspensionShowPerBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionPerChoiced).toBool());
+    m_ui->suspensionVisiableBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspension).toBool());
+    m_ui->suspensionShowPerBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionValue).toBool());
 
 }
 
 void DownloadSettingWidget::clearFunctionTableSelection()
 {
     m_ui->normalFunTableWidget->clearSelection();
+}
+
+void DownloadSettingWidget::globalHotkeyBoxChanged(bool state)
+{
+    m_ui->item_S01->setHotKeyEnabled(state);
+    m_ui->item_S02->setHotKeyEnabled(state);
+    m_ui->item_S03->setHotKeyEnabled(state);
 }
 
 void DownloadSettingWidget::downloadDirSelected()
@@ -163,23 +184,41 @@ void DownloadSettingWidget::downloadGroupSpeedLimit(int index)
     m_ui->uploadLimitSpeedComboBox->setEnabled(index);
 }
 
-void DownloadSettingWidget::commitTheResults()
+void DownloadSettingWidget::saveParameterSettings()
 {
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDirChoiced, m_ui->downloadDirEdit->text());
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventChoiced, m_ui->quitRadioBox->isChecked());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpModeChoiced, m_ui->startupCheckBox->isChecked());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunModeChoiced, m_ui->startupRunCheckBox->isChecked());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunModeChoiced, m_ui->slienceRunCheckBox->isChecked());
+    const bool hotkeyEnabled = m_ui->globalHotkeyBox->isChecked();
+    G_SETTING_PTR->setValue(DownloadSettingManager::HotkeyEnable, hotkeyEnabled);
 
-    ///////////////////////////////////////////////////////////////////////////
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimitChoiced, m_ui->downloadFullRadioBox->isChecked());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadModeChoiced, m_ui->defaultDownloadModeBox->currentIndex());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCountChoiced, m_ui->downloadMaxCountBox->currentIndex());
+    if(hotkeyEnabled)
+    {
+        G_HOTKEY_PTR->setHotKey(0, m_ui->item_S01->text());
+        G_HOTKEY_PTR->setHotKey(1, m_ui->item_S02->text());
+        G_HOTKEY_PTR->setHotKey(2, m_ui->item_S03->text());
 
-    ///////////////////////////////////////////////////////////////////////////
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevelChoiced, m_ui->effectLevelBox->currentIndex());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionChoiced, m_ui->suspensionVisiableBox->isChecked());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionPerChoiced, m_ui->suspensionShowPerBox->isChecked());
+        G_HOTKEY_PTR->setEnabled(true);
+        G_SETTING_PTR->setValue(DownloadSettingManager::HotkeyValue, G_HOTKEY_PTR->keys().join(TTK_SPLITER));
+    }
+    else
+    {
+        G_HOTKEY_PTR->unsetShortcut();
+    }
+
+
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDir, m_ui->downloadDirEdit->text());
+    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventMode, m_ui->quitRadioBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpMode, m_ui->startupCheckBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunMode, m_ui->startupRunCheckBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunMode, m_ui->slienceRunCheckBox->isChecked());
+
+
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimit, m_ui->downloadFullRadioBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMode, m_ui->defaultDownloadModeBox->currentIndex());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCount, m_ui->downloadMaxCountBox->currentIndex());
+
+
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevel, m_ui->effectLevelBox->currentIndex());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspension, m_ui->suspensionVisiableBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionValue, m_ui->suspensionShowPerBox->isChecked());
 
     Q_EMIT parameterSettingChanged();
     close();
@@ -220,6 +259,12 @@ void DownloadSettingWidget::initNormalSettingWidget()
     m_ui->slienceRunCheckBox->setFocusPolicy(Qt::NoFocus);
 #endif
     connect(m_ui->downloadDirButton, SIGNAL(clicked()), SLOT(downloadDirSelected()));
+
+    m_ui->globalHotkeyBox->setStyleSheet(TTK::UI::CheckBoxStyle01);
+#ifdef Q_OS_UNIX
+    m_ui->globalHotkeyBox->setFocusPolicy(Qt::NoFocus);
+#endif
+    connect(m_ui->globalHotkeyBox, SIGNAL(clicked(bool)), SLOT(globalHotkeyBoxChanged(bool)));
 }
 
 void DownloadSettingWidget::initDownloadSettingWidget()

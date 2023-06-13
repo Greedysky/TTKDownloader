@@ -6,7 +6,7 @@
 #include "downloadleftareawidget.h"
 #include "downloadapplicationobject.h"
 #include "downloadsettingmanager.h"
-#include "downloadsysconfigmanager.h"
+#include "DownloadConfigManager.h"
 #include "downloadhotkeymanager.h"
 #include "downloadnetworkabstract.h"
 #include "downloaduiobject.h"
@@ -41,7 +41,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     m_leftAreaWidget->setupUi(m_ui);
     m_topAreaWidget->backgroundSliderStateChanged(false);
 
-    G_HOTKEY_PTR->setInputModule(this, "Ctrl+X", SLOT(quitWindow()));
+    G_HOTKEY_PTR->addHotKey(this, "Ctrl+X", SLOT(quitWindow()));
 
     /////////// Mouse tracking
     setObjectsTracking({m_ui->background});
@@ -70,17 +70,18 @@ void DownloadApplication::showMaximizedWindow()
     isMaximized() ? showNormal() : showMaximized();
 }
 
-void DownloadApplication::parameterSetting()
+void DownloadApplication::applyParameter()
 {
     //This attribute is effective immediately.
-    bool config = G_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toBool();
+    bool config = G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toBool();
     m_bottomAreaWidget->setSystemCloseConfig(config);
-    config = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool();
+    config = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspension).toBool();
     config ? m_topAreaWidget->showRemoteSpeedWidget() : m_topAreaWidget->closeRemoteSpeedWidget();
 }
 
 void DownloadApplication::quitWindow()
 {
+    //Write configuration files
     writeSystemConfigToFile();
     m_applicationObject->windowCloseAnimation();
 }
@@ -162,7 +163,7 @@ void DownloadApplication::mouseDoubleClickEvent(QMouseEvent *event)
 
 void DownloadApplication::readSystemConfigFromFile()
 {
-    DownloadSysConfigManager xml;
+    DownloadConfigManager xml;
 
     if(!xml.fromFile())//open file
     {
@@ -171,20 +172,36 @@ void DownloadApplication::readSystemConfigFromFile()
 
     xml.readBuffer();
 
-    //Set the current background color and alpha value
-    m_topAreaWidget->setParameters(G_SETTING_PTR->value(DownloadSettingManager::BgThemeChoiced).toString(),
-                                   G_SETTING_PTR->value(DownloadSettingManager::BgTransparentChoiced).toInt());
+    //global hotkey
+    if(G_SETTING_PTR->value(DownloadSettingManager::HotkeyEnable).toBool())
+    {
+        QStringList hotkeys = G_SETTING_PTR->value(DownloadSettingManager::HotkeyValue).toString().split(TTK_SPLITER);
+        if(hotkeys.count() != G_HOTKEY_PTR->count())
+        {
+            hotkeys = G_HOTKEY_PTR->defaultKeys();
+        }
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::ExpandModeChoiced, 0);
+        for(int i = 0; i < hotkeys.count(); ++i)
+        {
+            G_HOTKEY_PTR->setHotKey(i, hotkeys[i]);
+        }
+        //
+        G_HOTKEY_PTR->setEnabled(true);
+    }
+
+    //Set the current background color and alpha value
+    m_topAreaWidget->setBackgroundParameter();
+
+    G_SETTING_PTR->setValue(DownloadSettingManager::ExpandMode, 0);
 
     //Set the current remote widget
-    if(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionChoiced).toBool())
+    if(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspension).toBool())
     {
         m_topAreaWidget->showRemoteSpeedWidget();
     }
 
     //When the configuration is close to the direct exit
-    m_bottomAreaWidget->setSystemCloseConfig(G_SETTING_PTR->value(DownloadSettingManager::CloseEventChoiced).toInt());
+    m_bottomAreaWidget->setSystemCloseConfig(G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toInt());
 
     //Reset geometry
     setGeometry(xml.readWindowGeometry());
@@ -197,9 +214,9 @@ void DownloadApplication::readSystemConfigFromFile()
 void DownloadApplication::writeSystemConfigToFile()
 {
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetPosition, pos());
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgThemeChoiced, m_topAreaWidget->backgroundPath());
-    G_SETTING_PTR->setValue(DownloadSettingManager::BgTransparentChoiced, m_topAreaWidget->backgroundAlpha());
+    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundThemeValue, m_topAreaWidget->backgroundPath());
+    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundTransparent, m_topAreaWidget->backgroundAlpha());
 
-    DownloadSysConfigManager xml;
+    DownloadConfigManager xml;
     xml.writeBuffer();
 }

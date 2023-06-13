@@ -1,5 +1,5 @@
 #include "downloadruntimemanager.h"
-#include "downloadsysconfigmanager.h"
+#include "DownloadConfigManager.h"
 #include "downloadsettingmanager.h"
 #include "downloadnetworkthread.h"
 #include "downloadcodecutils.h"
@@ -43,11 +43,11 @@ void DownloadRunTimeManager::run() const
     //detect the current network state
     G_NETWORK_PTR->start();
 
-    DownloadSysConfigManager xml;
+    DownloadConfigManager xml;
     xml.fromFile();
     xml.readBuffer();
 
-    G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkChoiced).toInt());
+    G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toInt());
 }
 
 QString DownloadRunTimeManager::translator() const

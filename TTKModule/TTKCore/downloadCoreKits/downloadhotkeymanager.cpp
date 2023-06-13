@@ -3,14 +3,26 @@
 
 #include <QStringList>
 
-void DownloadHotKeyManager::setInputModule(QObject *object, const QString &sn, const char *slot)
+void DownloadHotKeyManager::addHotKey(QObject *object)
 {
-    QGlobalShortcut *hotkey = new QGlobalShortcut(object);
-    connect(hotkey, SIGNAL(activated()), object, slot);
+    QGlobalShortcut *shortcut = new QGlobalShortcut(object);
+    m_hotkeys << shortcut;
+}
 
-    m_hotkeys << hotkey;
-    setHotKey(m_hotkeys.count() - 1, sn);
-    setEnabled(m_hotkeys.count() - 1, true);
+void DownloadHotKeyManager::addHotKey(QObject *object, const char *slot)
+{
+    QGlobalShortcut *shortcut = new QGlobalShortcut(object);
+    m_hotkeys << shortcut;
+
+    connect(shortcut, SIGNAL(activated()), object, slot);
+}
+
+void DownloadHotKeyManager::addHotKey(QObject *object, const QString &key, const char *slot)
+{
+    QGlobalShortcut *shortcut = new QGlobalShortcut(key, object);
+    m_hotkeys << shortcut;
+
+    connect(shortcut, SIGNAL(activated()), object, slot);
 }
 
 void DownloadHotKeyManager::setHotKey(int index, const QString &key)
@@ -21,35 +33,6 @@ void DownloadHotKeyManager::setHotKey(int index, const QString &key)
     }
 
     m_hotkeys[index]->setShortcut(QKeySequence(key));
-}
-
-void DownloadHotKeyManager::setHotKey(int index, int key)
-{
-    if(index >= m_hotkeys.count())
-    {
-        return;
-    }
-
-    m_hotkeys[index]->setShortcut(QKeySequence(key));
-}
-
-void DownloadHotKeyManager::setHotKeys(const QStringList &keys)
-{
-    for(int i = 0; i < m_hotkeys.count(); ++i)
-    {
-        setHotKey(i, keys[i]);
-        setEnabled(i, false);
-    }
-}
-
-void DownloadHotKeyManager::addHotKey(int key)
-{
-    m_hotkeys << (new QGlobalShortcut(QKeySequence(key)));
-}
-
-void DownloadHotKeyManager::addHotKey(const QString &key)
-{
-    m_hotkeys << (new QGlobalShortcut(QKeySequence(key)));
 }
 
 QObject* DownloadHotKeyManager::hotKey(int index)
@@ -125,6 +108,13 @@ QString DownloadHotKeyManager::toString(int key, int modifiers)
 int DownloadHotKeyManager::count() const
 {
     return m_hotkeys.count();
+}
+
+QStringList DownloadHotKeyManager::defaultKeys() const
+{
+    QStringList keys;
+    keys << "Ctrl+N" << "Ctrl+S" << "Ctrl+X";
+    return keys;
 }
 
 QStringList DownloadHotKeyManager::keys() const

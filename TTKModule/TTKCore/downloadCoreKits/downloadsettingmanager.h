@@ -41,29 +41,31 @@ public:
         ScreenSize,                     /*!< Screen Size Parameter*/
         WidgetPosition,                 /*!< Widget Position Parameter*/
         WidgetSize,                     /*!< Widget Size Parameter*/
-
-        CloseEventChoiced,              /*!< Close Event Parameter*/
-        CloseNetWorkChoiced,            /*!< Close NetWork Parameter*/
-        FileAssociationChoiced,         /*!< File Association Parameter*/
-        StartUpModeChoiced,             /*!< Start Up Mode Parameter*/
-        StartUpRunModeChoiced,          /*!< Start Up Run Mode Parameter*/
-        SlienceRunModeChoiced,          /*!< Slience Run Mode Parameter*/
-        ExpandModeChoiced,              /*!< Expand Mode Parameter*/
-
-        BgThemeChoiced,                 /*!< Bg Theme Parameter*/
-        BgTransparentChoiced,           /*!< Bg Transparent Parameter*/
-
-        DownloadModeChoiced,            /*!< Download Mode Parameter*/
-        DownloadMaxCountChoiced,        /*!< Download Max Count Parameter*/
-        DownloadLimitChoiced,           /*!< Download Limit Parameter*/
-        DownloadPathDirChoiced,         /*!< Download Path Dir Parameter*/
-        DownloadDLoadLimitChoiced,      /*!< Download DLoad Limit Parameter*/
-        DownloadULoadLimitChoiced,      /*!< Download ULoad Limit Parameter*/
-
-        SkinEffectLevelChoiced,         /*!< Skin effect Level Parameter*/
-        SkinSuspensionChoiced,          /*!< Skin Suspension Show Parameter*/
-        SkinSuspensionPerChoiced        /*!< Skin Suspension Show Percent Parameter*/
-
+        //
+        CloseEventMode,                 /*!< Close Event Parameter*/
+        CloseNetWorkMode,               /*!< Close NetWork Parameter*/
+        FileAssociationMode,            /*!< File Association Parameter*/
+        StartUpMode,                    /*!< Start Up Mode Parameter*/
+        StartUpRunMode,                 /*!< Start Up Run Mode Parameter*/
+        SlienceRunMode,                 /*!< Slience Run Mode Parameter*/
+        ExpandMode,                     /*!< Expand Mode Parameter*/
+        //
+        BackgroundThemeValue,           /*!< Background Theme Parameter*/
+        BackgroundTransparent,          /*!< Background Transparent Parameter*/
+        //
+        DownloadMode,                   /*!< Download Mode Parameter*/
+        DownloadMaxCount,               /*!< Download Max Count Parameter*/
+        DownloadLimit,                  /*!< Download Limit Parameter*/
+        DownloadPathDir,                /*!< Download Path Dir Parameter*/
+        DownloadDLoadLimit,             /*!< Download DLoad Limit Parameter*/
+        DownloadULoadLimit,             /*!< Download ULoad Limit Parameter*/
+        //
+        SkinEffectLevel,                /*!< Skin effect Level Parameter*/
+        SkinSuspension,                 /*!< Skin Suspension Show Parameter*/
+        SkinSuspensionValue,            /*!< Skin Suspension Show Value Parameter*/
+        //
+        HotkeyEnable,                   /*!< Hotkey Enable Parameter*/
+        HotkeyValue                     /*!< Hotkey String Parameter*/
     };
 
     /*!
