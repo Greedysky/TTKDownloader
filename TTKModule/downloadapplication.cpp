@@ -6,7 +6,7 @@
 #include "downloadleftareawidget.h"
 #include "downloadapplicationobject.h"
 #include "downloadsettingmanager.h"
-#include "DownloadConfigManager.h"
+#include "downloadconfigmanager.h"
 #include "downloadhotkeymanager.h"
 #include "downloadnetworkabstract.h"
 #include "downloaduiobject.h"

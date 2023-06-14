@@ -565,14 +565,6 @@ Copyright© 2015 - 2023 Greedysky All Rights Reserved
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>字体</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>注: 改变字体时重启应用方能生效</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>悬浮窗设定</source>
         <translation type="unfinished"></translation>
     </message>
@@ -599,6 +591,38 @@ Copyright© 2015 - 2023 Greedysky All Rights Reserved
     <message>
         <source>Low</source>
         <translation>低</translation>
+    </message>
+    <message>
+        <source>新建</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+N</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>设置</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+S</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>退出</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>启用全局快捷键</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hotkey</source>
+        <translation type="unfinished">热键设置</translation>
     </message>
 </context>
 <context>

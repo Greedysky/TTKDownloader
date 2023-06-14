@@ -1,5 +1,5 @@
 #include "downloadruntimemanager.h"
-#include "DownloadConfigManager.h"
+#include "downloadconfigmanager.h"
 #include "downloadsettingmanager.h"
 #include "downloadnetworkthread.h"
 #include "downloadcodecutils.h"
