@@ -43,7 +43,7 @@ DownloadListWidgets::~DownloadListWidgets()
     }
 
     DownloadListConfigManager xml;
-    xml.writeListConfig(list);
+    xml.writeBuffer(list);
 
     clearItems();
 }
@@ -51,13 +51,13 @@ DownloadListWidgets::~DownloadListWidgets()
 void DownloadListWidgets::initialize()
 {
     DownloadListConfigManager xml;
-    if(!xml.readListXMLConfig())
+    if(!xml.fromFile())
     {
         return;
     }
 
     DownloadItemList list;
-    xml.readListConfig(list);
+    xml.readBuffer(list);
 
     for(const DownloadItem &it : qAsConst(list))
     {

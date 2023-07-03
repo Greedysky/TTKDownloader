@@ -6,7 +6,13 @@ DownloadSkinConfigManager::DownloadSkinConfigManager(QObject *parent)
 
 }
 
-void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem &item, const QString &path)
+void DownloadSkinConfigManager::readBuffer(DownloadSkinConfigItem &item)
+{
+    item.m_name = readXmlAttributeByTagName("name");
+    item.m_useCount = readXmlAttributeByTagName("useCount").toInt();
+}
+
+void DownloadSkinConfigManager::writeBuffer(const DownloadSkinConfigItem &item, const QString &path)
 {
     if(!toFile(path))
     {
@@ -22,10 +28,4 @@ void DownloadSkinConfigManager::writeSkinXMLConfig(const DownloadSkinConfigItem 
 
     QTextStream out(m_file);
     m_document->save(out, 4);
-}
-
-void DownloadSkinConfigManager::readSkinXMLConfig(DownloadSkinConfigItem &item)
-{
-    item.m_name = readXmlAttributeByTagName("name");
-    item.m_useCount = readXmlAttributeByTagName("useCount").toInt();
 }

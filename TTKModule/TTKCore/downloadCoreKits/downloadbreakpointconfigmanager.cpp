@@ -6,29 +6,7 @@ DownloadBreakPointConfigManager::DownloadBreakPointConfigManager(QObject *parent
 
 }
 
-void DownloadBreakPointConfigManager::writeBreakPointConfig(const DownloadBreakPointItemList &records)
-{
-    createProcessingInstruction();
-    QDomElement rootDom = createRoot(APP_NAME);
-    QDomElement recordDom = writeDomNode(rootDom, "breakPoint");
-
-    if(!records.isEmpty())
-    {
-        writeDomText(recordDom, "url", records.front().m_url);
-    }
-
-    for(const DownloadBreakPointItem &record : qAsConst(records))
-    {
-        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("start", record.m_start),
-                                                  TTKXmlAttribute("end", record.m_end),
-                                                  TTKXmlAttribute("ready", record.m_ready)});
-    }
-
-    QTextStream out(m_file);
-    m_document->save(out, 4);
-}
-
-void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointItemList &records)
+void DownloadBreakPointConfigManager::readBuffer(DownloadBreakPointItemList &records)
 {
     QDomNodeList nodes = m_document->elementsByTagName("value");
     for(int i = 0; i < nodes.count(); ++i)
@@ -49,4 +27,26 @@ void DownloadBreakPointConfigManager::readBreakPointConfig(DownloadBreakPointIte
             records[j].m_url = nodes.item(i).toElement().text();
         }
     }
+}
+
+void DownloadBreakPointConfigManager::writeBuffer(const DownloadBreakPointItemList &records)
+{
+    createProcessingInstruction();
+    QDomElement rootDom = createRoot(APP_NAME);
+    QDomElement recordDom = writeDomNode(rootDom, "breakPoint");
+
+    if(!records.isEmpty())
+    {
+        writeDomText(recordDom, "url", records.front().m_url);
+    }
+
+    for(const DownloadBreakPointItem &record : qAsConst(records))
+    {
+        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("start", record.m_start),
+                                                  TTKXmlAttribute("end", record.m_end),
+                                                  TTKXmlAttribute("ready", record.m_ready)});
+    }
+
+    QTextStream out(m_file);
+    m_document->save(out, 4);
 }

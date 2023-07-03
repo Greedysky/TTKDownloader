@@ -9,7 +9,7 @@ DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent
 
 }
 
-void DownloadSkinRemoteConfigManager::readSkinRemoteXMLConfig(DownloadSkinRemoteGroupList &items)
+void DownloadSkinRemoteConfigManager::readBuffer(DownloadSkinRemoteGroupList &items)
 {
     const QDomNodeList &nodes = m_document->elementsByTagName("group");
     for(int i = 0; i < nodes.count(); ++i)
@@ -76,7 +76,7 @@ void DownloadBackgroundRemoteThread::downLoadDataFinished(const QByteArray &byte
     DownloadSkinRemoteConfigManager manager;
     if(manager.fromByteArray(bytes))
     {
-        manager.readSkinRemoteXMLConfig(items);
+        manager.readBuffer(items);
     }
 
     Q_EMIT downLoadDataChanged(items);

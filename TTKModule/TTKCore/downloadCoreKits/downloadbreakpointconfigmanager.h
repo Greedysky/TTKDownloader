@@ -61,13 +61,13 @@ public:
     explicit DownloadBreakPointConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Write datas into xml file.
+     * Read datas from config file.
      */
-    void writeBreakPointConfig(const DownloadBreakPointItemList &records);
+    void readBuffer(DownloadBreakPointItemList &records);
     /*!
-     * Read datas into xml file.
+     * Write datas into config file.
      */
-    void readBreakPointConfig(DownloadBreakPointItemList &records);
+    void writeBuffer(const DownloadBreakPointItemList &records);
 
 };
 

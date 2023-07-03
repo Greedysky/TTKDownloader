@@ -9,7 +9,10 @@
 
 #include <QFile>
 
-#define WIN_NAME_MAX_LENGTH     256
+#define WIN_NAME_MAX_LENGTH 256
+#ifndef FILE_ATTRIBUTE_DIRECTORY
+#define FILE_ATTRIBUTE_DIRECTORY 0x00000010
+#endif
 
 bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &input)
 {
@@ -19,7 +22,7 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &in
         return false;
     }
 
-    unz_file_info64 fileInfo;
+    unz_file_info64 fInfo;
     unz_global_info64 gInfo;
     if(unzGetGlobalInfo64(zFile, &gInfo) != UNZ_OK)
     {
@@ -29,24 +32,20 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &in
 
     for(ZPOS64_T i = 0; i < gInfo.number_entry; ++i)
     {
+        char com[MH_KB] = {0};
         char name[WIN_NAME_MAX_LENGTH] = {0};
         char ext[WIN_NAME_MAX_LENGTH] = {0};
-        char com[MH_KB] = {0};
 
-        if(unzGetCurrentFileInfo64(zFile, &fileInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK)
+        if(unzGetCurrentFileInfo64(zFile, &fInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK ||
+           unzOpenCurrentFile(zFile) != UNZ_OK)
         {
             break;
         }
-
-        if(unzOpenCurrentFile(zFile) != UNZ_OK)
-        {
-            break;
-        }
-
-        char dt[MH_KB] = {0};
+		
         int size = 0;
+        char dt[MH_KB] = {0};
 
-        QByteArray arrayData;
+        QByteArray buffer;
         if(QString(name).toLower().contains("image/bkg"))
         {
             while(true)
@@ -56,15 +55,16 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &in
                 {
                     break;
                 }
-                arrayData.append(dt, size);
+                buffer.append(dt, size);
             }
-            image.loadFromData(arrayData);
+            image.loadFromData(buffer);
         }
 
         unzCloseCurrentFile(zFile);
 
         if(i < gInfo.number_entry - 1 && unzGoToNextFile(zFile) != UNZ_OK)
         {
+            unzClose(zFile);
             return false;
         }
     }
@@ -81,7 +81,7 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
         return false;
     }
 
-    unz_file_info64 fileInfo;
+    unz_file_info64 fInfo;
     unz_global_info64 gInfo;
     if(unzGetGlobalInfo64(zFile, &gInfo) != UNZ_OK)
     {
@@ -91,24 +91,20 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
 
     for(ZPOS64_T i = 0; i < gInfo.number_entry; ++i)
     {
+        char com[MH_KB] = {0};
         char name[WIN_NAME_MAX_LENGTH] = {0};
         char ext[WIN_NAME_MAX_LENGTH] = {0};
-        char com[MH_KB] = {0};
 
-        if(unzGetCurrentFileInfo64(zFile, &fileInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK)
+        if(unzGetCurrentFileInfo64(zFile, &fInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK ||
+           unzOpenCurrentFile(zFile) != UNZ_OK)
         {
             break;
         }
 
-        if(unzOpenCurrentFile(zFile) != UNZ_OK)
-        {
-            break;
-        }
-
-        char dt[MH_KB] = {0};
         int size = 0;
+        char dt[MH_KB] = {0};
 
-        QByteArray arrayData;
+        QByteArray buffer;
         if(QString(name).toLower().contains(SKN_FILE))
         {
             while(true)
@@ -118,11 +114,11 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
                 {
                     break;
                 }
-                arrayData.append(dt, size);
+                buffer.append(dt, size);
             }
 
             QPixmap pix;
-            pix.loadFromData(arrayData);
+            pix.loadFromData(buffer);
             image->m_pix = pix;
         }
         else if(QString(name).toLower().contains(XML_FILE))
@@ -134,14 +130,14 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
                 {
                     break;
                 }
-                arrayData.append(dt, size);
+                buffer.append(dt, size);
             }
 
             DownloadSkinConfigManager manager;
-            DownloadSkinConfigItem item;
-            if(manager.fromByteArray(arrayData))
+            if(manager.fromByteArray(buffer))
             {
-                manager.readSkinXMLConfig(item);
+                DownloadSkinConfigItem item;
+                manager.readBuffer(item);
                 image->m_item = item;
             }
         }
@@ -178,7 +174,7 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
     zipCloseFileInZip(zFile);
 
     DownloadSkinConfigManager manager;
-    manager.writeSkinXMLConfig(image->m_item, TTK_IMAGE_FILE);
+    manager.writeBuffer(image->m_item, TTK_IMAGE_FILE);
     data = manager.toByteArray();
 
     zipOpenNewFileInZip(zFile, qPrintable(prefix + XML_FILE), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);

@@ -134,7 +134,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     DownloadBreakPointItemList records;
     if(manager.fromFile(fileName + SET_FILE))
     {
-        manager.readBreakPointConfig(records);
+        manager.readBuffer(records);
     }
 
     m_readySize = 0;
@@ -228,7 +228,7 @@ void DownloadThreadManager::pause()
         DownloadBreakPointConfigManager manager;
         if(manager.toFile(m_file->fileName() + SET_FILE))
         {
-            manager.writeBreakPointConfig(records);
+            manager.writeBuffer(records);
         }
     }
 }

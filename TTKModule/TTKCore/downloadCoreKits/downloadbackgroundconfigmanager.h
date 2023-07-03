@@ -73,13 +73,13 @@ public:
     explicit DownloadSkinConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Write datas into xml file.
+     * Read datas from config file.
      */
-    void writeSkinXMLConfig(const DownloadSkinConfigItem &item, const QString &path);
+    void readBuffer(DownloadSkinConfigItem &item);
     /*!
-     * Read datas into xml file.
+     * Write datas into config file.
      */
-    void readSkinXMLConfig(DownloadSkinConfigItem &item);
+    void writeBuffer(const DownloadSkinConfigItem &item, const QString &path);
 
 };
 

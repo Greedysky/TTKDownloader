@@ -74,9 +74,9 @@ public:
     explicit DownloadSkinRemoteConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read datas into xml file.
+     * Read datas from config file.
      */
-    void readSkinRemoteXMLConfig(DownloadSkinRemoteGroupList &items);
+    void readBuffer(DownloadSkinRemoteGroupList &items);
 
 };
 

@@ -48,16 +48,16 @@ public:
     /*!
      * Read list download datas from xml file by given name.
      */
-    inline bool readListXMLConfig() { return fromFile(LIST_PATH_FULL); }
+    inline bool fromFile() { return TTKXmlDocument::fromFile(LIST_PATH_FULL); }
 
     /*!
-     * Write list download datas into xml file.
+     * Read datas from config file.
      */
-    void writeListConfig(const DownloadItemList &records);
+    void readBuffer(DownloadItemList &records);
     /*!
-     * Read list download datas into xml file.
+     * Write datas into config file.
      */
-    void readListConfig(DownloadItemList &records);
+    void writeBuffer(const DownloadItemList &records);
 
 };
 

@@ -50,16 +50,16 @@ public:
     /*!
      * Read history download datas from xml file by given name.
      */
-    inline bool readDownloadXMLConfig() { return fromFile(HISTORY_PATH_FULL); }
+    inline bool fromFile() { return TTKXmlDocument::fromFile(HISTORY_PATH_FULL); }
 
     /*!
-     * Write history download datas into xml file.
+     * Read datas from config file.
      */
-    void writeDownloadConfig(const DownloadRecordList &records);
+    void readBuffer(DownloadRecordList &records);
     /*!
-     * Read history download datas into xml file.
+     * Write datas into config file.
      */
-    void readDownloadConfig(DownloadRecordList &records);
+    void writeBuffer(const DownloadRecordList &records);
 
 };
 

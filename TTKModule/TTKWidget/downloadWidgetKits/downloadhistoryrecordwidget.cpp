@@ -28,18 +28,18 @@ DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
     clearAllItems();
 
     DownloadRecordConfigManager xml;
-    xml.writeDownloadConfig(m_records);
+    xml.writeBuffer(m_records);
 }
 
 void DownloadHistoryRecordWidget::initialize()
 {
     DownloadRecordConfigManager xml;
-    if(!xml.readDownloadXMLConfig())
+    if(!xml.fromFile())
     {
         return;
     }
 
-    xml.readDownloadConfig(m_records);
+    xml.readBuffer(m_records);
 
     setRowCount(m_loadRecordCount = m_records.count()); //reset row count
 
