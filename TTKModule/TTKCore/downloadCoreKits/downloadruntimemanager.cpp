@@ -32,7 +32,7 @@ void DownloadRunTimeManager::run() const
 {
     TTK_INFO_STREAM("DownloadApplication Begin");
 
-    TTK::Codec::setLocalCodec();
+//    TTK::Codec::setLocalCodec();
 
 #ifdef Q_OS_UNIX
     QFont font;

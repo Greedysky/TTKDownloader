@@ -13,6 +13,9 @@
 #ifndef FILE_ATTRIBUTE_DIRECTORY
 #define FILE_ATTRIBUTE_DIRECTORY 0x00000010
 #endif
+#ifndef FILE_ATTRIBUTE_ARCHIVE
+#define FILE_ATTRIBUTE_ARCHIVE 0x00000020
+#endif
 
 bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &input)
 {
@@ -41,13 +44,14 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &in
         {
             break;
         }
-		
+
         int size = 0;
         char dt[MH_KB] = {0};
 
-        QByteArray buffer;
-        if(QString(name).toLower().contains("image/bkg"))
+        const QString &module = name;
+        if(module.toLower().contains("image/bkg"))
         {
+            QByteArray buffer;
             while(true)
             {
                 size= unzReadCurrentFile(zFile, dt, sizeof(dt));
@@ -105,7 +109,8 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
         char dt[MH_KB] = {0};
 
         QByteArray buffer;
-        if(QString(name).toLower().contains(SKN_FILE))
+        const QString &module = name;
+        if(module.toLower().contains(SKN_FILE))
         {
             while(true)
             {
@@ -121,7 +126,7 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
             pix.loadFromData(buffer);
             image->m_pix = pix;
         }
-        else if(QString(name).toLower().contains(XML_FILE))
+        else if(module.toLower().contains(XML_FILE))
         {
             while(true)
             {
@@ -162,13 +167,14 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
         return false;
     }
 
-    const QString &prefix = QFileInfo(output).baseName();
     const int level = 5;
+    const QString &prefix = QFileInfo(output).baseName();
 
-    zip_fileinfo fileInfo;
-    memset(&fileInfo, 0, sizeof(fileInfo));
+    zip_fileinfo fInfo;
+    memset(&fInfo, 0, sizeof(fInfo));
+    fInfo.external_fa = FILE_ATTRIBUTE_ARCHIVE;
 
-    zipOpenNewFileInZip(zFile, qPrintable(prefix + SKN_FILE), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
+    zipOpenNewFileInZip(zFile, qPrintable(prefix + SKN_FILE), &fInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
     QByteArray data = TTK::Image::generatePixmapData(image->m_pix);
     zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
@@ -177,12 +183,11 @@ bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QSt
     manager.writeBuffer(image->m_item, TTK_IMAGE_FILE);
     data = manager.toByteArray();
 
-    zipOpenNewFileInZip(zFile, qPrintable(prefix + XML_FILE), &fileInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
+    zipOpenNewFileInZip(zFile, qPrintable(prefix + XML_FILE), &fInfo, nullptr, 0, nullptr, 0, nullptr, Z_DEFLATED, level);
     zipWriteInFileInZip(zFile, data.constData(), data.length());
     zipCloseFileInZip(zFile);
     QFile::remove(TTK_IMAGE_FILE);
 
     zipClose(zFile, nullptr);
-
     return true;
 }
