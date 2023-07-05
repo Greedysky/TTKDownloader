@@ -1,6 +1,7 @@
 #include "downloadbackgroundremotethread.h"
 #include "downloadsourcethread.h"
 
+#define MAX_SIZE    30
 #define QUERY_URL   "eC9KOTYxbVhvVDJNcGEwckhyMVZRdVRhOHhFRHQ2eFVNdWJxaURFSzA1ZWVmZm5HOFlzS1VCY2ZKOFRlYStBL2Y3SjNEK2gzY2QwPQ=="
 
 DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent)
@@ -21,6 +22,11 @@ void DownloadSkinRemoteConfigManager::readBuffer(DownloadSkinRemoteGroupList &it
         const QDomNodeList &groupNodes = node.childNodes();
         for(int j = 0; j < groupNodes.count(); ++j)
         {
+            if(j > MAX_SIZE)
+            {
+                break;
+            }
+
             node = groupNodes.item(j);
             const QDomNodeList &packageNodes = node.childNodes();
 
