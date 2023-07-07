@@ -1,5 +1,5 @@
-#ifndef DOWNLOADTHREADABSTRACT_H
-#define DOWNLOADTHREADABSTRACT_H
+#ifndef DOWNLOADABSTRACTREQUEST_H
+#define DOWNLOADABSTRACTREQUEST_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -21,22 +21,24 @@
 
 #include <QFile>
 #include <QTimer>
+
 #include "downloadobject.h"
-#include "downloadnetworkabstract.h"
+#include "downloadabstractnetwork.h"
 #include "ttknumberdefine.h"
 
 /*! @brief The class of the abstract downloading data.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownLoadThreadAbstract : public DownloadNetworkAbstract
+class TTK_MODULE_EXPORT DownLoadAbstractRequest : public DownloadAbstractNetwork
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownLoadThreadAbstract)
+    TTK_DECLARE_MODULE(DownLoadAbstractRequest)
 public:
     /*!
      * Object contsructor provide download URL\ save local path and download type.
      */
-    DownLoadThreadAbstract(const QString &url, const QString &path, QObject *parent = nullptr);
+    DownLoadAbstractRequest(const QString &url, const QString &path, QObject *parent = nullptr);
+    ~DownLoadAbstractRequest();
 
     /*!
      * Release the network object.
@@ -47,23 +49,17 @@ public:
      * Start to download data.
      * Subclass should implement this function.
      */
-    virtual void startToDownload() = 0;
+    virtual void startRequest() = 0;
 
 public Q_SLOTS:
+    /*!
+     * Download data from net finished.
+     */
+    virtual void downLoadFinished() override;
     /*!
      * Get download received and total data.
      */
     virtual void downloadProgress(qint64 bytesReceived, qint64 bytesTotal);
-    /*!
-     * Download reply error.
-     */
-    virtual void replyError(QNetworkReply::NetworkError error) override final;
-#ifndef QT_NO_SSL
-    /*!
-     * Download ssl reply error.
-     */
-    virtual void sslErrors(QNetworkReply *reply, const QList<QSslError> &errors) override final;
-#endif
     /*!
      * Updata download speed due the user mod the net speed limited.
      */
@@ -73,8 +69,8 @@ protected:
     QFile *m_file;
     QString m_url;
     qint64 m_hasReceived, m_currentReceived, m_totalSize;
-    QTimer m_timer;
+    QTimer m_speedTimer;
 
 };
 
-#endif // DOWNLOADTHREADABSTRACT_H
+#endif // DOWNLOADABSTRACTREQUEST_H

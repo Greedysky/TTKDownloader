@@ -1,5 +1,5 @@
-#ifndef DOWNLOADNETWORKABSTRACT_H
-#define DOWNLOADNETWORKABSTRACT_H
+#ifndef DOWNLOADABSTRACTNETWORK_H
+#define DOWNLOADABSTRACTNETWORK_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -21,40 +21,47 @@
 
 #include <QNetworkReply>
 #include <QSslConfiguration>
+
+#include "downloadnetworkdefines.h"
 #include "downloadalgorithmutils.h"
 
 /*! @brief The class of the abstract downloading data.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadNetworkAbstract : public QObject
+class TTK_MODULE_EXPORT DownloadAbstractNetwork : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadNetworkAbstract)
+    TTK_DECLARE_MODULE(DownloadAbstractNetwork)
 public:
-    enum class StateCode
-    {
-        Init = 0xFF00,   /*!< Network state init*/
-        Success = 0,     /*!< Network state success*/
-        Error = -1,      /*!< Network state error*/
-        UnKnow = 2,      /*!< Network state unknow*/
-    };
-
     /*!
      * Object contsructor.
      */
-    explicit DownloadNetworkAbstract(QObject *parent = nullptr);
-    ~DownloadNetworkAbstract();
+    explicit DownloadAbstractNetwork(QObject *parent = nullptr);
+    ~DownloadAbstractNetwork();
 
     /*!
      * Release the network object.
      */
     virtual void deleteAll();
 
+    /*!
+     * Set the current raw data.
+     */
+    inline void setHeader(const QString &key, const QVariant &value) { m_rawData[key] = value; }
+    /*!
+     * Get the current raw data.
+     */
+    inline const QVariant header(const QString &key) const { return m_rawData[key]; }
+
 Q_SIGNALS:
     /*!
      * Send download data from net.
      */
-    void downLoadDataChanged(const QString &data);
+    void downLoadDataChanged(const QString &bytes);
+    /*!
+     * Send download raw data changed.
+     */
+    void downLoadRawDataChanged(const QByteArray &bytes);
 
 public Q_SLOTS:
     /*!
@@ -78,9 +85,10 @@ public Q_SLOTS:
 #endif
 
 protected:
-    StateCode m_stateCode;
+    QVariantMap m_rawData;
+    volatile TTK::NetworkCode m_stateCode;
     QNetworkReply *m_reply;
-    QNetworkAccessManager *m_manager;
+    QNetworkAccessManager m_manager;
 
 };
 
@@ -96,4 +104,4 @@ namespace TTK
 
 }
 
-#endif // DOWNLOADNETWORKABSTRACT_H
+#endif // DOWNLOADABSTRACTNETWORK_H

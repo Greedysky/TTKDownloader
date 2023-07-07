@@ -21,11 +21,11 @@
 
 #include <QWidget>
 #include "downloadbackgroundlistwidget.h"
-#include "downloadbackgroundremotethread.h"
+#include "downloadthunderskinrequest.h"
 
 class QPushButton;
 class QListWidgetItem;
-class DownloadQueueCache;
+class DownloadQueueRequest;
 
 /*! @brief The class of the remote background widget.
  * @author Greedysky <greedysky@163.com>
@@ -94,8 +94,8 @@ private:
     QList<QPushButton*> m_functionsItems;
     DownloadSkinRemoteGroupList m_groups;
     DownloadBackgroundListWidget *m_listWidget;
-    DownloadQueueCache *m_downloadQueue;
-    DownloadBackgroundRemoteThread *m_queryThread;
+    DownloadQueueRequest *m_downloadQueue;
+    DownloadThunderSkinRequest *m_skinRequest;
 
 };
 

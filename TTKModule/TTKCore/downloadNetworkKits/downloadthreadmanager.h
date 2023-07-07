@@ -82,15 +82,15 @@ private Q_SLOTS:
     /*!
      * Network download finished.
      */
-    void finishedSlot(int index);
+    void finished(int index);
     /*!
      * Show error code index and string.
      */
-    void errorSlot(int index, const QString &errorString);
+    void handleError(int index, const QString &errorString);
     /*!
      * Download state changed.
      */
-    void progressChangedSlot();
+    void progressChanged();
 
 private:
     /*!

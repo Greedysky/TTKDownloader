@@ -32,7 +32,8 @@ HEADERS += \
     $$PWD/downloadfunctionlistwidget.h \
     $$PWD/downloadmessageaboutdialog.h \
     $$PWD/downloadsettingwidget.h \
-    $$PWD/downloadhistoryrecordwidget.h
+    $$PWD/downloadhistoryrecordwidget.h \
+    $$PWD/downloadunits.h
 
 SOURCES += \
     $$PWD/downloadbackgroundskindialog.cpp \
@@ -48,4 +49,5 @@ SOURCES += \
     $$PWD/downloadfunctionlistwidget.cpp \
     $$PWD/downloadmessageaboutdialog.cpp \
     $$PWD/downloadsettingwidget.cpp \
-    $$PWD/downloadhistoryrecordwidget.cpp
+    $$PWD/downloadhistoryrecordwidget.cpp \
+    $$PWD/downloadunits.cpp

@@ -1,5 +1,5 @@
-#ifndef DOWNLOADNETWORKSPEEDTESTTHREAD_H
-#define DOWNLOADNETWORKSPEEDTESTTHREAD_H
+#ifndef DOWNLOADNETWORKSPEEDTHREAD_H
+#define DOWNLOADNETWORKSPEEDTHREAD_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -25,19 +25,19 @@
 
 class QProcess;
 
-/*! @brief The class of the network speed test thread.
+/*! @brief The class of the network speed thread.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadNetworkSpeedTestThread : public TTKAbstractThread
+class TTK_MODULE_EXPORT DownloadNetworkSpeedThread : public TTKAbstractThread
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadNetworkSpeedTestThread)
+    TTK_DECLARE_MODULE(DownloadNetworkSpeedThread)
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadNetworkSpeedTestThread(QObject *parent = nullptr);
-    ~DownloadNetworkSpeedTestThread();
+    explicit DownloadNetworkSpeedThread(QObject *parent = nullptr);
+    ~DownloadNetworkSpeedThread();
 
     /*!
      * Set available newtwork names.
@@ -76,4 +76,4 @@ private:
 
 };
 
-#endif // DOWNLOADNETWORKSPEEDTESTTHREAD_H
+#endif // DOWNLOADNETWORKSPEEDTHREAD_H

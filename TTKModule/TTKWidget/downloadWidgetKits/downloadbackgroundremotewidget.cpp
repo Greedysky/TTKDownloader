@@ -1,18 +1,18 @@
 #include "downloadbackgroundremotewidget.h"
-#include "downloadqueuecache.h"
+#include "downloadqueuerequest.h"
 #include "downloadextractwrapper.h"
 
 #include <QDir>
+#include <QBoxLayout>
 #include <QPushButton>
 #include <QButtonGroup>
-#include <QBoxLayout>
 
 DownloadBackgroundRemoteWidget::DownloadBackgroundRemoteWidget(QWidget *parent)
     : QWidget(parent),
       m_currentIndex(-1),
       m_functionsWidget(nullptr),
       m_downloadQueue(nullptr),
-      m_queryThread(nullptr)
+      m_skinRequest(nullptr)
 {
     QHBoxLayout *hbox = new QHBoxLayout(this);
     hbox->setContentsMargins(0, 0, 0, 0);
@@ -22,7 +22,7 @@ DownloadBackgroundRemoteWidget::DownloadBackgroundRemoteWidget(QWidget *parent)
     hbox->addWidget(m_listWidget);
     setLayout(hbox);
 
-    m_downloadQueue = new DownloadQueueCache(this);
+    m_downloadQueue = new DownloadQueueRequest(this);
     connect(m_downloadQueue, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged(QString)));
     connect(m_listWidget, SIGNAL(itemClicked(QString)), parent, SLOT(remoteBackgroundListWidgetItemClicked(QString)));
 }
@@ -33,16 +33,16 @@ DownloadBackgroundRemoteWidget::~DownloadBackgroundRemoteWidget()
     delete m_listWidget;
     delete m_functionsWidget;
     delete m_downloadQueue;
-    delete m_queryThread;
+    delete m_skinRequest;
 }
 
 void DownloadBackgroundRemoteWidget::initialize()
 {
-    if(!m_queryThread)
+    if(!m_skinRequest)
     {
-        m_queryThread = new DownloadBackgroundRemoteThread(this);
-        connect(m_queryThread, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroupList)));
-        m_queryThread->startToDownload();
+        m_skinRequest = new DownloadThunderSkinRequest(this);
+        connect(m_skinRequest, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroupList)));
+        m_skinRequest->startRequest();
     }
 }
 
@@ -158,12 +158,12 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
         m_listWidget->createItem(":/image/lb_noneImage", false);
         DownloadQueueData data;
         data.m_url = (*items)[i].m_url;
-        data.m_savePath = QString("%1%2/%3%4").arg(APPCACHE_DIR_FULL).arg(index).arg(i).arg(TKM_FILE);
+        data.m_path = QString("%1%2/%3%4").arg(APPCACHE_DIR_FULL).arg(index).arg(i).arg(TKM_FILE);
         datas << data;
     }
 
     m_downloadQueue->addImageQueue(datas);
-    m_downloadQueue->startToDownload();
+    m_downloadQueue->startRequest();
 }
 
 void DownloadBackgroundRemoteWidget::downLoadDataChanged(const QString &data)

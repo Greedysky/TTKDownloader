@@ -25,7 +25,7 @@
 #include "ttkglobaldefine.h"
 
 class DownloadSystemTrayMenu;
-class DownloadNetworkSpeedTestThread;
+class DownloadNetworkSpeedThread;
 
 namespace Ui {
     class DownloadApplication;
@@ -106,7 +106,7 @@ private:
     QMenu *m_toolPopupMenu;
     QSystemTrayIcon *m_systemTray;
     DownloadSystemTrayMenu *m_systemTrayMenu;
-    DownloadNetworkSpeedTestThread *m_speedThread;
+    DownloadNetworkSpeedThread *m_speedThread;
 
     static DownloadBottomAreaWidget *m_instance;
 

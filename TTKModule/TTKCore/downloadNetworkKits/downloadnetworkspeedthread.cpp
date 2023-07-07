@@ -1,4 +1,4 @@
-#include "downloadnetworkspeedtestthread.h"
+#include "downloadnetworkspeedthread.h"
 #include "downloadobject.h"
 
 #include <QProcess>
@@ -14,7 +14,7 @@
 #  include <arpa/inet.h>
 #endif
 
-DownloadNetworkSpeedTestThread::DownloadNetworkSpeedTestThread(QObject *parent)
+DownloadNetworkSpeedThread::DownloadNetworkSpeedThread(QObject *parent)
     : TTKAbstractThread(parent),
       m_process(nullptr)
 {
@@ -23,7 +23,7 @@ DownloadNetworkSpeedTestThread::DownloadNetworkSpeedTestThread(QObject *parent)
 #endif
 }
 
-DownloadNetworkSpeedTestThread::~DownloadNetworkSpeedTestThread()
+DownloadNetworkSpeedThread::~DownloadNetworkSpeedThread()
 {
     stop();
     if(m_process)
@@ -33,7 +33,7 @@ DownloadNetworkSpeedTestThread::~DownloadNetworkSpeedTestThread()
     delete m_process;
 }
 
-void DownloadNetworkSpeedTestThread::setAvailableNewtworkNames(const QStringList &names)
+void DownloadNetworkSpeedThread::setAvailableNewtworkNames(const QStringList &names)
 {
     m_names = names;
 #ifdef Q_OS_UNIX
@@ -50,12 +50,12 @@ void DownloadNetworkSpeedTestThread::setAvailableNewtworkNames(const QStringList
 #endif
 }
 
-QStringList DownloadNetworkSpeedTestThread::availableNewtworkNames() const
+QStringList DownloadNetworkSpeedThread::availableNewtworkNames() const
 {
     return m_names;
 }
 
-QStringList DownloadNetworkSpeedTestThread::newtworkNames() const
+QStringList DownloadNetworkSpeedThread::newtworkNames() const
 {
     QStringList names;
 #ifdef Q_OS_WIN
@@ -108,7 +108,7 @@ QStringList DownloadNetworkSpeedTestThread::newtworkNames() const
     return names;
 }
 
-void DownloadNetworkSpeedTestThread::outputRecieved()
+void DownloadNetworkSpeedThread::outputRecieved()
 {
 #ifdef Q_OS_UNIX
     while(m_process->canReadLine())
@@ -127,7 +127,7 @@ void DownloadNetworkSpeedTestThread::outputRecieved()
 #endif
 }
 
-void DownloadNetworkSpeedTestThread::run()
+void DownloadNetworkSpeedThread::run()
 {
 #ifdef Q_OS_WIN
     PMIB_IFTABLE pTable = nullptr;

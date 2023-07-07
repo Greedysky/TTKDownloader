@@ -3,7 +3,7 @@
 #include "downloadbreakpointconfigmanager.h"
 #include "downloadcoreutils.h"
 #include "downloadurlencoder.h"
-#include "downloadnetworkabstract.h"
+#include "downloadabstractnetwork.h"
 
 #include <QFileInfo>
 #include <QEventLoop>
@@ -167,9 +167,9 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
         }
 
         DownloadThread *thread = new DownloadThread(this);
-        connect(thread, SIGNAL(finished(int)), SLOT(finishedSlot(int)));
-        connect(thread, SIGNAL(downloadChanged()), SLOT(progressChangedSlot()));
-        connect(thread, SIGNAL(errorCode(int,QString)), SLOT(errorSlot(int,QString)));
+        connect(thread, SIGNAL(finished(int)), SLOT(finished(int)));
+        connect(thread, SIGNAL(downloadChanged()), SLOT(progressChanged()));
+        connect(thread, SIGNAL(errorCode(int,QString)), SLOT(handleError(int,QString)));
         thread->startDownload(i, durl, m_file, startPoint, endPoint, readySize);
         m_threads.append(thread);
     }
@@ -250,7 +250,7 @@ void DownloadThreadManager::restart()
     }
 }
 
-void DownloadThreadManager::finishedSlot(int index)
+void DownloadThreadManager::finished(int index)
 {
     m_runningCount--;
     TTK_INFO_STREAM("Download index of " << index << " finished");
@@ -261,7 +261,7 @@ void DownloadThreadManager::finishedSlot(int index)
     }
 }
 
-void DownloadThreadManager::progressChangedSlot()
+void DownloadThreadManager::progressChanged()
 {
     m_readySize = 0;
     for(DownloadThread *thread : qAsConst(m_threads))
@@ -272,7 +272,7 @@ void DownloadThreadManager::progressChangedSlot()
     Q_EMIT progressChanged(m_readySize, m_totalSize);
 }
 
-void DownloadThreadManager::errorSlot(int index, const QString &errorString)
+void DownloadThreadManager::handleError(int index, const QString &errorString)
 {
     if(index < 0 || index >= m_threads.count())
     {

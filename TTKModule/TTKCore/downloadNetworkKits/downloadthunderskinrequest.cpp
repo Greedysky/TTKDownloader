@@ -1,16 +1,16 @@
-#include "downloadbackgroundremotethread.h"
-#include "downloadsourcethread.h"
+#include "downloadthunderskinrequest.h"
+#include "downloaddatasourcerequest.h"
 
 #define MAX_SIZE    30
 #define QUERY_URL   "eC9KOTYxbVhvVDJNcGEwckhyMVZRdVRhOHhFRHQ2eFVNdWJxaURFSzA1ZWVmZm5HOFlzS1VCY2ZKOFRlYStBL2Y3SjNEK2gzY2QwPQ=="
 
-DownloadSkinRemoteConfigManager::DownloadSkinRemoteConfigManager(QObject *parent)
+DownloadThunderSkinConfigManager::DownloadThunderSkinConfigManager(QObject *parent)
     : TTKXmlDocument(parent)
 {
 
 }
 
-void DownloadSkinRemoteConfigManager::readBuffer(DownloadSkinRemoteGroupList &items)
+void DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &items)
 {
     const QDomNodeList &nodes = m_document->elementsByTagName("group");
     for(int i = 0; i < nodes.count(); ++i)
@@ -63,23 +63,23 @@ void DownloadSkinRemoteConfigManager::readBuffer(DownloadSkinRemoteGroupList &it
 
 
 
-DownloadBackgroundRemoteThread::DownloadBackgroundRemoteThread(QObject *parent)
+DownloadThunderSkinRequest::DownloadThunderSkinRequest(QObject *parent)
     : QObject(parent)
 {
 
 }
 
-void DownloadBackgroundRemoteThread::startToDownload()
+void DownloadThunderSkinRequest::startRequest()
 {
-    DownloadSourceThread *download = new DownloadSourceThread(this);
-    connect(download, SIGNAL(downLoadByteDataChanged(QByteArray)), SLOT(downLoadDataFinished(QByteArray)));
-    download->startToDownload(TTK::Algorithm::mdII(QUERY_URL, false));
+    DownloadDataSourceRequest *download = new DownloadDataSourceRequest(this);
+    connect(download, SIGNAL(downLoadRawDataChanged(QByteArray)), SLOT(downLoadFinished(QByteArray)));
+    download->startRequest(TTK::Algorithm::mdII(QUERY_URL, false));
 }
 
-void DownloadBackgroundRemoteThread::downLoadDataFinished(const QByteArray &bytes)
+void DownloadThunderSkinRequest::downLoadFinished(const QByteArray &bytes)
 {
     DownloadSkinRemoteGroupList items;
-    DownloadSkinRemoteConfigManager manager;
+    DownloadThunderSkinConfigManager manager;
     if(manager.fromByteArray(bytes))
     {
         manager.readBuffer(items);

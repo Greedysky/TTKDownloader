@@ -7,7 +7,7 @@ DownloadUnits::DownloadUnits(const QString &url, QObject *parent)
       m_pause(false),
       m_url(url)
 {
-    m_downloadItem = new DownloadListItemWidget(nullptr);
+    m_downloadItem = new DownloadListItemWidget;
     m_downloadThread = new DownloadThreadManager(this);
 
     connect(m_downloadThread, SIGNAL(progressChanged(qint64,qint64)), m_downloadItem, SLOT(progressChanged(qint64,qint64)));

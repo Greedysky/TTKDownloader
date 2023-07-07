@@ -98,15 +98,15 @@ private Q_SLOTS:
     /*!
      * Network download finished.
      */
-    void finishedSlot();
+    void downLoadFinished();
     /*!
      * Download received data ready.
      */
-    void readyReadSlot();
+    void handleReadyRead();
     /*!
      * Download reply error.
      */
-    void errorSlot(QNetworkReply::NetworkError code);
+    void handleError(QNetworkReply::NetworkError code);
 
 private:
     int m_index;

@@ -1,5 +1,5 @@
-#ifndef DOWNLOADQUEUECACHE_H
-#define DOWNLOADQUEUECACHE_H
+#ifndef DOWNLOADQUEUEREQUEST_H
+#define DOWNLOADQUEUEREQUEST_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -19,22 +19,22 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadthreadabstract.h"
+#include "downloadabstractrequest.h"
 
 /*! @brief The class of the download queue data.
  * @author Greedysky <greedysky@163.com>
  */
 struct TTK_MODULE_EXPORT DownloadQueueData
 {
-    QString m_url;        ///*download url*/
-    QString m_savePath;   ///*save local path*/
+    QString m_url;    ///*download url*/
+    QString m_path;   ///*save local path*/
 };
 TTK_DECLARE_LIST(DownloadQueueData);
 
 /*! @brief The class to download data from cache queue.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadQueueCache : public DownLoadThreadAbstract
+class TTK_MODULE_EXPORT DownloadQueueRequest : public DownLoadAbstractRequest
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadQueueCache)
@@ -42,17 +42,17 @@ public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadQueueCache(QObject *parent = nullptr);
+    explicit DownloadQueueRequest(QObject *parent = nullptr);
 
     /*!
      * Object contsructor.
      */
-    DownloadQueueCache(const DownloadQueueData &data, QObject *parent = nullptr);
+    DownloadQueueRequest(const DownloadQueueData &data, QObject *parent = nullptr);
     /*!
      * Object contsructor.
      */
-    DownloadQueueCache(const DownloadQueueDataList &datas, QObject *parent = nullptr);
-    ~DownloadQueueCache();
+    DownloadQueueRequest(const DownloadQueueDataList &datas, QObject *parent = nullptr);
+    ~DownloadQueueRequest();
 
     /*!
      * Add image download url and save path to download queue.
@@ -61,11 +61,15 @@ public:
     /*!
      * Start to download data.
      */
-    virtual void startToDownload() override final;
+    virtual void startRequest() override final;
     /*!
      * Abort current download thread.
      */
     void abort();
+    /*!
+     * Clear image download url queue.
+     */
+    void clear();
 
 public Q_SLOTS:
     /*!
@@ -75,11 +79,11 @@ public Q_SLOTS:
     /*!
      * Download received data ready.
      */
-    void readyReadSlot();
+    void handleReadyRead();
     /*!
      * Download reply error.
      */
-    void errorSlot(QNetworkReply::NetworkError code);
+    void handleError(QNetworkReply::NetworkError code);
 
 private:
     /*!
@@ -97,4 +101,4 @@ private:
 
 };
 
-#endif // DOWNLOADQUEUECACHE_H
+#endif // DOWNLOADQUEUEREQUEST_H

@@ -1,28 +1,23 @@
-#include "downloadnetworkabstract.h"
+#include "downloadabstractnetwork.h"
 
-DownloadNetworkAbstract::DownloadNetworkAbstract(QObject *parent)
+DownloadAbstractNetwork::DownloadAbstractNetwork(QObject *parent)
     : QObject(parent),
-      m_stateCode(StateCode::Init),
-      m_reply(nullptr),
-      m_manager(nullptr)
+      m_stateCode(TTK::NetworkCode::Query),
+      m_reply(nullptr)
 {
-
+#ifndef QT_NO_SSL
+    connect(&m_manager, SIGNAL(sslErrors(QNetworkReply*,QList<QSslError>)), SLOT(sslErrors(QNetworkReply*,QList<QSslError>)));
+#endif
 }
 
-DownloadNetworkAbstract::~DownloadNetworkAbstract()
+DownloadAbstractNetwork::~DownloadAbstractNetwork()
 {
-    m_stateCode = StateCode::Success;
+    m_stateCode = TTK::NetworkCode::Error;
     deleteAll();
 }
 
-void DownloadNetworkAbstract::deleteAll()
+void DownloadAbstractNetwork::deleteAll()
 {
-    if(m_manager)
-    {
-        m_manager->deleteLater();
-        m_manager = nullptr;
-    }
-
     if(m_reply)
     {
         m_reply->deleteLater();
@@ -30,7 +25,7 @@ void DownloadNetworkAbstract::deleteAll()
     }
 }
 
-void DownloadNetworkAbstract::replyError(QNetworkReply::NetworkError)
+void DownloadAbstractNetwork::replyError(QNetworkReply::NetworkError)
 {
     TTK_ERROR_STREAM("Abnormal network connection");
     Q_EMIT downLoadDataChanged(QString());
@@ -38,14 +33,14 @@ void DownloadNetworkAbstract::replyError(QNetworkReply::NetworkError)
 }
 
 #ifndef QT_NO_SSL
-void DownloadNetworkAbstract::sslErrors(QNetworkReply* reply, const QList<QSslError> &errors)
+void DownloadAbstractNetwork::sslErrors(QNetworkReply* reply, const QList<QSslError> &errors)
 {
     sslErrorsString(reply, errors);
     Q_EMIT downLoadDataChanged(QString());
     deleteAll();
 }
 
-void DownloadNetworkAbstract::sslErrorsString(QNetworkReply *reply, const QList<QSslError> &errors)
+void DownloadAbstractNetwork::sslErrorsString(QNetworkReply *reply, const QList<QSslError> &errors)
 {
     QString errorString;
     for(const QSslError &error : qAsConst(errors))

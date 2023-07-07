@@ -19,27 +19,26 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
+    $$PWD/downloadnetworkdefines.h \
     $$PWD/downloadthread.h \
-    $$PWD/downloadunits.h \
     $$PWD/downloadthreadmanager.h\
-    $$PWD/downloadbackgroundremotethread.h \
-    $$PWD/downloadqueuecache.h \
-    $$PWD/downloadsourcethread.h \
-    $$PWD/downloadthreadabstract.h \
-    $$PWD/downloadnetworkabstract.h \
+    $$PWD/downloadthunderskinrequest.h \
+    $$PWD/downloadqueuerequest.h \
+    $$PWD/downloaddatasourcerequest.h \
+    $$PWD/downloadabstractrequest.h \
+    $$PWD/downloadabstractnetwork.h \
     $$PWD/downloadnetworkthread.h \
-    $$PWD/downloadnetworkspeedtestthread.h \
+    $$PWD/downloadnetworkspeedthread.h \
     $$PWD/downloadurlencoder.h
 
 SOURCES += \
     $$PWD/downloadthread.cpp \
-    $$PWD/downloadunits.cpp \
     $$PWD/downloadthreadmanager.cpp\
-    $$PWD/downloadbackgroundremotethread.cpp \
-    $$PWD/downloadqueuecache.cpp \
-    $$PWD/downloadsourcethread.cpp \
-    $$PWD/downloadthreadabstract.cpp \
-    $$PWD/downloadnetworkabstract.cpp \
+    $$PWD/downloadthunderskinrequest.cpp \
+    $$PWD/downloadqueuerequest.cpp \
+    $$PWD/downloaddatasourcerequest.cpp \
+    $$PWD/downloadabstractrequest.cpp \
+    $$PWD/downloadabstractnetwork.cpp \
     $$PWD/downloadnetworkthread.cpp \
-    $$PWD/downloadnetworkspeedtestthread.cpp \
+    $$PWD/downloadnetworkspeedthread.cpp \
     $$PWD/downloadurlencoder.cpp

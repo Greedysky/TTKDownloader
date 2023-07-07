@@ -1,5 +1,5 @@
 #include "downloadthread.h"
-#include "downloadnetworkabstract.h"
+#include "downloadabstractnetwork.h"
 
 #include <QFile>
 
@@ -39,9 +39,9 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     TTK::setSslConfiguration(&request);
 
     m_reply = m_manager->get(request);
-    connect(m_reply, SIGNAL(finished()), SLOT(finishedSlot()));
-    connect(m_reply, SIGNAL(readyRead()), SLOT(readyReadSlot()));
-    QtNetworkErrorConnect(m_reply, this, errorSlot);
+    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
+    connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
+    QtNetworkErrorConnect(m_reply, this, handleError);
 
     m_state = State::Download;
     Q_EMIT downloadChanged();
@@ -72,7 +72,7 @@ void DownloadThread::restart()
     startDownload(m_index, m_url, m_file, m_startPoint, m_endPoint, m_readySize);
 }
 
-void DownloadThread::finishedSlot()
+void DownloadThread::downLoadFinished()
 {
     if(m_state != State::Download)
     {
@@ -86,7 +86,7 @@ void DownloadThread::finishedSlot()
     Q_EMIT finished(m_index);
 }
 
-void DownloadThread::readyReadSlot()
+void DownloadThread::handleReadyRead()
 {
     const QByteArray &buffer = m_reply->readAll();
     m_file->seek(m_startPoint + m_readySize);
@@ -96,7 +96,7 @@ void DownloadThread::readyReadSlot()
     Q_EMIT downloadChanged();
 }
 
-void DownloadThread::errorSlot(QNetworkReply::NetworkError code)
+void DownloadThread::handleError(QNetworkReply::NetworkError code)
 {
     if(m_state != State::Download)
     {

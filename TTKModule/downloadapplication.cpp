@@ -8,7 +8,7 @@
 #include "downloadsettingmanager.h"
 #include "downloadconfigmanager.h"
 #include "downloadhotkeymanager.h"
-#include "downloadnetworkabstract.h"
+#include "downloadabstractnetwork.h"
 #include "downloaduiobject.h"
 #include "downloadwidgetutils.h"
 #include "ttkversion.h"

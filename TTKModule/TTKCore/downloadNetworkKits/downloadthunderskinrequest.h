@@ -60,18 +60,18 @@ struct TTK_MODULE_EXPORT DownloadSkinRemoteGroup
 TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
 
 
-/*! @brief The class of the remote skin XML Config Manager.
+/*! @brief The class of the thunder skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSkinRemoteConfigManager : public TTKXmlDocument
+class TTK_MODULE_EXPORT DownloadThunderSkinConfigManager : public TTKXmlDocument
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadSkinRemoteConfigManager)
+    TTK_DECLARE_MODULE(DownloadThunderSkinConfigManager)
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSkinRemoteConfigManager(QObject *parent = nullptr);
+    explicit DownloadThunderSkinConfigManager(QObject *parent = nullptr);
 
     /*!
      * Read datas from config file.
@@ -81,23 +81,23 @@ public:
 };
 
 
-/*! @brief The class of the download skin remote background.
+/*! @brief The class of the download thunder skin background.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadBackgroundRemoteThread : public QObject
+class TTK_MODULE_EXPORT DownloadThunderSkinRequest : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundRemoteThread)
+    TTK_DECLARE_MODULE(DownloadThunderSkinRequest)
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundRemoteThread(QObject *parent = nullptr);
+    explicit DownloadThunderSkinRequest(QObject *parent = nullptr);
 
     /*!
      * Start to download data from net.
      */
-    void startToDownload();
+    void startRequest();
 
 Q_SIGNALS:
     /*!
@@ -109,7 +109,7 @@ public Q_SLOTS:
     /*!
      * Download data from net finished.
      */
-    void downLoadDataFinished(const QByteArray &bytes);
+    void downLoadFinished(const QByteArray &bytes);
 
 };
 

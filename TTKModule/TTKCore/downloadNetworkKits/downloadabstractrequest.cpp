@@ -1,14 +1,13 @@
-#include "downloadthreadabstract.h"
+#include "downloadabstractrequest.h"
 #include "downloadsettingmanager.h"
 #ifdef Q_CC_MSVC
 #  include <qt_windows.h>
 #elif defined Q_OS_UNIX || defined Q_CC_MINGW
 #  include <unistd.h>
 #endif
-#include <QSslError>
 
-DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString &path, QObject *parent)
-    : DownloadNetworkAbstract(parent),
+DownLoadAbstractRequest::DownLoadAbstractRequest(const QString &url, const QString &path, QObject *parent)
+    : DownloadAbstractNetwork(parent),
       m_url(url),
       m_hasReceived(0),
       m_currentReceived(0)
@@ -19,44 +18,38 @@ DownLoadThreadAbstract::DownLoadThreadAbstract(const QString &url, const QString
     }
     m_file = new QFile(path, this);
 
-    m_timer.setInterval(MT_S2MS);
-    connect(&m_timer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));
+    m_speedTimer.setInterval(MT_S2MS);
+    connect(&m_speedTimer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));
 }
 
-void DownLoadThreadAbstract::deleteAll()
+DownLoadAbstractRequest::~DownLoadAbstractRequest()
 {
-    DownloadNetworkAbstract::deleteAll();
-    if(m_file)
+    if(m_speedTimer.isActive())
     {
-        delete m_file;
-        m_file = nullptr;
+        m_speedTimer.stop();
     }
+}
+
+void DownLoadAbstractRequest::deleteAll()
+{
+    DownloadAbstractNetwork::deleteAll();
+    delete m_file;
+    m_file = nullptr;
     deleteLater();
 }
 
-void DownLoadThreadAbstract::replyError(QNetworkReply::NetworkError)
+void DownLoadAbstractRequest::downLoadFinished()
 {
-    TTK_ERROR_STREAM("Abnormal network connection");
-    Q_EMIT downLoadDataChanged("The file create failed");
-    deleteAll();
+    m_speedTimer.stop();
 }
 
-#ifndef QT_NO_SSL
-void DownLoadThreadAbstract::sslErrors(QNetworkReply* reply, const QList<QSslError> &errors)
-{
-    sslErrorsString(reply, errors);
-    Q_EMIT downLoadDataChanged("The file create failed");
-    deleteAll();
-}
-#endif
-
-void DownLoadThreadAbstract::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
+void DownLoadAbstractRequest::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
     m_currentReceived = bytesReceived;
     m_totalSize = bytesTotal;
 }
 
-void DownLoadThreadAbstract::updateDownloadSpeed()
+void DownLoadAbstractRequest::updateDownloadSpeed()
 {
     const int delta = m_currentReceived - m_hasReceived;
     ///limit speed

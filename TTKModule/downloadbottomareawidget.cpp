@@ -3,7 +3,7 @@
 #include "downloadapplication.h"
 #include "downloadsystemtraymenu.h"
 #include "downloadnumberutils.h"
-#include "downloadnetworkspeedtestthread.h"
+#include "downloadnetworkspeedthread.h"
 #include "downloaduiobject.h"
 #include "downloadimageutils.h"
 #include "downloadbackgroundmanager.h"
@@ -22,8 +22,7 @@ DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
 
     createSystemTrayIcon();
 
-    m_speedThread = new DownloadNetworkSpeedTestThread(this);
-
+    m_speedThread = new DownloadNetworkSpeedThread(this);
     connect(m_speedThread, SIGNAL(networkData(ulong,ulong)), SLOT(updateNetworkData(ulong,ulong)));
 }
 

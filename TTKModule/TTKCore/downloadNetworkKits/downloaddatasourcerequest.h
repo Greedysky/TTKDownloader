@@ -1,5 +1,5 @@
-#ifndef DOWNLOADSOURCETHREAD_H
-#define DOWNLOADSOURCETHREAD_H
+#ifndef DOWNLOADDATASOURCEREQUEST_H
+#define DOWNLOADDATASOURCEREQUEST_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -19,49 +19,37 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadnetworkabstract.h"
+#include "downloadabstractnetwork.h"
 
-/*! @brief The class of the source data download thread.
+/*! @brief The class of the source data download request.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSourceThread : public DownloadNetworkAbstract
+class TTK_MODULE_EXPORT DownloadDataSourceRequest : public DownloadAbstractNetwork
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadSourceThread)
+    TTK_DECLARE_MODULE(DownloadDataSourceRequest)
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadSourceThread(QObject *parent = nullptr);
-    ~DownloadSourceThread();
+    explicit DownloadDataSourceRequest(QObject *parent = nullptr);
+
+    /*!
+     * Release the network object.
+     */
+    virtual void deleteAll() override final;
 
     /*!
      * Start to download data.
      */
-    void startToDownload(const QString &url);
-
-Q_SIGNALS:
-    /*!
-     * Send download byte data from net.
-     */
-    void downLoadByteDataChanged(const QByteArray &data);
+    void startRequest(const QString &url);
 
 public Q_SLOTS:
     /*!
      * Download data from net finished.
      */
     virtual void downLoadFinished() override final;
-    /*!
-     * Download reply error.
-     */
-    virtual void replyError(QNetworkReply::NetworkError error) override final;
-#ifndef QT_NO_SSL
-    /*!
-     * Download ssl reply error.
-     */
-    virtual void sslErrors(QNetworkReply *reply, const QList<QSslError> &errors) override final;
-#endif
 
 };
 
-#endif // DOWNLOADSOURCETHREAD_H
+#endif // DOWNLOADDATASOURCEREQUEST_H
