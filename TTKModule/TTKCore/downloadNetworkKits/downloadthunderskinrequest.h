@@ -103,7 +103,7 @@ Q_SIGNALS:
     /*!
      * Send download data from net.
      */
-    void downLoadDataChanged(const DownloadSkinRemoteGroupList &data);
+    void downLoadDataChanged(const DownloadSkinRemoteGroupList &bytes);
 
 public Q_SLOTS:
     /*!

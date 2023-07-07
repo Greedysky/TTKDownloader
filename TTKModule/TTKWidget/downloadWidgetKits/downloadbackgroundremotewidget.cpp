@@ -166,19 +166,21 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
     m_downloadQueue->startRequest();
 }
 
-void DownloadBackgroundRemoteWidget::downLoadDataChanged(const QString &data)
+void DownloadBackgroundRemoteWidget::downLoadDataChanged(const QString &bytes)
 {
     DownloadBackgroundImage image;
-    outputRemoteSkin(image, data);
-    if(image.isValid())
+    outputRemoteSkin(image, bytes);
+    if(!image.isValid())
     {
-        m_listWidget->updateItem(image, data);
+        image.m_pix = QPixmap(":/image/lb_noneImage");
     }
+
+    m_listWidget->updateItem(image, bytes);
 }
 
-void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemoteGroupList &data)
+void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemoteGroupList &bytes)
 {
-    m_groups = data;
+    m_groups = bytes;
     for(int i = 0; i < m_groups.count(); ++i)
     {
         DownloadSkinRemoteGroup *item = &m_groups[i];
@@ -203,7 +205,6 @@ QPushButton* DownloadBackgroundRemoteWidget::createButton(const QString &name)
     btn->setFocusPolicy(Qt::NoFocus);
 #endif
     m_functionsItems << btn;
-
     return btn;
 }
 
