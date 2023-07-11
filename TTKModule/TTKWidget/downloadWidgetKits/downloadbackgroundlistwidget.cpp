@@ -9,11 +9,10 @@
 
 DownloadBackgroundListItem::DownloadBackgroundListItem(QWidget *parent)
     : QLabel(parent),
-      m_printMask(false),
       m_isSelected(false),
-      m_selectedMask(true),
-      m_closeMask(false),
-      m_closeSet(false)
+      m_printMask(false),
+      m_selectedEnabled(true),
+      m_closeEnabled(false)
 {
     setFixedSize(100, 70);
     setCursor(Qt::PointingHandCursor);
@@ -46,28 +45,28 @@ bool DownloadBackgroundListItem::contains(const DownloadSkinConfigItem &item) co
     return false;
 }
 
-void DownloadBackgroundListItem::setSelect(bool s)
+void DownloadBackgroundListItem::setSelected(bool s)
 {
     m_isSelected = s;
     update();
 }
 
-void DownloadBackgroundListItem::setSelectEnable(bool s)
+void DownloadBackgroundListItem::setSelectEnabled(bool s)
 {
-    m_selectedMask = s;
+    m_selectedEnabled = s;
     update();
 }
 
-void DownloadBackgroundListItem::setCloseEnable(bool s)
+void DownloadBackgroundListItem::setCloseEnabled(bool s)
 {
-    m_closeSet = s;
+    m_closeEnabled = s;
     update();
 }
 
 void DownloadBackgroundListItem::mousePressEvent(QMouseEvent *event)
 {
-    QLabel::mousePressEvent(event);
-    if(m_closeSet && QRect(width() - 18 - 4, 4, 18, 18).contains(event->pos()))
+    Q_UNUSED(event);
+    if(m_closeEnabled && QRect(width() - 18 - 4, 4, 18, 18).contains(event->pos()))
     {
         Q_EMIT closeClicked(this);
     }
@@ -81,7 +80,6 @@ void DownloadBackgroundListItem::leaveEvent(QEvent *event)
 {
     QLabel::leaveEvent(event);
     m_printMask = false;
-    m_closeMask = false;
     update();
 }
 
@@ -89,7 +87,6 @@ void DownloadBackgroundListItem::enterEvent(QtEnterEvent *event)
 {
     QLabel::enterEvent(event);
     m_printMask = true;
-    m_closeMask = true;
     update();
 }
 
@@ -97,7 +94,7 @@ void DownloadBackgroundListItem::paintEvent(QPaintEvent *event)
 {
     QLabel::paintEvent(event);
 
-    if(m_isSelected && m_selectedMask)
+    if(m_isSelected && m_selectedEnabled)
     {
         QPainter painter(this);
         painter.drawPixmap(width() - 17, height() - 17, 17, 17, QPixmap(":/tiny/lb_selected"));
@@ -111,48 +108,48 @@ void DownloadBackgroundListItem::paintEvent(QPaintEvent *event)
         QFont font = painter.font();
         font.setPixelSize(13);
         painter.setFont(font);
-        const QFontMetrics ftm(font);
 
         painter.setPen(Qt::white);
+        const QFontMetrics ftm(font);
         QString v = QString::number(m_imageInfo.m_useCount);
         painter.drawText((width() - QtFontWidth(ftm, v)) / 2, 30, v);
-
-        v = m_imageInfo.m_name;
+                v = m_imageInfo.m_name;
         painter.drawText((width() - QtFontWidth(ftm, v)) / 2, 48, v);
-    }
 
-    if(m_closeSet && m_closeMask)
-    {
-        QPainter painter(this);
-        painter.drawPixmap(width() - 18 - 4, 4, 18, 18, QPixmap(":/functions/btn_close_hover"));
+        if(m_closeEnabled)
+        {
+            QPainter painter(this);
+            painter.drawPixmap(width() - 18 - 4, 4, 18, 18, QPixmap(":/functions/btn_close_hover"));
+        }
     }
 }
 
 
 DownloadBackgroundListWidget::DownloadBackgroundListWidget(QWidget *parent)
     : QWidget(parent),
+      m_type(CachedModule),
       m_currentItem(nullptr)
 {
-    m_layout = new QGridLayout(this);
-    m_layout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    m_layout->setContentsMargins(7, 7, 7, 7);
-    m_layout->setSpacing(5);
-    setLayout(m_layout);
+    m_gridLayout = new QGridLayout(this);
+    m_gridLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
+    m_gridLayout->setContentsMargins(7, 7, 7, 7);
+    m_gridLayout->setSpacing(5);
+    setLayout(m_gridLayout);
 }
 
 DownloadBackgroundListWidget::~DownloadBackgroundListWidget()
 {
     clearAllItems();
+    delete m_gridLayout;
 }
 
 void DownloadBackgroundListWidget::setCurrentItemName(const QString &name)
 {
-    //Set the current theme index
     for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
         if(item->fileName() == name)
         {
-            item->setSelect(true);
+            item->setSelected(true);
             m_currentItem = item;
             break;
         }
@@ -163,7 +160,7 @@ void DownloadBackgroundListWidget::clearSelectState()
 {
     for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
-        item->setSelect(false);
+        item->setSelected(false);
     }
 }
 
@@ -171,29 +168,32 @@ void DownloadBackgroundListWidget::clearAllItems()
 {
     qDeleteAll(m_items);
     m_items.clear();
+    m_currentItem = nullptr;
 }
 
-void DownloadBackgroundListWidget::createItem(const QString &name, const QString &path, bool state)
+void DownloadBackgroundListWidget::addCellItem(const QString &icon, bool state)
 {
     DownloadBackgroundListItem *item = new DownloadBackgroundListItem(this);
-    item->setCloseEnable(state);
-    item->setFileName(name);
-    item->setFilePath(path);
-    item->updatePixImage();
-    connect(item, SIGNAL(itemClicked(DownloadBackgroundListItem*)), SLOT(itemHasClicked(DownloadBackgroundListItem*)));
+    item->setCloseEnabled(state);
+    item->setPixmap(QPixmap(icon).scaled(item->size()));
+
+    connect(item, SIGNAL(itemClicked(DownloadBackgroundListItem*)), SLOT(currentItemClicked(DownloadBackgroundListItem*)));
     connect(item, SIGNAL(closeClicked(DownloadBackgroundListItem*)), SLOT(itemCloseClicked(DownloadBackgroundListItem*)));
-    m_layout->addWidget(item, m_items.count()/ITEM_COUNT, m_items.count()%ITEM_COUNT, Qt::AlignLeft | Qt::AlignTop);
+    m_gridLayout->addWidget(item, m_items.count()/ITEM_COUNT, m_items.count()%ITEM_COUNT, Qt::AlignLeft | Qt::AlignTop);
     m_items << item;
 }
 
-void DownloadBackgroundListWidget::createItem(const QString &icon, bool state)
+void DownloadBackgroundListWidget::addCellItem(const QString &name, const QString &path, bool state)
 {
     DownloadBackgroundListItem *item = new DownloadBackgroundListItem(this);
-    item->setCloseEnable(state);
-    item->setPixmap(QPixmap(icon).scaled(item->size()));
-    connect(item, SIGNAL(itemClicked(DownloadBackgroundListItem*)), SLOT(itemHasClicked(DownloadBackgroundListItem*)));
+    item->setCloseEnabled(state);
+    item->setFileName(name);
+    item->setFilePath(path);
+    item->updatePixImage();
+
+    connect(item, SIGNAL(itemClicked(DownloadBackgroundListItem*)), SLOT(currentItemClicked(DownloadBackgroundListItem*)));
     connect(item, SIGNAL(closeClicked(DownloadBackgroundListItem*)), SLOT(itemCloseClicked(DownloadBackgroundListItem*)));
-    m_layout->addWidget(item, m_items.count()/ITEM_COUNT, m_items.count()%ITEM_COUNT, Qt::AlignLeft | Qt::AlignTop);
+    m_gridLayout->addWidget(item, m_items.count()/ITEM_COUNT, m_items.count()%ITEM_COUNT, Qt::AlignLeft | Qt::AlignTop);
     m_items << item;
 }
 
@@ -203,7 +203,7 @@ void DownloadBackgroundListWidget::updateItem(const DownloadBackgroundImage &ima
     {
         if(item->fileName().isEmpty())
         {
-            item->setSelectEnable(false);
+            item->setSelectEnabled(false);
             item->setFileName(path);
             item->updatePixImage(image);
             break;
@@ -280,7 +280,7 @@ void DownloadBackgroundListWidget::updateLastedItem()
 {
     if(!m_items.isEmpty())
     {
-        itemHasClicked(m_items.back());
+        currentItemClicked(m_items.back());
     }
 }
 
@@ -294,9 +294,9 @@ void DownloadBackgroundListWidget::itemCloseClicked(DownloadBackgroundListItem *
         return;
     }
 
-    m_layout->removeWidget(item);
-    int index = find(item);
-    int cIndex = find(m_currentItem);
+    m_gridLayout->removeWidget(item);
+    const int index = find(item);
+    const int cIndex = find(m_currentItem);
     QFile::remove(item->filePath());
     m_items.takeAt(index)->deleteLater();
 
@@ -305,24 +305,24 @@ void DownloadBackgroundListWidget::itemCloseClicked(DownloadBackgroundListItem *
         m_currentItem = nullptr;
         if(!m_items.isEmpty())
         {
-            itemHasClicked(m_items[index == 0 ? 0 : index - 1]);
+            currentItemClicked(m_items[index == 0 ? 0 : index - 1]);
         }
     }
 
     for(int i = index; i < m_items.count(); ++i)
     {
-        m_layout->addWidget(m_items[i], i/ITEM_COUNT, i%ITEM_COUNT, Qt::AlignLeft | Qt::AlignTop);
+        m_gridLayout->addWidget(m_items[i], i/ITEM_COUNT, i%ITEM_COUNT, Qt::AlignLeft | Qt::AlignTop);
     }
 }
 
-void DownloadBackgroundListWidget::itemHasClicked(DownloadBackgroundListItem *item)
+void DownloadBackgroundListWidget::currentItemClicked(DownloadBackgroundListItem *item)
 {
     if(m_currentItem)
     {
-        m_currentItem->setSelect(false);
+        m_currentItem->setSelected(false);
     }
 
     m_currentItem = item;
-    m_currentItem->setSelect(true);
-    Q_EMIT itemClicked(item->fileName());
+    item->setSelected(true);
+    Q_EMIT itemClicked(m_type, item->fileName());
 }

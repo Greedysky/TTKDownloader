@@ -22,7 +22,7 @@ DownloadAbstractTableWidget::DownloadAbstractTableWidget(QWidget *parent)
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
     setMouseTracking(true);  //Open the capture mouse function
-    setStyleSheet(TTK::UI::TableWidgetStyle01 + TTK::UI::ScrollBarStyle02 + TTK::UI::LineEditStyle01);
+    setStyleSheet(TTK::UI::TableWidgetStyle01 + TTK::UI::ScrollBarStyle03 + TTK::UI::LineEditStyle01);
 
     QFont font = this->font();
     font.setBold(false);

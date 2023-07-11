@@ -63,7 +63,7 @@
       <height>250</height>
      </rect>
     </property>
-    <widget class="QScrollArea" name="recommandScrollArea"/>
+    <widget class="QScrollArea" name="recommendScrollArea"/>
     <widget class="QScrollArea" name="userScrollArea"/>
     <widget class="QScrollArea" name="remoteScrollArea"/>
    </widget>

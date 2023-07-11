@@ -1,7 +1,10 @@
 #include "downloadwidgetutils.h"
+#include "downloaduiobject.h"
 #include "ttkdesktopwrapper.h"
 
 #include <QMenu>
+#include <QScrollBar>
+#include <QScrollArea>
 
 void TTK::Widget::adjustMenuPosition(QMenu *menu)
 {
@@ -38,4 +41,38 @@ void TTK::Widget::setTransparent(QWidget *widget, const QColor &color)
     QPalette plt(widget->palette());
     plt.setBrush(QPalette::Highlight, QBrush(color));
     widget->setPalette(plt);
+}
+
+void TTK::Widget::generateVScrollAreaFormat(QWidget *widget, QWidget *parent, bool background)
+{
+    QScrollArea *area = TTKObjectCast(QScrollArea*, widget);
+    if(area)
+    {
+        const QString &style = background ? TTK::UI::ScrollBarStyle01 : TTK::UI::ScrollBarStyle03;
+        area->setWidgetResizable(true);
+        area->setFrameShape(QFrame::NoFrame);
+        area->setFrameShadow(QFrame::Plain);
+        area->setAlignment(Qt::AlignLeft);
+        area->setWidget(parent);
+        area->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        area->setStyleSheet(style);
+        area->verticalScrollBar()->setStyleSheet(style);
+    }
+}
+
+void TTK::Widget::generateHScrollAreaFormat(QWidget *widget, QWidget *parent, bool background)
+{
+    QScrollArea *area = TTKObjectCast(QScrollArea*, widget);
+    if(area)
+    {
+        const QString &style = background ? TTK::UI::ScrollBarStyle02 : TTK::UI::ScrollBarStyle04;
+        area->setWidgetResizable(true);
+        area->setFrameShape(QFrame::NoFrame);
+        area->setFrameShadow(QFrame::Plain);
+        area->setAlignment(Qt::AlignLeft);
+        area->setWidget(parent);
+        area->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        area->setStyleSheet(style);
+        area->horizontalScrollBar()->setStyleSheet(style);
+    }
 }

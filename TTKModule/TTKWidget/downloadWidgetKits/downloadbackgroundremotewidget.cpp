@@ -1,57 +1,57 @@
 #include "downloadbackgroundremotewidget.h"
-#include "downloadqueuerequest.h"
 #include "downloadextractwrapper.h"
+#include "downloadqueuerequest.h"
 
 #include <QDir>
 #include <QBoxLayout>
 #include <QPushButton>
 #include <QButtonGroup>
 
-DownloadBackgroundRemoteWidget::DownloadBackgroundRemoteWidget(QWidget *parent)
+DownloadBackgroundOnlineWidget::DownloadBackgroundOnlineWidget(QWidget *parent)
     : QWidget(parent),
       m_currentIndex(-1),
       m_functionsWidget(nullptr),
       m_downloadQueue(nullptr),
-      m_skinRequest(nullptr)
+      m_downloadRequest(nullptr)
 {
     QHBoxLayout *hbox = new QHBoxLayout(this);
     hbox->setContentsMargins(0, 0, 0, 0);
     hbox->setSpacing(0);
 
-    m_listWidget = new DownloadBackgroundListWidget(this);
-    hbox->addWidget(m_listWidget);
+    m_backgroundList = new DownloadBackgroundListWidget(this);
+    hbox->addWidget(m_backgroundList);
     setLayout(hbox);
 
     m_downloadQueue = new DownloadQueueRequest(this);
     connect(m_downloadQueue, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged(QString)));
-    connect(m_listWidget, SIGNAL(itemClicked(QString)), parent, SLOT(remoteBackgroundListWidgetItemClicked(QString)));
+    connect(m_backgroundList, SIGNAL(itemClicked(int,QString)), parent, SLOT(remoteListWidgetItemClicked(int,QString)));
 }
 
-DownloadBackgroundRemoteWidget::~DownloadBackgroundRemoteWidget()
+DownloadBackgroundOnlineWidget::~DownloadBackgroundOnlineWidget()
 {
     abort();
-    delete m_listWidget;
+    delete m_backgroundList;
     delete m_functionsWidget;
     delete m_downloadQueue;
-    delete m_skinRequest;
+    delete m_downloadRequest;
 }
 
-void DownloadBackgroundRemoteWidget::initialize()
+void DownloadBackgroundOnlineWidget::initialize()
 {
-    if(!m_skinRequest)
+    if(!m_downloadRequest)
     {
-        m_skinRequest = new DownloadThunderSkinRequest(this);
-        connect(m_skinRequest, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroupList)));
-        m_skinRequest->startRequest();
+        m_downloadRequest = new DownloadThunderSkinRequest(this);
+        connect(m_downloadRequest, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroupList)));
+        m_downloadRequest->startRequest();
     }
 }
 
-void DownloadBackgroundRemoteWidget::abort()
+void DownloadBackgroundOnlineWidget::abort()
 {
     m_downloadQueue->abort();
 }
 
-QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWidget *object)
+QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWidget *object)
 {
     if(!m_functionsWidget)
     {
@@ -119,7 +119,7 @@ QWidget* DownloadBackgroundRemoteWidget::createFunctionsWidget(bool revert, QWid
     return m_functionsWidget;
 }
 
-void DownloadBackgroundRemoteWidget::outputRemoteSkin(DownloadBackgroundImage &image, const QString &data)
+void DownloadBackgroundOnlineWidget::outputRemoteSkin(DownloadBackgroundImage &image, const QString &data)
 {
     const int index = QFileInfo(data).baseName().toInt();
     DownloadSkinRemoteItemList *items = &m_groups[m_currentIndex].m_items;
@@ -132,7 +132,7 @@ void DownloadBackgroundRemoteWidget::outputRemoteSkin(DownloadBackgroundImage &i
     }
 }
 
-void DownloadBackgroundRemoteWidget::buttonClicked(int index)
+void DownloadBackgroundOnlineWidget::buttonClicked(int index)
 {
     if(index < 0 || index >= m_groups.count())
     {
@@ -150,12 +150,12 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
     QDir dir(TTK_DOT);
     dir.mkpath(QString("%1%2").arg(APPCACHE_DIR_FULL).arg(index));
 
-    m_listWidget->clearAllItems();
+    m_backgroundList->clearAllItems();
     DownloadQueueDataList datas;
     DownloadSkinRemoteItemList *items = &m_groups[index].m_items;
     for(int i = 0; i < items->count(); ++i)
     {
-        m_listWidget->createItem(":/image/lb_noneImage", false);
+        m_backgroundList->addCellItem(":/image/lb_noneImage", false);
         DownloadQueueData data;
         data.m_url = (*items)[i].m_url;
         data.m_path = QString("%1%2/%3%4").arg(APPCACHE_DIR_FULL).arg(index).arg(i).arg(TKM_FILE);
@@ -166,7 +166,7 @@ void DownloadBackgroundRemoteWidget::buttonClicked(int index)
     m_downloadQueue->startRequest();
 }
 
-void DownloadBackgroundRemoteWidget::downLoadDataChanged(const QString &bytes)
+void DownloadBackgroundOnlineWidget::downLoadDataChanged(const QString &bytes)
 {
     DownloadBackgroundImage image;
     outputRemoteSkin(image, bytes);
@@ -175,10 +175,10 @@ void DownloadBackgroundRemoteWidget::downLoadDataChanged(const QString &bytes)
         image.m_pix = QPixmap(":/image/lb_noneImage");
     }
 
-    m_listWidget->updateItem(image, bytes);
+    m_backgroundList->updateItem(image, bytes);
 }
 
-void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemoteGroupList &bytes)
+void DownloadBackgroundOnlineWidget::downLoadDataChanged(const DownloadSkinRemoteGroupList &bytes)
 {
     m_groups = bytes;
     for(int i = 0; i < m_groups.count(); ++i)
@@ -194,7 +194,7 @@ void DownloadBackgroundRemoteWidget::downLoadDataChanged(const DownloadSkinRemot
     }
 }
 
-QPushButton* DownloadBackgroundRemoteWidget::createButton(const QString &name)
+QPushButton* DownloadBackgroundOnlineWidget::createButton(const QString &name)
 {
     QPushButton *btn = new QPushButton(name, m_functionsWidget);
     btn->setStyleSheet(TTK::UI::PushButtonStyle02);
@@ -208,7 +208,7 @@ QPushButton* DownloadBackgroundRemoteWidget::createButton(const QString &name)
     return btn;
 }
 
-void DownloadBackgroundRemoteWidget::buttonStyleChanged()
+void DownloadBackgroundOnlineWidget::buttonStyleChanged()
 {
     for(int i = 0; i < m_functionsItems.count() - 1; ++i)
     {

@@ -1,5 +1,5 @@
-#ifndef DOWNLOADBACKGROUNDREMOTEWIDGET_H
-#define DOWNLOADBACKGROUNDREMOTEWIDGET_H
+#ifndef DOWNLOADBACKGROUNDONLINEWIDGET_H
+#define DOWNLOADBACKGROUNDONLINEWIDGET_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -19,7 +19,6 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QWidget>
 #include "downloadbackgroundlistwidget.h"
 #include "downloadthunderskinrequest.h"
 
@@ -27,19 +26,19 @@ class QPushButton;
 class QListWidgetItem;
 class DownloadQueueRequest;
 
-/*! @brief The class of the remote background widget.
+/*! @brief The class of the online background widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadBackgroundRemoteWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadBackgroundOnlineWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundRemoteWidget)
+    TTK_DECLARE_MODULE(DownloadBackgroundOnlineWidget)
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadBackgroundRemoteWidget(QWidget *parent = nullptr);
-    ~DownloadBackgroundRemoteWidget();
+    explicit DownloadBackgroundOnlineWidget(QWidget *parent = nullptr);
+    ~DownloadBackgroundOnlineWidget();
 
     /*!
      * Init the current download object.
@@ -93,10 +92,10 @@ private:
     QWidget *m_functionsWidget;
     QList<QPushButton*> m_functionsItems;
     DownloadSkinRemoteGroupList m_groups;
-    DownloadBackgroundListWidget *m_listWidget;
+    DownloadBackgroundListWidget *m_backgroundList;
     DownloadQueueRequest *m_downloadQueue;
-    DownloadThunderSkinRequest *m_skinRequest;
+    DownloadThunderSkinRequest *m_downloadRequest;
 
 };
 
-#endif // DOWNLOADBACKGROUNDREMOTEWIDGET_H
+#endif // DOWNLOADBACKGROUNDONLINEWIDGET_H

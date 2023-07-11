@@ -26,7 +26,7 @@ class DownloadBackgroundSkinDialog;
 }
 
 class DownloadBackgroundListWidget;
-class DownloadBackgroundRemoteWidget;
+class DownloadBackgroundOnlineWidget;
 
 /*! @brief The class of the local background widget.
  * @author Greedysky <greedysky@163.com>
@@ -45,7 +45,7 @@ public:
     /*!
      * Set artist background picture by name.
      */
-    static QPixmap setMBackground(QString &name);
+    static QPixmap setBackgroundUrl(QString &name);
     /*!
      * Theme valid check.
      */
@@ -54,15 +54,15 @@ public:
      * Copy art file to local themes dir path.
      */
     static QString cpoyArtFileToLocal(const QString &path);
+
     /*!
      * Update art file theme.
      */
     void updateArtFileTheme(const QString &theme);
-
     /*!
      * Select current item by name\alpha\listAlpha when the widget show.
      */
-    void setCurrentBgTheme(const QString &theme, int alpha);
+    void setCurrentBackgroundTheme(const QString &theme, int alpha);
 
     /*!
      * Set skin transparent tool text.
@@ -93,17 +93,13 @@ public Q_SLOTS:
      */
     void backgroundListWidgetChanged(int index);
     /*!
-     * Background list widget item has clicked.
+     * Classical list widget item has clicked.
      */
-    void backgroundListWidgetItemClicked(const QString &name);
-    /*!
-     * My background list widget item has clicked.
-     */
-    void myBackgroundListWidgetItemClicked(const QString &name);
+    void classicalListWidgetItemClicked(int type, const QString &name);
     /*!
      * Remote background list widget item has clicked.
      */
-    void remoteBackgroundListWidgetItemClicked(const QString &name);
+    void remoteListWidgetItemClicked(int type, const QString &name);
 
 private:
     /*!
@@ -115,9 +111,18 @@ private:
      */
     void addThemeListWidgetItem();
     /*!
+     * Add all theme into list.
+     */
+    void addThemeListWidgetItem(DownloadBackgroundListWidget *item, const QString &dir, bool state);
+    /*!
      * Copy custom file to local themes dir path.
      */
     void cpoyFileFromLocal(const QString &path);
+
+    /*!
+     * Find all theme in local directory.
+     */
+    static void findThemeListByPath(const QString &dir, TTKIntList &data);
     /*!
      * Copy custom file index.
      */
@@ -129,9 +134,10 @@ private:
 
     Ui::DownloadBackgroundSkinDialog *m_ui;
 
-    int m_myThemeIndex;
-    DownloadBackgroundListWidget *m_backgroundList, *m_myBackgroundList;
-    DownloadBackgroundRemoteWidget *m_remoteBackgroundList;
+    int m_stackThemeIndex;
+    DownloadBackgroundListWidget *m_cacheBackgroundList;
+    DownloadBackgroundListWidget *m_stackBackgroundList;
+    DownloadBackgroundOnlineWidget *m_onlineBackgroundList;
 
 };
 

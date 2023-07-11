@@ -1,8 +1,8 @@
 #include "downloadbackgroundskindialog.h"
 #include "ui_downloadbackgroundskindialog.h"
+#include "downloadbackgroundremotewidget.h"
 #include "downloadbackgroundmanager.h"
 #include "downloadcolordialog.h"
-#include "downloadbackgroundremotewidget.h"
 #include "downloadobject.h"
 #include "downloadtopareawidget.h"
 #include "downloadotherdefine.h"
@@ -10,16 +10,17 @@
 #include "downloadextractwrapper.h"
 #include "downloaduiobject.h"
 #include "downloadotherdefine.h"
+#include "downloadwidgetutils.h"
 
 #ifdef Q_CC_MSVC
 #  include <functional>
 #endif
-#include <QScrollBar>
+#define CURRENT_ITEMS_COUNT     58
 
 DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),
       m_ui(new Ui::DownloadBackgroundSkinDialog),
-      m_myThemeIndex(CURRENT_ITEMS_COUNT)
+      m_stackThemeIndex(CURRENT_ITEMS_COUNT)
 {
     m_ui->setupUi(this);
     setBackgroundLabel(m_ui->background);
@@ -38,32 +39,16 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
 #endif
     connect(m_ui->skinAnimationSiwidget, SIGNAL(buttonClicked(int)), SLOT(backgroundListWidgetChanged(int)));
 
-    m_backgroundList = new DownloadBackgroundListWidget(this);
-    m_ui->recommandScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    m_ui->recommandScrollArea->setWidgetResizable(true);
-    m_ui->recommandScrollArea->setFrameShape(QFrame::NoFrame);
-    m_ui->recommandScrollArea->setFrameShadow(QFrame::Plain);
-    m_ui->recommandScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->recommandScrollArea->setWidget(m_backgroundList);
-    m_ui->recommandScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
+    m_cacheBackgroundList = new DownloadBackgroundListWidget(this);
+    m_cacheBackgroundList->setType(DownloadBackgroundListWidget::CachedModule);
+    TTK::Widget::generateVScrollAreaFormat(m_ui->recommendScrollArea, m_cacheBackgroundList);
 
-    m_myBackgroundList = new DownloadBackgroundListWidget(this);
-    m_ui->userScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    m_ui->userScrollArea->setWidgetResizable(true);
-    m_ui->userScrollArea->setFrameShape(QFrame::NoFrame);
-    m_ui->userScrollArea->setFrameShadow(QFrame::Plain);
-    m_ui->userScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->userScrollArea->setWidget(m_myBackgroundList);
-    m_ui->userScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
+    m_stackBackgroundList = new DownloadBackgroundListWidget(this);
+    m_stackBackgroundList->setType(DownloadBackgroundListWidget::StackedModule);
+    TTK::Widget::generateVScrollAreaFormat(m_ui->userScrollArea, m_stackBackgroundList);
 
-    m_remoteBackgroundList = new DownloadBackgroundRemoteWidget(this);
-    m_ui->remoteScrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    m_ui->remoteScrollArea->setWidgetResizable(true);
-    m_ui->remoteScrollArea->setFrameShape(QFrame::NoFrame);
-    m_ui->remoteScrollArea->setFrameShadow(QFrame::Plain);
-    m_ui->remoteScrollArea->setAlignment(Qt::AlignVCenter);
-    m_ui->remoteScrollArea->setWidget(m_remoteBackgroundList);
-    m_ui->remoteScrollArea->verticalScrollBar()->setStyleSheet(TTK::UI::ScrollBarStyle02);
+    m_onlineBackgroundList = new DownloadBackgroundOnlineWidget(this);
+    TTK::Widget::generateVScrollAreaFormat(m_ui->remoteScrollArea, m_onlineBackgroundList);
 
     addThemeListWidgetItem();
     backgroundListWidgetChanged(0);
@@ -77,19 +62,20 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
     connect(m_ui->paletteButton, SIGNAL(clicked()), SLOT(showPaletteDialog()));
     connect(m_ui->customSkin, SIGNAL(clicked()) ,SLOT(showCustomSkinDialog()));
-    connect(m_backgroundList, SIGNAL(itemClicked(QString)), SLOT(backgroundListWidgetItemClicked(QString)));
-    connect(m_myBackgroundList, SIGNAL(itemClicked(QString)), SLOT(myBackgroundListWidgetItemClicked(QString)));
+
+    connect(m_cacheBackgroundList, SIGNAL(itemClicked(int,QString)), SLOT(classicalListWidgetItemClicked(int,QString)));
+    connect(m_stackBackgroundList, SIGNAL(itemClicked(int,QString)), SLOT(classicalListWidgetItemClicked(int,QString)));
 }
 
 DownloadBackgroundSkinDialog::~DownloadBackgroundSkinDialog()
 {
     delete m_ui;
-    delete m_backgroundList;
-    delete m_myBackgroundList;
-    delete m_remoteBackgroundList;
+    delete m_cacheBackgroundList;
+    delete m_stackBackgroundList;
+    delete m_onlineBackgroundList;
 }
 
-QPixmap DownloadBackgroundSkinDialog::setMBackground(QString &name)
+QPixmap DownloadBackgroundSkinDialog::setBackgroundUrl(QString &name)
 {
     QString path = USER_THEME_DIR_FULL + name + TKM_FILE;
     DownloadBackgroundSkinDialog::themeValidCheck(name, path);
@@ -128,14 +114,14 @@ QString DownloadBackgroundSkinDialog::cpoyArtFileToLocal(const QString &path)
 void DownloadBackgroundSkinDialog::updateArtFileTheme(const QString &theme)
 {
     const QString &des = QString("%1%2%3").arg(USER_THEME_DIR_FULL, theme, TKM_FILE);
-    m_myBackgroundList->createItem(theme, des, true);
-    m_myBackgroundList->updateLastedItem();
+    m_stackBackgroundList->addCellItem(theme, des, true);
+    m_stackBackgroundList->updateLastedItem();
 }
 
-void DownloadBackgroundSkinDialog::setCurrentBgTheme(const QString &theme, int alpha)
+void DownloadBackgroundSkinDialog::setCurrentBackgroundTheme(const QString &theme, int alpha)
 {
-    m_backgroundList->setCurrentItemName(theme);
-    m_myBackgroundList->setCurrentItemName(theme);
+    m_cacheBackgroundList->setCurrentItemName(theme);
+    m_stackBackgroundList->setCurrentItemName(theme);
 
     m_ui->skinTransparentButton->setValue(alpha);
     setSkinTransToolText(alpha);
@@ -164,7 +150,7 @@ void DownloadBackgroundSkinDialog::showPaletteDialog()
 void DownloadBackgroundSkinDialog::showPaletteDialog(const QString &path)
 {
     cpoyFileFromLocal(path);
-    m_myBackgroundList->updateLastedItem();
+    m_stackBackgroundList->updateLastedItem();
 }
 
 void DownloadBackgroundSkinDialog::showCustomSkinDialog()
@@ -182,19 +168,19 @@ void DownloadBackgroundSkinDialog::showCustomSkinDialog()
         {
             const QString &des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(index + 1).arg(TKM_FILE);
             QFile::copy(path, des);
-            m_myBackgroundList->createItem(QString("theme-%1").arg(index + 1), des, true);
+            m_stackBackgroundList->addCellItem(QString("theme-%1").arg(index + 1), des, true);
         }
     }
     else
     {
         cpoyFileFromLocal(path);
     }
-    m_myBackgroundList->updateLastedItem();
+    m_stackBackgroundList->updateLastedItem();
 }
 
 void DownloadBackgroundSkinDialog::backgroundListWidgetChanged(int index)
 {
-    QWidget *toolWidget = m_remoteBackgroundList->createFunctionsWidget(index != 2, this);
+    QWidget *toolWidget = m_onlineBackgroundList->createFunctionsWidget(index != 2, this);
     if(!toolWidget->isVisible())
     {
         toolWidget->show();
@@ -207,57 +193,60 @@ void DownloadBackgroundSkinDialog::backgroundListWidgetChanged(int index)
         return;
     }
 
-    m_remoteBackgroundList->abort();
+    m_onlineBackgroundList->abort();
     if(index == 2)
     {
-        m_remoteBackgroundList->initialize();
+        m_onlineBackgroundList->initialize();
     }
 
     m_ui->stackedWidget->setIndex(0, 0);
     m_ui->stackedWidget->start(index);
 }
 
-void DownloadBackgroundSkinDialog::backgroundListWidgetItemClicked(const QString &name)
+void DownloadBackgroundSkinDialog::classicalListWidgetItemClicked(int type, const QString &name)
 {
-    if(!m_myBackgroundList->contains(name))
+    if(type == DownloadBackgroundListWidget::CachedModule)
     {
-        const QString &path = QString("%1%2%3").arg(USER_THEME_DIR_FULL, name, TKM_FILE);
-        QFile::copy(QString("%1%2%3").arg(THEME_DIR_FULL, name, TKM_FILE), path);
-        m_myBackgroundList->createItem(name, path, true);
+        if(!m_stackBackgroundList->contains(name))
+        {
+            const QString &path = QString("%1%2%3").arg(USER_THEME_DIR_FULL, name, TKM_FILE);
+            QFile::copy(QString("%1%2%3").arg(THEME_DIR_FULL, name, TKM_FILE), path);
+            m_stackBackgroundList->addCellItem(name, path, true);
+        }
+        listWidgetItemClicked(m_stackBackgroundList, name);
     }
-    listWidgetItemClicked(m_myBackgroundList, name);
+    else
+    {
+        listWidgetItemClicked(m_cacheBackgroundList, name);
+    }
 }
 
-void DownloadBackgroundSkinDialog::myBackgroundListWidgetItemClicked(const QString &name)
+void DownloadBackgroundSkinDialog::remoteListWidgetItemClicked(int type, const QString &name)
 {
-    listWidgetItemClicked(m_backgroundList, name);
-}
-
-void DownloadBackgroundSkinDialog::remoteBackgroundListWidgetItemClicked(const QString &name)
-{
+    Q_UNUSED(type);
     DownloadBackgroundImage image;
-    m_remoteBackgroundList->outputRemoteSkin(image, name);
+    m_onlineBackgroundList->outputRemoteSkin(image, name);
     if(!image.isValid())
     {
         return;
     }
 
-    if(!m_myBackgroundList->contains(image))
+    if(!m_stackBackgroundList->contains(image))
     {
         const int index = cpoyFileToLocalIndex();
         const QString &theme = QString("theme-%1").arg(index + 1);
         const QString &des = QString("%1%2%3").arg(USER_THEME_DIR_FULL, theme, TKM_FILE);
         DownloadExtractWrapper::inputSkin(&image, des);
 
-        m_myBackgroundList->createItem(theme, des, true);
-        listWidgetItemClicked(m_myBackgroundList, theme);
+        m_stackBackgroundList->addCellItem(theme, des, true);
+        listWidgetItemClicked(m_stackBackgroundList, theme);
     }
     else
     {
-        DownloadBackgroundListItem *it = m_myBackgroundList->find(image);
+        DownloadBackgroundListItem *it = m_stackBackgroundList->find(image);
         if(it)
         {
-            listWidgetItemClicked(m_myBackgroundList, it->fileName());
+            listWidgetItemClicked(m_stackBackgroundList, it->fileName());
         }
     }
 }
@@ -278,16 +267,20 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
 
 void DownloadBackgroundSkinDialog::addThemeListWidgetItem()
 {
-    QFileInfoList files(QDir(THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
-    for(const QFileInfo &fin : qAsConst(files))
-    {
-        m_backgroundList->createItem(fin.baseName(), fin.filePath(), false);
-    }
+    addThemeListWidgetItem(m_cacheBackgroundList, THEME_DIR_FULL, false);
+    addThemeListWidgetItem(m_stackBackgroundList, USER_THEME_DIR_FULL, true);
+}
 
-    files = QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name);
-    for(const QFileInfo &fin : qAsConst(files))
+void DownloadBackgroundSkinDialog::addThemeListWidgetItem(DownloadBackgroundListWidget *item, const QString &dir, bool state)
+{
+    TTKIntList data;
+    findThemeListByPath(dir, data);
+    std::sort(data.begin(), data.end());
+
+    for(const int index : qAsConst(data))
     {
-        m_myBackgroundList->createItem(fin.baseName(), fin.filePath(), true);
+        const QFileInfo fin(QString("%1theme-%2%3").arg(dir).arg(index).arg(TKM_FILE));
+        item->addCellItem(fin.baseName(), fin.filePath(), state);
     }
 }
 
@@ -296,18 +289,20 @@ void DownloadBackgroundSkinDialog::cpoyFileFromLocal(const QString &path)
     const int index = cpoyFileToLocal(path);
     if(index != -1)
     {
-        m_myThemeIndex = index;
-        const QString &des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(m_myThemeIndex + 1).arg(TKM_FILE);
-        m_myBackgroundList->createItem(QString("theme-%1").arg(m_myThemeIndex + 1), des, true);
+        m_stackThemeIndex = index;
+        const QString &des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(m_stackThemeIndex + 1).arg(TKM_FILE);
+        m_stackBackgroundList->addCellItem(QString("theme-%1").arg(m_stackThemeIndex + 1), des, true);
     }
 }
 
-int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
+void DownloadBackgroundSkinDialog::findThemeListByPath(const QString &dir, TTKIntList &data)
 {
-    QFileInfoList files(QDir(USER_THEME_DIR_FULL).entryInfoList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
-    TTKIntList data;
-    for(const QFileInfo &fin : qAsConst(files))
+    data.clear();
+    const QStringList files(QDir(dir).entryList(QDir::Files | QDir::NoDotAndDotDot, QDir::Name));
+
+    for(const QString &path : qAsConst(files))
     {
+        const QFileInfo fin(path);
         if(fin.suffix().toLower() != TKM_FILE_SUFFIX)
         {
             continue;
@@ -322,6 +317,12 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
         const QString &fileName = list.back();
         data << fileName.trimmed().toInt();
     }
+}
+
+int DownloadBackgroundSkinDialog::cpoyFileToLocalIndex()
+{
+    TTKIntList data;
+    findThemeListByPath(USER_THEME_DIR_FULL, data);
     std::sort(data.begin(), data.end(), std::greater<int>());
 
     int index = CURRENT_ITEMS_COUNT;

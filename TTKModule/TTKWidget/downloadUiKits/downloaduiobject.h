@@ -103,8 +103,19 @@ namespace TTK
             QScrollBar::add-line, QScrollBar::sub-line{ background:none; border:none;} \
             QScrollBar::add-page, QScrollBar::sub-page{ background:none;}";
 
-        static const QString ScrollBarStyle02 = ScrollBarStyle01 + " \
-            QScrollBar{ background:transparent;}";
+        static const QString ScrollBarStyle02 = " \
+            QScrollBar{ background:#FFFFFF; height:8px; padding-left:0px; padding-right:0px; } \
+            QScrollBar::handle:horizontal{ border-radius:4px; background:#CFCFCF; min-width: 30px; } \
+            QScrollBar::handle:horizontal::disabled{ background:#DBDBDB; } \
+            QScrollBar::handle:horizontal:hover{ background:#BBBBBB; } \
+            QScrollBar::add-line, QScrollBar::sub-line{ background:none; border:none; } \
+            QScrollBar::add-page, QScrollBar::sub-page{ background:none; }";
+
+        static const QString ScrollBarStyle03 = ScrollBarStyle01 + " \
+            QScrollBar{ background:transparent; }";
+
+        static const QString ScrollBarStyle04 = ScrollBarStyle02 + " \
+            QScrollBar{ background:transparent; }";
 
 		///LineEdit
         static const QString LineEditStyle01 = " \

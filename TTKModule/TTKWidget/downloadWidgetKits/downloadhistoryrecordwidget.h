@@ -84,7 +84,7 @@ private:
     /*!
      * Create item by index and name and size and time.
      */
-    void createItem(int index, const DownloadRecord &record);
+    void addCellItem(int index, const DownloadRecord &record);
 
     DownloadRecordList m_records;
     int m_loadRecordCount;

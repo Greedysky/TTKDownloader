@@ -113,7 +113,8 @@ void DownloadTopAreaWidget::showSkinChangedWindow()
     {
         m_backgroundWidget = new DownloadBackgroundSkinDialog(this);
     }
-    m_backgroundWidget->setCurrentBgTheme(m_backgroundImagePath, m_backgroundAlpha);
+
+    m_backgroundWidget->setCurrentBackgroundTheme(m_backgroundImagePath, m_backgroundAlpha);
     m_backgroundWidget->exec();
 }
 
@@ -151,7 +152,7 @@ void DownloadTopAreaWidget::backgroundSkinChanged(const QString &fileName)
 
 void DownloadTopAreaWidget::drawWindowBackgroundRect()
 {
-    drawWindowBackgroundRect(DownloadBackgroundSkinDialog::setMBackground(m_backgroundImagePath).toImage());
+    drawWindowBackgroundRect(DownloadBackgroundSkinDialog::setBackgroundUrl(m_backgroundImagePath).toImage());
 }
 
 void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)

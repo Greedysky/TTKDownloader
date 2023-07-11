@@ -45,7 +45,7 @@ void DownloadHistoryRecordWidget::initialize()
 
     for(int i = 0; i < m_records.count(); ++i)
     {
-        createItem(i, m_records[i]);
+        addCellItem(i, m_records[i]);
     }
 }
 
@@ -99,7 +99,7 @@ void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const 
     record.m_url = url;
     m_records << record;
 
-    createItem(row, record);
+    addCellItem(row, record);
 }
 
 void DownloadHistoryRecordWidget::deleteItemFromList()
@@ -182,7 +182,7 @@ void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
     rightClickMenu.exec(QCursor::pos());
 }
 
-void DownloadHistoryRecordWidget::createItem(int index, const DownloadRecord &record)
+void DownloadHistoryRecordWidget::addCellItem(int index, const DownloadRecord &record)
 {
     setRowHeight(index, 50);
     const QFileInfo fin(record.m_path);

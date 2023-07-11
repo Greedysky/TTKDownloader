@@ -24,8 +24,6 @@
 #include "downloaduiobject.h"
 #include "downloadbackgroundconfigmanager.h"
 
-#define CURRENT_ITEMS_COUNT         47
-
 /*! @brief The class of the background list item.
  * @author Greedysky <greedysky@163.com>
  */
@@ -72,29 +70,29 @@ public:
     /*!
      * Select the current item.
      */
-    void setSelect(bool s);
+    void setSelected(bool s);
     /*!
      * Get current selected item state.
      */
-    inline bool isSelect() const { return m_isSelected; }
+    inline bool isSelected() const { return m_isSelected; }
 
     /*!
      * Select the current item enable or not.
      */
-    void setSelectEnable(bool s);
+    void setSelectEnabled(bool s);
     /*!
      * Get current selected item state.
      */
-    inline bool isSelectEnable() const { return m_selectedMask; }
+    inline bool isSelectEnabled() const { return m_selectedEnabled; }
 
     /*!
      * Close option set the current item.
      */
-    void setCloseEnable(bool s);
+    void setCloseEnabled(bool s);
     /*!
      * Get close option set the current item.
      */
-    inline bool isCloseEnable() const { return m_closeSet; }
+    inline bool isCloseEnabled() const { return m_closeEnabled; }
 
 
 Q_SIGNALS:
@@ -116,8 +114,8 @@ private:
     virtual void enterEvent(QtEnterEvent *event) override final;
     virtual void paintEvent(QPaintEvent *event) override final;
 
-    bool m_printMask, m_isSelected, m_selectedMask;
-    bool m_closeMask, m_closeSet;
+    bool m_isSelected, m_printMask;
+    bool m_selectedEnabled, m_closeEnabled;
     QString m_name, m_path;
     DownloadSkinConfigItem m_imageInfo;
 
@@ -132,6 +130,13 @@ class TTK_MODULE_EXPORT DownloadBackgroundListWidget : public QWidget
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBackgroundListWidget)
 public:
+    enum Module
+    {
+        CachedModule,
+        StackedModule,
+        OnlineModule
+    };
+
     /*!
      * Object contsructor.
      */
@@ -142,6 +147,15 @@ public:
      * Select current item by name when the widget show.
      */
     void setCurrentItemName(const QString &name);
+
+    /*!
+     * Set background list rtpe.
+     */
+    inline void setType(Module type) { m_type = type; }
+    /*!
+     * Get background list rtpe.
+     */
+    inline Module type() const { return m_type; }
 
     /*!
      * Clear select state.
@@ -155,11 +169,11 @@ public:
     /*!
      * Create item by name and path.
      */
-    void createItem(const QString &name, const QString &path, bool state);
+    void addCellItem(const QString &name, const QString &path, bool state);
     /*!
      * Create item by icon.
      */
-    void createItem(const QString &icon, bool state);
+    void addCellItem(const QString &icon, bool state);
     /*!
      * Update item by backgroud image.
      */
@@ -201,7 +215,7 @@ Q_SIGNALS:
     /*!
      * Current item clicked.
      */
-    void itemClicked(const QString &name);
+    void itemClicked(int type, const QString &name);
 
 private Q_SLOTS:
     /*!
@@ -211,10 +225,11 @@ private Q_SLOTS:
     /*!
      * Current item has clicked.
      */
-    void itemHasClicked(DownloadBackgroundListItem *item);
+    void currentItemClicked(DownloadBackgroundListItem *item);
 
 private:
-    QGridLayout *m_layout;
+    Module m_type;
+    QGridLayout *m_gridLayout;
     DownloadBackgroundListItem *m_currentItem;
     QList<DownloadBackgroundListItem*> m_items;
 
