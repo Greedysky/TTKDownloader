@@ -59,7 +59,6 @@ LIBS += -L$$DESTDIR -lTTKCore -lTTKLibrary
 unix:LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lTTKZip -lzlib
 
 INCLUDEPATH += \
-    $$PWD/../ \
     $$PWD/../../TTKCommon \
     $$PWD/../../TTKCommon/TTKLibrary \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits \

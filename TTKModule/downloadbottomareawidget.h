@@ -22,7 +22,7 @@
 #include <QWidget>
 #include <QSystemTrayIcon>
 #include "downloadobject.h"
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 class DownloadSystemTrayMenu;
 class DownloadNetworkSpeedThread;

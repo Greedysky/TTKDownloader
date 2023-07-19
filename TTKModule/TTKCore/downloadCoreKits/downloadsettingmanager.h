@@ -22,7 +22,7 @@
 #include <QMetaEnum>
 #include "downloadobject.h"
 #include "ttksingleton.h"
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 #define G_SETTING_PTR (TTKSingleton<DownloadSettingManager>::createInstance())
 

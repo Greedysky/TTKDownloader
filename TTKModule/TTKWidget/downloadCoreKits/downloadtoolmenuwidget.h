@@ -21,7 +21,7 @@
 
 #include <QMenu>
 #include <QToolButton>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 /*! @brief The class of the tool menu.
  * @author Greedysky <greedysky@163.com>

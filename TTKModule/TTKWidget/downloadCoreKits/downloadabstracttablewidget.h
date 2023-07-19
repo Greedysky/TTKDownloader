@@ -23,7 +23,7 @@
 #include <QHeaderView>
 
 #include "downloaduiobject.h"
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 /*! @brief The class of the table widget base.
  * @author Greedysky <greedysky@163.com>

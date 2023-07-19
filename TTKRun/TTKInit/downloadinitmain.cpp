@@ -1,5 +1,5 @@
 #include <QCoreApplication>
-#include "downloadinitobject.h"
+#include "downloadconfigobject.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,10 +9,8 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(APP_COME_NAME);
     QCoreApplication::setApplicationName(APP_NAME);
 
-    DownloadInitObject object;
+    DownloadConfigObject object;
     object.initialize();
     TTK_INFO_STREAM("Parameter Init success");
-
-    Q_UNUSED(app);
     return 0;
 }

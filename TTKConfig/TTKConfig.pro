@@ -16,12 +16,15 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-TEMPLATE = app
+QT += core
 
-include($$PWD/../../TTKVersion.pri)
+TEMPLATE = lib
+CONFIG += plugin lib
 
-DESTDIR = $$OUT_PWD/../../bin
-TARGET = TTKDownloader
+include($$PWD/../TTKVersion.pri)
+
+DESTDIR = $$OUT_PWD/../bin/$$TTK_VERSION
+TARGET = TTKConfig
 
 DEFINES += TTK_LIBRARY
 
@@ -35,14 +38,16 @@ win32:msvc{
     }
 }
 
-win32:QMAKE_LFLAGS_CONSOLE = -mwindows
+INCLUDEPATH += \
+    $$PWD/../TTKCommon \
+    $$PWD/../TTKModule/TTKCore/downloadCoreKits
 
-INCLUDEPATH += $$PWD/../../TTKCommon
+HEADERS += \
+    $$PWD/downloadconfigdefine.h \
+    $$PWD/downloadconfigobject.h
 
-HEADERS += $$PWD/ttkrunobject.h
+SOURCES += $$PWD/downloadconfigobject.cpp
 
-SOURCES += \
-    $$PWD/ttkrunmain.cpp \
-    $$PWD/ttkrunobject.cpp
+RESOURCES += $$PWD/../TTKUi/DownloaderApp.qrc
 
-win32:RC_FILE = $$PWD/TTKApp.rc
+win32:RC_FILE = $$PWD/TTKConfig.rc

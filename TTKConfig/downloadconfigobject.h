@@ -1,5 +1,5 @@
-#ifndef DOWNLOADINITOBJECT_H
-#define DOWNLOADINITOBJECT_H
+#ifndef DOWNLOADCONFIGOBJECT_H
+#define DOWNLOADCONFIGOBJECT_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -19,55 +19,34 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadobject.h"
-#include "ttkversion.h"
-#include "ttkglobaldefine.h"
+#include "downloadconfigdefine.h"
 
-#define TTK_APPDATA_DIR_FULL        TTK::configPath() + APPDATA_DIR
-#define TTK_APPCACHE_DIR_FULL       TTK::configPath() + APPCACHE_DIR
-
-#define TTK_MAKE_NET_PATH_FULL      TTK_APPDATA_DIR_FULL + MAKE_NET_PATH
-#define TTK_LIST_PATH_FULL          TTK_APPDATA_DIR_FULL + LIST_PATH
-#define TTK_COFIG_PATH_FULL         TTK_APPDATA_DIR_FULL + COFIG_PATH
-#define TTK_HISTORY_PATH_FULL       TTK_APPDATA_DIR_FULL + HISTORY_PATH
-#define TTK_USER_THEME_DIR_FULL     TTK_APPDATA_DIR_FULL + USER_THEME_DIR
-
-#define TTK_THEME_DIR_FULL          TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + THEME_DIR
-#define TTK_LANGUAGE_DIR_FULL       TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + LANGUAGE_DIR
-
-#ifdef Q_OS_WIN
-#  define TTK_SERVICE_FULL          TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.exe"
-#else
-#  define TTK_DOWNLOADER_FULL       TTK::applicationPath() + "TTKDownloader.sh"
-#  define TTK_ROUTINE_FULL          TTK::applicationPath() + "TTKRoutine.sh"
-#  define TTK_CONSOLE_FULL          TTK::applicationPath() + "TTKConsole.sh"
-#  define TTK_INIT_FULL             TTK::applicationPath() + "TTKInit.sh"
-#  define TTK_SERVICE_FULL          TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKService.sh"
-#  define TTK_ROUTINECOPY_FULL      TTK::applicationPath() + TTK_VERSION_STR + TTK_SEPARATOR + "TTKRoutineCopy.sh"
-#endif
-
-
-/*! @brief The class of the download init object.
+/*! @brief The class of the download initialize object.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadInitObject : public QObject
+class TTK_MODULE_EXPORT DownloadConfigObject : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object contsructor.
      */
-    explicit DownloadInitObject(QObject *parent = nullptr);
+    explicit DownloadConfigObject(QObject *parent = nullptr);
 
     /*!
      * Check current setting file's validation.
      */
     void valid() const;
-
     /*!
-     * Init all parameter.
+     * Init parameters.
      */
     void initialize() const;
+    /*!
+     * Reset config parameters.
+     */
+    void reset() const;
+
+private:
     /*!
      * Check current dir is exist, no, just create it.
      */
@@ -97,4 +76,4 @@ public:
 
 };
 
-#endif // DOWNLOADINITOBJECT_H
+#endif // DOWNLOADCONFIGOBJECT_H

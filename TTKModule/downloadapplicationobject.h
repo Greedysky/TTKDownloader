@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include "downloadobject.h"
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 class QPropertyAnimation;
 

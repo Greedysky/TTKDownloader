@@ -19,7 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 /*! @brief The class of the app run time needed.
  * @author Greedysky <greedysky@163.com>

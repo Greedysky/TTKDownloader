@@ -21,7 +21,7 @@
 
 #include <QTimer>
 #include <QWidget>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 class QLabel;
 class QProgressBar;

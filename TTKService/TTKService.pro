@@ -19,19 +19,20 @@
 TEMPLATE = app
 
 include($$PWD/../TTKDownloader.pri)
+include($$PWD/../TTKCommon/TTKApplication/TTKApplication.pri)
 
 TARGET = TTKService
 
-LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper
+LIBS += -L$$DESTDIR -lTTKCore -lTTKDumper -lTTKConfig
 
-INCLUDEPATH +=  \
+INCLUDEPATH += \
+    $$PWD/../TTKConfig \
     $$PWD/../TTKModule \
     $$PWD/../TTKModule/TTKCore/downloadCoreKits \
     $$PWD/../TTKModule/TTKWidget/downloadCoreKits
 
 win32:msvc{
-HEADERS += \
-    $$PWD/../TTKModule/downloadapplication.h
+HEADERS += $$PWD/../TTKModule/downloadapplication.h
 }
 
 SOURCES += $$PWD/downloadservicemain.cpp

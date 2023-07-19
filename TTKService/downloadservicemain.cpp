@@ -1,5 +1,7 @@
+#include "ttkrunapplication.h"
 #include "downloadapplication.h"
 #include "downloadruntimemanager.h"
+#include "downloadconfigobject.h"
 #include "ttkdumper.h"
 #include "ttkglobalhelper.h"
 
@@ -42,11 +44,20 @@ int main(int argc, char *argv[])
 {
     loadAppScaledFactor(argc, argv);
 
-    QApplication app(argc, argv);
+    TTKRunApplication app(argc, argv);
 
     QCoreApplication::setOrganizationName(APP_NAME);
     QCoreApplication::setOrganizationDomain(APP_COME_NAME);
     QCoreApplication::setApplicationName(APP_NAME);
+
+    if(app.isRunning())
+    {
+        TTK_INFO_STREAM("One app has already run");
+        return -1;
+    }
+
+    DownloadConfigObject config;
+    config.valid();
 
     TTKDumper dumper;
     dumper.run();

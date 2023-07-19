@@ -22,7 +22,7 @@
 #include <QPainter>
 #include <QStackedWidget>
 #include <QPropertyAnimation>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 /*! @brief The class of the statckwidget switch animation.
  * @author Greedysky <greedysky@163.com>

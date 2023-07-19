@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include <QNetworkReply>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 class QFile;
 

@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include <QMenu>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 /*! @brief The class of the system tray menu widget.
  * @author Greedysky <greedysky@163.com>

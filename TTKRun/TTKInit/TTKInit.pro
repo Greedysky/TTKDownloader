@@ -23,7 +23,7 @@ CONFIG += console
 
 include($$PWD/../../TTKVersion.pri)
 
-DESTDIR = $$OUT_PWD/../../bin
+DESTDIR = $$OUT_PWD/../../bin/$$TTK_VERSION
 TARGET = TTKInit
 
 DEFINES += TTK_LIBRARY
@@ -38,17 +38,13 @@ win32:msvc{
     }
 }
 
+LIBS += -L$$DESTDIR -lTTKConfig
+
 INCLUDEPATH += \
-    $$PWD/../ \
     $$PWD/../../TTKCommon \
+    $$PWD/../../TTKConfig \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits
 
-HEADERS += $$PWD/downloadinitobject.h
-
-SOURCES += \
-    $$PWD/downloadinitmain.cpp \
-    $$PWD/downloadinitobject.cpp
-
-RESOURCES += $$PWD/../../TTKUi/DownloaderApp.qrc
+SOURCES += $$PWD/downloadinitmain.cpp
 
 win32:RC_FILE = $$PWD/TTKInit.rc

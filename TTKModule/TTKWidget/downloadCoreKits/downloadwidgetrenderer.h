@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include <QLabel>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 /*! @brief The class of the widget background renderer.
  * @author Greedysky <greedysky@163.com>

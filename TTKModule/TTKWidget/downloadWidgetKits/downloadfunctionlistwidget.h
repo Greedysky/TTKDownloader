@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include <QWidget>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 /*! @brief The class of the function list widget.
  * @author Greedysky <greedysky@163.com>

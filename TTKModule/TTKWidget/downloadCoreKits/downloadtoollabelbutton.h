@@ -20,7 +20,7 @@
  ***************************************************************************/
 
 #include <QToolButton>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 class QLabel;
 

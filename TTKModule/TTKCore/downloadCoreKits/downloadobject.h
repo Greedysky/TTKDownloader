@@ -21,7 +21,8 @@
 
 #include <QDir>
 #include <QCoreApplication>
-#include "ttkglobal.h"
+
+#include "ttkqtglobal.h"
 
 //
 #define TKF_FILE_SUFFIX         "tkf"
@@ -30,10 +31,8 @@
 //
 #define SKN_FILE_SUFFIX         "skn"
 #define JPG_FILE_SUFFIX         "jpg"
-#define EXE_FILE_SUFFIX         "exe"
 #define XML_FILE_SUFFIX         "xml"
 #define SET_FILE_SUFFIX         "stk"
-#define COM_FILE_SUFFIX         "com"
 // playlist ext
 #define TPL_FILE_SUFFIX         "tkpl"
 
@@ -42,32 +41,17 @@
 #define TKM_FILE                TTK_STRCAT(TTK_DOT, TKM_FILE_SUFFIX)
 #define SKN_FILE                TTK_STRCAT(TTK_DOT, SKN_FILE_SUFFIX)
 #define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_SUFFIX)
-#define EXE_FILE                TTK_STRCAT(TTK_DOT, EXE_FILE_SUFFIX)
 #define XML_FILE                TTK_STRCAT(TTK_DOT, XML_FILE_SUFFIX)
 #define SET_FILE                TTK_STRCAT(TTK_DOT, SET_FILE_SUFFIX)
-#define COM_FILE                TTK_STRCAT(TTK_DOT, COM_FILE_SUFFIX)
 #define TPL_FILE                TTK_STRCAT(TTK_DOT, TPL_FILE_SUFFIX)
-
-
-#define SERVICE_NAME            "TTKService"
-#define APP_NAME                "TTKDownloader"
-#define APP_DOT_NAME            TTK_STRCAT(APP_NAME, TTK_DOT)
-#define APP_COME_NAME           TTK_STRCAT(APP_NAME, COM_FILE)
-#ifdef Q_OS_WIN
-#  define APP_EXE_NAME          TTK_STRCAT(APP_NAME, EXE_FILE)
-#  define SERVICE_EXE_NAME      TTK_STRCAT(SERVICE_NAME, EXE_FILE)
-#else
-#  define APP_EXE_NAME          APP_NAME
-#  define SERVICE_EXE_NAME      SERVICE_NAME
-#endif
 
 
 #define APPDATA_DIR             TTK_STRCAT("AppData", TTK_SEPARATOR)
 #define APPCACHE_DIR            TTK_STRCAT("AppCache", TTK_SEPARATOR)
-
-#define THEME_DIR               TTK_STRCAT("GTheme", TTK_SEPARATOR)
+//
 #define LANGUAGE_DIR            TTK_STRCAT("GLanguage", TTK_SEPARATOR)
-
+#define THEME_DIR               TTK_STRCAT("GTheme", TTK_SEPARATOR)
+//
 #define TDDOWNLOAD_DIR          TTK_STRCAT("TDDOWNLOAD", TTK_SEPARATOR)
 #define USER_THEME_DIR          TTK_STRCAT("theme", TTK_SEPARATOR)
 
@@ -79,9 +63,10 @@
 
 
 #define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PDIR
+//
+#define TDDOWNLOAD_DIR_FULL     MAIN_DIR_FULL + TDDOWNLOAD_DIR
 #define APPDATA_DIR_FULL        TTK::configPath() + APPDATA_DIR
 #define APPCACHE_DIR_FULL       TTK::configPath() + APPCACHE_DIR
-#define TDDOWNLOAD_DIR_FULL     MAIN_DIR_FULL + TDDOWNLOAD_DIR
 
 
 #define MAKE_NET_PATH_FULL      APPDATA_DIR_FULL + MAKE_NET_PATH

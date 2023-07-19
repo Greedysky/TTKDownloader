@@ -21,7 +21,7 @@
 
 #include <QColor>
 #include "ttksingleton.h"
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 #define G_BACKGROUND_PTR (TTKSingleton<DownloadBackgroundManager>::createInstance())
 

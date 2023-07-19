@@ -21,7 +21,7 @@
 
 #include <QWidget>
 #include <QTimer>
-#include "ttkglobaldefine.h"
+#include "ttkmoduleexport.h"
 
 class DownloadRemoteWidget;
 class DownloadBackgroundSkinDialog;
