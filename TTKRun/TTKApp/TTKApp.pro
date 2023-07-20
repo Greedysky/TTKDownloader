@@ -35,7 +35,7 @@ win32:msvc{
     }
 }
 
-win32:QMAKE_LFLAGS_CONSOLE = -mwindows
+win32:!msvc:QMAKE_LFLAGS_CONSOLE = -mwindows
 
 INCLUDEPATH += $$PWD/../../TTKCommon
 

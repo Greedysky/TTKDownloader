@@ -33,11 +33,11 @@
 #define TTK_LANGUAGE_DIR_FULL    TTK::applicationPath() + LANGUAGE_DIR
 
 #ifdef Q_OS_WIN
-#  define TTK_SERVICE_FULL       TK::applicationPath() + SERVICE_EXE_NAME
+#  define TTK_SERVICE_FULL       TTK::applicationPath() + SERVICE_EXE_NAME
 #else
 #  define TTK_ROUTINE_FULL       TTK::applicationPath() + TTK_PDIR + "TTKRoutine.sh"
 #  define TTK_DOWNLOADER_FULL    TTK::applicationPath() + TTK_PDIR + APP_SHL_NAME
-#  define TTK_CONSOLE_FULL       TK::applicationPath() + "TTKConsole.sh"
+#  define TTK_CONSOLE_FULL       TTK::applicationPath() + "TTKConsole.sh"
 #  define TTK_INIT_FULL          TTK::applicationPath() + "TTKInit.sh"
 #  define TTK_SERVICE_FULL       TTK::applicationPath() + SERVICE_SHL_NAME
 #  define TTK_ROUTINECOPY_FULL   TTK::applicationPath() + "TTKRoutineCopy.sh"
