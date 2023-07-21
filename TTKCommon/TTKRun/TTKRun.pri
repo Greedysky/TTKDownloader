@@ -1,5 +1,5 @@
 # ***************************************************************************
-# * This file is part of the TTK Downloader project
+# * This file is part of the TTK Library Module project
 # * Copyright (C) 2015 - 2023 Greedysky Studio
 #
 # * This program is free software; you can redistribute it and/or modify
@@ -16,13 +16,24 @@
 # * with this program; If not, see <http://www.gnu.org/licenses/>.
 # ***************************************************************************
 
-TEMPLATE = app
+DEFINES += TTK_LIBRARY
 
-include($$PWD/../../TTKCommon/TTKRun/TTKRun.pri)
+win32:msvc{
+    CONFIG += c++11
+}else{
+    equals(QT_MAJOR_VERSION, 6){ #Qt6
+        QMAKE_CXXFLAGS += -std=c++17
+    }else{
+        QMAKE_CXXFLAGS += -std=c++11
+    }
+}
 
-DESTDIR = $$OUT_PWD/../../bin
-TARGET = TTKDownloader
+win32:!msvc:QMAKE_LFLAGS_CONSOLE = -mwindows
 
-SOURCES += $$PWD/ttkrunmain.cpp
+INCLUDEPATH += \
+    $$PWD \
+    $$PWD/../
 
-win32:RC_FILE = $$PWD/TTKApp.rc
+HEADERS += $$PWD/ttkrunobject.h
+
+SOURCES += $$PWD/ttkrunobject.cpp
