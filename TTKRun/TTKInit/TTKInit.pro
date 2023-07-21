@@ -42,7 +42,7 @@ win32{
     msvc{
         HEADERS += $$PWD/../../TTKConfig/downloadconfigobject.h
     }else{
-        QMAKE_LFLAGS_CONSOLE = -mwindows
+        QMAKE_LFLAGS_CONSOLE += -mwindows
     }
 }
 
