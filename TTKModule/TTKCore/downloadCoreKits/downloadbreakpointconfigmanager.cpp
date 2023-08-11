@@ -32,7 +32,7 @@ void DownloadBreakPointConfigManager::readBuffer(DownloadBreakPointItemList &rec
 void DownloadBreakPointConfigManager::writeBuffer(const DownloadBreakPointItemList &records)
 {
     createProcessingInstruction();
-    QDomElement rootDom = createRoot(APP_NAME);
+    QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement recordDom = writeDomNode(rootDom, "breakPoint");
 
     if(!records.isEmpty())

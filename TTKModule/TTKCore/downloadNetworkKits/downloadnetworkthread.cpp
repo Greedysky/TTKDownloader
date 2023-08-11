@@ -30,7 +30,7 @@ void DownloadNetworkThread::start()
     networkStateChanged();
 }
 
-void DownloadNetworkThread::setBlockNetWork(int block)
+void DownloadNetworkThread::setBlockNetWork(bool block)
 {
     G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkMode, block);
 }

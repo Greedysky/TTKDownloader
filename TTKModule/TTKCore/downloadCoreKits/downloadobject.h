@@ -20,9 +20,9 @@
  ***************************************************************************/
 
 #include <QDir>
-#include <QCoreApplication>
 
 #include "ttkqtglobal.h"
+#include "ttkqtobject.h"
 
 //
 #define TKF_FILE_SUFFIX         "tkf"
@@ -88,14 +88,6 @@
  */
 namespace TTK
 {
-    /*!
-     * Get application work dir.
-     */
-    static QString applicationPath()
-    {
-        return QCoreApplication::applicationDirPath() + TTK_SEPARATOR;
-    }
-
     /*!
      * Get application config dir.
      */

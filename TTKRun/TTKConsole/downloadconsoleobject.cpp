@@ -18,7 +18,7 @@ DownloadConsoleObject::~DownloadConsoleObject()
 
 bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
 {
-    TTK_LOG_STREAM("\n" APP_NAME << "Console Module" << TTK_VERSION_STR "\n");
+    TTK_LOG_STREAM("\n" TTK_APP_NAME << "Console Module" << TTK_VERSION_STR "\n");
 
     TTKCommandLineOption op1("-u", "--url", "download url");
     TTKCommandLineOption op2("-s", "--save", "download save path, if empty default is");

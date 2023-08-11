@@ -53,7 +53,7 @@ void DownloadConfigObject::checkFileNeededExist() const
 
 #ifdef Q_OS_UNIX
     copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
-    copyLinuxShellFile(":/data/TTKDownloader.sh", TTK_DOWNLOADER_FULL);
+    copyLinuxShellFile(":/data/TTKDownloader.sh", TTK_APP_MAIN_FULL);
     copyLinuxShellFile(":/data/TTKRoutineCopy.sh", TTK_ROUTINECOPY_FULL);
     copyLinuxShellFile(":/data/avnets.sh", TTK_MAKE_NET_PATH_FULL);
     copyLinuxShellFile(":/data/TTKInit.sh", TTK_INIT_FULL);

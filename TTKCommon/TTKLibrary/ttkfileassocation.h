@@ -1,5 +1,5 @@
-#ifndef TTKTABBUTTON_H
-#define TTKTABBUTTON_H
+#ifndef TTKFILEASSOCATION_H
+#define TTKFILEASSOCATION_H
 
 /***************************************************************************
  * This file is part of the TTK Library Module project
@@ -19,61 +19,57 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QPushButton>
-#include <QButtonGroup>
 #include "ttkmoduleexport.h"
 
-/*! @brief The class of the tab button module.
+#ifdef Q_OS_WIN
+/*! @brief The class of the file assocation.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT TTKTabButton : public QWidget
+class TTK_MODULE_EXPORT TTKFileAssocation
 {
-    Q_OBJECT
-    TTK_DECLARE_MODULE(TTKTabButton)
+    TTK_DECLARE_MODULE(TTKFileAssocation)
 public:
     /*!
-     * Object constructor.
+     * Add file assocation by suffix.
      */
-    explicit TTKTabButton(QWidget *parent = nullptr);
+    void append(const QString& suffix);
     /*!
-     * Object destructor.
+     * Remove file assocation by suffix.
      */
-    ~TTKTabButton();
-
+    void remove(const QString& suffix);
     /*!
-     * Add button by input titles.
+     * Check current suffix is or not file assocated.
      */
-    void addButtons(const QStringList &titles);
-    /*!
-     * Set button enable or disable.
-     */
-    void setButtonEnabled(bool enabled);
-
-    /*!
-     * Get button current index.
-     */
-    inline int currentIndex() const { return m_currentIndex; }
-    /*!
-     * Get tab buttons count.
-     */
-    inline int count() const { return m_buttonGroup->buttons().count(); }
-
-Q_SIGNALS:
-    /*!
-     * Index button click.
-     */
-    void clicked(int index);
-
-private Q_SLOTS:
-    /*!
-     * Set diff button clicked by index.
-     */
-    void buttonClicked(int index);
+    bool exist(const QString& suffix) const;
 
 private:
-    int m_currentIndex;
-    QButtonGroup *m_buttonGroup;
+    /*!
+     * Add class level file assocation by suffix.
+     */
+    void appendClass(const QString& suffix);
+    /*!
+     * Add software level file assocation by suffix.
+     */
+    void appendSoftware(const QString& suffix);
+    /*!
+     * Add exts level file assocation by suffix.
+     */
+    void appendFileExts(const QString& suffix);
+
+    /*!
+     * Remove class level file assocation by suffix.
+     */
+    void removeClass(const QString& suffix);
+    /*!
+     * Remove software level file assocation by suffix.
+     */
+    void removeSoftware(const QString& suffix);
+    /*!
+     * Remove exts level file assocation by suffix.
+     */
+    void removeFileExts(const QString& suffix);
 
 };
+#endif
 
-#endif // TTKTABBUTTON_H
+#endif // TTKFILEASSOCATION_H

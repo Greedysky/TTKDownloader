@@ -201,7 +201,7 @@ void DownloadApplication::readSystemConfigFromFile()
     }
 
     //When the configuration is close to the direct exit
-    m_bottomAreaWidget->setSystemCloseConfig(G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toInt());
+    m_bottomAreaWidget->setSystemCloseConfig(G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toBool());
 
     //Reset geometry
     setGeometry(xml.readWindowGeometry());

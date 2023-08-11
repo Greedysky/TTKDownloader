@@ -73,7 +73,7 @@ void DownloadConfigManager::writeBuffer()
     }
 
     createProcessingInstruction();
-    QDomElement rootDom = createRoot(APP_NAME);
+    QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement plusSettingDom = writeDomNode(rootDom, "plusSetting");
     QDomElement backgroundSettingDom = writeDomNode(rootDom, "backgroundSetting");
     QDomElement hotkeySettingDom = writeDomNode(rootDom, "hotkeySetting");

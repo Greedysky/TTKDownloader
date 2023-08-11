@@ -1,5 +1,5 @@
-#ifndef TTKSEMAPHORELOOP_H
-#define TTKSEMAPHORELOOP_H
+#ifndef TTKQTOBJECT_H
+#define TTKQTOBJECT_H
 
 /***************************************************************************
  * This file is part of the TTK Library Module project
@@ -19,45 +19,32 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QTimer>
-#include <QEventLoop>
-#include "ttkmoduleexport.h"
+#include "ttkobject.h"
+#include <QCoreApplication>
 
-/*! @brief The class of the semaphore event loop.
+#define TTK_SERVICE_FULL        TTK::applicationPath() + TTK_SERVICE_SHL_NAME
+#define TTK_APP_MAIN_FULL       TTK::applicationPath() + TTK_PDIR + TTK_APP_SHL_NAME
+
+#ifdef Q_OS_UNIX
+#  define TTK_INIT_FULL         TTK::applicationPath() + "TTKInit.sh"
+#  define TTK_CONSOLE_FULL      TTK::applicationPath() + "TTKConsole.sh"
+#  define TTK_ROUTINECOPY_FULL  TTK::applicationPath() + "TTKRoutineCopy.sh"
+#  define TTK_ROUTINE_FULL      TTK::applicationPath() + TTK_PDIR + "TTKRoutine.sh"
+#endif
+
+
+/*! @brief The namespace of the application object.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT TTKSemaphoreLoop : public QEventLoop
+namespace TTK
 {
-    Q_OBJECT
-    TTK_DECLARE_MODULE(TTKSemaphoreLoop)
-public:
     /*!
-     * Object constructor.
+     * Get application work dir.
      */
-    explicit TTKSemaphoreLoop(QObject *parent = nullptr);
-    /*!
-     * Object destructor.
-     */
-    ~TTKSemaphoreLoop();
+    static QString applicationPath()
+    {
+        return QCoreApplication::applicationDirPath() + TTK_SEPARATOR;
+    }
+}
 
-    /*!
-     * Event loop start.
-     */
-    int exec(ProcessEventsFlags flags = AllEvents);
-
-public Q_SLOTS:
-    /*!
-     * Event loop quit.
-     */
-    void quit();
-    /*!
-     * Event loop exit.
-     */
-    void exit();
-
-private:
-    QTimer m_timer;
-
-};
-
-#endif // TTKSEMAPHORELOOP_H
+#endif // TTKQTOBJECT_H

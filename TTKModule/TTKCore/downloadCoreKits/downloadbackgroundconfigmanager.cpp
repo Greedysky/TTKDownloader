@@ -22,7 +22,7 @@ void DownloadSkinConfigManager::writeBuffer(const DownloadSkinConfigItem &item, 
     createProcessingInstruction();
     QDomElement rootDom = createRoot("TTKSkin");
 
-    writeDomElement(rootDom, "creator", TTKXmlAttribute("value", APP_NAME));
+    writeDomElement(rootDom, "creator", TTKXmlAttribute("value", TTK_APP_NAME));
     writeDomElement(rootDom, "name", TTKXmlAttribute("value", item.m_name));
     writeDomElement(rootDom, "useCount", TTKXmlAttribute("value", item.m_useCount));
 

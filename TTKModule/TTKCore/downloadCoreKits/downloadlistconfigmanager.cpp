@@ -28,7 +28,7 @@ void DownloadListConfigManager::writeBuffer(const DownloadItemList &records)
     }
 
     createProcessingInstruction();
-    QDomElement rootDom = createRoot(APP_NAME);
+    QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement recordDom = writeDomNode(rootDom, "list");
 
     for(const DownloadItem &record : qAsConst(records))

@@ -138,8 +138,8 @@ void DownloadSettingWidget::initialize()
     globalHotkeyBoxChanged(m_ui->globalHotkeyBox->isChecked());
 
     ///////////////////////////////////////////////////////////////////////////
-    G_SETTING_PTR->value(DownloadSettingManager::DownloadLimit).toInt() == 1 ?
-                         m_ui->downloadFullRadioBox->click() : m_ui->downloadLimitRadioBox->click();
+    G_SETTING_PTR->value(DownloadSettingManager::DownloadLimit).toBool() ?
+                         m_ui->downloadLimitRadioBox->click() : m_ui->downloadFullRadioBox->click();
     m_ui->defaultDownloadModeBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadMode).toInt());
     m_ui->downloadMaxCountBox->setCurrentIndex(G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCount).toInt());
 
@@ -211,7 +211,7 @@ void DownloadSettingWidget::saveParameterSettings()
     G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunMode, m_ui->slienceRunCheckBox->isChecked());
 
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimit, m_ui->downloadFullRadioBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimit, m_ui->downloadLimitRadioBox->isChecked());
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMode, m_ui->defaultDownloadModeBox->currentIndex());
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCount, m_ui->downloadMaxCountBox->currentIndex());
 

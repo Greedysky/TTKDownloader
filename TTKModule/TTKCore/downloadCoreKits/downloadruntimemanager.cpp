@@ -49,7 +49,7 @@ void DownloadRunTimeManager::run() const
     xml.fromFile();
     xml.readBuffer();
 
-    G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toInt());
+    G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toBool());
 }
 
 QString DownloadRunTimeManager::translator() const

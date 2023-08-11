@@ -1,5 +1,5 @@
-#ifndef TTKSEMAPHORELOOP_H
-#define TTKSEMAPHORELOOP_H
+#ifndef TTKPLATFORMSYSTEM_H
+#define TTKPLATFORMSYSTEM_H
 
 /***************************************************************************
  * This file is part of the TTK Library Module project
@@ -19,45 +19,62 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QTimer>
-#include <QEventLoop>
 #include "ttkmoduleexport.h"
 
-/*! @brief The class of the semaphore event loop.
+/*! @brief The class of the platform system.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT TTKSemaphoreLoop : public QEventLoop
+class TTK_MODULE_EXPORT TTKPlatformSystem
 {
-    Q_OBJECT
-    TTK_DECLARE_MODULE(TTKSemaphoreLoop)
+    TTK_DECLARE_MODULE(TTKPlatformSystem)
 public:
-    /*!
-     * Object constructor.
-     */
-    explicit TTKSemaphoreLoop(QObject *parent = nullptr);
-    /*!
-     * Object destructor.
-     */
-    ~TTKSemaphoreLoop();
+    enum class System
+    {
+        Win11,
+        Win10,
+        Win81,
+        Win8,
+        Win7,
+        WinVista,
+        WinXP,
+        WinXPProfessionalEdition,
+        Win2000,
+        WinNT40,
+        Win95,
+        Win98,
+        WinMe,
+        WinServer2003,
+        WinServer2003R2,
+        WinServer2008,
+        WinServer2008R2,
+        WinServer2012,
+        Linux,
+        LinuxUbuntu,
+        LinuxDebian,
+        LinuxArch,
+        LinuxCentOS,
+        Mac,
+        Unkown
+    };
 
     /*!
-     * Event loop start.
+     * Get local DPI x.
      */
-    int exec(ProcessEventsFlags flags = AllEvents);
-
-public Q_SLOTS:
+    int logicalDotsPerInchX() const;
     /*!
-     * Event loop quit.
+     * Get local DPI y.
      */
-    void quit();
+    int logicalDotsPerInchY() const;
     /*!
-     * Event loop exit.
+     * Get local DPI.
      */
-    void exit();
+    int logicalDotsPerInch() const;
 
-private:
-    QTimer m_timer;
+    /*!
+     * Get system name.
+     */
+    System systemName() const;
 
 };
 
-#endif // TTKSEMAPHORELOOP_H
+#endif // TTKPLATFORMSYSTEM_H

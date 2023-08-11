@@ -30,7 +30,7 @@ void DownloadRecordConfigManager::writeBuffer(const DownloadRecordList &records)
     }
 
     createProcessingInstruction();
-    QDomElement rootDom = createRoot(APP_NAME);
+    QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement recordDom = writeDomNode(rootDom, "history");
 
     for(const DownloadRecord &record : qAsConst(records))

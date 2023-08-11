@@ -1,5 +1,5 @@
-#ifndef TTKSEMAPHORELOOP_H
-#define TTKSEMAPHORELOOP_H
+#ifndef TTKOBJECT_H
+#define TTKOBJECT_H
 
 /***************************************************************************
  * This file is part of the TTK Library Module project
@@ -19,45 +19,22 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QTimer>
-#include <QEventLoop>
-#include "ttkmoduleexport.h"
+#include "ttkglobal.h"
 
-/*! @brief The class of the semaphore event loop.
- * @author Greedysky <greedysky@163.com>
- */
-class TTK_MODULE_EXPORT TTKSemaphoreLoop : public QEventLoop
-{
-    Q_OBJECT
-    TTK_DECLARE_MODULE(TTKSemaphoreLoop)
-public:
-    /*!
-     * Object constructor.
-     */
-    explicit TTKSemaphoreLoop(QObject *parent = nullptr);
-    /*!
-     * Object destructor.
-     */
-    ~TTKSemaphoreLoop();
+#define TTK_SERVICE_NAME        "TTKService"
+#define TTK_APP_NAME            "TTKDownloader"
+#define TTK_APP_COME_NAME       TTK_STRCAT(TTK_APP_NAME, COM_FILE)
 
-    /*!
-     * Event loop start.
-     */
-    int exec(ProcessEventsFlags flags = AllEvents);
+#ifdef _WIN32
+#  define TTK_APP_EXE_NAME      TTK_STRCAT(TTK_APP_NAME, EXE_FILE)
+#  define TTK_SERVICE_EXE_NAME  TTK_STRCAT(TTK_SERVICE_NAME, EXE_FILE)
+#  define TTK_APP_SHL_NAME      TTK_APP_EXE_NAME
+#  define TTK_SERVICE_SHL_NAME  TTK_SERVICE_EXE_NAME
+#else
+#  define TTK_APP_EXE_NAME      TTK_APP_NAME
+#  define TTK_SERVICE_EXE_NAME  TTK_SERVICE_NAME
+#  define TTK_APP_SHL_NAME      TTK_STRCAT(TTK_APP_NAME, SHL_FILE)
+#  define TTK_SERVICE_SHL_NAME  TTK_STRCAT(TTK_SERVICE_NAME, SHL_FILE)
+#endif
 
-public Q_SLOTS:
-    /*!
-     * Event loop quit.
-     */
-    void quit();
-    /*!
-     * Event loop exit.
-     */
-    void exit();
-
-private:
-    QTimer m_timer;
-
-};
-
-#endif // TTKSEMAPHORELOOP_H
+#endif // TTKOBJECT_H
