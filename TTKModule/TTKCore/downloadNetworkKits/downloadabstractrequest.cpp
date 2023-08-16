@@ -2,7 +2,7 @@
 #include "downloadsettingmanager.h"
 #ifdef Q_CC_MSVC
 #  include <qt_windows.h>
-#elif defined Q_OS_UNIX || defined Q_CC_MINGW
+#elif defined Q_OS_UNIX || defined Q_CC_GNU
 #  include <unistd.h>
 #endif
 
@@ -60,7 +60,7 @@ void DownLoadAbstractRequest::updateDownloadSpeed()
         {
 #ifdef Q_CC_MSVC
             ::Sleep(MT_S2MS - limitValue * MH_KB * MT_S2MS / delta);
-#elif defined Q_OS_UNIX || defined Q_CC_MINGW
+#elif defined Q_OS_UNIX || defined Q_CC_GNU
             usleep((MT_S2MS - limitValue * MH_KB * MT_S2MS / delta) * MT_MS2US);
 #endif
         }
