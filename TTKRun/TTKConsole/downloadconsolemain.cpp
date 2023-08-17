@@ -9,5 +9,5 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName(TTK_APP_NAME);
 
     DownloadConsoleObject object;
-    return object.initialize(app);
+    return object.initialize();
 }

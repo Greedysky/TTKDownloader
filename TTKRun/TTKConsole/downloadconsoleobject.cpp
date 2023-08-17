@@ -16,7 +16,7 @@ DownloadConsoleObject::~DownloadConsoleObject()
     delete m_manager;
 }
 
-bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
+bool DownloadConsoleObject::initialize() const
 {
     TTK_LOG_STREAM("\n" TTK_APP_NAME << "Console Module" << TTK_VERSION_STR "\n");
 
@@ -26,7 +26,7 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
     TTKCommandLineParser parser;
     parser.addOption(op1);
     parser.addOption(op2);
-    parser.process(app);
+    parser.process();
 
     if(parser.isEmpty())
     {
@@ -67,7 +67,7 @@ bool DownloadConsoleObject::initialize(const QCoreApplication &app) const
     }
 
     TTK_LOG_STREAM("download save path: " << m_manager->downloadedPath());
-    return app.exec();
+    return QCoreApplication::exec();
 }
 
 void DownloadConsoleObject::progressChanged(qint64 current, qint64 total)
