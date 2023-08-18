@@ -1,12 +1,8 @@
 #include "downloadnetworkthread.h"
 #include "downloadsettingmanager.h"
+#include "ttkconcurrent.h"
 
 #include <QHostInfo>
-#if TTK_QT_VERSION_CHECK(5,0,0)
-#  include <QtConcurrent/QtConcurrent>
-#else
-#  include <QtConcurrentRun>
-#endif
 
 #define NETWORK_DETECT_INTERVAL     5000             // second
 #define NETWORK_REQUEST_ADDRESS     "www.baidu.com"  // ip
@@ -37,7 +33,7 @@ void DownloadNetworkThread::setBlockNetWork(bool block)
 
 void DownloadNetworkThread::networkStateChanged()
 {
-    const auto status = QtConcurrent::run([&]()
+    TTKConcurrent(
     {
         const bool block = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toBool();
         const QHostInfo info = QHostInfo::fromName(NETWORK_REQUEST_ADDRESS);
@@ -45,5 +41,4 @@ void DownloadNetworkThread::networkStateChanged()
         m_networkState = block ? false : m_networkState;
         Q_EMIT networkConnectionStateChanged(m_networkState);
     });
-    Q_UNUSED(status);
 }
