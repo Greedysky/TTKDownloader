@@ -25,7 +25,7 @@
 #include "downloadnetworkdefines.h"
 #include "downloadalgorithmutils.h"
 
-/*! @brief The class of the abstract downloading data.
+/*! @brief The class of the abstract network.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadAbstractNetwork : public QObject
