@@ -19,16 +19,13 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QTableWidget>
-#include <QHeaderView>
-
 #include "downloaduiobject.h"
-#include "ttkmoduleexport.h"
+#include "ttkabstracttablewidget.h"
 
 /*! @brief The class of the table widget base.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadAbstractTableWidget : public QTableWidget
+class TTK_MODULE_EXPORT DownloadAbstractTableWidget : public TTKAbstractTableWidget
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadAbstractTableWidget)
@@ -37,31 +34,6 @@ public:
      * Object contsructor.
      */
     explicit DownloadAbstractTableWidget(QWidget *parent = nullptr);
-    ~DownloadAbstractTableWidget();
-
-public Q_SLOTS:
-    /*!
-     * Table widget item cell enter.
-     */
-    virtual void itemCellEntered(int row, int column);
-    /*!
-     * Table widget item cell click.
-     */
-    virtual void itemCellClicked(int row, int column);
-    /*!
-     * Remove all items.
-     */
-    virtual void removeItems();
-
-protected:
-    /*!
-     * Set selected item row color.
-     */
-    void setRowColor(int row, const QColor &color) const;
-
-    int m_previousColorRow;
-    int m_previousClickRow;
-    QColor m_backgroundColor;
 
 };
 

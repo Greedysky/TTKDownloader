@@ -19,7 +19,6 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
-    $$PWD/downloadnetworkdefines.h \
     $$PWD/downloadthread.h \
     $$PWD/downloadthreadmanager.h\
     $$PWD/downloadthunderskinrequest.h \
@@ -38,7 +37,6 @@ SOURCES += \
     $$PWD/downloadqueuerequest.cpp \
     $$PWD/downloaddatasourcerequest.cpp \
     $$PWD/downloadabstractrequest.cpp \
-    $$PWD/downloadabstractnetwork.cpp \
     $$PWD/downloadnetworkthread.cpp \
     $$PWD/downloadnetworkspeedthread.cpp \
     $$PWD/downloadurlencoder.cpp
