@@ -21,7 +21,7 @@ DownloadAbstractAnimationWidget::DownloadAbstractAnimationWidget(QWidget *parent
       m_showState(true),
       m_showLine(true)
 {
-    m_animation = new QPropertyAnimation(this, QByteArray());
+    m_animation = new QPropertyAnimation(this, {});
     m_animation->setDuration(100);
 
     connect(m_animation, SIGNAL(valueChanged(QVariant)), SLOT(animationChanged(QVariant)));

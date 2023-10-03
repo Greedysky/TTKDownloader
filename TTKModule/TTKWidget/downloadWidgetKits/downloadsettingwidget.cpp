@@ -31,7 +31,7 @@ void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunc
         QTableWidgetItem *item = nullptr;
         setItem(i, 0, item = new QTableWidgetItem);
 
-                      item = new QTableWidgetItem(QIcon(v.m_icon), QString());
+                      item = new QTableWidgetItem(QIcon(v.m_icon), {});
         QtItemSetTextAlignment(item, Qt::AlignCenter);
         setItem(i, 1, item);
 

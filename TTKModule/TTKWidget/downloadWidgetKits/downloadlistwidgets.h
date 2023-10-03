@@ -138,7 +138,7 @@ private:
     /*!
      * Start to download.
      */
-    void start(int row, const QString &name = QString());
+    void start(int row, const QString &name = {});
     /*!
      * Pause to download.
      */

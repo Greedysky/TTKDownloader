@@ -43,7 +43,7 @@ void DownloadDataSourceRequest::downLoadFinished()
     else
     {
         TTK_ERROR_STREAM("Download source data error");
-        Q_EMIT downLoadRawDataChanged(QByteArray());
+        Q_EMIT downLoadRawDataChanged({});
         deleteAll();
     }
 }

@@ -50,7 +50,7 @@ public:
     /*!
      * Start to download.
      */
-    void start(const QString &name = QString());
+    void start(const QString &name = {});
 
     /*!
      * Get download state.

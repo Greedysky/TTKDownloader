@@ -74,7 +74,7 @@ QStringList DownloadNetworkSpeedThread::newtworkNames() const
 
     if(!pTable)
     {
-        return QStringList();
+        return {};
     }
 
     GetIfTable(pTable, &dwAdapters, TRUE);
@@ -93,7 +93,7 @@ QStringList DownloadNetworkSpeedThread::newtworkNames() const
     struct ifaddrs *ifa = nullptr, *ifList;
     if(getifaddrs(&ifList) < 0)
     {
-        return QStringList();
+        return {};
     }
 
     for(ifa = ifList; ifa != nullptr; ifa = ifa->ifa_next)

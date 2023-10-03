@@ -158,7 +158,7 @@ void DownloadListWidgets::addItemToList(const QStringList &path)
         QString url = pa.trimmed();
         if(!url.isEmpty() && !findUrl(url))
         {
-            addItemToList(url, QString());
+            addItemToList(url, {});
         }
     }
 }
