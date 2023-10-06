@@ -68,7 +68,7 @@ class TTK_MODULE_EXPORT DownloadSkinConfigManager : public TTKXmlDocument
     TTK_DECLARE_MODULE(DownloadSkinConfigManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadSkinConfigManager(QObject *parent = nullptr);
 

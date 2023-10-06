@@ -33,7 +33,7 @@ class TTK_MODULE_EXPORT DownloadBackgroundListItem : public QLabel
     TTK_DECLARE_MODULE(DownloadBackgroundListItem)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadBackgroundListItem(QWidget *parent = nullptr);
 
@@ -94,7 +94,6 @@ public:
      */
     inline bool isCloseEnabled() const { return m_closeEnabled; }
 
-
 Q_SIGNALS:
     /*!
      * Current item close clicked.
@@ -138,9 +137,12 @@ public:
     };
 
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadBackgroundListWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadBackgroundListWidget();
 
     /*!

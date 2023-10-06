@@ -42,9 +42,12 @@ public:
     };
 
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadThread(QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadThread();
 
     /*!

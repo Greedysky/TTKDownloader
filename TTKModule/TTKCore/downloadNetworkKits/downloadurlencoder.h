@@ -32,7 +32,7 @@ class TTK_MODULE_EXPORT DownloadUrlEncoder : public QObject
     TTK_DECLARE_MODULE(DownloadUrlEncoder)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadUrlEncoder(QObject *parent = nullptr);
 

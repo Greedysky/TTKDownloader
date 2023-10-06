@@ -34,17 +34,14 @@ class TTK_MODULE_EXPORT DownloadMessageBox : public DownloadAbstractMoveDialog
     TTK_DECLARE_MODULE(DownloadMessageBox)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadMessageBox(QWidget *parent = nullptr);
-    /*!
-     * Object contsructor by context text.
-     */
     explicit DownloadMessageBox(const QString &text, QWidget *parent = nullptr);
-    /*!
-     * Object contsructor by context text and title.
-     */
     DownloadMessageBox(const QString &title, const QString &text, QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadMessageBox();
 
     /*!

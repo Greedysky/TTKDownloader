@@ -32,7 +32,7 @@ class TTK_MODULE_EXPORT DownloadToolMenu : public QMenu
     TTK_DECLARE_MODULE(DownloadToolMenu)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadToolMenu(QWidget *parent = nullptr);
 
@@ -61,9 +61,12 @@ class TTK_MODULE_EXPORT DownloadToolMenuWidget : public QToolButton
     TTK_DECLARE_MODULE(DownloadToolMenuWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadToolMenuWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadToolMenuWidget();
 
     /*!

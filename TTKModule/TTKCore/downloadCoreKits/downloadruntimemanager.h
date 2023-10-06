@@ -29,7 +29,7 @@ class TTK_MODULE_EXPORT DownloadRunTimeManager
     TTK_DECLARE_MODULE(DownloadRunTimeManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     DownloadRunTimeManager();
 

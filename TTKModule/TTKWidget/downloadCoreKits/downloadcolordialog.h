@@ -30,7 +30,7 @@ class TTK_MODULE_EXPORT DownloadHlPalette : public QWidget
     TTK_DECLARE_MODULE(DownloadHlPalette)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadHlPalette(QWidget *parent = nullptr);
 
@@ -59,10 +59,10 @@ private:
     /*!
      * Override the widget event.
      */
-    void paintEvent(QPaintEvent *event);
-    void resizeEvent(QResizeEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    virtual void paintEvent(QPaintEvent *event) override final;
+    virtual void resizeEvent(QResizeEvent *event) override final;
+    virtual void mousePressEvent(QMouseEvent *event) override final;
+    virtual void mouseMoveEvent(QMouseEvent *event) override final;
     /*!
      * Calculate current color.
      */
@@ -85,7 +85,7 @@ class TTK_MODULE_EXPORT DownloadHlSaturationPalette : public QWidget
     TTK_DECLARE_MODULE(DownloadHlSaturationPalette)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadHlSaturationPalette(QWidget *parent = nullptr);
 
@@ -110,10 +110,10 @@ private:
     /*!
      * Override the widget event.
      */
-    void paintEvent(QPaintEvent *event);
-    void resizeEvent(QResizeEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
+    virtual void paintEvent(QPaintEvent *event) override final;
+    virtual void resizeEvent(QResizeEvent *event) override final;
+    virtual void mousePressEvent(QMouseEvent *event) override final;
+    virtual void mouseMoveEvent(QMouseEvent *event) override final;
     /*!
      * Calculate current saturation.
      */
@@ -138,9 +138,12 @@ class TTK_MODULE_EXPORT DownloadColorDialog : public DownloadAbstractMoveDialog
     TTK_DECLARE_MODULE(DownloadColorDialog)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadColorDialog(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadColorDialog();
 
     /*!

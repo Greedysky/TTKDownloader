@@ -32,9 +32,12 @@ class TTK_MODULE_EXPORT DownloadBackgroundPopWidget : public DownloadToolMenuWid
     TTK_DECLARE_MODULE(DownloadBackgroundPopWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadBackgroundPopWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadBackgroundPopWidget();
 
     /*!

@@ -32,9 +32,12 @@ class TTK_MODULE_EXPORT DownloadThreadManager : public QObject
     TTK_DECLARE_MODULE(DownloadThreadManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadThreadManager(QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadThreadManager();
 
     /*!

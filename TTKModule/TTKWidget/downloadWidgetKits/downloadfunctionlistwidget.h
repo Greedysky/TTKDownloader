@@ -31,7 +31,7 @@ class TTK_MODULE_EXPORT DownloadFunctionItemWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadFunctionItemWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadFunctionItemWidget(QWidget *parent = nullptr);
 
@@ -82,9 +82,12 @@ class TTK_MODULE_EXPORT DownloadFunctionListWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadFunctionListWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadFunctionListWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadFunctionListWidget();
 
     /*!

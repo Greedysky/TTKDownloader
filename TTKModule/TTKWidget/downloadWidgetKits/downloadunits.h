@@ -33,9 +33,12 @@ class TTK_MODULE_EXPORT DownloadUnits : public QObject
     TTK_DECLARE_MODULE(DownloadUnits)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadUnits(const QString &url, QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadUnits();
 
     /*!

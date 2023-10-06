@@ -33,9 +33,12 @@ class TTK_MODULE_EXPORT DownloadListWidgets : public DownloadAbstractTableWidget
     TTK_DECLARE_MODULE(DownloadListWidgets)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadListWidgets(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadListWidgets();
 
     /*!

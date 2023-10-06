@@ -33,9 +33,12 @@ class TTK_MODULE_EXPORT DownloadMessageAboutDialog : public DownloadAbstractMove
     TTK_DECLARE_MODULE(DownloadMessageAboutDialog)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadMessageAboutDialog(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadMessageAboutDialog();
 
 private:

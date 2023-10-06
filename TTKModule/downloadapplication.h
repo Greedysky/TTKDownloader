@@ -41,9 +41,12 @@ class TTK_MODULE_EXPORT DownloadApplication : public TTKAbstractMoveResizeWidget
     TTK_DECLARE_MODULE(DownloadApplication)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadApplication(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadApplication();
 
     /*!

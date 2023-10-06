@@ -34,9 +34,12 @@ class TTK_MODULE_EXPORT DownloadNetworkSpeedThread : public TTKAbstractThread
     TTK_DECLARE_MODULE(DownloadNetworkSpeedThread)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadNetworkSpeedThread(QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadNetworkSpeedThread();
 
     /*!

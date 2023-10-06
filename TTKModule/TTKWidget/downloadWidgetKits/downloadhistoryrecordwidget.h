@@ -30,7 +30,13 @@ class TTK_MODULE_EXPORT DownloadHistoryRecordWidget : public DownloadAbstractTab
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadHistoryRecordWidget)
 public:
+    /*!
+     * Object constructor.
+     */
     explicit DownloadHistoryRecordWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadHistoryRecordWidget();
 
     /*!

@@ -56,7 +56,7 @@ class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public TTKXmlDocument
     TTK_DECLARE_MODULE(DownloadBreakPointConfigManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadBreakPointConfigManager(QObject *parent = nullptr);
 

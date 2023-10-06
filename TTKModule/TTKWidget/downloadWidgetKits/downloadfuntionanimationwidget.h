@@ -34,9 +34,12 @@ class TTK_MODULE_EXPORT DownloadAbstractAnimationWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadAbstractAnimationWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadAbstractAnimationWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadAbstractAnimationWidget();
 
 Q_SIGNALS:
@@ -86,7 +89,7 @@ class TTK_MODULE_EXPORT DownloadSkinAnimationWidget : public DownloadAbstractAni
     TTK_DECLARE_MODULE(DownloadSkinAnimationWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadSkinAnimationWidget(QWidget *parent = nullptr);
 

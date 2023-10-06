@@ -41,7 +41,7 @@ class TTK_MODULE_EXPORT DownloadListConfigManager : public TTKXmlDocument
     TTK_DECLARE_MODULE(DownloadListConfigManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadListConfigManager(QObject *parent = nullptr);
 

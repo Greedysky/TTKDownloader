@@ -30,7 +30,7 @@ class TTK_MODULE_EXPORT DownloadDataSourceRequest : public DownloadAbstractNetwo
     TTK_DECLARE_MODULE(DownloadDataSourceRequest)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadDataSourceRequest(QObject *parent = nullptr);
 

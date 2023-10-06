@@ -34,9 +34,12 @@ class TTK_MODULE_EXPORT DownloadNewFileDialog : public DownloadAbstractMoveDialo
     TTK_DECLARE_MODULE(DownloadNewFileDialog)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadNewFileDialog(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadNewFileDialog();
 
 Q_SIGNALS:

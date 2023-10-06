@@ -30,9 +30,12 @@ class TTK_MODULE_EXPORT DownloadRemoteWidget : public DownloadAbstractMoveWidget
     TTK_DECLARE_MODULE(DownloadRemoteWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadRemoteWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadRemoteWidget();
 
 public Q_SLOTS:

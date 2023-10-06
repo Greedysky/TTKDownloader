@@ -31,13 +31,13 @@ class TTK_MODULE_EXPORT DownloadAbstractMoveDialog : public TTKAbstractMoveDialo
     TTK_DECLARE_MODULE(DownloadAbstractMoveDialog)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadAbstractMoveDialog(QWidget *parent = nullptr);
-    /*!
-     * Object contsructor.
-     */
     explicit DownloadAbstractMoveDialog(bool transparent, QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadAbstractMoveDialog();
 
 public Q_SLOTS:

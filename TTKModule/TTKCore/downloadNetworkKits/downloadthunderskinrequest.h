@@ -69,7 +69,7 @@ class TTK_MODULE_EXPORT DownloadThunderSkinConfigManager : public TTKXmlDocument
     TTK_DECLARE_MODULE(DownloadThunderSkinConfigManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadThunderSkinConfigManager(QObject *parent = nullptr);
 
@@ -90,7 +90,7 @@ class TTK_MODULE_EXPORT DownloadThunderSkinRequest : public QObject
     TTK_DECLARE_MODULE(DownloadThunderSkinRequest)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadThunderSkinRequest(QObject *parent = nullptr);
 

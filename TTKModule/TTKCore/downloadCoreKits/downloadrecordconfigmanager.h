@@ -43,7 +43,7 @@ class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKXmlDocument
     TTK_DECLARE_MODULE(DownloadRecordConfigManager)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadRecordConfigManager(QObject *parent = nullptr);
 

@@ -35,9 +35,12 @@ class TTK_MODULE_EXPORT DownLoadAbstractRequest : public DownloadAbstractNetwork
     TTK_DECLARE_MODULE(DownLoadAbstractRequest)
 public:
     /*!
-     * Object contsructor provide download URL\ save local path and download type.
+     * Object constructor.
      */
     DownLoadAbstractRequest(const QString &url, const QString &path, QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownLoadAbstractRequest();
 
     /*!

@@ -33,7 +33,7 @@ class TTK_MODULE_EXPORT DownloadToolLabelButton : public QToolButton
     TTK_DECLARE_MODULE(DownloadToolLabelButton)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadToolLabelButton(QWidget *parent = nullptr);
 
@@ -75,7 +75,7 @@ class TTK_MODULE_EXPORT DownloadSpeedToolLabelButton : public QToolButton
     TTK_DECLARE_MODULE(DownloadSpeedToolLabelButton)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadSpeedToolLabelButton(QWidget *parent = nullptr);
 

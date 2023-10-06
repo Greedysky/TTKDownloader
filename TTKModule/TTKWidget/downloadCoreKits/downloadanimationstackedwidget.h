@@ -41,9 +41,12 @@ public:
     };
 
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadAnimationStackedWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadAnimationStackedWidget();
 
     /*!

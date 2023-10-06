@@ -35,9 +35,12 @@ class TTK_MODULE_EXPORT DownloadListItemWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadListItemWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadListItemWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadListItemWidget();
 
     /*!

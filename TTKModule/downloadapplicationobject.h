@@ -33,9 +33,12 @@ class TTK_MODULE_EXPORT DownloadApplicationObject : public QObject
     TTK_DECLARE_MODULE(DownloadApplicationObject)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadApplicationObject(QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadApplicationObject();
 
     /*!

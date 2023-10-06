@@ -37,9 +37,12 @@ class TTK_MODULE_EXPORT DownloadBackgroundSkinDialog : public DownloadAbstractMo
     TTK_DECLARE_MODULE(DownloadBackgroundSkinDialog)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadBackgroundSkinDialog(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadBackgroundSkinDialog();
 
     /*!

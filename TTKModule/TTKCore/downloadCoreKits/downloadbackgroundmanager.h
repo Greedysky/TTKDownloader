@@ -73,7 +73,7 @@ Q_SIGNALS:
 
 private:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     DownloadBackgroundManager();
 

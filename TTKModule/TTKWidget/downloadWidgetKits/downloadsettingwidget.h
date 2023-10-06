@@ -58,7 +58,7 @@ class TTK_MODULE_EXPORT DownloadFunctionTableWidget : public DownloadAbstractTab
     TTK_DECLARE_MODULE(DownloadFunctionTableWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadFunctionTableWidget(QWidget *parent = nullptr);
 
@@ -99,9 +99,12 @@ class TTK_MODULE_EXPORT DownloadSettingWidget : public DownloadAbstractMoveDialo
     TTK_DECLARE_MODULE(DownloadSettingWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadSettingWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadSettingWidget();
 
     /*!

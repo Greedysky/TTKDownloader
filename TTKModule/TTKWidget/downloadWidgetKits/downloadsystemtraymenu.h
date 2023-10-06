@@ -31,9 +31,12 @@ class TTK_MODULE_EXPORT DownloadSystemTrayMenu : public QMenu
     TTK_DECLARE_MODULE(DownloadSystemTrayMenu)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadSystemTrayMenu(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadSystemTrayMenu();
 
 private:

@@ -40,9 +40,12 @@ class TTK_MODULE_EXPORT DownloadBottomAreaWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadBottomAreaWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadBottomAreaWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadBottomAreaWidget();
 
     /*!

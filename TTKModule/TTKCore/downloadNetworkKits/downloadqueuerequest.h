@@ -40,18 +40,14 @@ class TTK_MODULE_EXPORT DownloadQueueRequest : public DownLoadAbstractRequest
     TTK_DECLARE_MODULE(DownloadQueueCache)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadQueueRequest(QObject *parent = nullptr);
-
-    /*!
-     * Object contsructor.
-     */
     DownloadQueueRequest(const DownloadQueueData &data, QObject *parent = nullptr);
-    /*!
-     * Object contsructor.
-     */
     DownloadQueueRequest(const DownloadQueueDataList &datas, QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadQueueRequest();
 
     /*!

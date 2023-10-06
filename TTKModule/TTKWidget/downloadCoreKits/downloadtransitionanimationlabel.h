@@ -33,9 +33,12 @@ class TTK_MODULE_EXPORT DownloadTransitionAnimationLabel : public QLabel
     TTK_DECLARE_MODULE(DownloadTransitionAnimationLabel)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadTransitionAnimationLabel(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadTransitionAnimationLabel();
 
     /*!

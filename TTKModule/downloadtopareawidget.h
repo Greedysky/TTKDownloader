@@ -39,9 +39,12 @@ class TTK_MODULE_EXPORT DownloadTopAreaWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadTopAreaWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadTopAreaWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadTopAreaWidget();
 
     /*!

@@ -37,9 +37,12 @@ class TTK_MODULE_EXPORT DownloadLeftAreaWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadLeftAreaWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadLeftAreaWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadLeftAreaWidget();
 
     /*!

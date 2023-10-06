@@ -35,9 +35,12 @@ class TTK_MODULE_EXPORT DownloadBackgroundOnlineWidget : public QWidget
     TTK_DECLARE_MODULE(DownloadBackgroundOnlineWidget)
 public:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     explicit DownloadBackgroundOnlineWidget(QWidget *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
     ~DownloadBackgroundOnlineWidget();
 
     /*!

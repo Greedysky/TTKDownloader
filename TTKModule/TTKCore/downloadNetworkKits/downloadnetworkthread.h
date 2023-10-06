@@ -65,9 +65,12 @@ public Q_SLOTS:
 
 private:
     /*!
-     * Object contsructor.
+     * Object constructor.
      */
     DownloadNetworkThread();
+    /*!
+     * Object destructor.
+     */
     ~DownloadNetworkThread();
 
     QTimer m_timer;
