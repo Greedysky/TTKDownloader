@@ -28,7 +28,7 @@ namespace TTK
 {
     namespace UI
     {
-		///Color
+        ///Color
         static const QString ColorStyle01 = " \
             color:rgb(230, 115, 0);";
 
@@ -38,7 +38,7 @@ namespace TTK
         static const QString ColorStyle03 = " \
             color:#80B7F1;";
 
-		///Background
+        ///Background
         static const QString BackgroundStyle01 = " \
             background-color:transparent;"
 #ifdef Q_OS_UNIX
@@ -46,7 +46,7 @@ namespace TTK
 #endif
             ;
 
-		///ToolButton
+        ///ToolButton
         static const QString ToolButtonStyle01 = " \
             QToolButton{ background-color:transparent;}";
 
@@ -64,7 +64,7 @@ namespace TTK
             QToolButton::hover{ border:1px solid #444444; color:#222222;} \
             QToolButton::disabled{ color:#999999;}";
 
-		///PushButton
+        ///PushButton
         static const QString PushButtonStyle01 = " \
             QPushButton{ background-color:transparent;  " +
 #ifdef Q_OS_UNIX
@@ -80,21 +80,21 @@ namespace TTK
             QPushButton::hover{ border:1px solid #555555; color:#444444;} \
             QPushButton::disabled{ color:#999999;}";
 
-		///RadioButton
+        ///RadioButton
         static const QString RadioButtonStyle01 = " \
             QRadioButton{ background-color:transparent;} \
             QRadioButton::indicator::unchecked{ image:url(:/control/btn_radioButton_unchecked);} \
             QRadioButton::checked { color:rgb(230, 115, 0);} \
             QRadioButton::indicator:checked { image:url(:/control/btn_radiobutton_checked);}";
 
-		///CheckBox
+        ///CheckBox
         static const QString CheckBoxStyle01 = " \
             QCheckBox{ background-color:transparent;} \
             QCheckBox::indicator::unchecked{ image:url(:/control/btn_checkBox_unchecked);} \
             QCheckBox::checked{ color:rgb(230, 115, 0);} \
             QCheckBox::indicator:checked { image:url(:/control/btn_checkBox_checked);}";
 
-		///ScrollBar
+        ///ScrollBar
         static const QString ScrollBarStyle01 = " \
             QScrollBar{ background:#FFFFFF; width:8px; padding-top:0px; padding-bottom:0px;} \
             QScrollBar::handle:vertical{ border-radius:4px; background:#CFCFCF; min-height: 30px;} \
@@ -117,13 +117,13 @@ namespace TTK
         static const QString ScrollBarStyle04 = ScrollBarStyle02 + " \
             QScrollBar{ background:transparent; }";
 
-		///LineEdit
+        ///LineEdit
         static const QString LineEditStyle01 = " \
             QLineEdit{ font-size:12px; color:#666666; font-weight:normal; border:1px solid gray;} \
             QLineEdit::hover{ border:1px solid rgb(22, 154, 243);} \
             QLineEdit::disabled{ color:#BBBBBB;}";
 
-		///Menu
+        ///Menu
         static const QString MenuStyle01 = " \
             QMenu{ padding:4px;} \
             QMenu::icon{ margin-left:10px;} \
@@ -148,7 +148,7 @@ namespace TTK
             QMenu::item:selected{ background:rgba(0, 0, 0, 200);} \
             QMenu::separator{ background:#BBBBBB;}";
 
-		///Slider
+        ///Slider
         static const QString SliderStyle01 = " \
             QSlider::groove:vertical{ background: qlineargradient(x1:0, y1:0, x2:0, y2:1, \
             stop:0 #B5B4B4, stop:1 #FCFCFC); width:3px;} \
@@ -157,7 +157,7 @@ namespace TTK
             QSlider::handle:vertical:disabled{ border-image:url(:/control/lb_slider_disable);} \
             QSlider::handle:vertical:hover{ border-image:url(:/control/lb_slider_handle_hover); border:none;}";
 
-		///ComboBox
+        ///ComboBox
         static const QString ComboBoxStyle01 = " \
             QComboBox{ border: 1px solid gray;} \
             QComboBox::hover{ border: 1px solid rgb(22, 154, 243);} \
@@ -166,7 +166,7 @@ namespace TTK
             border-left-color:darkgray; border-left-style:solid;} \
             QComboBox::down-arrow{ image:url(:/usermanager/btn_down_arrow);}";
 
-		///TableWidget
+        ///TableWidget
         static const QString TableWidgetStyle01 =
 #if defined Q_OS_UNIX && !TTK_QT_VERSION_CHECK(5,7,0) //Fix linux selection-background-color stylesheet bug
             "QTableWidget::item:selected{ background:rgba(20, 20, 20, 20); }";
@@ -174,12 +174,12 @@ namespace TTK
             "QTableWidget{ selection-background-color:rgba(20, 20, 20, 20); }";
 #endif
 
-		///ProgressBar
+        ///ProgressBar
         static const QString ProgressBar01 = " \
             QProgressBar{ border:none; background:rgb(210, 225, 240); text-align:center;} \
             QProgressBar::chunk{ background:rgb(60, 140, 220);}";
 
-		///ItemView
+        ///ItemView
         static const QString ItemView01 = " \
             QAbstractItemView::item { height:20px; }";
 
