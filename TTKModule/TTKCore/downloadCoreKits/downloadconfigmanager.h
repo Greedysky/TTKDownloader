@@ -36,11 +36,6 @@ public:
     explicit DownloadConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read config datas from xml file by given name.
-     */
-    inline bool fromFile() { return TTKXmlDocument::fromFile(COFIG_PATH_FULL); }
-
-    /*!
      * Read datas from config file.
      */
     void readBuffer() const;

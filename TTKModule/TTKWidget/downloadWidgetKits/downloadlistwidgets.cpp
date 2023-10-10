@@ -42,22 +42,26 @@ DownloadListWidgets::~DownloadListWidgets()
         list << it;
     }
 
-    DownloadListConfigManager xml;
-    xml.writeBuffer(list);
+    DownloadListConfigManager manager;
+    if(!manager.load(LIST_PATH_FULL))
+    {
+        return;
+    }
 
+    manager.writeBuffer(list);
     clearItems();
 }
 
 void DownloadListWidgets::initialize()
 {
-    DownloadListConfigManager xml;
-    if(!xml.fromFile())
+    DownloadListConfigManager manager;
+    if(!manager.fromFile(LIST_PATH_FULL))
     {
         return;
     }
 
     DownloadItemList list;
-    xml.readBuffer(list);
+    manager.readBuffer(list);
 
     for(const DownloadItem &it : qAsConst(list))
     {

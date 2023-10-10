@@ -67,11 +67,6 @@ void DownloadConfigManager::writeBuffer()
     const int skinSuspension = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspension).toInt();
     const int skinSuspensionValue = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionValue).toInt();
 
-    if(!toFile(COFIG_PATH_FULL))
-    {
-        return;
-    }
-
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement plusSettingDom = writeDomNode(rootDom, "plusSetting");
@@ -105,8 +100,7 @@ void DownloadConfigManager::writeBuffer()
     writeDomElement(skinSettingDom, "skinSuspension", TTKXmlAttribute("value", skinSuspension));
     writeDomElement(skinSettingDom, "skinSuspensionValue", TTKXmlAttribute("value", skinSuspensionValue));
 
-    QTextStream out(m_file);
-    m_document->save(out, 4);
+    save();
 }
 
 QRect DownloadConfigManager::readWindowGeometry() const

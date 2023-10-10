@@ -226,7 +226,7 @@ void DownloadThreadManager::pause()
     if(m_file)
     {
         DownloadBreakPointConfigManager manager;
-        if(manager.toFile(m_file->fileName() + SET_FILE))
+        if(manager.load(m_file->fileName() + SET_FILE))
         {
             manager.writeBuffer(records);
         }

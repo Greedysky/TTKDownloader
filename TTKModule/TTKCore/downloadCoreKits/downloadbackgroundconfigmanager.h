@@ -79,7 +79,7 @@ public:
     /*!
      * Write datas into config file.
      */
-    void writeBuffer(const DownloadSkinConfigItem &item, const QString &path);
+    void writeBuffer(const DownloadSkinConfigItem &item);
 
 };
 

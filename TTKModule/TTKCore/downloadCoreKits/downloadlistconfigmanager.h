@@ -46,11 +46,6 @@ public:
     explicit DownloadListConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read list download datas from xml file by given name.
-     */
-    inline bool fromFile() { return TTKXmlDocument::fromFile(LIST_PATH_FULL); }
-
-    /*!
      * Read datas from config file.
      */
     void readBuffer(DownloadItemList &records);

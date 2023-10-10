@@ -47,6 +47,5 @@ void DownloadBreakPointConfigManager::writeBuffer(const DownloadBreakPointItemLi
                                                   TTKXmlAttribute("ready", record.m_ready)});
     }
 
-    QTextStream out(m_file);
-    m_document->save(out, 4);
+    save();
 }

@@ -22,11 +22,6 @@ void DownloadListConfigManager::readBuffer(DownloadItemList &records)
 
 void DownloadListConfigManager::writeBuffer(const DownloadItemList &records)
 {
-    if(!toFile(LIST_PATH_FULL))
-    {
-        return;
-    }
-
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement recordDom = writeDomNode(rootDom, "list");
@@ -37,6 +32,5 @@ void DownloadListConfigManager::writeBuffer(const DownloadItemList &records)
                                                   TTKXmlAttribute("name", record.m_name)});
     }
 
-    QTextStream out(m_file);
-    m_document->save(out, 4);
+    save();
 }

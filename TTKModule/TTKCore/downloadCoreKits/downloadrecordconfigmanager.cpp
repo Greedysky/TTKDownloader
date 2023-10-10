@@ -24,11 +24,6 @@ void DownloadRecordConfigManager::readBuffer(DownloadRecordList &records)
 
 void DownloadRecordConfigManager::writeBuffer(const DownloadRecordList &records)
 {
-    if(!toFile(HISTORY_PATH_FULL))
-    {
-        return;
-    }
-
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement recordDom = writeDomNode(rootDom, "history");
@@ -41,6 +36,5 @@ void DownloadRecordConfigManager::writeBuffer(const DownloadRecordList &records)
                                                   TTKXmlAttribute("url", record.m_url)});
     }
 
-    QTextStream out(m_file);
-    m_document->save(out, 4);
+    save();
 }

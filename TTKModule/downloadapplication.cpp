@@ -163,14 +163,13 @@ void DownloadApplication::mouseDoubleClickEvent(QMouseEvent *event)
 
 void DownloadApplication::readSystemConfigFromFile()
 {
-    DownloadConfigManager xml;
-
-    if(!xml.fromFile())//open file
+    DownloadConfigManager manager;
+    if(!manager.fromFile(COFIG_PATH_FULL))
     {
         return;
     }
 
-    xml.readBuffer();
+    manager.readBuffer();
 
     //global hotkey
     if(G_SETTING_PTR->value(DownloadSettingManager::HotkeyEnable).toBool())
@@ -204,7 +203,7 @@ void DownloadApplication::readSystemConfigFromFile()
     m_bottomAreaWidget->setSystemCloseConfig(G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toBool());
 
     //Reset geometry
-    setGeometry(xml.readWindowGeometry());
+    setGeometry(manager.readWindowGeometry());
 #ifndef QT_NO_SSL
     // ssl support check
     TTK_INFO_STREAM(QString("Application network support ssl: %1").arg(QSslSocket::supportsSsl() ? "true" : "false"));
@@ -217,6 +216,11 @@ void DownloadApplication::writeSystemConfigToFile()
     G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundThemeValue, m_topAreaWidget->backgroundPath());
     G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundTransparent, m_topAreaWidget->backgroundAlpha());
 
-    DownloadConfigManager xml;
-    xml.writeBuffer();
+    DownloadConfigManager manager;
+    if(!manager.load(COFIG_PATH_FULL))
+    {
+        return;
+    }
+
+    manager.writeBuffer();
 }

@@ -27,19 +27,24 @@ DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
 {
     clearAllItems();
 
-    DownloadRecordConfigManager xml;
-    xml.writeBuffer(m_records);
-}
-
-void DownloadHistoryRecordWidget::initialize()
-{
-    DownloadRecordConfigManager xml;
-    if(!xml.fromFile())
+    DownloadRecordConfigManager manager;
+    if(!manager.load(HISTORY_PATH_FULL))
     {
         return;
     }
 
-    xml.readBuffer(m_records);
+    manager.writeBuffer(m_records);
+}
+
+void DownloadHistoryRecordWidget::initialize()
+{
+    DownloadRecordConfigManager manager;
+    if(!manager.fromFile(HISTORY_PATH_FULL))
+    {
+        return;
+    }
+
+    manager.readBuffer(m_records);
 
     setRowCount(m_loadRecordCount = m_records.count()); //reset row count
 

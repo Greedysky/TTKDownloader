@@ -46,7 +46,11 @@ void DownloadRunTimeManager::run() const
     G_NETWORK_PTR->start();
 
     DownloadConfigManager xml;
-    xml.fromFile();
+    if(!xml.fromFile(COFIG_PATH_FULL))
+    {
+        return;
+    }
+
     xml.readBuffer();
 
     G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toBool());
