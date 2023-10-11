@@ -10,8 +10,22 @@ DownloadConfigManager::DownloadConfigManager(QObject *parent)
 
 }
 
-void DownloadConfigManager::readBuffer() const
+bool DownloadConfigManager::readBuffer()
 {
+    int items = 0;
+    return readBuffer(items);
+}
+
+bool DownloadConfigManager::writeBuffer()
+{
+    int items = 0;
+    return writeBuffer(items);
+}
+
+bool DownloadConfigManager::readBuffer(int &items)
+{
+    Q_UNUSED(items);
+
     G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventMode, readXmlAttributeByTagName("closeEventMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkMode, readXmlAttributeByTagName("closeNetworkMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationMode, readXmlAttributeByTagName("fileAssociationMode").toInt());
@@ -37,10 +51,14 @@ void DownloadConfigManager::readBuffer() const
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevel, readXmlAttributeByTagName("skinEffectLevel"));
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspension, readXmlAttributeByTagName("skinSuspension"));
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionValue, readXmlAttributeByTagName("skinSuspensionValue").toInt());
+
+    return true;
 }
 
-void DownloadConfigManager::writeBuffer()
+bool DownloadConfigManager::writeBuffer(const int &items)
 {
+    Q_UNUSED(items);
+
     const QPoint &widgetPosition = G_SETTING_PTR->value(DownloadSettingManager::WidgetPosition).toPoint();
     const QSize &widgetSize = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize();
     const int closeEventMode = G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toInt();
@@ -101,6 +119,7 @@ void DownloadConfigManager::writeBuffer()
     writeDomElement(skinSettingDom, "skinSuspensionValue", TTKXmlAttribute("value", skinSuspensionValue));
 
     save();
+    return true;
 }
 
 QRect DownloadConfigManager::readWindowGeometry() const

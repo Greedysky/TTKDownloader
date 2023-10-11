@@ -45,13 +45,9 @@ void DownloadRunTimeManager::run() const
     //detect the current network state
     G_NETWORK_PTR->start();
 
-    DownloadConfigManager xml;
-    if(!xml.fromFile(COFIG_PATH_FULL))
-    {
-        return;
-    }
-
-    xml.readBuffer();
+    DownloadConfigManager manager;
+    manager.fromFile(COFIG_PATH_FULL);
+    manager.readBuffer();
 
     G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toBool());
 }

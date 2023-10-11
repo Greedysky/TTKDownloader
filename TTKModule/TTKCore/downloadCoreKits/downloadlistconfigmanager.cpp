@@ -6,31 +6,34 @@ DownloadListConfigManager::DownloadListConfigManager(QObject *parent)
 
 }
 
-void DownloadListConfigManager::readBuffer(DownloadItemList &records)
+bool DownloadListConfigManager::readBuffer(DownloadItemList &items)
 {
     const QDomNodeList &nodes = m_document->elementsByTagName("value");
     for(int i = 0; i < nodes.count(); ++i)
     {
         const QDomElement &element = nodes.item(i).toElement();
 
-        DownloadItem record;
-        record.m_url = element.attribute("url");
-        record.m_name = element.attribute("name");
-        records << record;
+        DownloadItem item;
+        item.m_url = element.attribute("url");
+        item.m_name = element.attribute("name");
+        items << item;
     }
+
+    return true;
 }
 
-void DownloadListConfigManager::writeBuffer(const DownloadItemList &records)
+bool DownloadListConfigManager::writeBuffer(const DownloadItemList &items)
 {
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement recordDom = writeDomNode(rootDom, "list");
 
-    for(const DownloadItem &record : qAsConst(records))
+    for(const DownloadItem &item : qAsConst(items))
     {
-        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("url", record.m_url),
-                                                  TTKXmlAttribute("name", record.m_name)});
+        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("url", item.m_url),
+                                                  TTKXmlAttribute("name", item.m_name)});
     }
 
     save();
+    return true;
 }

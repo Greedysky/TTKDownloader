@@ -10,7 +10,7 @@ DownloadThunderSkinConfigManager::DownloadThunderSkinConfigManager(QObject *pare
 
 }
 
-void DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &items)
+bool DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &items)
 {
     const QDomNodeList &nodes = m_document->elementsByTagName("group");
     for(int i = 0; i < nodes.count(); ++i)
@@ -59,6 +59,8 @@ void DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &i
             items << group;
         }
     }
+
+    return true;
 }
 
 

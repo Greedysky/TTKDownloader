@@ -50,7 +50,7 @@ TTK_DECLARE_LIST(DownloadBreakPointItem);
 /*! @brief The class of the break point config manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public TTKXmlDocument
+class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public TTKXmlDocument, public TTKAbstractReadWriteInterface<DownloadBreakPointItemList>
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadBreakPointConfigManager)
@@ -61,13 +61,13 @@ public:
     explicit DownloadBreakPointConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read datas from config file.
+     * Read datas from buffer.
      */
-    void readBuffer(DownloadBreakPointItemList &records);
+    virtual bool readBuffer(DownloadBreakPointItemList &items) override final;
     /*!
-     * Write datas into config file.
+     * Write datas into buffer.
      */
-    void writeBuffer(const DownloadBreakPointItemList &records);
+    virtual bool writeBuffer(const DownloadBreakPointItemList &items) override final;
 
 };
 

@@ -37,7 +37,7 @@ TTK_DECLARE_LIST(DownloadRecord);
 /*! @brief The class of the download record manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKXmlDocument
+class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKXmlDocument, public TTKAbstractReadWriteInterface<DownloadRecordList>
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadRecordConfigManager)
@@ -48,13 +48,13 @@ public:
     explicit DownloadRecordConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read datas from config file.
+     * Read datas from buffer.
      */
-    void readBuffer(DownloadRecordList &records);
+    virtual bool readBuffer(DownloadRecordList &items) override final;
     /*!
-     * Write datas into config file.
+     * Write datas into buffer.
      */
-    void writeBuffer(const DownloadRecordList &records);
+    virtual bool writeBuffer(const DownloadRecordList &items) override final;
 
 };
 

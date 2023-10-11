@@ -6,46 +6,50 @@ DownloadBreakPointConfigManager::DownloadBreakPointConfigManager(QObject *parent
 
 }
 
-void DownloadBreakPointConfigManager::readBuffer(DownloadBreakPointItemList &records)
+bool DownloadBreakPointConfigManager::readBuffer(DownloadBreakPointItemList &items)
 {
     QDomNodeList nodes = m_document->elementsByTagName("value");
     for(int i = 0; i < nodes.count(); ++i)
     {
-        DownloadBreakPointItem record;
         const QDomElement &element = nodes.item(i).toElement();
-        record.m_ready = element.attribute("ready").toLongLong();
-        record.m_end = element.attribute("end").toLongLong();
-        record.m_start = element.attribute("start").toLongLong();
-        records << record;
+
+        DownloadBreakPointItem item;
+        item.m_ready = element.attribute("ready").toLongLong();
+        item.m_end = element.attribute("end").toLongLong();
+        item.m_start = element.attribute("start").toLongLong();
+        items << item;
     }
 
     nodes = m_document->elementsByTagName("url");
     for(int i = 0; i < nodes.count(); ++i)
     {
-        for(int j = 0; j < records.count(); ++j)
+        for(int j = 0; j < items.count(); ++j)
         {
-            records[j].m_url = nodes.item(i).toElement().text();
+            items[j].m_url = nodes.item(i).toElement().text();
         }
     }
+
+    return true;
 }
 
-void DownloadBreakPointConfigManager::writeBuffer(const DownloadBreakPointItemList &records)
+bool DownloadBreakPointConfigManager::writeBuffer(const DownloadBreakPointItemList &items)
 {
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
     QDomElement recordDom = writeDomNode(rootDom, "breakPoint");
 
-    if(!records.isEmpty())
+    if(!items.isEmpty())
     {
-        writeDomText(recordDom, "url", records.front().m_url);
+        writeDomText(recordDom, "url", items.front().m_url);
     }
 
-    for(const DownloadBreakPointItem &record : qAsConst(records))
+    for(const DownloadBreakPointItem &item : qAsConst(items))
     {
-        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("start", record.m_start),
-                                                  TTKXmlAttribute("end", record.m_end),
-                                                  TTKXmlAttribute("ready", record.m_ready)});
+        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("start", item.m_start),
+                                                  TTKXmlAttribute("end", item.m_end),
+                                                  TTKXmlAttribute("ready", item.m_ready)});
     }
 
     save();
+    return true;
 }

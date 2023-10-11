@@ -63,7 +63,7 @@ TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
 /*! @brief The class of the thunder skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadThunderSkinConfigManager : public TTKXmlDocument
+class TTK_MODULE_EXPORT DownloadThunderSkinConfigManager : public TTKXmlDocument, public TTKAbstractReadInterface<DownloadSkinRemoteGroupList>
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadThunderSkinConfigManager)
@@ -74,9 +74,9 @@ public:
     explicit DownloadThunderSkinConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read datas from config file.
+     * Read datas from buffer.
      */
-    void readBuffer(DownloadSkinRemoteGroupList &items);
+    virtual bool readBuffer(DownloadSkinRemoteGroupList &items) override final;
 
 };
 

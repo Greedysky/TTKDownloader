@@ -6,20 +6,22 @@ DownloadSkinConfigManager::DownloadSkinConfigManager(QObject *parent)
 
 }
 
-void DownloadSkinConfigManager::readBuffer(DownloadSkinConfigItem &item)
+bool DownloadSkinConfigManager::readBuffer(DownloadSkinConfigItem &items)
 {
-    item.m_name = readXmlAttributeByTagName("name");
-    item.m_useCount = readXmlAttributeByTagName("useCount").toInt();
+    items.m_name = readXmlAttributeByTagName("name");
+    items.m_useCount = readXmlAttributeByTagName("useCount").toInt();
+    return true;
 }
 
-void DownloadSkinConfigManager::writeBuffer(const DownloadSkinConfigItem &item)
+bool DownloadSkinConfigManager::writeBuffer(const DownloadSkinConfigItem &items)
 {
     createProcessingInstruction();
     QDomElement rootDom = createRoot("TTKSkin");
 
     writeDomElement(rootDom, "creator", TTKXmlAttribute("value", TTK_APP_NAME));
-    writeDomElement(rootDom, "name", TTKXmlAttribute("value", item.m_name));
-    writeDomElement(rootDom, "useCount", TTKXmlAttribute("value", item.m_useCount));
+    writeDomElement(rootDom, "name", TTKXmlAttribute("value", items.m_name));
+    writeDomElement(rootDom, "useCount", TTKXmlAttribute("value", items.m_useCount));
 
     save();
+    return true;
 }

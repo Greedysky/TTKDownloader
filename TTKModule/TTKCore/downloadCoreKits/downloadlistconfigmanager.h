@@ -35,7 +35,7 @@ TTK_DECLARE_LIST(DownloadItem);
 /*! @brief The class of the download list manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadListConfigManager : public TTKXmlDocument
+class TTK_MODULE_EXPORT DownloadListConfigManager : public TTKXmlDocument, public TTKAbstractReadWriteInterface<DownloadItemList>
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadListConfigManager)
@@ -46,13 +46,13 @@ public:
     explicit DownloadListConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read datas from config file.
+     * Read datas from buffer.
      */
-    void readBuffer(DownloadItemList &records);
+    virtual bool readBuffer(DownloadItemList &items) override final;
     /*!
-     * Write datas into config file.
+     * Write datas into buffer.
      */
-    void writeBuffer(const DownloadItemList &records);
+    virtual bool writeBuffer(const DownloadItemList &items) override final;
 
 };
 

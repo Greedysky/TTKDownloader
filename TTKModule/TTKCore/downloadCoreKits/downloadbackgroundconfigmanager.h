@@ -62,7 +62,7 @@ struct TTK_MODULE_EXPORT DownloadBackgroundImage
 /*! @brief The class of the skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadSkinConfigManager : public TTKXmlDocument
+class TTK_MODULE_EXPORT DownloadSkinConfigManager : public TTKXmlDocument, public TTKAbstractReadWriteInterface<DownloadSkinConfigItem>
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadSkinConfigManager)
@@ -73,13 +73,13 @@ public:
     explicit DownloadSkinConfigManager(QObject *parent = nullptr);
 
     /*!
-     * Read datas from config file.
+     * Read datas from buffer.
      */
-    void readBuffer(DownloadSkinConfigItem &item);
+    virtual bool readBuffer(DownloadSkinConfigItem &items) override final;
     /*!
-     * Write datas into config file.
+     * Write datas into buffer.
      */
-    void writeBuffer(const DownloadSkinConfigItem &item);
+    virtual bool writeBuffer(const DownloadSkinConfigItem &items) override final;
 
 };
 
