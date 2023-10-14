@@ -36,7 +36,7 @@ DESTDIR = $$OUT_PWD/../bin/$$TTK_VERSION
 win32{
     SSL_DEPANDS = $$DESTDIR/ssleay32.dll
     SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
-    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
+#    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
 unix:!mac{
     SSL_DEPANDS = $$DESTDIR/libssleay32.so

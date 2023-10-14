@@ -25,7 +25,7 @@
 /*! @brief The class of the xml config manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadConfigManager : public TTKXmlDocument, public TTKAbstractReadWriteInterface<int>
+class TTK_MODULE_EXPORT DownloadConfigManager : public TTKXmlDocument, private TTKAbstractReadWriteInterface<int>
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadConfigManager)
