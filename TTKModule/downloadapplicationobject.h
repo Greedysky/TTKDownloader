@@ -65,11 +65,6 @@ public Q_SLOTS:
     void appResetWindow();
 
 private:
-    /*!
-     * Something temp clean up.
-     */
-    void cleanUp();
-
     QPropertyAnimation *m_animation;
 
     static DownloadApplicationObject *m_instance;

@@ -1,7 +1,6 @@
 #include "downloadapplicationobject.h"
 #include "downloadapplication.h"
 #include "downloadsettingmanager.h"
-#include "downloadotherdefine.h"
 #include "downloadmessageaboutdialog.h"
 #include "downloadimageutils.h"
 #include "ttknumberdefine.h"
@@ -24,8 +23,8 @@ DownloadApplicationObject::DownloadApplicationObject(QObject *parent)
 
 DownloadApplicationObject::~DownloadApplicationObject()
 {
-    cleanUp();
     Q_CLEANUP_RESOURCE(TTKDownloader);
+
     delete m_animation;
 }
 
@@ -69,14 +68,4 @@ void DownloadApplicationObject::appResetWindow()
         w->showNormal();
     }
     w->setGeometry((geometry.width() - WINDOW_WIDTH_MIN) / 2, (geometry.height() - WINDOW_HEIGHT_MIN) / 2, WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
-}
-
-void DownloadApplicationObject::cleanUp()
-{
-    QFile::remove(TTK_COLOR_FILE);
-    QFile::remove(TTK_IMAGE_FILE);
-    QFile::remove(TTK_RECORD_FILE);
-    QFile::remove(TTK_RECORD_IN_FILE);
-    QFile::remove(TTK_RECORD_OUT_FILE);
-    QFile::remove(DOWNLOAD_NETWORK_TEST_FILE);
 }

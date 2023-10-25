@@ -2,16 +2,27 @@
 #include "downloadapplication.h"
 #include "downloadruntimemanager.h"
 #include "downloadconfigobject.h"
+#include "downloadotherdefine.h"
 #include "ttkobject.h"
 #include "ttkdumper.h"
 #include "ttkglobalhelper.h"
 #include "ttkplatformsystem.h"
 
-#include <QTranslator>
-
 #ifdef Q_OS_UNIX
 #  include <malloc.h>
 #endif
+
+#include <QTranslator>
+
+static void cleanupCache()
+{
+    QFile::remove(TTK_COLOR_FILE);
+    QFile::remove(TTK_IMAGE_FILE);
+    QFile::remove(TTK_RECORD_FILE);
+    QFile::remove(TTK_RECORD_IN_FILE);
+    QFile::remove(TTK_RECORD_OUT_FILE);
+    QFile::remove(DOWNLOAD_NETWORK_TEST_FILE);
+}
 
 static void loadAppScaledFactor(int argc, char *argv[])
 {
@@ -55,7 +66,7 @@ int main(int argc, char *argv[])
     DownloadConfigObject config;
     config.valid();
 
-    TTKDumper dumper;
+    TTKDumper dumper(std::bind(cleanupCache));
     dumper.run();
 
     DownloadRunTimeManager manager;
@@ -78,5 +89,7 @@ int main(int argc, char *argv[])
     mallopt(M_MMAP_THRESHOLD, 1024 * 1024);   // 1MB mmap
     mallopt(M_TRIM_THRESHOLD, 2 * 1024 * 1024); // 2MB brk
 #endif
-    return app.exec();
+    const int ret = app.exec();
+    cleanupCache();
+    return ret;
 }
