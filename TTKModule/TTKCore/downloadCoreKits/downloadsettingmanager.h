@@ -37,35 +37,35 @@ class TTK_MODULE_EXPORT DownloadSettingManager : public QObject
 public:
     enum Config
     {
-        Null = -1,                      /*!< No Parameter*/
-        ScreenSize,                     /*!< Screen Size Parameter*/
-        WidgetPosition,                 /*!< Widget Position Parameter*/
-        WidgetSize,                     /*!< Widget Size Parameter*/
+        Null = -1,                          /*!< No Parameter*/
+        ScreenSize = 0x1000,                /*!< Screen Size Parameter*/
+        WidgetPosition = 0x1001,            /*!< Widget Position Parameter*/
+        WidgetSize = 0x1002,                /*!< Widget Size Parameter*/
         //
-        CloseEventMode,                 /*!< Close Event Parameter*/
-        CloseNetWorkMode,               /*!< Close NetWork Parameter*/
-        FileAssociationMode,            /*!< File Association Parameter*/
-        StartUpMode,                    /*!< Start Up Mode Parameter*/
-        StartUpRunMode,                 /*!< Start Up Run Mode Parameter*/
-        SlienceRunMode,                 /*!< Slience Run Mode Parameter*/
-        ExpandMode,                     /*!< Expand Mode Parameter*/
+        CloseEventMode = 0x2000,            /*!< Close Event Parameter*/
+        CloseNetWorkMode = 0x2001,          /*!< Close NetWork Parameter*/
+        FileAssociationMode = 0x2002,       /*!< File Association Parameter*/
+        StartUpMode = 0x2003,               /*!< Start Up Mode Parameter*/
+        StartUpRunMode = 0x2004,            /*!< Start Up Run Mode Parameter*/
+        SlienceRunMode = 0x2005,            /*!< Slience Run Mode Parameter*/
+        ExpandMode = 0x2006,                /*!< Expand Mode Parameter*/
         //
-        BackgroundThemeValue,           /*!< Background Theme Parameter*/
-        BackgroundTransparent,          /*!< Background Transparent Parameter*/
+        BackgroundThemeValue = 0x3000,      /*!< Background Theme Parameter*/
+        BackgroundTransparent = 0x3001,     /*!< Background Transparent Parameter*/
         //
-        DownloadMode,                   /*!< Download Mode Parameter*/
-        DownloadMaxCount,               /*!< Download Max Count Parameter*/
-        DownloadLimit,                  /*!< Download Limit Parameter*/
-        DownloadPathDir,                /*!< Download Path Dir Parameter*/
-        DownloadDLoadLimit,             /*!< Download DLoad Limit Parameter*/
-        DownloadULoadLimit,             /*!< Download ULoad Limit Parameter*/
+        HotkeyEnable = 0x4000,              /*!< Hotkey Enable Parameter*/
+        HotkeyValue = 0x4001,               /*!< Hotkey String Parameter*/
         //
-        SkinEffectLevel,                /*!< Skin effect Level Parameter*/
-        SkinSuspension,                 /*!< Skin Suspension Show Parameter*/
-        SkinSuspensionValue,            /*!< Skin Suspension Show Value Parameter*/
+        DownloadMode = 0x5000,              /*!< Download Mode Parameter*/
+        DownloadMaxCount = 0x5001,          /*!< Download Max Count Parameter*/
+        DownloadLimit = 0x5002,             /*!< Download Limit Parameter*/
+        DownloadPathDir = 0x5003,           /*!< Download Path Dir Parameter*/
+        DownloadDLoadLimit = 0x5004,        /*!< Download DLoad Limit Parameter*/
+        DownloadULoadLimit = 0x5005,        /*!< Download ULoad Limit Parameter*/
         //
-        HotkeyEnable,                   /*!< Hotkey Enable Parameter*/
-        HotkeyValue                     /*!< Hotkey String Parameter*/
+        SkinEffectLevel = 0x6000,           /*!< Skin effect Level Parameter*/
+        SkinSuspension = 0x6001,            /*!< Skin Suspension Show Parameter*/
+        SkinSuspensionValue = 0x6002,       /*!< Skin Suspension Show Value Parameter*/
     };
 
     /*!
