@@ -23,9 +23,9 @@ bool DownloadBreakPointConfigManager::readBuffer(DownloadBreakPointItemList &ite
     nodes = m_document->elementsByTagName("url");
     for(int i = 0; i < nodes.count(); ++i)
     {
-        for(int j = 0; j < items.count(); ++j)
+        for(DownloadBreakPointItem &item : items)
         {
-            items[j].m_url = nodes.item(i).toElement().text();
+            item.m_url = nodes.item(i).toElement().text();
         }
     }
 

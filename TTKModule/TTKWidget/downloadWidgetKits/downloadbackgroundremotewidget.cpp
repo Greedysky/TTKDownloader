@@ -122,12 +122,12 @@ QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWid
 void DownloadBackgroundOnlineWidget::outputRemoteSkin(DownloadBackgroundImage &image, const QString &data)
 {
     const int index = QFileInfo(data).baseName().toInt();
-    DownloadSkinRemoteItemList *items = &m_groups[m_currentIndex].m_items;
-    if(index >= 0 || index < items->count())
+    DownloadSkinRemoteItemList &items = m_groups[m_currentIndex].m_items;
+    if(index >= 0 || index < items.count())
     {
-        DownloadSkinRemoteItem *item = &(*items)[index];
-        image.m_item.m_name = item->m_name;
-        image.m_item.m_useCount = item->m_useCount;
+        DownloadSkinRemoteItem &item = items[index];
+        image.m_item.m_name = item.m_name;
+        image.m_item.m_useCount = item.m_useCount;
         DownloadExtractWrapper::outputThunderSkin(image.m_pix, data);
     }
 }
@@ -152,12 +152,12 @@ void DownloadBackgroundOnlineWidget::buttonClicked(int index)
 
     m_backgroundList->clearAllItems();
     DownloadQueueDataList datas;
-    DownloadSkinRemoteItemList *items = &m_groups[index].m_items;
-    for(int i = 0; i < items->count(); ++i)
+    DownloadSkinRemoteItemList &items = m_groups[index].m_items;
+    for(int i = 0; i < items.count(); ++i)
     {
         m_backgroundList->addCellItem(":/image/lb_noneImage", false);
         DownloadQueueData data;
-        data.m_url = (*items)[i].m_url;
+        data.m_url = items[i].m_url;
         data.m_path = QString("%1%2/%3%4").arg(APPCACHE_DIR_FULL).arg(index).arg(i).arg(TKM_FILE);
         datas << data;
     }
@@ -183,8 +183,7 @@ void DownloadBackgroundOnlineWidget::downLoadDataChanged(const DownloadSkinRemot
     m_groups = bytes;
     for(int i = 0; i < m_groups.count(); ++i)
     {
-        DownloadSkinRemoteGroup *item = &m_groups[i];
-        m_functionsItems[i]->setText(item->m_group);
+        m_functionsItems[i]->setText(m_groups[i].m_group);
     }
 
     //Hide left items if the number just not enough

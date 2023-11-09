@@ -107,6 +107,7 @@ DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
         btn->setText(names[i]);
         btn->setFixedSize(80, 30);
         ly->addWidget(btn);
+
         m_buttonGroup->addButton(btn, i);
         m_container << btn;
     }
