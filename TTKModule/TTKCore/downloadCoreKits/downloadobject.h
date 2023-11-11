@@ -37,29 +37,29 @@
 #define TPL_FILE_SUFFIX         "tkpl"
 
 
-#define TKF_FILE                TTK_STRCAT(TTK_DOT, TKF_FILE_SUFFIX)
-#define TKM_FILE                TTK_STRCAT(TTK_DOT, TKM_FILE_SUFFIX)
-#define SKN_FILE                TTK_STRCAT(TTK_DOT, SKN_FILE_SUFFIX)
-#define JPG_FILE                TTK_STRCAT(TTK_DOT, JPG_FILE_SUFFIX)
-#define XML_FILE                TTK_STRCAT(TTK_DOT, XML_FILE_SUFFIX)
-#define SET_FILE                TTK_STRCAT(TTK_DOT, SET_FILE_SUFFIX)
-#define TPL_FILE                TTK_STRCAT(TTK_DOT, TPL_FILE_SUFFIX)
+#define TKF_FILE                TTK_STR_CAT(TTK_DOT, TKF_FILE_SUFFIX)
+#define TKM_FILE                TTK_STR_CAT(TTK_DOT, TKM_FILE_SUFFIX)
+#define SKN_FILE                TTK_STR_CAT(TTK_DOT, SKN_FILE_SUFFIX)
+#define JPG_FILE                TTK_STR_CAT(TTK_DOT, JPG_FILE_SUFFIX)
+#define XML_FILE                TTK_STR_CAT(TTK_DOT, XML_FILE_SUFFIX)
+#define SET_FILE                TTK_STR_CAT(TTK_DOT, SET_FILE_SUFFIX)
+#define TPL_FILE                TTK_STR_CAT(TTK_DOT, TPL_FILE_SUFFIX)
 
 
-#define APPDATA_DIR             TTK_STRCAT("AppData", TTK_SEPARATOR)
-#define APPCACHE_DIR            TTK_STRCAT("AppCache", TTK_SEPARATOR)
+#define APPDATA_DIR             TTK_STR_CAT("AppData", TTK_SEPARATOR)
+#define APPCACHE_DIR            TTK_STR_CAT("AppCache", TTK_SEPARATOR)
 //
-#define LANGUAGE_DIR            TTK_STRCAT("GLanguage", TTK_SEPARATOR)
-#define THEME_DIR               TTK_STRCAT("GTheme", TTK_SEPARATOR)
+#define LANGUAGE_DIR            TTK_STR_CAT("GLanguage", TTK_SEPARATOR)
+#define THEME_DIR               TTK_STR_CAT("GTheme", TTK_SEPARATOR)
 //
-#define TDDOWNLOAD_DIR          TTK_STRCAT("TDDOWNLOAD", TTK_SEPARATOR)
-#define USER_THEME_DIR          TTK_STRCAT("theme", TTK_SEPARATOR)
+#define TDDOWNLOAD_DIR          TTK_STR_CAT("TDDOWNLOAD", TTK_SEPARATOR)
+#define USER_THEME_DIR          TTK_STR_CAT("theme", TTK_SEPARATOR)
 
 
 #define MAKE_NET_PATH           "avnets.sh"
-#define LIST_PATH               TTK_STRCAT("list", TPL_FILE)
-#define COFIG_PATH              TTK_STRCAT("config", XML_FILE)
-#define HISTORY_PATH            TTK_STRCAT("history", TKF_FILE)
+#define LIST_PATH               TTK_STR_CAT("list", TPL_FILE)
+#define COFIG_PATH              TTK_STR_CAT("config", XML_FILE)
+#define HISTORY_PATH            TTK_STR_CAT("history", TKF_FILE)
 
 
 #define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PDIR

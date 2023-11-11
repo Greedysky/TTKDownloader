@@ -21,22 +21,6 @@
 
 #include <QObject>
 
-#define TTK_TIME_FORMAT             "hh:mm"
-#define TTK_STIME_FORMAT            "hh:mm:ss"
-#define TTK_YEAR_FORMAT             "yyyy-MM-dd"
-#define TTK_YEAR_TIME_FORMAT        "yyyy-MM-dd hh:mm"
-#define TTK_YEAR_STIME_FORMAT       "yyyy-MM-dd hh:mm:ss"
-
-#define TTK_ITEM_SIZE_S             25
-#define TTK_ITEM_SIZE_M             30
-#define TTK_ITEM_SIZE_L             40
-#define TTK_ITEM_SIZE_XL            60
-
-#define TTK_NONE_LEVEL              -3
-#define TTK_LOW_LEVEL               -2
-#define TTK_NORMAL_LEVEL            -1
-#define TTK_HIGH_LEVEL              999
-
 #define TTK_COLOR_FILE              "color.jpg"
 #define TTK_IMAGE_FILE              "image_cache"
 #define TTK_RECORD_FILE             "record.raw"
