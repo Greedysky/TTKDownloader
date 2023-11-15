@@ -15,7 +15,7 @@
 #ifdef Q_CC_MSVC
 #  include <functional>
 #endif
-#define CURRENT_ITEMS_COUNT     58
+static constexpr int CURRENT_ITEMS_COUNT = 58;
 
 DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),

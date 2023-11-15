@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <QMouseEvent>
 
-#define ITEM_COUNT      4
+static constexpr int ITEM_COUNT = 4;
 
 DownloadBackgroundListItem::DownloadBackgroundListItem(QWidget *parent)
     : QLabel(parent),

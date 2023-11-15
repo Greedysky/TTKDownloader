@@ -10,8 +10,8 @@
 #include <QProgressBar>
 #include <QFileIconProvider>
 
-#define LABEL_MAX_TIME  "99:99:99"
-#define LABEL_NONE      "--"
+static constexpr const char *LABEL_NONE = "--";
+static constexpr const char *LABEL_MAX_TIME = "99:99:99";
 
 DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     : QWidget(parent),

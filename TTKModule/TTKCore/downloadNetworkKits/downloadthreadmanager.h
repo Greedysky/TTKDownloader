@@ -21,7 +21,7 @@
 
 #include "downloadthread.h"
 
-#define THREADCOUNT 1
+static constexpr int THREADCOUNT = 1;
 
 /*! @brief The class of the download thread manager.
  * @author Greedysky <greedysky@163.com>
