@@ -35,18 +35,18 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &in
 
     for(ZPOS64_T i = 0; i < gInfo.number_entry; ++i)
     {
-        char com[MH_KB] = {0};
+        char com[TTK_SN_KB2B] = {0};
         char name[WIN_NAME_MAX_LENGTH] = {0};
         char ext[WIN_NAME_MAX_LENGTH] = {0};
 
-        if(unzGetCurrentFileInfo64(zFile, &fInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK ||
+        if(unzGetCurrentFileInfo64(zFile, &fInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, TTK_SN_KB2B) != UNZ_OK ||
            unzOpenCurrentFile(zFile) != UNZ_OK)
         {
             break;
         }
 
         int size = 0;
-        char dt[MH_KB] = {0};
+        char dt[TTK_SN_KB2B] = {0};
 
         const QString &module = name;
         if(module.toLower().contains("image/bkg"))
@@ -95,18 +95,18 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
 
     for(ZPOS64_T i = 0; i < gInfo.number_entry; ++i)
     {
-        char com[MH_KB] = {0};
+        char com[TTK_SN_KB2B] = {0};
         char name[WIN_NAME_MAX_LENGTH] = {0};
         char ext[WIN_NAME_MAX_LENGTH] = {0};
 
-        if(unzGetCurrentFileInfo64(zFile, &fInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, MH_KB) != UNZ_OK ||
+        if(unzGetCurrentFileInfo64(zFile, &fInfo, name, sizeof(name), ext, WIN_NAME_MAX_LENGTH, com, TTK_SN_KB2B) != UNZ_OK ||
            unzOpenCurrentFile(zFile) != UNZ_OK)
         {
             break;
         }
 
         int size = 0;
-        char dt[MH_KB] = {0};
+        char dt[TTK_SN_KB2B] = {0};
 
         QByteArray buffer;
         const QString &module = name;

@@ -18,7 +18,7 @@ DownLoadAbstractRequest::DownLoadAbstractRequest(const QString &url, const QStri
     }
     m_file = new QFile(path, this);
 
-    m_speedTimer.setInterval(MT_S2MS);
+    m_speedTimer.setInterval(TTK_DN_S2MS);
     connect(&m_speedTimer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));
 }
 
@@ -56,12 +56,12 @@ void DownLoadAbstractRequest::updateDownloadSpeed()
     if(G_SETTING_PTR->value(DownloadSettingManager::DownloadLimit).toBool())
     {
         const int limitValue = G_SETTING_PTR->value(DownloadSettingManager::DownloadDLoadLimit).toInt();
-        if(limitValue != 0 && delta > limitValue * MH_KB)
+        if(limitValue != 0 && delta > limitValue * TTK_SN_KB2B)
         {
 #ifdef Q_CC_MSVC
-            ::Sleep(MT_S2MS - limitValue * MH_KB * MT_S2MS / delta);
+            ::Sleep(TTK_DN_S2MS - limitValue * TTK_SN_KB2B * TTK_DN_S2MS / delta);
 #elif defined Q_OS_UNIX || defined Q_CC_GNU
-            usleep((MT_S2MS - limitValue * MH_KB * MT_S2MS / delta) * MT_MS2US);
+            usleep((TTK_DN_S2MS - limitValue * TTK_SN_KB2B * TTK_DN_S2MS / delta) * TTK_DN_MS2US);
 #endif
         }
     }

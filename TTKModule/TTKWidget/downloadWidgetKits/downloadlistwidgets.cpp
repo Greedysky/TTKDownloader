@@ -25,7 +25,7 @@ DownloadListWidgets::DownloadListWidgets(QWidget *parent)
     setColumnCount(1);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-    m_speedTimer.setInterval(MT_S2MS/4);
+    m_speedTimer.setInterval(TTK_DN_S2MS / 4);
     connect(&m_speedTimer, SIGNAL(timeout()), SLOT(updateTotalSpeedLabel()));
     m_speedTimer.start();
 }

@@ -43,12 +43,12 @@ void DownloadApplicationObject::windowCloseAnimation()
     float v = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
     v = TTK::Image::reRenderValue<float>(1.0f, 0.35f, v);
     m_animation->stop();
-    m_animation->setDuration(MT_S2MS / 2);
+    m_animation->setDuration(TTK_DN_S2MS / 2);
     m_animation->setStartValue(v);
     m_animation->setEndValue(0);
     m_animation->start();
 
-    QTimer::singleShot(MT_S2MS, this, SLOT(quit()));
+    QTimer::singleShot(TTK_DN_S2MS, this, SLOT(quit()));
 }
 
 void DownloadApplicationObject::appAboutUs()

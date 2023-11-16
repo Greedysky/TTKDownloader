@@ -31,16 +31,16 @@ DownloadRemoteWidget::~DownloadRemoteWidget()
 
 void DownloadRemoteWidget::setValue(int value)
 {
-    if(value > MV_MAX)
+    if(value > TTK_RN_MAX)
     {
-        value = MV_MAX;
+        value = TTK_RN_MAX;
     }
-    else if(value < MV_MIN)
+    else if(value < TTK_RN_MIN)
     {
-        value = MV_MIN;
+        value = TTK_RN_MIN;
     }
 
-    m_value = height() * 1.0f / MV_MAX * value;
+    m_value = height() * 1.0f / TTK_RN_MAX * value;
     update();
 }
 
