@@ -37,15 +37,14 @@ TTK_DECLARE_LIST(DownloadRecord);
 /*! @brief The class of the download record manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKXmlDocument, private TTKAbstractReadWriteInterface<DownloadRecordList>
+class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKAbstractXml, private TTKAbstractReadWriteInterface<DownloadRecordList>
 {
-    Q_OBJECT
     TTK_DECLARE_MODULE(DownloadRecordConfigManager)
 public:
     /*!
      * Object constructor.
      */
-    explicit DownloadRecordConfigManager(QObject *parent = nullptr);
+    DownloadRecordConfigManager();
 
     /*!
      * Read datas from buffer.

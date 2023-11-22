@@ -1,7 +1,7 @@
 #include "downloadrecordconfigmanager.h"
 
-DownloadRecordConfigManager::DownloadRecordConfigManager(QObject *parent)
-    : TTKXmlDocument(parent)
+DownloadRecordConfigManager::DownloadRecordConfigManager()
+    : TTKAbstractXml()
 {
 
 }
@@ -28,14 +28,14 @@ bool DownloadRecordConfigManager::writeBuffer(const DownloadRecordList &items)
 {
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
-    QDomElement recordDom = writeDomNode(rootDom, "history");
+    QDomElement recordDom = writeDomElement(rootDom, "history");
 
     for(const DownloadRecord &item : qAsConst(items))
     {
-        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("name", item.m_path),
-                                                  TTKXmlAttribute("size", item.m_size),
-                                                  TTKXmlAttribute("time", item.m_time),
-                                                  TTKXmlAttribute("url", item.m_url)});
+        writeDomMultiElement(recordDom, "value", {{"name", item.m_path},
+                                                  {"size", item.m_size},
+                                                  {"time", item.m_time},
+                                                  {"url", item.m_url}});
     }
 
     save();

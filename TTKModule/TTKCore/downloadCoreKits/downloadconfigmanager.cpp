@@ -4,8 +4,8 @@
 
 #include <QRect>
 
-DownloadConfigManager::DownloadConfigManager(QObject *parent)
-    : TTKXmlDocument(parent)
+DownloadConfigManager::DownloadConfigManager()
+    : TTKAbstractXml()
 {
 
 }
@@ -26,31 +26,31 @@ bool DownloadConfigManager::readBuffer(int &items)
 {
     Q_UNUSED(items);
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventMode, readXmlAttributeByTagName("closeEventMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkMode, readXmlAttributeByTagName("closeNetworkMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationMode, readXmlAttributeByTagName("fileAssociationMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpMode, readXmlAttributeByTagName("startUpMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunMode, readXmlAttributeByTagName("startUpRunMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunMode, readXmlAttributeByTagName("slienceRunMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventMode, readAttributeByTagName("closeEventMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkMode, readAttributeByTagName("closeNetworkMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationMode, readAttributeByTagName("fileAssociationMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpMode, readAttributeByTagName("startUpMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunMode, readAttributeByTagName("startUpRunMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunMode, readAttributeByTagName("slienceRunMode").toInt());
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundThemeValue, readXmlAttributeByTagName("backgroundThemeValue"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundTransparent, readXmlAttributeByTagName("backgroundTransparent").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundThemeValue, readAttributeByTagName("backgroundThemeValue"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundTransparent, readAttributeByTagName("backgroundTransparent").toInt());
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::HotkeyEnable, readXmlAttributeByTagName("hotkeyEnable"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::HotkeyValue, readXmlAttributeByTagName("hotkeyValue"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::HotkeyEnable, readAttributeByTagName("hotkeyEnable"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::HotkeyValue, readAttributeByTagName("hotkeyValue"));
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimit, readXmlAttributeByTagName("downloadLimit").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMode, readXmlAttributeByTagName("downloadMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCount, readXmlAttributeByTagName("downloadMaxCount").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimit, readAttributeByTagName("downloadLimit").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMode, readAttributeByTagName("downloadMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCount, readAttributeByTagName("downloadMaxCount").toInt());
 
-    const QString &path = readXmlAttributeByTagName("downloadPathDir");
+    const QString &path = readAttributeByTagName("downloadPathDir");
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDir, (path.isEmpty() || !QFile::exists(path)) ? TTK::Core::downloadPrefix() : path);
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimit, readXmlAttributeByTagName("downloadDLoadLimit"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimit, readXmlAttributeByTagName("downloadULoadLimit"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimit, readAttributeByTagName("downloadDLoadLimit"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimit, readAttributeByTagName("downloadULoadLimit"));
 
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevel, readXmlAttributeByTagName("skinEffectLevel"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspension, readXmlAttributeByTagName("skinSuspension"));
-    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionValue, readXmlAttributeByTagName("skinSuspensionValue").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevel, readAttributeByTagName("skinEffectLevel"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspension, readAttributeByTagName("skinSuspension"));
+    G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionValue, readAttributeByTagName("skinSuspensionValue").toInt());
 
     return true;
 }
@@ -87,36 +87,36 @@ bool DownloadConfigManager::writeBuffer(const int &items)
 
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
-    QDomElement plusSettingDom = writeDomNode(rootDom, "plusSetting");
-    QDomElement backgroundSettingDom = writeDomNode(rootDom, "backgroundSetting");
-    QDomElement hotkeySettingDom = writeDomNode(rootDom, "hotkeySetting");
-    QDomElement downloadSettingDom = writeDomNode(rootDom, "downloadSetting");
-    QDomElement skinSettingDom = writeDomNode(rootDom, "skinSetting");
+    QDomElement plusSettingDom = writeDomElement(rootDom, "plusSetting");
+    QDomElement backgroundSettingDom = writeDomElement(rootDom, "backgroundSetting");
+    QDomElement hotkeySettingDom = writeDomElement(rootDom, "hotkeySetting");
+    QDomElement downloadSettingDom = writeDomElement(rootDom, "downloadSetting");
+    QDomElement skinSettingDom = writeDomElement(rootDom, "skinSetting");
 
-    writeDomElement(plusSettingDom, "geometry", TTKXmlAttribute("value", QString("%1,%2,%3,%4").arg(widgetPosition.x()).arg(widgetPosition.y()).arg(widgetSize.width()).arg(widgetSize.height())));
-    writeDomElement(plusSettingDom, "closeEventMode", TTKXmlAttribute("value", closeEventMode));
-    writeDomElement(plusSettingDom, "closeNetworkMode", TTKXmlAttribute("value", closeNetworkMode));
-    writeDomElement(plusSettingDom, "fileAssociationMode", TTKXmlAttribute("value", fileAssociationMode));
-    writeDomElement(plusSettingDom, "startUpMode", TTKXmlAttribute("value", startupMode));
-    writeDomElement(plusSettingDom, "startUpRunMode", TTKXmlAttribute("value", startupRunMode));
-    writeDomElement(plusSettingDom, "slienceRunMode", TTKXmlAttribute("value", slienceRunMode));
+    writeDomElement(plusSettingDom, "geometry", {"value", QString("%1,%2,%3,%4").arg(widgetPosition.x()).arg(widgetPosition.y()).arg(widgetSize.width()).arg(widgetSize.height())});
+    writeDomElement(plusSettingDom, "closeEventMode", {"value", closeEventMode});
+    writeDomElement(plusSettingDom, "closeNetworkMode", {"value", closeNetworkMode});
+    writeDomElement(plusSettingDom, "fileAssociationMode", {"value", fileAssociationMode});
+    writeDomElement(plusSettingDom, "startUpMode", {"value", startupMode});
+    writeDomElement(plusSettingDom, "startUpRunMode", {"value", startupRunMode});
+    writeDomElement(plusSettingDom, "slienceRunMode", {"value", slienceRunMode});
 
-    writeDomElement(backgroundSettingDom, "backgroundThemeValue", TTKXmlAttribute("value", backgroundThemeValue));
-    writeDomElement(backgroundSettingDom, "backgroundTransparent", TTKXmlAttribute("value", backgroundTransparent));
+    writeDomElement(backgroundSettingDom, "backgroundThemeValue", {"value", backgroundThemeValue});
+    writeDomElement(backgroundSettingDom, "backgroundTransparent", {"value", backgroundTransparent});
 
-    writeDomElement(hotkeySettingDom, "hotkeyEnable", TTKXmlAttribute("value", hotkeyEnable));
-    writeDomElement(hotkeySettingDom, "hotkeyValue", TTKXmlAttribute("value", hotkeyValue));
+    writeDomElement(hotkeySettingDom, "hotkeyEnable", {"value", hotkeyEnable});
+    writeDomElement(hotkeySettingDom, "hotkeyValue", {"value", hotkeyValue});
 
-    writeDomElement(downloadSettingDom, "downloadLimit", TTKXmlAttribute("value", downloadLimit));
-    writeDomElement(downloadSettingDom, "downloadMode", TTKXmlAttribute("value", downloadMode));
-    writeDomElement(downloadSettingDom, "downloadMaxCount", TTKXmlAttribute("value", downloadMaxCount));
-    writeDomElement(downloadSettingDom, "downloadPathDir", TTKXmlAttribute("value", downloadPathDir));
-    writeDomElement(downloadSettingDom, "downloadDLoadLimit", TTKXmlAttribute("value", downloadDLoadLimit));
-    writeDomElement(downloadSettingDom, "downloadULoadLimit", TTKXmlAttribute("value", downloadULoadLimit));
+    writeDomElement(downloadSettingDom, "downloadLimit", {"value", downloadLimit});
+    writeDomElement(downloadSettingDom, "downloadMode", {"value", downloadMode});
+    writeDomElement(downloadSettingDom, "downloadMaxCount", {"value", downloadMaxCount});
+    writeDomElement(downloadSettingDom, "downloadPathDir", {"value", downloadPathDir});
+    writeDomElement(downloadSettingDom, "downloadDLoadLimit", {"value", downloadDLoadLimit});
+    writeDomElement(downloadSettingDom, "downloadULoadLimit", {"value", downloadULoadLimit});
 
-    writeDomElement(skinSettingDom, "skinEffectLevel", TTKXmlAttribute("value", skinEffectLevel));
-    writeDomElement(skinSettingDom, "skinSuspension", TTKXmlAttribute("value", skinSuspension));
-    writeDomElement(skinSettingDom, "skinSuspensionValue", TTKXmlAttribute("value", skinSuspensionValue));
+    writeDomElement(skinSettingDom, "skinEffectLevel", {"value", skinEffectLevel});
+    writeDomElement(skinSettingDom, "skinSuspension", {"value", skinSuspension});
+    writeDomElement(skinSettingDom, "skinSuspensionValue", {"value", skinSuspensionValue});
 
     save();
     return true;

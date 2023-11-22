@@ -1,7 +1,7 @@
 #include "downloadlistconfigmanager.h"
 
-DownloadListConfigManager::DownloadListConfigManager(QObject *parent)
-    : TTKXmlDocument(parent)
+DownloadListConfigManager::DownloadListConfigManager()
+    : TTKAbstractXml()
 {
 
 }
@@ -26,12 +26,12 @@ bool DownloadListConfigManager::writeBuffer(const DownloadItemList &items)
 {
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
-    QDomElement recordDom = writeDomNode(rootDom, "list");
+    QDomElement recordDom = writeDomElement(rootDom, "list");
 
     for(const DownloadItem &item : qAsConst(items))
     {
-        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("url", item.m_url),
-                                                  TTKXmlAttribute("name", item.m_name)});
+        writeDomMultiElement(recordDom, "value", {{"url", item.m_url},
+                                                  {"name", item.m_name}});
     }
 
     save();

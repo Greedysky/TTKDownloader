@@ -1,7 +1,7 @@
 #include "downloadbreakpointconfigmanager.h"
 
-DownloadBreakPointConfigManager::DownloadBreakPointConfigManager(QObject *parent)
-    : TTKXmlDocument(parent)
+DownloadBreakPointConfigManager::DownloadBreakPointConfigManager()
+    : TTKAbstractXml()
 {
 
 }
@@ -36,18 +36,18 @@ bool DownloadBreakPointConfigManager::writeBuffer(const DownloadBreakPointItemLi
 {
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
-    QDomElement recordDom = writeDomNode(rootDom, "breakPoint");
+    QDomElement recordDom = writeDomElement(rootDom, "breakPoint");
 
     if(!items.isEmpty())
     {
-        writeDomText(recordDom, "url", items.front().m_url);
+        writeDomElement(recordDom, "url", items.front().m_url);
     }
 
     for(const DownloadBreakPointItem &item : qAsConst(items))
     {
-        writeDomMutilElement(recordDom, "value", {TTKXmlAttribute("start", item.m_start),
-                                                  TTKXmlAttribute("end", item.m_end),
-                                                  TTKXmlAttribute("ready", item.m_ready)});
+        writeDomMultiElement(recordDom, "value", {{"start", item.m_start},
+                                                  {"end", item.m_end},
+                                                  {"ready", item.m_ready}});
     }
 
     save();
