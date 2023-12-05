@@ -23,6 +23,8 @@ include($$PWD/../../TTKCommon/TTKRun/TTKRun.pri)
 DESTDIR = $$OUT_PWD/../../bin
 TARGET = TTKDownloader
 
+INCLUDEPATH += $$OUT_PWD/../../Generate
+
 SOURCES += $$PWD/ttkrunmain.cpp
 
 win32:RC_FILE = $$PWD/TTKApp.rc
