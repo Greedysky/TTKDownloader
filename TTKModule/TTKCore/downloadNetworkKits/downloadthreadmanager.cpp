@@ -1,7 +1,7 @@
 #include "downloadthreadmanager.h"
 #include "downloadobject.h"
 #include "downloadbreakpointconfigmanager.h"
-#include "downloadcoreutils.h"
+#include "downloadstringutils.h"
 #include "downloadurlencoder.h"
 #include "downloadabstractnetwork.h"
 
@@ -100,7 +100,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     ////////////////////////////////////////////////
     if(name.isEmpty())
     {
-        QDir dir(TTK::Core::downloadPrefix());
+        QDir dir(TTK::String::downloadPrefix());
         QString idFileName = fileName;
         for(int i = 1; i < 99; ++i)
         {
@@ -128,7 +128,7 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     ////////////////////////////////////////////////
     Q_EMIT updateFileInfoChanged(fileName, m_totalSize);
 
-    fileName = TTK::Core::downloadPrefix() + fileName;
+    fileName = TTK::String::downloadPrefix() + fileName;
 
     DownloadBreakPointConfigManager manager;
     DownloadBreakPointItemList records;

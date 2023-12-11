@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "ttkmoduleexport.h"
+#include "ttknumberdefine.h"
 
 /*! @brief The namespace of the utils core.
  * @author Greedysky <greedysky@163.com>
@@ -29,9 +30,27 @@ namespace TTK
     namespace Core
     {
         /*!
-         * Get download dir path.
+         * Sleep by millisecond.
          */
-        TTK_MODULE_EXPORT QString downloadPrefix();
+        TTK_MODULE_EXPORT void sleep(int ms);
+
+        /*!
+         * App version check.
+         */
+        TTK_MODULE_EXPORT bool appVersionCheck(const QString &o, const QString &d);
+
+        /*!
+         * Reset break point.
+         */
+        TTK_MODULE_EXPORT void resetBreakPoint();
+        /*!
+         * Enable break point.
+         */
+        TTK_MODULE_EXPORT void enableBreakPoint(bool enable);
+        /*!
+         * Break point enabled or not.
+         */
+        TTK_MODULE_EXPORT bool isBreakPointEnabled();
 
     }
 }

@@ -1,8 +1,8 @@
-#ifndef DOWNLOADCOREUTILS_H
-#define DOWNLOADCOREUTILS_H
+#ifndef MUSICSTRINGUTILS_H
+#define MUSICSTRINGUTILS_H
 
 /***************************************************************************
- * This file is part of the TTK Downloader project
+ * This file is part of the TTK Music Player project
  * Copyright (C) 2015 - 2023 Greedysky Studio
 
  * This program is free software; you can redistribute it and/or modify
@@ -21,19 +21,19 @@
 
 #include "ttkmoduleexport.h"
 
-/*! @brief The namespace of the utils file.
+/*! @brief The namespace of the utils string.
  * @author Greedysky <greedysky@163.com>
  */
 namespace TTK
 {
-    namespace File
+    namespace String
     {
         /*!
-         * Get open file name dialog.
+         * Get download dir path.
          */
-        TTK_MODULE_EXPORT QString getOpenFileName(QWidget *parent);
+        TTK_MODULE_EXPORT QString downloadPrefix();
 
     }
 }
 
-#endif // DOWNLOADCOREUTILS_H
+#endif // MUSICSTRINGUTILS_H

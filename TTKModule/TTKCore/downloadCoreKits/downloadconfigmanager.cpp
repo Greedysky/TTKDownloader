@@ -1,6 +1,6 @@
 #include "downloadconfigmanager.h"
 #include "downloadsettingmanager.h"
-#include "downloadcoreutils.h"
+#include "downloadstringutils.h"
 
 #include <QRect>
 
@@ -44,7 +44,7 @@ bool DownloadConfigManager::readBuffer(int &items)
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadMaxCount, readAttributeByTagName("downloadMaxCount").toInt());
 
     const QString &path = readAttributeByTagName("downloadPathDir");
-    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDir, (path.isEmpty() || !QFile::exists(path)) ? TTK::Core::downloadPrefix() : path);
+    G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDir, (path.isEmpty() || !QFile::exists(path)) ? TTK::String::downloadPrefix() : path);
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadDLoadLimit, readAttributeByTagName("downloadDLoadLimit"));
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadULoadLimit, readAttributeByTagName("downloadULoadLimit"));
 
