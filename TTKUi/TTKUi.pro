@@ -26,5 +26,5 @@ DESTDIR = $$OUT_PWD/../bin/$$TTK_VERSION
 TARGET = TTKUi
 
 RESOURCES += $$PWD/TTKDownloader.qrc
-    
+
 win32:RC_FILE = $$PWD/TTKUi.rc
