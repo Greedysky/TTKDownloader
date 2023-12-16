@@ -73,7 +73,7 @@ public:
      */
     inline void setValue(Config type, const QVariant &var)
     {
-        m_para[type] = var;
+        m_parameter[type] = var;
     }
 
     /*!
@@ -81,7 +81,7 @@ public:
      */
     inline void setValue(const QString &stype, const QVariant &var)
     {
-        m_para[typeStringToEnum(stype)] = var;
+        m_parameter[stringToEnum(stype)] = var;
     }
 
     /*!
@@ -89,7 +89,7 @@ public:
      */
     inline QVariant value(Config type) const
     {
-        return m_para[type];
+        return m_parameter[type];
     }
 
     /*!
@@ -97,7 +97,7 @@ public:
      */
     inline QVariant value(const QString &stype) const
     {
-        return m_para[typeStringToEnum(stype)];
+        return m_parameter[stringToEnum(stype)];
     }
 
     /*!
@@ -105,7 +105,7 @@ public:
      */
     inline int count() const
     {
-        return m_para.count();
+        return m_parameter.count();
     }
 
     /*!
@@ -113,7 +113,7 @@ public:
      */
     inline bool isEmpty() const
     {
-        return m_para.isEmpty();
+        return m_parameter.isEmpty();
     }
 
     /*!
@@ -121,14 +121,14 @@ public:
      */
     inline bool contains(Config type) const
     {
-        return m_para.contains(type);
+        return m_parameter.contains(type);
     }
 
 private:
     /*!
      * Convert String type to Config Type.
      */
-    Config typeStringToEnum(const QString &stype) const
+    inline Config stringToEnum(const QString &stype) const
     {
         int index = staticMetaObject.indexOfEnumerator("Config");
         QMetaEnum metaEnum = staticMetaObject.enumerator(index);
@@ -137,7 +137,7 @@ private:
     }
 
     QVariant m_variant;
-    QMap<Config, QVariant> m_para;
+    QMap<Config, QVariant> m_parameter;
 
     TTK_DECLARE_SINGLETON_CLASS(DownloadSettingManager)
 
