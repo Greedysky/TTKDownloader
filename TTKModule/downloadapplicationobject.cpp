@@ -48,7 +48,7 @@ void DownloadApplicationObject::windowCloseAnimation()
     m_animation->setEndValue(0);
     m_animation->start();
 
-    QTimer::singleShot(TTK_DN_S2MS, this, SLOT(quit()));
+    TTK_SIGNLE_SHOT(TTK_DN_S2MS, this, quit);
 }
 
 void DownloadApplicationObject::appAboutUs()
