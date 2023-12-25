@@ -63,7 +63,7 @@ QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWid
         hbox->setContentsMargins(9, 0, 0, 9);
 
         QButtonGroup *buttonGroup = new QButtonGroup(m_functionsWidget);
-        QtButtonGroupConnect(buttonGroup, this, buttonClicked);
+        QtButtonGroupConnect(buttonGroup, this, buttonClicked, TTK_SLOT);
 
         QStringList names;
         for(int i = 1; i <= 9; ++i)

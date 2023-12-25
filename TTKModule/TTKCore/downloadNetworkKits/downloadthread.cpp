@@ -41,7 +41,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     m_reply = m_manager->get(request);
     connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
     connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
-    QtNetworkErrorConnect(m_reply, this, handleError);
+    QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
 
     m_state = State::Download;
     Q_EMIT downloadChanged();

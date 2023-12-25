@@ -103,7 +103,7 @@ void DownloadQueueRequest::startDownload(const QString &url)
     m_reply = m_manager.get(*m_request);
     connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
     connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
-    QtNetworkErrorConnect(m_reply, this, handleError);
+    QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
 }
 
 void DownloadQueueRequest::downLoadFinished()

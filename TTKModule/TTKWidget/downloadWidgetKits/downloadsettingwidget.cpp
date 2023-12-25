@@ -278,7 +278,7 @@ void DownloadSettingWidget::initDownloadSettingWidget()
     QButtonGroup *buttonGroup = new QButtonGroup(this);
     buttonGroup->addButton(m_ui->downloadFullRadioBox, 0);
     buttonGroup->addButton(m_ui->downloadLimitRadioBox, 1);
-    QtButtonGroupConnect(buttonGroup, this, downloadGroupSpeedLimit);
+    QtButtonGroupConnect(buttonGroup, this, downloadGroupSpeedLimit, TTK_SLOT);
 
     m_ui->defaultDownloadModeBox->setItemDelegate(new QStyledItemDelegate(m_ui->defaultDownloadModeBox));
     m_ui->defaultDownloadModeBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
