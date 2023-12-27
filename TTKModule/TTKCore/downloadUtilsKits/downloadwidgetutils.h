@@ -56,6 +56,7 @@ namespace TTK
          * Generate horizontal scrollArea format style.
          */
         TTK_MODULE_EXPORT void generateHScrollAreaFormat(QWidget *widget, QWidget *parent, bool background = true);
+
     }
 }
 

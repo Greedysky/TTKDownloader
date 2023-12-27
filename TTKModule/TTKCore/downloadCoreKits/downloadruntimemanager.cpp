@@ -9,6 +9,9 @@
 
 namespace TTK
 {
+    /*!
+     * Generate core language resource.
+     */
     static QString languageCore(int index);
 
 }
