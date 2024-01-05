@@ -21,7 +21,7 @@
 
 #include "downloadabstractnetwork.h"
 
-/*! @brief The class of the source data download request.
+/*! @brief The class of the data source download request.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadDataSourceRequest : public DownloadAbstractNetwork
@@ -42,7 +42,7 @@ public:
     /*!
      * Start to download data.
      */
-    void startRequest(const QString &url);
+    void startToRequest(const QString &url);
 
 public Q_SLOTS:
     /*!

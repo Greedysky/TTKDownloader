@@ -42,7 +42,7 @@ void DownloadBackgroundOnlineWidget::initialize()
     {
         m_downloadRequest = new DownloadThunderSkinRequest(this);
         connect(m_downloadRequest, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroupList)));
-        m_downloadRequest->startRequest();
+        m_downloadRequest->startToRequest();
     }
 }
 
@@ -163,7 +163,7 @@ void DownloadBackgroundOnlineWidget::buttonClicked(int index)
     }
 
     m_downloadQueue->addImageQueue(datas);
-    m_downloadQueue->startRequest();
+    m_downloadQueue->startToRequest();
 }
 
 void DownloadBackgroundOnlineWidget::downLoadDataChanged(const QString &bytes)

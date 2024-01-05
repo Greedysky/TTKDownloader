@@ -71,11 +71,11 @@ DownloadThunderSkinRequest::DownloadThunderSkinRequest(QObject *parent)
 
 }
 
-void DownloadThunderSkinRequest::startRequest()
+void DownloadThunderSkinRequest::startToRequest()
 {
     DownloadDataSourceRequest *download = new DownloadDataSourceRequest(this);
     connect(download, SIGNAL(downLoadRawDataChanged(QByteArray)), SLOT(downLoadFinished(QByteArray)));
-    download->startRequest(TTK::Algorithm::mdII(QUERY_URL, false));
+    download->startToRequest(TTK::Algorithm::mdII(QUERY_URL, false));
 }
 
 void DownloadThunderSkinRequest::downLoadFinished(const QByteArray &bytes)

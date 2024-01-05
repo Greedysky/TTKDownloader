@@ -31,7 +31,7 @@ DownloadQueueRequest::~DownloadQueueRequest()
     deleteAll();
 }
 
-void DownloadQueueRequest::startRequest()
+void DownloadQueueRequest::startToRequest()
 {
     if(!m_imageQueue.isEmpty())
     {
@@ -66,17 +66,19 @@ void DownloadQueueRequest::addImageQueue(const DownloadQueueDataList &datas)
 
 void DownloadQueueRequest::startOrderImageQueue()
 {
-    if(!m_imageQueue.isEmpty())
+    if(m_imageQueue.isEmpty())
     {
-        if(QFile::exists(m_imageQueue.front().m_path))
-        {
-            Q_EMIT downLoadDataChanged(m_imageQueue.takeFirst().m_path);
-            startOrderImageQueue();
-        }
-        else if(G_NETWORK_PTR->isOnline())
-        {
-            startDownload(m_imageQueue.front().m_url);
-        }
+        return;
+    }
+
+    if(QFile::exists(m_imageQueue.front().m_path))
+    {
+        Q_EMIT downLoadDataChanged(m_imageQueue.takeFirst().m_path);
+        startOrderImageQueue();
+    }
+    else if(G_NETWORK_PTR->isOnline())
+    {
+        startDownload(m_imageQueue.front().m_url);
     }
 }
 
@@ -85,6 +87,7 @@ void DownloadQueueRequest::startDownload(const QString &url)
     m_isDownload = true;
     delete m_file;
     m_file = new QFile(m_imageQueue.front().m_path, this);
+
     if(!m_file->open(QIODevice::WriteOnly))
     {
         m_file->close();
@@ -93,7 +96,7 @@ void DownloadQueueRequest::startDownload(const QString &url)
         return;
     }
 
-    if(!m_request)
+    if(!m_request || url.isEmpty())
     {
         return;
     }
@@ -117,6 +120,7 @@ void DownloadQueueRequest::downLoadFinished()
     m_file->flush();
     m_file->close();
     m_isDownload = false;
+
     DownloadAbstractNetwork::deleteAll();
     Q_EMIT downLoadDataChanged(m_imageQueue.takeFirst().m_path);
 
@@ -144,12 +148,13 @@ void DownloadQueueRequest::handleError(QNetworkReply::NetworkError code)
 #ifndef TTK_DEBUG
     Q_UNUSED(code);
 #endif
-    TTK_ERROR_STREAM(QString("QNetworkReply::NetworkError : %1 %2").arg(code).arg(m_reply->errorString()));
+    TTK_ERROR_STREAM("QNetworkReply::NetworkError:" << code << m_reply->errorString());
     m_file->flush();
+
     if(!m_isAbort)
     {
         DownloadAbstractNetwork::deleteAll();
     }
 
-    startRequest();
+    startToRequest();
 }

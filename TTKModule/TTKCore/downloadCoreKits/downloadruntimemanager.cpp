@@ -55,7 +55,7 @@ void DownloadRunTimeManager::run() const
     manager.fromFile(COFIG_PATH_FULL);
     manager.readBuffer();
 
-    G_NETWORK_PTR->setBlockNetWork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toBool());
+    G_NETWORK_PTR->setBlockNetwork(G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toBool());
 }
 
 QString DownloadRunTimeManager::translator() const

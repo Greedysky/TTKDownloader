@@ -96,7 +96,7 @@ public:
     /*!
      * Start to download data from net.
      */
-    void startRequest();
+    void startToRequest();
 
 Q_SIGNALS:
     /*!

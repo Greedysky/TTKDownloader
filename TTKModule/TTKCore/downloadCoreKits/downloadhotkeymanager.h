@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 #include "ttksingleton.h"
-#include "ttkmoduleexport.h"
 
 #define G_HOTKEY_PTR (TTKSingleton<DownloadHotKeyManager>::createInstance())
 

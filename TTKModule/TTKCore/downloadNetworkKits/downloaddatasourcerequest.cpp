@@ -12,7 +12,7 @@ void DownloadDataSourceRequest::deleteAll()
     deleteLater();
 }
 
-void DownloadDataSourceRequest::startRequest(const QString &url)
+void DownloadDataSourceRequest::startToRequest(const QString &url)
 {
     QNetworkRequest request;
     request.setUrl(url);
@@ -25,6 +25,7 @@ void DownloadDataSourceRequest::startRequest(const QString &url)
 
 void DownloadDataSourceRequest::downLoadFinished()
 {
+    DownloadAbstractNetwork::downLoadFinished();
     if(m_reply && m_reply->error() == QNetworkReply::NoError)
     {
         const QVariant &redirection = m_reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
@@ -32,7 +33,7 @@ void DownloadDataSourceRequest::downLoadFinished()
         {
             const QString &url = redirection.toString();
             DownloadAbstractNetwork::deleteAll();
-            startRequest(url);
+            startToRequest(url);
         }
         else
         {

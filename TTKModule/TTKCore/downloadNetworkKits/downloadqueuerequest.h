@@ -31,7 +31,8 @@ struct TTK_MODULE_EXPORT DownloadQueueData
 };
 TTK_DECLARE_LIST(DownloadQueueData);
 
-/*! @brief The class to download data from cache queue.
+
+/*! @brief The class of the download data from queue request.
  * @author Greedysky <greedysky@163.com>
  */
 class TTK_MODULE_EXPORT DownloadQueueRequest : public DownLoadAbstractRequest
@@ -57,7 +58,7 @@ public:
     /*!
      * Start to download data.
      */
-    virtual void startRequest() override final;
+    virtual void startToRequest() override final;
     /*!
      * Abort current download thread.
      */
