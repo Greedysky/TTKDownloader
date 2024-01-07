@@ -163,7 +163,7 @@ void DownloadSettingWidget::globalHotkeyBoxChanged(bool state)
     m_ui->item_S03->setHotKeyEnabled(state);
 }
 
-void DownloadSettingWidget::downloadDirSelected()
+void DownloadSettingWidget::downloadDirChanged()
 {
     QFileDialog dialog;
     dialog.setFileMode(QFileDialog::Directory);
@@ -258,7 +258,7 @@ void DownloadSettingWidget::initNormalSettingWidget()
     m_ui->startupRunCheckBox->setFocusPolicy(Qt::NoFocus);
     m_ui->slienceRunCheckBox->setFocusPolicy(Qt::NoFocus);
 #endif
-    connect(m_ui->downloadDirButton, SIGNAL(clicked()), SLOT(downloadDirSelected()));
+    connect(m_ui->downloadDirButton, SIGNAL(clicked()), SLOT(downloadDirChanged()));
 
     m_ui->globalHotkeyBox->setStyleSheet(TTK::UI::CheckBoxStyle01);
 #ifdef Q_OS_UNIX

@@ -130,7 +130,7 @@ public Q_SLOTS:
     /*!
      * Set select download dir.
      */
-    void downloadDirSelected();
+    void downloadDirChanged();
     /*!
      * Set enable or disable download speed limit.
      */
