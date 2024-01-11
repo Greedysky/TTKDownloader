@@ -52,13 +52,16 @@ void DownloadConfigObject::checkFileNeededExist() const
     copyFile(":/data/history.tkf", TTK_HISTORY_PATH_FULL);
 
 #ifdef Q_OS_UNIX
-    copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
-    copyLinuxShellFile(":/data/TTKDownloader.sh", TTK_APP_MAIN_FULL);
-    copyLinuxShellFile(":/data/TTKRoutineCopy.sh", TTK_ROUTINECOPY_FULL);
-    copyLinuxShellFile(":/data/avnets.sh", TTK_MAKE_NET_PATH_FULL);
-    copyLinuxShellFile(":/data/TTKInit.sh", TTK_INIT_FULL);
-    copyLinuxShellFile(":/data/TTKConsole.sh", TTK_CONSOLE_FULL);
-    copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
+    if(!QFile::exists(MAIN_DIR_FULL + ".ttk_runtime"))
+    {
+        copyLinuxShellFile(":/data/TTKRoutine.sh", TTK_ROUTINE_FULL);
+        copyLinuxShellFile(":/data/TTKDownloader.sh", TTK_APP_MAIN_FULL);
+        copyLinuxShellFile(":/data/TTKRoutineCopy.sh", TTK_ROUTINECOPY_FULL);
+        copyLinuxShellFile(":/data/avnets.sh", TTK_MAKE_NET_PATH_FULL);
+        copyLinuxShellFile(":/data/TTKInit.sh", TTK_INIT_FULL);
+        copyLinuxShellFile(":/data/TTKConsole.sh", TTK_CONSOLE_FULL);
+        copyLinuxShellFile(":/data/TTKService.sh", TTK_SERVICE_FULL);
+    }
 #endif
 }
 

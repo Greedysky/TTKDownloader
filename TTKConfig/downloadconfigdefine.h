@@ -20,16 +20,14 @@
  ***************************************************************************/
 
 #include "downloadobject.h"
-#include "ttkmoduleexport.h"
 
-//
 #define TTK_MAKE_NET_PATH_FULL   MAKE_NET_PATH_FULL
 #define TTK_LIST_PATH_FULL       LIST_PATH_FULL
 #define TTK_COFIG_PATH_FULL      COFIG_PATH_FULL
 #define TTK_HISTORY_PATH_FULL    HISTORY_PATH_FULL
 #define TTK_USER_THEME_DIR_FULL  USER_THEME_DIR_FULL
 //
-#define TTK_THEME_DIR_FULL       TTK::applicationPath() + THEME_DIR
-#define TTK_LANGUAGE_DIR_FULL    TTK::applicationPath() + LANGUAGE_DIR
+#define TTK_THEME_DIR_FULL       THEME_DIR_FULL
+#define TTK_LANGUAGE_DIR_FULL    LANGUAGE_DIR_FULL
 
 #endif // DOWNLOADCONFIGDEFINE_H

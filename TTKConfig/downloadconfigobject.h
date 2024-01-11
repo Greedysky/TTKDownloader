@@ -19,6 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include "ttkmoduleexport.h"
 #include "downloadconfigdefine.h"
 
 /*! @brief The class of the download initialize object.
