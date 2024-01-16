@@ -4,7 +4,8 @@
 #include <QProcess>
 #include <QDesktopServices>
 #ifdef Q_OS_WIN
-#  include <Windows.h>
+#  define WIN32_LEAN_AND_MEAN
+#  include <qt_windows.h>
 #  include <shellapi.h>
 #endif
 
