@@ -61,7 +61,7 @@
 #define HISTORY_PATH            TTK_STR_CAT("history", TKF_FILE)
 
 
-#define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PDIR
+#define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PARENT_DIR
 //
 #define TDDOWNLOAD_DIR_FULL     MAIN_DIR_FULL + TDDOWNLOAD_DIR
 #define APPDATA_DIR_FULL        TTK::configPath() + APPDATA_DIR
