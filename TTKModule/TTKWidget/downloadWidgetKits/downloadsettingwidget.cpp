@@ -51,12 +51,6 @@ void DownloadFunctionTableWidget::itemCellClicked(int row, int column)
     selectRow(currentRow());
 }
 
-void DownloadFunctionTableWidget::leaveEvent(QEvent *event)
-{
-    QTableWidget::leaveEvent(event);
-    itemCellEntered(-1, -1);
-}
-
 
 DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
     : DownloadAbstractMoveDialog(parent),
