@@ -96,7 +96,7 @@ private:
     QList<QPushButton*> m_functionsItems;
     DownloadSkinRemoteGroupList m_groups;
     DownloadBackgroundListWidget *m_backgroundList;
-    DownloadQueueRequest *m_downloadQueue;
+    DownloadQueueRequest *m_networkRequest;
     DownloadThunderSkinRequest *m_downloadRequest;
 
 };

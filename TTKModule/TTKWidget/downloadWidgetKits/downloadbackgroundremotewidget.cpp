@@ -11,7 +11,7 @@ DownloadBackgroundOnlineWidget::DownloadBackgroundOnlineWidget(QWidget *parent)
     : QWidget(parent),
       m_currentIndex(-1),
       m_functionsWidget(nullptr),
-      m_downloadQueue(nullptr),
+      m_networkRequest(nullptr),
       m_downloadRequest(nullptr)
 {
     QHBoxLayout *hbox = new QHBoxLayout(this);
@@ -22,8 +22,8 @@ DownloadBackgroundOnlineWidget::DownloadBackgroundOnlineWidget(QWidget *parent)
     hbox->addWidget(m_backgroundList);
     setLayout(hbox);
 
-    m_downloadQueue = new DownloadQueueRequest(this);
-    connect(m_downloadQueue, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged(QString)));
+    m_networkRequest = new DownloadQueueRequest(this);
+    connect(m_networkRequest, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged(QString)));
     connect(m_backgroundList, SIGNAL(itemClicked(int,QString)), parent, SLOT(remoteListWidgetItemClicked(int,QString)));
 }
 
@@ -32,7 +32,7 @@ DownloadBackgroundOnlineWidget::~DownloadBackgroundOnlineWidget()
     abort();
     delete m_backgroundList;
     delete m_functionsWidget;
-    delete m_downloadQueue;
+    delete m_networkRequest;
     delete m_downloadRequest;
 }
 
@@ -48,7 +48,7 @@ void DownloadBackgroundOnlineWidget::initialize()
 
 void DownloadBackgroundOnlineWidget::abort()
 {
-    m_downloadQueue->abort();
+    m_networkRequest->abort();
 }
 
 QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWidget *object)
@@ -141,7 +141,7 @@ void DownloadBackgroundOnlineWidget::buttonClicked(int index)
 
     if(m_currentIndex != index)
     {
-        m_downloadQueue->abort();
+        m_networkRequest->abort();
     }
 
     m_currentIndex = index;
@@ -162,8 +162,8 @@ void DownloadBackgroundOnlineWidget::buttonClicked(int index)
         datas << data;
     }
 
-    m_downloadQueue->addImageQueue(datas);
-    m_downloadQueue->startToRequest();
+    m_networkRequest->addImageQueue(datas);
+    m_networkRequest->startToRequest();
 }
 
 void DownloadBackgroundOnlineWidget::downLoadDataChanged(const QString &bytes)
