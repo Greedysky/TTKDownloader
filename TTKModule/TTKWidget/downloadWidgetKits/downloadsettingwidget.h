@@ -32,10 +32,8 @@ class DownloadSettingWidget;
  */
 struct TTK_MODULE_EXPORT DownloadFunctionItem
 {
-    DownloadFunctionItem()
-    {
-
-    }
+    QString m_icon;
+    QString m_name;
 
     DownloadFunctionItem(const QString &icon, const QString &name)
         : m_icon(icon),
@@ -43,9 +41,6 @@ struct TTK_MODULE_EXPORT DownloadFunctionItem
     {
 
     }
-
-    QString m_icon;
-    QString m_name;
 };
 TTK_DECLARE_LIST(DownloadFunctionItem);
 
@@ -65,7 +60,7 @@ public:
     /*!
      * Add table list items by index and icons and paths.
      */
-    void addFunctionItems(int index, const DownloadFunctionItemList &items);
+    void addCellItems(int index, const DownloadFunctionItemList &items);
 
 Q_SIGNALS:
     /*!

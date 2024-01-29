@@ -21,7 +21,7 @@ DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
     setRowCount(3);
 }
 
-void DownloadFunctionTableWidget::addFunctionItems(int index, const DownloadFunctionItemList &items)
+void DownloadFunctionTableWidget::addCellItems(int index, const DownloadFunctionItemList &items)
 {
     m_listIndex = index;
     for(int i = 0; i < items.count(); ++i)
@@ -73,7 +73,7 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
           << DownloadFunctionItem(":/contextMenu/btn_download", tr("Dwonload"))
           << DownloadFunctionItem(":/contextMenu/btn_window", tr("Outlook"));
     m_ui->normalFunTableWidget->setRowCount(items.count());
-    m_ui->normalFunTableWidget->addFunctionItems(0, items);
+    m_ui->normalFunTableWidget->addCellItems(0, items);
 
     m_ui->confirmButton->setStyleSheet(TTK::UI::PushButtonStyle03);
     m_ui->cancelButton->setStyleSheet(TTK::UI::PushButtonStyle03);
