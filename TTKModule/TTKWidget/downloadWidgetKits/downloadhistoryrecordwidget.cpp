@@ -16,11 +16,11 @@ DownloadHistoryRecordWidget::DownloadHistoryRecordWidget(QWidget *parent)
     setColumnCount(4);
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-    QHeaderView *headerview = horizontalHeader();
-    headerview->resizeSection(0, 50);
-    headerview->resizeSection(1, 495);
-    headerview->resizeSection(2, 192);
-    headerview->resizeSection(3, 50);
+    QHeaderView *headerView = horizontalHeader();
+    headerView->resizeSection(0, 50);
+    headerView->resizeSection(1, 495);
+    headerView->resizeSection(2, 192);
+    headerView->resizeSection(3, 50);
 }
 
 DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
@@ -65,8 +65,8 @@ void DownloadHistoryRecordWidget::resizeWindow()
 {
     int w = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
     w += G_SETTING_PTR->value(DownloadSettingManager::ExpandMode).toInt();
-    QHeaderView *headerview = horizontalHeader();
-    headerview->resizeSection(1, 495 + w - WINDOW_WIDTH_MIN);
+    QHeaderView *headerView = horizontalHeader();
+    headerView->resizeSection(1, 495 + w - WINDOW_WIDTH_MIN);
 }
 
 void DownloadHistoryRecordWidget::reverseSelect()
