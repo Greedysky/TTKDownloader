@@ -35,7 +35,7 @@ TTK_DECLARE_LIST(DownloadItem);
 /*! @brief The class of the download list manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadListConfigManager : public TTKAbstractXml, private TTKAbstractReadWriteInterface<DownloadItemList>
+class TTK_MODULE_EXPORT DownloadListConfigManager : public TTKAbstractXml, public TTKAbstractReadWriteInterface<DownloadItemList>
 {
     TTK_DECLARE_MODULE(DownloadListConfigManager)
 public:

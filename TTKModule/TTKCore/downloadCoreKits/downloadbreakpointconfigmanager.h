@@ -50,7 +50,7 @@ TTK_DECLARE_LIST(DownloadBreakPointItem);
 /*! @brief The class of the break point config manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public TTKAbstractXml, private TTKAbstractReadWriteInterface<DownloadBreakPointItemList>
+class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public TTKAbstractXml, public TTKAbstractReadWriteInterface<DownloadBreakPointItemList>
 {
     TTK_DECLARE_MODULE(DownloadBreakPointConfigManager)
 public:

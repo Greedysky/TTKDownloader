@@ -63,7 +63,7 @@ TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
 /*! @brief The class of the thunder skin XML Config Manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadThunderSkinConfigManager : public TTKAbstractXml, private TTKAbstractReadInterface<DownloadSkinRemoteGroupList>
+class TTK_MODULE_EXPORT DownloadThunderSkinConfigManager : public TTKAbstractXml, public TTKAbstractReadInterface<DownloadSkinRemoteGroupList>
 {
     TTK_DECLARE_MODULE(DownloadThunderSkinConfigManager)
 public:
