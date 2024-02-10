@@ -87,8 +87,8 @@ private Q_SLOTS:
 private:
     bool m_pause;
     QString m_url, m_path;
-    DownloadListItemWidget* m_downloadItem;
-    DownloadThreadManager* m_downloadThread;
+    DownloadListItemWidget *m_downloadItem;
+    DownloadThreadManager *m_downloadThread;
 
 };
 
