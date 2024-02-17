@@ -12,8 +12,8 @@ DownloadHlPalette::DownloadHlPalette(QWidget *parent)
     : QWidget(parent),
       m_dblSaturation(1.0)
 {
-    setMinimumSize(QSize(360, 120));
     setMouseTracking(true);
+    setMinimumSize(QSize(360, 120));
 }
 
 QColor DownloadHlPalette::color() const
@@ -45,6 +45,7 @@ void DownloadHlPalette::paintEvent(QPaintEvent *event)
     const int ntRight = rect().right();
     const int ntBottm = rect().bottom();
     QColor colorStart, colorDatum, colorFinal;
+
     for(int it = 0; it < ntRight + 1; ++it)
     {
         colorStart.setHslF(it / double(ntRight), m_dblSaturation, 1);
@@ -58,8 +59,7 @@ void DownloadHlPalette::paintEvent(QPaintEvent *event)
         linearGradient.setColorAt(0.5, colorDatum);
         linearGradient.setColorAt(1.0, colorFinal);
 
-        QBrush brush(linearGradient);
-        painter.setPen(QPen(brush, 1));
+        painter.setPen(QPen(linearGradient, 1));
         painter.drawLine(QPointF(it, 0), QPointF(it, ntBottm));
     }
 
@@ -75,7 +75,6 @@ void DownloadHlPalette::resizeEvent(QResizeEvent *event)
     Q_UNUSED(event);
     m_ptVernierPos.setX(rect().right() * m_ptfVernierPercentPos.rx());
     m_ptVernierPos.setY(rect().bottom() * m_ptfVernierPercentPos.ry());
-
     update();
 }
 
@@ -104,10 +103,10 @@ void DownloadHlPalette::mouseMoveEvent(QMouseEvent *event)
     {
         QPainterPath path;
         path.addEllipse(m_ptVernierPos, 7, 7);
+
         if(path.contains(event->pos()))
         {
-            QToolTip::showText(mapToGlobal(event->pos()) + QPoint(0, 5), tr("Adjust Hue And Brightness"), this,
-                               QRect(m_ptVernierPos - QPoint(8, 8), QSize(16, 16)));
+            QToolTip::showText(mapToGlobal(event->pos()) + QPoint(0, 5), tr("Adjust Hue And Brightness"), this, QRect(m_ptVernierPos - QPoint(8, 8), QSize(16, 16)));
         }
     }
 }
@@ -162,6 +161,7 @@ void DownloadHlSaturationPalette::paintEvent(QPaintEvent *event)
     qreal dblVH, dblVS, dblVL = -100.0f;
 #endif
     m_color.getHslF(&dblVH, &dblVS, &dblVL);
+
     QColor colorCenter, colorStart, colorFinal;
     colorCenter.setHslF(dblVH, 0.5, dblVL);
     colorStart.setHslF(dblVH, 1, dblVL);
@@ -173,8 +173,7 @@ void DownloadHlSaturationPalette::paintEvent(QPaintEvent *event)
     linearGradient.setColorAt(0.0, colorStart);
     linearGradient.setColorAt(1.0, colorFinal);
 
-    QBrush brush(linearGradient);
-    painter.fillRect(rect(), brush);
+    painter.fillRect(rect(), linearGradient);
 
     QPointF ptfCenter(m_dblVernierX, ntBottm / 2.0);
     painter.setPen(QPen(Qt::black, 2));
@@ -214,13 +213,12 @@ void DownloadHlSaturationPalette::mouseMoveEvent(QMouseEvent *event)
     }
     else
     {
-        QPointF ptfCenter(m_dblVernierX, rect().bottom() / 2.0);
         QPainterPath path;
-        path.addEllipse(ptfCenter, 7, 7);
+        path.addEllipse(QPointF(m_dblVernierX, rect().bottom() / 2.0), 7, 7);
+
         if(path.contains(event->pos()))
         {
-            QToolTip::showText(mapToGlobal(event->pos()) + QPoint(0, 5), tr("Adjust Hue And Brightness"), this,
-                               QRect(event->pos() - QPoint(8, 8), QSize(16, 16)));
+            QToolTip::showText(mapToGlobal(event->pos()) + QPoint(0, 5), tr("Adjust Hue And Brightness"), this, QRect(event->pos() - QPoint(8, 8), QSize(16, 16)));
         }
     }
 }
@@ -230,7 +228,6 @@ void DownloadHlSaturationPalette::calculateSuration()
     m_dblVernierPercentX = m_dblVernierX/rect().right();
     m_dblSaturation = 1- m_dblVernierPercentX;
     m_color.setHslF(m_color.hslHueF(), m_dblSaturation, m_color.lightnessF());
-
     Q_EMIT saturationChanged(m_dblSaturation);
 }
 
@@ -258,6 +255,7 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     m_ui->confirmButton->setFocusPolicy(Qt::NoFocus);
     m_ui->cancelButton->setFocusPolicy(Qt::NoFocus);
 #endif
+
     connect(m_ui->wgtPalette, SIGNAL(colorChanged(QColor)), m_ui->wgtSaturationIndicator, SLOT(setBaseColor(QColor)));
     connect(m_ui->wgtPalette, SIGNAL(colorChanged(QColor)), SLOT(colorChanged(QColor)));
     connect(m_ui->wgtSaturationIndicator, SIGNAL(saturationChanged(double)), m_ui->wgtPalette, SLOT(setSaturation(double)));
