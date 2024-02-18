@@ -4,9 +4,8 @@
 
 #include <QPainter>
 #include <QToolTip>
-#include <QMouseEvent>
-#include <QPainterPath>
 #include <QButtonGroup>
+#include <QPainterPath>
 
 DownloadHlPalette::DownloadHlPalette(QWidget *parent)
     : QWidget(parent),
@@ -21,6 +20,21 @@ QColor DownloadHlPalette::color() const
     return m_color;
 }
 
+void DownloadHlPalette::setColor(const QColor &color)
+{
+    m_color = color;
+#if TTK_QT_VERSION_CHECK(6,0,0)
+    float vh, vs, vl = -100.0f;
+#else
+    qreal vh, vs, vl = -100.0f;
+#endif
+    m_color.getHslF(&vh, &vs, &vl);
+    m_dblSaturation = vs;
+    m_ptfVernierPercentPos.setX(vh);
+    m_ptfVernierPercentPos.setY(1 - vl);
+    Q_EMIT colorChanged(m_color);
+}
+
 void DownloadHlPalette::initialize()
 {
     m_ptVernierPos = rect().center();
@@ -31,8 +45,8 @@ void DownloadHlPalette::initialize()
 void DownloadHlPalette::setSaturation(double dblsaturation)
 {
     m_dblSaturation = dblsaturation;
-    update();
     calculateColor();
+    update();
 }
 
 void DownloadHlPalette::paintEvent(QPaintEvent *event)
@@ -139,6 +153,13 @@ double DownloadHlSaturationPalette::saturation() const
     return m_dblSaturation;
 }
 
+void DownloadHlSaturationPalette::setSaturation(double dblsaturation)
+{
+    m_dblSaturation = dblsaturation;
+    m_dblVernierPercentX = 1 - m_dblSaturation;
+    m_dblVernierX = m_dblVernierPercentX * rect().right();
+}
+
 void DownloadHlSaturationPalette::setBaseColor(const QColor &color)
 {
     m_color = color;
@@ -156,16 +177,16 @@ void DownloadHlSaturationPalette::paintEvent(QPaintEvent *event)
     const int ntBottm = rect().bottom();
 
 #if TTK_QT_VERSION_CHECK(6,0,0)
-    float dblVH, dblVS, dblVL = -100.0f;
+    float vh, vs, vl = -100.0f;
 #else
-    qreal dblVH, dblVS, dblVL = -100.0f;
+    qreal vh, vs, vl = -100.0f;
 #endif
-    m_color.getHslF(&dblVH, &dblVS, &dblVL);
+    m_color.getHslF(&vh, &vs, &vl);
 
     QColor colorCenter, colorStart, colorFinal;
-    colorCenter.setHslF(dblVH, 0.5, dblVL);
-    colorStart.setHslF(dblVH, 1, dblVL);
-    colorFinal.setHslF(dblVH, 0, dblVL);
+    colorCenter.setHslF(vh, 0.5, vl);
+    colorStart.setHslF(vh, 1, vl);
+    colorFinal.setHslF(vh, 0, vl);
 
     QLinearGradient linearGradient;
     linearGradient.setStart(QPointF(0, 0));
@@ -226,7 +247,7 @@ void DownloadHlSaturationPalette::mouseMoveEvent(QMouseEvent *event)
 void DownloadHlSaturationPalette::calculateSuration()
 {
     m_dblVernierPercentX = m_dblVernierX/rect().right();
-    m_dblSaturation = 1- m_dblVernierPercentX;
+    m_dblSaturation = 1 - m_dblVernierPercentX;
     m_color.setHslF(m_color.hslHueF(), m_dblSaturation, m_color.lightnessF());
     Q_EMIT saturationChanged(m_dblSaturation);
 }
@@ -238,6 +259,7 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
       m_ui(new Ui::DownloadColorDialog)
 {
     m_ui->setupUi(this);
+    setFixedSize(size());
     setBackgroundLabel(m_ui->background);
 
     m_ui->topTitleCloseButton->setIcon(QIcon(":/functions/btn_close_hover"));
@@ -269,20 +291,36 @@ DownloadColorDialog::DownloadColorDialog(QWidget *parent)
     QtButtonGroupConnect(buttonGroup, this, buttonClicked, TTK_SLOT);
 }
 
+DownloadColorDialog::DownloadColorDialog(const QColor &color, QWidget *parent)
+    : DownloadColorDialog(parent)
+{
+    if(color.isValid())
+    {
+        setColor(color);
+    }
+}
+
 DownloadColorDialog::~DownloadColorDialog()
 {
     delete m_ui;
 }
 
-QColor DownloadColorDialog::popup(QWidget *parent)
+QColor DownloadColorDialog::popup(QWidget *parent, const QColor &color)
 {
-    DownloadColorDialog dialog(parent);
+    DownloadColorDialog dialog(color, parent);
     return dialog.exec() ? dialog.color() : QColor();
 }
 
 QColor DownloadColorDialog::color() const
 {
     return m_color;
+}
+
+void DownloadColorDialog::setColor(const QColor &color)
+{
+    m_color = color;
+    m_ui->wgtPalette->setColor(color);
+    m_ui->wgtSaturationIndicator->setSaturation(color.hslSaturationF());
 }
 
 void DownloadColorDialog::buttonClicked(int index)
