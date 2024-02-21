@@ -42,4 +42,4 @@ SOURCES += \
     $$PWD/downloadrightareawidget.cpp \
     $$PWD/downloadtopareawidget.cpp
 
-win32:RC_FILE = $$PWD/TTKCore.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc

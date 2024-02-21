@@ -27,4 +27,4 @@ TARGET = TTKUi
 
 RESOURCES += $$PWD/TTKDownloader.qrc
 
-win32:RC_FILE = $$PWD/TTKUi.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc

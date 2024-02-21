@@ -50,4 +50,4 @@ SOURCES += $$PWD/downloadconfigobject.cpp
 
 RESOURCES += $$PWD/../TTKUi/DownloaderApp.qrc
 
-win32:RC_FILE = $$PWD/TTKConfig.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc

@@ -39,4 +39,4 @@ HEADERS += \
 
 SOURCES += $$PWD/downloadservicemain.cpp
 
-win32:RC_FILE = $$PWD/TTKService.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc

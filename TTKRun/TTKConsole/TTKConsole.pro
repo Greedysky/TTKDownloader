@@ -70,4 +70,4 @@ SOURCES += \
     $$PWD/downloadconsolemain.cpp \
     $$PWD/downloadconsoleobject.cpp
 
-win32:RC_FILE = $$PWD/TTKConsole.rc
+win32:RC_FILE = $$PWD/$${TARGET}.rc
