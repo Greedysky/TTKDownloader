@@ -18,7 +18,10 @@ DownloadConsoleObject::~DownloadConsoleObject()
 
 bool DownloadConsoleObject::initialize() const
 {
-    TTK_LOG_STREAM("\n" TTK_APP_NAME << "Console Module" << TTK_VERSION_STR "\n");
+    QString text = "\n" TTK_APP_NAME "Console Module" "v" TTK_VERSION_STR "\n";
+            text += "Offical web page: https://github.com/Greedysky/TTKDownloader\n";
+            text += "Copyright(C) 2015 - 2024 Greedysky All Rights Reserved\n";
+            text += "TTKDownloader imitates xunlei downloader, based on Qt for windows and linux\n\n";
 
     TTKCommandLineOption op1("-u", "--url", "download url");
     TTKCommandLineOption op2("-s", "--save", "download save path, if empty default is");
@@ -26,11 +29,12 @@ bool DownloadConsoleObject::initialize() const
     TTKCommandLineParser parser;
     parser.addOption(op1);
     parser.addOption(op2);
+    parser.setDescription(text);
     parser.process();
 
     if(parser.isEmpty())
     {
-        parser.printHelp();
+        parser.showHelp();
         return false;
     }
 
