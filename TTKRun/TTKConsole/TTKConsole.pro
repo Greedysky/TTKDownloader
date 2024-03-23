@@ -56,7 +56,7 @@ HEADERS += \
 }
 
 LIBS += -L$$DESTDIR -lTTKCore -lTTKLibrary
-unix:LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lTTKZip -lzlib
+unix:LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lttkzip -lzlib
 
 INCLUDEPATH += \
     $$PWD/../../TTKCommon \
