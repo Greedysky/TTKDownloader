@@ -2,7 +2,6 @@
 #include "downloadbackgroundconfigmanager.h"
 #include "downloadotherdefine.h"
 #include "downloadimageutils.h"
-#include "ttknumberdefine.h"
 
 #include "ttkzip/zip.h"
 #include "ttkzip/unzip.h"

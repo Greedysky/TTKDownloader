@@ -24,7 +24,6 @@
 
 #include "downloadobject.h"
 #include "downloadabstractnetwork.h"
-#include "ttknumberdefine.h"
 
 /*! @brief The class of the abstract downloading data.
  * @author Greedysky <greedysky@163.com>

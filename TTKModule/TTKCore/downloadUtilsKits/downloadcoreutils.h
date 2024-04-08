@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 #include "ttkmoduleexport.h"
-#include "ttknumberdefine.h"
 
 /*! @brief The namespace of the utils core.
  * @author Greedysky <greedysky@163.com>

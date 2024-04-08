@@ -9,7 +9,6 @@
 #include "downloadurlutils.h"
 #include "downloadmessagebox.h"
 #include "downloadtopareawidget.h"
-#include "ttknumberdefine.h"
 
 #include <qmath.h>
 

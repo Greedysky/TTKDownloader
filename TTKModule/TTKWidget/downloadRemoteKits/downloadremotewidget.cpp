@@ -3,7 +3,6 @@
 #include "downloadrightareawidget.h"
 #include "downloadtopareawidget.h"
 #include "downloaduiobject.h"
-#include "ttknumberdefine.h"
 
 #include <qmath.h>
 #include <QMenu>

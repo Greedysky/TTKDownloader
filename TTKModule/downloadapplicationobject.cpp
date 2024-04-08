@@ -3,7 +3,6 @@
 #include "downloadsettingmanager.h"
 #include "downloadmessageaboutdialog.h"
 #include "downloadimageutils.h"
-#include "ttknumberdefine.h"
 #include "ttkdesktopwrapper.h"
 
 #include <QTimer>

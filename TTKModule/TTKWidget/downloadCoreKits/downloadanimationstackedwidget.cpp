@@ -1,5 +1,4 @@
 #include "downloadanimationstackedwidget.h"
-#include "ttknumberdefine.h"
 
 #include <QPixmap>
 

@@ -1,5 +1,4 @@
 #include "downloadnumberutils.h"
-#include "ttknumberdefine.h"
 
 static QString size2Number(qint64 size)
 {
