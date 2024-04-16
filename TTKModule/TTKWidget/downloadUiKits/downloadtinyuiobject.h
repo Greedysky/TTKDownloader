@@ -30,28 +30,28 @@ namespace TTK
     {
         static constexpr const char *THDSkin = " \
             QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_skin_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover);}";
+            background-image: url(:/tiny/btn_skin_normal); } \
+            QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover); }";
 
         static constexpr const char *THDSetting = " \
             QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_setting_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover);}";
+            background-image: url(:/tiny/btn_setting_normal); } \
+            QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover); }";
 
         static constexpr const char *THDMinimum = " \
             QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_min_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_min_hover);}";
+            background-image: url(:/tiny/btn_min_normal); } \
+            QToolButton:hover{ background-image: url(:/tiny/btn_min_hover); }";
 
         static constexpr const char *THDMaximum = " \
             QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_max_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_max_hover);}";
+            background-image: url(:/tiny/btn_max_normal); } \
+            QToolButton:hover{ background-image: url(:/tiny/btn_max_hover); }";
 
         static constexpr const char *THDClose = " \
             QToolButton{ border:none; \
-            background-image: url(:/tiny/btn_close_normal);} \
-            QToolButton:hover{ background-image: url(:/tiny/btn_close_hover);}";
+            background-image: url(:/tiny/btn_close_normal); } \
+            QToolButton:hover{ background-image: url(:/tiny/btn_close_hover); }";
 
     }
 }
