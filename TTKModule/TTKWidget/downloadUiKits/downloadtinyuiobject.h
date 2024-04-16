@@ -28,27 +28,27 @@ namespace TTK
 {
     namespace UI
     {
-        static const QString THDSkin = " \
+        static constexpr const char *THDSkin = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_skin_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_skin_hover);}";
 
-        static const QString THDSetting = " \
+        static constexpr const char *THDSetting = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_setting_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_setting_hover);}";
 
-        static const QString THDMinimum = " \
+        static constexpr const char *THDMinimum = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_min_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_min_hover);}";
 
-        static const QString THDMaximum = " \
+        static constexpr const char *THDMaximum = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_max_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_max_hover);}";
 
-        static const QString THDClose = " \
+        static constexpr const char *THDClose = " \
             QToolButton{ border:none; \
             background-image: url(:/tiny/btn_close_normal);} \
             QToolButton:hover{ background-image: url(:/tiny/btn_close_hover);}";
