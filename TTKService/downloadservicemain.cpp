@@ -22,6 +22,7 @@ static void cleanupCache()
     QFile::remove(TTK_RECORD_IN_FILE);
     QFile::remove(TTK_RECORD_OUT_FILE);
     QFile::remove(DOWNLOAD_NETWORK_TEST_FILE);
+    TTK_INFO_STREAM("Application cache cleanup");
 }
 
 static void loadAppScaledFactor(int argc, char *argv[])
@@ -89,7 +90,5 @@ int main(int argc, char *argv[])
     mallopt(M_MMAP_THRESHOLD, 1024 * 1024);   // 1MB mmap
     mallopt(M_TRIM_THRESHOLD, 2 * 1024 * 1024); // 2MB brk
 #endif
-    const int ret = app.exec();
-    cleanupCache();
-    return ret;
+    return app.exec();
 }
