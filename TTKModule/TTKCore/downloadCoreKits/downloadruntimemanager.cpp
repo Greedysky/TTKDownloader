@@ -36,7 +36,7 @@ DownloadRunTimeManager::DownloadRunTimeManager()
 
 void DownloadRunTimeManager::run() const
 {
-    TTK_INFO_STREAM("DownloadApplication Begin");
+    TTK_INFO_STREAM("DownloadApplication Run");
 
 #if !TTK_QT_VERSION_CHECK(5,0,0)
     TTK::Codec::setLocalCodec();
