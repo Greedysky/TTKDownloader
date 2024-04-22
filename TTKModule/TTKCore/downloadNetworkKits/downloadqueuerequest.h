@@ -52,13 +52,14 @@ public:
     ~DownloadQueueRequest();
 
     /*!
-     * Add image download url and save path to download queue.
+     * Add download url and save path to download queue.
      */
-    void addImageQueue(const DownloadQueueDataList &datas);
+    void addQueue(const DownloadQueueDataList &datas);
     /*!
      * Start to download data.
      */
     virtual void startToRequest() override final;
+
     /*!
      * Abort current download thread.
      */
@@ -90,10 +91,10 @@ private:
     /*!
      * Start to download data in order.
      */
-    void startOrderImageQueue();
+    void startOrderQueue();
 
     bool m_isDownload, m_isAbort;
-    DownloadQueueDataList m_imageQueue;
+    DownloadQueueDataList m_queue;
     QNetworkRequest *m_request;
 
 };

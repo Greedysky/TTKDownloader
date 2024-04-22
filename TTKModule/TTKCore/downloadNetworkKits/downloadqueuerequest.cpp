@@ -21,7 +21,7 @@ DownloadQueueRequest::DownloadQueueRequest(const DownloadQueueData &data, QObjec
 DownloadQueueRequest::DownloadQueueRequest(const DownloadQueueDataList &datas, QObject *parent)
     : DownloadQueueRequest(DownloadQueueData(), parent)
 {
-    addImageQueue(datas);
+    addQueue(datas);
 }
 
 DownloadQueueRequest::~DownloadQueueRequest()
@@ -33,9 +33,9 @@ DownloadQueueRequest::~DownloadQueueRequest()
 
 void DownloadQueueRequest::startToRequest()
 {
-    if(!m_imageQueue.isEmpty())
+    if(!m_queue.isEmpty())
     {
-        startOrderImageQueue();
+        startOrderQueue();
     }
 }
 
@@ -56,29 +56,29 @@ void DownloadQueueRequest::abort()
 
 void DownloadQueueRequest::clear()
 {
-    m_imageQueue.clear();
+    m_queue.clear();
 }
 
-void DownloadQueueRequest::addImageQueue(const DownloadQueueDataList &datas)
+void DownloadQueueRequest::addQueue(const DownloadQueueDataList &datas)
 {
-    m_imageQueue = datas;
+    m_queue = datas;
 }
 
-void DownloadQueueRequest::startOrderImageQueue()
+void DownloadQueueRequest::startOrderQueue()
 {
-    if(m_imageQueue.isEmpty())
+    if(m_queue.isEmpty())
     {
         return;
     }
 
-    if(QFile::exists(m_imageQueue.front().m_path))
+    if(QFile::exists(m_queue.front().m_path))
     {
-        Q_EMIT downLoadDataChanged(m_imageQueue.takeFirst().m_path);
-        startOrderImageQueue();
+        Q_EMIT downLoadDataChanged(m_queue.takeFirst().m_path);
+        startOrderQueue();
     }
     else if(G_NETWORK_PTR->isOnline())
     {
-        startDownload(m_imageQueue.front().m_url);
+        startDownload(m_queue.front().m_url);
     }
 }
 
@@ -86,7 +86,7 @@ void DownloadQueueRequest::startDownload(const QString &url)
 {
     m_isDownload = true;
     delete m_file;
-    m_file = new QFile(m_imageQueue.front().m_path, this);
+    m_file = new QFile(m_queue.front().m_path, this);
 
     if(!m_file->open(QIODevice::WriteOnly))
     {
@@ -122,9 +122,9 @@ void DownloadQueueRequest::downLoadFinished()
     m_isDownload = false;
 
     DownloadAbstractNetwork::deleteAll();
-    Q_EMIT downLoadDataChanged(m_imageQueue.takeFirst().m_path);
+    Q_EMIT downLoadDataChanged(m_queue.takeFirst().m_path);
 
-    startOrderImageQueue();
+    startOrderQueue();
 }
 
 void DownloadQueueRequest::handleReadyRead()
