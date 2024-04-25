@@ -2,6 +2,7 @@
 ![TTKDownloader](https://img.shields.io/badge/Greedysky-TTKDownloader-green.svg?style=flat-square)
 ![Version](https://img.shields.io/badge/Version-2.8.0.0-blue.svg?style=flat-square)
 ![License](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
+![License](https://img.shields.io/badge/License-LGPL%20V3-yellow.svg?style=flat-square)
 
 ![LOGO](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/logo_banner.png?raw=true)
 
