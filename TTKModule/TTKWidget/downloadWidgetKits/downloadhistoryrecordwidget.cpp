@@ -98,7 +98,7 @@ void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const 
 
     const QFileInfo fin(path);
     DownloadRecord record;
-    record.m_time = fin.lastModified().toString("yyyy-MM-dd HH:mm:ss");
+    record.m_time = fin.lastModified().toString(TTK_DATE_TIMEZ_FORMAT);
     record.m_path = fin.absoluteFilePath();
     record.m_size = TTK::Number::sizeByteToLabel(fin.size());
     record.m_url = url;

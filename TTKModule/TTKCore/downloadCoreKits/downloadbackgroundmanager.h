@@ -22,7 +22,7 @@
 #include <QColor>
 #include "ttksingleton.h"
 
-#define G_BACKGROUND_PTR (TTKSingleton<DownloadBackgroundManager>::createInstance())
+#define G_BACKGROUND_PTR (TTKSingleton<DownloadBackgroundManager>::instance())
 
 /*! @brief The class of the manager of dealing with artist pictures.
  * @author Greedysky <greedysky@163.com>

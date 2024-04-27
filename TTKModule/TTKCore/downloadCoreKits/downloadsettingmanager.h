@@ -23,7 +23,7 @@
 #include "downloadobject.h"
 #include "ttksingleton.h"
 
-#define G_SETTING_PTR (TTKSingleton<DownloadSettingManager>::createInstance())
+#define G_SETTING_PTR (TTKSingleton<DownloadSettingManager>::instance())
 
 /*! @brief The class of the paramater setting manager.
  * @author Greedysky <greedysky@163.com>

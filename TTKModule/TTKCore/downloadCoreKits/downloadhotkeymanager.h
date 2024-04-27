@@ -21,7 +21,7 @@
 
 #include "ttksingleton.h"
 
-#define G_HOTKEY_PTR (TTKSingleton<DownloadHotKeyManager>::createInstance())
+#define G_HOTKEY_PTR (TTKSingleton<DownloadHotKeyManager>::instance())
 
 class QGlobalShortcut;
 
