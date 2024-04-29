@@ -20,7 +20,7 @@ bool TTK::Url::openUrl(const QString &path, bool local)
     {
 #ifdef Q_OS_WIN
         QString p = path;
-        p.replace('/', "\\");
+        p.replace(TTK_SEPARATOR, TTK_WSEPARATOR);
         p = "/select," + p;
         ShellExecuteW(0, L"open", L"explorer.exe", p.toStdWString().c_str(), nullptr, SW_SHOWNORMAL);
         return true;
