@@ -64,10 +64,10 @@ INCLUDEPATH += \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits \
     $$PWD/../../TTKModule/TTKCore/downloadNetworkKits
 
-HEADERS += $$PWD/downloadconsoleobject.h
+HEADERS += $$PWD/downloadconsolemodule.h
 
 SOURCES += \
     $$PWD/downloadconsolemain.cpp \
-    $$PWD/downloadconsoleobject.cpp
+    $$PWD/downloadconsolemodule.cpp
 
 win32:RC_FILE = $$PWD/$${TARGET}.rc

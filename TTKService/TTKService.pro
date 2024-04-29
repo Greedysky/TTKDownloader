@@ -33,7 +33,7 @@ INCLUDEPATH += \
 
 win32:msvc{
 HEADERS += \
-    $$PWD/../TTKConfig/downloadconfigobject.h \
+    $$PWD/../TTKConfig/downloadconfigmodule.h \
     $$PWD/../TTKModule/downloadapplication.h
 }
 

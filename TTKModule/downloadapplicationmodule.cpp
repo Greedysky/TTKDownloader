@@ -1,4 +1,4 @@
-#include "downloadapplicationobject.h"
+#include "downloadapplicationmodule.h"
 #include "downloadapplication.h"
 #include "downloadsettingmanager.h"
 #include "downloadmessageaboutdialog.h"
@@ -8,54 +8,54 @@
 #include <QTimer>
 #include <QPropertyAnimation>
 
-DownloadApplicationObject *DownloadApplicationObject::m_instance = nullptr;
+DownloadApplicationModule *DownloadApplicationModule::m_instance = nullptr;
 
-DownloadApplicationObject::DownloadApplicationObject(QObject *parent)
+DownloadApplicationModule::DownloadApplicationModule(QObject *parent)
     : QObject(parent)
 {
     m_instance = this;
 
-    appResetWindow();
+    resetWindowGeometry();
 
-    m_animation = new QPropertyAnimation(DownloadApplication::instance(), "windowOpacity", this);
+    m_quitAnimation = new QPropertyAnimation(parent, "windowOpacity", this);
 }
 
-DownloadApplicationObject::~DownloadApplicationObject()
+DownloadApplicationModule::~DownloadApplicationModule()
 {
     Q_CLEANUP_RESOURCE(TTKDownloader);
-
-    delete m_animation;
+    delete m_quitAnimation;
 }
 
-DownloadApplicationObject *DownloadApplicationObject::instance()
+DownloadApplicationModule *DownloadApplicationModule::instance()
 {
     return m_instance;
 }
 
-void DownloadApplicationObject::quit()
+void DownloadApplicationModule::quit()
 {
     qApp->exit();
 }
 
-void DownloadApplicationObject::windowCloseAnimation()
+void DownloadApplicationModule::windowCloseAnimation()
 {
     float v = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
-    v = TTK::Image::reRenderValue<float>(1.0f, 0.35f, v);
-    m_animation->stop();
-    m_animation->setDuration(TTK_DN_S2MS / 2);
-    m_animation->setStartValue(v);
-    m_animation->setEndValue(0);
-    m_animation->start();
+          v = TTK::Image::reRenderValue<float>(1.0f, 0.35f, v);
+
+    m_quitAnimation->stop();
+    m_quitAnimation->setDuration(TTK_DN_S2MS / 2);
+    m_quitAnimation->setStartValue(v);
+    m_quitAnimation->setEndValue(0);
+    m_quitAnimation->start();
 
     TTK_SIGNLE_SHOT(TTK_DN_S2MS, this, quit, TTK_SLOT);
 }
 
-void DownloadApplicationObject::appAboutUs()
+void DownloadApplicationModule::showAboutWidget()
 {
     DownloadMessageAboutDialog().exec();
 }
 
-void DownloadApplicationObject::appResetWindow()
+void DownloadApplicationModule::resetWindowGeometry()
 {
     const QRect &geometry = TTKDesktopWrapper::geometry();
     G_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, geometry.size());

@@ -26,7 +26,7 @@ class DownloadBottomAreaWidget;
 class DownloadTopAreaWidget;
 class DownloadRightAreaWidget;
 class DownloadLeftAreaWidget;
-class DownloadApplicationObject;
+class DownloadApplicationModule;
 
 namespace Ui {
 class DownloadApplication;
@@ -95,7 +95,7 @@ private:
     DownloadTopAreaWidget *m_topAreaWidget;
     DownloadRightAreaWidget *m_rightAreaWidget;
     DownloadLeftAreaWidget *m_leftAreaWidget;
-    DownloadApplicationObject *m_applicationObject;
+    DownloadApplicationModule *m_applicationModule;
 
     static DownloadApplication *m_instance;
 };

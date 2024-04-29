@@ -28,7 +28,7 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/downloadapplication.h \
-    $$PWD/downloadapplicationobject.h \
+    $$PWD/downloadapplicationmodule.h \
     $$PWD/downloadbottomareawidget.h \
     $$PWD/downloadleftareawidget.h \
     $$PWD/downloadrightareawidget.h \
@@ -36,7 +36,7 @@ HEADERS += \
 
 SOURCES += \
     $$PWD/downloadapplication.cpp \
-    $$PWD/downloadapplicationobject.cpp \
+    $$PWD/downloadapplicationmodule.cpp \
     $$PWD/downloadbottomareawidget.cpp \
     $$PWD/downloadleftareawidget.cpp \
     $$PWD/downloadrightareawidget.cpp \

@@ -4,7 +4,7 @@
 #include "downloadtopareawidget.h"
 #include "downloadrightareawidget.h"
 #include "downloadleftareawidget.h"
-#include "downloadapplicationobject.h"
+#include "downloadapplicationmodule.h"
 #include "downloadsettingmanager.h"
 #include "downloadconfigmanager.h"
 #include "downloadhotkeymanager.h"
@@ -24,7 +24,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
 {
     m_instance = this;
 
-    m_applicationObject = new DownloadApplicationObject(this);
+    m_applicationModule = new DownloadApplicationModule(this);
     m_topAreaWidget = new DownloadTopAreaWidget(this);
     m_rightAreaWidget = new DownloadRightAreaWidget(this);
     m_leftAreaWidget = new DownloadLeftAreaWidget(this);
@@ -43,7 +43,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
 
     G_HOTKEY_PTR->addHotKey(this, "Ctrl+X", SLOT(quitWindow()));
 
-    /////////// Mouse tracking
+    /////////// Objects Mouse tracking;
     setObjectsTracking({m_ui->background});
 
     readSystemConfigFromFile();
@@ -52,11 +52,11 @@ DownloadApplication::DownloadApplication(QWidget *parent)
 
 DownloadApplication::~DownloadApplication()
 {
-    delete m_applicationObject;
     delete m_bottomAreaWidget;
     delete m_topAreaWidget;
     delete m_rightAreaWidget;
     delete m_leftAreaWidget;
+    delete m_applicationModule;
     delete m_ui;
 }
 
@@ -83,7 +83,7 @@ void DownloadApplication::quitWindow()
 {
     //Write configuration files
     writeSystemConfigToFile();
-    m_applicationObject->windowCloseAnimation();
+    m_applicationModule->windowCloseAnimation();
 }
 
 void DownloadApplication::createRightMenu()
@@ -110,12 +110,12 @@ void DownloadApplication::createRightMenu()
 
     rightClickMenu.addAction(tr("Plan"));
     rightClickMenu.addSeparator();
-    rightClickMenu.addAction(tr("ResetWindow"), m_applicationObject, SLOT(appResetWindow()));
+    rightClickMenu.addAction(tr("ResetWindow"), m_applicationModule, SLOT(resetWindowGeometry()));
     rightClickMenu.addAction(QIcon(":/contextMenu/lb_setting_normal"), tr("Setting(O)"), DownloadLeftAreaWidget::instance(), SLOT(showSettingWidget()));
     rightClickMenu.addSeparator();
 
     QMenu aboutMenu(tr("About"), &rightClickMenu);
-    aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(TTK_VERSION_STR) + QString(TTK_VERSION_TIME_STR), m_applicationObject, SLOT(appAboutUs()));
+    aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(TTK_VERSION_STR) + QString(TTK_VERSION_TIME_STR), m_applicationModule, SLOT(showAboutWidget()));
     rightClickMenu.addMenu(&aboutMenu);
     rightClickMenu.addSeparator();
     rightClickMenu.addAction(tr("appClose(X)"), this, SLOT(quitWindow()));

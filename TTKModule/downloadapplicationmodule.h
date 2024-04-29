@@ -1,5 +1,5 @@
-#ifndef DOWNLOADCONFIGOBJECT_H
-#define DOWNLOADCONFIGOBJECT_H
+#ifndef DOWNLOADAPPLICATIONMODULE_H
+#define DOWNLOADAPPLICATIONMODULE_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -19,62 +19,55 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include "downloadobject.h"
 #include "ttkmoduleexport.h"
-#include "downloadconfigdefine.h"
 
-/*! @brief The class of the download initialize object.
+class QPropertyAnimation;
+
+/*! @brief The class of the app object module.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadConfigObject : public QObject
+class TTK_MODULE_EXPORT DownloadApplicationModule : public QObject
 {
     Q_OBJECT
+    TTK_DECLARE_MODULE(DownloadApplicationModule)
 public:
     /*!
      * Object constructor.
      */
-    explicit DownloadConfigObject(QObject *parent = nullptr);
+    explicit DownloadApplicationModule(QObject *parent = nullptr);
+    /*!
+     * Object destructor.
+     */
+    ~DownloadApplicationModule();
 
     /*!
-     * Check current setting file's validation.
+     * Get class object instance.
      */
-    void valid() const;
+    static DownloadApplicationModule *instance();
+
+public Q_SLOTS:
     /*!
-     * Init parameters.
+     * Application quit.
      */
-    void initialize() const;
+    void quit();
     /*!
-     * Reset config parameters.
+     * Window close animation.
      */
-    void reset() const;
+    void windowCloseAnimation();
+    /*!
+     * Show about widget.
+     */
+    void showAboutWidget();
+    /*!
+     * Reset current window geometry.
+     */
+    void resetWindowGeometry();
 
 private:
-    /*!
-     * Check current dir is exist, no, just create it.
-     */
-    void directoryExist(const QString &name) const;
-    /*!
-     * Check related dir is exist.
-     */
-    void checkDirectoryExist() const;
-    /*!
-     * Check related file is exist.
-     */
-    void checkFileNeededExist() const;
-    /*!
-     * Copy file by overwrite.
-     */
-    void copyFileOverwrite(const QString &origin, const QString &des) const;
-    /*!
-     * Copy file.
-     */
-    void copyFile(const QString &origin, const QString &des) const;
-#ifdef Q_OS_UNIX
-    /*!
-     * Copy linux shell file.
-     */
-    void copyLinuxShellFile(const QString &name, const QString &path) const;
-#endif
+    QPropertyAnimation *m_quitAnimation;
 
+    static DownloadApplicationModule *m_instance;
 };
 
-#endif // DOWNLOADCONFIGOBJECT_H
+#endif // DOWNLOADAPPLICATIONMODULE_H

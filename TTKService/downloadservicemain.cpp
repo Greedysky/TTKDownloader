@@ -1,7 +1,7 @@
 #include "ttkapplication.h"
 #include "downloadapplication.h"
 #include "downloadruntimemanager.h"
-#include "downloadconfigobject.h"
+#include "downloadconfigmodule.h"
 #include "downloadotherdefine.h"
 #include "ttkobject.h"
 #include "ttkdumper.h"
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    DownloadConfigObject config;
+    DownloadConfigModule config;
     config.valid();
 
     TTKDumper dumper(std::bind(cleanupCache));

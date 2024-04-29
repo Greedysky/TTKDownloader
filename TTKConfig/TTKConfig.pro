@@ -44,9 +44,9 @@ INCLUDEPATH += \
 
 HEADERS += \
     $$PWD/downloadconfigdefine.h \
-    $$PWD/downloadconfigobject.h
+    $$PWD/downloadconfigmodule.h
 
-SOURCES += $$PWD/downloadconfigobject.cpp
+SOURCES += $$PWD/downloadconfigmodule.cpp
 
 RESOURCES += $$PWD/../TTKUi/DownloaderApp.qrc
 

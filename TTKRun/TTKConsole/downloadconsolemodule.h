@@ -1,5 +1,5 @@
-#ifndef DOWNLOADCONSOLEOBJECT_H
-#define DOWNLOADCONSOLEOBJECT_H
+#ifndef DOWNLOADCONSOLEMODULE_H
+#define DOWNLOADCONSOLEMODULE_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -24,21 +24,21 @@
 
 class DownloadThreadManager;
 
-/*! @brief The class of the download console object.
+/*! @brief The class of the download console module.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadConsoleObject : public QObject
+class TTK_MODULE_EXPORT DownloadConsoleModule : public QObject
 {
     Q_OBJECT
 public:
     /*!
      * Object constructor.
      */
-    explicit DownloadConsoleObject(QObject *parent = nullptr);
+    explicit DownloadConsoleModule(QObject *parent = nullptr);
     /*!
      * Object destructor.
      */
-    ~DownloadConsoleObject();
+    ~DownloadConsoleModule();
 
     /*!
      * Init all parameter.
@@ -56,4 +56,4 @@ private:
 
 };
 
-#endif // DOWNLOADCONSOLEOBJECT_H
+#endif // DOWNLOADCONSOLEMODULE_H

@@ -1,4 +1,4 @@
-#include "downloadconsoleobject.h"
+#include "downloadconsolemodule.h"
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +8,6 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationDomain(TTK_APP_COME_NAME);
     QCoreApplication::setApplicationName(TTK_APP_NAME);
 
-    DownloadConsoleObject object;
-    return object.initialize();
+    DownloadConsoleModule console;
+    return console.initialize();
 }

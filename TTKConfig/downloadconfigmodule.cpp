@@ -1,20 +1,20 @@
-#include "downloadconfigobject.h"
+#include "downloadconfigmodule.h"
 
 #include <QProcess>
 
-DownloadConfigObject::DownloadConfigObject(QObject *parent)
+DownloadConfigModule::DownloadConfigModule(QObject *parent)
     : QObject(parent)
 {
 
 }
 
-void DownloadConfigObject::valid() const
+void DownloadConfigModule::valid() const
 {
     checkDirectoryExist();
     checkFileNeededExist();
 }
 
-void DownloadConfigObject::initialize() const
+void DownloadConfigModule::initialize() const
 {
     valid();
 
@@ -23,12 +23,12 @@ void DownloadConfigObject::initialize() const
     copyFileOverwrite(":/data/history.tkf", TTK_HISTORY_PATH_FULL);
 }
 
-void DownloadConfigObject::reset() const
+void DownloadConfigModule::reset() const
 {
     copyFileOverwrite(":/data/config.xml", TTK_COFIG_PATH_FULL);
 }
 
-void DownloadConfigObject::directoryExist(const QString &name) const
+void DownloadConfigModule::directoryExist(const QString &name) const
 {
     QDir dir;
     if(!dir.exists(name))
@@ -37,7 +37,7 @@ void DownloadConfigObject::directoryExist(const QString &name) const
     }
 }
 
-void DownloadConfigObject::checkDirectoryExist() const
+void DownloadConfigModule::checkDirectoryExist() const
 {
     directoryExist(TTK_USER_THEME_DIR_FULL);
 
@@ -45,7 +45,7 @@ void DownloadConfigObject::checkDirectoryExist() const
     directoryExist(TTK_LANGUAGE_DIR_FULL);
 }
 
-void DownloadConfigObject::checkFileNeededExist() const
+void DownloadConfigModule::checkFileNeededExist() const
 {
     copyFile(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFile(":/data/list.tkpl", TTK_LIST_PATH_FULL);
@@ -65,7 +65,7 @@ void DownloadConfigObject::checkFileNeededExist() const
 #endif
 }
 
-void DownloadConfigObject::copyFileOverwrite(const QString &origin, const QString &des) const
+void DownloadConfigModule::copyFileOverwrite(const QString &origin, const QString &des) const
 {
     if(QFile::exists(des))
     {
@@ -76,7 +76,7 @@ void DownloadConfigObject::copyFileOverwrite(const QString &origin, const QStrin
     QFile::setPermissions(des, QFile::ReadOwner | QFile::WriteOwner);
 }
 
-void DownloadConfigObject::copyFile(const QString &origin, const QString &des) const
+void DownloadConfigModule::copyFile(const QString &origin, const QString &des) const
 {
     if(!QFile::exists(des))
     {
@@ -86,7 +86,7 @@ void DownloadConfigObject::copyFile(const QString &origin, const QString &des) c
 }
 
 #ifdef Q_OS_UNIX
-void DownloadConfigObject::copyLinuxShellFile(const QString &name, const QString &path) const
+void DownloadConfigModule::copyLinuxShellFile(const QString &name, const QString &path) const
 {
     copyFileOverwrite(name, path);
     QProcess::execute("chmod", {"+x", path});

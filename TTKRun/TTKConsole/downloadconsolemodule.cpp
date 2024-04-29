@@ -1,9 +1,9 @@
-#include "downloadconsoleobject.h"
+#include "downloadconsolemodule.h"
 #include "downloadthreadmanager.h"
 #include "downloadsettingmanager.h"
 #include "ttkversion.h"
 
-DownloadConsoleObject::DownloadConsoleObject(QObject *parent)
+DownloadConsoleModule::DownloadConsoleModule(QObject *parent)
     : QObject(parent)
 {
     m_manager = new DownloadThreadManager(this);
@@ -11,12 +11,12 @@ DownloadConsoleObject::DownloadConsoleObject(QObject *parent)
     connect(m_manager, SIGNAL(downloadingFinished(QString)), qApp, SLOT(quit()));
 }
 
-DownloadConsoleObject::~DownloadConsoleObject()
+DownloadConsoleModule::~DownloadConsoleModule()
 {
     delete m_manager;
 }
 
-bool DownloadConsoleObject::initialize() const
+bool DownloadConsoleModule::initialize() const
 {
     QString text = TTK_LINEFEED TTK_APP_NAME "Console Module" "v" TTK_VERSION_STR TTK_LINEFEED;
             text += "Offical web page: https://github.com/Greedysky/TTKDownloader\n";
@@ -74,7 +74,7 @@ bool DownloadConsoleObject::initialize() const
     return QCoreApplication::exec();
 }
 
-void DownloadConsoleObject::progressChanged(qint64 current, qint64 total)
+void DownloadConsoleModule::progressChanged(qint64 current, qint64 total)
 {
     TTK_LOG_STREAM("process: " << TTKStaticCast(int, (current * 100000000.0 / total)) / 1000000.0 <<
                    "% " << current << "kb " << total << "kb");
