@@ -178,7 +178,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
 
 void DownloadTopAreaWidget::drawWindowBackgroundRectString()
 {
-    float v = TTK::Image::reRenderValue<float>(1.0f, 0.35f, m_backgroundAlpha);
+    float v = TTK::Image::boundValue<float>(1.0f, 0.35f, m_backgroundAlpha);
     DownloadApplication::instance()->setWindowOpacity(v);
 
     QSize size(G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize());

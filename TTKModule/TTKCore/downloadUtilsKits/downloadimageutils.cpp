@@ -63,7 +63,7 @@ void TTK::Image::reRenderImage(qint64 &avg, int delta, const QImage *input, QIma
    {
        for(int h = 0; h < input->height(); ++h)
        {
-           QRgb rgb = input->pixel(w, h);
+           const QRgb rgb = input->pixel(w, h);
            r += qRed(rgb);
            g += qGreen(rgb);
            b += qBlue(rgb);
