@@ -30,28 +30,28 @@ namespace TTK
     {
         static constexpr const char *THDNewDownload = " \
             QToolButton{ border:none; \
-            background-image: url(:/functions/btn_new_normal); } \
-            QToolButton:hover{ background-image: url(:/functions/btn_new_hover); }";
+            background-image:url(:/functions/btn_new_normal); } \
+            QToolButton:hover{ background-image:url(:/functions/btn_new_hover); }";
 
         static constexpr const char *THDStartDownload = " \
             QToolButton{ border:none; \
-            background-image: url(:/functions/btn_start_normal); } \
-            QToolButton:hover{ background-image: url(:/functions/btn_start_hover); }";
+            background-image:url(:/functions/btn_start_normal); } \
+            QToolButton:hover{ background-image:url(:/functions/btn_start_hover); }";
 
         static constexpr const char *THDStopDownload = " \
             QToolButton{ border:none; \
-            background-image: url(:/functions/btn_stop_normal); } \
-            QToolButton:hover{ background-image: url(:/functions/btn_stop_hover); }";
+            background-image:url(:/functions/btn_stop_normal); } \
+            QToolButton:hover{ background-image:url(:/functions/btn_stop_hover); }";
 
         static constexpr const char *THDDeleteDownload = " \
             QToolButton{ border:none; \
-            background-image: url(:/functions/btn_delete_normal); } \
-            QToolButton:hover{ background-image: url(:/functions/btn_delete_hover); }";
+            background-image:url(:/functions/btn_delete_normal); } \
+            QToolButton:hover{ background-image:url(:/functions/btn_delete_hover); }";
 
         static constexpr const char *THDSettings = " \
             QToolButton{ border:none; \
-            background-image: url(:/functions/btn_setting_normal); } \
-            QToolButton:hover{ background-image: url(:/functions/btn_setting_hover); }";
+            background-image:url(:/functions/btn_setting_normal); } \
+            QToolButton:hover{ background-image:url(:/functions/btn_setting_hover); }";
 
     }
 }
