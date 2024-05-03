@@ -163,8 +163,8 @@ namespace TTK
 
         ///ComboBox
         static const QString ComboBoxStyle01 = " \
-            QComboBox{ border: 1px solid gray; } \
-            QComboBox::hover{ border: 1px solid rgb(22, 154, 243); } \
+            QComboBox{ border:1px solid gray; } \
+            QComboBox::hover{ border:1px solid rgb(22, 154, 243); } \
             QComboBox::drop-down{ subcontrol-origin:padding; \
             subcontrol-position:top right; width:20px; border-left-width:1px; \
             border-left-color:darkgray; border-left-style:solid; } \
