@@ -78,7 +78,7 @@ QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWid
 
         hbox->addStretch(1);
         QPushButton *p = createButton(tr("ALL"));
-        p->setStyleSheet(p->styleSheet() + QString("QPushButton{%1}").arg(TTK::UI::ColorStyle03));
+        p->setStyleSheet(p->styleSheet() + QString("QPushButton{ %1 }").arg(TTK::UI::ColorStyle03));
 
         m_functionsWidget->setLayout(hbox);
     }
@@ -213,5 +213,5 @@ void DownloadBackgroundOnlineWidget::buttonStyleChanged()
     {
         m_functionsItems[i]->setStyleSheet(TTK::UI::PushButtonStyle02);
     }
-    m_functionsItems[m_currentIndex]->setStyleSheet(TTK::UI::PushButtonStyle02 + QString("QPushButton{%1}").arg(TTK::UI::ColorStyle03));
+    m_functionsItems[m_currentIndex]->setStyleSheet(TTK::UI::PushButtonStyle02 + QString("QPushButton{ %1 }").arg(TTK::UI::ColorStyle03));
 }
