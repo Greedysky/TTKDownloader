@@ -80,7 +80,7 @@ Q_SIGNALS:
 
 private Q_SLOTS:
     /*!
-     * Download finished.
+     * Download data from net finished.
      */
     void downloadingFinished(const QString &path);
 

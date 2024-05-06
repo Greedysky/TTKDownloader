@@ -99,7 +99,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     /*!
-     * Network download finished.
+     * Download data from net finished.
      */
     void downLoadFinished();
     /*!

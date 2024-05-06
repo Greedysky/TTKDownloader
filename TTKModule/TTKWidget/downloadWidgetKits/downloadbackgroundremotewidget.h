@@ -73,11 +73,11 @@ public Q_SLOTS:
      */
     void buttonClicked(int index);
     /*!
-     * Send download data from net.
+     * Download data from net finished.
      */
     void downLoadDataChanged(const QString &bytes);
     /*!
-     * Send download data from net.
+     * Download data from net finished.
      */
     void downLoadDataChanged(const DownloadSkinRemoteGroupList &bytes);
 

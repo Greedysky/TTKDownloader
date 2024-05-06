@@ -55,7 +55,7 @@ public:
 
 Q_SIGNALS:
     /*!
-     * Download finished.
+     * Download item data from net finished.
      */
     void downloadingFinished(const QString &path);
     /*!
@@ -97,7 +97,7 @@ private Q_SLOTS:
 
 private:
     /*!
-     * Download finished.
+     * Download data from net finished.
      */
     void downloadingFinish();
     /*!
