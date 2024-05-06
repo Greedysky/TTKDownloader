@@ -3,7 +3,6 @@
 #include "downloadqueuerequest.h"
 
 #include <QDir>
-#include <QBoxLayout>
 #include <QPushButton>
 #include <QButtonGroup>
 
