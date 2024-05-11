@@ -40,6 +40,7 @@ qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
         {
             continue;
         }
+
         connect(reply, SIGNAL(finished()), &loop, SLOT(quit()));
         loop.exec();
 
