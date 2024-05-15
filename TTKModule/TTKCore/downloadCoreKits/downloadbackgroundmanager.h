@@ -77,7 +77,6 @@ private:
     DownloadBackgroundManager();
 
     QColor m_skinColor;
-    QStringList m_photos;
     QObjectList m_observer;
     QString m_background;
 
