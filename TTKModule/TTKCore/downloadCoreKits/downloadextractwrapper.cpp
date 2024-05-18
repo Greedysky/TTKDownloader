@@ -48,7 +48,7 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &in
         char dt[TTK_HIGH_BUFFER] = {0};
 
         const QString &module = name;
-        if(module.toLower().contains("image/bkg"))
+        if(module.contains("image/bkg", Qt::CaseInsensitive))
         {
             QByteArray buffer;
             while(true)
@@ -109,7 +109,7 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
 
         QByteArray buffer;
         const QString &module = name;
-        if(module.toLower().contains(SKN_FILE))
+        if(module.contains(SKN_FILE, Qt::CaseInsensitive))
         {
             while(true)
             {
@@ -125,7 +125,7 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
             pix.loadFromData(buffer);
             image->m_pix = pix;
         }
-        else if(module.toLower().contains(XML_FILE))
+        else if(module.contains(XML_FILE, Qt::CaseInsensitive))
         {
             while(true)
             {
