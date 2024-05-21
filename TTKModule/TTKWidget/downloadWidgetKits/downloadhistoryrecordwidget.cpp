@@ -93,7 +93,7 @@ void DownloadHistoryRecordWidget::reverseSelect()
 
 void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const QString &url)
 {
-    int row = rowCount();
+    const int row = rowCount();
     setRowCount(row + 1);
 
     const QFileInfo fin(path);

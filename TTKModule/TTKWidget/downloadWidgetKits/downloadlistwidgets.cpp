@@ -139,8 +139,9 @@ void DownloadListWidgets::addItemToList(const QString &path, const QString &name
         return;
     }
 
-    int row = rowCount();
+    const int row = rowCount();
     setRowCount(row + 1);
+
     DownloadUnits *unit = new DownloadUnits(path, this);
     connect(unit, SIGNAL(removeItemWidget(DownloadUnits*)), SLOT(removeItemWidget(DownloadUnits*)));
     m_itemList << unit;
