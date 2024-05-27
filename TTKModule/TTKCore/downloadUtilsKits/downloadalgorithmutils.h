@@ -34,13 +34,13 @@ namespace TTK
         TTK_MODULE_EXPORT QByteArray sha1(const QByteArray &data);
 
         /*!
-         * Get mdII(greedysky) algorithm.
+         * Get mdII ttk algorithm.
          */
         TTK_MODULE_EXPORT QString mdII(const QString &data, bool encode);
         /*!
-         * Get mdII(greedysky) algorithm.
+         * Get mdII ttk algorithm.
          */
-        TTK_MODULE_EXPORT QString mdII(const QString &data, const QString &key, bool encode);
+        TTK_MODULE_EXPORT QString mdII(const QString &data, const char *key, bool encode);
 
     }
 }
