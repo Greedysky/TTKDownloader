@@ -78,14 +78,14 @@ DownloadBackgroundSkinDialog::~DownloadBackgroundSkinDialog()
 QPixmap DownloadBackgroundSkinDialog::setBackgroundUrl(QString &name)
 {
     QString path = USER_THEME_DIR_FULL + name + TKM_FILE;
-    DownloadBackgroundSkinDialog::themeValidCheck(name, path);
+    DownloadBackgroundSkinDialog::themeIsValid(name, path);
     G_BACKGROUND_PTR->setBackground(path);
 
     DownloadBackgroundImage image;
     return DownloadExtractWrapper::outputSkin(&image, path) ? image.m_pix : QPixmap();
 }
 
-bool DownloadBackgroundSkinDialog::themeValidCheck(QString &name, QString &path)
+bool DownloadBackgroundSkinDialog::themeIsValid(QString &name, QString &path)
 {
     if(!QFile::exists(path))
     {
@@ -115,7 +115,7 @@ void DownloadBackgroundSkinDialog::updateArtFileTheme(const QString &theme)
 {
     const QString &des = QString("%1%2%3").arg(USER_THEME_DIR_FULL, theme, TKM_FILE);
     m_stackBackgroundList->addCellItem(theme, des, true);
-    m_stackBackgroundList->updateLastedItem();
+    m_stackBackgroundList->updateLastItem();
 }
 
 void DownloadBackgroundSkinDialog::setCurrentBackgroundTheme(const QString &theme, int alpha)
@@ -150,7 +150,7 @@ void DownloadBackgroundSkinDialog::showPaletteDialog()
 void DownloadBackgroundSkinDialog::showPaletteDialog(const QString &path)
 {
     cpoyFileFromLocal(path);
-    m_stackBackgroundList->updateLastedItem();
+    m_stackBackgroundList->updateLastItem();
 }
 
 void DownloadBackgroundSkinDialog::showCustomSkinDialog()
@@ -175,7 +175,8 @@ void DownloadBackgroundSkinDialog::showCustomSkinDialog()
     {
         cpoyFileFromLocal(path);
     }
-    m_stackBackgroundList->updateLastedItem();
+
+    m_stackBackgroundList->updateLastItem();
 }
 
 void DownloadBackgroundSkinDialog::backgroundListWidgetChanged(int index)
@@ -213,6 +214,7 @@ void DownloadBackgroundSkinDialog::classicalListWidgetItemClicked(int type, cons
             QFile::copy(QString("%1%2%3").arg(THEME_DIR_FULL, name, TKM_FILE), path);
             m_stackBackgroundList->addCellItem(name, path, true);
         }
+
         listWidgetItemClicked(m_stackBackgroundList, name);
     }
     else
@@ -226,6 +228,7 @@ void DownloadBackgroundSkinDialog::remoteListWidgetItemClicked(int type, const Q
     Q_UNUSED(type);
     DownloadBackgroundImage image;
     m_onlineBackgroundList->outputRemoteSkin(image, name);
+
     if(!image.isValid())
     {
         return;
@@ -255,12 +258,12 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
 {
     DownloadTopAreaWidget::instance()->backgroundSkinChanged(name);
 
-    item->clearSelectState();
+    item->clearState();
     item->setCurrentItemName(name);
 
     QString s(name);
     QString path = USER_THEME_DIR_FULL + s + TKM_FILE;
-    DownloadBackgroundSkinDialog::themeValidCheck(s, path);
+    DownloadBackgroundSkinDialog::themeIsValid(s, path);
     G_BACKGROUND_PTR->setBackground(path);
     Q_EMIT G_BACKGROUND_PTR->backgroundHasChanged();
 }

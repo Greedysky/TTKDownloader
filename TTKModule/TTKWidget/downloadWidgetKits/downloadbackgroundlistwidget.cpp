@@ -132,14 +132,14 @@ DownloadBackgroundListWidget::DownloadBackgroundListWidget(QWidget *parent)
 {
     m_gridLayout = new QGridLayout(this);
     m_gridLayout->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-    m_gridLayout->setContentsMargins(7, 7, 7, 7);
+    m_gridLayout->setContentsMargins(7, 0, 7, 0);
     m_gridLayout->setSpacing(5);
     setLayout(m_gridLayout);
 }
 
 DownloadBackgroundListWidget::~DownloadBackgroundListWidget()
 {
-    clearAllItems();
+    clearItems();
     delete m_gridLayout;
 }
 
@@ -156,7 +156,7 @@ void DownloadBackgroundListWidget::setCurrentItemName(const QString &name)
     }
 }
 
-void DownloadBackgroundListWidget::clearSelectState()
+void DownloadBackgroundListWidget::clearState()
 {
     for(DownloadBackgroundListItem *item : qAsConst(m_items))
     {
@@ -164,7 +164,7 @@ void DownloadBackgroundListWidget::clearSelectState()
     }
 }
 
-void DownloadBackgroundListWidget::clearAllItems()
+void DownloadBackgroundListWidget::clearItems()
 {
     qDeleteAll(m_items);
     m_items.clear();
@@ -276,7 +276,7 @@ DownloadBackgroundListItem* DownloadBackgroundListWidget::find(const DownloadBac
     return nullptr;
 }
 
-void DownloadBackgroundListWidget::updateLastedItem()
+void DownloadBackgroundListWidget::updateLastItem()
 {
     if(!m_items.isEmpty())
     {

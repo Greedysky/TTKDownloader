@@ -76,8 +76,7 @@ QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWid
         }
 
         hbox->addStretch(1);
-        QPushButton *p = createButton(tr("ALL"));
-        p->setStyleSheet(p->styleSheet() + QString("QPushButton{ %1 }").arg(TTK::UI::ColorStyle03));
+        createButton({});
 
         m_functionsWidget->setLayout(hbox);
     }
@@ -149,7 +148,7 @@ void DownloadBackgroundOnlineWidget::buttonClicked(int index)
     QDir dir(TTK_DOT);
     dir.mkpath(QString("%1%2").arg(APPCACHE_DIR_FULL).arg(index));
 
-    m_backgroundList->clearAllItems();
+    m_backgroundList->clearItems();
     DownloadQueueDataList datas;
     DownloadSkinRemoteItemList &items = m_groups[index].m_items;
     for(int i = 0; i < items.count(); ++i)

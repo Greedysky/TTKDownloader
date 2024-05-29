@@ -69,9 +69,9 @@ namespace TTK
         static const QString PushButtonStyle01 = " \
             QPushButton{ background-color:transparent; " +
 #ifdef Q_OS_UNIX
-            QString("border-style:falt;");
+            QString("border-style:falt; }");
 #else
-            QString();
+            QString("}");
 #endif
 
         static const QString PushButtonStyle02 = PushButtonStyle01 + " \

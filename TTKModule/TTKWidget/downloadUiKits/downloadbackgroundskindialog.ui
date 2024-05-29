@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
+    <width>456</width>
     <height>343</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
     <rect>
      <x>4</x>
      <y>4</y>
-     <width>442</width>
+     <width>448</width>
      <height>335</height>
     </rect>
    </property>
@@ -32,7 +32,7 @@
   <widget class="QToolButton" name="topTitleCloseButton">
    <property name="geometry">
     <rect>
-     <x>421</x>
+     <x>427</x>
      <y>6</y>
      <width>20</width>
      <height>20</height>
@@ -47,7 +47,7 @@
     <rect>
      <x>4</x>
      <y>4</y>
-     <width>442</width>
+     <width>448</width>
      <height>335</height>
     </rect>
    </property>
@@ -59,7 +59,7 @@
      <rect>
       <x>8</x>
       <y>40</y>
-      <width>428</width>
+      <width>434</width>
       <height>250</height>
      </rect>
     </property>
@@ -83,7 +83,7 @@
    <widget class="QPushButton" name="paletteButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
+      <x>286</x>
       <y>300</y>
       <width>70</width>
       <height>25</height>
@@ -115,7 +115,7 @@
    <widget class="QPushButton" name="customSkin">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>366</x>
       <y>300</y>
       <width>70</width>
       <height>25</height>
@@ -134,7 +134,7 @@
     <rect>
      <x>4</x>
      <y>10</y>
-     <width>442</width>
+     <width>448</width>
      <height>30</height>
     </rect>
    </property>

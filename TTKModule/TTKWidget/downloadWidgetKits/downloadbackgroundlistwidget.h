@@ -162,11 +162,11 @@ public:
     /*!
      * Clear select state.
      */
-    void clearSelectState();
+    void clearState();
     /*!
      * Clear All Items.
      */
-    void clearAllItems();
+    void clearItems();
 
     /*!
      * Create item by name and path.
@@ -176,6 +176,7 @@ public:
      * Create item by icon.
      */
     void addCellItem(const QString &icon, bool state);
+
     /*!
      * Update item by backgroud image.
      */
@@ -204,9 +205,9 @@ public:
     DownloadBackgroundListItem* find(const DownloadBackgroundImage &image) const;
 
     /*!
-     * Update lasted item state.
+     * Update last item state.
      */
-    void updateLastedItem();
+    void updateLastItem();
 
     /*!
      * Item count.
