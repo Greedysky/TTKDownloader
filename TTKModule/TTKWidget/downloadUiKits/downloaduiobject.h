@@ -40,11 +40,12 @@ namespace TTK
 
         ///Background
         static const QString BackgroundStyle01 = " \
-            background-color:transparent;"
+            background-color:transparent; " +
 #ifdef Q_OS_UNIX
-            + QString(" border-style:falt;")
+            QString("border-style:falt;");
+#else
+            QString();
 #endif
-            ;
 
         ///ToolButton
         static const QString ToolButtonStyle01 = " \
@@ -66,11 +67,12 @@ namespace TTK
 
         ///PushButton
         static const QString PushButtonStyle01 = " \
-            QPushButton{ background-color:transparent;  " +
+            QPushButton{ background-color:transparent; " +
 #ifdef Q_OS_UNIX
-            QString("border-style:falt;") +
+            QString("border-style:falt;");
+#else
+            QString();
 #endif
-            QString("}");
 
         static const QString PushButtonStyle02 = PushButtonStyle01 + " \
             QPushButton{ border-none; }";
@@ -133,19 +135,20 @@ namespace TTK
             QMenu::item:selected{ color:white; background: rgb(112, 56, 197); } \
             QMenu::separator{ height:1px; background:#DDDDDD; margin-top:1px; margin-bottom:1px; }" +
 #if TTK_QT_VERSION_CHECK(5,12,0)
-            QString("QMenu::item{ padding:6px 30px 6px 10px; } "
+            QString("QMenu::item{ padding:6px 30px 6px 10px; } ") +
 #  ifdef Q_OS_UNIX
-                    "QMenu::item::icon{ padding:6px 40px 6px 10px; }") +
+            QString("QMenu::item::icon{ padding:6px 40px 6px 10px; }");
 #  else
-                    "QMenu::item::icon{ padding:6px 30px 6px 10px; }") +
+            QString("QMenu::item::icon{ padding:6px 30px 6px 10px; }");
 #  endif
-#endif
+#else
             QString();
+#endif
 
         static const QString MenuStyle02 = MenuStyle01 + " \
             QMenu{ background:rgba(255, 255, 255, 235); }";
 
-        static const QString MenuStyle03 = MenuStyle01 + " \
+        static const QString MenuStyle04 = MenuStyle01 + " \
             QMenu{ border:none; background:rgba(0, 0, 0, 210); border-radius:4px; } \
             QMenu::item{ color:#BBBBBB; } \
             QMenu::item:disabled{ color:#555555; } \
