@@ -43,7 +43,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
 
     G_HOTKEY_PTR->addHotKey(this, "Ctrl+X", SLOT(quitWindow()));
 
-    /////////// Objects Mouse tracking;
+    // Objects Mouse tracking
     setObjectsTracking({m_ui->background});
 
     readSystemConfigFromFile();
