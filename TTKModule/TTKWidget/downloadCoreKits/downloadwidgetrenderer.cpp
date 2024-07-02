@@ -17,12 +17,12 @@ void DownloadWidgetRenderer::setBackgroundPixmap(const QSize &size)
     }
 
     DownloadBackgroundImage image;
-    if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->background()))
+    if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->backgroundUrl()))
     {
         m_background->setPixmap(image.m_pix.scaled(size));
     }
     else
     {
-        m_background->setPixmap(QPixmap(G_BACKGROUND_PTR->background()).scaled(size));
+        m_background->setPixmap(QPixmap(G_BACKGROUND_PTR->backgroundUrl()).scaled(size));
     }
 }

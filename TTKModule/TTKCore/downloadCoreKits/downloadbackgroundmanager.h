@@ -44,11 +44,11 @@ public:
     /*!
      * Set background picture by path.
      */
-    void setBackground(const QString &path);
+    void setBackgroundUrl(const QString &path);
     /*!
      * Get background picture path.
      */
-    QString background() const;
+    QString backgroundUrl() const;
 
     /*!
      * Set background picture color.
@@ -58,11 +58,6 @@ public:
      * Get background picture color.
      */
     QColor backgroundColor() const;
-
-    /*!
-     * Get artist background picture path.
-     */
-    void backgroundHasChanged();
 
 Q_SIGNALS:
     /*!
