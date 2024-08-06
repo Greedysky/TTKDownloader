@@ -340,6 +340,7 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
 void DownloadListWidgets::clearItems()
 {
     qDeleteAll(m_itemList);
+    m_itemList.clear();
     removeItems();
 }
 
