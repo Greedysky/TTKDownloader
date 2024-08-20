@@ -7,7 +7,7 @@ DownloadTransitionAnimationLabel::DownloadTransitionAnimationLabel(QWidget *pare
     : QLabel(parent),
       m_isAnimating(false),
       m_currentValue(0),
-      m_noAnimationSet(false)
+      m_animationEnabled(true)
 {
     m_animation = new QPropertyAnimation(this, {});
     m_animation->setDuration(200);
@@ -24,9 +24,9 @@ DownloadTransitionAnimationLabel::~DownloadTransitionAnimationLabel()
     delete m_animation;
 }
 
-QPixmap DownloadTransitionAnimationLabel::rendererPixmap() const
+const QPixmap& DownloadTransitionAnimationLabel::renderPixmap() const
 {
-    return m_rendererPixmap;
+    return m_renderPixmap;
 }
 
 void DownloadTransitionAnimationLabel::stop()
@@ -40,9 +40,9 @@ void DownloadTransitionAnimationLabel::stop()
 void DownloadTransitionAnimationLabel::setPixmap(const QPixmap &pix)
 {
     const QPixmap &pixmap = QtLablePixmap(this);
-    if(m_noAnimationSet || pixmap.isNull())
+    if(!m_animationEnabled || pixmap.isNull())
     {
-        m_rendererPixmap = pix;
+        m_renderPixmap = pix;
         QLabel::setPixmap(pix);
         return;
     }
@@ -63,9 +63,9 @@ void DownloadTransitionAnimationLabel::animationFinished()
 {
     m_currentValue = 0;
     m_isAnimating = false;
-    m_rendererPixmap = m_currentPixmap;
+    m_renderPixmap = m_currentPixmap;
 
-    QLabel::setPixmap(m_rendererPixmap);
+    QLabel::setPixmap(m_renderPixmap);
 }
 
 void DownloadTransitionAnimationLabel::paintEvent(QPaintEvent *event)
@@ -82,7 +82,7 @@ void DownloadTransitionAnimationLabel::paintEvent(QPaintEvent *event)
         paint.setCompositionMode(QPainter::CompositionMode_SourceIn);
         paint.drawPixmap(rect(), m_currentPixmap);
 
-        m_rendererPixmap = pix;
+        m_renderPixmap = pix;
         painter.drawPixmap(rect(), pix);
     }
     else

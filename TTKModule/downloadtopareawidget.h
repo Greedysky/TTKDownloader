@@ -65,13 +65,13 @@ public:
      */
     inline QString backgroundPath() const { return m_backgroundImagePath; }
     /*!
-     * Get background skin alpha.
+     * Get background skin transparent.
      */
-    inline int backgroundAlpha() const { return m_backgroundAlpha; }
+    inline int backgroundTransparent() const { return m_backgroundTransparent; }
     /*!
      * Get background skin pixmap.
      */
-    QPixmap rendererPixmap() const;
+    const QPixmap& renderPixmap() const;
 
 public Q_SLOTS:
     /*!
@@ -89,7 +89,7 @@ public Q_SLOTS:
     /*!
      * Current slider state changed.
      */
-    void backgroundSliderStateChanged(bool state);
+    void backgroundAnimationChanged(bool state);
     /*!
      * Show change background skin dialog.
      */
@@ -140,7 +140,7 @@ private:
 
     QImage m_backgroundImage;
     QString m_backgroundImagePath;
-    int m_backgroundAlpha;
+    int m_backgroundTransparent;
 
     static DownloadTopAreaWidget *m_instance;
 

@@ -65,13 +65,13 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication *ui)
 void DownloadTopAreaWidget::setBackgroundParameter()
 {
     m_backgroundImagePath = G_SETTING_PTR->value(DownloadSettingManager::BackgroundThemeValue).toString();
-    m_backgroundAlpha = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
+    m_backgroundTransparent = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
     drawWindowBackgroundRect();
 }
 
-QPixmap DownloadTopAreaWidget::rendererPixmap() const
+const QPixmap& DownloadTopAreaWidget::renderPixmap() const
 {
-    return m_ui->background->rendererPixmap();
+    return m_ui->background->renderPixmap();
 }
 
 void DownloadTopAreaWidget::showRemoteSpeedWidget()
@@ -102,9 +102,9 @@ void DownloadTopAreaWidget::updateRemoteSpeedText(int value)
     }
 }
 
-void DownloadTopAreaWidget::backgroundSliderStateChanged(bool state)
+void DownloadTopAreaWidget::backgroundAnimationChanged(bool state)
 {
-    m_ui->background->setNoAnimation(state);
+    m_ui->background->setAnimation(!state);
 }
 
 void DownloadTopAreaWidget::showSkinChangedWindow()
@@ -114,7 +114,7 @@ void DownloadTopAreaWidget::showSkinChangedWindow()
         m_backgroundWidget = new DownloadBackgroundSkinDialog(this);
     }
 
-    m_backgroundWidget->setCurrentBackgroundTheme(m_backgroundImagePath, m_backgroundAlpha);
+    m_backgroundWidget->setCurrentBackgroundTheme(m_backgroundImagePath, m_backgroundTransparent);
     m_backgroundWidget->exec();
 }
 
@@ -130,7 +130,7 @@ void DownloadTopAreaWidget::backgroundTransparentChanged(int index)
         m_backgroundWidget->setSkinTransToolText(index);
     }
 
-    m_backgroundAlpha = index;
+    m_backgroundTransparent = index;
     drawWindowBackgroundRectString();
 }
 
@@ -178,7 +178,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
 
 void DownloadTopAreaWidget::drawWindowBackgroundRectString()
 {
-    float v = TTK::Image::boundValue<float>(1.0f, 0.35f, m_backgroundAlpha);
+    float v = TTK::Image::boundValue<float>(1.0f, 0.35f, m_backgroundTransparent);
     DownloadApplication::instance()->setWindowOpacity(v);
 
     QSize size(G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize());

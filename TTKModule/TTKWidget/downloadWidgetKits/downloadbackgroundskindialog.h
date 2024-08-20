@@ -52,20 +52,12 @@ public:
     /*!
      * Theme is valid check.
      */
-    static bool themeIsValid(QString &name, QString &path);
-    /*!
-     * Copy art file to local themes dir path.
-     */
-    static QString cpoyArtFileToLocal(const QString &path);
+    static bool isValid(QString &name, QString &path);
 
     /*!
-     * Update art file theme.
+     * Select current item by name and background transparent when the widget show.
      */
-    void updateArtFileTheme(const QString &theme);
-    /*!
-     * Select current item by name and alpha and listAlpha when the widget show.
-     */
-    void setCurrentBackgroundTheme(const QString &theme, int alpha);
+    void setCurrentBackgroundTheme(const QString &theme, int background);
 
     /*!
      * Set skin transparent tool text.

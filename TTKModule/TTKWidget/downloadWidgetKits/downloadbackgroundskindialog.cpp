@@ -57,7 +57,7 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
     m_ui->skinTransparentLabel->setStyleSheet(TTK::UI::ColorStyle02);
 
     connect(m_ui->skinTransparentButton, SIGNAL(valueChanged(int)), DownloadTopAreaWidget::instance(), SLOT(backgroundTransparentChanged(int)));
-    connect(m_ui->skinTransparentButton, SIGNAL(sliderStateChanged(bool)), DownloadTopAreaWidget::instance(), SLOT(backgroundSliderStateChanged(bool)));
+    connect(m_ui->skinTransparentButton, SIGNAL(sliderStateChanged(bool)), DownloadTopAreaWidget::instance(), SLOT(backgroundAnimationChanged(bool)));
 
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
     connect(m_ui->paletteButton, SIGNAL(clicked()), SLOT(showPaletteDialog()));
@@ -78,14 +78,14 @@ DownloadBackgroundSkinDialog::~DownloadBackgroundSkinDialog()
 QPixmap DownloadBackgroundSkinDialog::setBackgroundUrl(QString &name)
 {
     QString path = USER_THEME_DIR_FULL + name + TKM_FILE;
-    DownloadBackgroundSkinDialog::themeIsValid(name, path);
+    DownloadBackgroundSkinDialog::isValid(name, path);
     G_BACKGROUND_PTR->setBackgroundUrl(path);
 
     DownloadBackgroundImage image;
     return DownloadExtractWrapper::outputSkin(&image, path) ? image.m_pix : QPixmap();
 }
 
-bool DownloadBackgroundSkinDialog::themeIsValid(QString &name, QString &path)
+bool DownloadBackgroundSkinDialog::isValid(QString &name, QString &path)
 {
     if(!QFile::exists(path))
     {
@@ -105,26 +105,13 @@ bool DownloadBackgroundSkinDialog::themeIsValid(QString &name, QString &path)
     return true;
 }
 
-QString DownloadBackgroundSkinDialog::cpoyArtFileToLocal(const QString &path)
-{
-    const int index = cpoyFileToLocal(path);
-    return (index != -1) ? QString("theme-%1").arg(index + 1) : QString();
-}
-
-void DownloadBackgroundSkinDialog::updateArtFileTheme(const QString &theme)
-{
-    const QString &des = QString("%1%2%3").arg(USER_THEME_DIR_FULL, theme, TKM_FILE);
-    m_stackBackgroundList->addCellItem(theme, des, true);
-    m_stackBackgroundList->updateLastItem();
-}
-
-void DownloadBackgroundSkinDialog::setCurrentBackgroundTheme(const QString &theme, int alpha)
+void DownloadBackgroundSkinDialog::setCurrentBackgroundTheme(const QString &theme, int background)
 {
     m_cacheBackgroundList->setCurrentItemName(theme);
     m_stackBackgroundList->setCurrentItemName(theme);
 
-    m_ui->skinTransparentButton->setValue(alpha);
-    setSkinTransToolText(alpha);
+    m_ui->skinTransparentButton->setValue(background);
+    setSkinTransToolText(background);
 }
 
 void DownloadBackgroundSkinDialog::setSkinTransToolText(int value)
@@ -263,7 +250,7 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
 
     QString s(name);
     QString path = USER_THEME_DIR_FULL + s + TKM_FILE;
-    DownloadBackgroundSkinDialog::themeIsValid(s, path);
+    DownloadBackgroundSkinDialog::isValid(s, path);
     G_BACKGROUND_PTR->setBackgroundUrl(path);
 }
 

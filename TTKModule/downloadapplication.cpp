@@ -39,7 +39,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     m_topAreaWidget->setupUi(m_ui);
     m_rightAreaWidget->setupUi(m_ui);
     m_leftAreaWidget->setupUi(m_ui);
-    m_topAreaWidget->backgroundSliderStateChanged(false);
+    m_topAreaWidget->backgroundAnimationChanged(false);
 
     G_HOTKEY_PTR->addHotKey(this, "Ctrl+X", SLOT(quitWindow()));
 
@@ -214,7 +214,7 @@ void DownloadApplication::writeSystemConfigToFile()
 {
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetPosition, pos());
     G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundThemeValue, m_topAreaWidget->backgroundPath());
-    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundTransparent, m_topAreaWidget->backgroundAlpha());
+    G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundTransparent, m_topAreaWidget->backgroundTransparent());
 
     DownloadConfigManager manager;
     if(!manager.load(COFIG_PATH_FULL))
