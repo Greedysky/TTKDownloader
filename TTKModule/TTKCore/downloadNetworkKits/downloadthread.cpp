@@ -102,7 +102,7 @@ void DownloadThread::handleError(QNetworkReply::NetworkError code)
     {
         return;
     }
-    Q_EMIT errorCode(m_index, "QNetworkReply::NetworkError : " + QString::number((int)code) + " \n" + m_reply->errorString());
+    Q_EMIT errorCode(m_index, "QNetworkReply::NetworkError : " + QString::number(TTKStaticCast(int, code)) + " \n" + m_reply->errorString());
 
     m_state = State::Stop;
     m_reply->abort();
