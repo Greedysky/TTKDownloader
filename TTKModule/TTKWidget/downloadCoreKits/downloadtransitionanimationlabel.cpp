@@ -29,16 +29,34 @@ const QPixmap& DownloadTransitionAnimationLabel::renderPixmap() const
     return m_renderPixmap;
 }
 
+void DownloadTransitionAnimationLabel::start()
+{
+    stop();
+    m_isAnimating = true;
+    m_animation->start();
+}
+
 void DownloadTransitionAnimationLabel::stop()
 {
-    if(m_animation->state() == QPropertyAnimation::Running)
+    if(isRunning())
     {
         m_animation->stop();
+        animationFinished();
     }
+}
+
+bool DownloadTransitionAnimationLabel::isRunning() const
+{
+    return m_animation->state() == QPropertyAnimation::Running;
 }
 
 void DownloadTransitionAnimationLabel::setPixmap(const QPixmap &pix)
 {
+    if(pix.isNull())
+    {
+        return;
+    }
+
     const QPixmap &pixmap = QtLablePixmap(this);
     if(!m_animationEnabled || pixmap.isNull())
     {
@@ -64,7 +82,6 @@ void DownloadTransitionAnimationLabel::animationFinished()
     m_currentValue = 0;
     m_isAnimating = false;
     m_renderPixmap = m_currentPixmap;
-
     QLabel::setPixmap(m_renderPixmap);
 }
 
