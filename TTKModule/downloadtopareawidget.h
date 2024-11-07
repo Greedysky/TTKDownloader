@@ -117,21 +117,21 @@ public Q_SLOTS:
 
 private:
     /*!
-     * Draw window background rect.
+     * Draw window background.
      */
-    void drawWindowBackgroundRect();
+    void drawWindowBackground();
     /*!
      * Draw window background rect.
      */
-    void drawWindowBackgroundRect(const QImage &image);
+    void drawWindowBackground(const QImage &image);
     /*!
      * Draw window background rect by qimage.
      */
-    void drawWindowBackgroundRectString();
+    void drawWindowBackgroundByImage();
     /*!
-     * Draw window background rect by picture.
+     * Draw window background rect by path.
      */
-    void drawWindowBackgroundRectString(const QString &path);
+    void drawWindowBackgroundByPath(const QString &path);
 
     Ui::DownloadApplication *m_ui;
 

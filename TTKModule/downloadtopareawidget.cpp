@@ -66,7 +66,7 @@ void DownloadTopAreaWidget::setBackgroundParameter()
 {
     m_backgroundImagePath = G_SETTING_PTR->value(DownloadSettingManager::BackgroundThemeValue).toString();
     m_backgroundTransparent = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
-    drawWindowBackgroundRect();
+    drawWindowBackground();
 }
 
 const QPixmap& DownloadTopAreaWidget::renderPixmap() const
@@ -120,7 +120,7 @@ void DownloadTopAreaWidget::showSkinChangedWindow()
 
 void DownloadTopAreaWidget::backgroundTransparentChanged()
 {
-    drawWindowBackgroundRect();
+    drawWindowBackground();
 }
 
 void DownloadTopAreaWidget::backgroundTransparentChanged(int index)
@@ -131,17 +131,17 @@ void DownloadTopAreaWidget::backgroundTransparentChanged(int index)
     }
 
     m_backgroundTransparent = index;
-    drawWindowBackgroundRectString();
+    drawWindowBackgroundByImage();
 }
 
 void DownloadTopAreaWidget::backgroundTransparentChanged(const QString &fileName)
 {
-    drawWindowBackgroundRectString(fileName);
+    drawWindowBackgroundByPath(fileName);
 }
 
 void DownloadTopAreaWidget::backgroundThemeChangedByResize()
 {
-    drawWindowBackgroundRectString();
+    drawWindowBackgroundByImage();
 }
 
 void DownloadTopAreaWidget::backgroundSkinChanged(const QString &fileName)
@@ -150,12 +150,12 @@ void DownloadTopAreaWidget::backgroundSkinChanged(const QString &fileName)
     backgroundTransparentChanged();
 }
 
-void DownloadTopAreaWidget::drawWindowBackgroundRect()
+void DownloadTopAreaWidget::drawWindowBackground()
 {
-    drawWindowBackgroundRect(DownloadBackgroundSkinDialog::setBackgroundUrl(m_backgroundImagePath).toImage());
+    drawWindowBackground(DownloadBackgroundSkinDialog::setBackgroundUrl(m_backgroundImagePath).toImage());
 }
 
-void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
+void DownloadTopAreaWidget::drawWindowBackground(const QImage &image)
 {
     if(image.isNull())
     {
@@ -173,10 +173,10 @@ void DownloadTopAreaWidget::drawWindowBackgroundRect(const QImage &image)
     G_BACKGROUND_PTR->setBackgroundColor(average);
 
     m_backgroundImage = origin;
-    drawWindowBackgroundRectString();
+    drawWindowBackgroundByImage();
 }
 
-void DownloadTopAreaWidget::drawWindowBackgroundRectString()
+void DownloadTopAreaWidget::drawWindowBackgroundByImage()
 {
     float v = TTK::Image::boundValue<float>(1.0f, 0.35f, m_backgroundTransparent);
     DownloadApplication::instance()->setWindowOpacity(v);
@@ -190,7 +190,7 @@ void DownloadTopAreaWidget::drawWindowBackgroundRectString()
     m_ui->background->setPixmap(after);
 }
 
-void DownloadTopAreaWidget::drawWindowBackgroundRectString(const QString &path)
+void DownloadTopAreaWidget::drawWindowBackgroundByPath(const QString &path)
 {
-    drawWindowBackgroundRect(QImage(path));
+    drawWindowBackground(QImage(path));
 }
