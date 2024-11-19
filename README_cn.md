@@ -1,4 +1,6 @@
 # TTKDownloader
+[英文 English](./README.md) | [繁体中文 Chinese](./README_tc.md)
+
 ![TTKDownloader](https://img.shields.io/badge/Greedysky-TTKDownloader-green.svg?style=flat-square)
 ![版本](https://img.shields.io/github/v/release/Greedysky/TTKDownloader?style=flat-square&label=Version)
 ![许可](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
@@ -10,7 +12,9 @@
 
 使用方法
 --------
-**下载器模仿迅雷，支持Windows和Linux平台.**
+**下载器模仿迅雷，支持Windows和Linux平台。**
+
+### 本项目代码不用于商用，仅限研究和学习使用。
 
 ## 构建状态
  * Qt stable version is tested on Qt4.x for windows-mingw 32bit
@@ -45,12 +49,11 @@ Github镜像下载地址: **<u>https://github.com/Greedysky/TTKDownloader</u>**
 
 特性
 --------
- * **支持文件断点续传.**
- * **支持迅雷、快车、QQ等链接下载.**
+ * **支持文件断点续传**
+ * **支持迅雷、快车、QQ等链接下载**
 
 快照
 --------
-### 事例
 ![事例](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo.jpg?raw=true)
 
 ![事例](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo2.jpg?raw=true)

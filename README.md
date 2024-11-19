@@ -14,6 +14,8 @@ Usage
 --------
 **TTKDownloader imitates xunlei downloader, based on Qt for windows and linux.**
 
+### Attention: This software is only for learning and communication.
+
 ## CI Status
  * Qt stable version is tested on Qt4.x for windows-mingw 32bit
  * Qt stable version is tested on Qt4.x for ubuntu-linux-gcc 64bit
@@ -52,7 +54,6 @@ Features
 
 Screenshots
 --------
-### Demo
 ![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo.jpg?raw=true)
 
 ![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo2.jpg?raw=true)
