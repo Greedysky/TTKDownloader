@@ -18,7 +18,7 @@
 
 cmake_minimum_required(VERSION 3.0.0)
 
-project(Downloader)
+project(TTKDownloader)
 
 set(TTK_MAJOR_VERSION 2)
 set(TTK_MINOR_VERSION 8)

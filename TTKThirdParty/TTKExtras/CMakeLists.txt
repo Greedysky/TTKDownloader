@@ -56,7 +56,7 @@ if(TTK_QT_VERSION VERSION_EQUAL "4")
     add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES} ${MOC_FILES} ${HEADER_FILES})
   endif()
 
-  target_link_libraries(${PROJECT_NAME} ${QT_QTCORE_LIBRARY})
+  target_link_libraries(${PROJECT_NAME} ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})
 elseif(TTK_QT_VERSION VERSION_EQUAL "5")
   qt5_wrap_cpp(MOC_FILES ${HEADER_FILES})
 
@@ -66,7 +66,7 @@ elseif(TTK_QT_VERSION VERSION_EQUAL "5")
     add_library(${PROJECT_NAME} STATIC ${SOURCE_FILES}  ${MOC_FILES} ${HEADER_FILES})
   endif()
 
-  set(QT5_LIBS Qt5::Core)
+  set(QT5_LIBS Qt5::Core Qt5::Gui)
   if(UNIX)
     list(APPEND QT5_LIBS Qt5::X11Extras)
   endif()

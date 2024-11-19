@@ -6,7 +6,7 @@
 
 ![徽標](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/logo_banner.png?raw=true)
 
-### **|[關於](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#使用方法)|[許可證](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#許可證)|[下載](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#下載)|[特性](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#特性)|[快照](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#快照)|[版權](github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#版權)|[貢獻](github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#貢獻)|**
+### **|[關於](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#使用方法)|[許可證](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#許可證)|[下載](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#下載)|[特性](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#特性)|[快照](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#快照)|[版權](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#版權)|[貢獻](https://github.com/Greedysky/TTKDownloader/blob/master/README_cn.md#貢獻)|**
 
 使用方法
 --------
