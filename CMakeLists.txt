@@ -58,7 +58,6 @@ add_definitions(-DQT_NO_DEBUG)
 add_definitions(-DQT_THREAD)
 
 add_definitions(-DTTK_LIBRARY)
-add_definitions(-DQMMP_LIBRARY)
 
 set(TTK_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 set(TTK_COMMON_DIR "${TTK_BASE_DIR}/TTKCommon")

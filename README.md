@@ -1,4 +1,6 @@
 # TTKDownloader
+[简体中文 Chinese](./README_cn.md) | [繁体中文 Chinese](./README_tc.md)
+
 ![TTKDownloader](https://img.shields.io/badge/Greedysky-TTKDownloader-green.svg?style=flat-square)
 ![Version](https://img.shields.io/github/v/release/Greedysky/TTKDownloader?style=flat-square&label=Version)
 ![License](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
