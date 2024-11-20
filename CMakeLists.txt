@@ -128,11 +128,11 @@ file(MAKE_DIRECTORY ${LIBRARY_OUTPUT_PATH}/GLanguage)
 
 set(OPENSSL_DIR "" CACHE PATH "Openssl install path")
 
-set(TTK_QT_VERSION "0" CACHE STRING "Expected Qt version")
-set_property(CACHE TTK_QT_VERSION PROPERTY STRINGS 4 5)
+set(TTK_QT_VERSION "0" CACHE STRING "Select Qt version")
+set_property(CACHE TTK_QT_VERSION PROPERTY STRINGS 4 5 6)
 
-if(NOT (TTK_QT_VERSION STREQUAL "4" OR TTK_QT_VERSION STREQUAL "5"))
-  message(FATAL_ERROR "Message Expected value for TTK_QT_VERSION is either '4' or '5'")
+if(NOT (TTK_QT_VERSION STREQUAL "4" OR TTK_QT_VERSION STREQUAL "5" OR TTK_QT_VERSION STREQUAL "6"))
+  message(FATAL_ERROR "Message Expected value for TTK_QT_VERSION is invalid")
 endif()
 
 set(CMAKE_PREFIX_PATH ${QT_INSTALL_DIR} CACHE PATH "Qt install path")
@@ -168,15 +168,13 @@ if(TTK_QT_VERSION VERSION_EQUAL "4")
     message(FATAL_ERROR "Message error: Qt4 was not found on your system. You probably need to set the QT_QMAKE_EXECUTABLE variable")
   endif()
 elseif(TTK_QT_VERSION VERSION_EQUAL "5")
-  find_package(Qt5Core REQUIRED)
-  find_package(Qt5Gui REQUIRED)
-  find_package(Qt5Widgets REQUIRED)
-  find_package(Qt5Network REQUIRED)
-  find_package(Qt5Xml REQUIRED)
+  find_package(Qt5 COMPONENTS Core Gui Widgets Network Xml REQUIRED)
 
   if(UNIX)
     find_package(Qt5X11Extras REQUIRED)
   endif()
+elseif(TTK_QT_VERSION VERSION_EQUAL "6")
+  find_package(Qt6 COMPONENTS Core Gui Widgets Network Xml Core5Compat REQUIRED)
 endif()
 
 
