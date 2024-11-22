@@ -22,7 +22,7 @@ SUBDIRS += TTKCommon TTKConfig TTKUi TTKThirdParty TTKModule TTKService TTKRun
 
 TRANSLATIONS += $$PWD/TTKLanguage/cn.ts
 
-##find translation
+##find translation module
 unix:exists($$[QT_INSTALL_BINS]/lrelease){
     LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease
 }
@@ -43,7 +43,6 @@ isEmpty(LRELEASE_EXECUTABLE){
 
 include($$PWD/TTKVersion.pri)
 
-##update translation
 unix{
     output = $$OUT_PWD/bin/$$TTK_VERSION/GLanguage
     !exists($$output):system(mkdir -p $$output)
@@ -52,6 +51,8 @@ unix{
     system(find $$PWD/TTKLanguage -name *.ts | xargs $$LRELEASE_EXECUTABLE)
     system(find $$PWD/TTKLanguage -name *.qm | xargs rename -v -f 's/.qm/.ln/' *)
     system(for F in $$PWD/TTKLanguage/*.ln ; do mv $F $$output ;done)
+
+    system(sh $$PWD/TTKUtils/resource.sh $$PWD/TTKResource $$OUT_PWD/bin/$$TTK_VERSION)
 }
 
 win32{
