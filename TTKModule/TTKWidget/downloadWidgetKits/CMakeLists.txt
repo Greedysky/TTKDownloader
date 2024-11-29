@@ -18,7 +18,7 @@
 
 cmake_minimum_required(VERSION 3.0.0)
 
-set_property(GLOBAL PROPERTY TTK_WIDGET_KITS_HEADERS
+set_property(GLOBAL PROPERTY TTK_WIDGET_KITS_HEADER_FILES
   ${TTK_WIDGET_DIR}/downloadbackgroundlistwidget.h
   ${TTK_WIDGET_DIR}/downloadbackgroundpopwidget.h
   ${TTK_WIDGET_DIR}/downloadbackgroundremotewidget.h
@@ -36,7 +36,7 @@ set_property(GLOBAL PROPERTY TTK_WIDGET_KITS_HEADERS
   ${TTK_WIDGET_DIR}/downloadunits.h
 )
 
-set_property(GLOBAL PROPERTY TTK_WIDGET_KITS_SOURCES
+set_property(GLOBAL PROPERTY TTK_WIDGET_KITS_SOURCE_FILES
   ${TTK_WIDGET_DIR}/downloadbackgroundlistwidget.cpp
   ${TTK_WIDGET_DIR}/downloadbackgroundpopwidget.cpp
   ${TTK_WIDGET_DIR}/downloadbackgroundremotewidget.cpp

@@ -18,7 +18,7 @@
 
 cmake_minimum_required(VERSION 3.0.0)
 
-set_property(GLOBAL PROPERTY TTK_CORE_KITS_HEADERS
+set_property(GLOBAL PROPERTY TTK_CORE_KITS_HEADER_FILES
   ${TTK_CORE_DIR}/downloadbackgroundconfigmanager.h
   ${TTK_CORE_DIR}/downloadbackgroundmanager.h
   ${TTK_CORE_DIR}/downloadbreakpointconfigmanager.h
@@ -33,7 +33,7 @@ set_property(GLOBAL PROPERTY TTK_CORE_KITS_HEADERS
   ${TTK_CORE_DIR}/downloadsettingmanager.h
 )
 
-set_property(GLOBAL PROPERTY TTK_CORE_KITS_SOURCES
+set_property(GLOBAL PROPERTY TTK_CORE_KITS_SOURCE_FILES
   ${TTK_CORE_DIR}/downloadbackgroundconfigmanager.cpp
   ${TTK_CORE_DIR}/downloadbackgroundmanager.cpp
   ${TTK_CORE_DIR}/downloadbreakpointconfigmanager.cpp

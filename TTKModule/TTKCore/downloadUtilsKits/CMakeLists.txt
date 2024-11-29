@@ -18,7 +18,7 @@
 
 cmake_minimum_required(VERSION 3.0.0)
 
-set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_HEADERS
+set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_HEADER_FILES
   ${TTK_CORE_UTILS_DIR}/downloadalgorithmutils.h
   ${TTK_CORE_UTILS_DIR}/downloadcodecutils.h
   ${TTK_CORE_UTILS_DIR}/downloadcoreutils.h
@@ -30,7 +30,7 @@ set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_HEADERS
   ${TTK_CORE_UTILS_DIR}/downloadwidgetutils.h
 )
 
-set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_SOURCES
+set_property(GLOBAL PROPERTY TTK_CORE_UTILS_KITS_SOURCE_FILES
   ${TTK_CORE_UTILS_DIR}/downloadalgorithmutils.cpp
   ${TTK_CORE_UTILS_DIR}/downloadcodecutils.cpp
   ${TTK_CORE_UTILS_DIR}/downloadcoreutils.cpp

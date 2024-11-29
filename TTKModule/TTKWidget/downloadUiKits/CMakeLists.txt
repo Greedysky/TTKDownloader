@@ -18,13 +18,13 @@
 
 cmake_minimum_required(VERSION 3.0.0)
 
-set_property(GLOBAL PROPERTY TTK_WIDGET_UI_KITS_HEADERS
+set_property(GLOBAL PROPERTY TTK_WIDGET_UI_KITS_HEADER_FILES
   ${TTK_WIDGET_UI_DIR}/downloadfunctionuiobject.h
   ${TTK_WIDGET_UI_DIR}/downloadtinyuiobject.h
   ${TTK_WIDGET_UI_DIR}/downloaduiobject.h
 )
 
-set_property(GLOBAL PROPERTY TTK_UIS
+set_property(GLOBAL PROPERTY TTK_UI_FILES
   ${TTK_WIDGET_UI_DIR}/downloadapplication.ui
   ${TTK_WIDGET_UI_DIR}/downloadbackgroundskindialog.ui
   ${TTK_WIDGET_UI_DIR}/downloadcolordialog.ui

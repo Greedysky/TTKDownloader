@@ -18,7 +18,7 @@
 
 cmake_minimum_required(VERSION 3.0.0)
 
-set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_HEADERS
+set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_HEADER_FILES
   ${TTK_WIDGET_CORE_DIR}/downloadabstractmovedialog.h
   ${TTK_WIDGET_CORE_DIR}/downloadabstractmovewidget.h
   ${TTK_WIDGET_CORE_DIR}/downloadabstracttablewidget.h
@@ -31,7 +31,7 @@ set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_HEADERS
   ${TTK_WIDGET_CORE_DIR}/downloadwidgetrenderer.h
 )
 
-set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_SOURCES
+set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_SOURCE_FILES
   ${TTK_WIDGET_CORE_DIR}/downloadabstractmovedialog.cpp
   ${TTK_WIDGET_CORE_DIR}/downloadabstractmovewidget.cpp
   ${TTK_WIDGET_CORE_DIR}/downloadabstracttablewidget.cpp
