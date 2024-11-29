@@ -39,8 +39,8 @@ set(HEADER_FILES
 )
 
 set(SOURCE_FILES
-  downloadservicemain.cpp
   ${TTKAPPLICATION_SOURCE_FILES}
+  downloadservicemain.cpp
 )
 
 if(WIN32)
