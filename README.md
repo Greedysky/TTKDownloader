@@ -1,14 +1,14 @@
 # TTKDownloader
-[简体中文 Chinese](./README_cn.md) | [繁体中文 Chinese](./README_tc.md)
+[简体中文 Chinese](README_cn.md) | [繁体中文 Chinese](README_tc.md)
 
 ![TTKDownloader](https://img.shields.io/badge/Greedysky-TTKDownloader-green.svg?style=flat-square)
 ![Version](https://img.shields.io/github/v/release/Greedysky/TTKDownloader?style=flat-square&label=Version)
 ![License](https://img.shields.io/badge/License-GPL%20V3-yellowgreen.svg?style=flat-square)
 ![License](https://img.shields.io/badge/License-LGPL%20V3-yellow.svg?style=flat-square)
 
-![LOGO](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/logo_banner.png?raw=true)
+![LOGO](TTKResource/logo_banner.png?raw=true)
 
-### **|[About](https://github.com/Greedysky/TTKDownloader#usage)|[License](https://github.com/Greedysky/TTKDownloader#license)|[Download](https://github.com/Greedysky/TTKDownloader#download)|[Features](https://github.com/Greedysky/TTKDownloader#features)|[Screenshots](https://github.com/Greedysky/TTKDownloader#screenshots)|[Copyright](https://github.com/Greedysky/TTKDownloader#copyright)|[Contribute](https://github.com/Greedysky/TTKDownloader#how-to-contribute)|**
+### **|[About](#usage)|[License](#license)|[Download](#download)|[Features](#features)|[Screenshots](#screenshots)|[Copyright](#copyright)|[Contribute](#how-to-contribute)|**
 
 Usage
 --------
@@ -37,7 +37,7 @@ Usage
 
 License
 --------
-TTKDownloader is free software licensed under the term of [Licence GPL v3](https://github.com/Greedysky/TTKDownloader/blob/master/LICENSE). If you use TTKDownloader or its constituent libraries, you must adhere to the terms of the license in question.
+TTKDownloader is free software licensed under the term of [Licence GPL v3](LICENSE). If you use TTKDownloader or its constituent libraries, you must adhere to the terms of the license in question.
 
 Download
 --------
@@ -54,9 +54,9 @@ Features
 
 Screenshots
 --------
-![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo.jpg?raw=true)
+![Demo](TTKResource/demo/demo.jpg?raw=true)
 
-![Demo](https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo2.jpg?raw=true)
+![Demo](TTKResource/demo/demo2.jpg?raw=true)
 
 Copyright
 --------
