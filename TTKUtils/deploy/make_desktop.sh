@@ -13,7 +13,7 @@ execpath="$PWD/../TTKDownloader"
 
 echo -n "[Desktop Entry]
 Type=Application
-Version=2.8.0.0
+Version=3.0.0.0
 Name=TTKDownloader
 Name[zh_CN]=天天下载
 Name[zh_TW]=天天下載
