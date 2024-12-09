@@ -88,38 +88,38 @@ void DownloadApplication::quitWindow()
 
 void DownloadApplication::createRightMenu()
 {
-    QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(TTK::UI::MenuStyle02);
+    QMenu menu(this);
+    menu.setStyleSheet(TTK::UI::MenuStyle02);
 
-    rightClickMenu.addAction(tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
-    rightClickMenu.addSeparator();
+    menu.addAction(tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
+    menu.addSeparator();
 
-    QMenu fileMenu(tr("File(F)"), &rightClickMenu);
+    QMenu fileMenu(tr("File(F)"), &menu);
     fileMenu.addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
     fileMenu.addSeparator();
     fileMenu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("Start"), DownloadRightAreaWidget::instance(), SLOT(startToDownload()));
     fileMenu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), DownloadRightAreaWidget::instance(), SLOT(stopToDownload()));
     fileMenu.addAction(tr("Clear Bin"));
-    rightClickMenu.addMenu(&fileMenu);
+    menu.addMenu(&fileMenu);
 
-    QMenu editMenu(tr("Edit(E)"), &rightClickMenu);
+    QMenu editMenu(tr("Edit(E)"), &menu);
     editMenu.addAction(tr("Select All"), DownloadRightAreaWidget::instance(), SLOT(editSelectAll()));
     editMenu.addAction(tr("Reverse Select"), DownloadRightAreaWidget::instance(), SLOT(editReverseSelect()));
-    rightClickMenu.addMenu(&editMenu);
+    menu.addMenu(&editMenu);
     TTK::Widget::adjustMenuPosition(&editMenu);
 
-    rightClickMenu.addAction(tr("Plan"));
-    rightClickMenu.addSeparator();
-    rightClickMenu.addAction(tr("ResetWindow"), m_applicationModule, SLOT(resetWindowGeometry()));
-    rightClickMenu.addAction(QIcon(":/contextMenu/lb_setting_normal"), tr("Setting(O)"), DownloadLeftAreaWidget::instance(), SLOT(showSettingWidget()));
-    rightClickMenu.addSeparator();
+    menu.addAction(tr("Plan"));
+    menu.addSeparator();
+    menu.addAction(tr("ResetWindow"), m_applicationModule, SLOT(resetWindowGeometry()));
+    menu.addAction(QIcon(":/contextMenu/lb_setting_normal"), tr("Setting(O)"), DownloadLeftAreaWidget::instance(), SLOT(showSettingWidget()));
+    menu.addSeparator();
 
-    QMenu aboutMenu(tr("About"), &rightClickMenu);
+    QMenu aboutMenu(tr("About"), &menu);
     aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(TTK_VERSION_STR) + QString(TTK_VERSION_TIME_STR), m_applicationModule, SLOT(showAboutWidget()));
-    rightClickMenu.addMenu(&aboutMenu);
-    rightClickMenu.addSeparator();
-    rightClickMenu.addAction(tr("appClose(X)"), this, SLOT(quitWindow()));
-    rightClickMenu.exec(QCursor::pos());
+    menu.addMenu(&aboutMenu);
+    menu.addSeparator();
+    menu.addAction(tr("appClose(X)"), this, SLOT(quitWindow()));
+    menu.exec(QCursor::pos());
 }
 
 void DownloadApplication::resizeEvent(QResizeEvent *event)

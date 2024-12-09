@@ -305,12 +305,12 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
 {
     DownloadAbstractTableWidget::contextMenuEvent(event);
 
-    QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(TTK::UI::MenuStyle02);
+    QMenu menu(this);
+    menu.setStyleSheet(TTK::UI::MenuStyle02);
 
     int row = currentRow();
-    rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
-    rightClickMenu.addSeparator();
+    menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
+    menu.addSeparator();
 
     bool downloadState = false;
     if(row > -1 && row < m_itemList.count())
@@ -320,21 +320,21 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
     }
     if(downloadState)
     {
-        rightClickMenu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Pause"), this, SLOT(pauseClicked()));
+        menu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Pause"), this, SLOT(pauseClicked()));
     }
     else
     {
-        rightClickMenu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("NewDownload"), this, SLOT(startClicked()))->setEnabled(row > -1);
+        menu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("NewDownload"), this, SLOT(startClicked()))->setEnabled(row > -1);
     }
 
-    rightClickMenu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
-    rightClickMenu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
-    rightClickMenu.addAction(tr("Sort"));
-    rightClickMenu.addAction(tr("Selected All"), this, SLOT(selectAll()));
-    rightClickMenu.addSeparator();
-    rightClickMenu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
+    menu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
+    menu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
+    menu.addAction(tr("Sort"));
+    menu.addAction(tr("Selected All"), this, SLOT(selectAll()));
+    menu.addSeparator();
+    menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
 
-    rightClickMenu.exec(QCursor::pos());
+    menu.exec(QCursor::pos());
 }
 
 void DownloadListWidgets::clearItems()

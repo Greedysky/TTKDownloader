@@ -170,21 +170,21 @@ void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
 {
     DownloadAbstractTableWidget::contextMenuEvent(event);
 
-    QMenu rightClickMenu(this);
-    rightClickMenu.setStyleSheet(TTK::UI::MenuStyle02);
+    QMenu menu(this);
+    menu.setStyleSheet(TTK::UI::MenuStyle02);
 
     int row = currentRow();
-    rightClickMenu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
-    rightClickMenu.addSeparator();
+    menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
+    menu.addSeparator();
 
-    rightClickMenu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
-    rightClickMenu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
-    rightClickMenu.addAction(tr("Sort"));
-    rightClickMenu.addAction(tr("Selected All"), this, SLOT(selectAll()));
-    rightClickMenu.addSeparator();
-    rightClickMenu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
+    menu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
+    menu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
+    menu.addAction(tr("Sort"));
+    menu.addAction(tr("Selected All"), this, SLOT(selectAll()));
+    menu.addSeparator();
+    menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
 
-    rightClickMenu.exec(QCursor::pos());
+    menu.exec(QCursor::pos());
 }
 
 void DownloadHistoryRecordWidget::addCellItem(int index, const DownloadRecord &record)
