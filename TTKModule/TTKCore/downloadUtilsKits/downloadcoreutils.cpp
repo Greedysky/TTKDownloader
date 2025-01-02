@@ -43,7 +43,7 @@ void TTK::Core::sleep(int ms)
 #endif
 }
 
-bool TTK::Core::versionCheck(const QString &o, const QString &d)
+bool TTK::Core::appVersionCheck(const QString &o, const QString &d)
 {
     const QStringList &ol = o.split(TTK_DOT);
     const QStringList &dl = d.split(TTK_DOT);
