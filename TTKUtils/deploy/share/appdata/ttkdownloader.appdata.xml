@@ -20,8 +20,18 @@
     <keyword>downloader</keyword>
     <keyword>multimedia</keyword>
   </keywords>
+  <url type="bugtracker">https://github.com/Greedysky/TTKDownloader/issues</url>
+  <url type="help">https://github.com/Greedysky/TTKDownloader</url>
   <url type="homepage">https://github.com/Greedysky/TTKDownloader</url>
   <developer_name>Greedysky Studio</developer_name>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo.jpg?raw=true</image>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://github.com/Greedysky/TTKDownloader/blob/master/TTKResource/demo/demo2.jpg?raw=true</image>
+    </screenshot>
+  </screenshots>
   <releases>
     <release version="3.0.0.0" date="2024-12-05" />
     <release version="2.8.0.0" date="2024-03-29" />
