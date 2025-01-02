@@ -36,7 +36,7 @@ namespace TTK
         /*!
          * App version check.
          */
-        TTK_MODULE_EXPORT bool versionCheck(const QString &o, const QString &d);
+        TTK_MODULE_EXPORT bool appVersionCheck(const QString &o, const QString &d);
 
         /*!
          * Reset break point.
