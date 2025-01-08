@@ -49,13 +49,13 @@ namespace TTK
         TTK_MODULE_EXPORT void setTransparent(QWidget *widget, const QColor &color);
 
         /*!
-         * Generate vertical scrollArea format style.
+         * Generate vertical scrollArea style.
          */
-        TTK_MODULE_EXPORT void generateVScrollAreaFormat(QWidget *widget, QWidget *parent, bool background = true);
+        TTK_MODULE_EXPORT void generateVScrollAreaStyle(QWidget *widget, QWidget *parent, bool background = true);
         /*!
-         * Generate horizontal scrollArea format style.
+         * Generate horizontal scrollArea style.
          */
-        TTK_MODULE_EXPORT void generateHScrollAreaFormat(QWidget *widget, QWidget *parent, bool background = true);
+        TTK_MODULE_EXPORT void generateHScrollAreaStyle(QWidget *widget, QWidget *parent, bool background = true);
 
     }
 }

@@ -41,14 +41,14 @@ DownloadBackgroundSkinDialog::DownloadBackgroundSkinDialog(QWidget *parent)
 
     m_cacheBackgroundList = new DownloadBackgroundListWidget(this);
     m_cacheBackgroundList->setType(DownloadBackgroundListWidget::CachedModule);
-    TTK::Widget::generateVScrollAreaFormat(m_ui->recommendScrollArea, m_cacheBackgroundList);
+    TTK::Widget::generateVScrollAreaStyle(m_ui->recommendScrollArea, m_cacheBackgroundList);
 
     m_stackBackgroundList = new DownloadBackgroundListWidget(this);
     m_stackBackgroundList->setType(DownloadBackgroundListWidget::StackedModule);
-    TTK::Widget::generateVScrollAreaFormat(m_ui->userScrollArea, m_stackBackgroundList);
+    TTK::Widget::generateVScrollAreaStyle(m_ui->userScrollArea, m_stackBackgroundList);
 
     m_onlineBackgroundList = new DownloadBackgroundOnlineWidget(this);
-    TTK::Widget::generateVScrollAreaFormat(m_ui->remoteScrollArea, m_onlineBackgroundList);
+    TTK::Widget::generateVScrollAreaStyle(m_ui->remoteScrollArea, m_onlineBackgroundList);
 
     addThemeListWidgetItem();
     backgroundListWidgetChanged(0);

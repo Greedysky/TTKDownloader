@@ -43,7 +43,7 @@ void TTK::Widget::setTransparent(QWidget *widget, const QColor &color)
     widget->setPalette(plt);
 }
 
-void TTK::Widget::generateVScrollAreaFormat(QWidget *widget, QWidget *parent, bool background)
+void TTK::Widget::generateVScrollAreaStyle(QWidget *widget, QWidget *parent, bool background)
 {
     QScrollArea *area = TTKObjectCast(QScrollArea*, widget);
     if(area)
@@ -60,7 +60,7 @@ void TTK::Widget::generateVScrollAreaFormat(QWidget *widget, QWidget *parent, bo
     }
 }
 
-void TTK::Widget::generateHScrollAreaFormat(QWidget *widget, QWidget *parent, bool background)
+void TTK::Widget::generateHScrollAreaStyle(QWidget *widget, QWidget *parent, bool background)
 {
     QScrollArea *area = TTKObjectCast(QScrollArea*, widget);
     if(area)
