@@ -51,7 +51,6 @@ bool DownloadConfigManager::readBuffer(int &items)
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinEffectLevel, readAttributeByTagName("skinEffectLevel"));
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspension, readAttributeByTagName("skinSuspension"));
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspensionValue, readAttributeByTagName("skinSuspensionValue").toInt());
-
     return true;
 }
 
