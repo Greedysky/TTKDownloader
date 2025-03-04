@@ -60,6 +60,7 @@ unix:LIBS += -L$$DESTDIR -lTTKUi -lTTKExtras -lttkzip -lzlib
 
 INCLUDEPATH += \
     $$PWD/../../TTKCommon \
+    $$PWD/../../TTKCommon/base \
     $$PWD/../../TTKCommon/TTKLibrary \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits \
     $$PWD/../../TTKModule/TTKCore/downloadNetworkKits

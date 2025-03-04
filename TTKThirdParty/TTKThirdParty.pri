@@ -20,7 +20,8 @@ INCLUDEPATH += \
     $$PWD \
     $$PWD/Zlib \
     $$PWD/TTKExtras \
-    $$PWD/../TTKCommon
+    $$PWD/../TTKCommon \
+    $$PWD/../TTKCommon/base
 
 win32:msvc{
 HEADERS += $$PWD/TTKExtras/qshortcut/qglobalshortcut.h
