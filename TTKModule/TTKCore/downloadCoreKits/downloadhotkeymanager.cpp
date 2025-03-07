@@ -113,7 +113,7 @@ int DownloadHotKeyManager::count() const
 QStringList DownloadHotKeyManager::defaultKeys() const
 {
     QStringList keys;
-    keys << "Ctrl+N" << "Ctrl+S" << "Ctrl+X";
+    keys << "Ctrl+N" << "Ctrl+S" << "Ctrl+Q";
     return keys;
 }
 

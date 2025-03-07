@@ -23,6 +23,8 @@
 #include "downloadabstractmovedialog.h"
 #include "downloadabstracttablewidget.h"
 
+class DownloadGlobalHotKeyEdit;
+
 namespace Ui {
 class DownloadSettingWidget;
 }
@@ -149,6 +151,8 @@ private:
     void initSkinSettingWidget();
 
     Ui::DownloadSettingWidget *m_ui;
+
+    QVector<DownloadGlobalHotKeyEdit*> m_hotKeyEdits;
 
 };
 

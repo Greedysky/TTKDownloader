@@ -270,7 +270,7 @@ font-weight:bold;</string>
       <string>基本设置</string>
      </property>
     </widget>
-    <widget class="QLabel" name="item_S1">
+    <widget class="QLabel" name="item_lb1">
      <property name="geometry">
       <rect>
        <x>25</x>
@@ -289,10 +289,10 @@ font-weight:bold;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S01">
+    <widget class="DownloadGlobalHotKeyEdit" name="item_key1">
      <property name="geometry">
       <rect>
-       <x>205</x>
+       <x>100</x>
        <y>50</y>
        <width>180</width>
        <height>20</height>
@@ -308,7 +308,7 @@ font-weight:bold;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="item_S2">
+    <widget class="QLabel" name="item_lb2">
      <property name="geometry">
       <rect>
        <x>25</x>
@@ -327,10 +327,10 @@ font-weight:bold;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S02">
+    <widget class="DownloadGlobalHotKeyEdit" name="item_key2">
      <property name="geometry">
       <rect>
-       <x>205</x>
+       <x>100</x>
        <y>80</y>
        <width>180</width>
        <height>20</height>
@@ -346,7 +346,7 @@ font-weight:bold;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QLabel" name="item_S3">
+    <widget class="QLabel" name="item_lb3">
      <property name="geometry">
       <rect>
        <x>25</x>
@@ -365,10 +365,10 @@ font-weight:bold;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="DownloadGlobalHotKeyEdit" name="item_S03">
+    <widget class="DownloadGlobalHotKeyEdit" name="item_key3">
      <property name="geometry">
       <rect>
-       <x>205</x>
+       <x>100</x>
        <y>110</y>
        <width>180</width>
        <height>20</height>
@@ -378,7 +378,7 @@ font-weight:bold;</string>
       <string notr="true">background:white;</string>
      </property>
      <property name="text">
-      <string>Ctrl+X</string>
+      <string>Ctrl+Q</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -785,14 +785,14 @@ font-weight:bold;</string>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>DownloadFunctionTableWidget</class>
-   <extends>QTableWidget</extends>
-   <header location="global">downloadsettingwidget.h</header>
-  </customwidget>
-  <customwidget>
    <class>TTKThemeLineLabel</class>
    <extends>QLabel</extends>
    <header>ttkthemelinelabel.h</header>
+  </customwidget>
+  <customwidget>
+   <class>DownloadFunctionTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header location="global">downloadsettingwidget.h</header>
   </customwidget>
   <customwidget>
    <class>DownloadGlobalHotKeyEdit</class>

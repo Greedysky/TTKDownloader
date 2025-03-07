@@ -83,6 +83,8 @@ DownloadSettingWidget::DownloadSettingWidget(QWidget *parent)
     m_ui->confirmButton->setFocusPolicy(Qt::NoFocus);
     m_ui->cancelButton->setFocusPolicy(Qt::NoFocus);
 #endif
+    m_hotKeyEdits << m_ui->item_key1 << m_ui->item_key2 << m_ui->item_key3;
+
     connect(m_ui->normalFunTableWidget, SIGNAL(currentIndexChanged(int)), m_ui->stackedWidget, SLOT(setCurrentIndex(int)));
     connect(m_ui->normalFunTableWidget, SIGNAL(currentIndexChanged(int)), SLOT(clearFunctionTableSelection()));
     connect(m_ui->confirmButton, SIGNAL(clicked()), SLOT(saveParameterSettings()));
@@ -125,9 +127,11 @@ void DownloadSettingWidget::initialize()
         hotkeys = G_HOTKEY_PTR->defaultKeys();
     }
 
-    m_ui->item_S01->setText(hotkeys[0]);
-    m_ui->item_S02->setText(hotkeys[1]);
-    m_ui->item_S03->setText(hotkeys[2]);
+    for(int i = 0; i < m_hotKeyEdits.count(); ++i)
+    {
+        m_hotKeyEdits[i]->setText(hotkeys[i]);
+    }
+
     m_ui->globalHotkeyBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::HotkeyEnable).toBool());
     globalHotkeyBoxChanged(m_ui->globalHotkeyBox->isChecked());
 
@@ -142,7 +146,6 @@ void DownloadSettingWidget::initialize()
 
     m_ui->suspensionVisiableBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspension).toBool());
     m_ui->suspensionShowPerBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionValue).toBool());
-
 }
 
 void DownloadSettingWidget::clearFunctionTableSelection()
@@ -152,9 +155,10 @@ void DownloadSettingWidget::clearFunctionTableSelection()
 
 void DownloadSettingWidget::globalHotkeyBoxChanged(bool state)
 {
-    m_ui->item_S01->setHotKeyEnabled(state);
-    m_ui->item_S02->setHotKeyEnabled(state);
-    m_ui->item_S03->setHotKeyEnabled(state);
+    for(DownloadGlobalHotKeyEdit *edit : qAsConst(m_hotKeyEdits))
+    {
+        edit->setHotKeyEnabled(state);
+    }
 }
 
 void DownloadSettingWidget::downloadDirChanged()
@@ -185,9 +189,10 @@ void DownloadSettingWidget::saveParameterSettings()
 
     if(hotkeyEnabled)
     {
-        G_HOTKEY_PTR->setHotKey(0, m_ui->item_S01->text());
-        G_HOTKEY_PTR->setHotKey(1, m_ui->item_S02->text());
-        G_HOTKEY_PTR->setHotKey(2, m_ui->item_S03->text());
+        for(int i = 0; i < m_hotKeyEdits.count(); ++i)
+        {
+            G_HOTKEY_PTR->setHotKey(i, m_hotKeyEdits[i]->text());
+        }
 
         G_HOTKEY_PTR->setEnabled(true);
         G_SETTING_PTR->setValue(DownloadSettingManager::HotkeyValue, G_HOTKEY_PTR->keys().join(TTK_SPLITER));
