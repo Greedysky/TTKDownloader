@@ -23,7 +23,7 @@ set_property(GLOBAL PROPERTY TTK_CORE_KITS_HEADER_FILES
   ${TTK_CORE_DIR}/downloadbackgroundmanager.h
   ${TTK_CORE_DIR}/downloadbreakpointconfigmanager.h
   ${TTK_CORE_DIR}/downloadconfigmanager.h
-  ${TTK_CORE_DIR}/downloadextractwrapper.h
+  ${TTK_CORE_DIR}/downloadextractmanager.h
   ${TTK_CORE_DIR}/downloadhotkeymanager.h
   ${TTK_CORE_DIR}/downloadlistconfigmanager.h
   ${TTK_CORE_DIR}/downloadobject.h
@@ -38,7 +38,7 @@ set_property(GLOBAL PROPERTY TTK_CORE_KITS_SOURCE_FILES
   ${TTK_CORE_DIR}/downloadbackgroundmanager.cpp
   ${TTK_CORE_DIR}/downloadbreakpointconfigmanager.cpp
   ${TTK_CORE_DIR}/downloadconfigmanager.cpp
-  ${TTK_CORE_DIR}/downloadextractwrapper.cpp
+  ${TTK_CORE_DIR}/downloadextractmanager.cpp
   ${TTK_CORE_DIR}/downloadhotkeymanager.cpp
   ${TTK_CORE_DIR}/downloadlistconfigmanager.cpp
   ${TTK_CORE_DIR}/downloadrecordconfigmanager.cpp

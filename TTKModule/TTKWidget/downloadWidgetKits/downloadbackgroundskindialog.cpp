@@ -7,7 +7,7 @@
 #include "downloadtopareawidget.h"
 #include "downloadotherdefine.h"
 #include "downloadfileutils.h"
-#include "downloadextractwrapper.h"
+#include "downloadextractmanager.h"
 #include "downloaduiobject.h"
 #include "downloadotherdefine.h"
 #include "downloadwidgetutils.h"
@@ -82,7 +82,7 @@ QPixmap DownloadBackgroundSkinDialog::setBackgroundUrl(QString &name)
     G_BACKGROUND_PTR->setBackgroundUrl(path);
 
     DownloadBackgroundImage image;
-    return DownloadExtractWrapper::outputSkin(&image, path) ? image.m_pix : QPixmap();
+    return DownloadExtractManager::outputSkin(&image, path) ? image.m_pix : QPixmap();
 }
 
 bool DownloadBackgroundSkinDialog::isValid(QString &name, QString &path)
@@ -226,7 +226,7 @@ void DownloadBackgroundSkinDialog::remoteListWidgetItemClicked(int type, const Q
         const int index = cpoyFileToLocalIndex();
         const QString &theme = QString("theme-%1").arg(index + 1);
         const QString &des = QString("%1%2%3").arg(USER_THEME_DIR_FULL, theme, TKM_FILE);
-        DownloadExtractWrapper::inputSkin(&image, des);
+        DownloadExtractManager::inputSkin(&image, des);
 
         m_stackBackgroundList->addCellItem(theme, des, true);
         listWidgetItemClicked(m_stackBackgroundList, theme);
@@ -334,5 +334,5 @@ int DownloadBackgroundSkinDialog::cpoyFileToLocal(const QString &path)
     const QString &des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(index + 1).arg(TKM_FILE);
     DownloadBackgroundImage image;
     image.m_pix = QPixmap(path);
-    return DownloadExtractWrapper::inputSkin(&image, des) ? index : -1;
+    return DownloadExtractManager::inputSkin(&image, des) ? index : -1;
 }

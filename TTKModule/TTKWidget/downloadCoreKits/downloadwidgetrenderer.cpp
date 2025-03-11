@@ -1,5 +1,5 @@
 #include "downloadwidgetrenderer.h"
-#include "downloadextractwrapper.h"
+#include "downloadextractmanager.h"
 #include "downloadbackgroundmanager.h"
 #include "downloadbackgroundconfigmanager.h"
 
@@ -17,7 +17,7 @@ void DownloadWidgetRenderer::setBackgroundPixmap(const QSize &size)
     }
 
     DownloadBackgroundImage image;
-    if(DownloadExtractWrapper::outputSkin(&image, G_BACKGROUND_PTR->backgroundUrl()))
+    if(DownloadExtractManager::outputSkin(&image, G_BACKGROUND_PTR->backgroundUrl()))
     {
         m_background->setPixmap(image.m_pix.scaled(size));
     }

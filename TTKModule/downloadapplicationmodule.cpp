@@ -3,7 +3,7 @@
 #include "downloadsettingmanager.h"
 #include "downloadmessageaboutdialog.h"
 #include "downloadimageutils.h"
-#include "ttkdesktopwrapper.h"
+#include "ttkdesktopscreen.h"
 
 #include <QTimer>
 #include <QPropertyAnimation>
@@ -58,7 +58,7 @@ void DownloadApplicationModule::showAboutWidget()
 
 void DownloadApplicationModule::resetWindowGeometry()
 {
-    const QRect &geometry = TTKDesktopWrapper::geometry();
+    const QRect &geometry = TTKDesktopScreen::geometry();
     G_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, geometry.size());
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, QSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN));
 

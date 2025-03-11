@@ -1,6 +1,6 @@
 #include "downloadwidgetutils.h"
 #include "downloaduiobject.h"
-#include "ttkdesktopwrapper.h"
+#include "ttkdesktopscreen.h"
 
 #include <QMenu>
 #include <QScrollBar>
@@ -25,7 +25,7 @@ void TTK::Widget::adjustMenuPosition(QMenu *menu)
 
 void TTK::Widget::adjustWidgetPosition(QWidget *widget)
 {
-    const QRect &rect = TTKDesktopWrapper::screenGeometry();
+    const QRect &rect = TTKDesktopScreen::screenGeometry();
     widget->move((rect.width() - widget->width()) / 2, (rect.height() - widget->height()) / 2);
 }
 

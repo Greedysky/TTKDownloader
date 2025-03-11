@@ -1,5 +1,5 @@
 #include "downloadbackgroundremotewidget.h"
-#include "downloadextractwrapper.h"
+#include "downloadextractmanager.h"
 #include "downloadqueuerequest.h"
 
 #include <QDir>
@@ -126,7 +126,7 @@ void DownloadBackgroundOnlineWidget::outputRemoteSkin(DownloadBackgroundImage &i
         DownloadSkinRemoteItem &item = items[index];
         image.m_item.m_name = item.m_name;
         image.m_item.m_useCount = item.m_useCount;
-        DownloadExtractWrapper::outputThunderSkin(image.m_pix, data);
+        DownloadExtractManager::outputThunderSkin(image.m_pix, data);
     }
 }
 

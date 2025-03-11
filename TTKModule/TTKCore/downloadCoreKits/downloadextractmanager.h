@@ -1,5 +1,5 @@
-#ifndef DOWNLOADEXTRACTWRAPPER_H
-#define DOWNLOADEXTRACTWRAPPER_H
+#ifndef DOWNLOADEXTRACTMANAGER_H
+#define DOWNLOADEXTRACTMANAGER_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -23,12 +23,12 @@
 
 struct DownloadBackgroundImage;
 
-/*! @brief The class of the extract data wrapper.
+/*! @brief The class of the extract data manager.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadExtractWrapper
+class TTK_MODULE_EXPORT DownloadExtractManager
 {
-    TTK_DECLARE_MODULE(DownloadExtractWrapper)
+    TTK_DECLARE_MODULE(DownloadExtractManager)
 public:
     /*!
      * Transfer file to image data.
@@ -46,4 +46,4 @@ public:
 
 };
 
-#endif // DOWNLOADEXTRACTWRAPPER_H
+#endif // DOWNLOADEXTRACTMANAGER_H

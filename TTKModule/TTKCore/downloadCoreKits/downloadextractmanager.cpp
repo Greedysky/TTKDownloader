@@ -1,4 +1,4 @@
-#include "downloadextractwrapper.h"
+#include "downloadextractmanager.h"
 #include "downloadbackgroundconfigmanager.h"
 #include "downloadotherdefine.h"
 #include "downloadimageutils.h"
@@ -16,7 +16,7 @@
 #define FILE_ATTRIBUTE_ARCHIVE 0x00000020
 #endif
 
-bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &input)
+bool DownloadExtractManager::outputThunderSkin(QPixmap &image, const QString &input)
 {
     const unzFile &zFile = unzOpen64(qPrintable(input));
     if(!zFile)
@@ -76,7 +76,7 @@ bool DownloadExtractWrapper::outputThunderSkin(QPixmap &image, const QString &in
     return true;
 }
 
-bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QString &input)
+bool DownloadExtractManager::outputSkin(DownloadBackgroundImage *image, const QString &input)
 {
     const unzFile &zFile = unzOpen64(qPrintable(input));
     if(!zFile)
@@ -158,7 +158,7 @@ bool DownloadExtractWrapper::outputSkin(DownloadBackgroundImage *image, const QS
     return true;
 }
 
-bool DownloadExtractWrapper::inputSkin(DownloadBackgroundImage *image, const QString &output)
+bool DownloadExtractManager::inputSkin(DownloadBackgroundImage *image, const QString &output)
 {
     const zipFile &zFile = zipOpen64(qPrintable(output), 0);
     if(!zFile)
