@@ -29,11 +29,6 @@ QString TTK::languageCore(int index)
 }
 
 
-DownloadRunTimeManager::DownloadRunTimeManager()
-{
-
-}
-
 void DownloadRunTimeManager::run() const
 {
     TTK_INFO_STREAM("DownloadApplication Run");

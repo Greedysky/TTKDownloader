@@ -40,19 +40,19 @@ public:
     /*!
      * Set item file name.
      */
-    inline void setFileName(const QString &name) { m_name = name; }
+    inline void setFileName(const QString &name) noexcept { m_name = name; }
     /*!
      * Get item file name.
      */
-    inline QString fileName() const { return m_name; }
+    inline QString fileName() const noexcept { return m_name; }
     /*!
      * Set item file name.
      */
-    inline void setFilePath(const QString &path) { m_path = path; }
+    inline void setFilePath(const QString &path) noexcept { m_path = path; }
     /*!
      * Get item file name.
      */
-    inline QString filePath() const { return m_path; }
+    inline QString filePath() const noexcept { return m_path; }
 
     /*!
      * Update pix image.
@@ -74,7 +74,7 @@ public:
     /*!
      * Get current selected item state.
      */
-    inline bool isSelected() const { return m_isSelected; }
+    inline bool isSelected() const noexcept { return m_isSelected; }
 
     /*!
      * Select the current item enable or not.
@@ -83,7 +83,7 @@ public:
     /*!
      * Get current selected item state.
      */
-    inline bool isSelectEnabled() const { return m_selectedEnabled; }
+    inline bool isSelectEnabled() const noexcept { return m_selectedEnabled; }
 
     /*!
      * Close option set the current item.
@@ -92,7 +92,7 @@ public:
     /*!
      * Get close option set the current item.
      */
-    inline bool isCloseEnabled() const { return m_closeEnabled; }
+    inline bool isCloseEnabled() const noexcept { return m_closeEnabled; }
 
 Q_SIGNALS:
     /*!
@@ -153,11 +153,11 @@ public:
     /*!
      * Set background list rtpe.
      */
-    inline void setType(Module type) { m_type = type; }
+    inline void setType(Module type) noexcept { m_type = type; }
     /*!
      * Get background list rtpe.
      */
-    inline Module type() const { return m_type; }
+    inline Module type() const noexcept { return m_type; }
 
     /*!
      * Clear select state.
@@ -212,7 +212,7 @@ public:
     /*!
      * Item count.
      */
-    inline int count() const { return m_items.count(); }
+    inline int count() const noexcept { return m_items.count(); }
 
 Q_SIGNALS:
     /*!

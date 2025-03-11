@@ -55,7 +55,7 @@ public:
     /*!
      * Create functions widget.
      */
-    QWidget* createFunctionsWidget(bool revert, QWidget *object = 0);
+    QWidget* createFunctionsWidget(bool revert, QWidget *object = nullptr);
     /*!
      * Output remote skin.
      */

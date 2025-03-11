@@ -31,14 +31,14 @@ struct TTK_MODULE_EXPORT DownloadSkinConfigItem
     QString m_name;
     int m_useCount;
 
-    DownloadSkinConfigItem()
+    DownloadSkinConfigItem() noexcept
         : m_name("Greedysky"),
           m_useCount(8888)
     {
 
     }
 
-    inline bool isValid() const
+    inline bool isValid() const noexcept
     {
         return !(m_name.isEmpty() && m_useCount == 0);
     }
@@ -52,7 +52,7 @@ struct TTK_MODULE_EXPORT DownloadBackgroundImage
     QPixmap m_pix;
     DownloadSkinConfigItem m_item;
 
-    inline bool isValid() const
+    inline bool isValid() const noexcept
     {
         return !m_pix.isNull() && m_item.isValid();
     }

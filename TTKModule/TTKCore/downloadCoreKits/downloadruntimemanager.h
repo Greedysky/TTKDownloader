@@ -29,11 +29,6 @@ class TTK_MODULE_EXPORT DownloadRunTimeManager
     TTK_DECLARE_MODULE(DownloadRunTimeManager)
 public:
     /*!
-     * Object constructor.
-     */
-    DownloadRunTimeManager();
-
-    /*!
      * Run.
      */
     void run() const;
@@ -41,7 +36,7 @@ public:
     /*!
      * Get translator path.
      */
-    QString translator() const;
+    QString translator() const ;
 
 };
 

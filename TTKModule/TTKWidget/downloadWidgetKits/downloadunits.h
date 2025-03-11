@@ -62,11 +62,11 @@ public:
     /*!
      * Get download url.
      */
-    inline QString url() const { return m_url; }
+    inline QString url() const noexcept { return m_url; }
     /*!
      * Get download path.
      */
-    inline QString downloadedPath() const { return m_path; }
+    inline QString downloadedPath() const noexcept { return m_path; }
     /*!
      * Set download state changed.
      */

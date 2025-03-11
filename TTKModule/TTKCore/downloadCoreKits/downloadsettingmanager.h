@@ -70,7 +70,7 @@ public:
     /*!
      * Set current value by Config Type.
      */
-    inline void setValue(Config type, const QVariant &var)
+    inline void setValue(Config type, const QVariant &var) noexcept
     {
         m_parameter[type] = var;
     }
@@ -78,7 +78,7 @@ public:
     /*!
      * Set current value by String Type.
      */
-    inline void setValue(const QString &stype, const QVariant &var)
+    inline void setValue(const QString &stype, const QVariant &var) noexcept
     {
         m_parameter[stringToEnum(stype)] = var;
     }
@@ -86,7 +86,7 @@ public:
     /*!
      * Get current value by Config Type.
      */
-    inline QVariant value(Config type) const
+    inline QVariant value(Config type) const noexcept
     {
         return m_parameter[type];
     }
@@ -94,7 +94,7 @@ public:
     /*!
      * Get current value by String Type.
      */
-    inline QVariant value(const QString &stype) const
+    inline QVariant value(const QString &stype) const noexcept
     {
         return m_parameter[stringToEnum(stype)];
     }
@@ -102,7 +102,7 @@ public:
     /*!
      * Get parameter count.
      */
-    inline int count() const
+    inline int count() const noexcept
     {
         return m_parameter.count();
     }
@@ -110,7 +110,7 @@ public:
     /*!
      * Current parameter is empty.
      */
-    inline bool isEmpty() const
+    inline bool isEmpty() const noexcept
     {
         return m_parameter.isEmpty();
     }
@@ -118,7 +118,7 @@ public:
     /*!
      * Current parameter contains type.
      */
-    inline bool contains(Config type) const
+    inline bool contains(Config type) const noexcept
     {
         return m_parameter.contains(type);
     }

@@ -51,7 +51,7 @@ public:
     /*!
      * Get download state.
      */
-    inline DownloadThread::State state() const { return m_state; }
+    inline DownloadThread::State state() const noexcept { return m_state; }
 
 Q_SIGNALS:
     /*!

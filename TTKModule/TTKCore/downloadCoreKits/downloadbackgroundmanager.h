@@ -44,20 +44,20 @@ public:
     /*!
      * Set background picture by path.
      */
-    void setBackgroundUrl(const QString &path);
+    void setBackgroundUrl(const QString &path) noexcept;
     /*!
      * Get background picture path.
      */
-    QString backgroundUrl() const;
+    QString backgroundUrl() const noexcept;
 
     /*!
      * Set background picture color.
      */
-    void setBackgroundColor(const QColor &color);
+    void setBackgroundColor(const QColor &color) noexcept;
     /*!
      * Get background picture color.
      */
-    QColor backgroundColor() const;
+    QColor backgroundColor() const noexcept;
 
 Q_SIGNALS:
     /*!
@@ -69,7 +69,7 @@ private:
     /*!
      * Object constructor.
      */
-    DownloadBackgroundManager();
+    DownloadBackgroundManager() noexcept;
 
     QColor m_skinColor;
     QObjectList m_observer;

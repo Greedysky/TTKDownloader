@@ -37,7 +37,7 @@ struct TTK_MODULE_EXPORT DownloadFunctionItem
     QString m_icon;
     QString m_name;
 
-    DownloadFunctionItem(const QString &icon, const QString &name)
+    DownloadFunctionItem(const QString &icon, const QString &name) noexcept
         : m_icon(icon),
           m_name(name)
     {

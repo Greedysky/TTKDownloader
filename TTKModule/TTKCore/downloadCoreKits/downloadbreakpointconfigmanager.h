@@ -32,7 +32,7 @@ struct TTK_MODULE_EXPORT DownloadBreakPointItem
     qint64 m_end;
     qint64 m_ready;
 
-    DownloadBreakPointItem()
+    DownloadBreakPointItem() noexcept
         : m_start(0),
           m_end(0),
           m_ready(0)
@@ -40,7 +40,7 @@ struct TTK_MODULE_EXPORT DownloadBreakPointItem
 
     }
 
-    inline bool isEmpty() const
+    inline bool isEmpty() const noexcept
     {
         return m_start == 0 && m_end == 0 && m_ready == 0;
     }
