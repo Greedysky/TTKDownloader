@@ -18,10 +18,6 @@ static void cleanupCache()
 {
     QFile::remove(TTK_COLOR_FILE);
     QFile::remove(TTK_IMAGE_FILE);
-    QFile::remove(TTK_RECORD_FILE);
-    QFile::remove(TTK_RECORD_IN_FILE);
-    QFile::remove(TTK_RECORD_OUT_FILE);
-    QFile::remove(DOWNLOAD_NETWORK_TEST_FILE);
     TTK_INFO_STREAM("Application cache cleanup");
 }
 

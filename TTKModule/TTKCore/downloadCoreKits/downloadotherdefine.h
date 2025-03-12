@@ -21,12 +21,7 @@
 
 #include <QObject>
 
-#define TTK_COLOR_FILE              "color.jpg"
-#define TTK_IMAGE_FILE              "image_cache"
-#define TTK_RECORD_FILE             "record.raw"
-#define TTK_RECORD_IN_FILE          "record_input.wav"
-#define TTK_RECORD_OUT_FILE         "record_output.wav"
-
-#define DOWNLOAD_NETWORK_TEST_FILE  "netwotk_test.tt"
+#define TTK_COLOR_FILE        TTK::applicationPath() + "color.jpg"
+#define TTK_IMAGE_FILE        TTK::applicationPath() + "image_cache"
 
 #endif // DOWNLOADOTHERDEFINE_H
