@@ -148,7 +148,7 @@ void DownloadBackgroundSkinDialog::showCustomSkinDialog()
         return;
     }
 
-    if(QFileInfo(path).suffix().toLower() == TKM_FILE_SUFFIX)
+    if(TTK_FILE_SUFFIX(QFileInfo(path)) == TKM_FILE_SUFFIX)
     {
         const int index = cpoyFileToLocalIndex();
         if(index != -1)
@@ -292,7 +292,7 @@ void DownloadBackgroundSkinDialog::findThemeListByPath(const QString &dir, TTKIn
     for(const QString &path : qAsConst(files))
     {
         const QFileInfo fin(path);
-        if(fin.suffix().toLower() != TKM_FILE_SUFFIX)
+        if(TTK_FILE_SUFFIX(fin) != TKM_FILE_SUFFIX)
         {
             continue;
         }
