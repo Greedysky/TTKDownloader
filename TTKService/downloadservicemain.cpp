@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
     if(app.isRunning())
     {
         TTK_INFO_STREAM("One app has already run");
-        return -1;
+        return EXIT_FAILURE;
     }
 
     DownloadConfigModule config;
