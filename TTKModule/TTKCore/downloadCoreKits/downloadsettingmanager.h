@@ -40,6 +40,7 @@ public:
         ScreenSize = 0x1000,                /*!< Screen Size Parameter*/
         WidgetPosition = 0x1001,            /*!< Widget Position Parameter*/
         WidgetSize = 0x1002,                /*!< Widget Size Parameter*/
+        UserPermission = 0x1003,            /*!< User Permission Parameter*/
         //
         CloseEventMode = 0x2000,            /*!< Close Event Parameter*/
         CloseNetWorkMode = 0x2001,          /*!< Close NetWork Parameter*/
