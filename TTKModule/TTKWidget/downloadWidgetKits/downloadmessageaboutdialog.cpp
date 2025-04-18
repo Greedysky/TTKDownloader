@@ -16,7 +16,7 @@ DownloadMessageAboutDialog::DownloadMessageAboutDialog(QWidget *parent)
     m_ui->topTitleCloseButton->setToolTip(tr("Close"));
 
     m_ui->iconLabel->setPixmap(QPixmap(":/image/lb_logo"));
-    m_ui->textLabel->setText(QString("TTKDownloader Version: %1\n").arg(TTK_VERSION_STR) + m_ui->textLabel->text());
+    m_ui->textLabel->setText(QString("Version: %1\n").arg(TTK_VERSION_STR) + m_ui->textLabel->text());
 
     connect(m_ui->topTitleCloseButton, SIGNAL(clicked()), SLOT(close()));
 }

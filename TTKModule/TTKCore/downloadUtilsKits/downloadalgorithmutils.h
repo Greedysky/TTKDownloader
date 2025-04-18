@@ -29,9 +29,17 @@ namespace TTK
     namespace Algorithm
     {
         /*!
+         * Get md5 algorithm.
+         */
+        TTK_MODULE_EXPORT QByteArray md5(const QByteArray &data);
+        /*!
          * Get sha1 algorithm.
          */
         TTK_MODULE_EXPORT QByteArray sha1(const QByteArray &data);
+        /*!
+         * Encode the data into sha1.
+         */
+        TTK_MODULE_EXPORT QByteArray hmacSha1(const QByteArray &data, const QByteArray &key);
 
         /*!
          * Get mdII ttk algorithm.
