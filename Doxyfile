@@ -5,7 +5,7 @@
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = TTKDownloader
-PROJECT_NUMBER         = 3.0.0.0
+PROJECT_NUMBER         = 3.1.0.0
 PROJECT_BRIEF          = "TTKDownloader imitates xunlei downloader, based on Qt for windows and linux"
 PROJECT_LOGO           = TTKUtils/resource/qicon.dll
 OUTPUT_DIRECTORY       = TTKDocs
