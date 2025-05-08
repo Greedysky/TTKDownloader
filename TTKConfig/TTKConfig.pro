@@ -49,6 +49,6 @@ HEADERS += \
 
 SOURCES += $$PWD/downloadconfigmodule.cpp
 
-RESOURCES += $$PWD/../TTKUi/DownloaderApp.qrc
+RESOURCES += $$PWD/../TTKUi/TTKApp.qrc
 
 win32:RC_FILE = $$PWD/$${TARGET}.rc

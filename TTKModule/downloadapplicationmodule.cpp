@@ -23,7 +23,7 @@ DownloadApplicationModule::DownloadApplicationModule(QObject *parent)
 
 DownloadApplicationModule::~DownloadApplicationModule()
 {
-    Q_CLEANUP_RESOURCE(TTKDownloader);
+    Q_CLEANUP_RESOURCE(TTKModule);
     delete m_quitAnimation;
 }
 
