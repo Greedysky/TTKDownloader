@@ -94,19 +94,17 @@ void DownloadApplication::createRightMenu()
     menu.addAction(tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
     menu.addSeparator();
 
-    QMenu fileMenu(tr("File(F)"), &menu);
-    fileMenu.addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
-    fileMenu.addSeparator();
-    fileMenu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("Start"), DownloadRightAreaWidget::instance(), SLOT(startToDownload()));
-    fileMenu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), DownloadRightAreaWidget::instance(), SLOT(stopToDownload()));
-    fileMenu.addAction(tr("Clear Bin"));
-    menu.addMenu(&fileMenu);
+    QMenu *fileMenu = menu.addMenu(tr("File(F)"));
+    fileMenu->addAction(QIcon(":/contextMenu/lb_new_normal"), tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
+    fileMenu->addSeparator();
+    fileMenu->addAction(QIcon(":/contextMenu/lb_start_normal"), tr("Start"), DownloadRightAreaWidget::instance(), SLOT(startToDownload()));
+    fileMenu->addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), DownloadRightAreaWidget::instance(), SLOT(stopToDownload()));
+    fileMenu->addAction(tr("Clear Bin"));
 
-    QMenu editMenu(tr("Edit(E)"), &menu);
-    editMenu.addAction(tr("Select All"), DownloadRightAreaWidget::instance(), SLOT(editSelectAll()));
-    editMenu.addAction(tr("Reverse Select"), DownloadRightAreaWidget::instance(), SLOT(editReverseSelect()));
-    menu.addMenu(&editMenu);
-    TTK::Widget::adjustMenuPosition(&editMenu);
+    QMenu *editMenu = menu.addMenu(tr("Edit(E)"));
+    editMenu->addAction(tr("Select All"), DownloadRightAreaWidget::instance(), SLOT(editSelectAll()));
+    editMenu->addAction(tr("Reverse Select"), DownloadRightAreaWidget::instance(), SLOT(editReverseSelect()));
+    TTK::Widget::adjustMenuPosition(editMenu);
 
     menu.addAction(tr("Plan"));
     menu.addSeparator();
@@ -114,9 +112,9 @@ void DownloadApplication::createRightMenu()
     menu.addAction(QIcon(":/contextMenu/lb_setting_normal"), tr("Setting(O)"), DownloadLeftAreaWidget::instance(), SLOT(showSettingWidget()));
     menu.addSeparator();
 
-    QMenu aboutMenu(tr("About"), &menu);
-    aboutMenu.addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(TTK_VERSION_STR) + QString(TTK_VERSION_TIME_STR), m_applicationModule, SLOT(showAboutWidget()));
-    menu.addMenu(&aboutMenu);
+    QMenu *aboutMenu = menu.addMenu(tr("About"));
+    aboutMenu->addAction(QIcon(":/image/lb_app_logo"), tr("Version") + QString(TTK_VERSION_STR) + QString(TTK_VERSION_TIME_STR), m_applicationModule, SLOT(showAboutWidget()));
+
     menu.addSeparator();
     menu.addAction(tr("appClose(X)"), this, SLOT(quitWindow()));
     menu.exec(QCursor::pos());

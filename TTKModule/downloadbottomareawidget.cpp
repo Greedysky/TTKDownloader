@@ -126,11 +126,11 @@ void DownloadBottomAreaWidget::planButtonClicked()
     m_toolPopupMenu->addAction(tr("Add Plan"));
     m_toolPopupMenu->addAction(tr("Delete Plan"))->setEnabled(false);
 
-    QMenu *download = m_toolPopupMenu->addMenu(tr("Downloaded"));
-    download->addAction(tr("Close"));
-    download->addAction(tr("Locked"));
-    download->addAction(tr("Sleep"));
-    download->addAction(tr("Quit"));
+    QMenu *downloadMenu = m_toolPopupMenu->addMenu(tr("Downloaded"));
+    downloadMenu->addAction(tr("Close"));
+    downloadMenu->addAction(tr("Locked"));
+    downloadMenu->addAction(tr("Sleep"));
+    downloadMenu->addAction(tr("Quit"));
 
     m_ui->downloadPlanButton->setMenu(m_toolPopupMenu);
     m_ui->downloadPlanButton->setPopupMode(QToolButton::InstantPopup);
