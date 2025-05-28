@@ -183,7 +183,6 @@ void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
     menu.addAction(tr("Selected All"), this, SLOT(selectAll()));
     menu.addSeparator();
     menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
-
     menu.exec(QCursor::pos());
 }
 
