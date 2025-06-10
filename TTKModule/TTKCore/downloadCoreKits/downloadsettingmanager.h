@@ -33,6 +33,7 @@ class TTK_MODULE_EXPORT DownloadSettingManager : public QObject
     Q_OBJECT
     Q_ENUMS(Config)
     TTK_DECLARE_MODULE(DownloadSettingManager)
+    TTK_DECLARE_SINGLETON_CLASS(DownloadSettingManager)
 public:
     enum Config
     {
@@ -138,8 +139,6 @@ private:
 
     QVariant m_variant;
     QMap<Config, QVariant> m_parameter;
-
-    TTK_DECLARE_SINGLETON_CLASS(DownloadSettingManager)
 
 };
 

@@ -32,6 +32,7 @@ class TTK_MODULE_EXPORT DownloadHotKeyManager : public QObject
 {
     Q_OBJECT
     TTK_DECLARE_MODULE(DownloadHotKeyManager)
+    TTK_DECLARE_SINGLETON_CLASS(DownloadHotKeyManager)
 public:
     /*!
      * Add hotKey by given object.
@@ -93,8 +94,6 @@ public:
 
 private:
     QList<QGlobalShortcut*> m_hotkeys;
-
-    TTK_DECLARE_SINGLETON_CLASS(DownloadHotKeyManager)
 
 };
 
