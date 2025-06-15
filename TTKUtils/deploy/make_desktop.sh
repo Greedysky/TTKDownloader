@@ -1,18 +1,17 @@
 #!/bin/sh
 
-path=share/applications
-if [ ! -d $path ]; then
-  mkdir $path
-fi
-
 curpath=$PWD/deploy
 if [ $# -eq 0 ]; then
   curpath=$PWD
 fi
 
-datapath=$path/TTKDownloader.desktop
-packpath="$curpath/$datapath"
-userpath=~/.local/$datapath
+path=$curpath/share/applications
+if [ ! -d $path ]; then
+  mkdir $path
+fi
+
+packpath=$path/TTKDownloader.desktop
+userpath=~/.local/share/applications
 iconpath="$curpath/share/pixmaps/ttkdownloader.png"
 execpath="$curpath/../TTKDownloader"
 
