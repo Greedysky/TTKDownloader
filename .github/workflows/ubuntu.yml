@@ -50,7 +50,7 @@ jobs:
           make && make install
         working-directory: ${{runner.workspace}}/build
 
-      - name: Build Package
+      - name: Build package
         run: |
           wget https://github.com/Greedysky/Resource/releases/download/1.0.0.0/theme.7z
           7z x theme.7z
