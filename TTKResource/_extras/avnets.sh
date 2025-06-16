@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #Greedysky 2016.2.25 monitor the interface's network traffic.
 
 if [ $# -ne 2 ];then
@@ -6,16 +6,20 @@ if [ $# -ne 2 ];then
    echo Example: $0 eth0 2
    exit
 fi
+
 eth=$1
 interval=$2
 inbytesfirst=$(cat /proc/net/dev |tr ':' ' '|awk  '/'$eth'/{print $2}')
+
 if [ -z "$inbytesfirst" ];then
     echo The network interface $eth is not exits!
     exit 1;
 fi
+
 outbytesfirst=$(cat /proc/net/dev |tr ':' ' '|awk  '/'$eth'/{print $10}')
 inpacketsfirst=$(cat /proc/net/dev |tr ':' ' '|awk  '/'$eth'/{print $3}')
 outpacketsfirst=$(cat /proc/net/dev |tr ':' ' '|awk  '/'$eth'/{print $11}')
+
 sleep $interval"s"
 i=0
 while true
@@ -44,6 +48,7 @@ do
       packetsout=$((4294967295-$outpacketsfirst+$outpacketsend))
       #echo packetsout $packetsout $outpacketsfirst $outpacketsend
    fi
+
    bytesin=$(($bytesin/$interval))
    bytesout=$(($bytesout/$interval))
    packetsin=$(($packetsin/$interval))

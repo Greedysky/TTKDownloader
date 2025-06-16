@@ -1,23 +1,26 @@
 #!/bin/sh
 
-curpath=$PWD/deploy
-if [ $# -eq 0 ]; then
-  curpath=$PWD
+dirpath=`dirname $0`
+tmp="${dirpath#?}"
+
+if [ "${dirpath%${tmp}}" != "/" ]; then
+  dirpath=$PWD/${dirpath}
 fi
 
-path=$curpath/share/applications
-if [ ! -d $path ]; then
-  mkdir $path
+deskpath=${dirpath}/share/applications
+if [ ! -d ${deskpath} ]; then
+  mkdir -p ${deskpath}
 fi
 
-packpath=$path/TTKDownloader.desktop
+packvern=3.1.0.0
+packpath=${deskpath}/TTKDownloader.desktop
 userpath=~/.local/share/applications
-iconpath="$curpath/share/pixmaps/ttkdownloader.png"
-execpath="$curpath/../TTKDownloader"
+iconpath="${dirpath}/share/pixmaps/ttkdownloader.png"
+execpath="${dirpath}/../TTKDownloader"
 
 echo -n "[Desktop Entry]
 Type=Application
-Version=3.1.0.0
+Version=${packvern}
 Name=TTKDownloader
 Name[zh_CN]=天天下载
 Name[zh_TW]=天天下載
@@ -27,13 +30,13 @@ GenericName[zh_TW]=天天下載
 Comment=TTKDownloader
 Comment[zh_CN]=天天下载
 Comment[zh_TW]=天天下載
-Icon=$iconpath
-Exec=$execpath
+Icon=${iconpath}
+Exec=${execpath}
 Terminal=false
 Keywords=multimedia;downloader;
 Categories=Downloader;Qt;
 MimeType=
-X-KDE-StartupNotify=false\n" > $packpath
+X-KDE-StartupNotify=false\n" > ${packpath}
 
-cp -rv $packpath $userpath
-chmod +x $userpath
+cp -rv ${packpath} ${userpath}
+chmod +x ${userpath}
