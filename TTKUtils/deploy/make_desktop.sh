@@ -12,9 +12,16 @@ if [ ! -d ${deskpath} ]; then
   mkdir -p ${deskpath}
 fi
 
+username=`logname`
+if [ "${username}" = "root" ]; then
+  homepath=/root
+else
+  homepath=/home/${username}
+fi
+
 packvern=3.1.0.0
 packpath=${deskpath}/TTKDownloader.desktop
-userpath=~/.local/share/applications
+userpath=${homepath}/.local/share/applications
 iconpath="${dirpath}/share/pixmaps/ttkdownloader.png"
 execpath="${dirpath}/../TTKDownloader"
 
