@@ -157,7 +157,7 @@ private:
 
     QTimer m_speedTimer;
     int m_maxDownloadCount;
-    QList<DownloadUnits*> m_itemList;
+    QList<DownloadUnits*> m_items;
 
 };
 
