@@ -147,7 +147,7 @@ void DownloadHistoryRecordWidget::openFileDir()
     }
 
     QString path = m_records[ currentRow() ].m_path;
-    if(!TTK::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    if(!TTK::Url::openUrl(path, true))
     {
         DownloadMessageBox message;
         message.setText(tr("The origin one does not exist"));

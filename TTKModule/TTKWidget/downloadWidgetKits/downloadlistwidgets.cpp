@@ -251,7 +251,7 @@ void DownloadListWidgets::openFileDir()
 
     QString path = m_items[currentRow()]->downloadedPath();
 
-    if(!TTK::Url::openUrl(QFileInfo(path).absoluteFilePath(), true))
+    if(!TTK::Url::openUrl(path, true))
     {
         DownloadMessageBox message;
         message.setText(tr("The origin one does not exist"));
