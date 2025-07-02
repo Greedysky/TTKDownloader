@@ -18,8 +18,10 @@ DownloadNetworkSpeedThread::DownloadNetworkSpeedThread(QObject *parent)
     : TTKAbstractThread(parent),
       m_process(nullptr)
 {
+    TTK_INFO_STREAM("Available newtwork names:" << newtworkNames());
 #ifdef Q_OS_UNIX
-    setAvailableNewtworkNames(QStringList("eth0"));
+    const QString &module = currentNewtworkName();
+    setNewtworkName(module);
 #endif
 }
 
@@ -33,11 +35,12 @@ DownloadNetworkSpeedThread::~DownloadNetworkSpeedThread()
     delete m_process;
 }
 
-void DownloadNetworkSpeedThread::setAvailableNewtworkNames(const QStringList &names)
+void DownloadNetworkSpeedThread::setNewtworkName(const QString &name)
 {
-    m_names = names;
+    m_name = name;
+    TTK_INFO_STREAM("Current newtwork name:" << name);
 #ifdef Q_OS_UNIX
-    if(m_names.isEmpty())
+    if(m_name.isEmpty())
     {
         return;
     }
@@ -46,13 +49,30 @@ void DownloadNetworkSpeedThread::setAvailableNewtworkNames(const QStringList &na
     m_process = new QProcess(this);
     m_process->setProcessChannelMode(QProcess::MergedChannels);
     connect(m_process, SIGNAL(readyReadStandardOutput()), SLOT(outputRecieved()));
-    m_process->start(MAKE_NET_PATH_FULL, {m_names.front(), "1"});
+
+    QStringList arguments;
+    arguments << name << "1";
+    m_process->start(TRAFFIC_PATH_FULL, arguments);
 #endif
 }
 
-QStringList DownloadNetworkSpeedThread::availableNewtworkNames() const
+QString DownloadNetworkSpeedThread::currentNewtworkName() const
 {
-    return m_names;
+#ifdef Q_OS_UNIX
+    QProcess process;
+    process.start("/bin/bash", {"-c", "ip route"});
+    if(process.waitForFinished(3 * TTK_DN_S2MS))
+    {
+        const QString data(process.readAll());
+        QRegExp regx(" dev (\\w+) ");
+        regx.setMinimal(true);
+        if(regx.indexIn(data) != -1)
+        {
+            return regx.cap(1);
+        }
+    }
+#endif
+    return newtworkNames().back();
 }
 
 QStringList DownloadNetworkSpeedThread::newtworkNames() const
@@ -80,10 +100,10 @@ QStringList DownloadNetworkSpeedThread::newtworkNames() const
     GetIfTable(pTable, &dwAdapters, TRUE);
     for(UINT i = 0; i < pTable->dwNumEntries; ++i)
     {
-        MIB_IFROW Row = pTable->table[i];
-        TTKString s(TTKReinterpretCast(char const*, Row.bDescr));
-        QString qs = QString::fromStdString(s);
-        if((Row.dwType == 71 || Row.dwType == 6) && !names.contains(qs))
+        const MIB_IFROW &row = pTable->table[i];
+        TTKString s(TTKReinterpretCast(char const*, row.bDescr));
+        const QString &qs = QString::fromStdString(s);
+        if((row.dwType == 71 || row.dwType == 6) && !names.contains(qs))
         {
             names << qs;
         }
@@ -154,11 +174,11 @@ void DownloadNetworkSpeedThread::run()
 
         for(UINT i = 0; i < pTable->dwNumEntries; ++i)
         {
-            MIB_IFROW Row = pTable->table[i];
-            if(Row.dwType <= 23)
+            const MIB_IFROW &row = pTable->table[i];
+            if(row.dwType <= 23)
             {
-                dwInOctets += Row.dwInOctets;
-                dwOutOctets += Row.dwOutOctets;
+                dwInOctets += row.dwInOctets;
+                dwOutOctets += row.dwOutOctets;
             }
         }
 

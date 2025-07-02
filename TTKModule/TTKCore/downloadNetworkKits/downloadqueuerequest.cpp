@@ -16,6 +16,7 @@ DownloadQueueRequest::DownloadQueueRequest(const DownloadQueueData &data, QObjec
 {
     m_request = new QNetworkRequest;
     TTK::setSslConfiguration(m_request);
+    TTK::makeContentTypeHeader(m_request);
 }
 
 DownloadQueueRequest::DownloadQueueRequest(const DownloadQueueDataList &datas, QObject *parent)
@@ -29,6 +30,11 @@ DownloadQueueRequest::~DownloadQueueRequest()
     delete m_request;
     m_request = nullptr;
     deleteAll();
+}
+
+void DownloadQueueRequest::addQueue(const DownloadQueueDataList &datas)
+{
+    m_queue = datas;
 }
 
 void DownloadQueueRequest::startToRequest()
@@ -57,56 +63,6 @@ void DownloadQueueRequest::abort()
 void DownloadQueueRequest::clear()
 {
     m_queue.clear();
-}
-
-void DownloadQueueRequest::addQueue(const DownloadQueueDataList &datas)
-{
-    m_queue = datas;
-}
-
-void DownloadQueueRequest::startOrderQueue()
-{
-    if(m_queue.isEmpty())
-    {
-        return;
-    }
-
-    if(QFile::exists(m_queue.front().m_path))
-    {
-        Q_EMIT downLoadDataChanged(m_queue.takeFirst().m_path);
-        startOrderQueue();
-    }
-    else if(G_NETWORK_PTR->isOnline())
-    {
-        startDownload(m_queue.front().m_url);
-    }
-}
-
-void DownloadQueueRequest::startDownload(const QString &url)
-{
-    m_isDownload = true;
-    delete m_file;
-    m_file = new QFile(m_queue.front().m_path, this);
-
-    if(!m_file->open(QIODevice::WriteOnly))
-    {
-        m_file->close();
-        delete m_file;
-        m_file = nullptr;
-        return;
-    }
-
-    if(!m_request || url.isEmpty())
-    {
-        return;
-    }
-
-    m_speedTimer.start();
-    m_request->setUrl(url);
-    m_reply = m_manager.get(*m_request);
-    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
-    connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
-    QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
 }
 
 void DownloadQueueRequest::downLoadFinished()
@@ -157,4 +113,49 @@ void DownloadQueueRequest::handleError(QNetworkReply::NetworkError code)
     }
 
     startToRequest();
+}
+
+void DownloadQueueRequest::startDownload(const QString &url)
+{
+    m_isDownload = true;
+    delete m_file;
+    m_file = new QFile(m_queue.front().m_path, this);
+
+    if(!m_file->open(QIODevice::WriteOnly))
+    {
+        m_file->close();
+        delete m_file;
+        m_file = nullptr;
+        return;
+    }
+
+    if(!m_request || url.isEmpty())
+    {
+        return;
+    }
+
+    m_speedTimer.start();
+    m_request->setUrl(url);
+    m_reply = m_manager.get(*m_request);
+    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
+    connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
+    QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
+}
+
+void DownloadQueueRequest::startOrderQueue()
+{
+    if(m_queue.isEmpty())
+    {
+        return;
+    }
+
+    if(QFile::exists(m_queue.front().m_path))
+    {
+        Q_EMIT downLoadDataChanged(m_queue.takeFirst().m_path);
+        startOrderQueue();
+    }
+    else if(G_NETWORK_PTR->isOnline())
+    {
+        startDownload(m_queue.front().m_url);
+    }
 }

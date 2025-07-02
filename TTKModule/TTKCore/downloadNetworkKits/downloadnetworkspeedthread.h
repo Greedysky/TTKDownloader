@@ -43,13 +43,14 @@ public:
     ~DownloadNetworkSpeedThread();
 
     /*!
-     * Set available newtwork names.
+     * Set newtwork names.
      */
-    void setAvailableNewtworkNames(const QStringList &names);
+    void setNewtworkName(const QString &name);
+
     /*!
-     * Get available newtwork names.
+     * Get current newtwork name.
      */
-    QStringList availableNewtworkNames() const;
+    QString currentNewtworkName() const;
     /*!
      * Get newtwork names.
      */
@@ -74,8 +75,8 @@ private Q_SLOTS:
     void outputRecieved();
 
 private:
-    QStringList m_names;
-    QProcess *m_process ;
+    QString m_name;
+    QProcess *m_process;
 
 };
 

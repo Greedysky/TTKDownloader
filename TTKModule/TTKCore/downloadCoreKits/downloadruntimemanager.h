@@ -36,7 +36,7 @@ public:
     /*!
      * Get translator path.
      */
-    QString translator() const ;
+    QString translator() const;
 
 };
 

@@ -59,7 +59,7 @@
 #define USER_THEME_DIR          TTK_STR_CAT("theme", TTK_SEPARATOR)
 
 
-#define MAKE_NET_PATH           "avnets.sh"
+#define TRAFFIC_PATH            "avnets"
 #define LIST_PATH               TTK_STR_CAT("list", TPL_FILE)
 #define COFIG_PATH              TTK_STR_CAT("config", XML_FILE)
 #define HISTORY_PATH            TTK_STR_CAT("history", TKF_FILE)
@@ -72,7 +72,7 @@
 #define APPCACHE_DIR_FULL       TTK::configPath() + APPCACHE_DIR
 
 
-#define MAKE_NET_PATH_FULL      APPDATA_DIR_FULL + MAKE_NET_PATH
+#define TRAFFIC_PATH_FULL       APPDATA_DIR_FULL + TRAFFIC_PATH
 #define LIST_PATH_FULL          APPDATA_DIR_FULL + LIST_PATH
 #define COFIG_PATH_FULL         APPDATA_DIR_FULL + COFIG_PATH
 #define HISTORY_PATH_FULL       APPDATA_DIR_FULL + HISTORY_PATH

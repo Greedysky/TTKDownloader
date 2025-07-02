@@ -3,7 +3,7 @@
         <file alias="config.xml">../TTKResource/_extras/config.xml</file>
         <file alias="list.tkpl">../TTKResource/_extras/list.tkpl</file>
         <file alias="history.tkf">../TTKResource/_extras/history.tkf</file>
-        <file alias="avnets.sh">../TTKResource/_extras/avnets.sh</file>
+        <file alias="avnets">../TTKResource/_extras/avnets</file>
         <file alias="TTKDownloader.sh">../TTKResource/_extras/TTKDownloader.sh</file>
         <file alias="TTKRoutine.sh">../TTKResource/_extras/TTKRoutine.sh</file>
         <file alias="TTKRoutineCopy.sh">../TTKResource/_extras/TTKRoutineCopy.sh</file>
