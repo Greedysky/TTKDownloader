@@ -43,6 +43,8 @@ set(SOURCE_FILES
 
 if(WIN32)
   list(APPEND SOURCE_FILES qshortcut/qglobalshortcut_win.cpp ${PROJECT_NAME}.rc)
+elseif(APPLE)
+  list(APPEND SOURCE_FILES qshortcut/qglobalshortcut_mac.cpp)
 else()
   list(APPEND SOURCE_FILES qshortcut/qglobalshortcut_x11.cpp)
 endif()
