@@ -8,7 +8,7 @@
 #include "ttkdesktopscreen.h"
 #include "ttkglobalinterface.h"
 
-#ifdef Q_OS_UNIX
+#ifdef Q_OS_LINUX
 #  include <malloc.h>
 #endif
 
@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
     DownloadApplication w;
     w.show();
 
-#ifdef Q_OS_UNIX
+#ifdef Q_OS_LINUX
     // memory free
     mallopt(M_MMAP_THRESHOLD, 1024 * 1024);   // 1MB mmap
     mallopt(M_TRIM_THRESHOLD, 2 * 1024 * 1024); // 2MB brk

@@ -42,6 +42,10 @@ unix:!mac{
     SSL_DEPANDS = $$DESTDIR/libssleay32.so
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
+mac{
+    SSL_DEPANDS = $$DESTDIR/libssl.dylib
+    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
+}
 
 win32{
     LIBS += -lIphlpapi
@@ -52,6 +56,7 @@ win32{
              QMAKE_LFLAGS_WINDOWS += /SUBSYSTEM:WINDOWS,5.01
              QMAKE_LFLAGS_CONSOLE += /SUBSYSTEM:CONSOLE,5.01
         }
+
         LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lttkzip -lzlib -lshell32 -luser32
     }
 
@@ -61,6 +66,7 @@ win32{
         }else{
             QMAKE_CXXFLAGS += -std=c++11
         }
+
         QMAKE_CXXFLAGS += -Wunused-function -Wswitch
         LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lttkzip -lzlib
     }
@@ -72,6 +78,7 @@ unix:!mac{
     }else{
         QMAKE_CXXFLAGS += -std=c++11
     }
+
     QMAKE_CXXFLAGS += -Wunused-function -Wswitch
     LIBS += -L$$DESTDIR -lTTKLibrary -lTTKUi -lTTKExtras -lttkzip -lzlib
 }
