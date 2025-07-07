@@ -207,16 +207,6 @@ else()
 endif()
 
 
-if(UNIX AND NOT APPLE)
-  find_program(RENAME_EXECUTABLE rename /usr/bin)
-  if(RENAME_EXECUTABLE)
-    message(STATUS "Found rename executable: " ${RENAME_EXECUTABLE})
-  else()
-    message(FATAL_ERROR "Could NOT find rename executable")
-  endif()
-endif()
-
-
 add_subdirectory(TTKCommon)
 add_subdirectory(TTKLanguage)
 add_subdirectory(TTKConfig)
@@ -258,5 +248,5 @@ endif()
 if(WIN32)
   install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_win.bat\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_BIN_DIR}\" \"${TTK_BASE_DIR}\")")
 else()
-  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_linux.sh\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_BIN_DIR}\" \"${TTK_BASE_DIR}\")")
+  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_unix.py\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_BIN_DIR}\" \"${TTK_BASE_DIR}\")")
 endif()
