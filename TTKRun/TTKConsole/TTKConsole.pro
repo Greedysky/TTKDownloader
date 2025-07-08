@@ -38,6 +38,10 @@ unix:!mac{
     SSL_DEPANDS = $$DESTDIR/libssleay32.so
     exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
 }
+mac{
+    SSL_DEPANDS = $$DESTDIR/libssl.dylib
+    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
+}
 
 win32:msvc{
     CONFIG += c++11
