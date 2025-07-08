@@ -3,6 +3,7 @@
 #include "downloadsettingmanager.h"
 #include "downloadmessageaboutdialog.h"
 #include "downloadimageutils.h"
+#include "downloadhotkeymanager.h"
 #include "ttkdesktopscreen.h"
 
 #include <QTimer>
@@ -24,6 +25,7 @@ DownloadApplicationModule::DownloadApplicationModule(QObject *parent)
 DownloadApplicationModule::~DownloadApplicationModule()
 {
     Q_CLEANUP_RESOURCE(TTKModule);
+    G_HOTKEY_PTR->unsetShortcut();
     delete m_quitAnimation;
 }
 
