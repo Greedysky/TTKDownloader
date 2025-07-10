@@ -103,9 +103,9 @@ private:
     void createSystemTrayIcon();
 
     Ui::DownloadApplication *m_ui;
+    bool m_isAvailable;
     bool m_systemCloseConfig;
     bool m_expandMode;
-
     QMenu *m_toolPopupMenu;
     QSystemTrayIcon *m_systemTray;
     DownloadSystemTrayMenu *m_systemTrayMenu;

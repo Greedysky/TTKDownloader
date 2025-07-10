@@ -14,6 +14,7 @@ DownloadBottomAreaWidget *DownloadBottomAreaWidget::m_instance = nullptr;
 
 DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
     : QWidget(parent),
+      m_isAvailable(false),
       m_systemCloseConfig(false),
       m_expandMode(false),
       m_toolPopupMenu(nullptr)
@@ -163,13 +164,22 @@ void DownloadBottomAreaWidget::expandButtonClicked()
 
 void DownloadBottomAreaWidget::createSystemTrayIcon()
 {
+    m_isAvailable = QSystemTrayIcon::isSystemTrayAvailable();
     m_systemTray = new QSystemTrayIcon(DownloadApplication::instance());
     m_systemTray->setIcon(QIcon(":/image/lb_app_logo"));
     m_systemTray->setToolTip(tr("TTKDownloader"));
 
     m_systemTrayMenu = new DownloadSystemTrayMenu(DownloadApplication::instance());
 
-    m_systemTray->setContextMenu(m_systemTrayMenu);
-    m_systemTray->show();
+    if(m_isAvailable)
+    {
+        m_systemTray->setContextMenu(m_systemTrayMenu);
+        m_systemTray->show();
+    }
+    else
+    {
+        TTK_INFO_STREAM("Current no systemtray available");
+    }
+
     connect(m_systemTray, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), SLOT(iconActivated(QSystemTrayIcon::ActivationReason)));
 }
