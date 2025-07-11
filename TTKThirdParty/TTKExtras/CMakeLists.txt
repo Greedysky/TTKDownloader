@@ -23,22 +23,26 @@ project(TTKExtras)
 set(HEADER_FILES
   qshortcut/qglobalshortcut.h
   qshortcut/qglobalshortcut_p.h
-  qjson/parser.h
-  qjson/parserrunnable.h
-  qjson/qobjecthelper.h
-  qjson/serializer.h
-  qjson/serializerrunnable.h
+  qjson/json.h
+  qjson/QJsonArray.h
+  qjson/QJsonDocument.h
+  qjson/QJsonObject.h
+  qjson/QJsonParseError.h
+  qjson/QJsonValue.h
+  qjson/QJsonValueRef.h
+  qjson/QJsonParser.h
+  qjson/QJsonRoot.h
 )
 
 set(SOURCE_FILES
   qshortcut/qglobalshortcut.cpp
-  qjson/parser.cpp
-  qjson/qobjecthelper.cpp
-  qjson/json_scanner.cpp
-  qjson/json_parser.cc
-  qjson/parserrunnable.cpp
-  qjson/serializer.cpp
-  qjson/serializerrunnable.cpp
+  qjson/QJsonArray.cpp
+  qjson/QJsonDocument.cpp
+  qjson/QJsonObject.cpp
+  qjson/QJsonParseError.cpp
+  qjson/QJsonValue.cpp
+  qjson/QJsonValueRef.cpp
+  qjson/QJsonParser.cpp
 )
 
 if(WIN32)
@@ -47,6 +51,14 @@ elseif(APPLE)
   list(APPEND SOURCE_FILES qshortcut/qglobalshortcut_mac.cpp)
 else()
   list(APPEND SOURCE_FILES qshortcut/qglobalshortcut_x11.cpp)
+endif()
+
+# qglobalshortcut_mac.cpp needs this.
+# Notice, it cannot work on recent macOS versions,
+# so either additional implementation is needed, using
+# modern API, or at least a dummy fallback.
+if(APPLE)
+  list(APPEND QT_LINK_LIBS "-framework Carbon")
 endif()
 
 if(TTK_QT_VERSION VERSION_EQUAL "4")
