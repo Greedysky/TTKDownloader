@@ -22,7 +22,6 @@ project(TTKService)
 
 include_directories(${TTK_CONFIG_DIR})
 include_directories(${TTK_COMMON_APP_DIR})
-include_directories(${TTK_COMMON_DUMPER_DIR})
 
 set(TTKAPPLICATION_HEADER_FILES
   ${TTK_COMMON_APP_DIR}/ttklocalpeer.h
@@ -47,7 +46,7 @@ if(WIN32)
   list(APPEND SOURCE_FILES ${PROJECT_NAME}.rc)
 endif()
 
-set(QT_LINK_LIBS TTKCore TTKConfig TTKDumper)
+set(QT_LINK_LIBS TTKCore TTKConfig)
 
 if(TTK_QT_VERSION VERSION_EQUAL "4")
   qt4_wrap_cpp(MOC_FILES ${HEADER_FILES})
