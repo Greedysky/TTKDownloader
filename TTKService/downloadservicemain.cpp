@@ -59,10 +59,10 @@ int main(int argc, char *argv[])
     config.valid();
 
     TTKDumper dumper(std::bind(cleanupCache));
-    dumper.run();
+    dumper.execute();
 
     DownloadRunTimeManager manager;
-    manager.run();
+    manager.execute();
 
     QTranslator translator;
     if(!translator.load(manager.translator()))

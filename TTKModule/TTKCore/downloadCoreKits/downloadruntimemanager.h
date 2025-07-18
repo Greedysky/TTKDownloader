@@ -29,9 +29,9 @@ class TTK_MODULE_EXPORT DownloadRunTimeManager
     TTK_DECLARE_MODULE(DownloadRunTimeManager)
 public:
     /*!
-     * Run.
+     * Execute module.
      */
-    void run() const;
+    void execute() const;
 
     /*!
      * Get translator path.
