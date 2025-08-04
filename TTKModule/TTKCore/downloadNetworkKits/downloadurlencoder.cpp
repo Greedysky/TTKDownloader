@@ -13,14 +13,14 @@ DownloadUrlEncoder::DownloadUrlEncoder(QObject *parent)
 QString DownloadUrlEncoder::decoder(const QString &url)
 {
     QString turl = url;
-    if(url.left(THUNDER.length()).contains(THUNDER, Qt::CaseInsensitive))
+    if(url.leftRef(THUNDER.length()).contains(THUNDER, Qt::CaseInsensitive))
     {
         QByteArray byte = QByteArray::fromBase64(turl.mid(THUNDER.length()).toUtf8());
         byte.remove(0, 2); //remove AA
         byte.chop(2); //remove ZZ
         return byte;
     }
-    else if(url.left(FLASHGET.length()).contains(FLASHGET, Qt::CaseInsensitive))
+    else if(url.leftRef(FLASHGET.length()).contains(FLASHGET, Qt::CaseInsensitive))
     {
         const int d = turl.lastIndexOf('&');
         turl = (d == -1) ? turl : turl.left(d);
@@ -29,7 +29,7 @@ QString DownloadUrlEncoder::decoder(const QString &url)
         byte.chop(10); //remove  [FLASHGET]
         return byte;
     }
-    else if(url.left(QQDL.length()).contains(QQDL, Qt::CaseInsensitive))
+    else if(url.leftRef(QQDL.length()).contains(QQDL, Qt::CaseInsensitive))
     {
         return QByteArray::fromBase64(turl.mid(QQDL.length()).toUtf8());
     }
