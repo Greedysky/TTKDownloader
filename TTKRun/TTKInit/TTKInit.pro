@@ -52,6 +52,7 @@ INCLUDEPATH += \
     $$PWD/../../TTKConfig \
     $$PWD/../../TTKCommon \
     $$PWD/../../TTKCommon/base \
+    $$PWD/../../TTKCommon/TTKLibrary \
     $$PWD/../../TTKModule/TTKCore/downloadCoreKits
 
 SOURCES += $$PWD/downloadinitmain.cpp

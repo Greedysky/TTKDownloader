@@ -1,12 +1,10 @@
 #include "downloadconsolemodule.h"
+#include "ttkinitialization.h"
 
 int main(int argc, char *argv[])
 {
     QCoreApplication app(argc, argv);
-
-    QCoreApplication::setOrganizationName(TTK_APP_NAME);
-    QCoreApplication::setOrganizationDomain(TTK_APP_COME_NAME);
-    QCoreApplication::setApplicationName(TTK_APP_NAME);
+    RegisterOrganization(TTK_APP);
 
     DownloadConsoleModule console;
     return console.initialize() ? EXIT_SUCCESS : EXIT_FAILURE;

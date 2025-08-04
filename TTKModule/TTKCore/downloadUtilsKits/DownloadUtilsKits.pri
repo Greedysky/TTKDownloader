@@ -20,7 +20,6 @@ INCLUDEPATH += $$PWD
 
 HEADERS += \
     $$PWD/downloadalgorithmutils.h \
-    $$PWD/downloadcodecutils.h \
     $$PWD/downloadcoreutils.h \
     $$PWD/downloadfileutils.h \
     $$PWD/downloadimageutils.h \
@@ -31,7 +30,6 @@ HEADERS += \
 
 SOURCES += \
     $$PWD/downloadalgorithmutils.cpp \
-    $$PWD/downloadcodecutils.cpp \
     $$PWD/downloadcoreutils.cpp \
     $$PWD/downloadfileutils.cpp \
     $$PWD/downloadimageutils.cpp \
