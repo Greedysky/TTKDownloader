@@ -30,7 +30,6 @@ class QPropertyAnimation;
 class TTK_MODULE_EXPORT DownloadTransitionAnimationLabel : public QLabel
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadTransitionAnimationLabel)
 public:
     /*!
      * Object constructor.

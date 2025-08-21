@@ -36,7 +36,6 @@ namespace Ui {
 class TTK_MODULE_EXPORT DownloadTopAreaWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadTopAreaWidget)
 public:
     /*!
      * Object constructor.

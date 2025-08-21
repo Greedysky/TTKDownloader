@@ -52,7 +52,6 @@ TTK_DECLARE_LIST(DownloadFunctionItem);
 class TTK_MODULE_EXPORT DownloadFunctionTableWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadFunctionTableWidget)
 public:
     /*!
      * Object constructor.
@@ -88,7 +87,6 @@ private:
 class TTK_MODULE_EXPORT DownloadSettingWidget : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadSettingWidget)
 public:
     /*!
      * Object constructor.

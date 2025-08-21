@@ -28,7 +28,6 @@
 class TTK_MODULE_EXPORT DownloadGlobalHotKeyEdit : public QLineEdit
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadGlobalHotKeyEdit)
 public:
     /*!
      * Object constructor.

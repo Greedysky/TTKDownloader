@@ -30,7 +30,6 @@
 class TTK_MODULE_EXPORT DownloadBackgroundListItem : public QLabel
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundListItem)
 public:
     /*!
      * Object constructor.
@@ -127,7 +126,6 @@ private:
 class TTK_MODULE_EXPORT DownloadBackgroundListWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundListWidget)
 public:
     enum Module
     {

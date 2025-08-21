@@ -52,7 +52,6 @@ TTK_DECLARE_LIST(DownloadBreakPointItem);
  */
 class TTK_MODULE_EXPORT DownloadBreakPointConfigManager : public TTKAbstractXml, public TTKAbstractReadWriteInterface<DownloadBreakPointItemList>
 {
-    TTK_DECLARE_MODULE(DownloadBreakPointConfigManager)
 public:
     /*!
      * Object constructor.

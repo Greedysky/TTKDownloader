@@ -29,7 +29,6 @@ class TTKClickedSlider;
 class TTK_MODULE_EXPORT DownloadBackgroundPopWidget : public DownloadToolMenuWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundPopWidget)
 public:
     /*!
      * Object constructor.

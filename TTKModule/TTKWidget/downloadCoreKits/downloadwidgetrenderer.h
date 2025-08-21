@@ -27,7 +27,6 @@
  */
 class TTK_MODULE_EXPORT DownloadWidgetRenderer
 {
-    TTK_DECLARE_MODULE(DownloadWidgetRenderer)
 public:
     /*!
      * Object constructor.

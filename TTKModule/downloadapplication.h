@@ -38,7 +38,6 @@ class DownloadApplication;
 class TTK_MODULE_EXPORT DownloadApplication : public TTKAbstractMoveResizeWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadApplication)
 public:
     /*!
      * Object constructor.

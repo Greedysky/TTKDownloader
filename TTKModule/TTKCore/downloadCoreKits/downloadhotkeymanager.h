@@ -31,7 +31,6 @@ class QGlobalShortcut;
 class TTK_MODULE_EXPORT DownloadHotKeyManager : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadHotKeyManager)
     TTK_DECLARE_SINGLETON_CLASS(DownloadHotKeyManager)
 public:
     /*!

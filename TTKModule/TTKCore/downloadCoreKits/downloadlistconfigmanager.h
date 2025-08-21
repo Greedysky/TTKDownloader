@@ -37,7 +37,6 @@ TTK_DECLARE_LIST(DownloadItem);
  */
 class TTK_MODULE_EXPORT DownloadListConfigManager : public TTKAbstractXml, public TTKAbstractReadWriteInterface<DownloadItemList>
 {
-    TTK_DECLARE_MODULE(DownloadListConfigManager)
 public:
     /*!
      * Object constructor.

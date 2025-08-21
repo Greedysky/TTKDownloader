@@ -38,7 +38,6 @@ TTK_DECLARE_LIST(DownloadQueueData);
 class TTK_MODULE_EXPORT DownloadQueueRequest : public DownLoadAbstractRequest
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadQueueCache)
 public:
     /*!
      * Object constructor.

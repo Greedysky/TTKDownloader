@@ -32,7 +32,6 @@ class QProgressBar;
 class TTK_MODULE_EXPORT DownloadListItemWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadListItemWidget)
 public:
     /*!
      * Object constructor.

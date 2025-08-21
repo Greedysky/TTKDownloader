@@ -28,7 +28,6 @@
 class TTK_MODULE_EXPORT DownloadHistoryRecordWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadHistoryRecordWidget)
 public:
     /*!
      * Object constructor.

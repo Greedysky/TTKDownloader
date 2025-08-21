@@ -27,7 +27,6 @@
  */
 class TTK_MODULE_EXPORT DownloadConfigManager : public TTKAbstractXml, public TTKAbstractReadWriteInterface<int>
 {
-    TTK_DECLARE_MODULE(DownloadConfigManager)
 public:
     /*!
      * Object constructor.

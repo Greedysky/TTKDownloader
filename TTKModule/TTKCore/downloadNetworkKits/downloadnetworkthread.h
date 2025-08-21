@@ -30,7 +30,6 @@
 class TTK_MODULE_EXPORT DownloadNetworkThread : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadNetworkThread)
     TTK_DECLARE_SINGLETON_CLASS(DownloadNetworkThread)
 public:
     /*!

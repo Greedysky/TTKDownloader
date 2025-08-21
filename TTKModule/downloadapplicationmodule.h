@@ -30,7 +30,6 @@ class QPropertyAnimation;
 class TTK_MODULE_EXPORT DownloadApplicationModule : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadApplicationModule)
 public:
     /*!
      * Object constructor.

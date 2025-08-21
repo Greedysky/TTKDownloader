@@ -28,7 +28,6 @@
 class TTK_MODULE_EXPORT DownloadSystemTrayMenu : public QMenu
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadSystemTrayMenu)
 public:
     /*!
      * Object constructor.

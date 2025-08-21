@@ -30,7 +30,6 @@ class DownloadUnits;
 class TTK_MODULE_EXPORT DownloadListWidgets : public DownloadAbstractTableWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadListWidgets)
 public:
     /*!
      * Object constructor.

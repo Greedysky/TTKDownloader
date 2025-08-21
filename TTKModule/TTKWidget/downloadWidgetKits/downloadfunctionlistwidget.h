@@ -28,7 +28,6 @@
 class TTK_MODULE_EXPORT DownloadFunctionItemWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadFunctionItemWidget)
 public:
     /*!
      * Object constructor.
@@ -79,7 +78,6 @@ private:
 class TTK_MODULE_EXPORT DownloadFunctionListWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadFunctionListWidget)
 public:
     /*!
      * Object constructor.

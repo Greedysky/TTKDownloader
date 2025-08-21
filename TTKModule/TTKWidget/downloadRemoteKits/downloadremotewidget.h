@@ -27,7 +27,6 @@
 class TTK_MODULE_EXPORT DownloadRemoteWidget : public DownloadAbstractMoveWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadRemoteWidget)
 public:
     /*!
      * Object constructor.

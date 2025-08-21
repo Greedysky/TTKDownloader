@@ -34,7 +34,6 @@ class DownloadBackgroundOnlineWidget;
 class TTK_MODULE_EXPORT DownloadBackgroundSkinDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundSkinDialog)
 public:
     /*!
      * Object constructor.

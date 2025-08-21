@@ -32,7 +32,6 @@ class DownloadQueueRequest;
 class TTK_MODULE_EXPORT DownloadBackgroundOnlineWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundOnlineWidget)
 public:
     /*!
      * Object constructor.

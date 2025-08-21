@@ -30,7 +30,6 @@ namespace Ui {
 class TTK_MODULE_EXPORT DownloadMessageAboutDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadMessageAboutDialog)
 public:
     /*!
      * Object constructor.

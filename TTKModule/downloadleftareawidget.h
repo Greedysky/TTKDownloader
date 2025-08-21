@@ -34,7 +34,6 @@ namespace Ui {
 class TTK_MODULE_EXPORT DownloadLeftAreaWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadLeftAreaWidget)
 public:
     /*!
      * Object constructor.

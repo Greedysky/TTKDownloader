@@ -31,7 +31,6 @@ class DownloadMessageBox;
 class TTK_MODULE_EXPORT DownloadMessageBox : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadMessageBox)
 public:
     /*!
      * Object constructor.

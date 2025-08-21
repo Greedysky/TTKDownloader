@@ -30,7 +30,6 @@
 class TTK_MODULE_EXPORT DownloadAnimationStackedWidget : public QStackedWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadAnimationStackedWidget)
 public:
     enum class Module
     {

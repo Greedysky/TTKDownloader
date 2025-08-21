@@ -64,7 +64,6 @@ struct TTK_MODULE_EXPORT DownloadBackgroundImage
  */
 class TTK_MODULE_EXPORT DownloadSkinConfigManager : public TTKAbstractXml, public TTKAbstractReadWriteInterface<DownloadSkinConfigItem>
 {
-    TTK_DECLARE_MODULE(DownloadSkinConfigManager)
 public:
     /*!
      * Object constructor.

@@ -39,7 +39,6 @@ TTK_DECLARE_LIST(DownloadRecord);
  */
 class TTK_MODULE_EXPORT DownloadRecordConfigManager : public TTKAbstractXml, public TTKAbstractReadWriteInterface<DownloadRecordList>
 {
-    TTK_DECLARE_MODULE(DownloadRecordConfigManager)
 public:
     /*!
      * Object constructor.

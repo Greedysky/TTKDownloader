@@ -29,7 +29,6 @@ static constexpr int THREADCOUNT = 1;
 class TTK_MODULE_EXPORT DownloadThreadManager : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadThreadManager)
 public:
     /*!
      * Object constructor.

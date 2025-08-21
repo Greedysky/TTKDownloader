@@ -65,7 +65,6 @@ TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
  */
 class TTK_MODULE_EXPORT DownloadThunderSkinConfigManager : public TTKAbstractXml, public TTKAbstractReadInterface<DownloadSkinRemoteGroupList>
 {
-    TTK_DECLARE_MODULE(DownloadThunderSkinConfigManager)
 public:
     /*!
      * Object constructor.
@@ -86,7 +85,6 @@ public:
 class TTK_MODULE_EXPORT DownloadThunderSkinRequest : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadThunderSkinRequest)
 public:
     /*!
      * Object constructor.

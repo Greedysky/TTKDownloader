@@ -29,7 +29,6 @@
 class TTK_MODULE_EXPORT DownloadToolMenu : public QMenu
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadToolMenu)
 public:
     /*!
      * Object constructor.
@@ -58,7 +57,6 @@ private:
 class TTK_MODULE_EXPORT DownloadToolMenuWidget : public QToolButton
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadToolMenuWidget)
 public:
     /*!
      * Object constructor.

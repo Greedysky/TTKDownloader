@@ -30,7 +30,6 @@
 class TTK_MODULE_EXPORT DownloadBackgroundManager : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadBackgroundManager)
     TTK_DECLARE_SINGLETON_CLASS(DownloadBackgroundManager)
 public:
     /*!

@@ -27,7 +27,6 @@
 class TTK_MODULE_EXPORT DownloadHlPalette : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadHlPalette)
 public:
     /*!
      * Object constructor.
@@ -87,7 +86,6 @@ private:
 class TTK_MODULE_EXPORT DownloadHlSaturationPalette : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadHlSaturationPalette)
 public:
     /*!
      * Object constructor.
@@ -144,7 +142,6 @@ class DownloadColorDialog;
 class TTK_MODULE_EXPORT DownloadColorDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadColorDialog)
 public:
     /*!
      * Object constructor.

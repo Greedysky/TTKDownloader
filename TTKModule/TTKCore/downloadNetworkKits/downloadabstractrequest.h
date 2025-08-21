@@ -31,7 +31,6 @@
 class TTK_MODULE_EXPORT DownLoadAbstractRequest : public DownloadAbstractNetwork
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownLoadAbstractRequest)
 public:
     /*!
      * Object constructor.

@@ -28,7 +28,6 @@
 class TTK_MODULE_EXPORT DownloadAbstractMoveDialog : public TTKAbstractMoveDialog, protected DownloadWidgetRenderer
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadAbstractMoveDialog)
 public:
     /*!
      * Object constructor.

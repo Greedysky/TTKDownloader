@@ -31,7 +31,6 @@ class QPropertyAnimation;
 class TTK_MODULE_EXPORT DownloadAbstractAnimationWidget : public QWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadAbstractAnimationWidget)
 public:
     /*!
      * Object constructor.
@@ -86,7 +85,6 @@ protected:
 class TTK_MODULE_EXPORT DownloadSkinAnimationWidget : public DownloadAbstractAnimationWidget
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadSkinAnimationWidget)
 public:
     /*!
      * Object constructor.

@@ -31,7 +31,6 @@ class DownloadNewFileDialog;
 class TTK_MODULE_EXPORT DownloadNewFileDialog : public DownloadAbstractMoveDialog
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadNewFileDialog)
 public:
     /*!
      * Object constructor.

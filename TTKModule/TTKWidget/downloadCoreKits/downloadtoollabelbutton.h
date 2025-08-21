@@ -30,7 +30,6 @@ class QLabel;
 class TTK_MODULE_EXPORT DownloadToolLabelButton : public QToolButton
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadToolLabelButton)
 public:
     /*!
      * Object constructor.
@@ -72,7 +71,6 @@ private:
 class TTK_MODULE_EXPORT DownloadSpeedToolLabelButton : public QToolButton
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadSpeedToolLabelButton)
 public:
     /*!
      * Object constructor.

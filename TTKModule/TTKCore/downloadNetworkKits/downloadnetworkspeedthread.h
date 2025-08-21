@@ -31,7 +31,6 @@ class QProcess;
 class TTK_MODULE_EXPORT DownloadNetworkSpeedThread : public TTKAbstractThread
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadNetworkSpeedThread)
 public:
     /*!
      * Object constructor.

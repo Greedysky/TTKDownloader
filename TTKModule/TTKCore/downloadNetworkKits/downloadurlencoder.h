@@ -29,7 +29,6 @@ class QProcess;
 class TTK_MODULE_EXPORT DownloadUrlEncoder : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadUrlEncoder)
 public:
     /*!
      * Object constructor.

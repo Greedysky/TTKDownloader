@@ -30,7 +30,6 @@ class QFile;
 class TTK_MODULE_EXPORT DownloadThread : public QObject
 {
     Q_OBJECT
-    TTK_DECLARE_MODULE(DownloadThread)
 public:
     enum class State
     {

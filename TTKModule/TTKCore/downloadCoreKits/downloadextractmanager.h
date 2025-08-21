@@ -28,7 +28,6 @@ struct DownloadBackgroundImage;
  */
 class TTK_MODULE_EXPORT DownloadExtractManager
 {
-    TTK_DECLARE_MODULE(DownloadExtractManager)
 public:
     /*!
      * Transfer file to image data.
