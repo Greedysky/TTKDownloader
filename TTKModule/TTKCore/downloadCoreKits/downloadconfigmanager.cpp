@@ -27,8 +27,6 @@ bool DownloadConfigManager::readBuffer(int &items)
     Q_UNUSED(items);
 
     G_SETTING_PTR->setValue(DownloadSettingManager::CloseEventMode, readAttributeByTagName("closeEventMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::CloseNetWorkMode, readAttributeByTagName("closeNetworkMode").toInt());
-    G_SETTING_PTR->setValue(DownloadSettingManager::FileAssociationMode, readAttributeByTagName("fileAssociationMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::StartUpMode, readAttributeByTagName("startUpMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunMode, readAttributeByTagName("startUpRunMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunMode, readAttributeByTagName("slienceRunMode").toInt());
@@ -61,8 +59,6 @@ bool DownloadConfigManager::writeBuffer(const int &items)
     const QPoint &widgetPosition = G_SETTING_PTR->value(DownloadSettingManager::WidgetPosition).toPoint();
     const QSize &widgetSize = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize();
     const int closeEventMode = G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toInt();
-    const int closeNetworkMode = G_SETTING_PTR->value(DownloadSettingManager::CloseNetWorkMode).toInt();
-    const int fileAssociationMode = G_SETTING_PTR->value(DownloadSettingManager::FileAssociationMode).toInt();
     const int startupMode = G_SETTING_PTR->value(DownloadSettingManager::StartUpMode).toInt();
     const int startupRunMode = G_SETTING_PTR->value(DownloadSettingManager::StartUpRunMode).toInt();
     const int slienceRunMode = G_SETTING_PTR->value(DownloadSettingManager::SlienceRunMode).toInt();
@@ -94,8 +90,6 @@ bool DownloadConfigManager::writeBuffer(const int &items)
 
     writeDomElement(plusSettingDom, "geometry", {"value", QString("%1,%2,%3,%4").arg(widgetPosition.x()).arg(widgetPosition.y()).arg(widgetSize.width()).arg(widgetSize.height())});
     writeDomElement(plusSettingDom, "closeEventMode", {"value", closeEventMode});
-    writeDomElement(plusSettingDom, "closeNetworkMode", {"value", closeNetworkMode});
-    writeDomElement(plusSettingDom, "fileAssociationMode", {"value", fileAssociationMode});
     writeDomElement(plusSettingDom, "startUpMode", {"value", startupMode});
     writeDomElement(plusSettingDom, "startUpRunMode", {"value", startupRunMode});
     writeDomElement(plusSettingDom, "slienceRunMode", {"value", slienceRunMode});

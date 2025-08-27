@@ -1,7 +1,6 @@
 #include "downloadlistwidgets.h"
 #include "downloadunits.h"
 #include "downloadlistitemwidget.h"
-#include "downloadobject.h"
 #include "downloaduiobject.h"
 #include "downloadsettingmanager.h"
 #include "downloadabstracttablewidget.h"
@@ -9,6 +8,8 @@
 #include "downloadurlutils.h"
 #include "downloadmessagebox.h"
 #include "downloadtopareawidget.h"
+#include "downloadstringutils.h"
+#include "downloadbreakpointconfigmanager.h"
 
 #include <qmath.h>
 
@@ -37,7 +38,7 @@ DownloadListWidgets::~DownloadListWidgets()
     {
         DownloadItem it;
         it.m_url = item->url();
-        it.m_name = QFileInfo(item->downloadedPath()).fileName();
+        it.m_name = item->name();
         list << it;
     }
 
@@ -62,12 +63,22 @@ void DownloadListWidgets::initialize()
     DownloadItemList list;
     manager.readBuffer(list);
 
+    const bool startupMode = G_SETTING_PTR->value(DownloadSettingManager::StartUpRunMode).toBool();
+
     for(const DownloadItem &it : qAsConst(list))
     {
-        QString url = it.m_url.trimmed();
-        if(!url.isEmpty() && !findUrl(url))
+        if(findUrl(it.m_url))
         {
-            addItemToList(url, it.m_name);
+            continue;
+        }
+
+        if(startupMode)
+        {
+            addItemToListAndStart(it.m_url);
+        }
+        else
+        {
+            addItemToListCache(it.m_url, it.m_name);
         }
     }
 }
@@ -132,37 +143,14 @@ void DownloadListWidgets::start()
     }
 }
 
-void DownloadListWidgets::addItemToList(const QString &path, const QString &name)
+void DownloadListWidgets::addItemToList(const QStringList &urls)
 {
-    if(path.isEmpty())
+    for(const QString &pa : qAsConst(urls))
     {
-        return;
-    }
-
-    const int row = rowCount();
-    setRowCount(row + 1);
-
-    DownloadUnits *unit = new DownloadUnits(path, this);
-    connect(unit, SIGNAL(removeItemWidget(DownloadUnits*)), SLOT(removeItemWidget(DownloadUnits*)));
-    m_items << unit;
-
-    DownloadListItemWidget *widget = unit->downloadItemWidget();
-    QTableWidgetItem *item = new QTableWidgetItem;
-    setItem(row, 0, item);
-    setRowHeight(row, widget->height());
-    setCellWidget(row, 0, widget);
-
-    start(row, name);
-}
-
-void DownloadListWidgets::addItemToList(const QStringList &path)
-{
-    for(const QString &pa : qAsConst(path))
-    {
-        QString url = pa.trimmed();
-        if(!url.isEmpty() && !findUrl(url))
+        const QString &url = pa.trimmed();
+        if(!findUrl(url))
         {
-            addItemToList(url, {});
+            addItemToListAndStart(url);
         }
     }
 }
@@ -182,9 +170,9 @@ void DownloadListWidgets::deleteItemFromList(bool file)
             continue;
         }
 
-        int state = m_items[row]->state();
-        QString path = m_items[row]->downloadedPath();
-        if(state == 0 || state == 1)
+        const TTK::DownloadState state = m_items[row]->state();
+        const QString &path = m_items[row]->path();
+        if(state == TTK::DownloadState::Waiting || state == TTK::DownloadState::Download)
         {
             --m_maxDownloadCount;
         }
@@ -196,7 +184,7 @@ void DownloadListWidgets::deleteItemFromList(bool file)
         if(file)
         {
             QFile::remove(path);
-            QFile::remove(path + SET_FILE);
+            QFile::remove(path + STK_FILE);
         }
     }
 
@@ -221,7 +209,7 @@ void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
         return;
     }
 
-    Q_EMIT downloadingFinished(unit->downloadedPath(), unit->url());
+    Q_EMIT downloadingFinished(unit->path(), unit->url());
 
     --m_maxDownloadCount;
     removeCellWidget(row, 0);
@@ -249,9 +237,7 @@ void DownloadListWidgets::openFileDir()
         return;
     }
 
-    QString path = m_items[currentRow()]->downloadedPath();
-
-    if(!TTK::Url::openUrl(path, true))
+    if(!TTK::Url::openUrl(m_items[currentRow()]->path(), true))
     {
         DownloadMessageBox message;
         message.setText(tr("The origin one does not exist"));
@@ -308,15 +294,15 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
     QMenu menu(this);
     menu.setStyleSheet(TTK::UI::MenuStyle02);
 
-    int row = currentRow();
+    const int row = currentRow();
     menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
     menu.addSeparator();
 
     bool downloadState = false;
     if(row > -1 && row < m_items.count())
     {
-        int s = m_items[row]->state();
-        downloadState = (s == 0 || s == 1);
+        TTK::DownloadState s = m_items[row]->state();
+        downloadState = (s == TTK::DownloadState::Waiting || s == TTK::DownloadState::Download);
     }
     if(downloadState)
     {
@@ -336,6 +322,65 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
     menu.exec(QCursor::pos());
 }
 
+void DownloadListWidgets::addItemToListCache(const QString &url, const QString &name)
+{
+    if(url.isEmpty())
+    {
+        return;
+    }
+
+    const int row = rowCount();
+    setRowCount(row + 1);
+
+    DownloadUnits *unit = new DownloadUnits(url, name, this);
+    connect(unit, SIGNAL(removeItemWidget(DownloadUnits*)), SLOT(removeItemWidget(DownloadUnits*)));
+    m_items << unit;
+
+    DownloadListItemWidget *widget = unit->downloadItemWidget();
+    QTableWidgetItem *item = new QTableWidgetItem;
+    setItem(row, 0, item);
+    setRowHeight(row, widget->height());
+    setCellWidget(row, 0, widget);
+
+    DownloadBreakPointConfigManager manager;
+    DownloadBreakPointItemList records;
+    if(manager.fromFile(TTK::String::downloadPrefix() + name + STK_FILE))
+    {
+        manager.readBuffer(records);
+    }
+
+    if(!records.isEmpty())
+    {
+        DownloadBreakPointItem item = records.front();
+        widget->updateFileInfoChanged(name, item.m_end);
+        widget->progressChanged(item.m_ready, item.m_end);
+        widget->stateChanged(tr("Pause"));
+    }
+}
+
+void DownloadListWidgets::addItemToListAndStart(const QString &url)
+{
+    if(url.isEmpty())
+    {
+        return;
+    }
+
+    const int row = rowCount();
+    setRowCount(row + 1);
+
+    DownloadUnits *unit = new DownloadUnits(url, this);
+    connect(unit, SIGNAL(removeItemWidget(DownloadUnits*)), SLOT(removeItemWidget(DownloadUnits*)));
+    m_items << unit;
+
+    DownloadListItemWidget *widget = unit->downloadItemWidget();
+    QTableWidgetItem *item = new QTableWidgetItem;
+    setItem(row, 0, item);
+    setRowHeight(row, widget->height());
+    setCellWidget(row, 0, widget);
+
+    start(row);
+}
+
 void DownloadListWidgets::clearItems()
 {
     qDeleteAll(m_items);
@@ -345,11 +390,11 @@ void DownloadListWidgets::clearItems()
 
 void DownloadListWidgets::stateChanged(int row)
 {
-    int state = m_items[row]->state();
-    Q_EMIT downloadStateChanged(state != 1 && state != 0);
+    const TTK::DownloadState state = m_items[row]->state();
+    Q_EMIT downloadStateChanged(state != TTK::DownloadState::Waiting && state != TTK::DownloadState::Download);
 }
 
-void DownloadListWidgets::start(int row, const QString &name)
+void DownloadListWidgets::start(int row)
 {
     if(row < 0)
     {
@@ -357,10 +402,10 @@ void DownloadListWidgets::start(int row, const QString &name)
     }
 
     DownloadUnits *units = m_items[row];
-    if(m_maxDownloadCount < 3)
+    if(m_maxDownloadCount < G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCount).toInt())
     {
         ++m_maxDownloadCount;
-        units->start(name);
+        units->start();
         stateChanged(row);
     }
     else
@@ -385,12 +430,12 @@ void DownloadListWidgets::pause(int row)
 void DownloadListWidgets::topUrlToDownload()
 {
     int index = -1;
-    if(!m_items.isEmpty() && m_maxDownloadCount < 3)
+    if(!m_items.isEmpty() && m_maxDownloadCount < G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCount).toInt())
     {
         for(DownloadUnits *item : qAsConst(m_items))
         {
             ++index;
-            if(item->state() == 3)
+            if(item->state() == TTK::DownloadState::Stop)
             {
                 start(index);
                 break;
@@ -399,12 +444,12 @@ void DownloadListWidgets::topUrlToDownload()
     }
 }
 
-bool DownloadListWidgets::findUrl(const QString &path) const
+bool DownloadListWidgets::findUrl(const QString &url) const
 {
     bool state = false;
     for(DownloadUnits *item : qAsConst(m_items))
     {
-        if(item->url() == path)
+        if(item->url() == url)
         {
             state = true;
             break;

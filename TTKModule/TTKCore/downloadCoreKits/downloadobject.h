@@ -32,7 +32,7 @@
 #define SKN_FILE_SUFFIX         "skn"
 #define JPG_FILE_SUFFIX         "jpg"
 #define XML_FILE_SUFFIX         "xml"
-#define SET_FILE_SUFFIX         "stk"
+#define STK_FILE_SUFFIX         "stk"
 // playlist ext
 #define TPL_FILE_SUFFIX         "tkpl"
 
@@ -45,7 +45,7 @@
 #define SKN_FILE                TTK_STR_CAT(TTK_DOT, SKN_FILE_SUFFIX)
 #define JPG_FILE                TTK_STR_CAT(TTK_DOT, JPG_FILE_SUFFIX)
 #define XML_FILE                TTK_STR_CAT(TTK_DOT, XML_FILE_SUFFIX)
-#define SET_FILE                TTK_STR_CAT(TTK_DOT, SET_FILE_SUFFIX)
+#define STK_FILE                TTK_STR_CAT(TTK_DOT, STK_FILE_SUFFIX)
 #define TPL_FILE                TTK_STR_CAT(TTK_DOT, TPL_FILE_SUFFIX)
 
 
@@ -91,6 +91,15 @@
  */
 namespace TTK
 {
+    enum class DownloadState
+    {
+        Waiting = 0,   /*!< Download waiting state */
+        Download,      /*!< Download download state */
+        Pause,         /*!< Download pause state */
+        Stop,          /*!< Download stop state */
+        Finished       /*!< Download finished state */
+    };
+
     /*!
      * Get application config dir.
      */

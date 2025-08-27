@@ -5,7 +5,7 @@
 
 DownloadThread::DownloadThread(QObject *parent)
     : QObject(parent),
-      m_state(State::Stop)
+      m_state(TTK::DownloadState::Stop)
 {
     m_manager = new QNetworkAccessManager(this);
 }
@@ -19,7 +19,7 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
                                    qint64 startPoint, qint64 endPoint,
                                    qint64 readySize)
 {
-    if(m_state == State::Download)
+    if(m_state == TTK::DownloadState::Download)
     {
         Q_EMIT errorCode(m_index, "is downloading a file");
         return;
@@ -43,19 +43,19 @@ void DownloadThread::startDownload(int index, const QString &url, QFile *file,
     connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
     QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
 
-    m_state = State::Download;
+    m_state = TTK::DownloadState::Download;
     Q_EMIT downloadChanged();
 }
 
 void DownloadThread::pause()
 {
-    if(m_state != State::Download)
+    if(m_state != TTK::DownloadState::Download)
     {
         Q_EMIT errorCode(m_index, "is not downloading");
         return;
     }
 
-    m_state = State::Pause;
+    m_state = TTK::DownloadState::Pause;
     m_reply->abort();
     m_file->flush();
     m_reply->deleteLater();
@@ -63,7 +63,7 @@ void DownloadThread::pause()
 
 void DownloadThread::restart()
 {
-    if(m_state != State::Pause)
+    if(m_state != TTK::DownloadState::Pause)
     {
         Q_EMIT errorCode(m_index, "is not stoped");
         return;
@@ -74,14 +74,14 @@ void DownloadThread::restart()
 
 void DownloadThread::downLoadFinished()
 {
-    if(m_state != State::Download)
+    if(m_state != TTK::DownloadState::Download)
     {
         return;
     }
 
     m_file->flush();
     m_reply->deleteLater();
-    m_state = State::Finished;
+    m_state = TTK::DownloadState::Finished;
 
     Q_EMIT finished(m_index);
 }
@@ -98,13 +98,13 @@ void DownloadThread::handleReadyRead()
 
 void DownloadThread::handleError(QNetworkReply::NetworkError code)
 {
-    if(m_state != State::Download)
+    if(m_state != TTK::DownloadState::Download)
     {
         return;
     }
     Q_EMIT errorCode(m_index, "QNetworkReply::NetworkError : " + QString::number(TTKStaticCast(int, code)) + " \n" + m_reply->errorString());
 
-    m_state = State::Stop;
+    m_state = TTK::DownloadState::Stop;
     m_reply->abort();
     m_file->flush();
     m_reply->deleteLater();

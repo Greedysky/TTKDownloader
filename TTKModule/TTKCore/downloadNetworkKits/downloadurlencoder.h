@@ -26,19 +26,13 @@ class QProcess;
 /*! @brief The class of the network url encoder and decoder.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadUrlEncoder : public QObject
+class TTK_MODULE_EXPORT DownloadUrlEncoder
 {
-    Q_OBJECT
 public:
-    /*!
-     * Object constructor.
-     */
-    explicit DownloadUrlEncoder(QObject *parent = nullptr);
-
     /*!
      * Decode url.
      */
-    QString decoder(const QString &url);
+    static QString decoder(const QString &url);
 
 };
 

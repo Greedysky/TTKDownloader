@@ -4,12 +4,6 @@ static const QString THUNDER = "thunder://";
 static const QString FLASHGET = "Flashget://";
 static const QString QQDL = "qqdl://";
 
-DownloadUrlEncoder::DownloadUrlEncoder(QObject *parent)
-    : QObject(parent)
-{
-
-}
-
 QString DownloadUrlEncoder::decoder(const QString &url)
 {
     QString turl = url;

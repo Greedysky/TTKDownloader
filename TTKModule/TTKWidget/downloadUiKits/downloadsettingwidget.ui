@@ -479,7 +479,7 @@ font-weight:bold;</string>
       </rect>
      </property>
      <property name="text">
-      <string>(1-50)</string>
+      <string>(1-10)</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

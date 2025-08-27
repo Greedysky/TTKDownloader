@@ -129,7 +129,7 @@ void DownloadHistoryRecordWidget::deleteItemFromList(bool file)
         if(file)
         {
             QFile::remove(r.m_path);
-            QFile::remove(r.m_path + SET_FILE);
+            QFile::remove(r.m_path + STK_FILE);
         }
     }
 }
@@ -173,7 +173,7 @@ void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
     QMenu menu(this);
     menu.setStyleSheet(TTK::UI::MenuStyle02);
 
-    int row = currentRow();
+    const int row = currentRow();
     menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
     menu.addSeparator();
 

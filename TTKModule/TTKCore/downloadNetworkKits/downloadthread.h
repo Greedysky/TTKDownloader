@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include <QNetworkReply>
+#include "downloadobject.h"
 #include "ttkmoduleexport.h"
 
 class QFile;
@@ -31,15 +32,6 @@ class TTK_MODULE_EXPORT DownloadThread : public QObject
 {
     Q_OBJECT
 public:
-    enum class State
-    {
-        Waiting = 0,   /*!< Download waiting state */
-        Download,      /*!< Download download state */
-        Pause,         /*!< Download pause state */
-        Stop,          /*!< Download stop state */
-        Finished       /*!< Download finished state */
-    };
-
     /*!
      * Object constructor.
      */
@@ -117,7 +109,7 @@ private:
     QFile *m_file;
     QNetworkAccessManager *m_manager;
     QNetworkReply *m_reply;
-    State m_state;
+    TTK::DownloadState m_state;
 
 };
 

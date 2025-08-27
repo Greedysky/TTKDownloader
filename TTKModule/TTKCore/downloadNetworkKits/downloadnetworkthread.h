@@ -37,10 +37,6 @@ public:
      */
     void start();
     /*!
-     * Set flag wheather to block current network.
-     */
-    void setBlockNetwork(bool block);
-    /*!
      * Set current network state.
      */
     inline void setNetWorkState(bool state) noexcept { m_networkState = state; }

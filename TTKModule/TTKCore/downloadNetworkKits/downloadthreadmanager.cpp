@@ -1,18 +1,16 @@
 #include "downloadthreadmanager.h"
-#include "downloadobject.h"
 #include "downloadbreakpointconfigmanager.h"
 #include "downloadstringutils.h"
 #include "downloadurlencoder.h"
 #include "downloadabstractnetwork.h"
 
-#include <QFileInfo>
-#include <QEventLoop>
+static constexpr int THREADCOUNT = 1;
 
 DownloadThreadManager::DownloadThreadManager(QObject *parent)
     : QObject(parent),
       m_runningCount(THREADCOUNT),
       m_file(nullptr),
-      m_state(DownloadThread::State::Stop)
+      m_state(TTK::DownloadState::Stop)
 {
 
 }
@@ -67,24 +65,24 @@ QString DownloadThreadManager::downloadedPath() const
     return m_file ? m_file->fileName() : QString();
 }
 
-bool DownloadThreadManager::downloadFile(const QString &url, const QString &name)
+bool DownloadThreadManager::downloadFile(const QString &url)
 {
     Q_EMIT stateChanged(tr("Waiting"));
 
-    if(m_state == DownloadThread::State::Download)
+    if(m_state == TTK::DownloadState::Download)
     {
         TTK_INFO_STREAM("Current is downloading a file");
         return false;
     }
 
-    m_state = DownloadThread::State::Waiting;
-    if(THREADCOUNT < 1 || THREADCOUNT > 15)
+    m_state = TTK::DownloadState::Waiting;
+    if(m_runningCount < 1 || 10 < m_runningCount)
     {
         TTK_INFO_STREAM("Download thread count error");
         return false;
     }
 
-    QString durl(DownloadUrlEncoder().decoder(url));
+    QString durl(DownloadUrlEncoder::decoder(url));
     if((m_totalSize = fileSize(durl)) == -1)
     {
         TTK_ERROR_STREAM("Download file size error");
@@ -98,42 +96,36 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
     const int slash = ourPath.lastIndexOf(QLatin1Char('/'));
     QString fileName = (slash == -1) ? ourPath : ourPath.mid(slash + 1);
 #endif
-    ////////////////////////////////////////////////
-    if(name.isEmpty())
+
+    QDir dir(TTK::String::downloadPrefix());
+    QString idFileName = fileName;
+    for(int i = 1; i < 99; ++i)
     {
-        QDir dir(TTK::String::downloadPrefix());
-        QString idFileName = fileName;
-        for(int i = 1; i < 99; ++i)
+        if(!dir.entryList().contains(idFileName))
         {
-            if(!dir.entryList().contains(idFileName))
-            {
-                break;
-            }
-
-            const int slash = fileName.lastIndexOf(QLatin1Char('.'));
-            idFileName = (slash == -1) ? fileName : fileName.left(slash);
-            QString sufix = (slash == -1) ? fileName : fileName.mid(slash);
-
-            if(idFileName == sufix)
-            {
-                sufix.clear();
-            }
-            idFileName = QString("%1(%2)%3").arg(idFileName).arg(i).arg(sufix);
+            break;
         }
-        fileName = idFileName;
+
+        const int slash = fileName.lastIndexOf(QLatin1Char('.'));
+        idFileName = (slash == -1) ? fileName : fileName.left(slash);
+        QString sufix = (slash == -1) ? fileName : fileName.mid(slash);
+
+        if(idFileName == sufix)
+        {
+            sufix.clear();
+        }
+
+        idFileName = QString("%1(%2)%3").arg(idFileName).arg(i).arg(sufix);
     }
-    else
-    {
-        fileName = name;
-    }
-    ////////////////////////////////////////////////
+
+    fileName = idFileName;
     Q_EMIT updateFileInfoChanged(fileName, m_totalSize);
 
     fileName = TTK::String::downloadPrefix() + fileName;
 
     DownloadBreakPointConfigManager manager;
     DownloadBreakPointItemList records;
-    if(manager.fromFile(fileName + SET_FILE))
+    if(manager.fromFile(fileName + STK_FILE))
     {
         manager.readBuffer(records);
     }
@@ -175,10 +167,9 @@ bool DownloadThreadManager::downloadFile(const QString &url, const QString &name
         m_threads.append(thread);
     }
 
-    m_state = DownloadThread::State::Download;
+    m_state = TTK::DownloadState::Download;
     Q_EMIT stateChanged(tr("Download"));
     m_runningCount = THREADCOUNT;
-
     return true;
 }
 
@@ -189,9 +180,9 @@ void DownloadThreadManager::downloadingFinish()
     m_file->close();
     delete m_file;
     m_file = nullptr;
-    m_state = DownloadThread::State::Finished;
+    m_state = TTK::DownloadState::Finished;
 
-    QFile::remove(fileName + SET_FILE);
+    QFile::remove(fileName + STK_FILE);
 
     qDeleteAll(m_threads);
     m_threads.clear();
@@ -202,13 +193,13 @@ void DownloadThreadManager::downloadingFinish()
 
 void DownloadThreadManager::pause()
 {
-    if(m_state != DownloadThread::State::Download && m_state != DownloadThread::State::Waiting)
+    if(m_state != TTK::DownloadState::Download && m_state != TTK::DownloadState::Waiting)
     {
         TTK_ERROR_STREAM("Current is not downloading");
         return;
     }
 
-    m_state = DownloadThread::State::Pause;
+    m_state = TTK::DownloadState::Pause;
     Q_EMIT stateChanged(tr("Pause"));
 
     DownloadBreakPointItemList records;
@@ -227,7 +218,7 @@ void DownloadThreadManager::pause()
     if(m_file)
     {
         DownloadBreakPointConfigManager manager;
-        if(manager.load(m_file->fileName() + SET_FILE))
+        if(manager.load(m_file->fileName() + STK_FILE))
         {
             manager.writeBuffer(records);
         }
@@ -236,13 +227,13 @@ void DownloadThreadManager::pause()
 
 void DownloadThreadManager::restart()
 {
-    if(m_state != DownloadThread::State::Pause)
+    if(m_state != TTK::DownloadState::Pause)
     {
         TTK_ERROR_STREAM("Current is not paused");
         return;
     }
 
-    m_state = DownloadThread::State::Download;
+    m_state = TTK::DownloadState::Download;
     Q_EMIT stateChanged(tr("Download"));
 
     for(DownloadThread *thread : qAsConst(m_threads))
@@ -256,7 +247,7 @@ void DownloadThreadManager::finished(int index)
     m_runningCount--;
     TTK_INFO_STREAM("Download index of " << index << " finished");
 
-    if(m_runningCount == 0 && m_state == DownloadThread::State::Download)
+    if(m_runningCount == 0 && m_state == TTK::DownloadState::Download)
     {
         downloadingFinish();
     }

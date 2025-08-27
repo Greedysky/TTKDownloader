@@ -74,13 +74,9 @@ public Q_SLOTS:
      */
     void start();
     /*!
-     * Downlaod url changed.
+     * Add downlaod url to item list.
      */
-    void addItemToList(const QString &path, const QString &name);
-    /*!
-     * Downlaod url changed.
-     */
-    void addItemToList(const QStringList &path);
+    void addItemToList(const QStringList &urls);
     /*!
      * Delete selected item from list.
      */
@@ -130,6 +126,14 @@ private:
      */
     virtual void contextMenuEvent(QContextMenuEvent *event) override final;
     /*!
+     * Add downlaod url to item list.
+     */
+    void addItemToListCache(const QString &url, const QString &name);
+    /*!
+     * Add downlaod url to item list and start.
+     */
+    void addItemToListAndStart(const QString &url);
+    /*!
      * Clear download item.
      */
     void clearItems();
@@ -140,7 +144,7 @@ private:
     /*!
      * Start to download.
      */
-    void start(int row, const QString &name = {});
+    void start(int row);
     /*!
      * Pause to download.
      */
@@ -152,7 +156,7 @@ private:
     /*!
      * Find url if it exists.
      */
-    bool findUrl(const QString &path) const;
+    bool findUrl(const QString &url) const;
 
     QTimer m_speedTimer;
     int m_maxDownloadCount;

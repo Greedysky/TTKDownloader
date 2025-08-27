@@ -3,8 +3,6 @@
     <plusSetting>
         <geometry value="492,242,980,661"/>
         <closeEventMode value="1"/>
-        <closeNetworkMode value="0"/>
-        <fileAssociation value="0"/>
         <startUpMode value="0"/>
         <startUpRunMode value="0"/>
         <slienceRunMode value="0"/>
@@ -24,5 +22,6 @@
     <skinSetting>
         <skinEffectLevel value="2"/>
         <skinSuspension value="0"/>
+        <skinSuspensionValue value="0"/>
     </skinSetting>
 </TTKDownloader>

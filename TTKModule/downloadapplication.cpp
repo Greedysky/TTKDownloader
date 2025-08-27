@@ -41,7 +41,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     m_leftAreaWidget->setupUi(m_ui);
     m_topAreaWidget->backgroundAnimationChanged(false);
 
-    G_HOTKEY_PTR->addHotKey(this, "Ctrl+X", SLOT(quitWindow()));
+    G_HOTKEY_PTR->addHotKey(this, SLOT(quitWindow()));
 
     // Objects Mouse tracking
     setObjectsTracking({m_ui->background});

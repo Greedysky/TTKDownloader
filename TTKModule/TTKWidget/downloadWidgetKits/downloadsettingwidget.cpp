@@ -293,7 +293,7 @@ void DownloadSettingWidget::initDownloadSettingWidget()
     m_ui->uploadLimitSpeedComboBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
 
     m_ui->defaultDownloadModeBox->addItems({tr("Auto"), tr("Manual")});
-    for(int i = 1; i <= 50; ++i)
+    for(int i = 1; i <= 10; ++i)
     {
         m_ui->downloadMaxCountBox->addItem(QString::number(i));
     }

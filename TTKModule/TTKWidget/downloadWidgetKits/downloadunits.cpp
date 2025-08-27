@@ -2,10 +2,19 @@
 #include "downloadlistitemwidget.h"
 #include "downloadthreadmanager.h"
 
+#include <QFileInfo>
+
 DownloadUnits::DownloadUnits(const QString &url, QObject *parent)
+    : DownloadUnits(url, {}, parent)
+{
+}
+
+
+DownloadUnits::DownloadUnits(const QString &url, const QString &name, QObject *parent)
     : QObject(parent),
       m_pause(false),
-      m_url(url)
+      m_url(url),
+      m_name(name)
 {
     m_downloadItem = new DownloadListItemWidget;
     m_downloadThread = new DownloadThreadManager(this);
@@ -28,17 +37,11 @@ DownloadListItemWidget* DownloadUnits::downloadItemWidget()
     return m_downloadItem;
 }
 
-void DownloadUnits::pause()
-{
-    m_pause = true;
-    m_downloadThread->pause();
-}
-
-void DownloadUnits::start(const QString &name)
+void DownloadUnits::start()
 {
     if(!m_pause)
     {
-        m_downloadThread->downloadFile(m_url, name);
+        m_downloadThread->downloadFile(m_url);
     }
     else
     {
@@ -46,11 +49,18 @@ void DownloadUnits::start(const QString &name)
     }
 
     m_path = m_downloadThread->downloadedPath();
+    m_name = QFileInfo(m_path).fileName();
 }
 
-int DownloadUnits::state() const
+void DownloadUnits::pause()
 {
-    return TTKStaticCast(int, m_downloadThread->state());
+    m_pause = true;
+    m_downloadThread->pause();
+}
+
+TTK::DownloadState DownloadUnits::state() const
+{
+    return m_downloadThread->state();
 }
 
 void DownloadUnits::setStateChanged(const QString &state)

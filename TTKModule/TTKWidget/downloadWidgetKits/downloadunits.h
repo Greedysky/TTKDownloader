@@ -19,6 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include "downloadobject.h"
 #include "ttkmoduleexport.h"
 
 class DownloadThreadManager;
@@ -35,6 +36,7 @@ public:
      * Object constructor.
      */
     explicit DownloadUnits(const QString &url, QObject *parent = nullptr);
+    DownloadUnits(const QString &url, const QString &name, QObject *parent = nullptr);
     /*!
      * Object destructor.
      */
@@ -46,26 +48,30 @@ public:
     DownloadListItemWidget* downloadItemWidget();
 
     /*!
+     * Start to download.
+     */
+    void start();
+    /*!
      * Pause to download.
      */
     void pause();
-    /*!
-     * Start to download.
-     */
-    void start(const QString &name = {});
 
     /*!
      * Get download state.
      */
-    int state() const;
+    TTK::DownloadState state() const;
     /*!
      * Get download url.
      */
     inline QString url() const noexcept { return m_url; }
     /*!
+     * Get download name.
+     */
+    inline QString name() const noexcept { return m_name; }
+    /*!
      * Get download path.
      */
-    inline QString downloadedPath() const noexcept { return m_path; }
+    inline QString path() const noexcept { return m_path; }
     /*!
      * Set download state changed.
      */
@@ -85,7 +91,7 @@ private Q_SLOTS:
 
 private:
     bool m_pause;
-    QString m_url, m_path;
+    QString m_url, m_name, m_path;
     DownloadListItemWidget *m_downloadItem;
     DownloadThreadManager *m_downloadThread;
 

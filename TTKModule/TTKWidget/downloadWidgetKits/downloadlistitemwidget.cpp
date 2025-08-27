@@ -1,5 +1,4 @@
 #include "downloadlistitemwidget.h"
-#include "downloadobject.h"
 #include "downloadnumberutils.h"
 #include "downloaduiobject.h"
 #include "downloadbackgroundmanager.h"

@@ -1,7 +1,6 @@
 #include "downloadnewfiledialog.h"
 #include "ui_downloadnewfiledialog.h"
 #include "downloadbackgroundmanager.h"
-#include "downloadobject.h"
 #include "downloaduiobject.h"
 
 DownloadNewFileDialog::DownloadNewFileDialog(QWidget *parent)

@@ -43,12 +43,10 @@ public:
         UserPermission = 0x1003,            /*!< User Permission Parameter*/
         //
         CloseEventMode = 0x2000,            /*!< Close Event Parameter*/
-        CloseNetWorkMode = 0x2001,          /*!< Close NetWork Parameter*/
-        FileAssociationMode = 0x2002,       /*!< File Association Parameter*/
-        StartUpMode = 0x2003,               /*!< Start Up Mode Parameter*/
-        StartUpRunMode = 0x2004,            /*!< Start Up Run Mode Parameter*/
-        SlienceRunMode = 0x2005,            /*!< Slience Run Mode Parameter*/
-        ExpandMode = 0x2006,                /*!< Expand Mode Parameter*/
+        StartUpMode = 0x2001,               /*!< Start Up Mode Parameter*/
+        StartUpRunMode = 0x2002,            /*!< Start Up Run Mode Parameter*/
+        SlienceRunMode = 0x2003,            /*!< Slience Run Mode Parameter*/
+        ExpandMode = 0x2004,                /*!< Expand Mode Parameter*/
         //
         BackgroundThemeValue = 0x3000,      /*!< Background Theme Parameter*/
         BackgroundTransparent = 0x3001,     /*!< Background Transparent Parameter*/

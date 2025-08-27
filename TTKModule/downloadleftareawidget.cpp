@@ -13,7 +13,7 @@ DownloadLeftAreaWidget::DownloadLeftAreaWidget(QWidget *parent)
     m_settingWidget = new DownloadSettingWidget(this);
     connect(m_settingWidget, SIGNAL(parameterSettingChanged()), parent, SLOT(applyParameter()));
 
-    G_HOTKEY_PTR->addHotKey(this, "Ctrl+O", SLOT(showSettingWidget()));
+    G_HOTKEY_PTR->addHotKey(this, SLOT(showSettingWidget()));
 }
 
 DownloadLeftAreaWidget::~DownloadLeftAreaWidget()

@@ -21,8 +21,6 @@
 
 #include "downloadthread.h"
 
-static constexpr int THREADCOUNT = 1;
-
 /*! @brief The class of the download thread manager.
  * @author Greedysky <greedysky@163.com>
  */
@@ -42,7 +40,8 @@ public:
     /*!
      * Download file by url.
      */
-    bool downloadFile(const QString &url, const QString &name = {});
+    bool downloadFile(const QString &url);
+
     /*!
      * Get download path.
      */
@@ -50,7 +49,7 @@ public:
     /*!
      * Get download state.
      */
-    inline DownloadThread::State state() const noexcept { return m_state; }
+    inline TTK::DownloadState state() const noexcept { return m_state; }
 
 Q_SIGNALS:
     /*!
@@ -107,7 +106,7 @@ private:
     int m_runningCount;
     QFile *m_file;
     qint64 m_readySize, m_totalSize;
-    DownloadThread::State m_state;
+    TTK::DownloadState m_state;
     QList<DownloadThread*> m_threads;
 
 };
