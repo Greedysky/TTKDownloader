@@ -65,7 +65,7 @@ bool DownloadConsoleModule::initialize() const
 
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadPathDir, path);
 
-    if(!m_manager->downloadFile(url))
+    if(!m_manager->download(url))
     {
         return false;
     }

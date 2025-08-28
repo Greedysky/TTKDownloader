@@ -15,7 +15,7 @@ DownloadHlPalette::DownloadHlPalette(QWidget *parent)
     setMinimumSize(QSize(360, 120));
 }
 
-QColor DownloadHlPalette::color() const
+QColor DownloadHlPalette::color() const noexcept
 {
     return m_color;
 }
@@ -148,7 +148,7 @@ DownloadHlSaturationPalette::DownloadHlSaturationPalette(QWidget *parent)
     setMaximumHeight(24);
 }
 
-double DownloadHlSaturationPalette::saturation() const
+double DownloadHlSaturationPalette::saturation() const noexcept
 {
     return m_dblSaturation;
 }
@@ -311,7 +311,7 @@ QColor DownloadColorDialog::popup(QWidget *parent, const QColor &color)
     return dialog.exec() ? dialog.color() : QColor();
 }
 
-QColor DownloadColorDialog::color() const
+QColor DownloadColorDialog::color() const noexcept
 {
     return m_color;
 }

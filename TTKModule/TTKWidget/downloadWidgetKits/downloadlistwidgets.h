@@ -128,11 +128,11 @@ private:
     /*!
      * Add downlaod url to item list.
      */
-    void addItemToListCache(const QString &url, const QString &name);
+    void addItemToCacheList(const QString &url, const QString &name);
     /*!
      * Add downlaod url to item list and start.
      */
-    void addItemToListAndStart(const QString &url);
+    void addItemToStartList(const QString &url);
     /*!
      * Clear download item.
      */
@@ -150,9 +150,9 @@ private:
      */
     void pause(int row);
     /*!
-     * Get top url to download.
+     * Get next url to download.
      */
-    void topUrlToDownload();
+    void nextUrlToDownload();
     /*!
      * Find url if it exists.
      */

@@ -12,12 +12,12 @@ DownloadFunctionItemWidget::DownloadFunctionItemWidget(QWidget *parent)
     setFixedSize(205, 35);
 }
 
-void DownloadFunctionItemWidget::setLabelText(const QString &text)
+void DownloadFunctionItemWidget::setLabelText(const QString &text) noexcept
 {
     m_text = text;
 }
 
-void DownloadFunctionItemWidget::setLabelIcon(const QString &iconf, const QString &iconb)
+void DownloadFunctionItemWidget::setLabelIcon(const QString &iconf, const QString &iconb) noexcept
 {
     m_iconf = iconf;
     m_iconb = iconb;

@@ -47,6 +47,7 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     setObjectsTracking({m_ui->background});
 
     readSystemConfigFromFile();
+    //
     m_rightAreaWidget->initialize();
 }
 
@@ -90,7 +91,6 @@ void DownloadApplication::createRightMenu()
 {
     QMenu menu(this);
     menu.setStyleSheet(TTK::UI::MenuStyle02);
-
     menu.addAction(tr("NewDownload(N)"), DownloadRightAreaWidget::instance(), SLOT(showNewFileDialog()));
     menu.addSeparator();
 

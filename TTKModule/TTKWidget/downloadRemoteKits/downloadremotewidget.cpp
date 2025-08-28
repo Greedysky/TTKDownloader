@@ -51,7 +51,7 @@ void DownloadRemoteWidget::show()
 
 void DownloadRemoteWidget::adjustPostion(QWidget *w)
 {
-    QSize windowSize = G_SETTING_PTR->value(DownloadSettingManager::ScreenSize).toSize();
+    const QSize &windowSize = G_SETTING_PTR->value(DownloadSettingManager::ScreenSize).toSize();
     w->move(windowSize.width() - w->width() - 150, w->height() + 70);
 }
 
@@ -83,11 +83,11 @@ void DownloadRemoteWidget::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
     painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
-
     painter.drawPixmap(0, 0, QPixmap(":/remote/lb_back"));
 
     QPainterPath rectp;
     rectp.addRect(QRect(0, height() - m_value, width(), m_value));
+
     QPainterPath rectr;
     rectr.addEllipse(rect());
     painter.fillPath(rectr.intersected(rectp), QColor(0xff, 0xff, 0, 0x32));

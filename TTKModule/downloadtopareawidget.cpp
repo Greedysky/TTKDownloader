@@ -59,7 +59,6 @@ void DownloadTopAreaWidget::setupUi(Ui::DownloadApplication *ui)
     ui->windowCloseButton->setCursor(QCursor(Qt::PointingHandCursor));
     ui->windowCloseButton->setToolTip(tr("Close"));
     connect(ui->windowCloseButton, SIGNAL(clicked()), DownloadApplication::instance(), SLOT(close()));
-
 }
 
 void DownloadTopAreaWidget::setBackgroundParameter()
@@ -178,16 +177,17 @@ void DownloadTopAreaWidget::drawWindowBackground(const QImage &image)
 
 void DownloadTopAreaWidget::drawWindowBackgroundByImage()
 {
-    float v = TTK::Image::boundValue<float>(1.0f, 0.35f, m_backgroundTransparent);
+    const float v = TTK::Image::boundValue<float>(1.0f, 0.35f, m_backgroundTransparent);
     DownloadApplication::instance()->setWindowOpacity(v);
 
-    QSize size(G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize());
-    QPixmap after(size);
-    after.fill(Qt::transparent);
-    QPainter paint(&after);
+    const QSize size(G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize());
+
+    QPixmap pix(size);
+    pix.fill(Qt::transparent);
+    QPainter paint(&pix);
     paint.drawPixmap(0, 0, QPixmap::fromImage(m_backgroundImage.scaled(size, Qt::KeepAspectRatioByExpanding)));
 
-    m_ui->background->setPixmap(after);
+    m_ui->background->setPixmap(pix);
 }
 
 void DownloadTopAreaWidget::drawWindowBackgroundByPath(const QString &path)

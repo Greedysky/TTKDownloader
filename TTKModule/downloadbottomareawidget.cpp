@@ -106,6 +106,7 @@ void DownloadBottomAreaWidget::settingButtonClicked()
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
     TTK::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_protection"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Speed Protection"));
+
     pix.fill(G_BACKGROUND_PTR->backgroundColor());
     TTK::Image::fusionPixmap(pix, QPixmap(":/contextMenu/lb_custom"), QPoint(2, 2));
     m_toolPopupMenu->addAction(QIcon(pix), tr("Custom Speed Limit"));

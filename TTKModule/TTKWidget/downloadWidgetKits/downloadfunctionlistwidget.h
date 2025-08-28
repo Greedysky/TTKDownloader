@@ -37,11 +37,11 @@ public:
     /*!
      * Set label text.
      */
-    void setLabelText(const QString &text);
+    void setLabelText(const QString &text) noexcept;
     /*!
      * Set label icon.
      */
-    void setLabelIcon(const QString &iconf, const QString &iconb);
+    void setLabelIcon(const QString &iconf, const QString &iconb) noexcept;
     /*!
      * Set selected state.
      */

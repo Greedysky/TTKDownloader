@@ -87,22 +87,23 @@ QPixmap DownloadBackgroundSkinDialog::setBackgroundUrl(QString &name)
 
 bool DownloadBackgroundSkinDialog::isValid(QString &name, QString &path)
 {
-    if(!QFile::exists(path))
+    if(QFile::exists(path))
     {
-        QString orPath = QString("%1%2%3").arg(THEME_DIR_FULL, name, TKM_FILE);
-        if(QFile::exists(orPath))
-        {
-            QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL, name, TKM_FILE));
-        }
-        else
-        {
-            name = "theme-1";
-            orPath = QString("%1%2%3").arg(THEME_DIR_FULL, name, TKM_FILE);
-            QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL, name, TKM_FILE));
-        }
-        return false;
+        return true;
     }
-    return true;
+
+    QString orPath = QString("%1%2%3").arg(THEME_DIR_FULL, name, TKM_FILE);
+    if(QFile::exists(orPath))
+    {
+        QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL, name, TKM_FILE));
+    }
+    else
+    {
+        name = "theme-1";
+        orPath = QString("%1%2%3").arg(THEME_DIR_FULL, name, TKM_FILE);
+        QFile::copy(orPath, QString("%1%2%3").arg(USER_THEME_DIR_FULL, name, TKM_FILE));
+    }
+    return false;
 }
 
 void DownloadBackgroundSkinDialog::setCurrentBackgroundTheme(const QString &theme, int background)
@@ -153,6 +154,7 @@ void DownloadBackgroundSkinDialog::showCustomSkinDialog()
         const int index = cpoyFileToLocalIndex();
         if(index != -1)
         {
+            m_stackThemeIndex = index;
             const QString &des = QString("%1theme-%2%3").arg(USER_THEME_DIR_FULL).arg(index + 1).arg(TKM_FILE);
             QFile::copy(path, des);
             m_stackBackgroundList->addCellItem(QString("theme-%1").arg(index + 1), des, true);
@@ -182,6 +184,7 @@ void DownloadBackgroundSkinDialog::backgroundListWidgetChanged(int index)
     }
 
     m_onlineBackgroundList->abort();
+
     if(index == 2)
     {
         m_onlineBackgroundList->initialize();
@@ -221,6 +224,7 @@ void DownloadBackgroundSkinDialog::remoteListWidgetItemClicked(int type, const Q
         return;
     }
 
+    m_cacheBackgroundList->clearState();
     if(!m_stackBackgroundList->contains(image))
     {
         const int index = cpoyFileToLocalIndex();
@@ -233,7 +237,7 @@ void DownloadBackgroundSkinDialog::remoteListWidgetItemClicked(int type, const Q
     }
     else
     {
-        DownloadBackgroundListItem *it = m_stackBackgroundList->find(image);
+        const DownloadBackgroundListItem *it = m_stackBackgroundList->find(image);
         if(it)
         {
             listWidgetItemClicked(m_stackBackgroundList, it->fileName());
@@ -251,6 +255,7 @@ void DownloadBackgroundSkinDialog::listWidgetItemClicked(DownloadBackgroundListW
     QString s(name);
     QString path = USER_THEME_DIR_FULL + s + TKM_FILE;
     DownloadBackgroundSkinDialog::isValid(s, path);
+
     G_BACKGROUND_PTR->setBackgroundUrl(path);
 }
 

@@ -70,7 +70,6 @@ void DownloadBackgroundPopWidget::initialize()
     textLabel->setAlignment(Qt::AlignBottom);
     textLabel->setStyleSheet(TTK::UI::ColorStyle01);
     layout->addWidget(textLabel, 2, 0);
-
     layout->addWidget(m_slider, 0, 1, 3, 1);
 
     m_containWidget->setLayout(layout);

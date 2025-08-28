@@ -2,10 +2,10 @@
 #include "ui_downloadsettingwidget.h"
 #include "downloadsettingmanager.h"
 #include "downloadhotkeymanager.h"
+#include "downloadwidgetutils.h"
 
 #include <QFileDialog>
 #include <QButtonGroup>
-#include <QStyledItemDelegate>
 
 DownloadFunctionTableWidget::DownloadFunctionTableWidget(QWidget *parent)
     : DownloadAbstractTableWidget(parent),
@@ -279,18 +279,10 @@ void DownloadSettingWidget::initDownloadSettingWidget()
     buttonGroup->addButton(m_ui->downloadLimitRadioBox, 1);
     QtButtonGroupConnect(buttonGroup, this, downloadGroupSpeedLimit, TTK_SLOT);
 
-    m_ui->defaultDownloadModeBox->setItemDelegate(new QStyledItemDelegate(m_ui->defaultDownloadModeBox));
-    m_ui->defaultDownloadModeBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
-    m_ui->defaultDownloadModeBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
-    m_ui->downloadMaxCountBox->setItemDelegate(new QStyledItemDelegate(m_ui->downloadMaxCountBox));
-    m_ui->downloadMaxCountBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
-    m_ui->downloadMaxCountBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
-    m_ui->downloadLimitSpeedComboBox->setItemDelegate(new QStyledItemDelegate(m_ui->downloadLimitSpeedComboBox));
-    m_ui->downloadLimitSpeedComboBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
-    m_ui->downloadLimitSpeedComboBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
-    m_ui->uploadLimitSpeedComboBox->setItemDelegate(new QStyledItemDelegate(m_ui->uploadLimitSpeedComboBox));
-    m_ui->uploadLimitSpeedComboBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
-    m_ui->uploadLimitSpeedComboBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
+    TTK::Widget::generateComboBoxStyle(m_ui->defaultDownloadModeBox);
+    TTK::Widget::generateComboBoxStyle(m_ui->downloadMaxCountBox);
+    TTK::Widget::generateComboBoxStyle(m_ui->downloadLimitSpeedComboBox);
+    TTK::Widget::generateComboBoxStyle(m_ui->uploadLimitSpeedComboBox);
 
     m_ui->defaultDownloadModeBox->addItems({tr("Auto"), tr("Manual")});
     for(int i = 1; i <= 10; ++i)
@@ -314,10 +306,7 @@ void DownloadSettingWidget::initSkinSettingWidget()
     m_ui->suspensionVisiableBox->setFocusPolicy(Qt::NoFocus);
     m_ui->suspensionShowPerBox->setFocusPolicy(Qt::NoFocus);
 #endif
-
-    m_ui->effectLevelBox->setItemDelegate(new QStyledItemDelegate(m_ui->effectLevelBox));
-    m_ui->effectLevelBox->setStyleSheet(TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01);
-    m_ui->effectLevelBox->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
+    TTK::Widget::generateComboBoxStyle(m_ui->effectLevelBox);
 
     m_ui->effectLevelBox->addItems({tr("Heigh"), tr("Low"), tr("Close")});
 }

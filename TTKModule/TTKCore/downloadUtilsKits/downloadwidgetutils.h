@@ -22,6 +22,7 @@
 #include "ttkmoduleexport.h"
 
 class QMenu;
+class QComboBox;
 
 /*! @brief The namespace of the utils widget.
  * @author Greedysky <greedysky@163.com>
@@ -48,6 +49,10 @@ namespace TTK
          */
         TTK_MODULE_EXPORT void setTransparent(QWidget *widget, const QColor &color);
 
+        /*!
+         * Generate combobox style.
+         */
+        TTK_MODULE_EXPORT void generateComboBoxStyle(QComboBox *widget, const QString &style = {});
         /*!
          * Generate vertical scrollArea style.
          */

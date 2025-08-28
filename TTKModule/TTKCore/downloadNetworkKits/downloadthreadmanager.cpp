@@ -48,12 +48,13 @@ qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
         }
 
         size = reply->header(QNetworkRequest::ContentLengthHeader).toLongLong();
-        QVariant redirection = reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
+        const QVariant &redirection = reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
         if(!redirection.isNull())
         {
             url = redirection.toString();
             size = fileSize(url);
         }
+
         reply->deleteLater();
         break;
     }
@@ -65,7 +66,7 @@ QString DownloadThreadManager::downloadedPath() const
     return m_file ? m_file->fileName() : QString();
 }
 
-bool DownloadThreadManager::downloadFile(const QString &url)
+bool DownloadThreadManager::download(const QString &url, const QString &name)
 {
     Q_EMIT stateChanged(tr("Waiting"));
 
@@ -92,35 +93,40 @@ bool DownloadThreadManager::downloadFile(const QString &url)
 #if TTK_QT_VERSION_CHECK(5,2,0)
     QString fileName = QUrl(durl).fileName();
 #else
-    const QString ourPath = QUrl(durl).path();
-    const int slash = ourPath.lastIndexOf(QLatin1Char('/'));
+    const QString &ourPath = QUrl(durl).path();
+    const int slash = ourPath.lastIndexOf('/');
     QString fileName = (slash == -1) ? ourPath : ourPath.mid(slash + 1);
 #endif
-
-    QDir dir(TTK::String::downloadPrefix());
-    QString idFileName = fileName;
-    for(int i = 1; i < 99; ++i)
+    if(name.isEmpty())
     {
-        if(!dir.entryList().contains(idFileName))
+        const QDir dir(TTK::String::downloadPrefix());
+        QString prefixName = fileName;
+        for(int i = 1; i < 99; ++i)
         {
-            break;
+            if(!dir.entryList().contains(prefixName))
+            {
+                break;
+            }
+
+            const int slash = fileName.lastIndexOf('.');
+            prefixName = (slash == -1) ? fileName : fileName.left(slash);
+            QString sufix = (slash == -1) ? fileName : fileName.mid(slash);
+
+            if(prefixName == sufix)
+            {
+                sufix.clear();
+            }
+
+            prefixName = QString("%1(%2)%3").arg(prefixName).arg(i).arg(sufix);
         }
-
-        const int slash = fileName.lastIndexOf(QLatin1Char('.'));
-        idFileName = (slash == -1) ? fileName : fileName.left(slash);
-        QString sufix = (slash == -1) ? fileName : fileName.mid(slash);
-
-        if(idFileName == sufix)
-        {
-            sufix.clear();
-        }
-
-        idFileName = QString("%1(%2)%3").arg(idFileName).arg(i).arg(sufix);
+        fileName = prefixName;
+    }
+    else
+    {
+        fileName = name;
     }
 
-    fileName = idFileName;
     Q_EMIT updateFileInfoChanged(fileName, m_totalSize);
-
     fileName = TTK::String::downloadPrefix() + fileName;
 
     DownloadBreakPointConfigManager manager;
@@ -132,6 +138,7 @@ bool DownloadThreadManager::downloadFile(const QString &url)
 
     m_readySize = 0;
     m_file = new QFile(fileName, this);
+
     if(!m_file->open(QIODevice::WriteOnly))
     {
         m_file->close();
@@ -163,7 +170,7 @@ bool DownloadThreadManager::downloadFile(const QString &url)
         connect(thread, SIGNAL(finished(int)), SLOT(finished(int)));
         connect(thread, SIGNAL(downloadChanged()), SLOT(progressChanged()));
         connect(thread, SIGNAL(errorCode(int,QString)), SLOT(handleError(int,QString)));
-        thread->startDownload(i, durl, m_file, startPoint, endPoint, readySize);
+        thread->startDownload({i, durl, m_file, startPoint, endPoint, readySize});
         m_threads.append(thread);
     }
 

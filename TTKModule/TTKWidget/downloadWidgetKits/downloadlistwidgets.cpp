@@ -64,7 +64,6 @@ void DownloadListWidgets::initialize()
     manager.readBuffer(list);
 
     const bool startupMode = G_SETTING_PTR->value(DownloadSettingManager::StartUpRunMode).toBool();
-
     for(const DownloadItem &it : qAsConst(list))
     {
         if(findUrl(it.m_url))
@@ -74,11 +73,11 @@ void DownloadListWidgets::initialize()
 
         if(startupMode)
         {
-            addItemToListAndStart(it.m_url);
+            addItemToStartList(it.m_url);
         }
         else
         {
-            addItemToListCache(it.m_url, it.m_name);
+            addItemToCacheList(it.m_url, it.m_name);
         }
     }
 }
@@ -115,42 +114,40 @@ void DownloadListWidgets::reverseSelect()
 
 void DownloadListWidgets::pause()
 {
-    for(QTableWidgetItem *item : selectedItems())
+    if(m_items.isEmpty())
     {
-        int row = item->row();
-        if(m_items.isEmpty() || row < 0)
-        {
-            continue;
-        }
-
-        pause(row);
+        return;
     }
 
-    topUrlToDownload();
+    for(QTableWidgetItem *item : selectedItems())
+    {
+        pause(item->row());
+    }
+
+    nextUrlToDownload();
 }
 
 void DownloadListWidgets::start()
 {
+    if(m_items.isEmpty())
+    {
+        return;
+    }
+
     for(QTableWidgetItem *item : selectedItems())
     {
-        int row = item->row();
-        if(m_items.isEmpty() || row < 0)
-        {
-            return;
-        }
-
-        start(row);
+        start(item->row());
     }
 }
 
 void DownloadListWidgets::addItemToList(const QStringList &urls)
 {
-    for(const QString &pa : qAsConst(urls))
+    for(const QString &url : qAsConst(urls))
     {
-        const QString &url = pa.trimmed();
-        if(!findUrl(url))
+        const QString &v = url.trimmed();
+        if(!findUrl(v))
         {
-            addItemToListAndStart(url);
+            addItemToStartList(v);
         }
     }
 }
@@ -162,10 +159,15 @@ void DownloadListWidgets::deleteItemFromList()
 
 void DownloadListWidgets::deleteItemFromList(bool file)
 {
+    if(m_items.isEmpty())
+    {
+        return;
+    }
+
     for(QTableWidgetItem *item : selectedItems())
     {
-        int row = item->row();
-        if(m_items.isEmpty() || row < 0)
+        const int row = item->row();
+        if(row < 0)
         {
             continue;
         }
@@ -188,7 +190,7 @@ void DownloadListWidgets::deleteItemFromList(bool file)
         }
     }
 
-    topUrlToDownload();
+    nextUrlToDownload();
 }
 
 void DownloadListWidgets::deleteItemFromListWithFile()
@@ -203,8 +205,8 @@ void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
         return;
     }
 
-    int row = m_items.indexOf(unit);
-    if(row == -1)
+    const int row = m_items.indexOf(unit);
+    if(row < 0)
     {
         return;
     }
@@ -216,7 +218,7 @@ void DownloadListWidgets::removeItemWidget(DownloadUnits *unit)
     delete m_items.takeAt(row);
     removeRow(row);
 
-    topUrlToDownload();
+    nextUrlToDownload();
 }
 
 void DownloadListWidgets::itemCellClicked(int row, int column)
@@ -232,7 +234,7 @@ void DownloadListWidgets::itemCellClicked(int row, int column)
 
 void DownloadListWidgets::openFileDir()
 {
-    if(rowCount() == 0 || currentRow() < 0)
+    if(!isValid())
     {
         return;
     }
@@ -247,7 +249,7 @@ void DownloadListWidgets::openFileDir()
 
 void DownloadListWidgets::startClicked()
 {
-    if(rowCount() == 0 || currentRow() < 0)
+    if(!isValid())
     {
         return;
     }
@@ -257,18 +259,18 @@ void DownloadListWidgets::startClicked()
 
 void DownloadListWidgets::pauseClicked()
 {
-    if(rowCount() == 0 || currentRow() < 0)
+    if(!isValid())
     {
         return;
     }
 
     pause(currentRow());
-    topUrlToDownload();
+    nextUrlToDownload();
 }
 
 void DownloadListWidgets::copyUrlClicked()
 {
-    if(rowCount() == 0 || currentRow() < 0)
+    if(!isValid())
     {
         return;
     }
@@ -295,34 +297,37 @@ void DownloadListWidgets::contextMenuEvent(QContextMenuEvent *event)
     menu.setStyleSheet(TTK::UI::MenuStyle02);
 
     const int row = currentRow();
-    menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
+    const bool enabled = row > -1;
+
+    menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(enabled);
     menu.addSeparator();
 
     bool downloadState = false;
-    if(row > -1 && row < m_items.count())
+    if(enabled && row < m_items.count())
     {
         TTK::DownloadState s = m_items[row]->state();
         downloadState = (s == TTK::DownloadState::Waiting || s == TTK::DownloadState::Download);
     }
+
     if(downloadState)
     {
         menu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Pause"), this, SLOT(pauseClicked()));
     }
     else
     {
-        menu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("NewDownload"), this, SLOT(startClicked()))->setEnabled(row > -1);
+        menu.addAction(QIcon(":/contextMenu/lb_start_normal"), tr("NewDownload"), this, SLOT(startClicked()))->setEnabled(enabled);
     }
 
-    menu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
-    menu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
+    menu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(enabled);
+    menu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(enabled);
     menu.addAction(tr("Sort"));
     menu.addAction(tr("Selected All"), this, SLOT(selectAll()));
     menu.addSeparator();
-    menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
+    menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(enabled);
     menu.exec(QCursor::pos());
 }
 
-void DownloadListWidgets::addItemToListCache(const QString &url, const QString &name)
+void DownloadListWidgets::addItemToCacheList(const QString &url, const QString &name)
 {
     if(url.isEmpty())
     {
@@ -358,7 +363,7 @@ void DownloadListWidgets::addItemToListCache(const QString &url, const QString &
     }
 }
 
-void DownloadListWidgets::addItemToListAndStart(const QString &url)
+void DownloadListWidgets::addItemToStartList(const QString &url)
 {
     if(url.isEmpty())
     {
@@ -402,7 +407,7 @@ void DownloadListWidgets::start(int row)
     }
 
     DownloadUnits *units = m_items[row];
-    if(m_maxDownloadCount < G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCount).toInt())
+    if(m_maxDownloadCount < G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCount).toInt() + 1)
     {
         ++m_maxDownloadCount;
         units->start();
@@ -427,19 +432,18 @@ void DownloadListWidgets::pause(int row)
     stateChanged(row);
 }
 
-void DownloadListWidgets::topUrlToDownload()
+void DownloadListWidgets::nextUrlToDownload()
 {
-    int index = -1;
-    if(!m_items.isEmpty() && m_maxDownloadCount < G_SETTING_PTR->value(DownloadSettingManager::DownloadMaxCount).toInt())
+    if(m_items.isEmpty())
     {
-        for(DownloadUnits *item : qAsConst(m_items))
+        return;
+    }
+
+    for(int i = 0; i < m_items.count(); ++i)
+    {
+        if(m_items[i]->state() == TTK::DownloadState::Stop)
         {
-            ++index;
-            if(item->state() == TTK::DownloadState::Stop)
-            {
-                start(index);
-                break;
-            }
+            start(i);
         }
     }
 }

@@ -36,7 +36,7 @@ public:
     /*!
      * Get color.
      */
-    QColor color() const;
+    QColor color() const noexcept;
     /*!
      * Get color.
      */
@@ -95,7 +95,7 @@ public:
     /*!
      * Get saturation.
      */
-    double saturation() const;
+    double saturation() const noexcept;
     /*!
      * Set current color saturation.
      */
@@ -161,7 +161,7 @@ public:
     /*!
      * Get color.
      */
-    QColor color() const;
+    QColor color() const noexcept;
     /*!
      * Get color.
      */

@@ -25,8 +25,6 @@ DownloadHistoryRecordWidget::DownloadHistoryRecordWidget(QWidget *parent)
 
 DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
 {
-    clearAllItems();
-
     DownloadRecordConfigManager manager;
     if(!manager.load(HISTORY_PATH_FULL))
     {
@@ -54,19 +52,18 @@ void DownloadHistoryRecordWidget::initialize()
     }
 }
 
-void DownloadHistoryRecordWidget::clearAllItems()
-{
-    //Remove all the original item
-    DownloadAbstractTableWidget::removeItems();
-    setColumnCount(4);
-}
-
 void DownloadHistoryRecordWidget::resizeWindow()
 {
     int w = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
     w += G_SETTING_PTR->value(DownloadSettingManager::ExpandMode).toInt();
     QHeaderView *headerView = horizontalHeader();
     headerView->resizeSection(1, 495 + w - WINDOW_WIDTH_MIN);
+}
+
+void DownloadHistoryRecordWidget::removeItems()
+{
+    DownloadAbstractTableWidget::removeItems();
+    setColumnCount(4);
 }
 
 void DownloadHistoryRecordWidget::reverseSelect()
@@ -116,7 +113,7 @@ void DownloadHistoryRecordWidget::deleteItemFromList(bool file)
 {
     for(QTableWidgetItem *item : selectedItems())
     {
-        int row = item->row();
+        const int row = item->row();
         if(m_records.isEmpty() || row < 0)
         {
             continue;
@@ -141,7 +138,7 @@ void DownloadHistoryRecordWidget::deleteItemFromListWithFile()
 
 void DownloadHistoryRecordWidget::openFileDir()
 {
-    if(rowCount() == 0 || currentRow() < 0)
+    if(!isValid())
     {
         return;
     }
@@ -157,7 +154,7 @@ void DownloadHistoryRecordWidget::openFileDir()
 
 void DownloadHistoryRecordWidget::copyUrlClicked()
 {
-    if(rowCount() == 0 || currentRow() < 0)
+    if(!isValid())
     {
         return;
     }

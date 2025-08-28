@@ -49,26 +49,10 @@ void DownloadAnimationStackedWidget::renderPreviousWidget(QPainter *painter)
 
     switch(m_type)
     {
-        case Module::BottomToTop :
-                {
-                    painter->drawPixmap(0, height() / 2, pix);
-                    break;
-                }
-        case Module::TopToBottom :
-                {
-                    painter->drawPixmap(0, -height() / 2, pix);
-                    break;
-                }
-        case Module::LeftToRight :
-                {
-                    painter->drawPixmap(width() / 2, 0, pix);
-                    break;
-                }
-        case Module::RightToLeft :
-                {
-                    painter->drawPixmap(-width() / 2, 0, pix);
-                    break;
-                }
+        case Module::BottomToTop: painter->drawPixmap(0, height() / 2, pix); break;
+        case Module::TopToBottom: painter->drawPixmap(0, -height() / 2, pix); break;
+        case Module::LeftToRight: painter->drawPixmap(width() / 2, 0, pix); break;
+        case Module::RightToLeft: painter->drawPixmap(-width() / 2, 0, pix); break;
         default: break;
     }
 }
@@ -84,30 +68,30 @@ void DownloadAnimationStackedWidget::renderCurrentWidget(QPainter *painter)
 
     switch(m_type)
     {
-        case Module::BottomToTop :
-                {
-                    painter->translate(0, m_currentValue);
-                    painter->drawPixmap(0, -height() / 2, pix);
-                    break;
-                }
-        case Module::TopToBottom :
-                {
-                    painter->translate(0, m_currentValue);
-                    painter->drawPixmap(0, height() / 2, pix);
-                    break;
-                }
-        case Module::LeftToRight :
-                {
-                    painter->translate(m_currentValue, 0);
-                    painter->drawPixmap(-width() / 2, 0, pix);
-                    break;
-                }
-        case Module::RightToLeft :
-                {
-                    painter->translate(m_currentValue, 0);
-                    painter->drawPixmap(width() / 2, 0, pix);
-                    break;
-                }
+        case Module::BottomToTop:
+        {
+            painter->translate(0, m_currentValue);
+            painter->drawPixmap(0, -height() / 2, pix);
+            break;
+        }
+        case Module::TopToBottom:
+        {
+            painter->translate(0, m_currentValue);
+            painter->drawPixmap(0, height() / 2, pix);
+            break;
+        }
+        case Module::LeftToRight:
+        {
+            painter->translate(m_currentValue, 0);
+            painter->drawPixmap(-width() / 2, 0, pix);
+            break;
+        }
+        case Module::RightToLeft:
+        {
+            painter->translate(m_currentValue, 0);
+            painter->drawPixmap(width() / 2, 0, pix);
+            break;
+        }
         default: break;
     }
 }
@@ -118,12 +102,19 @@ void DownloadAnimationStackedWidget::start(int index)
     {
         return;
     }
+
     m_previousIndex = m_currentIndex;
     m_currentIndex = index;
 
-    int offsetx = frameRect().width();
-    int offsety = frameRect().height();
-    widget(m_currentIndex)->setGeometry(0, 0, offsetx, offsety);
+    QWidget *w = widget(m_currentIndex);
+    if(!w)
+    {
+        return;
+    }
+
+    const int offsetx = frameRect().width();
+    const int offsety = frameRect().height();
+    w->setGeometry(0, 0, offsetx, offsety);
 
     currentWidget()->hide();
     m_isAnimating = true;
@@ -140,30 +131,30 @@ void DownloadAnimationStackedWidget::setLength(int length, Module type)
 {
     switch(m_type = type)
     {
-        case Module::BottomToTop :
-        case Module::LeftToRight :
-                {
-                    m_animation->setStartValue(-length / 2);
-                    m_animation->setEndValue(length / 2);
-                    break;
-                }
-        case Module::TopToBottom :
-        case Module::RightToLeft :
-                {
-                    m_animation->setStartValue(length / 2);
-                    m_animation->setEndValue(-length / 2);
-                    break;
-                }
+        case Module::BottomToTop:
+        case Module::LeftToRight:
+        {
+            m_animation->setStartValue(-length / 2);
+            m_animation->setEndValue(length / 2);
+            break;
+        }
+        case Module::TopToBottom:
+        case Module::RightToLeft:
+        {
+            m_animation->setStartValue(length / 2);
+            m_animation->setEndValue(-length / 2);
+            break;
+        }
         default: break;
     }
 }
 
-int DownloadAnimationStackedWidget::previousIndex() const
+int DownloadAnimationStackedWidget::previousIndex() const noexcept
 {
     return m_previousIndex;
 }
 
-int DownloadAnimationStackedWidget::currentIndex() const
+int DownloadAnimationStackedWidget::currentIndex() const noexcept
 {
     return m_currentIndex;
 }

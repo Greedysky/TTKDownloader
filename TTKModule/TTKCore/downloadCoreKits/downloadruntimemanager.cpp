@@ -3,8 +3,8 @@
 #include "downloadsettingmanager.h"
 #include "downloadnetworkthread.h"
 
+#include <QFont>
 #include <QApplication>
-#include <QFontDatabase>
 
 namespace TTK
 {

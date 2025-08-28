@@ -32,6 +32,17 @@ class TTK_MODULE_EXPORT DownloadThread : public QObject
 {
     Q_OBJECT
 public:
+    struct Info
+    {
+        int m_index;
+        QString m_url;
+        QFile *m_file;
+        qint64 m_startPoint;
+        qint64 m_endPoint;
+        qint64 m_readySize;
+    };
+
+public:
     /*!
      * Object constructor.
      */
@@ -44,25 +55,24 @@ public:
     /*!
      * Start to download.
      */
-    void startDownload(int index, const QString &url, QFile *file,
-                       qint64 startPoint, qint64 endPoint,
-                       qint64 readySize = 0);
+    void startDownload(const Info &info);
+
     /*!
      * Get download url.
      */
-    inline QString url() const noexcept { return m_url; }
+    inline QString url() const noexcept { return m_info.m_url; }
     /*!
      * Get ready size.
      */
-    inline qint64 readySize() const noexcept { return m_readySize; }
+    inline qint64 readySize() const noexcept { return m_info.m_readySize; }
     /*!
      * Get start point(.
      */
-    inline qint64 startPoint() const noexcept { return m_startPoint; }
+    inline qint64 startPoint() const noexcept { return m_info.m_startPoint; }
     /*!
      * Get end point.
      */
-    inline qint64 endPoint() const noexcept { return m_endPoint; }
+    inline qint64 endPoint() const noexcept { return m_info.m_endPoint; }
 
 Q_SIGNALS:
     /*!
@@ -103,10 +113,7 @@ private Q_SLOTS:
     void handleError(QNetworkReply::NetworkError code);
 
 private:
-    int m_index;
-    QString m_url;
-    qint64 m_startPoint, m_endPoint, m_readySize;
-    QFile *m_file;
+    Info m_info;
     QNetworkAccessManager *m_manager;
     QNetworkReply *m_reply;
     TTK::DownloadState m_state;

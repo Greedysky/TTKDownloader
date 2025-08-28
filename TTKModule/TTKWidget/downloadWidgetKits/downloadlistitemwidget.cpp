@@ -68,7 +68,6 @@ DownloadListItemWidget::DownloadListItemWidget(QWidget *parent)
     m_stateLabel = new QLabel(this);
     m_stateLabel->setFixedSize(60, 30);
     layout->addWidget(m_stateLabel);
-
     setLayout(layout);
 
     backgroundChanged();
@@ -104,6 +103,11 @@ void DownloadListItemWidget::backgroundChanged()
 
 void DownloadListItemWidget::progressChanged(qint64 current, qint64 total)
 {
+    if(total < 0)
+    {
+        return;
+    }
+
     m_currentSize = current;
     m_progressBar->setValue(current * 100.0f / total);
 }
@@ -112,6 +116,7 @@ void DownloadListItemWidget::updateFileInfoChanged(const QString &name, qint64 s
 {
     m_fileNameLabel->setText(name);
     m_fileSizeLabel->setText(TTK::Number::sizeByteToLabel(m_totalSize = size));
+
     QFileIconProvider provider;
     QPixmap pix(provider.icon(QFileInfo(name)).pixmap(40, 40));
     if(pix.isNull())

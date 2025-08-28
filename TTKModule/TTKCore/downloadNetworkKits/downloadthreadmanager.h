@@ -40,7 +40,7 @@ public:
     /*!
      * Download file by url.
      */
-    bool downloadFile(const QString &url);
+    bool download(const QString &url, const QString &name = {});
 
     /*!
      * Get download path.

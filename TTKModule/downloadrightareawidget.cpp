@@ -90,9 +90,9 @@ void DownloadRightAreaWidget::downloadStateChanged(bool state)
 
 void DownloadRightAreaWidget::showNewFileDialog()
 {
-    DownloadNewFileDialog fileDialog;
-    connect(&fileDialog, SIGNAL(setDownloadPath(QStringList)), m_listWidget, SLOT(addItemToList(QStringList)));
-    fileDialog.exec();
+    DownloadNewFileDialog dialog;
+    connect(&dialog, SIGNAL(setDownloadPath(QStringList)), m_listWidget, SLOT(addItemToList(QStringList)));
+    dialog.exec();
 }
 
 void DownloadRightAreaWidget::startToDownload()

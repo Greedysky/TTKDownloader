@@ -3,8 +3,11 @@
 #include "ttkdesktopscreen.h"
 
 #include <QMenu>
+#include <QComboBox>
 #include <QScrollBar>
 #include <QScrollArea>
+#include <QListWidget>
+#include <QStyledItemDelegate>
 
 void TTK::Widget::adjustMenuPosition(QMenu *menu)
 {
@@ -41,6 +44,13 @@ void TTK::Widget::setTransparent(QWidget *widget, const QColor &color)
     QPalette plt(widget->palette());
     plt.setBrush(QPalette::Highlight, QBrush(color));
     widget->setPalette(plt);
+}
+
+void TTK::Widget::generateComboBoxStyle(QComboBox *widget, const QString &style)
+{
+    widget->setItemDelegate(new QStyledItemDelegate(widget));
+    widget->setStyleSheet(style.isEmpty() ? TTK::UI::ComboBoxStyle01 + TTK::UI::ItemView01 : style);
+    widget->view()->setStyleSheet(TTK::UI::ScrollBarStyle01);
 }
 
 void TTK::Widget::generateVScrollAreaStyle(QWidget *widget, QWidget *parent, bool background)

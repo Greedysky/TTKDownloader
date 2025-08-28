@@ -36,6 +36,7 @@ public:
      * Strat thread now.
      */
     void start();
+
     /*!
      * Set current network state.
      */

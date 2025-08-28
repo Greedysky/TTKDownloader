@@ -14,7 +14,7 @@ DownloadBackgroundListItem::DownloadBackgroundListItem(QWidget *parent)
       m_selectedEnabled(true),
       m_closeEnabled(false)
 {
-    setFixedSize(100, 70);
+    setFixedSize(105, 76);
     setCursor(Qt::PointingHandCursor);
 }
 

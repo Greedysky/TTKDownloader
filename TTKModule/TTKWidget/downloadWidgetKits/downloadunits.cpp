@@ -41,15 +41,18 @@ void DownloadUnits::start()
 {
     if(!m_pause)
     {
-        m_downloadThread->downloadFile(m_url);
+        m_downloadThread->download(m_url, m_name);
+        m_path = m_downloadThread->downloadedPath();
+
+        if(m_name.isEmpty())
+        {
+            m_name = QFileInfo(m_path).fileName();
+        }
     }
     else
     {
         m_downloadThread->restart();
     }
-
-    m_path = m_downloadThread->downloadedPath();
-    m_name = QFileInfo(m_path).fileName();
 }
 
 void DownloadUnits::pause()

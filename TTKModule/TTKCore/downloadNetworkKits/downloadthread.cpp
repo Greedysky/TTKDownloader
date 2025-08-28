@@ -15,26 +15,19 @@ DownloadThread::~DownloadThread()
     delete m_manager;
 }
 
-void DownloadThread::startDownload(int index, const QString &url, QFile *file,
-                                   qint64 startPoint, qint64 endPoint,
-                                   qint64 readySize)
+void DownloadThread::startDownload(const Info &info)
 {
     if(m_state == TTK::DownloadState::Download)
     {
-        Q_EMIT errorCode(m_index, "is downloading a file");
+        Q_EMIT errorCode(info.m_index, "is downloading a file");
         return;
     }
 
-    m_index = index;
-    m_url = url;
-    m_file = file;
-    m_startPoint = startPoint;
-    m_endPoint = endPoint;
-    m_readySize = readySize;
+    m_info = info;
 
     QNetworkRequest request;
-    request.setUrl(m_url);
-    QString range = QString("bytes=%0-%1").arg(m_startPoint + m_readySize).arg(m_endPoint);
+    request.setUrl(info.m_url);
+    const QString &range = QString("bytes=%0-%1").arg(info.m_startPoint + info.m_readySize).arg(info.m_endPoint);
     request.setRawHeader("Range", range.toUtf8());
     TTK::setSslConfiguration(&request);
 
@@ -51,13 +44,13 @@ void DownloadThread::pause()
 {
     if(m_state != TTK::DownloadState::Download)
     {
-        Q_EMIT errorCode(m_index, "is not downloading");
+        Q_EMIT errorCode(m_info.m_index, "is not downloading");
         return;
     }
 
     m_state = TTK::DownloadState::Pause;
     m_reply->abort();
-    m_file->flush();
+    m_info.m_file->flush();
     m_reply->deleteLater();
 }
 
@@ -65,11 +58,11 @@ void DownloadThread::restart()
 {
     if(m_state != TTK::DownloadState::Pause)
     {
-        Q_EMIT errorCode(m_index, "is not stoped");
+        Q_EMIT errorCode(m_info.m_index, "is not stoped");
         return;
     }
 
-    startDownload(m_index, m_url, m_file, m_startPoint, m_endPoint, m_readySize);
+    startDownload(m_info);
 }
 
 void DownloadThread::downLoadFinished()
@@ -79,19 +72,19 @@ void DownloadThread::downLoadFinished()
         return;
     }
 
-    m_file->flush();
+    m_info.m_file->flush();
     m_reply->deleteLater();
     m_state = TTK::DownloadState::Finished;
 
-    Q_EMIT finished(m_index);
+    Q_EMIT finished(m_info.m_index);
 }
 
 void DownloadThread::handleReadyRead()
 {
     const QByteArray &buffer = m_reply->readAll();
-    m_file->seek(m_startPoint + m_readySize);
-    m_file->write(buffer);
-    m_readySize += buffer.length();
+    m_info.m_file->seek(m_info.m_startPoint + m_info.m_readySize);
+    m_info.m_file->write(buffer);
+    m_info.m_readySize += buffer.length();
 
     Q_EMIT downloadChanged();
 }
@@ -102,10 +95,11 @@ void DownloadThread::handleError(QNetworkReply::NetworkError code)
     {
         return;
     }
-    Q_EMIT errorCode(m_index, "QNetworkReply::NetworkError : " + QString::number(TTKStaticCast(int, code)) + " \n" + m_reply->errorString());
+
+    Q_EMIT errorCode(m_info.m_index, "QNetworkReply::NetworkError : " + QString::number(TTKStaticCast(int, code)) + " \n" + m_reply->errorString());
 
     m_state = TTK::DownloadState::Stop;
     m_reply->abort();
-    m_file->flush();
+    m_info.m_file->flush();
     m_reply->deleteLater();
 }

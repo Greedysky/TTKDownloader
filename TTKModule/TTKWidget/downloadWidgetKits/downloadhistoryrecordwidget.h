@@ -43,13 +43,14 @@ public:
      */
     void initialize();
     /*!
-     * Clear All Items.
-     */
-    void clearAllItems();
-    /*!
      * Resize window bound by widgte resize called.
      */
     void resizeWindow();
+
+    /*!
+     * Remove all items.
+     */
+    virtual void removeItems() override final;
 
 public Q_SLOTS:
     /*!
