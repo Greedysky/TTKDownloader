@@ -60,12 +60,6 @@ public:
      */
     void outputRemoteSkin(DownloadBackgroundImage &image, const QString &data);
 
-Q_SIGNALS:
-    /*!
-     * Reset the current bg when user click remote bg.
-     */
-    void showCustomSkin(const QString &path);
-
 public Q_SLOTS:
     /*!
      * Remote bg type selected by index.

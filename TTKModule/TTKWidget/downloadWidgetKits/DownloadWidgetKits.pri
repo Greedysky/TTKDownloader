@@ -28,11 +28,12 @@ HEADERS += \
     $$PWD/downloadsystemtraymenu.h \
     $$PWD/downloadnewfiledialog.h\
     $$PWD/downloadlistitemwidget.h \
-    $$PWD/downloadlistwidgets.h \
+    $$PWD/downloadlistwidget.h \
+    $$PWD/downloadhistorywidget.h \
+    $$PWD/downloaderrorwidget.h \
     $$PWD/downloadfunctionlistwidget.h \
     $$PWD/downloadmessageaboutdialog.h \
     $$PWD/downloadsettingwidget.h \
-    $$PWD/downloadhistoryrecordwidget.h \
     $$PWD/downloadunits.h
 
 SOURCES += \
@@ -45,9 +46,10 @@ SOURCES += \
     $$PWD/downloadbackgroundremotewidget.cpp \
     $$PWD/downloadnewfiledialog.cpp\
     $$PWD/downloadlistitemwidget.cpp \
-    $$PWD/downloadlistwidgets.cpp \
+    $$PWD/downloadlistwidget.cpp \
+    $$PWD/downloadhistorywidget.cpp \
+    $$PWD/downloaderrorwidget.cpp \
     $$PWD/downloadfunctionlistwidget.cpp \
     $$PWD/downloadmessageaboutdialog.cpp \
     $$PWD/downloadsettingwidget.cpp \
-    $$PWD/downloadhistoryrecordwidget.cpp \
     $$PWD/downloadunits.cpp

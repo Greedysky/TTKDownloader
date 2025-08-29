@@ -26,9 +26,10 @@ set_property(GLOBAL PROPERTY TTK_WIDGET_KITS_HEADER_FILES
   ${TTK_WIDGET_DIR}/downloadfunctionlistwidget.h
   ${TTK_WIDGET_DIR}/downloadfuntionanimationwidget.h
   ${TTK_WIDGET_DIR}/downloadglobalhotkeyedit.h
-  ${TTK_WIDGET_DIR}/downloadhistoryrecordwidget.h
   ${TTK_WIDGET_DIR}/downloadlistitemwidget.h
-  ${TTK_WIDGET_DIR}/downloadlistwidgets.h
+  ${TTK_WIDGET_DIR}/downloadlistwidget.h
+  ${TTK_WIDGET_DIR}/downloadhistorywidget.h
+  ${TTK_WIDGET_DIR}/downloaderrorwidget.h
   ${TTK_WIDGET_DIR}/downloadmessageaboutdialog.h
   ${TTK_WIDGET_DIR}/downloadnewfiledialog.h
   ${TTK_WIDGET_DIR}/downloadsettingwidget.h
@@ -44,9 +45,10 @@ set_property(GLOBAL PROPERTY TTK_WIDGET_KITS_SOURCE_FILES
   ${TTK_WIDGET_DIR}/downloadfunctionlistwidget.cpp
   ${TTK_WIDGET_DIR}/downloadfuntionanimationwidget.cpp
   ${TTK_WIDGET_DIR}/downloadglobalhotkeyedit.cpp
-  ${TTK_WIDGET_DIR}/downloadhistoryrecordwidget.cpp
   ${TTK_WIDGET_DIR}/downloadlistitemwidget.cpp
-  ${TTK_WIDGET_DIR}/downloadlistwidgets.cpp
+  ${TTK_WIDGET_DIR}/downloadlistwidget.cpp
+  ${TTK_WIDGET_DIR}/downloadhistorywidget.cpp
+  ${TTK_WIDGET_DIR}/downloaderrorwidget.cpp
   ${TTK_WIDGET_DIR}/downloadmessageaboutdialog.cpp
   ${TTK_WIDGET_DIR}/downloadnewfiledialog.cpp
   ${TTK_WIDGET_DIR}/downloadsettingwidget.cpp

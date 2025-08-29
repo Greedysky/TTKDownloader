@@ -103,7 +103,7 @@ void DownloadApplication::createRightMenu()
 
     QMenu *editMenu = menu.addMenu(tr("Edit(E)"));
     editMenu->addAction(tr("Select All"), DownloadRightAreaWidget::instance(), SLOT(editSelectAll()));
-    editMenu->addAction(tr("Reverse Select"), DownloadRightAreaWidget::instance(), SLOT(editReverseSelect()));
+    editMenu->addAction(tr("Unselect All"), DownloadRightAreaWidget::instance(), SLOT(editUnselectAll()));
     TTK::Widget::adjustMenuPosition(editMenu);
 
     menu.addAction(tr("Plan"));

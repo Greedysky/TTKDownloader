@@ -45,7 +45,7 @@ public:
     /*!
      * Get download path.
      */
-    QString downloadedPath() const;
+    QString path() const;
     /*!
      * Get download state.
      */
@@ -55,7 +55,7 @@ Q_SIGNALS:
     /*!
      * Download item data from net finished.
      */
-    void downloadingFinished(const QString &path);
+    void downloadFinished(const QString &path);
     /*!
      * Download state changed.
      */
@@ -78,6 +78,10 @@ public Q_SLOTS:
      * Restart to download.
      */
     void restart();
+    /*!
+     * Queue to download.
+     */
+    void queue();
 
 private Q_SLOTS:
     /*!
@@ -87,7 +91,7 @@ private Q_SLOTS:
     /*!
      * Show error code index and string.
      */
-    void handleError(int index, const QString &errorString);
+    void handleError(int index, const QString &error);
     /*!
      * Download state changed.
      */

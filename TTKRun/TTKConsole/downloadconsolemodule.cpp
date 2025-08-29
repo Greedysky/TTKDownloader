@@ -8,7 +8,7 @@ DownloadConsoleModule::DownloadConsoleModule(QObject *parent)
 {
     m_manager = new DownloadThreadManager(this);
     connect(m_manager, SIGNAL(progressChanged(qint64,qint64)), SLOT(progressChanged(qint64,qint64)));
-    connect(m_manager, SIGNAL(downloadingFinished(QString)), qApp, SLOT(quit()));
+    connect(m_manager, SIGNAL(downloadFinished(QString)), qApp, SLOT(quit()));
 }
 
 DownloadConsoleModule::~DownloadConsoleModule()
@@ -70,7 +70,7 @@ bool DownloadConsoleModule::initialize() const
         return false;
     }
 
-    TTK_LOG_STREAM("download save path: " << m_manager->downloadedPath());
+    TTK_LOG_STREAM("download save path: " << m_manager->path());
     return QCoreApplication::exec();
 }
 

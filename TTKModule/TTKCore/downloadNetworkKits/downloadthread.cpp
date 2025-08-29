@@ -19,7 +19,7 @@ void DownloadThread::startDownload(const Info &info)
 {
     if(m_state == TTK::DownloadState::Download)
     {
-        Q_EMIT errorCode(info.m_index, "is downloading a file");
+        Q_EMIT errorOccurred(info.m_index, "is downloading a file");
         return;
     }
 
@@ -44,7 +44,7 @@ void DownloadThread::pause()
 {
     if(m_state != TTK::DownloadState::Download)
     {
-        Q_EMIT errorCode(m_info.m_index, "is not downloading");
+        Q_EMIT errorOccurred(m_info.m_index, "is not downloading");
         return;
     }
 
@@ -58,7 +58,7 @@ void DownloadThread::restart()
 {
     if(m_state != TTK::DownloadState::Pause)
     {
-        Q_EMIT errorCode(m_info.m_index, "is not stoped");
+        Q_EMIT errorOccurred(m_info.m_index, "is not stoped");
         return;
     }
 
@@ -74,7 +74,7 @@ void DownloadThread::downLoadFinished()
 
     m_info.m_file->flush();
     m_reply->deleteLater();
-    m_state = TTK::DownloadState::Finished;
+    m_state = TTK::DownloadState::Finish;
 
     Q_EMIT finished(m_info.m_index);
 }
@@ -96,7 +96,7 @@ void DownloadThread::handleError(QNetworkReply::NetworkError code)
         return;
     }
 
-    Q_EMIT errorCode(m_info.m_index, "QNetworkReply::NetworkError : " + QString::number(TTKStaticCast(int, code)) + " \n" + m_reply->errorString());
+    Q_EMIT errorOccurred(m_info.m_index, "QNetworkReply::NetworkError : " + QString::number(TTKStaticCast(int, code)) + " \n" + m_reply->errorString());
 
     m_state = TTK::DownloadState::Stop;
     m_reply->abort();

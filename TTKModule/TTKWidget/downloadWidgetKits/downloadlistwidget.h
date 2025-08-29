@@ -1,5 +1,5 @@
-#ifndef DOWNLOADLISTWIDGETS_H
-#define DOWNLOADLISTWIDGETS_H
+#ifndef DOWNLOADLISTWIDGET_H
+#define DOWNLOADLISTWIDGET_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -27,18 +27,18 @@ class DownloadUnits;
 /*! @brief The class of the download list widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadListWidgets : public DownloadAbstractTableWidget
+class TTK_MODULE_EXPORT DownloadListWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
 public:
     /*!
      * Object constructor.
      */
-    explicit DownloadListWidgets(QWidget *parent = nullptr);
+    explicit DownloadListWidget(QWidget *parent = nullptr);
     /*!
      * Object destructor.
      */
-    ~DownloadListWidgets();
+    ~DownloadListWidget();
 
     /*!
      * Init widget.
@@ -58,13 +58,13 @@ Q_SIGNALS:
     /*!
      * Download finished.
      */
-    void downloadingFinished(const QString &path, const QString &url);
+    void downloadFinished(const QString &path, const QString &url);
 
 public Q_SLOTS:
     /*!
-     * Reverse select.
+     * Unselect all items.
      */
-    void reverseSelect();
+    void unselectAll();
     /*!
      * Pause to download.
      */
@@ -119,6 +119,10 @@ private Q_SLOTS:
      * Update total speed label.
      */
     void updateTotalSpeedLabel();
+    /*!
+     * Item double clicked.
+     */
+    void itemLeftDoublePressed();
 
 private:
     /*!
@@ -138,9 +142,9 @@ private:
      */
     void clearItems();
     /*!
-     * Download state changed.
+     * Set donwload state.
      */
-    void stateChanged(int row);
+    void setDownloadState(int row);
     /*!
      * Start to download.
      */
@@ -164,4 +168,4 @@ private:
 
 };
 
-#endif // DOWNLOADLISTWIDGETS_H
+#endif // DOWNLOADLISTWIDGET_H

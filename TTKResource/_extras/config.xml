@@ -9,7 +9,7 @@
     </plusSetting>
     <backgroundSetting>
         <backgroundThemeValue value="theme-29"/>
-        <backgroundTransparent value="100"/>
+        <backgroundTransparent value="0"/>
     </backgroundSetting>
     <downloadSetting>
         <downloadMode value="1"/>

@@ -2,13 +2,10 @@
 #include "downloadlistitemwidget.h"
 #include "downloadthreadmanager.h"
 
-#include <QFileInfo>
-
 DownloadUnits::DownloadUnits(const QString &url, QObject *parent)
     : DownloadUnits(url, {}, parent)
 {
 }
-
 
 DownloadUnits::DownloadUnits(const QString &url, const QString &name, QObject *parent)
     : QObject(parent),
@@ -16,62 +13,69 @@ DownloadUnits::DownloadUnits(const QString &url, const QString &name, QObject *p
       m_url(url),
       m_name(name)
 {
-    m_downloadItem = new DownloadListItemWidget;
-    m_downloadThread = new DownloadThreadManager(this);
+    m_item = new DownloadListItemWidget;
+    m_manager = new DownloadThreadManager(this);
 
-    connect(m_downloadThread, SIGNAL(progressChanged(qint64,qint64)), m_downloadItem, SLOT(progressChanged(qint64,qint64)));
-    connect(m_downloadThread, SIGNAL(updateFileInfoChanged(QString,qint64)), m_downloadItem, SLOT(updateFileInfoChanged(QString,qint64)));
-    connect(m_downloadThread, SIGNAL(stateChanged(QString)), m_downloadItem, SLOT(stateChanged(QString)));
-    connect(m_downloadThread, SIGNAL(downloadingFinished(QString)), SLOT(downloadingFinished(QString)));
+    connect(m_item, SIGNAL(itemLeftDoublePressed()), parent, SLOT(itemLeftDoublePressed()));
+    connect(m_manager, SIGNAL(progressChanged(qint64,qint64)), m_item, SLOT(progressChanged(qint64,qint64)));
+    connect(m_manager, SIGNAL(updateFileInfoChanged(QString,qint64)), m_item, SLOT(updateFileInfoChanged(QString,qint64)));
+    connect(m_manager, SIGNAL(stateChanged(QString)), m_item, SLOT(stateChanged(QString)));
+    connect(m_manager, SIGNAL(downloadFinished(QString)), SLOT(downloadFinished(QString)));
 }
 
 DownloadUnits::~DownloadUnits()
 {
     pause();
-    delete m_downloadItem;
-    delete m_downloadThread;
+    delete m_item;
+    delete m_manager;
 }
 
-DownloadListItemWidget* DownloadUnits::downloadItemWidget()
+DownloadListItemWidget* DownloadUnits::widget() const noexcept
 {
-    return m_downloadItem;
+    return m_item;
 }
 
 void DownloadUnits::start()
 {
-    if(!m_pause)
+    if(m_pause)
     {
-        m_downloadThread->download(m_url, m_name);
-        m_path = m_downloadThread->downloadedPath();
+        m_manager->restart();
+    }
+    else
+    {
+        m_manager->download(m_url, m_name);
+        m_path = m_manager->path();
 
         if(m_name.isEmpty())
         {
             m_name = QFileInfo(m_path).fileName();
         }
     }
-    else
-    {
-        m_downloadThread->restart();
-    }
 }
 
 void DownloadUnits::pause()
 {
     m_pause = true;
-    m_downloadThread->pause();
+    m_manager->pause();
 }
 
-TTK::DownloadState DownloadUnits::state() const
+void DownloadUnits::queue()
 {
-    return m_downloadThread->state();
+    m_manager->queue();
 }
 
-void DownloadUnits::setStateChanged(const QString &state)
+TTK::DownloadState DownloadUnits::state() const noexcept
 {
-    m_downloadItem->stateChanged(state);
+    return m_manager->state();
 }
 
-void DownloadUnits::downloadingFinished(const QString &path)
+bool DownloadUnits::isRunning() const noexcept
+{
+    const TTK::DownloadState state = m_manager->state();
+    return state == TTK::DownloadState::Download || state == TTK::DownloadState::Wait;
+}
+
+void DownloadUnits::downloadFinished(const QString &path)
 {
     m_path = path;
     Q_EMIT removeItemWidget(this);

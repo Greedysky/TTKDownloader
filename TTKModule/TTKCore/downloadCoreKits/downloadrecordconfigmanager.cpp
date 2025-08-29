@@ -28,7 +28,7 @@ bool DownloadRecordConfigManager::writeBuffer(const DownloadRecordList &items)
 {
     createProcessingInstruction();
     QDomElement rootDom = createRoot(TTK_APP_NAME);
-    QDomElement recordDom = writeDomElement(rootDom, "history");
+    QDomElement recordDom = writeDomElement(rootDom, "record");
 
     for(const DownloadRecord &item : qAsConst(items))
     {

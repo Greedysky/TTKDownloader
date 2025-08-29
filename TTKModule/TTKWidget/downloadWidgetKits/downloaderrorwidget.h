@@ -1,5 +1,5 @@
-#ifndef DOWNLOADRIGHTAREAWIDGET_H
-#define DOWNLOADRIGHTAREAWIDGET_H
+#ifndef DOWNLOADERRORWIDGET_H
+#define DOWNLOADERRORWIDGET_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -19,87 +19,74 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QWidget>
-#include "ttkmoduleexport.h"
+#include "downloadabstracttablewidget.h"
+#include "downloadrecordconfigmanager.h"
 
-class DownloadListWidget;
-class DownloadHistoryWidget;
-class DownloadErrorWidget;
-
-namespace Ui {
-    class DownloadApplication;
-}
-
-/*! @brief The class of the app right area widget.
+/*! @brief The class of the download error widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadRightAreaWidget : public QWidget
+class TTK_MODULE_EXPORT DownloadErrorWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
 public:
     /*!
      * Object constructor.
      */
-    explicit DownloadRightAreaWidget(QWidget *parent = nullptr);
+    explicit DownloadErrorWidget(QWidget *parent = nullptr);
     /*!
      * Object destructor.
      */
-    ~DownloadRightAreaWidget();
+    ~DownloadErrorWidget();
 
     /*!
      * Init widget.
      */
     void initialize();
-
-    /*!
-     * Get class object instance.
-     */
-    static DownloadRightAreaWidget *instance();
-    /*!
-     * Set up app ui.
-     */
-    void setupUi(Ui::DownloadApplication *ui);
-
     /*!
      * Resize window bound by widgte resize called.
      */
     void resizeWindow();
 
+    /*!
+     * Remove all items.
+     */
+    virtual void removeItems() override final;
+
 public Q_SLOTS:
     /*!
-     * Download state changed.
+     * Unselect all items.
      */
-    void downloadStateChanged(bool state);
+    void unselectAll();
     /*!
-     * Shown new file dialog.
+     * Create download item from download path.
      */
-    void showNewFileDialog();
+    void createDownloadItem(const QString &path, const QString &url);
     /*!
-     * Start to download.
+     * Delete selected item from list.
      */
-    void startToDownload();
+    void deleteItemFromList();
     /*!
-     * Stop to download.
+     * Delete selected item from list.
      */
-    void stopToDownload();
+    void deleteItemFromList(bool file);
     /*!
-     * Select all mode.
+     * Delete selected item from list with file.
      */
-    void editSelectAll();
-    /*!
-     * Unselect all mode.
-     */
-    void editUnselectAll();
+    void deleteItemFromListWithFile();
 
 private:
-    Ui::DownloadApplication *m_ui;
+    /*!
+     * Override the widget event.
+     */
+    virtual void contextMenuEvent(QContextMenuEvent *event) override final;
+    /*!
+     * Create item by index and name and size and time.
+     */
+    void addCellItem(int index, const DownloadRecord &record);
 
-    DownloadListWidget *m_listWidget;
-    DownloadHistoryWidget *m_historyWidget;
-    DownloadErrorWidget *m_errorWidget;
-
-    static DownloadRightAreaWidget *m_instance;
+    DownloadRecordList m_records;
+    int m_loadRecordCount;
 
 };
 
-#endif // DOWNLOADRIGHTAREAWIDGET_H
+#endif // DOWNLOADERRORWIDGET_H

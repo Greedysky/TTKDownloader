@@ -68,7 +68,7 @@
         <translation>全选</translation>
     </message>
     <message>
-        <source>Reverse Select</source>
+        <source>Unselect All</source>
         <translation>反选</translation>
     </message>
 </context>
@@ -77,13 +77,6 @@
     <message>
         <source>Last One Item Can not be deleted</source>
         <translation>最后一个不能删除哦</translation>
-    </message>
-</context>
-<context>
-    <name>DownloadBackgroundRemoteWidget</name>
-    <message>
-        <source>ALL</source>
-        <translation>所有</translation>
     </message>
 </context>
 <context>
@@ -200,6 +193,21 @@
     </message>
 </context>
 <context>
+    <name>DownloadErrorWidget</name>
+    <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Delete With File</source>
+        <translation>彻底删除</translation>
+    </message>
+    <message>
+        <source>Selected All</source>
+        <translation>全部选定</translation>
+    </message>
+</context>
+<context>
     <name>DownloadFunctionListWidget</name>
     <message>
         <source>Download</source>
@@ -215,22 +223,18 @@
     </message>
 </context>
 <context>
-    <name>DownloadHistoryRecordWidget</name>
+    <name>DownloadHistoryWidget</name>
     <message>
         <source>Open File</source>
         <translation>打开文件夹</translation>
     </message>
     <message>
         <source>Delete</source>
-        <translation>删除任务</translation>
+        <translation>删除</translation>
     </message>
     <message>
         <source>Delete With File</source>
-        <translation>彻底删除任务</translation>
-    </message>
-    <message>
-        <source>Sort</source>
-        <translation>排序</translation>
+        <translation>彻底删除</translation>
     </message>
     <message>
         <source>Selected All</source>
@@ -266,16 +270,12 @@
         <translation>未知的下载文件</translation>
     </message>
     <message>
-        <source>D_Download</source>
+        <source>StateDownload</source>
         <translation>正在下载</translation>
     </message>
 </context>
 <context>
-    <name>DownloadListWidgets</name>
-    <message>
-        <source>D_Queue</source>
-        <translation>排队中</translation>
-    </message>
+    <name>DownloadListWidget</name>
     <message>
         <source>Open File</source>
         <translation>打开文件夹</translation>
@@ -311,6 +311,14 @@
     <message>
         <source>The origin one does not exist</source>
         <translation>您所指定的文件已被移动或者不存在</translation>
+    </message>
+    <message>
+        <source>StatePause</source>
+        <translation>暂停</translation>
+    </message>
+    <message>
+        <source>Download url is already exist</source>
+        <translation>下载链接地址已经存在</translation>
     </message>
 </context>
 <context>
@@ -529,10 +537,6 @@ Copyright© 2015 - 2025 Greedysky All Rights Reserved
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>(1-50)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>KB/s</source>
         <translation type="unfinished"></translation>
     </message>
@@ -613,16 +617,20 @@ Copyright© 2015 - 2025 Greedysky All Rights Reserved
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>启用全局快捷键</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Hotkey</source>
-        <translation type="unfinished">热键设置</translation>
+        <translation>热键设置</translation>
+    </message>
+    <message>
+        <source>Ctrl+Q</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(1-10)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -674,20 +682,24 @@ Copyright© 2015 - 2025 Greedysky All Rights Reserved
 <context>
     <name>DownloadThreadManager</name>
     <message>
-        <source>Waiting</source>
+        <source>StateWaiting</source>
         <translation>连接资源</translation>
     </message>
     <message>
-        <source>Download</source>
+        <source>StateDownload</source>
         <translation>正在下载</translation>
     </message>
     <message>
-        <source>Finished</source>
+        <source>StateFinished</source>
         <translation>完成</translation>
     </message>
     <message>
-        <source>Pause</source>
+        <source>StatePause</source>
         <translation>暂停</translation>
+    </message>
+    <message>
+        <source>StateQueue</source>
+        <translation>排队中</translation>
     </message>
 </context>
 <context>
@@ -714,17 +726,22 @@ Copyright© 2015 - 2025 Greedysky All Rights Reserved
     </message>
 </context>
 <context>
-    <name>QJson::ParserRunnable</name>
-    <message>
-        <source>An error occurred while parsing json: %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>QObject</name>
     <message>
         <source>choose a filename to open under</source>
         <translation>打开文件</translation>
+    </message>
+    <message>
+        <source>File</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Use Module Play</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Add To Module Playlist</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

@@ -61,14 +61,14 @@ qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
     return size;
 }
 
-QString DownloadThreadManager::downloadedPath() const
+QString DownloadThreadManager::path() const
 {
     return m_file ? m_file->fileName() : QString();
 }
 
 bool DownloadThreadManager::download(const QString &url, const QString &name)
 {
-    Q_EMIT stateChanged(tr("Waiting"));
+    Q_EMIT stateChanged(tr("StateWaiting"));
 
     if(m_state == TTK::DownloadState::Download)
     {
@@ -76,7 +76,7 @@ bool DownloadThreadManager::download(const QString &url, const QString &name)
         return false;
     }
 
-    m_state = TTK::DownloadState::Waiting;
+    m_state = TTK::DownloadState::Wait;
     if(m_runningCount < 1 || 10 < m_runningCount)
     {
         TTK_INFO_STREAM("Download thread count error");
@@ -169,13 +169,13 @@ bool DownloadThreadManager::download(const QString &url, const QString &name)
         DownloadThread *thread = new DownloadThread(this);
         connect(thread, SIGNAL(finished(int)), SLOT(finished(int)));
         connect(thread, SIGNAL(downloadChanged()), SLOT(progressChanged()));
-        connect(thread, SIGNAL(errorCode(int,QString)), SLOT(handleError(int,QString)));
+        connect(thread, SIGNAL(errorOccurred(int,QString)), SLOT(handleError(int,QString)));
         thread->startDownload({i, durl, m_file, startPoint, endPoint, readySize});
         m_threads.append(thread);
     }
 
     m_state = TTK::DownloadState::Download;
-    Q_EMIT stateChanged(tr("Download"));
+    Q_EMIT stateChanged(tr("StateDownload"));
     m_runningCount = THREADCOUNT;
     return true;
 }
@@ -187,27 +187,28 @@ void DownloadThreadManager::downloadingFinish()
     m_file->close();
     delete m_file;
     m_file = nullptr;
-    m_state = TTK::DownloadState::Finished;
+    m_state = TTK::DownloadState::Finish;
 
     QFile::remove(fileName + STK_FILE);
 
     qDeleteAll(m_threads);
     m_threads.clear();
 
-    Q_EMIT stateChanged(tr("Finished"));
-    Q_EMIT downloadingFinished(fileName);
+    Q_EMIT stateChanged(tr("StateFinished"));
+    Q_EMIT downloadFinished(fileName);
 }
 
 void DownloadThreadManager::pause()
 {
-    if(m_state != TTK::DownloadState::Download && m_state != TTK::DownloadState::Waiting)
+    Q_EMIT stateChanged(tr("StatePause"));
+
+    if(m_state != TTK::DownloadState::Download && m_state != TTK::DownloadState::Wait)
     {
         TTK_ERROR_STREAM("Current is not downloading");
         return;
     }
 
     m_state = TTK::DownloadState::Pause;
-    Q_EMIT stateChanged(tr("Pause"));
 
     DownloadBreakPointItemList records;
     for(DownloadThread *thread : qAsConst(m_threads))
@@ -241,7 +242,7 @@ void DownloadThreadManager::restart()
     }
 
     m_state = TTK::DownloadState::Download;
-    Q_EMIT stateChanged(tr("Download"));
+    Q_EMIT stateChanged(tr("StateDownload"));
 
     for(DownloadThread *thread : qAsConst(m_threads))
     {
@@ -249,10 +250,16 @@ void DownloadThreadManager::restart()
     }
 }
 
+void DownloadThreadManager::queue()
+{
+    m_state = TTK::DownloadState::Queue;
+    Q_EMIT stateChanged(tr("StateQueue"));
+}
+
 void DownloadThreadManager::finished(int index)
 {
     m_runningCount--;
-    TTK_INFO_STREAM("Download index of " << index << " finished");
+    TTK_INFO_STREAM("Download index of" << index << "finished");
 
     if(m_runningCount == 0 && m_state == TTK::DownloadState::Download)
     {
@@ -271,7 +278,7 @@ void DownloadThreadManager::progressChanged()
     Q_EMIT progressChanged(m_readySize, m_totalSize);
 }
 
-void DownloadThreadManager::handleError(int index, const QString &errorString)
+void DownloadThreadManager::handleError(int index, const QString &error)
 {
     if(index < 0 || index >= m_threads.count())
     {
@@ -279,5 +286,5 @@ void DownloadThreadManager::handleError(int index, const QString &errorString)
     }
 
     m_threads[index]->pause();
-    TTK_INFO_STREAM("Download index of " << index << " error: " << errorString);
+    TTK_INFO_STREAM("Download index of" << index << "error:" << error);
 }

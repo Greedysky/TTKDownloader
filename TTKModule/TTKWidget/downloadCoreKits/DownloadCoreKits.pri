@@ -28,7 +28,8 @@ HEADERS += \
     $$PWD/downloadmessagebox.h \
     $$PWD/downloadtoolmenuwidget.h \
     $$PWD/downloadtoollabelbutton.h \
-    $$PWD/downloadwidgetrenderer.h
+    $$PWD/downloadwidgetrenderer.h \
+    $$PWD/downloadtoastlabel.h
 
 SOURCES += \
     $$PWD/downloadabstractmovedialog.cpp \
@@ -40,4 +41,5 @@ SOURCES += \
     $$PWD/downloadcolordialog.cpp \
     $$PWD/downloadtoolmenuwidget.cpp \
     $$PWD/downloadtoollabelbutton.cpp \
-    $$PWD/downloadwidgetrenderer.cpp
+    $$PWD/downloadwidgetrenderer.cpp \
+    $$PWD/downloadtoastlabel.cpp

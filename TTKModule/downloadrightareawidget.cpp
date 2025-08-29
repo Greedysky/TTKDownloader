@@ -3,8 +3,9 @@
 #include "downloadfunctionuiobject.h"
 #include "downloadnewfiledialog.h"
 #include "downloadhotkeymanager.h"
-#include "downloadlistwidgets.h"
-#include "downloadhistoryrecordwidget.h"
+#include "downloadlistwidget.h"
+#include "downloadhistorywidget.h"
+#include "downloaderrorwidget.h"
 
 DownloadRightAreaWidget *DownloadRightAreaWidget::m_instance = nullptr;
 
@@ -13,25 +14,28 @@ DownloadRightAreaWidget::DownloadRightAreaWidget(QWidget *parent)
 {
     m_instance = this;
 
-    m_listWidget = new DownloadListWidgets(this);
-    m_historyWidget = new DownloadHistoryRecordWidget(this);
+    m_listWidget = new DownloadListWidget(this);
+    m_historyWidget = new DownloadHistoryWidget(this);
+    m_errorWidget = new DownloadErrorWidget(this);
 
     G_HOTKEY_PTR->addHotKey(this, SLOT(showNewFileDialog()));
 
     connect(m_listWidget, SIGNAL(downloadStateChanged(bool)), SLOT(downloadStateChanged(bool)));
-    connect(m_listWidget, SIGNAL(downloadingFinished(QString,QString)), m_historyWidget, SLOT(createDownloadItem(QString,QString)));
+    connect(m_listWidget, SIGNAL(downloadFinished(QString,QString)), m_historyWidget, SLOT(createDownloadItem(QString,QString)));
 }
 
 DownloadRightAreaWidget::~DownloadRightAreaWidget()
 {
     delete m_listWidget;
     delete m_historyWidget;
+    delete m_errorWidget;
 }
 
 void DownloadRightAreaWidget::initialize()
 {
     m_listWidget->initialize();
     m_historyWidget->initialize();
+    m_errorWidget->initialize();
 }
 
 DownloadRightAreaWidget *DownloadRightAreaWidget::instance()
@@ -69,7 +73,7 @@ void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication *ui)
 
     ui->centerStackedWidget->addWidget(m_listWidget);
     ui->centerStackedWidget->addWidget(m_historyWidget);
-
+    ui->centerStackedWidget->addWidget(m_errorWidget);
     ui->centerStackedWidget->setCurrentIndex(0);
 
     ui->startDownloadButton->setEnabled(false);
@@ -117,12 +121,12 @@ void DownloadRightAreaWidget::editSelectAll()
     }
 }
 
-void DownloadRightAreaWidget::editReverseSelect()
+void DownloadRightAreaWidget::editUnselectAll()
 {
     switch(m_ui->centerStackedWidget->currentIndex())
     {
-        case 0: m_listWidget->reverseSelect(); break;
-        case 1: m_historyWidget->selectAll(); break;
+        case 0: m_listWidget->unselectAll(); break;
+        case 1: m_historyWidget->unselectAll(); break;
         default: break;
     }
 }

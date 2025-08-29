@@ -55,8 +55,8 @@ void DownloadAbstractAnimationWidget::paintEvent(QPaintEvent *event)
         painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
         painter.setPen(QPen(QBrush(QColor(0, 0, 0)), 0.1, Qt::SolidLine));
 
-        int offset =  m_perWidth - (m_container[0]->width() + m_pix.width()) / 2;
-        offset = m_isAnimation ? (offset + m_x) : (offset + m_curIndex * m_perWidth);
+        int offset = m_perWidth - (m_container[0]->width() + m_pix.width()) / 2;
+            offset = m_isAnimation ? (offset + m_x) : (offset + m_curIndex * m_perWidth);
         if(m_showLine)
         {
             painter.drawLine(0, height(), offset, height());
@@ -72,7 +72,7 @@ void DownloadAbstractAnimationWidget::switchToSelectedItemStyle(int index)
     m_preIndex = m_curIndex;
     m_curIndex = index;
     m_animation->setStartValue(m_preIndex*m_perWidth);
-    m_animation->setEndValue(index*m_perWidth);
+    m_animation->setEndValue(index * m_perWidth);
     m_animation->start();
 
     Q_EMIT buttonClicked(index);

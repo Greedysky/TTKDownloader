@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">#backgroundMask{background:rgba(255, 255, 255, 240);}</string>
+    <string notr="true">background:white;</string>
    </property>
    <widget class="DownloadAnimationStackedWidget" name="stackedWidget">
     <property name="geometry">

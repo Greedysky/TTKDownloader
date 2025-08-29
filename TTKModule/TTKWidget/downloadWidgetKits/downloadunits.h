@@ -45,7 +45,7 @@ public:
     /*!
      * Get download list item widget.
      */
-    DownloadListItemWidget* downloadItemWidget();
+    DownloadListItemWidget* widget() const noexcept;
 
     /*!
      * Start to download.
@@ -55,11 +55,20 @@ public:
      * Pause to download.
      */
     void pause();
+    /*!
+     * Queue to download.
+     */
+    void queue();
 
+    /*!
+     * Get download running state.
+     */
+    bool isRunning() const noexcept;
     /*!
      * Get download state.
      */
-    TTK::DownloadState state() const;
+    TTK::DownloadState state() const noexcept;
+
     /*!
      * Get download url.
      */
@@ -72,10 +81,6 @@ public:
      * Get download path.
      */
     inline QString path() const noexcept { return m_path; }
-    /*!
-     * Set download state changed.
-     */
-    void setStateChanged(const QString &state);
 
 Q_SIGNALS:
     /*!
@@ -87,13 +92,13 @@ private Q_SLOTS:
     /*!
      * Download data from net finished.
      */
-    void downloadingFinished(const QString &path);
+    void downloadFinished(const QString &path);
 
 private:
     bool m_pause;
     QString m_url, m_name, m_path;
-    DownloadListItemWidget *m_downloadItem;
-    DownloadThreadManager *m_downloadThread;
+    DownloadListItemWidget *m_item;
+    DownloadThreadManager *m_manager;
 
 };
 

@@ -1,16 +1,11 @@
-#include "downloadhistoryrecordwidget.h"
-#include "downloaduiobject.h"
+#include "downloaderrorwidget.h"
 #include "downloadnumberutils.h"
 #include "downloadsettingmanager.h"
-#include "downloadmessagebox.h"
-#include "downloadurlutils.h"
 
 #include <QMenu>
-#include <QClipboard>
-#include <QApplication>
 #include <QFileIconProvider>
 
-DownloadHistoryRecordWidget::DownloadHistoryRecordWidget(QWidget *parent)
+DownloadErrorWidget::DownloadErrorWidget(QWidget *parent)
     : DownloadAbstractTableWidget(parent)
 {
     setColumnCount(4);
@@ -23,10 +18,10 @@ DownloadHistoryRecordWidget::DownloadHistoryRecordWidget(QWidget *parent)
     headerView->resizeSection(3, 50);
 }
 
-DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
+DownloadErrorWidget::~DownloadErrorWidget()
 {
     DownloadRecordConfigManager manager;
-    if(!manager.load(HISTORY_PATH_FULL))
+    if(!manager.load(ERROR_PATH_FULL))
     {
         return;
     }
@@ -34,10 +29,10 @@ DownloadHistoryRecordWidget::~DownloadHistoryRecordWidget()
     manager.writeBuffer(m_records);
 }
 
-void DownloadHistoryRecordWidget::initialize()
+void DownloadErrorWidget::initialize()
 {
     DownloadRecordConfigManager manager;
-    if(!manager.fromFile(HISTORY_PATH_FULL))
+    if(!manager.fromFile(ERROR_PATH_FULL))
     {
         return;
     }
@@ -52,7 +47,7 @@ void DownloadHistoryRecordWidget::initialize()
     }
 }
 
-void DownloadHistoryRecordWidget::resizeWindow()
+void DownloadErrorWidget::resizeWindow()
 {
     int w = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
     w += G_SETTING_PTR->value(DownloadSettingManager::ExpandMode).toInt();
@@ -60,13 +55,13 @@ void DownloadHistoryRecordWidget::resizeWindow()
     headerView->resizeSection(1, 495 + w - WINDOW_WIDTH_MIN);
 }
 
-void DownloadHistoryRecordWidget::removeItems()
+void DownloadErrorWidget::removeItems()
 {
     DownloadAbstractTableWidget::removeItems();
     setColumnCount(4);
 }
 
-void DownloadHistoryRecordWidget::reverseSelect()
+void DownloadErrorWidget::unselectAll()
 {
     TTKIntSet rows;
     for(QTableWidgetItem *item : selectedItems())
@@ -88,7 +83,7 @@ void DownloadHistoryRecordWidget::reverseSelect()
     setSelectionMode(QAbstractItemView::ExtendedSelection);
 }
 
-void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const QString &url)
+void DownloadErrorWidget::createDownloadItem(const QString &path, const QString &url)
 {
     const int row = rowCount();
     setRowCount(row + 1);
@@ -104,12 +99,12 @@ void DownloadHistoryRecordWidget::createDownloadItem(const QString &path, const 
     addCellItem(row, record);
 }
 
-void DownloadHistoryRecordWidget::deleteItemFromList()
+void DownloadErrorWidget::deleteItemFromList()
 {
     deleteItemFromList(false);
 }
 
-void DownloadHistoryRecordWidget::deleteItemFromList(bool file)
+void DownloadErrorWidget::deleteItemFromList(bool file)
 {
     for(QTableWidgetItem *item : selectedItems())
     {
@@ -121,69 +116,36 @@ void DownloadHistoryRecordWidget::deleteItemFromList(bool file)
 
         removeCellWidget(row, 0);
         removeRow(row);
-        DownloadRecord r = m_records.takeAt(row);
 
         if(file)
         {
+            const DownloadRecord &r = m_records.takeAt(row);
             QFile::remove(r.m_path);
             QFile::remove(r.m_path + STK_FILE);
         }
     }
 }
 
-void DownloadHistoryRecordWidget::deleteItemFromListWithFile()
+void DownloadErrorWidget::deleteItemFromListWithFile()
 {
     deleteItemFromList(true);
 }
 
-void DownloadHistoryRecordWidget::openFileDir()
-{
-    if(!isValid())
-    {
-        return;
-    }
-
-    QString path = m_records[ currentRow() ].m_path;
-    if(!TTK::Url::openUrl(path, true))
-    {
-        DownloadMessageBox message;
-        message.setText(tr("The origin one does not exist"));
-        message.exec();
-    }
-}
-
-void DownloadHistoryRecordWidget::copyUrlClicked()
-{
-    if(!isValid())
-    {
-        return;
-    }
-
-    QClipboard *clipBoard = QApplication::clipboard();
-    clipBoard->setText(m_records[ currentRow() ].m_path);
-}
-
-void DownloadHistoryRecordWidget::contextMenuEvent(QContextMenuEvent *event)
+void DownloadErrorWidget::contextMenuEvent(QContextMenuEvent *event)
 {
     DownloadAbstractTableWidget::contextMenuEvent(event);
 
     QMenu menu(this);
     menu.setStyleSheet(TTK::UI::MenuStyle02);
 
-    const int row = currentRow();
-    menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(row > -1);
-    menu.addSeparator();
-
-    menu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(row > -1);
-    menu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(row > -1);
-    menu.addAction(tr("Sort"));
+    const bool enabled = currentRow() > -1;
+    menu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(enabled);
+    menu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(enabled);
     menu.addAction(tr("Selected All"), this, SLOT(selectAll()));
-    menu.addSeparator();
-    menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(row > -1);
     menu.exec(QCursor::pos());
 }
 
-void DownloadHistoryRecordWidget::addCellItem(int index, const DownloadRecord &record)
+void DownloadErrorWidget::addCellItem(int index, const DownloadRecord &record)
 {
     setRowHeight(index, 50);
     const QFileInfo fin(record.m_path);

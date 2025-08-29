@@ -6,6 +6,7 @@
 
 #include <QLabel>
 #include <QBoxLayout>
+#include <QMouseEvent>
 #include <QProgressBar>
 #include <QFileIconProvider>
 
@@ -128,7 +129,7 @@ void DownloadListItemWidget::updateFileInfoChanged(const QString &name, qint64 s
 
 void DownloadListItemWidget::stateChanged(const QString &state)
 {
-    if(state == tr("D_Download"))
+    if(state == tr("StateDownload"))
     {
         m_timer.start(TTK_DN_S2MS / 2);
     }
@@ -149,6 +150,16 @@ void DownloadListItemWidget::updateDownloadSpeed()
     m_speedLabel->setText(TTK::Number::speedByteToLabel(delta));
 
     m_speedTimeLabel->setText(delta == 0 ? LABEL_MAX_TIME : timeStandardization((m_totalSize - m_previousSize)/delta + 1));
+}
+
+void DownloadListItemWidget::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    QWidget::mouseDoubleClickEvent(event);
+
+    if(event->button() == Qt::LeftButton)
+    {
+        Q_EMIT itemLeftDoublePressed();
+    }
 }
 
 QString DownloadListItemWidget::timeStandardization(qint64 time)

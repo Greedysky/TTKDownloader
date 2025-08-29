@@ -29,6 +29,7 @@ set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_HEADER_FILES
   ${TTK_WIDGET_CORE_DIR}/downloadtoolmenuwidget.h
   ${TTK_WIDGET_CORE_DIR}/downloadtransitionanimationlabel.h
   ${TTK_WIDGET_CORE_DIR}/downloadwidgetrenderer.h
+  ${TTK_WIDGET_CORE_DIR}/downloadtoastlabel.h
 )
 
 set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_SOURCE_FILES
@@ -42,4 +43,5 @@ set_property(GLOBAL PROPERTY TTK_WIDGET_CORE_KITS_SOURCE_FILES
   ${TTK_WIDGET_CORE_DIR}/downloadtoolmenuwidget.cpp
   ${TTK_WIDGET_CORE_DIR}/downloadtransitionanimationlabel.cpp
   ${TTK_WIDGET_CORE_DIR}/downloadwidgetrenderer.cpp
+  ${TTK_WIDGET_CORE_DIR}/downloadtoastlabel.cpp
 )

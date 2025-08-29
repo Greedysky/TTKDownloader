@@ -1,5 +1,5 @@
-#ifndef DOWNLOADHISTORYRECORDWIDGET_H
-#define DOWNLOADHISTORYRECORDWIDGET_H
+#ifndef DOWNLOADHISTORYWIDGET_H
+#define DOWNLOADHISTORYWIDGET_H
 
 /***************************************************************************
  * This file is part of the TTK Downloader project
@@ -22,21 +22,21 @@
 #include "downloadabstracttablewidget.h"
 #include "downloadrecordconfigmanager.h"
 
-/*! @brief The class of the download record widget.
+/*! @brief The class of the download history widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadHistoryRecordWidget : public DownloadAbstractTableWidget
+class TTK_MODULE_EXPORT DownloadHistoryWidget : public DownloadAbstractTableWidget
 {
     Q_OBJECT
 public:
     /*!
      * Object constructor.
      */
-    explicit DownloadHistoryRecordWidget(QWidget *parent = nullptr);
+    explicit DownloadHistoryWidget(QWidget *parent = nullptr);
     /*!
      * Object destructor.
      */
-    ~DownloadHistoryRecordWidget();
+    ~DownloadHistoryWidget();
 
     /*!
      * Init widget.
@@ -54,9 +54,9 @@ public:
 
 public Q_SLOTS:
     /*!
-     * Reverse select.
+     * Unselect all items.
      */
-    void reverseSelect();
+    void unselectAll();
     /*!
      * Create download item from download path.
      */
@@ -97,4 +97,4 @@ private:
 
 };
 
-#endif // DOWNLOADHISTORYRECORDWIDGET_H
+#endif // DOWNLOADHISTORYWIDGET_H

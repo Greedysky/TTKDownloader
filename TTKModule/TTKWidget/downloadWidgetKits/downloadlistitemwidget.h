@@ -47,6 +47,9 @@ public:
      */
     float percent() const;
 
+Q_SIGNALS:
+    void itemLeftDoublePressed();
+
 public Q_SLOTS:
     /*!
      * Background image changed.
@@ -72,6 +75,10 @@ private Q_SLOTS:
     void updateDownloadSpeed();
 
 private:
+    /*!
+     * Override the widget event.
+     */
+    virtual void mouseDoubleClickEvent(QMouseEvent *event) override final;
     /*!
      * Update download left time.
      */

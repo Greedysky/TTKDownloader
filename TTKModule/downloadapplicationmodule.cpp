@@ -18,7 +18,6 @@ DownloadApplicationModule::DownloadApplicationModule(QObject *parent)
     resetWindowGeometry();
 
     m_quitAnimation = new QPropertyAnimation(parent, "windowOpacity", this);
-    connect(m_quitAnimation, SIGNAL(valueChanged(QVariant)), parent, SLOT(update()));
 }
 
 DownloadApplicationModule::~DownloadApplicationModule()
@@ -40,7 +39,7 @@ void DownloadApplicationModule::quit()
 void DownloadApplicationModule::windowCloseAnimation()
 {
     float v = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
-          v = TTK::Image::boundValue<float>(1.0f, 0.35f, v);
+          v = TTK::Image::boundValue<float>(1.0f, 0.35f, TTK_RN_MAX - v);
 
     m_quitAnimation->stop();
     m_quitAnimation->setDuration(TTK_DN_S2MS);

@@ -82,7 +82,7 @@ Q_SIGNALS:
     /*!
      * Show error code index and string.
      */
-    void errorCode(int index, const QString &errorString);
+    void errorOccurred(int index, const QString &error);
     /*!
      * Download state changed.
      */
