@@ -59,6 +59,10 @@ Q_SIGNALS:
      * Download finished.
      */
     void downloadFinished(const QString &path, const QString &url);
+    /*!
+     * Deleted file to list finished.
+     */
+    void deleteFinished(const QString &path, const QString &url);
 
 public Q_SLOTS:
     /*!

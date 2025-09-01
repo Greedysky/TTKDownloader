@@ -22,6 +22,7 @@ DownloadRightAreaWidget::DownloadRightAreaWidget(QWidget *parent)
 
     connect(m_listWidget, SIGNAL(downloadStateChanged(bool)), SLOT(downloadStateChanged(bool)));
     connect(m_listWidget, SIGNAL(downloadFinished(QString,QString)), m_historyWidget, SLOT(createDownloadItem(QString,QString)));
+    connect(m_listWidget, SIGNAL(deleteFinished(QString,QString)), m_errorWidget, SLOT(createDownloadItem(QString,QString)));
 }
 
 DownloadRightAreaWidget::~DownloadRightAreaWidget()

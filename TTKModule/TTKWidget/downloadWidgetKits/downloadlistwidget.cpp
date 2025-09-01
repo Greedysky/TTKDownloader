@@ -93,11 +93,7 @@ void DownloadListWidget::resizeWindow()
 
 void DownloadListWidget::unselectAll()
 {
-    TTKIntSet rows;
-    for(QTableWidgetItem *item : selectedItems())
-    {
-        rows.insert(item->row());
-    }
+    const TTKIntList &rows = selectedRows();
 
     setSelectionMode(QAbstractItemView::MultiSelection);
 
@@ -120,9 +116,9 @@ void DownloadListWidget::pause()
         return;
     }
 
-    for(QTableWidgetItem *item : selectedItems())
+    for(const int row : selectedRows())
     {
-        pause(item->row());
+        pause(row);
     }
 
     nextUrlToDownload();
@@ -176,11 +172,15 @@ void DownloadListWidget::deleteItemFromList(bool file)
             continue;
         }
 
-        const QString &path = m_items[row]->path();
-        if(m_items[row]->isRunning())
+        DownloadUnits *unit = m_items[row];
+        if(unit->isRunning())
         {
             --m_maxDownloadCount;
         }
+
+        const QString &url = unit->url();
+        const QString &name = unit->name();
+        const QString &path = unit->path();
 
         removeCellWidget(row, 0);
         removeRow(row);
@@ -191,6 +191,8 @@ void DownloadListWidget::deleteItemFromList(bool file)
             QFile::remove(path);
             QFile::remove(path + STK_FILE);
         }
+
+        Q_EMIT deleteFinished(TTK::String::downloadPrefix() + name, url);
     }
 
     nextUrlToDownload();

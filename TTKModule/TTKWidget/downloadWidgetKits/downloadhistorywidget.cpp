@@ -113,14 +113,18 @@ void DownloadHistoryWidget::deleteItemFromList(bool file)
 {
     for(QTableWidgetItem *item : selectedItems())
     {
+        TTK_INFO_STREAM( "     " << item);
         const int row = item->row();
         if(m_records.isEmpty() || row < 0)
         {
             continue;
         }
 
+        TTK_INFO_STREAM(row << " " << this->rowCount());
+
         removeCellWidget(row, 0);
         removeRow(row);
+        TTK_INFO_STREAM(row << "   w2   ");
 
         if(file)
         {
@@ -128,7 +132,9 @@ void DownloadHistoryWidget::deleteItemFromList(bool file)
             QFile::remove(r.m_path);
             QFile::remove(r.m_path + STK_FILE);
         }
+        TTK_INFO_STREAM( "   11   ");
     }
+    TTK_INFO_STREAM( "   22   ");
 }
 
 void DownloadHistoryWidget::deleteItemFromListWithFile()
