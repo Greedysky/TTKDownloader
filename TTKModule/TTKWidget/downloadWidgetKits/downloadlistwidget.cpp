@@ -131,9 +131,9 @@ void DownloadListWidget::start()
         return;
     }
 
-    for(QTableWidgetItem *item : selectedItems())
+    for(const int row : selectedRows())
     {
-        start(item->row());
+        start(row);
     }
 }
 
@@ -164,9 +164,8 @@ void DownloadListWidget::deleteItemFromList(bool file)
         return;
     }
 
-    for(QTableWidgetItem *item : selectedItems())
+    for(const int row : selectedRows())
     {
-        const int row = item->row();
         if(row < 0)
         {
             continue;
@@ -191,8 +190,10 @@ void DownloadListWidget::deleteItemFromList(bool file)
             QFile::remove(path);
             QFile::remove(path + STK_FILE);
         }
-
-        Q_EMIT deleteFinished(TTK::String::downloadPrefix() + name, url);
+        else
+        {
+            Q_EMIT deleteFinished(TTK::String::downloadPrefix() + name, url);
+        }
     }
 
     nextUrlToDownload();
@@ -200,6 +201,13 @@ void DownloadListWidget::deleteItemFromList(bool file)
 
 void DownloadListWidget::deleteItemFromListWithFile()
 {
+    DownloadMessageBox message;
+    message.setText(tr("Are you sure to delete?"));
+    if(!message.exec())
+    {
+        return;
+    }
+
     deleteItemFromList(true);
 }
 

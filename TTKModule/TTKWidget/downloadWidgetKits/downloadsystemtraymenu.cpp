@@ -14,10 +14,10 @@ DownloadSystemTrayMenu::DownloadSystemTrayMenu(QWidget *parent)
     addAction(QIcon(":/contextMenu/lb_start_normal"), tr("Start"), rw, SLOT(startToDownload()));
     addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), rw, SLOT(stopToDownload()));
 
-    DownloadTopAreaWidget *tw = DownloadTopAreaWidget::instance();
+    DownloadTopAreaWidget *w = DownloadTopAreaWidget::instance();
     m_floatMenu = new QMenu(tr("FloatSetting"), this);
-    m_floatMenu->addAction(tr("Show"), tw, SLOT(showRemoteSpeedWidget()));
-    m_floatMenu->addAction(tr("Hide"), tw, SLOT(closeRemoteSpeedWidget()));
+    m_floatMenu->addAction(tr("Show"), w, SLOT(showRemoteSpeedWidget()));
+    m_floatMenu->addAction(tr("Hide"), w, SLOT(closeRemoteSpeedWidget()));
     addMenu(m_floatMenu);
 
     addAction(QIcon(":/contextMenu/lb_quit_normal"), tr("appClose(X)"), parent, SLOT(quitWindow()));

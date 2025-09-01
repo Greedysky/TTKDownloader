@@ -116,7 +116,7 @@ private:
     /*!
      * Find all theme in local directory.
      */
-    static void findThemeListByPath(const QString &dir, TTKIntList &data);
+    static void findThemeListByPath(const QString &dir, TTKIntList &items);
     /*!
      * Copy custom file index.
      */

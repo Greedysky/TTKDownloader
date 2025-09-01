@@ -52,6 +52,12 @@ public:
      */
     virtual void removeItems() override final;
 
+Q_SIGNALS:
+    /*!
+     * Deleted file to list finished.
+     */
+    void deleteFinished(const QString &path, const QString &url);
+
 public Q_SLOTS:
     /*!
      * Unselect all items.

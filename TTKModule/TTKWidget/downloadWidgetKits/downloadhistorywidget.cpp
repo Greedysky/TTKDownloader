@@ -68,12 +68,7 @@ void DownloadHistoryWidget::removeItems()
 
 void DownloadHistoryWidget::unselectAll()
 {
-    TTKIntSet rows;
-    for(QTableWidgetItem *item : selectedItems())
-    {
-        rows.insert(item->row());
-    }
-
+    const TTKIntList &rows = selectedRows();
     setSelectionMode(QAbstractItemView::MultiSelection);
 
     clearSelection();
@@ -111,34 +106,38 @@ void DownloadHistoryWidget::deleteItemFromList()
 
 void DownloadHistoryWidget::deleteItemFromList(bool file)
 {
-    for(QTableWidgetItem *item : selectedItems())
+    for(const int row : selectedRows())
     {
-        TTK_INFO_STREAM( "     " << item);
-        const int row = item->row();
         if(m_records.isEmpty() || row < 0)
         {
             continue;
         }
 
-        TTK_INFO_STREAM(row << " " << this->rowCount());
-
         removeCellWidget(row, 0);
         removeRow(row);
-        TTK_INFO_STREAM(row << "   w2   ");
 
+        const DownloadRecord &r = m_records.takeAt(row);
         if(file)
         {
-            const DownloadRecord &r = m_records.takeAt(row);
             QFile::remove(r.m_path);
             QFile::remove(r.m_path + STK_FILE);
         }
-        TTK_INFO_STREAM( "   11   ");
+        else
+        {
+            Q_EMIT deleteFinished(r.m_path, r.m_url);
+        }
     }
-    TTK_INFO_STREAM( "   22   ");
 }
 
 void DownloadHistoryWidget::deleteItemFromListWithFile()
 {
+    DownloadMessageBox message;
+    message.setText(tr("Are you sure to delete?"));
+    if(!message.exec())
+    {
+        return;
+    }
+
     deleteItemFromList(true);
 }
 

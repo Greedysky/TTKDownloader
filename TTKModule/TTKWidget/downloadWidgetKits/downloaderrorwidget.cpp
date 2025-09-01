@@ -1,6 +1,7 @@
 #include "downloaderrorwidget.h"
 #include "downloadnumberutils.h"
 #include "downloadsettingmanager.h"
+#include "downloadmessagebox.h"
 
 #include <QMenu>
 #include <QFileIconProvider>
@@ -63,12 +64,7 @@ void DownloadErrorWidget::removeItems()
 
 void DownloadErrorWidget::unselectAll()
 {
-    TTKIntSet rows;
-    for(QTableWidgetItem *item : selectedItems())
-    {
-        rows.insert(item->row());
-    }
-
+    const TTKIntList &rows = selectedRows();
     setSelectionMode(QAbstractItemView::MultiSelection);
 
     clearSelection();
@@ -106,9 +102,8 @@ void DownloadErrorWidget::deleteItemFromList()
 
 void DownloadErrorWidget::deleteItemFromList(bool file)
 {
-    for(QTableWidgetItem *item : selectedItems())
+    for(const int row : selectedRows())
     {
-        const int row = item->row();
         if(m_records.isEmpty() || row < 0)
         {
             continue;
@@ -128,6 +123,13 @@ void DownloadErrorWidget::deleteItemFromList(bool file)
 
 void DownloadErrorWidget::deleteItemFromListWithFile()
 {
+    DownloadMessageBox message;
+    message.setText(tr("Are you sure to delete?"));
+    if(!message.exec())
+    {
+        return;
+    }
+
     deleteItemFromList(true);
 }
 

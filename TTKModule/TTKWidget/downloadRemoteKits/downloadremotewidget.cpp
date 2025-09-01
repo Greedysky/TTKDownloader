@@ -68,12 +68,12 @@ void DownloadRemoteWidget::contextMenuEvent(QContextMenuEvent *event)
     menu.addAction(QIcon(":/contextMenu/lb_stop_normal"), tr("Stop"), rw, SLOT(stopToDownload()));
 
     const bool ishow = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspension).toBool();
-    DownloadTopAreaWidget *tw = DownloadTopAreaWidget::instance();
+    DownloadTopAreaWidget *w = DownloadTopAreaWidget::instance();
     QMenu *floatMenu = menu.addMenu(tr("FloatSetting"));
-    floatMenu->addAction(QIcon(ishow ? ":/contextMenu/lb_selected" : QString()), tr("Show"), tw, SLOT(showRemoteSpeedWidget()));
-    floatMenu->addAction(QIcon(!ishow ? ":/contextMenu/lb_selected" : QString()), tr("Hide"), tw, SLOT(closeRemoteSpeedWidget()));
+    floatMenu->addAction(QIcon(ishow ? ":/contextMenu/lb_selected" : QString()), tr("Show"), w, SLOT(showRemoteSpeedWidget()));
+    floatMenu->addAction(QIcon(!ishow ? ":/contextMenu/lb_selected" : QString()), tr("Hide"), w, SLOT(closeRemoteSpeedWidget()));
 
-    menu.addAction(tr("quit"), tw, SLOT(closeRemoteSpeedWidget()));
+    menu.addAction(tr("quit"), w, SLOT(closeRemoteSpeedWidget()));
     menu.exec(QCursor::pos());
 }
 
