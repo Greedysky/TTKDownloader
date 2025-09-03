@@ -119,7 +119,7 @@ DownloadFunctionListWidget::DownloadFunctionListWidget(QWidget *parent)
     m_items << item;
 
     item = new DownloadFunctionItemWidget(this);
-    item->setLabelText(tr("Delete"));
+    item->setLabelText(tr("Recycle"));
     item->setLabelIcon(":/appTools/item_delete_hover", ":/appTools/item_delete_normal");
     connect(item, SIGNAL(selectedChanged(DownloadFunctionItemWidget*)), SLOT(selectedChanged(DownloadFunctionItemWidget*)));
     layout->addWidget(item);

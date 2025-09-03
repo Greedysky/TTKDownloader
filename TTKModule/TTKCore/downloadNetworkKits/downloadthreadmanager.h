@@ -99,9 +99,17 @@ private Q_SLOTS:
 
 private:
     /*!
+     * Update download state.
+     */
+    void updateState(TTK::DownloadState state);
+    /*!
      * Download data from net finished.
      */
     void downloadingFinish();
+    /*!
+     * Download data from net error.
+     */
+    void downloadingError();
     /*!
      * Get download file size.
      */

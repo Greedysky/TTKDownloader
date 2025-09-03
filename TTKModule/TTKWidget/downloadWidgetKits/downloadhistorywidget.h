@@ -19,13 +19,12 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadabstracttablewidget.h"
-#include "downloadrecordconfigmanager.h"
+#include "downloadbasewidget.h"
 
 /*! @brief The class of the download history widget.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadHistoryWidget : public DownloadAbstractTableWidget
+class TTK_MODULE_EXPORT DownloadHistoryWidget : public DownloadBaseWidget
 {
     Q_OBJECT
 public:
@@ -33,24 +32,6 @@ public:
      * Object constructor.
      */
     explicit DownloadHistoryWidget(QWidget *parent = nullptr);
-    /*!
-     * Object destructor.
-     */
-    ~DownloadHistoryWidget();
-
-    /*!
-     * Init widget.
-     */
-    void initialize();
-    /*!
-     * Resize window bound by widgte resize called.
-     */
-    void resizeWindow();
-
-    /*!
-     * Remove all items.
-     */
-    virtual void removeItems() override final;
 
 Q_SIGNALS:
     /*!
@@ -58,48 +39,11 @@ Q_SIGNALS:
      */
     void deleteFinished(const QString &path, const QString &url);
 
-public Q_SLOTS:
-    /*!
-     * Unselect all items.
-     */
-    void unselectAll();
-    /*!
-     * Create download item from download path.
-     */
-    void createDownloadItem(const QString &path, const QString &url);
-    /*!
-     * Delete selected item from list.
-     */
-    void deleteItemFromList();
-    /*!
-     * Delete selected item from list.
-     */
-    void deleteItemFromList(bool file);
-    /*!
-     * Delete selected item from list with file.
-     */
-    void deleteItemFromListWithFile();
-    /*!
-     * Open the local path.
-     */
-    void openFileDir();
-    /*!
-     * Copy url context.
-     */
-    void copyUrlClicked();
-
 private:
     /*!
      * Override the widget event.
      */
     virtual void contextMenuEvent(QContextMenuEvent *event) override final;
-    /*!
-     * Create item by index and name and size and time.
-     */
-    void addCellItem(int index, const DownloadRecord &record);
-
-    DownloadRecordList m_records;
-    int m_loadRecordCount;
 
 };
 

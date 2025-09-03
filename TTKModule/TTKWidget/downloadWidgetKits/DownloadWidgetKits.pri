@@ -19,6 +19,7 @@
 INCLUDEPATH += $$PWD
 
 HEADERS += \
+    $$PWD/downloadbasewidget.h \
     $$PWD/downloadbackgroundskindialog.h \
     $$PWD/downloadfuntionanimationwidget.h \
     $$PWD/downloadbackgroundlistwidget.h \
@@ -37,6 +38,7 @@ HEADERS += \
     $$PWD/downloadunits.h
 
 SOURCES += \
+    $$PWD/downloadbasewidget.cpp \
     $$PWD/downloadbackgroundskindialog.cpp \
     $$PWD/downloadfuntionanimationwidget.cpp \
     $$PWD/downloadbackgroundpopwidget.cpp \

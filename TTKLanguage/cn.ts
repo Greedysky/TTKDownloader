@@ -107,6 +107,37 @@
     </message>
 </context>
 <context>
+    <name>DownloadBaseWidget</name>
+    <message>
+        <source>Are you sure to delete?</source>
+        <translation>你确定要删除吗?</translation>
+    </message>
+    <message>
+        <source>The origin one does not exist</source>
+        <translation>您所指定的文件已被移动或者不存在</translation>
+    </message>
+    <message>
+        <source>Delete</source>
+        <translation>删除任务</translation>
+    </message>
+    <message>
+        <source>Delete With File</source>
+        <translation>彻底删除任务</translation>
+    </message>
+    <message>
+        <source>Restart</source>
+        <translation>重新下载</translation>
+    </message>
+    <message>
+        <source>Selected All</source>
+        <translation>全部选定</translation>
+    </message>
+    <message>
+        <source>Copy Url</source>
+        <translation>复制下载链接</translation>
+    </message>
+</context>
+<context>
     <name>DownloadBottomAreaWidget</name>
     <message>
         <source>TTKDownloader</source>
@@ -193,21 +224,6 @@
     </message>
 </context>
 <context>
-    <name>DownloadErrorWidget</name>
-    <message>
-        <source>Delete</source>
-        <translation>删除</translation>
-    </message>
-    <message>
-        <source>Delete With File</source>
-        <translation>彻底删除</translation>
-    </message>
-    <message>
-        <source>Selected All</source>
-        <translation>全部选定</translation>
-    </message>
-</context>
-<context>
     <name>DownloadFunctionListWidget</name>
     <message>
         <source>Download</source>
@@ -218,7 +234,7 @@
         <translation>已完成</translation>
     </message>
     <message>
-        <source>Delete</source>
+        <source>Recycle</source>
         <translation>垃圾箱</translation>
     </message>
 </context>
@@ -227,26 +243,6 @@
     <message>
         <source>Open File</source>
         <translation>打开文件夹</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>删除</translation>
-    </message>
-    <message>
-        <source>Delete With File</source>
-        <translation>彻底删除</translation>
-    </message>
-    <message>
-        <source>Selected All</source>
-        <translation>全部选定</translation>
-    </message>
-    <message>
-        <source>Copy Url</source>
-        <translation>复制下载链接</translation>
-    </message>
-    <message>
-        <source>The origin one does not exist</source>
-        <translation>您所指定的文件已被移动或者不存在</translation>
     </message>
 </context>
 <context>
@@ -319,6 +315,14 @@
     <message>
         <source>Download url is already exist</source>
         <translation>下载链接地址已经存在</translation>
+    </message>
+    <message>
+        <source>Are you sure to delete?</source>
+        <translation>你确定要删除吗?</translation>
+    </message>
+    <message>
+        <source>Restart</source>
+        <translation>重新下载</translation>
     </message>
 </context>
 <context>
@@ -682,16 +686,8 @@ Copyright© 2015 - 2025 Greedysky All Rights Reserved
 <context>
     <name>DownloadThreadManager</name>
     <message>
-        <source>StateWaiting</source>
-        <translation>连接资源</translation>
-    </message>
-    <message>
         <source>StateDownload</source>
         <translation>正在下载</translation>
-    </message>
-    <message>
-        <source>StateFinished</source>
-        <translation>完成</translation>
     </message>
     <message>
         <source>StatePause</source>
@@ -700,6 +696,22 @@ Copyright© 2015 - 2025 Greedysky All Rights Reserved
     <message>
         <source>StateQueue</source>
         <translation>排队中</translation>
+    </message>
+    <message>
+        <source>StateWait</source>
+        <translation>连接资源</translation>
+    </message>
+    <message>
+        <source>StateStop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>StateFinish</source>
+        <translation>完成</translation>
+    </message>
+    <message>
+        <source>StateError</source>
+        <translation>错误</translation>
     </message>
 </context>
 <context>

@@ -98,7 +98,7 @@ void DownloadThread::handleError(QNetworkReply::NetworkError code)
 
     Q_EMIT errorOccurred(m_info.m_index, "QNetworkReply::NetworkError : " + QString::number(TTKStaticCast(int, code)) + " \n" + m_reply->errorString());
 
-    m_state = TTK::DownloadState::Stop;
+    m_state = TTK::DownloadState::Error;
     m_reply->abort();
     m_info.m_file->flush();
     m_reply->deleteLater();

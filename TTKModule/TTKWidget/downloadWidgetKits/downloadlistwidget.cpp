@@ -14,7 +14,6 @@
 
 #include <qmath.h>
 
-#include <QMenu>
 #include <QClipboard>
 #include <QHeaderView>
 #include <QApplication>
@@ -94,7 +93,6 @@ void DownloadListWidget::resizeWindow()
 void DownloadListWidget::unselectAll()
 {
     const TTKIntList &rows = selectedRows();
-
     setSelectionMode(QAbstractItemView::MultiSelection);
 
     clearSelection();
@@ -213,6 +211,14 @@ void DownloadListWidget::deleteItemFromListWithFile()
 
 void DownloadListWidget::removeItemWidget(DownloadUnits *unit)
 {
+    if(!unit)
+    {
+        TTK_INFO_STREAM("Current file is error occurred, to do next");
+        --m_maxDownloadCount;
+        nextUrlToDownload();
+        return;
+    }
+
     if(m_items.isEmpty())
     {
         return;
@@ -330,8 +336,9 @@ void DownloadListWidget::contextMenuEvent(QContextMenuEvent *event)
 
     const int row = currentRow();
     const bool enabled = row > -1;
+    const bool single = selectedRows().count() == 1;
 
-    menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(enabled);
+    menu.addAction(tr("Open File"), this, SLOT(openFileDir()))->setEnabled(enabled && single);
     menu.addSeparator();
 
     bool downloadState = false;
@@ -351,10 +358,11 @@ void DownloadListWidget::contextMenuEvent(QContextMenuEvent *event)
 
     menu.addAction(QIcon(":/tiny/btn_close_hover"), tr("Delete"), this, SLOT(deleteItemFromList()))->setEnabled(enabled);
     menu.addAction(QIcon(":/tiny/btn_close_normal"), tr("Delete With File"), this, SLOT(deleteItemFromListWithFile()))->setEnabled(enabled);
-    menu.addAction(tr("Sort"));
-    menu.addAction(tr("Selected All"), this, SLOT(selectAll()));
+    menu.addAction(tr("Restart"));
     menu.addSeparator();
-    menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(enabled);
+    menu.addAction(tr("Sort"))->setEnabled(false);
+    menu.addAction(tr("Selected All"), this, SLOT(selectAll()));
+    menu.addAction(tr("Copy Url"), this, SLOT(copyUrlClicked()))->setEnabled(enabled && single);
     menu.exec(QCursor::pos());
 }
 

@@ -68,18 +68,18 @@ QString DownloadThreadManager::path() const
 
 bool DownloadThreadManager::download(const QString &url, const QString &name)
 {
-    Q_EMIT stateChanged(tr("StateWaiting"));
-
     if(m_state == TTK::DownloadState::Download)
     {
         TTK_INFO_STREAM("Current is downloading a file");
-        return false;
+        return true;
     }
 
-    m_state = TTK::DownloadState::Wait;
+    updateState(TTK::DownloadState::Wait);
+
     if(m_runningCount < 1 || 10 < m_runningCount)
     {
         TTK_INFO_STREAM("Download thread count error");
+        updateState(TTK::DownloadState::Error);
         return false;
     }
 
@@ -87,6 +87,7 @@ bool DownloadThreadManager::download(const QString &url, const QString &name)
     if((m_totalSize = fileSize(durl)) == -1)
     {
         TTK_ERROR_STREAM("Download file size error");
+        updateState(TTK::DownloadState::Error);
         return false;
     }
 
@@ -145,6 +146,8 @@ bool DownloadThreadManager::download(const QString &url, const QString &name)
         TTK_ERROR_STREAM("Can not open file : " + m_file->errorString());
         delete m_file;
         m_file = nullptr;
+
+        updateState(TTK::DownloadState::Error);
         return false;
     }
 
@@ -160,7 +163,7 @@ bool DownloadThreadManager::download(const QString &url, const QString &name)
 
         if(!records.isEmpty())
         {
-            DownloadBreakPointItem item = records[i];
+            const DownloadBreakPointItem &item = records[i];
             startPoint = !item.isEmpty() ? item.m_start : startPoint;
             endPoint = !item.isEmpty() ? item.m_end : endPoint;
             readySize = !item.isEmpty() ? item.m_ready : readySize;
@@ -174,41 +177,68 @@ bool DownloadThreadManager::download(const QString &url, const QString &name)
         m_threads.append(thread);
     }
 
-    m_state = TTK::DownloadState::Download;
-    Q_EMIT stateChanged(tr("StateDownload"));
+    updateState(TTK::DownloadState::Download);
     m_runningCount = THREADCOUNT;
     return true;
 }
 
+void DownloadThreadManager::updateState(TTK::DownloadState state)
+{
+    QString v;
+    switch(m_state = state)
+    {
+    case TTK::DownloadState::Queue: v = tr("StateQueue"); break;
+    case TTK::DownloadState::Wait: v = tr("StateWait"); break;
+    case TTK::DownloadState::Download: v = tr("StateDownload"); break;
+    case TTK::DownloadState::Pause: v = tr("StatePause"); break;
+    case TTK::DownloadState::Stop: v = tr("StateStop"); break;
+    case TTK::DownloadState::Finish: v = tr("StateFinish"); break;
+    case TTK::DownloadState::Error: v = tr("StateError"); break;
+    default: break;
+    }
+
+    Q_EMIT stateChanged(v);
+
+    if(m_state == TTK::DownloadState::Error)
+    {
+        downloadingError();
+    }
+}
+
 void DownloadThreadManager::downloadingFinish()
 {
-    QString fileName = m_file->fileName();
+    const QString &fileName = m_file->fileName();
     m_file->flush();
     m_file->close();
     delete m_file;
     m_file = nullptr;
-    m_state = TTK::DownloadState::Finish;
+    updateState(TTK::DownloadState::Finish);
 
     QFile::remove(fileName + STK_FILE);
 
     qDeleteAll(m_threads);
     m_threads.clear();
 
-    Q_EMIT stateChanged(tr("StateFinished"));
     Q_EMIT downloadFinished(fileName);
+}
+
+void DownloadThreadManager::downloadingError()
+{
+    delete m_file;
+    m_file = nullptr;
+
+    Q_EMIT downloadFinished({});
 }
 
 void DownloadThreadManager::pause()
 {
-    Q_EMIT stateChanged(tr("StatePause"));
-
     if(m_state != TTK::DownloadState::Download && m_state != TTK::DownloadState::Wait)
     {
         TTK_ERROR_STREAM("Current is not downloading");
         return;
     }
 
-    m_state = TTK::DownloadState::Pause;
+    updateState(TTK::DownloadState::Pause);
 
     DownloadBreakPointItemList records;
     for(DownloadThread *thread : qAsConst(m_threads))
@@ -235,14 +265,7 @@ void DownloadThreadManager::pause()
 
 void DownloadThreadManager::restart()
 {
-    if(m_state != TTK::DownloadState::Pause)
-    {
-        TTK_ERROR_STREAM("Current is not paused");
-        return;
-    }
-
-    m_state = TTK::DownloadState::Download;
-    Q_EMIT stateChanged(tr("StateDownload"));
+    updateState(TTK::DownloadState::Download);
 
     for(DownloadThread *thread : qAsConst(m_threads))
     {
@@ -252,8 +275,7 @@ void DownloadThreadManager::restart()
 
 void DownloadThreadManager::queue()
 {
-    m_state = TTK::DownloadState::Queue;
-    Q_EMIT stateChanged(tr("StateQueue"));
+    updateState(TTK::DownloadState::Queue);
 }
 
 void DownloadThreadManager::finished(int index)

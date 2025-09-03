@@ -77,6 +77,13 @@ bool DownloadUnits::isRunning() const noexcept
 
 void DownloadUnits::downloadFinished(const QString &path)
 {
-    m_path = path;
-    Q_EMIT removeItemWidget(this);
+    if(path.isEmpty())
+    {
+        Q_EMIT removeItemWidget(nullptr);
+    }
+    else
+    {
+        m_path = path;
+        Q_EMIT removeItemWidget(this);
+    }
 }

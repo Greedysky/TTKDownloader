@@ -95,12 +95,13 @@ namespace TTK
 {
     enum class DownloadState
     {
-        Queue = 0, /*!< Download waiting state */
-        Wait,      /*!< Download waiting state */
+        Queue = 0, /*!< Download queue state */
+        Wait,      /*!< Download wait state */
         Download,  /*!< Download download state */
         Pause,     /*!< Download pause state */
         Stop,      /*!< Download stop state */
-        Finish     /*!< Download finished state */
+        Finish,    /*!< Download finish state */
+        Error      /*!< Download error state */
     };
 
     /*!
