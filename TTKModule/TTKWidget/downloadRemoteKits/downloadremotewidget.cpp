@@ -3,6 +3,7 @@
 #include "downloadrightareawidget.h"
 #include "downloadtopareawidget.h"
 #include "downloaduiobject.h"
+#include "ttkdesktopscreen.h"
 
 #include <qmath.h>
 #include <QMenu>
@@ -17,7 +18,7 @@ DownloadRemoteWidget::DownloadRemoteWidget(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose);
 
     setGeometry(200, 200, 64, 64);
-    adjustPostion(this);
+    adjustPosition(this);
 
     drawWindowShadow(false);
     setMouseTracking(true);
@@ -49,10 +50,10 @@ void DownloadRemoteWidget::show()
     G_SETTING_PTR->setValue(DownloadSettingManager::SkinSuspension, true);
 }
 
-void DownloadRemoteWidget::adjustPostion(QWidget *w)
+void DownloadRemoteWidget::adjustPosition(QWidget *w)
 {
-    const QSize &windowSize = G_SETTING_PTR->value(DownloadSettingManager::ScreenSize).toSize();
-    w->move(windowSize.width() - w->width() - 150, w->height() + 70);
+    const QRect &rect = TTKDesktopScreen::currentGeometry();
+    w->move(rect.x() + rect.width() - w->width() - 150, rect.y() + w->height() + 70);
 }
 
 void DownloadRemoteWidget::contextMenuEvent(QContextMenuEvent *event)

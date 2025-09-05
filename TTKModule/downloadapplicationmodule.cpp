@@ -57,8 +57,8 @@ void DownloadApplicationModule::showAboutWidget()
 
 void DownloadApplicationModule::resetWindowGeometry()
 {
-    const QRect &geometry = TTKDesktopScreen::geometry();
-    G_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, geometry.size());
+    const QRect &rect = TTKDesktopScreen::currentGeometry();
+    G_SETTING_PTR->setValue(DownloadSettingManager::ScreenSize, rect.size());
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, QSize(WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN));
 
     QWidget *w = DownloadApplication::instance();
@@ -66,5 +66,8 @@ void DownloadApplicationModule::resetWindowGeometry()
     {
         w->showNormal();
     }
-    w->setGeometry((geometry.width() - WINDOW_WIDTH_MIN) / 2, (geometry.height() - WINDOW_HEIGHT_MIN) / 2, WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
+
+    w->setGeometry(rect.x() + (rect.width() - WINDOW_WIDTH_MIN) / 2,
+                   rect.y() + (rect.height() - WINDOW_HEIGHT_MIN) / 2,
+                   WINDOW_WIDTH_MIN, WINDOW_HEIGHT_MIN);
 }

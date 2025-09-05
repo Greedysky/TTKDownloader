@@ -49,9 +49,9 @@ public Q_SLOTS:
 
 private:
     /*!
-     * Adjust the widget postion.
+     * Adjust the widget position.
      */
-    void adjustPostion(QWidget *w);
+    void adjustPosition(QWidget *w);
     /*!
      * Override the widget event.
      */
