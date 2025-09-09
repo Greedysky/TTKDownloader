@@ -63,7 +63,7 @@
 #define LIST_PATH               TTK_STR_CAT("list", TPL_FILE)
 #define COFIG_PATH              TTK_STR_CAT("config", XML_FILE)
 #define HISTORY_PATH            TTK_STR_CAT("history", TKF_FILE)
-#define ERROR_PATH              TTK_STR_CAT("error", TKF_FILE)
+#define RECYCLE_PATH            TTK_STR_CAT("recycle", TKF_FILE)
 
 
 #define MAIN_DIR_FULL           TTK::applicationPath() + TTK_PARENT_DIR
@@ -77,7 +77,7 @@
 #define LIST_PATH_FULL          APPDATA_DIR_FULL + LIST_PATH
 #define COFIG_PATH_FULL         APPDATA_DIR_FULL + COFIG_PATH
 #define HISTORY_PATH_FULL       APPDATA_DIR_FULL + HISTORY_PATH
-#define ERROR_PATH_FULL         APPDATA_DIR_FULL + ERROR_PATH
+#define RECYCLE_PATH_FULL       APPDATA_DIR_FULL + RECYCLE_PATH
 #define USER_THEME_DIR_FULL     APPDATA_DIR_FULL + USER_THEME_DIR
 
 #define THEME_DIR_FULL          TTK::applicationPath() + THEME_DIR

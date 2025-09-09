@@ -3,7 +3,7 @@
 DownloadErrorWidget::DownloadErrorWidget(QWidget *parent)
     : DownloadBaseWidget(parent)
 {
-    m_path = ERROR_PATH_FULL;
+    m_path = RECYCLE_PATH_FULL;
 }
 
 void DownloadErrorWidget::contextMenuEvent(QContextMenuEvent *event)

@@ -21,6 +21,7 @@ void DownloadConfigModule::initialize() const
     copyFileOverwrite(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFileOverwrite(":/data/list.tkpl", TTK_LIST_PATH_FULL);
     copyFileOverwrite(":/data/history.tkf", TTK_HISTORY_PATH_FULL);
+    copyFileOverwrite(":/data/recycle.tkf", TTK_RECYCLE_PATH_FULL);
 }
 
 void DownloadConfigModule::reset() const
@@ -50,6 +51,7 @@ void DownloadConfigModule::checkFileNeededExist() const
     copyFile(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFile(":/data/list.tkpl", TTK_LIST_PATH_FULL);
     copyFile(":/data/history.tkf", TTK_HISTORY_PATH_FULL);
+    copyFile(":/data/recycle.tkf", TTK_RECYCLE_PATH_FULL);
 
 #ifdef Q_OS_UNIX
     if(!QFile::exists(MAIN_DIR_FULL + "ttk_runtime"))
