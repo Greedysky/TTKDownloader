@@ -110,20 +110,24 @@ QStringList DownloadNetworkSpeedThread::newtworkNames() const
     }
     delete[] pTable;
 #elif defined Q_OS_UNIX
-    struct ifaddrs *ifa = nullptr, *ifList;
-    if(getifaddrs(&ifList) < 0)
+    struct ifaddrs *ifAddr = nullptr;
+    if(getifaddrs(&ifAddr) < 0)
     {
-        return {};
+        return names;
     }
 
-    for(ifa = ifList; ifa != nullptr; ifa = ifa->ifa_next)
+    for(auto ifa = ifAddr; ifa != nullptr; ifa = ifa->ifa_next)
     {
         if(ifa->ifa_addr && ifa->ifa_addr->sa_family == AF_INET)
         {
             names << QString(ifa->ifa_name);
         }
     }
-    freeifaddrs(ifList);
+
+    if(ifAddr)
+    {
+        freeifaddrs(ifAddr);
+    }
 #endif
     return names;
 }
