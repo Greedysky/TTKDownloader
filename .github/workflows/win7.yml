@@ -51,14 +51,17 @@ jobs:
 
       - name: Build package
         run: |
+          # add dependency for theme
           curl -O https://github.com/Greedysky/Resource/releases/download/1.0.0.0/theme.7z -L ${{runner.workspace}}/install/theme.7z
           7z x theme.7z
           mv GTheme ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}
+          # add dependency libraries and so on
           windeployqt ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}/TTKService.exe
           cp ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}/libgcc_s_seh-1.dll ${{env.TTK_MODULE}}
           cp ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}/libstdc++-6.dll ${{env.TTK_MODULE}}
           cp ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}/libwinpthread-1.dll ${{env.TTK_MODULE}}
           cp ${{runner.workspace}}/Qt/${{matrix.qt_version}}/mingw81_64/bin/Qt5Xml.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}
+          # add portable binary package
           7z a ${{env.TTK_MODULE}}-${{env.TTK_VERSTION}}-win7-x64.7z ${{env.TTK_MODULE}}
         working-directory: ${{runner.workspace}}/install
 
