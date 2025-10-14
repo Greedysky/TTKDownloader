@@ -55,10 +55,6 @@ jobs:
 
       - name: Build package
         run: |
-          # add dependency for openssl
-          wget https://github.com/Greedysky/Resource/releases/download/1.0.0.0/openssl.7z
-          7z x openssl.7z
-          cp linux64/* ${{env.TTK_MODULE}}/lib
           # add dependency for theme
           wget https://github.com/Greedysky/Resource/releases/download/1.0.0.0/theme.7z
           7z x theme.7z
@@ -70,6 +66,10 @@ jobs:
           mv image/usr/lib image/usr/plugins image/usr/translations image/usr/bin/qt.conf ../
           rm -rf image
           cd ../../
+          # add dependency for openssl
+          wget https://github.com/Greedysky/Resource/releases/download/1.0.0.0/openssl.7z
+          7z x openssl.7z
+          cp linux64/* ${{env.TTK_MODULE}}/lib
           # add portable binary package
           7z a ${{env.TTK_MODULE}}-${{env.TTK_VERSTION}}-linux-x64.7z ${{env.TTK_MODULE}}
         working-directory: ${{runner.workspace}}/install
