@@ -6,6 +6,7 @@
         <startUpMode value="0"/>
         <startUpRunMode value="0"/>
         <slienceRunMode value="0"/>
+        <logTrackEnable value="0"/>
     </plusSetting>
     <backgroundSetting>
         <backgroundThemeValue value="theme-29"/>

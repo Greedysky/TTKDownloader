@@ -30,6 +30,7 @@ bool DownloadConfigManager::readBuffer(int &items)
     G_SETTING_PTR->setValue(DownloadSettingManager::StartUpMode, readAttributeByTagName("startUpMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunMode, readAttributeByTagName("startUpRunMode").toInt());
     G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunMode, readAttributeByTagName("slienceRunMode").toInt());
+    G_SETTING_PTR->setValue(DownloadSettingManager::LogTrackEnable, readAttributeByTagName("logTrackEnable").toInt());
 
     G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundThemeValue, readAttributeByTagName("backgroundThemeValue"));
     G_SETTING_PTR->setValue(DownloadSettingManager::BackgroundTransparent, readAttributeByTagName("backgroundTransparent").toInt());
@@ -62,6 +63,7 @@ bool DownloadConfigManager::writeBuffer(const int &items)
     const int startupMode = G_SETTING_PTR->value(DownloadSettingManager::StartUpMode).toInt();
     const int startupRunMode = G_SETTING_PTR->value(DownloadSettingManager::StartUpRunMode).toInt();
     const int slienceRunMode = G_SETTING_PTR->value(DownloadSettingManager::SlienceRunMode).toInt();
+    const int logTrackEnable = G_SETTING_PTR->value(DownloadSettingManager::LogTrackEnable).toInt();
 
     const QString &backgroundThemeValue = G_SETTING_PTR->value(DownloadSettingManager::BackgroundThemeValue).toString();
     const int backgroundTransparent = G_SETTING_PTR->value(DownloadSettingManager::BackgroundTransparent).toInt();
@@ -93,6 +95,7 @@ bool DownloadConfigManager::writeBuffer(const int &items)
     writeDomElement(plusSettingDom, "startUpMode", {"value", startupMode});
     writeDomElement(plusSettingDom, "startUpRunMode", {"value", startupRunMode});
     writeDomElement(plusSettingDom, "slienceRunMode", {"value", slienceRunMode});
+    writeDomElement(plusSettingDom, "logTrackEnable", {"value", logTrackEnable});
 
     writeDomElement(backgroundSettingDom, "backgroundThemeValue", {"value", backgroundThemeValue});
     writeDomElement(backgroundSettingDom, "backgroundTransparent", {"value", backgroundTransparent});

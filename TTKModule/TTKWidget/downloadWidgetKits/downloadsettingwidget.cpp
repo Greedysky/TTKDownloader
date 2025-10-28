@@ -119,6 +119,7 @@ void DownloadSettingWidget::initialize()
     m_ui->startupCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpMode).toBool());
     m_ui->startupRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::StartUpRunMode).toBool());
     m_ui->slienceRunCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::SlienceRunMode).toBool());
+    m_ui->logTrackCheckBox->setChecked(G_SETTING_PTR->value(DownloadSettingManager::LogTrackEnable).toBool());
 
     //
     QStringList hotkeys = G_SETTING_PTR->value(DownloadSettingManager::HotkeyValue).toString().split(TTK_SPLITER);
@@ -208,6 +209,7 @@ void DownloadSettingWidget::saveParameterSettings()
     G_SETTING_PTR->setValue(DownloadSettingManager::StartUpMode, m_ui->startupCheckBox->isChecked());
     G_SETTING_PTR->setValue(DownloadSettingManager::StartUpRunMode, m_ui->startupRunCheckBox->isChecked());
     G_SETTING_PTR->setValue(DownloadSettingManager::SlienceRunMode, m_ui->slienceRunCheckBox->isChecked());
+    G_SETTING_PTR->setValue(DownloadSettingManager::LogTrackEnable, m_ui->logTrackCheckBox->isChecked());
 
 
     G_SETTING_PTR->setValue(DownloadSettingManager::DownloadLimit, m_ui->downloadLimitRadioBox->isChecked());
@@ -246,8 +248,8 @@ void DownloadSettingWidget::initNormalSettingWidget()
 
     m_ui->startupCheckBox->setStyleSheet(TTK::UI::CheckBoxStyle01);
     m_ui->startupRunCheckBox->setStyleSheet(TTK::UI::CheckBoxStyle01);
-
     m_ui->slienceRunCheckBox->setStyleSheet(TTK::UI::CheckBoxStyle01);
+    m_ui->logTrackCheckBox->setStyleSheet(TTK::UI::CheckBoxStyle01);
 
 #ifdef Q_OS_UNIX
     m_ui->downloadDirButton->setFocusPolicy(Qt::NoFocus);

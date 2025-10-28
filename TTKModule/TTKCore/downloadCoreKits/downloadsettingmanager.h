@@ -47,6 +47,7 @@ public:
         StartUpMode = 0x2001,               /*!< Start Up Mode Parameter*/
         StartUpRunMode = 0x2002,            /*!< Start Up Run Mode Parameter*/
         SlienceRunMode = 0x2003,            /*!< Slience Run Mode Parameter*/
+        LogTrackEnable = 0x2004,            /*!< Log Track Enable Parameter*/
         //
         BackgroundThemeValue = 0x3000,      /*!< Background Theme Parameter*/
         BackgroundTransparent = 0x3001,     /*!< Background Transparent Parameter*/

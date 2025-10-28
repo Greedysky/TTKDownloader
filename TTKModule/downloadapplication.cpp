@@ -12,6 +12,7 @@
 #include "downloaduiobject.h"
 #include "downloadwidgetutils.h"
 #include "ttkversion.h"
+#include "ttklogoutput.h"
 
 #include <QMenu>
 #include <QResizeEvent>
@@ -76,8 +77,12 @@ void DownloadApplication::applyParameter()
     //This attribute is effective immediately.
     bool config = G_SETTING_PTR->value(DownloadSettingManager::CloseEventMode).toBool();
     m_bottomAreaWidget->setSystemCloseConfig(config);
+
     config = G_SETTING_PTR->value(DownloadSettingManager::SkinSuspension).toBool();
     config ? m_topAreaWidget->showRemoteSpeedWidget() : m_topAreaWidget->closeRemoteSpeedWidget();
+
+    config = G_SETTING_PTR->value(DownloadSettingManager::LogTrackEnable).toBool();
+    config ? TTK::installLogHandler() : TTK::removeLogHandler();
 }
 
 void DownloadApplication::quitWindow()

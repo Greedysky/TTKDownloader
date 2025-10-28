@@ -220,7 +220,7 @@ font-weight:bold;</string>
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>255</y>
+       <y>245</y>
        <width>415</width>
        <height>20</height>
       </rect>
@@ -238,13 +238,26 @@ font-weight:bold;</string>
      <property name="geometry">
       <rect>
        <x>25</x>
-       <y>280</y>
+       <y>270</y>
        <width>200</width>
        <height>20</height>
       </rect>
      </property>
      <property name="text">
       <string>启动静默下载</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="logTrackCheckBox">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>185</y>
+       <width>200</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>日志追踪模式</string>
      </property>
     </widget>
    </widget>
