@@ -23,7 +23,7 @@ jobs:
 
     env:
       QT_VERSION: 5.15.2
-      MINGW_PATH: D:\a\TTKDownloader\mingw\bin
+      MINGW_PATH: D:/a/TTKDownloader/mingw/bin
 
     runs-on: ${{matrix.os}}
     steps:

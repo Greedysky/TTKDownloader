@@ -39,7 +39,8 @@ void DownloadRunTimeManager::execute() const
 
     // initiailize log module
     TTK::initiailizeLog(TTK_APP_NAME);
-    G_SETTING_PTR->value(DownloadSettingManager::LogTrackEnable).toBool() ? TTK::installLogHandler() : TTK::removeLogHandler();
+    const bool config = G_SETTING_PTR->value(DownloadSettingManager::LogTrackEnable).toBool();
+    config ? TTK::installLogHandler() : TTK::removeLogHandler();
 
     TTK_INFO_STREAM("DownloadApplication Run");
 
