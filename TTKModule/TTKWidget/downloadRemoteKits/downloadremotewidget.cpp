@@ -5,7 +5,7 @@
 #include "downloaduiobject.h"
 #include "ttkdesktopscreen.h"
 
-#include <qmath.h>
+#include <cmath>
 #include <QMenu>
 #include <QPainter>
 #include <QPainterPath>
@@ -96,6 +96,6 @@ void DownloadRemoteWidget::paintEvent(QPaintEvent *event)
     if(G_SETTING_PTR->value(DownloadSettingManager::SkinSuspensionValue).toBool())
     {
         painter.setPen(Qt::white);
-        painter.drawText(rect(), Qt::AlignCenter, QString("%1%").arg(ceil(m_value * 100.0 / height())));
+        painter.drawText(rect(), Qt::AlignCenter, QString("%1%").arg(std::ceil(m_value * 100.0 / height())));
     }
 }

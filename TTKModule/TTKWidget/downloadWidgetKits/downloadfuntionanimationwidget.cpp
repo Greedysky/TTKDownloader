@@ -2,8 +2,6 @@
 #include "downloadwidgetutils.h"
 #include "downloaduiobject.h"
 
-#include <qmath.h>
-
 #include <QPainter>
 #include <QBoxLayout>
 #include <QToolButton>

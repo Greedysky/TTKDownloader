@@ -12,8 +12,7 @@
 #include "downloadbreakpointconfigmanager.h"
 #include "downloadtoastlabel.h"
 
-#include <qmath.h>
-
+#include <cmath>
 #include <QClipboard>
 #include <QHeaderView>
 #include <QApplication>
@@ -305,7 +304,7 @@ void DownloadListWidget::updateTotalSpeedLabel()
     {
         total += item->widget()->percent();
     }
-    DownloadTopAreaWidget::instance()->updateRemoteSpeedText(m_items.isEmpty() ? 0 : ceil(total / m_items.count()));
+    DownloadTopAreaWidget::instance()->updateRemoteSpeedText(m_items.isEmpty() ? 0 : std::ceil(total / m_items.count()));
 }
 
 void DownloadListWidget::itemLeftDoublePressed()
