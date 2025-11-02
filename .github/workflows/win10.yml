@@ -68,7 +68,7 @@ jobs:
           cp ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}/libwinpthread-1.dll ${{env.TTK_MODULE}}
           cp ${{runner.workspace}}/Qt/${{env.QT_VERSION}}/mingw_64/bin/Qt6Xml.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}
           cp ${{runner.workspace}}/Qt/${{env.QT_VERSION}}/mingw_64/bin/Qt6Core5Compat.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}
-          # remove usless library dependency
+          # remove useless library dependency
           ls -Filter "*.a" -Recurse | Remove-Item -Force
           rm ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}/D3D*.dll
           rm ${{env.TTK_MODULE}}/${{env.TTK_VERSTION}}/opengl32sw.dll
