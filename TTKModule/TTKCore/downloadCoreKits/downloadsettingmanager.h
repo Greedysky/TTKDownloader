@@ -41,13 +41,13 @@ public:
         WidgetPosition = 0x1001,            /*!< Widget Position Parameter*/
         WidgetSize = 0x1002,                /*!< Widget Size Parameter*/
         ExpandMode = 0x1003,                /*!< Expand Mode Parameter*/
-        UserPermission = 0x1004,            /*!< User Permission Parameter*/
         //
         CloseEventMode = 0x2000,            /*!< Close Event Parameter*/
         StartUpMode = 0x2001,               /*!< Start Up Mode Parameter*/
         StartUpRunMode = 0x2002,            /*!< Start Up Run Mode Parameter*/
         SlienceRunMode = 0x2003,            /*!< Slience Run Mode Parameter*/
         LogTrackEnable = 0x2004,            /*!< Log Track Enable Parameter*/
+        UserPermission = 0x2005,            /*!< User Permission Parameter*/
         //
         BackgroundThemeValue = 0x3000,      /*!< Background Theme Parameter*/
         BackgroundTransparent = 0x3001,     /*!< Background Transparent Parameter*/

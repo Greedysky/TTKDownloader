@@ -16,7 +16,6 @@ DownloadApplicationModule::DownloadApplicationModule(QObject *parent)
     m_instance = this;
 
     resetWindowGeometry();
-
     m_quitAnimation = new QPropertyAnimation(parent, "windowOpacity", this);
 }
 
