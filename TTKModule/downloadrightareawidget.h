@@ -47,7 +47,7 @@ public:
     ~DownloadRightAreaWidget();
 
     /*!
-     * Init widget.
+     * Init widget and parameter.
      */
     void initialize();
 

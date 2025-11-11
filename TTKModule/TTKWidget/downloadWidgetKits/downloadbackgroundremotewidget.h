@@ -43,7 +43,7 @@ public:
     ~DownloadBackgroundOnlineWidget();
 
     /*!
-     * Init the current download object.
+     * Init widget and parameter.
      */
     void initialize();
     /*!

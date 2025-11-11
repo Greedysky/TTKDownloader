@@ -98,7 +98,7 @@ public:
     ~DownloadSettingWidget();
 
     /*!
-     * Init controller parameter to widget.
+     * Init widget and parameter.
      */
     void initialize();
 

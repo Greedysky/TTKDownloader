@@ -39,7 +39,7 @@ public:
     ~DownloadBaseWidget();
 
     /*!
-     * Init widget.
+     * Init widget and parameter.
      */
     void initialize();
     /*!

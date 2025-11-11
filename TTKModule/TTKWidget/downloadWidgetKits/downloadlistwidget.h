@@ -41,7 +41,7 @@ public:
     ~DownloadListWidget();
 
     /*!
-     * Init widget.
+     * Init widget and parameter.
      */
     void initialize();
 
