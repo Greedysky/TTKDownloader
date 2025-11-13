@@ -34,7 +34,7 @@ namespace TTK
     {
         Query = 0xFF00,    /*!< Network state query */
         Success = 0,       /*!< Network state success */
-        Error = -1,        /*!< Network state erro r*/
+        Error = -1,        /*!< Network state error */
         UnKnow = 2,        /*!< Network state unknow */
     };
 }
