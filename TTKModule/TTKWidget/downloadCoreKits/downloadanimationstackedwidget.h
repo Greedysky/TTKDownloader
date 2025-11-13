@@ -33,10 +33,10 @@ class TTK_MODULE_EXPORT DownloadAnimationStackedWidget : public QStackedWidget
 public:
     enum class Module
     {
-        TopToBottom,    /*!< Animation from top to bottom*/
-        BottomToTop,    /*!< Animation from bottom to top*/
-        LeftToRight,    /*!< Animation from left to right*/
-        RightToLeft     /*!< Animation from right to left*/
+        TopToBottom,    /*!< Animation from top to bottom */
+        BottomToTop,    /*!< Animation from bottom to top */
+        LeftToRight,    /*!< Animation from left to right */
+        RightToLeft     /*!< Animation from right to left */
     };
 
     /*!

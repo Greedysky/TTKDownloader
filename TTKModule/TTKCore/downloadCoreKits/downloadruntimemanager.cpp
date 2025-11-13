@@ -1,8 +1,6 @@
 #include "downloadruntimemanager.h"
-#include "downloadconfigmanager.h"
-#include "downloadsettingmanager.h"
 #include "downloadnetworkthread.h"
-#include "ttklogoutput.h"
+#include "downloadobject.h"
 
 #include <QFont>
 #include <QApplication>
@@ -31,19 +29,7 @@ QString TTK::languageCore(int index)
 
 void DownloadRunTimeManager::execute() const
 {
-    DownloadConfigManager manager;
-    if(manager.fromFile(COFIG_PATH_FULL))
-    {
-        manager.readBuffer();
-    }
-
-    // initiailize log module
-    TTK::initiailizeLog(TTK_APP_NAME);
-    const bool config = G_SETTING_PTR->value(DownloadSettingManager::LogTrackEnable).toBool();
-    config ? TTK::installLogHandler() : TTK::removeLogHandler();
-
     TTK_INFO_STREAM("DownloadApplication Run");
-
 #ifdef Q_OS_UNIX
     QFont font;
     font.setPixelSize(13);
