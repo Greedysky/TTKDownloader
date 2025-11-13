@@ -17,7 +17,7 @@ static void cleanupCache()
 
 int main(int argc, char *argv[])
 {
-    TTK::loadApplicationScaleFactor();
+    TTK::initialize(TTK::Attribute::All);
 
     TTKApplication app(argc, argv);
     TTKInitialization ttk(cleanupCache);
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
     }
 
     DownloadConfigModule config;
-    config.valid();
+    config.execute();
 
     DownloadRunTimeManager manager;
     manager.execute();

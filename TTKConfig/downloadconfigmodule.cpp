@@ -8,7 +8,7 @@ DownloadConfigModule::DownloadConfigModule(QObject *parent)
 
 }
 
-void DownloadConfigModule::valid() const
+void DownloadConfigModule::execute() const
 {
     checkDirectoryExist();
     checkFileNeededExist();
@@ -16,7 +16,7 @@ void DownloadConfigModule::valid() const
 
 void DownloadConfigModule::initialize() const
 {
-    valid();
+    execute();
 
     copyFileOverwrite(":/data/config.xml", TTK_COFIG_PATH_FULL);
     copyFileOverwrite(":/data/list.tkpl", TTK_LIST_PATH_FULL);
