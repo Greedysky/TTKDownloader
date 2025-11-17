@@ -19,9 +19,7 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include <QObject>
-
-#define TTK_COLOR_FILE        TTK::applicationPath() + "color.jpg"
-#define TTK_IMAGE_FILE        TTK::applicationPath() + "image_cache"
+#define TTK_COLOR_FILE    QDir::tempPath() + "/color.jpg"
+#define TTK_IMAGE_FILE    QDir::tempPath() + "/image_cache"
 
 #endif // DOWNLOADOTHERDEFINE_H
