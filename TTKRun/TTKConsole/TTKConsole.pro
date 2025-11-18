@@ -30,17 +30,17 @@ DEFINES += TTK_LIBRARY
 
 ##openssl lib check
 win32{
-    SSL_DEPANDS = $$DESTDIR/ssleay32.dll
-    SSL_DEPANDS = $$replace(SSL_DEPANDS, /, \\)
-#    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
+    SSL_DEPENDENCY = $$DESTDIR/ssleay32.dll
+    SSL_DEPENDENCY = $$replace(SSL_DEPENDENCY, /, \\)
+#    exists($$SSL_DEPENDENCY):LIBS += -L$$DESTDIR -lssl
 }
 unix:!mac{
-    SSL_DEPANDS = $$DESTDIR/libssleay32.so
-    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
+    SSL_DEPENDENCY = $$DESTDIR/libssleay32.so
+    exists($$SSL_DEPENDENCY):LIBS += -L$$DESTDIR -lssl
 }
 mac{
-    SSL_DEPANDS = $$DESTDIR/libssl.dylib
-    exists($$SSL_DEPANDS):LIBS += -L$$DESTDIR -lssl
+    SSL_DEPENDENCY = $$DESTDIR/libssl.dylib
+    exists($$SSL_DEPENDENCY):LIBS += -L$$DESTDIR -lssl
 }
 
 win32:msvc{
