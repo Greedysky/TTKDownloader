@@ -26,6 +26,18 @@ set(SOURCE_FILES
   downloadinitmain.cpp
 )
 
+if(MSVC)
+  set(HEADER_FILES ${TTK_CONFIG_DIR}/downloadconfigmodule.h)
+  if(TTK_QT_VERSION VERSION_EQUAL "4")
+    qt4_wrap_cpp(MOC_FILES ${HEADER_FILES})
+  elseif(TTK_QT_VERSION VERSION_EQUAL "5")
+    qt5_wrap_cpp(MOC_FILES ${HEADER_FILES})
+  elseif(TTK_QT_VERSION VERSION_EQUAL "6")
+    qt6_wrap_cpp(MOC_FILES ${HEADER_FILES})
+  endif()
+  list(APPEND SOURCE_FILES ${MOC_FILES})
+endif()
+
 if(WIN32)
   list(APPEND SOURCE_FILES ${PROJECT_NAME}.rc)
 endif()

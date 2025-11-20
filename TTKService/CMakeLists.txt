@@ -42,6 +42,15 @@ set(SOURCE_FILES
   downloadservicemain.cpp
 )
 
+if(MSVC)
+  get_property(TTK_LIBRARY_KITS_HEADER_FILES GLOBAL PROPERTY "TTK_LIBRARY_KITS_HEADER_FILES")
+  list(APPEND HEADER_FILES
+    ${TTK_CONFIG_DIR}/downloadconfigmodule.h
+    ${TTK_MODULE_DIR}/downloadapplication.h
+    ${TTK_LIBRARY_KITS_HEADER_FILES}
+  )
+endif()
+
 if(WIN32)
   list(APPEND SOURCE_FILES ${PROJECT_NAME}.rc)
 endif()

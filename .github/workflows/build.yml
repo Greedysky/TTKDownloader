@@ -13,16 +13,20 @@ jobs:
     uses: ./.github/workflows/linux.yml
     secrets: inherit
 
-  winXP:
-    uses: ./.github/workflows/winXP.yml
+  winXP-mingw:
+    uses: ./.github/workflows/winXP-mingw.yml
     secrets: inherit
 
-  win7:
-    uses: ./.github/workflows/win7.yml
+  win7-mingw:
+    uses: ./.github/workflows/win7-mingw.yml
     secrets: inherit
 
-  win10:
-    uses: ./.github/workflows/win10.yml
+  win7-msvc:
+    uses: ./.github/workflows/win7-msvc.yml
+    secrets: inherit
+
+  win10-mingw:
+    uses: ./.github/workflows/win10-mingw.yml
     secrets: inherit
 
   doxygen:

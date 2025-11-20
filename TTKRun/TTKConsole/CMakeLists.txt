@@ -29,6 +29,14 @@ set(SOURCE_FILES
   downloadconsolemain.cpp
 )
 
+if(MSVC)
+  list(APPEND HEADER_FILES
+    ${TTK_CORE_DIR}/downloadsettingmanager.h
+    ${TTK_CORE_NETWORK_DIR}/downloadthread.h
+    ${TTK_CORE_NETWORK_DIR}/downloadthreadmanager.h
+  )
+endif()
+
 if(WIN32)
   list(APPEND SOURCE_FILES ${PROJECT_NAME}.rc)
 endif()

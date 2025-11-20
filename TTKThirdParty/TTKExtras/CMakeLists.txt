@@ -26,6 +26,7 @@ set(HEADER_FILES
   qjson/json.h
   qjson/QJsonArray.h
   qjson/QJsonDocument.h
+  qjson/QJsonDummy.h
   qjson/QJsonObject.h
   qjson/QJsonParseError.h
   qjson/QJsonValue.h
@@ -38,6 +39,7 @@ set(SOURCE_FILES
   qshortcut/qglobalshortcut.cpp
   qjson/QJsonArray.cpp
   qjson/QJsonDocument.cpp
+  qjson/QJsonDummy.cpp
   qjson/QJsonObject.cpp
   qjson/QJsonParseError.cpp
   qjson/QJsonValue.cpp
