@@ -150,7 +150,7 @@ void DownloadApplication::closeEvent(QCloseEvent *event)
 
 void DownloadApplication::mouseDoubleClickEvent(QMouseEvent *event)
 {
-    if(event->pos().y() <= m_ui->topWidget->height())
+    if(QtMouseY(event) <= m_ui->topWidget->height())
     {
         TTKAbstractMoveResizeWidget::mouseDoubleClickEvent(event);
         if(event->buttons() == Qt::LeftButton)
