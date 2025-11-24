@@ -29,7 +29,6 @@ jobs:
           host: windows
           arch: win64_msvc2019_64
           target: desktop
-          modules: qt5compat
           cache: 'true'
 
       - name: Create build dir
@@ -69,7 +68,6 @@ jobs:
           # add dependency libraries and so on
           windeployqt ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}/TTKService.exe
           cp ${{env.QT_ROOT_DIR}}/bin/Qt6Xml.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}
-          cp ${{env.QT_ROOT_DIR}}/bin/Qt6Core5Compat.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}
           # remove useless library dependency
           ls -Filter "*.lib" -Recurse | Remove-Item -Force
           ls -Filter "*.exp" -Recurse | Remove-Item -Force

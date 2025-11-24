@@ -19,12 +19,10 @@ jobs:
           - qt: qt5
             qt_major: 5
             qt_version: 5.9.9
-            qt_modules:
 
           - qt: qt6
             qt_major: 6
             qt_version: 6.5.3
-            qt_modules: qt5compat
 
     env:
       QT_VERSION: ${{matrix.qt_version}}
@@ -38,7 +36,6 @@ jobs:
         with:
           version: ${{env.QT_VERSION}}
           target: desktop
-          modules: ${{matrix.qt_modules}}
           cache: 'true'
 
       - name: Install linuxdeploy

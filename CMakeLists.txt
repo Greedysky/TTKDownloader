@@ -189,7 +189,7 @@ elseif(TTK_QT_VERSION VERSION_EQUAL "5")
     find_package(Qt5X11Extras REQUIRED)
   endif()
 elseif(TTK_QT_VERSION VERSION_EQUAL "6")
-  find_package(Qt6 COMPONENTS Core Gui Widgets Network Xml Core5Compat REQUIRED)
+  find_package(Qt6 COMPONENTS Core Gui Widgets Network Xml REQUIRED)
   # Add a compiler flag
   if(NOT MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")

@@ -29,7 +29,6 @@ jobs:
           host: windows
           arch: win64_mingw
           target: desktop
-          modules: qt5compat
           cache: 'true'
 
       - name: Create build dir
@@ -60,7 +59,6 @@ jobs:
           cp ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}/libstdc++-6.dll ${{env.TTK_MODULE}}
           cp ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}/libwinpthread-1.dll ${{env.TTK_MODULE}}
           cp ${{env.QT_ROOT_DIR}}/bin/Qt6Xml.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}
-          cp ${{env.QT_ROOT_DIR}}/bin/Qt6Core5Compat.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}
           # remove useless library dependency
           ls -Filter "*.a" -Recurse | Remove-Item -Force
           rm ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}/D3D*.dll
