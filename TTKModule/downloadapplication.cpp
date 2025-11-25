@@ -50,6 +50,11 @@ DownloadApplication::DownloadApplication(QWidget *parent)
     readSystemConfigFromFile();
     //
     m_rightAreaWidget->initialize();
+
+#ifndef QT_NO_SSL
+    // ssl support check
+    TTK_INFO_STREAM("Application network support ssl:" << (QSslSocket::supportsSsl() ? "true" : "false"));
+#endif
 }
 
 DownloadApplication::~DownloadApplication()
@@ -207,10 +212,6 @@ void DownloadApplication::readSystemConfigFromFile()
 
     //Reset geometry
     setGeometry(manager.readWindowGeometry());
-#ifndef QT_NO_SSL
-    // ssl support check
-    TTK_INFO_STREAM("Application network support ssl:" << (QSslSocket::supportsSsl() ? "true" : "false"));
-#endif
 }
 
 void DownloadApplication::writeSystemConfigToFile()

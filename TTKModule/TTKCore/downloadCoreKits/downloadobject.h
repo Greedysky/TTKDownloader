@@ -114,7 +114,7 @@ namespace TTK
     inline static QString configPath()
     {
 #ifdef Q_OS_WIN
-        return QString::fromLocal8Bit(getenv("APPDATA")) + "/ttkdl/";
+        return QString::fromLocal8Bit(qgetenv("APPDATA")) + "/ttkdl/";
 #else
         return QDir::homePath() + "/.config/ttkdl/";
 #endif

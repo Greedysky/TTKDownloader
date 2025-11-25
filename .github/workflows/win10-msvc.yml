@@ -16,7 +16,7 @@ jobs:
         os: [windows-2022]
 
     env:
-      QT_VERSION: 6.5.3
+      QT_VERSION: 6.9.3
 
     runs-on: ${{matrix.os}}
     steps:
@@ -27,7 +27,7 @@ jobs:
         with:
           version: ${{env.QT_VERSION}}
           host: windows
-          arch: win64_msvc2019_64
+          arch: win64_msvc2022_64
           target: desktop
           cache: 'true'
 
@@ -60,7 +60,7 @@ jobs:
           # add dependency for openssl
           curl -L https://github.com/Greedysky/Resource/releases/download/1.0.0.0/openssl.7z -o openssl.7z
           7z x openssl.7z
-          cp win64/*.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}
+          cp win64/v1/*.dll ${{env.TTK_MODULE}}/${{env.TTK_VERSION}}
           # add dependency for theme
           curl -L https://github.com/Greedysky/Resource/releases/download/1.0.0.0/theme.7z -o theme.7z
           7z x theme.7z
