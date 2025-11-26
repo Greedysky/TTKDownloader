@@ -215,7 +215,7 @@ void DownloadHlSaturationPalette::mousePressEvent(QMouseEvent *event)
 {
     if(event->button() == Qt::LeftButton)
     {
-        m_dblVernierX = QtMouseX(event);
+        m_dblVernierX = QtPositionX(event);
         calculateSuration();
         update();
     }
@@ -225,7 +225,7 @@ void DownloadHlSaturationPalette::mouseMoveEvent(QMouseEvent *event)
 {
     if(event->buttons() & Qt::LeftButton && !(event->buttons() & Qt::RightButton))
     {
-        m_dblVernierX = QtMouseX(event);
+        m_dblVernierX = QtPositionX(event);
         if(rect().contains(event->pos()))
         {
             calculateSuration();
