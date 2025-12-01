@@ -27,12 +27,12 @@ BEGIN
         BLOCK "080404b0"
             BEGIN
                 VALUE "CompanyName", TTK_RC_COMPANY
-                VALUE "FileDescription", "天天下载"
+                VALUE "FileDescription", "TTKDownloader"
                 VALUE "FileVersion", TTK_RC_PRODUCTVERSION
-                VALUE "InternalName", "天天下载.exe"
+                VALUE "InternalName", "TTKDownloader.exe"
                 VALUE "LegalCopyright", TTK_RC_COPYRIGHT
-                VALUE "OriginalFilename", "天天下载.exe"
-                VALUE "ProductName", "天天下载"
+                VALUE "OriginalFilename", "TTKDownloader.exe"
+                VALUE "ProductName", "TTKDownloader"
                 VALUE "ProductVersion", TTK_RC_PRODUCTVERSION
             END
     END
