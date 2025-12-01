@@ -394,7 +394,7 @@ void DownloadListWidget::addItemToCacheList(const QString &url, const QString &n
 
     if(!records.isEmpty())
     {
-        DownloadBreakPointItem item = records.front();
+        DownloadBreakPointItem item = records.first();
         widget->updateFileInfoChanged(name, item.m_end);
         widget->progressChanged(item.m_ready, item.m_end);
         widget->stateChanged(tr("StatePause"));

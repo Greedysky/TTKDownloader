@@ -73,7 +73,7 @@ QString DownloadNetworkSpeedThread::currentNewtworkName() const
         }
     }
 #endif
-    return newtworkNames().back();
+    return newtworkNames().last();
 }
 
 QStringList DownloadNetworkSpeedThread::newtworkNames() const

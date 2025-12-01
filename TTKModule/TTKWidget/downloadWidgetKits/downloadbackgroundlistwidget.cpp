@@ -280,7 +280,7 @@ void DownloadBackgroundListWidget::updateLastItem()
 {
     if(!m_items.isEmpty())
     {
-        currentItemClicked(m_items.back());
+        currentItemClicked(m_items.last());
     }
 }
 

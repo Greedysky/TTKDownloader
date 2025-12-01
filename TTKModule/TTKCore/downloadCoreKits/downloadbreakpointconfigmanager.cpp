@@ -40,7 +40,7 @@ bool DownloadBreakPointConfigManager::writeBuffer(const DownloadBreakPointItemLi
 
     if(!items.isEmpty())
     {
-        writeDomElement(recordDom, "url", items.front().m_url);
+        writeDomElement(recordDom, "url", items.first().m_url);
     }
 
     for(const DownloadBreakPointItem &item : qAsConst(items))
