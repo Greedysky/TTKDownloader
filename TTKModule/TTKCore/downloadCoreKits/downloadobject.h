@@ -113,10 +113,11 @@ namespace TTK
      */
     inline static QString configPath()
     {
+        const bool portable = QFile::exists(MAIN_DIR_FULL + "ttk_portable");
 #ifdef Q_OS_WIN
-        return QString::fromLocal8Bit(qgetenv("APPDATA")) + "/ttkdl/";
+        return (portable ? MAIN_DIR_FULL : QString::fromLocal8Bit(qgetenv("APPDATA")) + TTK_SEPARATOR) + "ttkdl/";
 #else
-        return QDir::homePath() + "/.config/ttkdl/";
+        return (portable ? MAIN_DIR_FULL : QDir::homePath() + TTK_SEPARATOR) + ".config/ttkdl/";
 #endif
     }
 }
