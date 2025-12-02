@@ -636,6 +636,10 @@ Copyright© 2015 - 2026 Greedysky All Rights Reserved
         <source>(1-10)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>日志追踪模式</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DownloadSkinAnimationWidget</name>
