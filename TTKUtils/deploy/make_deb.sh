@@ -22,7 +22,7 @@ Architecture: amd64
 Installed-Size: $(du -s ${packname} | sed -e 's/[ \t].*//')
 Maintainer: Greedysky <greedysky@163.com>
 Homepage: https://github.com/Greedysky/${packname}
-Description: TTK 迅雷下载器
+Description: TTK Downloader
  TTKDownloader imitates xunlei downloader, based on Qt for windows and linux.\n" > ${datapath}/control
 
 # create postinst file
