@@ -83,7 +83,7 @@ void DownloadRemoteWidget::paintEvent(QPaintEvent *event)
     DownloadAbstractMoveWidget::paintEvent(event);
 
     QPainter painter(this);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
     painter.drawPixmap(0, 0, QPixmap(":/remote/lb_back"));
 
     QPainterPath rectp;

@@ -11,7 +11,7 @@ void TTK::Image::fusionPixmap(QPixmap &back, const QPixmap &front, const QPoint 
     }
 
     QPainter painter(&back);
-    painter.setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+    painter.setRenderHint(QPainter::SmoothPixmapTransform);
     painter.drawPixmap(pt.x(), pt.y(), front);
 }
 

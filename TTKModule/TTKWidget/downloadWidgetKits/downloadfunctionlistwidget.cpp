@@ -63,6 +63,7 @@ void DownloadFunctionItemWidget::paintEvent(QPaintEvent *event)
     QWidget::paintEvent(event);
 
     QPainter painter(this);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
 
     if(m_selectedOn)
     {

@@ -49,6 +49,7 @@ void DownloadToolLabelButton::paintEvent(QPaintEvent *event)
     QToolButton::paintEvent(event);
 
     QPainter painter(this);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing | QPainter::SmoothPixmapTransform);
 
     if(m_enterIn)
     {
@@ -102,6 +103,7 @@ void DownloadSpeedToolLabelButton::paintEvent(QPaintEvent *event)
     QToolButton::paintEvent(event);
 
     QPainter painter(this);
+    painter.setRenderHints(QPainter::Antialiasing | QPainter::TextAntialiasing);
 
     if(m_enterIn)
     {
