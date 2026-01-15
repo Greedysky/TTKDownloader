@@ -20,7 +20,7 @@ DownloadRemoteWidget::DownloadRemoteWidget(QWidget *parent)
     setGeometry(200, 200, 64, 64);
     adjustPosition(this);
 
-    drawWindowShadow(false);
+    setShadowOption(false);
     setMouseTracking(true);
 }
 
