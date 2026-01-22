@@ -102,7 +102,7 @@ private Q_SLOTS:
     /*!
      * Download data from net finished.
      */
-    void downLoadFinished();
+    void downloadFinished();
     /*!
      * Download received data ready.
      */

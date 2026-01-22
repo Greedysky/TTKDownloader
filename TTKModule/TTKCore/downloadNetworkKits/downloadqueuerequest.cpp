@@ -10,7 +10,7 @@ DownloadQueueRequest::DownloadQueueRequest(QObject *parent)
 }
 
 DownloadQueueRequest::DownloadQueueRequest(const DownloadQueueData &data, QObject *parent)
-    : DownLoadAbstractRequest(data.m_url, data.m_path, parent),
+    : DownloadAbstractRequest(data.m_url, data.m_path, parent),
       m_isDownload(false),
       m_isAbort(false)
 {
@@ -65,20 +65,20 @@ void DownloadQueueRequest::clear()
     m_queue.clear();
 }
 
-void DownloadQueueRequest::downLoadFinished()
+void DownloadQueueRequest::downloadFinished()
 {
     if(m_isAbort || !m_request || !m_reply || !m_file)
     {
         return;
     }
 
-    DownLoadAbstractRequest::downLoadFinished();
+    DownloadAbstractRequest::downloadFinished();
     m_file->flush();
     m_file->close();
     m_isDownload = false;
 
     DownloadAbstractNetwork::deleteAll();
-    Q_EMIT downLoadDataChanged(m_queue.takeFirst().m_path);
+    Q_EMIT downloadDataChanged(m_queue.takeFirst().m_path);
 
     startOrderQueue();
 }
@@ -137,7 +137,7 @@ void DownloadQueueRequest::startDownload(const QString &url)
     m_speedTimer.start();
     m_request->setUrl(url);
     m_reply = m_manager.get(*m_request);
-    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
+    connect(m_reply, SIGNAL(finished()), SLOT(downloadFinished()));
     connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
     QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
 }
@@ -151,7 +151,7 @@ void DownloadQueueRequest::startOrderQueue()
 
     if(QFile::exists(m_queue.first().m_path))
     {
-        Q_EMIT downLoadDataChanged(m_queue.takeFirst().m_path);
+        Q_EMIT downloadDataChanged(m_queue.takeFirst().m_path);
         startOrderQueue();
     }
     else if(G_NETWORK_PTR->isOnline())

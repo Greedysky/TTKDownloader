@@ -8,7 +8,7 @@
 #  include <unistd.h>
 #endif
 
-DownLoadAbstractRequest::DownLoadAbstractRequest(const QString &url, const QString &path, QObject *parent)
+DownloadAbstractRequest::DownloadAbstractRequest(const QString &url, const QString &path, QObject *parent)
     : DownloadAbstractNetwork(parent),
       m_url(url),
       m_hasReceived(0),
@@ -24,7 +24,7 @@ DownLoadAbstractRequest::DownLoadAbstractRequest(const QString &url, const QStri
     connect(&m_speedTimer, SIGNAL(timeout()), SLOT(updateDownloadSpeed()));
 }
 
-DownLoadAbstractRequest::~DownLoadAbstractRequest()
+DownloadAbstractRequest::~DownloadAbstractRequest()
 {
     if(m_speedTimer.isActive())
     {
@@ -32,7 +32,7 @@ DownLoadAbstractRequest::~DownLoadAbstractRequest()
     }
 }
 
-void DownLoadAbstractRequest::deleteAll()
+void DownloadAbstractRequest::deleteAll()
 {
     DownloadAbstractNetwork::deleteAll();
     delete m_file;
@@ -40,18 +40,18 @@ void DownLoadAbstractRequest::deleteAll()
     deleteLater();
 }
 
-void DownLoadAbstractRequest::downLoadFinished()
+void DownloadAbstractRequest::downloadFinished()
 {
     m_speedTimer.stop();
 }
 
-void DownLoadAbstractRequest::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
+void DownloadAbstractRequest::downloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
     m_currentReceived = bytesReceived;
     m_totalSize = bytesTotal;
 }
 
-void DownLoadAbstractRequest::updateDownloadSpeed()
+void DownloadAbstractRequest::updateDownloadSpeed()
 {
     const int delta = m_currentReceived - m_hasReceived;
     ///limit speed

@@ -32,7 +32,7 @@ void DownloadThread::startDownload(const Info &info)
     TTK::setSslConfiguration(&request);
 
     m_reply = m_manager->get(request);
-    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
+    connect(m_reply, SIGNAL(finished()), SLOT(downloadFinished()));
     connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
     QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
 
@@ -65,7 +65,7 @@ void DownloadThread::restart()
     startDownload(m_info);
 }
 
-void DownloadThread::downLoadFinished()
+void DownloadThread::downloadFinished()
 {
     if(m_state != TTK::DownloadState::Download)
     {

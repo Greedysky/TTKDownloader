@@ -22,7 +22,7 @@ DownloadBackgroundOnlineWidget::DownloadBackgroundOnlineWidget(QWidget *parent)
     setLayout(hbox);
 
     m_networkRequest = new DownloadQueueRequest(this);
-    connect(m_networkRequest, SIGNAL(downLoadDataChanged(QString)), SLOT(downLoadDataChanged(QString)));
+    connect(m_networkRequest, SIGNAL(downloadDataChanged(QString)), SLOT(downloadDataChanged(QString)));
     connect(m_backgroundList, SIGNAL(itemClicked(int,QString)), parent, SLOT(remoteListWidgetItemClicked(int,QString)));
 }
 
@@ -40,7 +40,7 @@ void DownloadBackgroundOnlineWidget::initialize()
     if(!m_downloadRequest)
     {
         m_downloadRequest = new DownloadThunderSkinRequest(this);
-        connect(m_downloadRequest, SIGNAL(downLoadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downLoadDataChanged(DownloadSkinRemoteGroupList)));
+        connect(m_downloadRequest, SIGNAL(downloadDataChanged(DownloadSkinRemoteGroupList)), SLOT(downloadDataChanged(DownloadSkinRemoteGroupList)));
         m_downloadRequest->startToRequest();
     }
 }
@@ -164,7 +164,7 @@ void DownloadBackgroundOnlineWidget::buttonClicked(int index)
     m_networkRequest->startToRequest();
 }
 
-void DownloadBackgroundOnlineWidget::downLoadDataChanged(const QString &bytes)
+void DownloadBackgroundOnlineWidget::downloadDataChanged(const QString &bytes)
 {
     DownloadBackgroundImage image;
     outputRemoteSkin(image, bytes);
@@ -176,7 +176,7 @@ void DownloadBackgroundOnlineWidget::downLoadDataChanged(const QString &bytes)
     m_backgroundList->updateItem(image, bytes);
 }
 
-void DownloadBackgroundOnlineWidget::downLoadDataChanged(const DownloadSkinRemoteGroupList &bytes)
+void DownloadBackgroundOnlineWidget::downloadDataChanged(const DownloadSkinRemoteGroupList &bytes)
 {
     m_groups = bytes;
     for(int i = 0; i < m_groups.count(); ++i)

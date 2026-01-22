@@ -74,11 +74,11 @@ DownloadThunderSkinRequest::DownloadThunderSkinRequest(QObject *parent)
 void DownloadThunderSkinRequest::startToRequest()
 {
     DownloadDataSourceRequest *req = new DownloadDataSourceRequest(this);
-    connect(req, SIGNAL(downLoadRawDataChanged(QByteArray)), SLOT(downLoadFinished(QByteArray)));
+    connect(req, SIGNAL(downloadRawDataChanged(QByteArray)), SLOT(downloadFinished(QByteArray)));
     req->startToRequest(TTK::Algorithm::mdII(QUERY_URL, false));
 }
 
-void DownloadThunderSkinRequest::downLoadFinished(const QByteArray &bytes)
+void DownloadThunderSkinRequest::downloadFinished(const QByteArray &bytes)
 {
     DownloadSkinRemoteGroupList items;
     DownloadThunderSkinConfigManager manager;
@@ -87,5 +87,5 @@ void DownloadThunderSkinRequest::downLoadFinished(const QByteArray &bytes)
         manager.readBuffer(items);
     }
 
-    Q_EMIT downLoadDataChanged(items);
+    Q_EMIT downloadDataChanged(items);
 }

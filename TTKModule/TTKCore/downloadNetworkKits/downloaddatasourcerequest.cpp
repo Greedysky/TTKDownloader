@@ -19,13 +19,13 @@ void DownloadDataSourceRequest::startToRequest(const QString &url)
     TTK::setSslConfiguration(&request);
 
     m_reply = m_manager.get(request);
-    connect(m_reply, SIGNAL(finished()), SLOT(downLoadFinished()));
+    connect(m_reply, SIGNAL(finished()), SLOT(downloadFinished()));
     QtNetworkErrorConnect(m_reply, this, replyError, TTK_SLOT);
 }
 
-void DownloadDataSourceRequest::downLoadFinished()
+void DownloadDataSourceRequest::downloadFinished()
 {
-    DownloadAbstractNetwork::downLoadFinished();
+    DownloadAbstractNetwork::downloadFinished();
     if(m_reply && m_reply->error() == QNetworkReply::NoError)
     {
         const QVariant &redirection = m_reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
@@ -37,14 +37,14 @@ void DownloadDataSourceRequest::downLoadFinished()
         }
         else
         {
-            Q_EMIT downLoadRawDataChanged(m_reply->readAll());
+            Q_EMIT downloadRawDataChanged(m_reply->readAll());
             deleteAll();
         }
     }
     else
     {
         TTK_ERROR_STREAM("Download source data error");
-        Q_EMIT downLoadRawDataChanged({});
+        Q_EMIT downloadRawDataChanged({});
         deleteAll();
     }
 }

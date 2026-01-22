@@ -28,18 +28,18 @@
 /*! @brief The class of the abstract downloading data.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownLoadAbstractRequest : public DownloadAbstractNetwork
+class TTK_MODULE_EXPORT DownloadAbstractRequest : public DownloadAbstractNetwork
 {
     Q_OBJECT
 public:
     /*!
      * Object constructor.
      */
-    DownLoadAbstractRequest(const QString &url, const QString &path, QObject *parent = nullptr);
+    DownloadAbstractRequest(const QString &url, const QString &path, QObject *parent = nullptr);
     /*!
      * Object destructor.
      */
-    ~DownLoadAbstractRequest();
+    ~DownloadAbstractRequest();
 
     /*!
      * Release the network object.
@@ -56,7 +56,7 @@ public Q_SLOTS:
     /*!
      * Download data from net finished.
      */
-    virtual void downLoadFinished() override;
+    virtual void downloadFinished() override;
     /*!
      * Get download received and total data.
      */
