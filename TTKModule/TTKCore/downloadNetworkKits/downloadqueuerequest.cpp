@@ -16,7 +16,7 @@ DownloadQueueRequest::DownloadQueueRequest(const DownloadQueueData &data, QObjec
 {
     m_request = new QNetworkRequest;
     TTK::setSslConfiguration(m_request);
-    TTK::makeContentTypeHeader(m_request);
+    TTK::setContentTypeHeader(m_request);
 }
 
 DownloadQueueRequest::DownloadQueueRequest(const DownloadQueueDataList &datas, QObject *parent)
