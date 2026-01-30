@@ -187,14 +187,14 @@ void DownloadThreadManager::updateState(TTK::DownloadState state)
     QString v;
     switch(m_state = state)
     {
-    case TTK::DownloadState::Queue: v = tr("StateQueue"); break;
-    case TTK::DownloadState::Wait: v = tr("StateWait"); break;
-    case TTK::DownloadState::Download: v = tr("StateDownload"); break;
-    case TTK::DownloadState::Pause: v = tr("StatePause"); break;
-    case TTK::DownloadState::Stop: v = tr("StateStop"); break;
-    case TTK::DownloadState::Finish: v = tr("StateFinish"); break;
-    case TTK::DownloadState::Error: v = tr("StateError"); break;
-    default: break;
+        case TTK::DownloadState::Queue: v = tr("StateQueue"); break;
+        case TTK::DownloadState::Wait: v = tr("StateWait"); break;
+        case TTK::DownloadState::Download: v = tr("StateDownload"); break;
+        case TTK::DownloadState::Pause: v = tr("StatePause"); break;
+        case TTK::DownloadState::Stop: v = tr("StateStop"); break;
+        case TTK::DownloadState::Finish: v = tr("StateFinish"); break;
+        case TTK::DownloadState::Error: v = tr("StateError"); break;
+        default: break;
     }
 
     Q_EMIT stateChanged(v);

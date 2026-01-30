@@ -230,8 +230,7 @@ void DownloadSettingWidget::selectFunctionTableIndex(int row, int col)
     clearFunctionTableSelection();
     switch(row)
     {
-        case 0:
-            m_ui->normalFunTableWidget->selectRow(col); break;
+        case 0: m_ui->normalFunTableWidget->selectRow(col); break;
         default: break;
     }
 }
