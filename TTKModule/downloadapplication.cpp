@@ -134,7 +134,7 @@ void DownloadApplication::resizeEvent(QResizeEvent *event)
 {
     G_SETTING_PTR->setValue(DownloadSettingManager::WidgetSize, size());
     m_topAreaWidget->backgroundThemeChangedByResize();
-    m_rightAreaWidget->resizeWindow();
+    m_rightAreaWidget->resizeWidgetGeometry();
     TTKAbstractMoveResizeWidget::resizeEvent(event);
 }
 

@@ -44,6 +44,11 @@ void DownloadFunctionTableWidget::addCellItems(int index, const DownloadFunction
     }
 }
 
+void DownloadFunctionTableWidget::resizeGeometry()
+{
+
+}
+
 void DownloadFunctionTableWidget::itemCellClicked(int row, int column)
 {
     Q_UNUSED(column);

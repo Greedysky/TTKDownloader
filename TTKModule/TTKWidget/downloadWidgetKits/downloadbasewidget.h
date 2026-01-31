@@ -42,15 +42,15 @@ public:
      * Init widget and parameter.
      */
     void initialize();
-    /*!
-     * Resize window bound by widgte resize called.
-     */
-    void resizeWindow();
 
     /*!
      * Remove all items.
      */
     virtual void removeItems() override final;
+    /*!
+     * Resize widget bound by resize called.
+     */
+    virtual void resizeGeometry() override final;
 
 Q_SIGNALS:
     /*!

@@ -22,11 +22,12 @@
 #include <QMenu>
 #include "downloaduiobject.h"
 #include "ttkabstracttablewidget.h"
+#include "ttkabstractresizeinterface.h"
 
 /*! @brief The class of the table widget base.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadAbstractTableWidget : public TTKAbstractTableWidget
+class TTK_MODULE_EXPORT DownloadAbstractTableWidget : public TTKAbstractTableWidget, public TTKAbstractResizeInterface
 {
     Q_OBJECT
 public:

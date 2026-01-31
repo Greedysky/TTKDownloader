@@ -63,6 +63,11 @@ public:
      */
     void addCellItems(int index, const DownloadFunctionItemList &items);
 
+    /*!
+     * Resize widget bound by resize called.
+     */
+    virtual void resizeGeometry() override final;
+
 Q_SIGNALS:
     /*!
      * Current list index changed.

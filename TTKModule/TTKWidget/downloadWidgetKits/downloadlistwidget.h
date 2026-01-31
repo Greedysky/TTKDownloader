@@ -46,9 +46,9 @@ public:
     void initialize();
 
     /*!
-     * Resize window bound by widgte resize called.
+     * Resize widget bound by resize called.
      */
-    void resizeWindow();
+    virtual void resizeGeometry() override final;
 
 Q_SIGNALS:
     /*!

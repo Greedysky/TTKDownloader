@@ -160,7 +160,7 @@ void DownloadBottomAreaWidget::expandButtonClicked()
     }
 
     m_expandMode = !m_expandMode;
-    DownloadRightAreaWidget::instance()->resizeWindow();
+    DownloadRightAreaWidget::instance()->resizeWidgetGeometry();
 }
 
 void DownloadBottomAreaWidget::createSystemTrayIcon()

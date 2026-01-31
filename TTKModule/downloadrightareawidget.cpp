@@ -82,10 +82,10 @@ void DownloadRightAreaWidget::setupUi(Ui::DownloadApplication *ui)
     ui->pauseDownloadButton->setEnabled(false);
 }
 
-void DownloadRightAreaWidget::resizeWindow()
+void DownloadRightAreaWidget::resizeWidgetGeometry()
 {
-    m_listWidget->resizeWindow();
-    m_historyWidget->resizeWindow();
+    m_listWidget->resizeGeometry();
+    m_historyWidget->resizeGeometry();
 }
 
 void DownloadRightAreaWidget::downloadStateChanged(bool state)

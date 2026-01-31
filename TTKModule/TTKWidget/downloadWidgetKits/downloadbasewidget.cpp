@@ -51,18 +51,18 @@ void DownloadBaseWidget::initialize()
     }
 }
 
-void DownloadBaseWidget::resizeWindow()
+void DownloadBaseWidget::removeItems()
+{
+    DownloadAbstractTableWidget::removeItems();
+    setColumnCount(4);
+}
+
+void DownloadBaseWidget::resizeGeometry()
 {
     int w = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
         w += G_SETTING_PTR->value(DownloadSettingManager::ExpandMode).toInt();
     QHeaderView *headerView = horizontalHeader();
     headerView->resizeSection(1, 495 + w - WINDOW_WIDTH_MIN);
-}
-
-void DownloadBaseWidget::removeItems()
-{
-    DownloadAbstractTableWidget::removeItems();
-    setColumnCount(4);
 }
 
 void DownloadBaseWidget::unselectAll()

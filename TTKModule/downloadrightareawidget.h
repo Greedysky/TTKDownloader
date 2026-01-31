@@ -63,7 +63,7 @@ public:
     /*!
      * Resize window bound by widgte resize called.
      */
-    void resizeWindow();
+    void resizeWidgetGeometry();
 
 public Q_SLOTS:
     /*!

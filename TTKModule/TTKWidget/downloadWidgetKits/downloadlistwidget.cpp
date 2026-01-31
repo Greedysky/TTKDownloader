@@ -81,7 +81,7 @@ void DownloadListWidget::initialize()
     }
 }
 
-void DownloadListWidget::resizeWindow()
+void DownloadListWidget::resizeGeometry()
 {
     int w = G_SETTING_PTR->value(DownloadSettingManager::WidgetSize).toSize().width();
         w += G_SETTING_PTR->value(DownloadSettingManager::ExpandMode).toInt();
