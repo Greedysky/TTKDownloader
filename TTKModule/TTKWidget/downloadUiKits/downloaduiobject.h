@@ -38,6 +38,9 @@ namespace TTK
         static const QString ColorStyle03 = " \
             color:#80B7F1;";
 
+        static const QString ColorStyle04 = " \
+            color:#000000;";
+
         ///Background
         static const QString BackgroundStyle01 = " \
             background-color:transparent; " +

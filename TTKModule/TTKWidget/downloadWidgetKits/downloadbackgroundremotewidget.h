@@ -19,10 +19,9 @@
  * with this program; If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "downloadbackgroundlistwidget.h"
 #include "downloadthunderskinrequest.h"
+#include "downloadbackgroundlistwidget.h"
 
-class QPushButton;
 class QListWidgetItem;
 class DownloadQueueRequest;
 
@@ -76,9 +75,9 @@ public Q_SLOTS:
 
 private:
     /*!
-     * Create button.
+     * Create button labels.
      */
-    QPushButton *createButton(const QString &name);
+    QLabel *createButtonLabels(const QString &name);
     /*!
      * Button style changed.
      */
@@ -86,7 +85,7 @@ private:
 
     int m_currentIndex;
     QWidget *m_functionsWidget;
-    QList<QPushButton*> m_functionsItems;
+    QList<QLabel*> m_functionsItems;
     DownloadSkinRemoteGroupList m_groups;
     DownloadBackgroundListWidget *m_backgroundList;
     DownloadQueueRequest *m_networkRequest;

@@ -1,10 +1,8 @@
 #include "downloadbackgroundremotewidget.h"
 #include "downloadextractmanager.h"
 #include "downloadqueuerequest.h"
-
-#include <QDir>
-#include <QPushButton>
-#include <QButtonGroup>
+#include "ttkclickedlabel.h"
+#include "ttkclickedgroup.h"
 
 DownloadBackgroundOnlineWidget::DownloadBackgroundOnlineWidget(QWidget *parent)
     : QWidget(parent),
@@ -59,24 +57,20 @@ QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWid
         m_functionsWidget->hide();
 
         QHBoxLayout *hbox = new QHBoxLayout(m_functionsWidget);
-        hbox->setContentsMargins(9, 0, 0, 9);
+        hbox->setContentsMargins(5, 0, 0, 0);
 
-        QButtonGroup *buttonGroup = new QButtonGroup(m_functionsWidget);
-        QtButtonGroupConnect(buttonGroup, this, buttonClicked, TTK_SLOT);
+        TTKClickedGroup *clickedGroup = new TTKClickedGroup(m_functionsWidget);
+        connect(clickedGroup, SIGNAL(clicked(int)), this, SLOT(buttonClicked(int)));
 
         QStringList names;
-        for(int i = 1; i <= 9; ++i)
+        for(int i = 0; i < 9; ++i)
         {
-            names << QString::number(i);
-        }
-
-        for(int i = 0; i < names.count(); ++i)
-        {
-            buttonGroup->addButton(createButton(names[i]), i);
+            names << QString::number(i + 1);
+            clickedGroup->addWidget(createButtonLabels(names[i]), i);
         }
 
         hbox->addStretch(1);
-        createButton({});
+        createButtonLabels({});
 
         m_functionsWidget->setLayout(hbox);
     }
@@ -191,25 +185,20 @@ void DownloadBackgroundOnlineWidget::downloadDataChanged(const DownloadSkinRemot
     }
 }
 
-QPushButton* DownloadBackgroundOnlineWidget::createButton(const QString &name)
+QLabel* DownloadBackgroundOnlineWidget::createButtonLabels(const QString &name)
 {
-    QPushButton *btn = new QPushButton(name, m_functionsWidget);
-    btn->setStyleSheet(TTK::UI::PushButtonStyle02);
-    btn->setCursor(QCursor(Qt::PointingHandCursor));
-    btn->setFixedSize(35, 20);
-    btn->hide();
-#ifdef Q_OS_UNIX
-    btn->setFocusPolicy(Qt::NoFocus);
-#endif
-    m_functionsItems << btn;
-    return btn;
+    TTKClickedLabel *label = new TTKClickedLabel(name, m_functionsWidget);
+    label->setFixedSize(35, 20);
+    label->hide();
+    m_functionsItems << label;
+    return label;
 }
 
 void DownloadBackgroundOnlineWidget::buttonStyleChanged()
 {
     for(int i = 0; i < m_functionsItems.count() - 1; ++i)
     {
-        m_functionsItems[i]->setStyleSheet(TTK::UI::PushButtonStyle02);
+        m_functionsItems[i]->setStyleSheet(TTK::UI::ColorStyle04);
     }
-    m_functionsItems[m_currentIndex]->setStyleSheet(TTK::UI::PushButtonStyle02 + QString("QPushButton{ %1 }").arg(TTK::UI::ColorStyle03));
+    m_functionsItems[m_currentIndex]->setStyleSheet(TTK::UI::ColorStyle03);
 }
