@@ -15,7 +15,7 @@ DownloadThread::~DownloadThread()
     delete m_manager;
 }
 
-void DownloadThread::startDownload(const Info &info)
+void DownloadThread::startDownload(const Data &info)
 {
     if(m_state == TTK::DownloadState::Download)
     {

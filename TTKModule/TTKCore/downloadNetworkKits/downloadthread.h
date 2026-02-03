@@ -32,7 +32,7 @@ class TTK_MODULE_EXPORT DownloadThread : public QObject
 {
     Q_OBJECT
 public:
-    struct Info
+    struct Data
     {
         int m_index;
         QString m_url;
@@ -55,7 +55,7 @@ public:
     /*!
      * Start to download.
      */
-    void startDownload(const Info &info);
+    void startDownload(const Data &info);
 
     /*!
      * Get download url.
@@ -113,7 +113,7 @@ private Q_SLOTS:
     void handleError(QNetworkReply::NetworkError code);
 
 private:
-    Info m_info;
+    Data m_info;
     QNetworkAccessManager *m_manager;
     QNetworkReply *m_reply;
     TTK::DownloadState m_state;
