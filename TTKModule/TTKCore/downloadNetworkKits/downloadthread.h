@@ -55,24 +55,24 @@ public:
     /*!
      * Start to download.
      */
-    void startDownload(const Data &info);
+    void startDownload(const Data &data);
 
     /*!
      * Get download url.
      */
-    inline QString url() const noexcept { return m_info.m_url; }
+    inline QString url() const noexcept { return m_data.m_url; }
     /*!
      * Get ready size.
      */
-    inline qint64 readySize() const noexcept { return m_info.m_readySize; }
+    inline qint64 readySize() const noexcept { return m_data.m_readySize; }
     /*!
      * Get start point(.
      */
-    inline qint64 startPoint() const noexcept { return m_info.m_startPoint; }
+    inline qint64 startPoint() const noexcept { return m_data.m_startPoint; }
     /*!
      * Get end point.
      */
-    inline qint64 endPoint() const noexcept { return m_info.m_endPoint; }
+    inline qint64 endPoint() const noexcept { return m_data.m_endPoint; }
 
 Q_SIGNALS:
     /*!
@@ -113,7 +113,7 @@ private Q_SLOTS:
     void handleError(QNetworkReply::NetworkError code);
 
 private:
-    Data m_info;
+    Data m_data;
     QNetworkAccessManager *m_manager;
     QNetworkReply *m_reply;
     TTK::DownloadState m_state;
