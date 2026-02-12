@@ -54,6 +54,12 @@ DownloadApplication::DownloadApplication(QWidget *parent)
 #ifndef QT_NO_SSL
     // ssl support check
     TTK_INFO_STREAM("Application network support ssl:" << (QSslSocket::supportsSsl() ? "true" : "false"));
+#  if TTK_QT_VERSION_CHECK(5,0,0)
+#    if TTK_QT_VERSION_CHECK(5,4,0)
+    TTK_INFO_STREAM("Application network ssl build version:" << QSslSocket::sslLibraryBuildVersionString());
+#    endif
+    TTK_INFO_STREAM("Application network ssl runtime version:" << QSslSocket::sslLibraryVersionString());
+#  endif
 #endif
 }
 
