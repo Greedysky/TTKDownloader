@@ -98,7 +98,7 @@ DownloadSkinAnimationWidget::DownloadSkinAnimationWidget(QWidget *parent)
     QHBoxLayout *ly = TTKObjectCast(QHBoxLayout*, layout());
 
     QStringList names;
-    names << tr("Re") << tr("My") << tr("Online");
+    names << tr("Recommend") << tr("Stack") << tr("Online");
     for(int i = 0; i < names.count(); ++i)
     {
         QToolButton *btn = new QToolButton(this);

@@ -644,16 +644,16 @@ Copyright© 2015 - 2026 Greedysky All Rights Reserved
 <context>
     <name>DownloadSkinAnimationWidget</name>
     <message>
-        <source>Re</source>
+        <source>Recommend</source>
         <translation>推荐皮肤</translation>
     </message>
     <message>
-        <source>My</source>
+        <source>Stack</source>
         <translation>我的皮肤</translation>
     </message>
     <message>
         <source>Online</source>
-        <translation>在线皮肤</translation>
+        <translation>更多皮肤</translation>
     </message>
 </context>
 <context>
