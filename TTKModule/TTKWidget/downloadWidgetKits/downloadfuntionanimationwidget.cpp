@@ -10,9 +10,9 @@
 
 DownloadAbstractAnimationWidget::DownloadAbstractAnimationWidget(QWidget *parent)
     : QWidget(parent),
-      m_curIndex(0),
-      m_preIndex(0),
-      m_x(0),
+      m_value(0),
+      m_currentIndex(0),
+      m_previousIndex(0),
       m_perWidth(0.0f),
       m_totalWidth(0.0f),
       m_isAnimation(true),
@@ -54,7 +54,7 @@ void DownloadAbstractAnimationWidget::paintEvent(QPaintEvent *event)
         painter.setPen(QPen(Qt::black, 0.1, Qt::SolidLine));
 
         int offset = m_perWidth - (m_container[0]->width() + m_pix.width()) / 2;
-            offset = m_isAnimation ? (offset + m_x) : (offset + m_curIndex * m_perWidth);
+            offset = m_isAnimation ? (offset + m_value) : (offset + m_currentIndex * m_perWidth);
         if(m_showLine)
         {
             painter.drawLine(0, height(), offset, height());
@@ -67,9 +67,10 @@ void DownloadAbstractAnimationWidget::paintEvent(QPaintEvent *event)
 void DownloadAbstractAnimationWidget::switchToSelectedItemStyle(int index)
 {
     m_isAnimation = true;
-    m_preIndex = m_curIndex;
-    m_curIndex = index;
-    m_animation->setStartValue(m_preIndex*m_perWidth);
+    m_previousIndex = m_currentIndex;
+    m_currentIndex = index;
+
+    m_animation->setStartValue(m_previousIndex * m_perWidth);
     m_animation->setEndValue(index * m_perWidth);
     m_animation->start();
 
@@ -78,7 +79,7 @@ void DownloadAbstractAnimationWidget::switchToSelectedItemStyle(int index)
 
 void DownloadAbstractAnimationWidget::animationChanged(const QVariant &value)
 {
-    m_x = value.toInt();
+    m_value = value.toInt();
     update();
 }
 
