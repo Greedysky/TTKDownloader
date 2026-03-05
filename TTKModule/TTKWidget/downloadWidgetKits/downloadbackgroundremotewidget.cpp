@@ -48,66 +48,35 @@ void DownloadBackgroundOnlineWidget::abort()
     m_networkRequest->abort();
 }
 
-QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(bool revert, QWidget *object)
+QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(QWidget *container, QWidget *parent)
 {
-    if(!m_functionsWidget)
+    if(m_functionsWidget)
     {
-        m_functionsWidget = new QWidget(object);
-        m_functionsWidget->setGeometry(15, 45, 428, 20);
-        m_functionsWidget->hide();
-
-        QHBoxLayout *hbox = new QHBoxLayout(m_functionsWidget);
-        hbox->setContentsMargins(5, 0, 0, 0);
-
-        TTKClickedGroup *clickedGroup = new TTKClickedGroup(m_functionsWidget);
-        connect(clickedGroup, SIGNAL(clicked(int)), this, SLOT(buttonClicked(int)));
-
-        QStringList names;
-        for(int i = 0; i < 9; ++i)
-        {
-            names << QString::number(i + 1);
-            clickedGroup->addWidget(createButtonLabels(names[i]), i);
-        }
-
-        hbox->addStretch(1);
-        createButtonLabels({});
-
-        m_functionsWidget->setLayout(hbox);
+        return m_functionsWidget;
     }
 
-    QHBoxLayout *ly = TTKObjectCast(QHBoxLayout*, m_functionsWidget->layout());
-    int count = ly->count();
-    if(revert)
-    {
-        while(count > 0)
-        {
-            --count;
-            ly->removeWidget(m_functionsItems[count]);
-            ly->removeItem(ly->itemAt(count));
-            m_functionsItems[count]->hide();
-        }
-        ly->addStretch(1);
+    m_functionsWidget = new QWidget(parent);
+    m_functionsWidget->setGeometry(15, 45, 428, 20);
 
-        m_functionsItems[m_functionsItems.count() - 1]->show();
-        ly->addWidget(m_functionsItems[m_functionsItems.count() - 1]);
-    }
-    else
-    {
-        while(count > 0)
-        {
-            --count;
-            ly->removeItem(ly->itemAt(count));
-        }
-        m_functionsItems[m_functionsItems.count() - 1]->hide();
+    const QRect &rect = container->geometry();
+    container->setGeometry(QRect(rect.x(), rect.y() + m_functionsWidget->height(), rect.width(), rect.height() - m_functionsWidget->height()));
 
-        for(int i = 0; i < m_functionsItems.count() - 1; ++i)
-        {
-            m_functionsItems[i]->show();
-            ly->addWidget(m_functionsItems[i]);
-        }
-        ly->addStretch(1);
+    QHBoxLayout *hbox = new QHBoxLayout(m_functionsWidget);
+    hbox->setContentsMargins(5, 0, 0, 0);
+
+    TTKClickedGroup *clickedGroup = new TTKClickedGroup(m_functionsWidget);
+    connect(clickedGroup, SIGNAL(clicked(int)), this, SLOT(buttonClicked(int)));
+
+    QStringList names;
+    for(int i = 0; i < 9; ++i)
+    {
+        names << QString::number(i + 1);
+        QLabel *label = createButtonLabels(names[i]);
+        hbox->addWidget(label);
+        clickedGroup->addWidget(label, i);
     }
 
+    m_functionsWidget->setLayout(hbox);
     return m_functionsWidget;
 }
 
@@ -189,7 +158,6 @@ QLabel* DownloadBackgroundOnlineWidget::createButtonLabels(const QString &name)
 {
     TTKClickedLabel *label = new TTKClickedLabel(name, m_functionsWidget);
     label->setFixedSize(35, 20);
-    label->hide();
     m_functionsItems << label;
     return label;
 }

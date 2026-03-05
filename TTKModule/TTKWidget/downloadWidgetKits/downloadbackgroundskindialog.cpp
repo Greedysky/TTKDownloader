@@ -170,13 +170,7 @@ void DownloadBackgroundSkinDialog::showCustomSkinDialog()
 
 void DownloadBackgroundSkinDialog::backgroundListWidgetChanged(int index)
 {
-    QWidget *toolWidget = m_onlineBackgroundList->createFunctionsWidget(index != 2, this);
-    if(!toolWidget->isVisible())
-    {
-        toolWidget->show();
-        QRect rect = m_ui->stackedWidget->geometry();
-        m_ui->stackedWidget->setGeometry(QRect(rect.x(), rect.y() + toolWidget->height(), rect.width(), rect.height() - toolWidget->height()));
-    }
+    m_onlineBackgroundList->createFunctionsWidget(m_ui->stackedWidget, this)->setVisible(index == 2);
 
     if(m_ui->stackedWidget->currentIndex() == index)
     {
