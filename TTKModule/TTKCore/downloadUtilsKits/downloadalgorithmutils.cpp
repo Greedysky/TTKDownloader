@@ -1,9 +1,10 @@
 #include "downloadalgorithmutils.h"
 #include "ttkcryptographichash.h"
+#include "ttkobject.h"
 
 #include <QCryptographicHash>
 
-static constexpr const char *MDII_URL_KEY = "GREEDYSKY";
+static constexpr const char *MDII_URL_KEY = TTK_APP_NAME;
 
 QByteArray TTK::Algorithm::md5(const QByteArray &data, bool base64)
 {

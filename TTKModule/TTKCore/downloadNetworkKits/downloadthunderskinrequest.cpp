@@ -2,7 +2,7 @@
 #include "downloaddatasourcerequest.h"
 
 static constexpr int MAX_SIZE = 30;
-static constexpr const char *QUERY_URL = "eC9KOTYxbVhvVDJNcGEwckhyMVZRdVRhOHhFRHQ2eFVNdWJxaURFSzA1ZWVmZm5HOFlzS1VCY2ZKOFRlYStBL2Y3SjNEK2gzY2QwPQ==";
+static constexpr const char *QUERY_URL = "K3RCVkdSMXZlSzJ3aVV2d2w4TFBZOGZMcmIzT3MxTzcrQ1lGTEhSNGZFbEJNRzRiK29YUC9ZOVZ2MnhvajlYdXlwMnhxRFpBbStnPQ==";
 
 DownloadThunderSkinConfigManager::DownloadThunderSkinConfigManager()
     : TTKAbstractXml()
