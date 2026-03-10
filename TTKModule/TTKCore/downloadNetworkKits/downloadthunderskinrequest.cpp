@@ -17,7 +17,7 @@ bool DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &i
     {
         DownloadSkinRemoteGroup group;
         QDomNode node = nodes.item(i);
-        group.m_group = node.toElement().attribute("name");
+        group.m_name = node.toElement().attribute("name");
 
         const QDomNodeList &groupNodes = node.childNodes();
         for(int j = 0; j < groupNodes.count(); ++j)

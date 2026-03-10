@@ -82,15 +82,23 @@ QWidget* DownloadBackgroundOnlineWidget::createFunctionsWidget(QWidget *containe
 
 void DownloadBackgroundOnlineWidget::outputRemoteSkin(DownloadBackgroundImage &image, const QString &data)
 {
-    const int index = QFileInfo(data).baseName().toInt();
-    DownloadSkinRemoteItemList &items = m_groups[m_currentIndex].m_items;
-    if(index >= 0 || index < items.count())
+    if(m_groups.isEmpty() || m_currentIndex < 0)
     {
-        DownloadSkinRemoteItem &item = items[index];
-        image.m_item.m_name = item.m_name;
-        image.m_item.m_useCount = item.m_useCount;
-        DownloadExtractManager::outputThunderSkin(image.m_pix, data);
+        return;
     }
+
+    const int index = QFileInfo(data).baseName().toInt();
+    const DownloadSkinRemoteItemList &items = m_groups[m_currentIndex].m_items;
+
+    if(index < 0 || index >= items.count())
+    {
+        return;
+    }
+
+    const DownloadSkinRemoteItem &item = items[index];
+    image.m_item.m_name = item.m_name;
+    image.m_item.m_useCount = item.m_useCount;
+    DownloadExtractManager::outputThunderSkin(image.m_pix, data);
 }
 
 void DownloadBackgroundOnlineWidget::buttonClicked(int index)
@@ -131,6 +139,7 @@ void DownloadBackgroundOnlineWidget::downloadDataChanged(const QString &bytes)
 {
     DownloadBackgroundImage image;
     outputRemoteSkin(image, bytes);
+
     if(!image.isValid())
     {
         image.m_pix = QPixmap(":/image/lb_noneImage");
@@ -144,7 +153,7 @@ void DownloadBackgroundOnlineWidget::downloadDataChanged(const DownloadSkinRemot
     m_groups = bytes;
     for(int i = 0; i < m_groups.count(); ++i)
     {
-        m_functionsItems[i]->setText(m_groups[i].m_group);
+        m_functionsItems[i]->setText(m_groups[i].m_name);
     }
 
     //Hide left items if the number just not enough

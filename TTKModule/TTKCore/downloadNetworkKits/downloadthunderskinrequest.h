@@ -49,12 +49,12 @@ TTK_DECLARE_LIST(DownloadSkinRemoteItem);
  */
 struct TTK_MODULE_EXPORT DownloadSkinRemoteGroup
 {
-    QString m_group;
+    QString m_name;
     DownloadSkinRemoteItemList m_items;
 
     inline bool isValid() const noexcept
     {
-        return !(m_group.isEmpty() && m_items.isEmpty());
+        return !(m_name.isEmpty() && m_items.isEmpty());
     }
 };
 TTK_DECLARE_LIST(DownloadSkinRemoteGroup);
