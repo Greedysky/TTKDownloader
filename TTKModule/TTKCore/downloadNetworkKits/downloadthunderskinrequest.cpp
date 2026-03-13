@@ -1,5 +1,4 @@
 #include "downloadthunderskinrequest.h"
-#include "downloaddatasourcerequest.h"
 
 static constexpr int MAX_SIZE = 30;
 static constexpr const char *QUERY_URL = "K3RCVkdSMXZlSzJ3aVV2d2w4TFBZOGZMcmIzT3MxTzcrQ1lGTEhSNGZFbEJNRzRiK29YUC9ZOVZ2MnhvajlYdXlwMnhxRFpBbStnPQ==";
@@ -10,7 +9,7 @@ DownloadThunderSkinConfigManager::DownloadThunderSkinConfigManager()
 
 }
 
-bool DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &items)
+bool DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &groups)
 {
     const QDomNodeList &nodes = m_document->elementsByTagName("group");
     for(int i = 0; i < nodes.count(); ++i)
@@ -56,7 +55,7 @@ bool DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &i
 
         if(group.isValid())
         {
-            items << group;
+            groups << group;
         }
     }
 
@@ -66,26 +65,39 @@ bool DownloadThunderSkinConfigManager::readBuffer(DownloadSkinRemoteGroupList &i
 
 
 DownloadThunderSkinRequest::DownloadThunderSkinRequest(QObject *parent)
-    : QObject(parent)
+    : DownloadAbstractNetwork(parent)
 {
 
 }
 
 void DownloadThunderSkinRequest::startToRequest()
 {
-    DownloadDataSourceRequest *req = new DownloadDataSourceRequest(this);
-    connect(req, SIGNAL(downloadRawDataChanged(QByteArray)), SLOT(downloadFinished(QByteArray)));
-    req->startToRequest(TTK::Algorithm::mdII(QUERY_URL, false));
+    QNetworkRequest request;
+    request.setUrl(TTK::Algorithm::mdII(QUERY_URL, false));
+    TTK::setUserAgentHeader(&request);
+    TTK::setSslConfiguration(&request);
+    TTK::setContentTypeHeader(&request);
+
+    m_reply = m_manager.get(request);
+    connect(m_reply, SIGNAL(finished()), SLOT(downloadFinished()));
+    QtNetworkErrorConnect(m_reply, this, replyError, TTK_SLOT);
 }
 
-void DownloadThunderSkinRequest::downloadFinished(const QByteArray &bytes)
+void DownloadThunderSkinRequest::downloadFinished()
 {
-    DownloadSkinRemoteGroupList items;
-    DownloadThunderSkinConfigManager manager;
-    if(manager.fromByteArray(bytes))
+    TTK_INFO_STREAM(metaObject()->className() << __FUNCTION__);
+
+    DownloadSkinRemoteGroupList groups;
+    DownloadAbstractNetwork::downloadFinished();
+    if(m_reply && m_reply->error() == QNetworkReply::NoError)
     {
-        manager.readBuffer(items);
+        DownloadThunderSkinConfigManager manager;
+        if(manager.fromByteArray(m_reply->readAll()))
+        {
+            manager.readBuffer(groups);
+        }
     }
 
-    Q_EMIT downloadDataChanged(items);
+    Q_EMIT downloadDataChanged(groups);
+    deleteAll();
 }

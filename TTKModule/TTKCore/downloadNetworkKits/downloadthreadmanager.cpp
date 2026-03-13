@@ -31,6 +31,7 @@ qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
         QEventLoop loop;
         QNetworkRequest request;
         request.setUrl(url);
+        TTK::setUserAgentHeader(&request);
         TTK::setSslConfiguration(&request);
 
         QNetworkReply *reply = manager.head(request);

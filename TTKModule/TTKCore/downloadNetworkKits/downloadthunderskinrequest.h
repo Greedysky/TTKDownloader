@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "ttkabstractxml.h"
+#include "downloadabstractnetwork.h"
 
 /*! @brief The class of the remote skin item.
  * @author Greedysky <greedysky@163.com>
@@ -74,7 +75,7 @@ public:
     /*!
      * Read datas from buffer.
      */
-    virtual bool readBuffer(DownloadSkinRemoteGroupList &items) override final;
+    virtual bool readBuffer(DownloadSkinRemoteGroupList &groups) override final;
 
 };
 
@@ -82,7 +83,7 @@ public:
 /*! @brief The class of the download thunder skin background.
  * @author Greedysky <greedysky@163.com>
  */
-class TTK_MODULE_EXPORT DownloadThunderSkinRequest : public QObject
+class TTK_MODULE_EXPORT DownloadThunderSkinRequest : public DownloadAbstractNetwork
 {
     Q_OBJECT
 public:
@@ -106,7 +107,7 @@ public Q_SLOTS:
     /*!
      * Download data from net finished.
      */
-    void downloadFinished(const QByteArray &bytes);
+    virtual void downloadFinished() override final;
 
 };
 

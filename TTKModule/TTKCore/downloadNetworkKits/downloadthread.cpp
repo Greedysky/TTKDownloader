@@ -29,6 +29,7 @@ void DownloadThread::startDownload(const Data &data)
     request.setUrl(data.m_url);
     const QString &range = QString("bytes=%0-%1").arg(data.m_startPoint + data.m_readySize).arg(data.m_endPoint);
     request.setRawHeader("Range", range.toUtf8());
+    TTK::setUserAgentHeader(&request);
     TTK::setSslConfiguration(&request);
 
     m_reply = m_manager->get(request);
