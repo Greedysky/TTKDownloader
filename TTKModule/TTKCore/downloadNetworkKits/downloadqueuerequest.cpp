@@ -84,7 +84,9 @@ void DownloadQueueRequest::downloadFinished()
     if(redirection.isValid())
     {
         m_file->remove();
-        m_queue.first().m_url = redirection.toString();
+
+        DownloadQueueData &data = m_queue.first();
+        data.m_url = TTK::fetchResolvedUrl(data.m_url, redirection.toString());
     }
     else
     {
@@ -112,10 +114,9 @@ void DownloadQueueRequest::handleError(QNetworkReply::NetworkError code)
         return;
     }
 
-#ifndef TTK_DEBUG
-    Q_UNUSED(code);
-#endif
-    TTK_ERROR_STREAM("QNetworkReply::NetworkError:" << code << m_reply->errorString());
+    TTK_ERROR_STREAM("Abnormal network connection, module" << this << "code" << code);
+    TTK_ERROR_STREAM("Abnormal network url is" << m_reply->request().url());
+
     m_file->flush();
 
     if(!m_isAbort)
@@ -124,6 +125,27 @@ void DownloadQueueRequest::handleError(QNetworkReply::NetworkError code)
     }
 
     startToRequest();
+}
+
+void DownloadQueueRequest::startOrderQueue()
+{
+    if(m_queue.isEmpty())
+    {
+        return;
+    }
+
+    const DownloadQueueData &data = m_queue.first();
+    const QFileInfo fin(data.m_path);
+    if(fin.exists() && fin.size() > 0)
+    {
+        Q_EMIT downloadDataChanged(data.m_path);
+        m_queue.removeFirst();
+        TTK_SIGNLE_SHOT(startOrderQueue, TTK_SLOT);
+    }
+    else if(G_NETWORK_PTR->isOnline())
+    {
+        startDownload(data.m_url);
+    }
 }
 
 void DownloadQueueRequest::startDownload(const QString &url)
@@ -152,25 +174,4 @@ void DownloadQueueRequest::startDownload(const QString &url)
     connect(m_reply, SIGNAL(finished()), SLOT(downloadFinished()));
     connect(m_reply, SIGNAL(readyRead()), SLOT(handleReadyRead()));
     QtNetworkErrorConnect(m_reply, this, handleError, TTK_SLOT);
-}
-
-void DownloadQueueRequest::startOrderQueue()
-{
-    if(m_queue.isEmpty())
-    {
-        return;
-    }
-
-    const DownloadQueueData &data = m_queue.first();
-    const QFileInfo fin(data.m_path);
-    if(fin.exists() && fin.size() > 0)
-    {
-        Q_EMIT downloadDataChanged(data.m_path);
-        m_queue.removeFirst();
-        startOrderQueue();
-    }
-    else if(G_NETWORK_PTR->isOnline())
-    {
-        startDownload(data.m_url);
-    }
 }

@@ -52,7 +52,7 @@ qint64 DownloadThreadManager::fileSize(QString &url, int tryTimes)
         const QVariant &redirection = reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
         if(!redirection.isNull())
         {
-            url = redirection.toString();
+            url = TTK::fetchResolvedUrl(url, redirection.toString());
             size = fileSize(url);
         }
 
