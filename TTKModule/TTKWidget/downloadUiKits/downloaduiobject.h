@@ -160,10 +160,8 @@ namespace TTK
 
         ///Slider
         static const QString SliderStyle01 = " \
-            QSlider::groove:vertical{ background: qlineargradient(x1:0, y1:0, x2:0, y2:1, \
-            stop:0 #B5B4B4, stop:1 #FCFCFC); width:3px; } \
-            QSlider::handle:vertical{ border-image:url(:/control/lb_slider_handle_normal); \
-            height:21px; margin-left:-8px; margin-right:-8px; } \
+            QSlider::groove:vertical{ background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #B5B4B4, stop:1 #FCFCFC); width:3px; } \
+            QSlider::handle:vertical{ border-image:url(:/control/lb_slider_handle_normal); height:21px; margin-left:-8px; margin-right:-8px; } \
             QSlider::handle:vertical:disabled{ border-image:url(:/control/lb_slider_disable); } \
             QSlider::handle:vertical:hover{ border-image:url(:/control/lb_slider_handle_hover); border:none; }";
 
@@ -171,9 +169,7 @@ namespace TTK
         static const QString ComboBoxStyle01 = " \
             QComboBox{ border:1px solid gray; } \
             QComboBox::hover{ border:1px solid rgb(22, 154, 243); } \
-            QComboBox::drop-down{ subcontrol-origin:padding; \
-            subcontrol-position:top right; width:20px; border-left-width:1px; \
-            border-left-color:darkgray; border-left-style:solid; } \
+            QComboBox::drop-down{ subcontrol-origin:padding; subcontrol-position:top right; width:20px; border-left-width:1px; border-left-color:darkgray; border-left-style:solid; } \
             QComboBox::down-arrow{ image:url(:/usermanager/btn_down_arrow); }";
 
         ///TableWidget
