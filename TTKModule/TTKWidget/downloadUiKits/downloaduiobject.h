@@ -170,7 +170,12 @@ namespace TTK
             QComboBox{ border:1px solid gray; } \
             QComboBox::hover{ border:1px solid rgb(22, 154, 243); } \
             QComboBox::drop-down{ subcontrol-origin:padding; subcontrol-position:top right; width:20px; border-left-width:1px; border-left-color:darkgray; border-left-style:solid; } \
-            QComboBox::down-arrow{ image:url(:/usermanager/btn_down_arrow); }";
+            QComboBox::down-arrow{ image:url(:/usermanager/btn_down_arrow); }" +
+#if TTK_QT_VERSION_CHECK(6,8,0)
+            QString("QComboBox{ padding-left: 3px; }");
+#else
+            QString();
+#endif
 
         ///TableWidget
         static const QString TableWidgetStyle01 =
