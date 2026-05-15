@@ -40,6 +40,13 @@ if(NOT CMAKE_BUILD_TYPE OR CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS Release Debug)
 
+# Set RPATH for Linux to find libraries in the same directory as executables
+if(UNIX AND NOT APPLE)
+  set(CMAKE_INSTALL_RPATH "$ORIGIN")
+  set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+  set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
+endif()
+
 # skip msvc compiler
 if(NOT MSVC)
   # Add a compiler flag
@@ -349,8 +356,9 @@ if(WIN32)
 endif()
 
 # Translation Generation
+# Note: Use $ENV{DESTDIR} prefix to support staged installs (e.g., AUR/Debian packaging)
 if(WIN32)
-  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_win.bat\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_DIR}\" \"${TTK_BASE_DIR}\")")
+  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_win.bat\" \"${QT_LRELEASE_EXECUTABLE}\" \"\$ENV{DESTDIR}${TTK_INSTALL_DIR}\" \"${TTK_BASE_DIR}\")")
 else()
-  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_unix.py\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_DIR}\" \"${TTK_BASE_DIR}\")")
+  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_unix.py\" \"${QT_LRELEASE_EXECUTABLE}\" \"\$ENV{DESTDIR}${TTK_INSTALL_DIR}\" \"${TTK_BASE_DIR}\")")
 endif()

@@ -2,7 +2,7 @@
 
 packname=TTKDownloader
 packvern=3.2.0.0
-rootpath=data/opt
+rootpath=data/opt/${packname}
 datapath=data/DEBIAN
 
 fullname=$1
@@ -19,7 +19,7 @@ Version: ${packvern}
 Section: multimedia
 Priority: optional
 Architecture: amd64
-Installed-Size: $(du -s ${packname} | sed -e 's/[ \t].*//')
+Installed-Size: $(du -s ${rootpath} | sed -e 's/[ \t].*//')
 Maintainer: Greedysky <greedysky@163.com>
 Homepage: https://github.com/Greedysky/${packname}
 Description: TTK Downloader
@@ -35,8 +35,9 @@ echo -n "#!/bin/bash
 sh /opt/${packname}/uninstall.sh\n" > ${datapath}/prerm
 chmod +x ${datapath}/prerm
 
-# create data path
-mv ${packname} ${rootpath}
+# create data path - move share to opt
+mv data/usr/share ${rootpath}/
+rm -rf data/usr
 
 # create install package
 dpkg -b data ${fullname}.deb
