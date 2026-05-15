@@ -20,8 +20,8 @@ cmake_minimum_required(VERSION 3.18.0)
 
 project(TTKDownloader)
 
-set(LIBRARY_OUTPUT_PATH ${TTK_BUILD_DIR})
-set(EXECUTABLE_OUTPUT_PATH ${TTK_BUILD_DIR})
+set(LIBRARY_OUTPUT_PATH ${TTK_BUILD_DIR}/${TTK_VERSION})
+set(EXECUTABLE_OUTPUT_PATH ${TTK_BUILD_DIR}/${TTK_VERSION})
 
 include_directories(${TTK_COMMON_DIR})
 include_directories(${TTK_COMMON_RUN_DIR})

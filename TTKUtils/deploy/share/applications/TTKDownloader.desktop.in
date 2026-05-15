@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=TTKDownloader
+GenericName=Download Manager
+Comment=Download music and video from network
+Comment[zh_CN]=天天下载
+Comment[zh_TW]=天天下載
+Exec=@CMAKE_INSTALL_DATADIR@/TTKDownloader/TTKDownloader
+Icon=@CMAKE_INSTALL_PREFIX@/share/icons/hicolor/256x256/apps/ttkdownloader.png
+Terminal=false
+Keywords=multimedia;downloader;
+Categories=Utility;Qt;Network;
+StartupNotify=true
+Type=Application

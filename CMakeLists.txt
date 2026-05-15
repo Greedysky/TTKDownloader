@@ -149,8 +149,16 @@ include_directories(${TTK_GENERATE_DIR})
 
 set(LIBRARY_OUTPUT_PATH ${TTK_BUILD_DIR}/${TTK_VERSION})
 set(EXECUTABLE_OUTPUT_PATH ${TTK_BUILD_DIR}/${TTK_VERSION})
-set(TTK_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}")
-set(TTK_INSTALL_BIN_DIR "${TTK_INSTALL_DIR}/${TTK_VERSION}")
+
+# Define standard install directories (must be before TTK_INSTALL_DIR)
+set(CMAKE_INSTALL_DATADIR "${CMAKE_INSTALL_PREFIX}/share" CACHE PATH "Install directory for read-only data")
+set(CMAKE_INSTALL_APPLICATIONSDIR "${CMAKE_INSTALL_DATADIR}/applications" CACHE PATH "Desktop files install directory")
+set(CMAKE_INSTALL_METAINFODIR "${CMAKE_INSTALL_DATADIR}/metainfo" CACHE PATH "AppStream metainfo install directory")
+
+# Data files should install to ${CMAKE_INSTALL_DATADIR}, not ${CMAKE_INSTALL_PREFIX}
+# Default: /usr/local/share/TTKDownloader (when CMAKE_INSTALL_PREFIX=/usr/local)
+# System:  /usr/share/TTKDownloader (when CMAKE_INSTALL_PREFIX=/usr)
+set(TTK_INSTALL_DIR "${CMAKE_INSTALL_DATADIR}/${PROJECT_NAME}")
 
 
 set(TTK_QT_VERSION "0" CACHE STRING "Select Qt version")
@@ -260,7 +268,52 @@ add_subdirectory(TTKService)
 add_subdirectory(TTKRun)
 
 
-install(DIRECTORY "${TTK_BUILD_DIR}/" DESTINATION "${TTK_INSTALL_DIR}" USE_SOURCE_PERMISSIONS)
+# =============================================================================
+# Linux Desktop Integration
+# =============================================================================
+if(UNIX AND NOT APPLE)
+  set(TTK_APP_ID "com.greedysky.TTKDownloader")
+  string(TIMESTAMP TTK_RELEASE_DATE "%Y-%m-%d")
+
+  file(MAKE_DIRECTORY "${TTK_GENERATE_DIR}")
+
+  configure_file(
+    "${TTK_UTILS_DIR}/deploy/share/applications/TTKDownloader.desktop.in"
+    "${TTK_GENERATE_DIR}/TTKDownloader.desktop"
+    @ONLY
+  )
+
+  configure_file(
+    "${TTK_UTILS_DIR}/deploy/share/metainfo/ttkdownloader.metainfo.xml.in"
+    "${TTK_GENERATE_DIR}/ttkdownloader.metainfo.xml"
+    @ONLY
+  )
+
+  install(FILES "${TTK_GENERATE_DIR}/TTKDownloader.desktop"
+          DESTINATION "${CMAKE_INSTALL_APPLICATIONSDIR}")
+
+  install(CODE "
+    foreach(size 16 32 48 64 128 256 512)
+      set(icon_dir \"\${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/\${size}x\${size}/apps\")
+      file(MAKE_DIRECTORY \"\$ENV{DESTDIR}\${icon_dir}\")
+      configure_file(
+        \"${TTK_RESOURCE_DIR}/logo_banner.png\"
+        \"\$ENV{DESTDIR}\${icon_dir}/ttkdownloader.png\"
+        COPYONLY
+      )
+    endforeach()
+  ")
+
+  install(FILES "${TTK_GENERATE_DIR}/ttkdownloader.metainfo.xml"
+          DESTINATION "${CMAKE_INSTALL_METAINFODIR}")
+endif()
+
+# =============================================================================
+# File Installation Rules
+# =============================================================================
+
+install(DIRECTORY "${TTK_BUILD_DIR}/${TTK_VERSION}/" DESTINATION "${TTK_INSTALL_DIR}" USE_SOURCE_PERMISSIONS)
+
 install(FILES "${TTK_BASE_DIR}/ChangeLog"
               "${TTK_BASE_DIR}/LICENSE"
               "${TTK_BASE_DIR}/LICENSE.LGPLv3"
@@ -270,24 +323,34 @@ install(FILES "${TTK_BASE_DIR}/ChangeLog"
               "${TTK_BASE_DIR}/.github/FUNDING.yml"
               "${TTK_UTILS_DIR}/resource/LICENSE.QT-LICENSE-AGREEMENT"
         DESTINATION "${TTK_INSTALL_DIR}/doc")
+
 install(FILES "${TTK_UTILS_DIR}/resource/README.txt" DESTINATION "${TTK_INSTALL_DIR}")
-# copy resource
+
+if(UNIX AND NOT APPLE)
+  foreach(script TTKInit TTKDownloader TTKRoutine TTKConsole TTKService TTKRoutineCopy)
+    install(FILES "${TTK_RESOURCE_DIR}/_extras/${script}.sh"
+            DESTINATION "${TTK_INSTALL_DIR}"
+            PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
+                        GROUP_READ GROUP_EXECUTE
+                        WORLD_READ WORLD_EXECUTE)
+  endforeach()
+
+  install(FILES ${TTK_RESOURCE_DIR}/_extras/config.xml
+                    ${TTK_RESOURCE_DIR}/_extras/history.tkf
+                    ${TTK_RESOURCE_DIR}/_extras/list.tkpl
+                    ${TTK_RESOURCE_DIR}/_extras/recycle.tkf
+                    ${TTK_RESOURCE_DIR}/_extras/sound.wav
+                    ${TTK_RESOURCE_DIR}/_extras/avnets
+          DESTINATION "${TTK_INSTALL_DIR}")
+endif()
+
 if(WIN32)
   install(FILES "${TTK_UTILS_DIR}/resource/qicon.dll" DESTINATION "${TTK_INSTALL_DIR}")
-else()
-  install(DIRECTORY "${TTK_UTILS_DIR}/deploy" DESTINATION "${TTK_INSTALL_DIR}")
-  install(FILES "${TTK_UTILS_DIR}/install.sh" DESTINATION "${TTK_INSTALL_DIR}")
-  install(FILES "${TTK_UTILS_DIR}/uninstall.sh" DESTINATION "${TTK_INSTALL_DIR}")
-  install(FILES "${TTK_UTILS_DIR}/ttk_runtime" DESTINATION "${TTK_INSTALL_DIR}")
-  install(DIRECTORY "${TTK_UTILS_DIR}/deploy/share/metainfo" DESTINATION "${TTK_INSTALL_DIR}/share")
 endif()
-# copy run resource
-if(UNIX)
-  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/resource.sh\" \"${TTK_RESOURCE_DIR}\" \"${TTK_INSTALL_BIN_DIR}\")")
-endif()
-# update and release translations
+
+# Translation Generation
 if(WIN32)
-  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_win.bat\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_BIN_DIR}\" \"${TTK_BASE_DIR}\")")
+  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_win.bat\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_DIR}\" \"${TTK_BASE_DIR}\")")
 else()
-  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_unix.py\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_BIN_DIR}\" \"${TTK_BASE_DIR}\")")
+  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/ts_unix.py\" \"${QT_LRELEASE_EXECUTABLE}\" \"${TTK_INSTALL_DIR}\" \"${TTK_BASE_DIR}\")")
 endif()

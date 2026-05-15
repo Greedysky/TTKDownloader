@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>@TTK_APP_ID@</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>TTKDownloader</name>
+  <summary>Download music and video from network</summary>
+  <description>
+    <p>TTKDownloader is a free and open source download manager.</p>
+  </description>
+  <launchable type="desktop-id">@TTK_APP_ID@.desktop</launchable>
+  <url type="homepage">https://github.com/Greedysky/TTKDownloader</url>
+  <developer_name>Greedysky Studio</developer_name>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="@TTK_VERSION@" date="@TTK_RELEASE_DATE@"/>
+  </releases>
+</component>
