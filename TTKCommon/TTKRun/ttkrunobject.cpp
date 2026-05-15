@@ -47,7 +47,8 @@ void TTKRunObject::execute(int argc, char **argv) const
     }
 
     char path[TTK_LOW_BUFFER] = {};
-    const char * const suffix = TTK_STR_CAT(TTK_SEPARATOR, TTK_VERSION_STR, TTK_SEPARATOR, TTK_SERVICE_RUN_NAME);
+    // Scripts and executables are in the same directory (no version subdirectory)
+    const char * const suffix = TTK_STR_CAT(TTK_SEPARATOR, TTK_SERVICE_RUN_NAME);
 #ifdef _WIN32
     GetModuleFileNameA(nullptr, path, TTK_LOW_BUFFER);
 
