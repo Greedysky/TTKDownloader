@@ -22,9 +22,10 @@
 #include "ttkqtcompat.h"
 
 #ifdef TTK_LIBRARY
-#  define TTK_MODULE_EXPORT Q_DECL_EXPORT
+// Force use of visibility("default") to fix GCC 16 + Qt6 compatibility issues
+#  define TTK_MODULE_EXPORT __attribute__((visibility("default")))
 #else
-#  define TTK_MODULE_EXPORT Q_DECL_IMPORT
+#  define TTK_MODULE_EXPORT __attribute__((visibility("default")))
 #endif
 
 #endif // TTKMODULEEXPORT_H
