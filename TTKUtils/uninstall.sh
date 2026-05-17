@@ -8,3 +8,4 @@ else
 fi
 
 rm -f ${homepath}/.local/share/applications/TTKDownloader.desktop
+rm -f ${homepath}/.local/share/metainfo/ttkdownloader.metainfo.xml

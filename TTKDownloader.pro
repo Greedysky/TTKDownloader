@@ -26,6 +26,8 @@ TRANSLATIONS += $$PWD/TTKLanguage/cn.ts
 unix{
     exists($$[QT_INSTALL_BINS]/lrelease){
         LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease
+    }else:exists($$[QT_INSTALL_BINS]/lrelease6){
+        LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease6
     }else:exists($$[QT_INSTALL_BINS]/lrelease-qt$$QT_MAJOR_VERSION){
         LRELEASE_EXECUTABLE = $$[QT_INSTALL_BINS]/lrelease-qt$$QT_MAJOR_VERSION
     }

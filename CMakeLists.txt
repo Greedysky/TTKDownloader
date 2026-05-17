@@ -20,6 +20,9 @@ cmake_minimum_required(VERSION 3.18.0)
 
 project(TTKDownloader)
 
+string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
+string(TOUPPER ${PROJECT_NAME} PROJECT_NAME_UPPER)
+
 set(TTK_MAJOR_VERSION 3)
 set(TTK_MINOR_VERSION 2)
 set(TTK_PATCH_VERSION 0)
@@ -73,7 +76,7 @@ else()
   message(STATUS "TTK build by static link")
 endif()
 
-option(TTK_USE_SYSTEM_ZLIB "Use system zlib instead of bundled" OFF)
+option(TTK_USE_SYSTEM_ZLIB "TTK use system zlib instead of bundled" OFF)
 if(TTK_USE_SYSTEM_ZLIB)
   message(STATUS "TTK use system zlib")
 else()
@@ -151,6 +154,7 @@ set(LIBRARY_OUTPUT_PATH ${TTK_BUILD_DIR}/${TTK_VERSION})
 set(EXECUTABLE_OUTPUT_PATH ${TTK_BUILD_DIR}/${TTK_VERSION})
 set(TTK_INSTALL_DIR "${CMAKE_INSTALL_PREFIX}/${PROJECT_NAME}")
 set(TTK_INSTALL_BIN_DIR "${TTK_INSTALL_DIR}/${TTK_VERSION}")
+set(TTK_INSTALL_SHARE_DIR "${TTK_INSTALL_DIR}/share")
 
 
 set(TTK_QT_VERSION "0" CACHE STRING "Select Qt version")
@@ -275,11 +279,14 @@ install(FILES "${TTK_UTILS_DIR}/resource/README.txt" DESTINATION "${TTK_INSTALL_
 if(WIN32)
   install(FILES "${TTK_UTILS_DIR}/resource/qicon.dll" DESTINATION "${TTK_INSTALL_DIR}")
 else()
-  install(DIRECTORY "${TTK_UTILS_DIR}/deploy" DESTINATION "${TTK_INSTALL_DIR}")
   install(FILES "${TTK_UTILS_DIR}/install.sh" DESTINATION "${TTK_INSTALL_DIR}")
   install(FILES "${TTK_UTILS_DIR}/uninstall.sh" DESTINATION "${TTK_INSTALL_DIR}")
   install(FILES "${TTK_UTILS_DIR}/ttk_runtime" DESTINATION "${TTK_INSTALL_DIR}")
-  install(DIRECTORY "${TTK_UTILS_DIR}/deploy/share/metainfo" DESTINATION "${TTK_INSTALL_DIR}/share")
+  install(DIRECTORY "${TTK_UTILS_DIR}/deploy" DESTINATION "${TTK_INSTALL_DIR}" USE_SOURCE_PERMISSIONS)
+  #
+  install(DIRECTORY "${TTK_UTILS_DIR}/deploy/share/metainfo" DESTINATION "${TTK_INSTALL_SHARE_DIR}")
+  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/deploy/make_icon.sh\" \"${PROJECT_NAME_LOWER}\" \"${TTK_UTILS_DIR}\" \"${TTK_INSTALL_SHARE_DIR}\")")
+  install(CODE "execute_process(COMMAND \"${TTK_UTILS_DIR}/deploy/make_desktop_raw.sh\" \"${TTK_INSTALL_SHARE_DIR}/applications/${PROJECT_NAME}.desktop\" \"${TTK_INSTALL_SHARE_DIR}/icons/hicolor/256x256/apps/${PROJECT_NAME_LOWER}.png\" \"${TTK_INSTALL_DIR}/${PROJECT_NAME}\")")
 endif()
 # copy run resource
 if(UNIX)
