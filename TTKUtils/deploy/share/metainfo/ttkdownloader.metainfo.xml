@@ -7,9 +7,7 @@
   <name>TTKDownloader</name>
   <summary>The ttk downloader</summary>
   <description>
-    <p>
-      TTKDownloader imitates xunlei downloader, based on Qt for windows and linux.
-    </p>
+    <p>TTKDownloader imitates xunlei downloader, based on Qt for windows and linux.</p>
   </description>
   <categories>
     <category>Downloader</category>
