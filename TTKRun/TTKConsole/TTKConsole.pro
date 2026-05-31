@@ -28,7 +28,7 @@ TARGET = TTKConsole
 
 DEFINES += TTK_LIBRARY
 
-##openssl lib check
+#openssl lib check
 win32{
     SSL_DEPENDENCY = $$DESTDIR/ssleay32.dll
     SSL_DEPENDENCY = $$replace(SSL_DEPENDENCY, /, \\)

@@ -78,7 +78,7 @@ if(TTK_QT_VERSION VERSION_EQUAL "4")
 elseif(TTK_QT_VERSION VERSION_EQUAL "5")
   qt5_wrap_cpp(MOC_FILES ${HEADER_FILES})
 
-  if(UNIX)
+  if(UNIX AND NOT APPLE)
     list(APPEND QT_LINK_LIBS Qt5::X11Extras)
   endif()
 
