@@ -10,7 +10,7 @@
 
 #include <QPainter>
 
-DownloadTopAreaWidget *DownloadTopAreaWidget::m_instance = nullptr;
+DownloadTopAreaWidget* DownloadTopAreaWidget::m_instance = nullptr;
 
 DownloadTopAreaWidget::DownloadTopAreaWidget(QWidget *parent)
     : QWidget(parent),
@@ -26,7 +26,7 @@ DownloadTopAreaWidget::~DownloadTopAreaWidget()
     delete m_backgroundWidget;
 }
 
-DownloadTopAreaWidget *DownloadTopAreaWidget::instance()
+DownloadTopAreaWidget* DownloadTopAreaWidget::instance()
 {
     return m_instance;
 }

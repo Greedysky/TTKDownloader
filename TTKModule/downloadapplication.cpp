@@ -17,7 +17,7 @@
 #include <QMenu>
 #include <QResizeEvent>
 
-DownloadApplication *DownloadApplication::m_instance = nullptr;
+DownloadApplication* DownloadApplication::m_instance = nullptr;
 
 DownloadApplication::DownloadApplication(QWidget *parent)
     : TTKAbstractMoveResizeWidget(false, parent),
@@ -73,7 +73,7 @@ DownloadApplication::~DownloadApplication()
     delete m_ui;
 }
 
-DownloadApplication *DownloadApplication::instance()
+DownloadApplication* DownloadApplication::instance()
 {
     return m_instance;
 }

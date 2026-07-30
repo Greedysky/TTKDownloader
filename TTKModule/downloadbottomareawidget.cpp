@@ -10,7 +10,7 @@
 #include "downloadsettingmanager.h"
 #include "downloadrightareawidget.h"
 
-DownloadBottomAreaWidget *DownloadBottomAreaWidget::m_instance = nullptr;
+DownloadBottomAreaWidget* DownloadBottomAreaWidget::m_instance = nullptr;
 
 DownloadBottomAreaWidget::DownloadBottomAreaWidget(QWidget *parent)
     : QWidget(parent),
@@ -36,7 +36,7 @@ DownloadBottomAreaWidget::~DownloadBottomAreaWidget()
     delete m_speedThread;
 }
 
-DownloadBottomAreaWidget *DownloadBottomAreaWidget::instance()
+DownloadBottomAreaWidget* DownloadBottomAreaWidget::instance()
 {
     return m_instance;
 }

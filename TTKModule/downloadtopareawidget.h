@@ -49,7 +49,7 @@ public:
     /*!
      * Get class object instance.
      */
-    static DownloadTopAreaWidget *instance();
+    static DownloadTopAreaWidget* instance();
     /*!
      * Set up app ui.
      */

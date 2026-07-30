@@ -51,7 +51,7 @@ public:
     /*!
      * Get class object instance.
      */
-    static DownloadApplication *instance();
+    static DownloadApplication* instance();
 
 public Q_SLOTS:
     /*!

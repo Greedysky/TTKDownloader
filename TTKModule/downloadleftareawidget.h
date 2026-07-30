@@ -47,7 +47,7 @@ public:
     /*!
      * Get class object instance.
      */
-    static DownloadLeftAreaWidget *instance();
+    static DownloadLeftAreaWidget* instance();
     /*!
      * Set up app ui.
      */

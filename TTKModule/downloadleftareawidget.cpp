@@ -3,7 +3,7 @@
 #include "downloadsettingwidget.h"
 #include "downloadhotkeymanager.h"
 
-DownloadLeftAreaWidget *DownloadLeftAreaWidget::m_instance = nullptr;
+DownloadLeftAreaWidget* DownloadLeftAreaWidget::m_instance = nullptr;
 
 DownloadLeftAreaWidget::DownloadLeftAreaWidget(QWidget *parent)
     : QWidget(parent)
@@ -21,7 +21,7 @@ DownloadLeftAreaWidget::~DownloadLeftAreaWidget()
     delete m_settingWidget;
 }
 
-DownloadLeftAreaWidget *DownloadLeftAreaWidget::instance()
+DownloadLeftAreaWidget* DownloadLeftAreaWidget::instance()
 {
     return m_instance;
 }

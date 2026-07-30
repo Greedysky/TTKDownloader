@@ -8,7 +8,7 @@
 #include <QTimer>
 #include <QPropertyAnimation>
 
-DownloadApplicationModule *DownloadApplicationModule::m_instance = nullptr;
+DownloadApplicationModule* DownloadApplicationModule::m_instance = nullptr;
 
 DownloadApplicationModule::DownloadApplicationModule(QObject *parent)
     : QObject(parent)
@@ -25,7 +25,7 @@ DownloadApplicationModule::~DownloadApplicationModule()
     delete m_quitAnimation;
 }
 
-DownloadApplicationModule *DownloadApplicationModule::instance()
+DownloadApplicationModule* DownloadApplicationModule::instance()
 {
     return m_instance;
 }

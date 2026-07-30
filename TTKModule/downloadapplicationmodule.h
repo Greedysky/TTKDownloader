@@ -43,7 +43,7 @@ public:
     /*!
      * Get class object instance.
      */
-    static DownloadApplicationModule *instance();
+    static DownloadApplicationModule* instance();
 
 public Q_SLOTS:
     /*!

@@ -50,7 +50,7 @@ public:
     /*!
      * Get class object instance.
      */
-    static DownloadBottomAreaWidget *instance();
+    static DownloadBottomAreaWidget* instance();
     /*!
      * Set up app ui.
      */

@@ -7,7 +7,7 @@
 #include "downloadhistorywidget.h"
 #include "downloaderrorwidget.h"
 
-DownloadRightAreaWidget *DownloadRightAreaWidget::m_instance = nullptr;
+DownloadRightAreaWidget* DownloadRightAreaWidget::m_instance = nullptr;
 
 DownloadRightAreaWidget::DownloadRightAreaWidget(QWidget *parent)
     : QWidget(parent)
@@ -40,7 +40,7 @@ void DownloadRightAreaWidget::initialize()
     m_errorWidget->initialize();
 }
 
-DownloadRightAreaWidget *DownloadRightAreaWidget::instance()
+DownloadRightAreaWidget* DownloadRightAreaWidget::instance()
 {
     return m_instance;
 }
