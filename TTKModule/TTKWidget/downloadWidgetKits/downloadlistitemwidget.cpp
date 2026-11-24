@@ -5,6 +5,7 @@
 #include "ttktime.h"
 
 #include <QLabel>
+#include <QFileInfo>
 #include <QBoxLayout>
 #include <QMouseEvent>
 #include <QProgressBar>

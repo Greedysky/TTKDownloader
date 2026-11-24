@@ -90,6 +90,7 @@ private:
 
     Ui::DownloadApplication *m_ui;
 
+    bool m_quitWindowMode;
     DownloadBottomAreaWidget *m_bottomAreaWidget;
     DownloadTopAreaWidget *m_topAreaWidget;
     DownloadRightAreaWidget *m_rightAreaWidget;

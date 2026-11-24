@@ -21,7 +21,8 @@ DownloadApplication* DownloadApplication::m_instance = nullptr;
 
 DownloadApplication::DownloadApplication(QWidget *parent)
     : TTKAbstractMoveResizeWidget(false, parent),
-      m_ui(new Ui::DownloadApplication)
+      m_ui(new Ui::DownloadApplication),
+      m_quitWindowMode(false)
 {
     m_instance = this;
 
@@ -98,9 +99,15 @@ void DownloadApplication::applyParameter()
 
 void DownloadApplication::quitWindow()
 {
+    if(m_quitWindowMode)
+    {
+        return;
+    }
+
+    m_quitWindowMode = true;
+    m_applicationModule->windowCloseAnimation();
     //Write configuration files
     writeSystemConfigToFile();
-    m_applicationModule->windowCloseAnimation();
 }
 
 void DownloadApplication::createRightMenu()
@@ -148,6 +155,7 @@ void DownloadApplication::closeEvent(QCloseEvent *event)
 {
     TTKAbstractMoveResizeWidget::closeEvent(event);
     event->ignore();
+
     if(!m_bottomAreaWidget->systemCloseConfig() && m_bottomAreaWidget->systemTrayIsVisible())
     {
         hide();
