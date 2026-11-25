@@ -17,7 +17,9 @@ DownloadApplicationModule::DownloadApplicationModule(QObject *parent)
 
     resetWindowGeometry();
     m_quitAnimation = new QPropertyAnimation(parent, "windowOpacity", this);
+#ifdef Q_OS_LINUX
     connect(m_quitAnimation, SIGNAL(valueChanged(QVariant)), parent, SLOT(update()));
+#endif
 }
 
 DownloadApplicationModule::~DownloadApplicationModule()
